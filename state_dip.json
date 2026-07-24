@@ -11,7 +11,7 @@
    "t_entry": 1784884586,
    "base": 0.00933,
    "low": 0.0061,
-   "mark": 0.00686
+   "mark": 0.0068
   },
   "mexc:GMEROBINHOOD_USDT": {
    "exch": "mexc",
@@ -22,7 +22,7 @@
    "t_entry": 1784884586,
    "base": 0.0001438,
    "low": 6.22e-05,
-   "mark": 0.0001061
+   "mark": 9.91e-05
   }
  },
  "closed": [],
