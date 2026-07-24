@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
 """策略 B 模拟盘：五所新币"回撤反转"做多 (LBank / XT / MEXC / HTX / Gate)
 
-规则（源自 v5/v6 研究：土狗新币先砸率 70%，先砸-10%的币翻倍概率是走稳币的 3.3 倍）：
-  检测   : gate/mexc/htx 用上市时间字段；lbank/xt 用交易对列表差分
+规则（v7 修订，源自严格回测 backtest_dip_rule.py/backtest_dip_rule2.py）：
+  检测   : gate/mexc/htx/blofin 用上市时间字段；lbank/xt/ourbit/coinw/poloniex 用交易对列表差分
   基准   : 第一根真实成交 1h K线收盘（vol >= 首日峰值 2%，规避占位价伪影）
-  入场   : 上市后 24h 内，价格自基准回撤 >=10% 且从最低点反弹 >=5% 时买入
+  入场   : 上市后 24h 内，价格自基准回撤 >=10% 且从最低点反弹 >=5%，且流动性达标(见下)时买入
+  流动性过滤: 观察窗口内累计成交额折算 24h 等效 >= $100,000 才入场（v7新增，防止 ATOP 式假流动性信号）
   仓位   : 500U/单，最多 10 单，独立账本 10,000 虚拟 USDT
-  退出   : TP +50% / SL -15% / 入场后 72h（1h K线按时序判定，同根先触视为 SL）
+  退出   : 不设止盈(让赢家跑) / SL -20% / 入场后 72h（v7 修订：TP+50%严格回测显示会砍掉驱动收益的极端赢家）
   滑点   : 买卖各 0.3%
+
+严格回测结论（gate+lbank+xt, n=1125笔完整交易, 流动性过滤后n=845）：
+  旧规则(TP+50/SL-15) 均值 -0.29% ；新规则(无TP/SL-20) 流动性过滤后均值 +6.41%，中位-20.24%，胜率30%
+  → 少数大赢家(数倍到十几倍)驱动全部收益，大部分单子(70%)会止损离场，这是高方差策略，非稳定小赚
 
 每小时由计划任务 PaperDipMonitor 运行。产出 DASHBOARD_DIP.md / nav_dip.csv / dip.log
 """
@@ -28,7 +33,8 @@ CAPITAL = 10000.0
 POS_SIZE = 500.0
 MAX_POS = 10
 DIP, REBOUND = -0.10, 0.05
-TP, SL, TIME_EXIT_H = 0.50, -0.15, 72
+TP, SL, TIME_EXIT_H = None, -0.20, 72  # v7: no TP (let winners run), wider SL
+MIN_VOL24_USD = 100000  # v7: liquidity gate, computed as observed-volume-so-far scaled to 24h
 WATCH_MAX_H = 26
 SLIP = 0.003
 
@@ -156,7 +162,9 @@ def klines_1h(exch, sym, t_from):
             k = (d or {}).get("data") or {}
             if not k.get("time"):
                 return []
-            return list(zip(k["time"], k["open"], k["high"], k["low"], k["close"], k["vol"]))
+            # k["vol"] is base-asset volume; convert to quote(USD) for consistent liquidity units
+            return list(zip(k["time"], k["open"], k["high"], k["low"], k["close"],
+                            [v * c for v, c in zip(k["vol"], k["close"])]))
         if exch == "htx":
             d = get("https://api.huobi.pro/market/history/kline",
                     {"symbol": sym, "period": "60min", "size": 200})
@@ -166,8 +174,9 @@ def klines_1h(exch, sym, t_from):
         if exch == "lbank":
             d = get("https://api.lbkex.com/v2/kline.do",
                     {"symbol": sym, "size": 200, "type": "hour1", "time": int(t_from)})
-            return [(int(r[0]), float(r[1]), float(r[2]), float(r[3]), float(r[4]), float(r[5]))
-                    for r in (d or {}).get("data") or []]
+            # lbank r[5] is base-asset volume; convert to quote(USD)
+            return [(int(r[0]), float(r[1]), float(r[2]), float(r[3]), float(r[4]),
+                     float(r[5]) * float(r[4])) for r in (d or {}).get("data") or []]
         if exch == "xt":
             d = get("https://sapi.xt.com/v4/public/kline",
                     {"symbol": sym, "interval": "1h", "limit": 200})
@@ -197,15 +206,18 @@ def klines_1h(exch, sym, t_from):
                 t = int(r.get("date", r.get("time", 0)))
                 if t > 10**12:
                     t //= 1000
+                # coinw "volume" is base-asset volume; convert to quote(USD)
+                close_px = float(r["close"])
                 bars.append((t, float(r["open"]), float(r["high"]), float(r["low"]),
-                             float(r["close"]), float(r.get("volume", 0))))
+                             close_px, float(r.get("volume", 0)) * close_px))
             return sorted(bars)
         if exch == "poloniex":
             d = get(f"https://api.poloniex.com/markets/{sym}/candles",
                     {"interval": "HOUR_1", "limit": 200})
             rows = d if isinstance(d, list) else []
+            # r[4] ('amount') is already quote(USD)-denominated turnover
             bars = [(int(r[12]) // 1000, float(r[2]), float(r[1]), float(r[0]), float(r[3]),
-                     float(r[5])) for r in rows]
+                     float(r[4])) for r in rows]
             return sorted(b for b in bars if b[0] >= t_from)
     except (KeyError, TypeError, ValueError):
         return []
@@ -334,6 +346,12 @@ def main():
         low = min(b[3] for b in real)
         last = real[-1][4]
         if low <= base * (1 + DIP) and last >= low * (1 + REBOUND):
+            hours_elapsed = max((real[-1][0] - real[0][0]) / 3600, 1.0)
+            vol24_equiv = sum(b[5] for b in real) / hours_elapsed * 24
+            if vol24_equiv < MIN_VOL24_USD:
+                w["status"] = "skipped_illiquid"
+                log(f"SKIP illiquid: {key} vol24_equiv=${vol24_equiv:,.0f} < ${MIN_VOL24_USD:,.0f}")
+                continue
             if len(state["positions"]) >= MAX_POS or state["cash"] < POS_SIZE:
                 w["status"] = "skipped_capacity"
                 log(f"SETUP but no capacity: {key}")
@@ -344,28 +362,23 @@ def main():
             state["positions"][key] = {"exch": w["exch"], "sym": w["sym"], "entry": entry,
                                        "qty": POS_SIZE / entry, "usd": POS_SIZE,
                                        "t_entry": NOW, "base": base, "low": low,
-                                       "ob_at_entry": ob}
+                                       "vol24_equiv": vol24_equiv, "ob_at_entry": ob}
             w["status"] = "entered"
             ob_s = (f", 盘口: spread {ob['spread_bps']}bps, 吃{POS_SIZE:.0f}U成本 {ob['fill_cost_bps']}bps"
                     if ob else ", 盘口: 抓取失败")
-            log(f"BUY {key} @ {entry:.6g} (base {base:.6g}, dip {(low/base-1)*100:.1f}%, rebound confirmed{ob_s})")
+            log(f"BUY {key} @ {entry:.6g} (base {base:.6g}, dip {(low/base-1)*100:.1f}%, "
+                f"vol24_equiv ${vol24_equiv:,.0f}{ob_s})")
         time.sleep(0.15)
 
     # 3) manage positions
     for key in list(state["positions"].keys()):
         p = state["positions"][key]
         bars = [b for b in klines_1h(p["exch"], p["sym"], p["t_entry"]) if b[0] >= p["t_entry"]]
-        tp_px, sl_px = p["entry"] * (1 + TP), p["entry"] * (1 + SL)
+        sl_px = p["entry"] * (1 + SL)
         exit_px = reason = None
         for (t, o, h, l, c, v) in bars:
-            if l <= sl_px and h >= tp_px:
-                exit_px, reason = sl_px, "SL(ambig)"
-                break
             if l <= sl_px:
                 exit_px, reason = sl_px, "SL"
-                break
-            if h >= tp_px:
-                exit_px, reason = tp_px, "TP"
                 break
         if exit_px is None and NOW - p["t_entry"] > TIME_EXIT_H * 3600:
             exit_px, reason = (bars[-1][4] if bars else p["entry"]), "TIME"
@@ -411,8 +424,8 @@ def main():
         "",
         f"## NAV: **{nav:,.2f} USDT**  ({(nav/CAPITAL-1)*100:+.2f}%)",
         "",
-        f"规则: 九所(LBank/XT/MEXC/HTX/Gate/Ourbit/BloFin/CoinW/Poloniex)新币，回撤≥10%后反弹≥5%入场，TP+50%/SL-15%/72h",
-        f"研究依据: 先砸-10%的新币翻倍率 14.6%（走稳币 4.4%）；九所合计~18 暴涨候选/月",
+        f"规则(v7): 九所新币，回撤≥10%后反弹≥5%+流动性(24h等效≥$10万)入场，无止盈/SL-20%/72h",
+        f"回测依据(1125笔严格复盘): 无止盈+流动性过滤后单笔均值+6.4%，中位-20.2%，胜率30%——高方差、少数大赢家驱动收益",
         "",
         f"持仓 {len(state['positions'])} | 观察中 {len(watching)} | 已平仓 {len(closed)} | "
         f"胜率 {len(wins)/len(closed)*100 if closed else 0:.0f}% | 已实现 {state['realized_pnl']:+.2f}U",
