@@ -1,0 +1,6 @@
+[2026-07-24 20:52 UTC] INIT pumpfun-style paper: 10000.0 USDT, 200.0/单, TP+40%/SL-20%/最长150分钟
+[2026-07-24 20:52 UTC] 说明: 实时模拟、不做历史回测(用户明确要求)；无法获取开发者持仓%字段，用流动性/成交量代理防貔貅
+[2026-07-24 20:52 UTC] scanned new_pools: +60 加入观察名单
+[2026-07-24 20:52 UTC] CYCLE OK nav=10000.00 new_entries=0 pos=0 watch=60 closed=0
+[2026-07-24 20:58 UTC] scanned new_pools: +40 加入观察名单
+[2026-07-24 20:58 UTC] CYCLE OK nav=10000.00 new_entries=0 pos=0 watch=100 closed=0

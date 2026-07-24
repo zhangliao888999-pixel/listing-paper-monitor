@@ -4,7 +4,8 @@
 |---|---|---|---|---|
 | 打新 | paper_monitor.py | Launchpool/HODLer/TGE/PoolX 估算收益 | PaperLaunchpadMonitor (6h) | DASHBOARD.md |
 | 策略A | newcoin_monitor.py | 无差别买入 Gate 新永续，TP+50/SL-15/72h | PaperNewCoinMonitor (1h) | DASHBOARD_NEWCOIN.md |
-| 策略B | dip_monitor.py | 五所(LBank/XT/MEXC/HTX/Gate)新币回撤反转：跌≥10%后弹≥5%入场，TP+50/SL-15/72h | PaperDipMonitor (1h) | DASHBOARD_DIP.md |
+| 策略B | dip_monitor.py | 九所新币回撤反转(v7)：跌≥10%后弹≥5%+流动性过滤入场，无止盈/SL-20%/72h(让赢家跑) | PaperDipMonitor (1h，本机已停用，云端GH Actions跑) | DASHBOARD_DIP.md |
+| 策略C | pumpfun_monitor.py | 模仿访谈操盘手：Solana新池子(GeckoTerminal)动量确认/企稳入场，TP+40%/SL-20%/最长150分钟(快进快出，风格与B相反)；**不做历史回测，纯实时观察**(用户明确要求) | monitor_pumpfun.yml (15分钟，云端) | DASHBOARD_PUMPFUN.md |
 
 策略B含占位价伪影防御（基准=首根真实成交K线）和美股代币化合约过滤（*STOCK*）。
 LBank/XT 用交易对列表差分检测新上市（首轮播种不产生信号）。
