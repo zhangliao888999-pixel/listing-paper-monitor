@@ -2005,6 +2005,720 @@
    "created_price": 2.1280667072249762e-06,
    "status": "watching",
    "first_seen": 1784932722
+  },
+  "CzM4MdH1PV2JQKo1QrCXMH7nYCif5L6xSjFCXBEmA8md": {
+   "addr": "CzM4MdH1PV2JQKo1QrCXMH7nYCif5L6xSjFCXBEmA8md",
+   "name": "Kira / SOL",
+   "created_price": 2.4962379290980163e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "BS49ZhxRFYu2VWMRWRh56zwCZqoLK4cHMKSc33LvXyeD": {
+   "addr": "BS49ZhxRFYu2VWMRWRh56zwCZqoLK4cHMKSc33LvXyeD",
+   "name": "test / SOL",
+   "created_price": 1.7475278941322104e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "AKD2kMVg1winnaR9qjG6Q3UD598eY9EKjhxTkF2xqVdw": {
+   "addr": "AKD2kMVg1winnaR9qjG6Q3UD598eY9EKjhxTkF2xqVdw",
+   "name": "USOH / USDC",
+   "created_price": 1.788300195469077e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "36bTvfqSQtxoMAF8YJfX7NkyHJMieYK2m2kFBbrwJ48R": {
+   "addr": "36bTvfqSQtxoMAF8YJfX7NkyHJMieYK2m2kFBbrwJ48R",
+   "name": "CTP / SOL",
+   "created_price": 2.0987185976877636e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "DiiFf5GVHDVB6f7oaGVzXbZvqeqLScbZambkYxtPXPGE": {
+   "addr": "DiiFf5GVHDVB6f7oaGVzXbZvqeqLScbZambkYxtPXPGE",
+   "name": "丸さん / SOL",
+   "created_price": 2.4700853795291096e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "HtqGe6sZcpmnUjsoHUAQB1V8REa8CFptxpjPfVqhocRm": {
+   "addr": "HtqGe6sZcpmnUjsoHUAQB1V8REa8CFptxpjPfVqhocRm",
+   "name": "STEAK / SOL",
+   "created_price": 3.038825942136025e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "688PU4ibk7sSquNuS93KPnvwNcX93ZZsQuAyuEq2QaSe": {
+   "addr": "688PU4ibk7sSquNuS93KPnvwNcX93ZZsQuAyuEq2QaSe",
+   "name": "旺旺 / SOL",
+   "created_price": 2.5024537368129072e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "J8Jn8kDJH4qHraRcibDbByh7uer9r5t4mDdu9ddE88AR": {
+   "addr": "J8Jn8kDJH4qHraRcibDbByh7uer9r5t4mDdu9ddE88AR",
+   "name": "ELOOONG / SOL",
+   "created_price": 2.0863943519198087e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "DnsiFvRUkN2K42JVXXWA38h7CRXPs338Bhj25wCYa7F7": {
+   "addr": "DnsiFvRUkN2K42JVXXWA38h7CRXPs338Bhj25wCYa7F7",
+   "name": "SBF / SOL",
+   "created_price": 1.0750503873277333e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "39kXyTW7VbpRtRVVjECXHaagWyxv1PKusRjYvD2AC1Ch": {
+   "addr": "39kXyTW7VbpRtRVVjECXHaagWyxv1PKusRjYvD2AC1Ch",
+   "name": "SOLNOTE / SOL",
+   "created_price": 3.6374243880740406e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "5ZhQUV2g7byUs4KvjUTiHKBUfjTwLvVab9jMeZmn6C7n": {
+   "addr": "5ZhQUV2g7byUs4KvjUTiHKBUfjTwLvVab9jMeZmn6C7n",
+   "name": "NAS / SOL",
+   "created_price": 5.135963818650305e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "8bMTAShEmWCACvHp2uoXzd6Dbb3QJz5NiBoZ5R9cH6UU": {
+   "addr": "8bMTAShEmWCACvHp2uoXzd6Dbb3QJz5NiBoZ5R9cH6UU",
+   "name": "SPCX / SOL",
+   "created_price": 4.824017791632102e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "4EF8oS9dTaj4czuzZsQQm6DtuunYmM9wpHupBrRgKjKu": {
+   "addr": "4EF8oS9dTaj4czuzZsQQm6DtuunYmM9wpHupBrRgKjKu",
+   "name": "ODYSSEUS / SOL",
+   "created_price": 2.1557000066917737e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "3uXUcE1LupVjiG4mGdtRhLjHJghUgZdTYbzFTgAisRoi": {
+   "addr": "3uXUcE1LupVjiG4mGdtRhLjHJghUgZdTYbzFTgAisRoi",
+   "name": "gl / SOL",
+   "created_price": 2.135724433222293e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "4Z6KBZPCNWUvgst8c8VoP2zk1LkkVJzKqJRKetDaiH5N": {
+   "addr": "4Z6KBZPCNWUvgst8c8VoP2zk1LkkVJzKqJRKetDaiH5N",
+   "name": "TYPE / SOL",
+   "created_price": 7.212782404326831e-10,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "7nYcdaLScg1eA9p8VpAJzi4zYGkPGYkmLR8Yt17WTGg5": {
+   "addr": "7nYcdaLScg1eA9p8VpAJzi4zYGkPGYkmLR8Yt17WTGg5",
+   "name": "Charity / SOL",
+   "created_price": 3.5224809422815756e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "3938t8XSQV1zz5MckAkqJNTmMQc2Ky4uzrE1JzMygM2h": {
+   "addr": "3938t8XSQV1zz5MckAkqJNTmMQc2Ky4uzrE1JzMygM2h",
+   "name": "SOL / SOL",
+   "created_price": 2.084883981295078e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "ARNneTrEKKnETQqSvFE8QB7DVqDorBgqc7P5FymYnjh6": {
+   "addr": "ARNneTrEKKnETQqSvFE8QB7DVqDorBgqc7P5FymYnjh6",
+   "name": "YUKI / SOL",
+   "created_price": 6.432418612522493e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "C2fFna7pxnmFVV3ErESotaGTQrrtphggKyVwguCGgR9w": {
+   "addr": "C2fFna7pxnmFVV3ErESotaGTQrrtphggKyVwguCGgR9w",
+   "name": "SPCX / SOL",
+   "created_price": 2.1186987325646586e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "3DDAdh4NuBygoK2ZHfdVqCwZBPxH4yvTm5LPhXWpu2zu": {
+   "addr": "3DDAdh4NuBygoK2ZHfdVqCwZBPxH4yvTm5LPhXWpu2zu",
+   "name": "Pumuckel / SOL",
+   "created_price": 9.849607938177998e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "fpGDo6kjCHFzMnArbwXk8RyTfQTTBzNq2t22Vu2Unqe": {
+   "addr": "fpGDo6kjCHFzMnArbwXk8RyTfQTTBzNq2t22Vu2Unqe",
+   "name": "REAL / SOL",
+   "created_price": 8.78415276888166e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "6o21dsNKgLBfGu4Ywz9ctLkY6MHUYiHNFQ7UsiFHfPWN": {
+   "addr": "6o21dsNKgLBfGu4Ywz9ctLkY6MHUYiHNFQ7UsiFHfPWN",
+   "name": "SmiskJim / SOL",
+   "created_price": 7.891461754153668e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "C5rHiPdo4Zso7imDri67amuWamKrzEkY8FXNKoBApoe6": {
+   "addr": "C5rHiPdo4Zso7imDri67amuWamKrzEkY8FXNKoBApoe6",
+   "name": "GENNY / SOL",
+   "created_price": 1.0907435116386248e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "8gG6mruDweHozhGTvM2n1SMxBV6XDyhDHWwfgm62kRLc": {
+   "addr": "8gG6mruDweHozhGTvM2n1SMxBV6XDyhDHWwfgm62kRLc",
+   "name": "MJYH / SOL",
+   "created_price": 1.2455790533051307e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "GKqWHa5gAucxqMHMM768aPVzBGoF3QKyaChLPz14iNWj": {
+   "addr": "GKqWHa5gAucxqMHMM768aPVzBGoF3QKyaChLPz14iNWj",
+   "name": "test / SOL",
+   "created_price": 2.299463794852676e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "G5caLSgQaNT298ELmwkJ4dmS8VLNbPkbHUg5CCgSmoj": {
+   "addr": "G5caLSgQaNT298ELmwkJ4dmS8VLNbPkbHUg5CCgSmoj",
+   "name": "YSL / SOL",
+   "created_price": 3.501594920407058e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "4F8HxWpQnwj33bmX8yJ5K2x5MZbRHcXHyNRtpV6hkUgg": {
+   "addr": "4F8HxWpQnwj33bmX8yJ5K2x5MZbRHcXHyNRtpV6hkUgg",
+   "name": "DOUBLET / SOL",
+   "created_price": 2.2023987954624934e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "bzADJtMgxAziqLf2BtPAhkpYJpwh5nGUGmZtJJuikYc": {
+   "addr": "bzADJtMgxAziqLf2BtPAhkpYJpwh5nGUGmZtJJuikYc",
+   "name": "HOGS / SOL",
+   "created_price": 1.927131384039451e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Ejw6nT5aLqZyx1RMM412SWWSJxrKss3GLdpoc4s66yVq": {
+   "addr": "Ejw6nT5aLqZyx1RMM412SWWSJxrKss3GLdpoc4s66yVq",
+   "name": "Nova / SOL",
+   "created_price": 1.0118303113086287e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Dz5ZgsJeV6pekvTKVEXCMaa3jkCgx1wR3x9SxJFo9qXZ": {
+   "addr": "Dz5ZgsJeV6pekvTKVEXCMaa3jkCgx1wR3x9SxJFo9qXZ",
+   "name": "UFO / SOL",
+   "created_price": 2.1756740848437937e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "7hRJ55HwDNXRKgDJ6t8Rx3esLEf7jRaH9RkMr8s87fmR": {
+   "addr": "7hRJ55HwDNXRKgDJ6t8Rx3esLEf7jRaH9RkMr8s87fmR",
+   "name": "GENNY / SOL",
+   "created_price": 2.0732310602156066e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "AsWMpoD3wyyTmmuFzfth22VnKwXvqveHFQXQzeVYMHfM": {
+   "addr": "AsWMpoD3wyyTmmuFzfth22VnKwXvqveHFQXQzeVYMHfM",
+   "name": "Lebron / SOL",
+   "created_price": 2.0663554321686137e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "62HYFswrWVXFzcKh4XfJMmYbqZyMoEC5T4wwki5GYC2v": {
+   "addr": "62HYFswrWVXFzcKh4XfJMmYbqZyMoEC5T4wwki5GYC2v",
+   "name": "jj / SOL",
+   "created_price": 3.0762151064755426e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "F5kC3NQxt8EHErcywo9xqniL5L26Wr1BpGP19YNdF3MU": {
+   "addr": "F5kC3NQxt8EHErcywo9xqniL5L26Wr1BpGP19YNdF3MU",
+   "name": "Dih 13 / SOL",
+   "created_price": 2.270415524918101e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "GWHd2yYSqmznBM1Hgdp4dFkr4rQ7B6hrnmfVNfjqjaax": {
+   "addr": "GWHd2yYSqmznBM1Hgdp4dFkr4rQ7B6hrnmfVNfjqjaax",
+   "name": "RAKO / SOL",
+   "created_price": 0.0007916763736194917,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Yod7rysP4YYxPn8hwcq8xWBkractfmFbDawA8SsFraS": {
+   "addr": "Yod7rysP4YYxPn8hwcq8xWBkractfmFbDawA8SsFraS",
+   "name": "STARSHIT / SOL",
+   "created_price": 2.2152278219719644e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "2nzjeiGLMCoUeM9DkVpkVDZSz5Cp4FazVYX87DjgLY1v": {
+   "addr": "2nzjeiGLMCoUeM9DkVpkVDZSz5Cp4FazVYX87DjgLY1v",
+   "name": "STOCKS / SOL",
+   "created_price": 2.2037175079635845e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "FP5ThdA5U4SvhcaTMWNyhyMgRMo95C4ZnxatgTEzRaru": {
+   "addr": "FP5ThdA5U4SvhcaTMWNyhyMgRMo95C4ZnxatgTEzRaru",
+   "name": "HOGS / SOL",
+   "created_price": 2.8469103749501256e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "5Qs1RFdN8gyXxaNhY9Xa3va7xH2uq5R4QtmrXTYwWBis": {
+   "addr": "5Qs1RFdN8gyXxaNhY9Xa3va7xH2uq5R4QtmrXTYwWBis",
+   "name": "MOODENGA / SOL",
+   "created_price": 3.6366218551045524e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "5H44acLVna4B5xWKnRaNZrJ4pnurKnmcHzWP3vPyFfsV": {
+   "addr": "5H44acLVna4B5xWKnRaNZrJ4pnurKnmcHzWP3vPyFfsV",
+   "name": "GaySex / SOL",
+   "created_price": 2.2040916914210997e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "5UgBzQffA9dFxYxwFzzZpT1RfVDYH3MmQebwNaAPtxgH": {
+   "addr": "5UgBzQffA9dFxYxwFzzZpT1RfVDYH3MmQebwNaAPtxgH",
+   "name": "HOLD / SOL",
+   "created_price": 2.1139552266174396e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "7DZ6FciEn2iTeXiDhU22cXNKsn8Ki5MKRMJF4hz5kLn2": {
+   "addr": "7DZ6FciEn2iTeXiDhU22cXNKsn8Ki5MKRMJF4hz5kLn2",
+   "name": "SPCX / SOL",
+   "created_price": 2.171523720962614e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "8SdrRehuJdjWre2DLe9ua5v95AmQnk9dKtUBuPxM4vDq": {
+   "addr": "8SdrRehuJdjWre2DLe9ua5v95AmQnk9dKtUBuPxM4vDq",
+   "name": "ELOOONG / SOL",
+   "created_price": 2.0994371769681743e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Bhu3aymxeesiqjS52WrMWMGM7Zr65ebkLTV4rWdXvPLe": {
+   "addr": "Bhu3aymxeesiqjS52WrMWMGM7Zr65ebkLTV4rWdXvPLe",
+   "name": "Riser / SOL",
+   "created_price": 4.112146523188044e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "9DmwXyPF8FcWKkjygVKdX68JcFmmFzdkxRVev44vw6P5": {
+   "addr": "9DmwXyPF8FcWKkjygVKdX68JcFmmFzdkxRVev44vw6P5",
+   "name": "LeBron / SOL",
+   "created_price": 6.344638277769951e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "BPU24dqEJKsiQNVcUuVP5zMwmSc2Eok764uXU8n88X4E": {
+   "addr": "BPU24dqEJKsiQNVcUuVP5zMwmSc2Eok764uXU8n88X4E",
+   "name": "SPCX / SOL",
+   "created_price": 2.169632428730078e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "AfEpYuL1mLhR5X2TmUtqEMYnfrdVehLz8mzpz4ScvULD": {
+   "addr": "AfEpYuL1mLhR5X2TmUtqEMYnfrdVehLz8mzpz4ScvULD",
+   "name": "LeRacist / SOL",
+   "created_price": 6.434807336108934e-10,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "62v6xHZyN24vtjHpiTSRppXucTzJRSFMqAgjf13UZnBD": {
+   "addr": "62v6xHZyN24vtjHpiTSRppXucTzJRSFMqAgjf13UZnBD",
+   "name": "PRAY / SOL",
+   "created_price": 2.1307694139663535e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "DBL7vvSyUPfUDVqKWNXwgBkqtgxR31TdpwoDu6JnUASk": {
+   "addr": "DBL7vvSyUPfUDVqKWNXwgBkqtgxR31TdpwoDu6JnUASk",
+   "name": "13 / SOL",
+   "created_price": 6.152147028091968e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "BwRfTY8CiqWhoL4PToVBSg2rH8rCBLnXVwZJyUBfEGtH": {
+   "addr": "BwRfTY8CiqWhoL4PToVBSg2rH8rCBLnXVwZJyUBfEGtH",
+   "name": "BEWA / SOL",
+   "created_price": 0.014804206393980349,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "7WoF3zTt9go77rTUiA15H4hSmPppQKuMCLotkjmBad39": {
+   "addr": "7WoF3zTt9go77rTUiA15H4hSmPppQKuMCLotkjmBad39",
+   "name": "STARSHIT / SOL",
+   "created_price": 1.8533418787560133e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "4eJmbtaasL2z6RYtBEtgaREqwxxctSniqQNeivSGJ5Su": {
+   "addr": "4eJmbtaasL2z6RYtBEtgaREqwxxctSniqQNeivSGJ5Su",
+   "name": "SPCX / SOL",
+   "created_price": 2.066216778739991e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "6a6W8EiK6oycidAEv3tpqvXFXh3bkYh6Qwy5pZt45htM": {
+   "addr": "6a6W8EiK6oycidAEv3tpqvXFXh3bkYh6Qwy5pZt45htM",
+   "name": "SPCX / SOL",
+   "created_price": 2.0662253359309103e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "CqUskLyScwHogjiJs87onDXpJnWYfDAVcYyJnGGEv7kQ": {
+   "addr": "CqUskLyScwHogjiJs87onDXpJnWYfDAVcYyJnGGEv7kQ",
+   "name": "SPCX / SOL",
+   "created_price": 2.106926980456079e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Bu7PYNUgQosRG2XvxfV3Zjk4VyFL6BxmDvUvbeb7orDZ": {
+   "addr": "Bu7PYNUgQosRG2XvxfV3Zjk4VyFL6BxmDvUvbeb7orDZ",
+   "name": "FT / SOL",
+   "created_price": 3.191208791299489e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "9LhNZWBt7mdReV9wCcC4YueGnm5vo5YtKGYr2GbYKcMk": {
+   "addr": "9LhNZWBt7mdReV9wCcC4YueGnm5vo5YtKGYr2GbYKcMk",
+   "name": "TYPE / SOL",
+   "created_price": 3.354874340293167e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "4Ca4tf19vEfUeZoAMxcxZYzuFB6bxNSWCZoL1cui7Lh6": {
+   "addr": "4Ca4tf19vEfUeZoAMxcxZYzuFB6bxNSWCZoL1cui7Lh6",
+   "name": "STARSHIT / SOL",
+   "created_price": 2.074547315741701e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "5XRXxJm5KVmt6kG3fjTrebHDDHHCqUndy4MoFpaUpkUo": {
+   "addr": "5XRXxJm5KVmt6kG3fjTrebHDDHHCqUndy4MoFpaUpkUo",
+   "name": "STARSHIT / SOL",
+   "created_price": 2.091812352943338e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "BsksMckMbrv4QiVncWX8aRUYJPhcXjEAztHSBnyUSiy": {
+   "addr": "BsksMckMbrv4QiVncWX8aRUYJPhcXjEAztHSBnyUSiy",
+   "name": "Seal / SOL",
+   "created_price": 2.176547401742717e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Ed85MX4pigivTLBWLcKAyKDTBvXVCSricESWrYG1bW7f": {
+   "addr": "Ed85MX4pigivTLBWLcKAyKDTBvXVCSricESWrYG1bW7f",
+   "name": "RAKO / USDC",
+   "created_price": 0.0008223150995833926,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "9ha774sAfWaj15wv8AFx8tMKRFvBsrzKqjFY3kbdBBvW": {
+   "addr": "9ha774sAfWaj15wv8AFx8tMKRFvBsrzKqjFY3kbdBBvW",
+   "name": "STERSHIP5 / SOL",
+   "created_price": 2.0799440326290078e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "FReSZSoap2ToU9QPgoQAHuxucxAD7AgYrKNgPpkDeDTX": {
+   "addr": "FReSZSoap2ToU9QPgoQAHuxucxAD7AgYrKNgPpkDeDTX",
+   "name": "UFO / SOL",
+   "created_price": 2.16678766432023e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "3TFrc3qzBEyPn7JAmUVBkP9kZiZSeGCcKGX5uoeTTZEE": {
+   "addr": "3TFrc3qzBEyPn7JAmUVBkP9kZiZSeGCcKGX5uoeTTZEE",
+   "name": "SPCX / SOL",
+   "created_price": 2.0864167848353138e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "4YvGfNUAFnR4DHHMNjQDhfvw2SrbgjbejsCph9FsNT4W": {
+   "addr": "4YvGfNUAFnR4DHHMNjQDhfvw2SrbgjbejsCph9FsNT4W",
+   "name": "TYPE / SOL",
+   "created_price": 5.400421488510269e-10,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "FuGYNaxiBohuSvgYJG2aEz6ouF2Ux8s12b68MB9SSHfs": {
+   "addr": "FuGYNaxiBohuSvgYJG2aEz6ouF2Ux8s12b68MB9SSHfs",
+   "name": "jj / SOL",
+   "created_price": 4.0308632148427636e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "5nNwZmaWjXLLjWhFpr1JRjiW8Vj8c3WwLcfYLPeqyMPq": {
+   "addr": "5nNwZmaWjXLLjWhFpr1JRjiW8Vj8c3WwLcfYLPeqyMPq",
+   "name": "STERSHIP / SOL",
+   "created_price": 2.1532885289889975e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "9KYvCAYrCZjwk5GAHHvpCW4SNrn5TyCLmQZSsFGsbToS": {
+   "addr": "9KYvCAYrCZjwk5GAHHvpCW4SNrn5TyCLmQZSsFGsbToS",
+   "name": "DOGE100 / SOL",
+   "created_price": 6.807795460652158e-08,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Cem7RaY63fc8xQTUifUrQB6aae3NY6FHoh1sPMWYMJB5": {
+   "addr": "Cem7RaY63fc8xQTUifUrQB6aae3NY6FHoh1sPMWYMJB5",
+   "name": "spcx / SOL",
+   "created_price": 2.117345829797726e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "ADoJx9AbagQ6psDjHPPADW5LrhCeHu8feDM5CCdqruG1": {
+   "addr": "ADoJx9AbagQ6psDjHPPADW5LrhCeHu8feDM5CCdqruG1",
+   "name": "STARSHIT / SOL",
+   "created_price": 2.121879321316721e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "BoaC1X938tPETf1LqAgLuf5oWtyuUzSQSP7xJCGYAQAx": {
+   "addr": "BoaC1X938tPETf1LqAgLuf5oWtyuUzSQSP7xJCGYAQAx",
+   "name": "dogi / SOL",
+   "created_price": 2.313287460985207e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "29gpF4fmt9P9rrXLosjE4RWYz2ySCmEb62QtodYEBcsh": {
+   "addr": "29gpF4fmt9P9rrXLosjE4RWYz2ySCmEb62QtodYEBcsh",
+   "name": "ELOOONG / SOL",
+   "created_price": 2.122023783649052e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "5G5V9eZmwHSGii3ViTSnB4uXqMYnjMBbCdPAkFnUTKfX": {
+   "addr": "5G5V9eZmwHSGii3ViTSnB4uXqMYnjMBbCdPAkFnUTKfX",
+   "name": "SHEP / SOL",
+   "created_price": 2.067111298351411e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "DG5DLVFYe88q6JYu4hJeancpfXGwwe75gMb5GWMqmzos": {
+   "addr": "DG5DLVFYe88q6JYu4hJeancpfXGwwe75gMb5GWMqmzos",
+   "name": "805K / SOL",
+   "created_price": 8.414437680406591e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Gr3dPZftrh1vEC1ScRtsUhcy6x1RPRYE31yLX58dxBvU": {
+   "addr": "Gr3dPZftrh1vEC1ScRtsUhcy6x1RPRYE31yLX58dxBvU",
+   "name": "spucex / SOL",
+   "created_price": 2.109500064778162e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Ey3dxs8srr1Yg4uew3FgtryDzDQpR3kju851eDByQNm3": {
+   "addr": "Ey3dxs8srr1Yg4uew3FgtryDzDQpR3kju851eDByQNm3",
+   "name": "test / SOL",
+   "created_price": 1.747704802205383e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "BZoVKG4f9NGHtxbZCEMY4J86D13T26MAxGPr9oUP9kRd": {
+   "addr": "BZoVKG4f9NGHtxbZCEMY4J86D13T26MAxGPr9oUP9kRd",
+   "name": "TYPE / SOL",
+   "created_price": 3.047872301253765e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "BxM9onLLY61Ydb7eLDenwFcB9aiX4sd7QjF9d1Dnm9vg": {
+   "addr": "BxM9onLLY61Ydb7eLDenwFcB9aiX4sd7QjF9d1Dnm9vg",
+   "name": "Riser / SOL",
+   "created_price": 2.725134941494923e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "DTuZK2ztpwab77beJpqv1LKwFSMcoodajkvBQ3HtXqEu": {
+   "addr": "DTuZK2ztpwab77beJpqv1LKwFSMcoodajkvBQ3HtXqEu",
+   "name": "STERSHIP / SOL",
+   "created_price": 2.312766505423677e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "BabfK2nDvYTErAFJEgrg27u76qANAhrbQt5Mh4YFn4ZT": {
+   "addr": "BabfK2nDvYTErAFJEgrg27u76qANAhrbQt5Mh4YFn4ZT",
+   "name": "HOGS / SOL",
+   "created_price": 2.873878059907866e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "B89ZiBcxTKUfe2p8ix1RMRoHBn57WEKHJa74NkvMCXon": {
+   "addr": "B89ZiBcxTKUfe2p8ix1RMRoHBn57WEKHJa74NkvMCXon",
+   "name": "earthx / SOL",
+   "created_price": 2.20195698166072e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "56tp4rf4J9EArx1iRfa4vg8Gbt6bzEfHBxf1sPajAhPo": {
+   "addr": "56tp4rf4J9EArx1iRfa4vg8Gbt6bzEfHBxf1sPajAhPo",
+   "name": "unk / SOL",
+   "created_price": 2.0684022260229273e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "6k87XuZ3HnqYLjTg1DFtYSQheSxpSer4XKj4GxjqtfqZ": {
+   "addr": "6k87XuZ3HnqYLjTg1DFtYSQheSxpSer4XKj4GxjqtfqZ",
+   "name": "USOH / SOL",
+   "created_price": 0.013849041072008829,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "tyTHymZqaJghtkMoe6HM6pW54CiXrKejvNddFpVY8y2": {
+   "addr": "tyTHymZqaJghtkMoe6HM6pW54CiXrKejvNddFpVY8y2",
+   "name": "SmiskJim / SOL",
+   "created_price": 3.369710452097948e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "AShLUUTd16VcufV2CH7tqUrRFra3NAZYAaTjpo93TeYB": {
+   "addr": "AShLUUTd16VcufV2CH7tqUrRFra3NAZYAaTjpo93TeYB",
+   "name": "Jewkie / SOL",
+   "created_price": 2.085422830628419e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "DVPXVonZDeTinTP35BkXq452GMFQXmzujc4htHAjWhbE": {
+   "addr": "DVPXVonZDeTinTP35BkXq452GMFQXmzujc4htHAjWhbE",
+   "name": "Coon / USDC",
+   "created_price": 2.18924280684311e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "EpDi4kVJEva17reSD9kYfBx9nbf5g4BZFTKQizdhtZNL": {
+   "addr": "EpDi4kVJEva17reSD9kYfBx9nbf5g4BZFTKQizdhtZNL",
+   "name": "PPRCN / SOL",
+   "created_price": 6.055002216099621e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "EjXRh3NUHsK8H2FED7EeB1NCyLGNDzeSDBxDCT6yreoY": {
+   "addr": "EjXRh3NUHsK8H2FED7EeB1NCyLGNDzeSDBxDCT6yreoY",
+   "name": "TTTT / SOL",
+   "created_price": 4.867528872919823e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "DrMfQbYNZ1E3WsD34YNVCgbiPzhxMwstMokssyS6ATFw": {
+   "addr": "DrMfQbYNZ1E3WsD34YNVCgbiPzhxMwstMokssyS6ATFw",
+   "name": "C0IN / SOL",
+   "created_price": 0.006807732549048029,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "DF1rEHvrDW8ekmL63NyATK7suUHB4kcCzxKtPF13iNvd": {
+   "addr": "DF1rEHvrDW8ekmL63NyATK7suUHB4kcCzxKtPF13iNvd",
+   "name": "Trump #47 / USDC",
+   "created_price": 1.8659308523080296e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "BwQA7MmPgGFyXKvPAGH55NdLzTbbH3WdRRBZgUVJGp4X": {
+   "addr": "BwQA7MmPgGFyXKvPAGH55NdLzTbbH3WdRRBZgUVJGp4X",
+   "name": "DONT / SOL",
+   "created_price": 2.112223658717729e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "Bpchw2LQ3i4ra5ja2NYy8BPGezX6iFo3DY2FQbaZi9JD": {
+   "addr": "Bpchw2LQ3i4ra5ja2NYy8BPGezX6iFo3DY2FQbaZi9JD",
+   "name": "BitBoy / SOL",
+   "created_price": 4.681453972776666e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "9aJ7wi9Wg3wJ4zPmv7RJYz3PHa2z4KehdqskJGTQCuow": {
+   "addr": "9aJ7wi9Wg3wJ4zPmv7RJYz3PHa2z4KehdqskJGTQCuow",
+   "name": "Getruggedniga / SOL",
+   "created_price": 8.260380907554069e-07,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "91TzHrATmraBXJZ2qGBgLdsuU3Coe9cSLXwxEcjGtqwR": {
+   "addr": "91TzHrATmraBXJZ2qGBgLdsuU3Coe9cSLXwxEcjGtqwR",
+   "name": "PAULY / SOL",
+   "created_price": 2.0734366529902013e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "A5CD4MKhyuJ2KwBGtWZxHhAHqKZJ8gzHLZZ1gwvcMGA1": {
+   "addr": "A5CD4MKhyuJ2KwBGtWZxHhAHqKZJ8gzHLZZ1gwvcMGA1",
+   "name": "HIGHER / SOL",
+   "created_price": 6.901877191486434e-05,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "CcDNtaHgowbmKWGBDEiig7e4TRntHG545252tKV7HgKa": {
+   "addr": "CcDNtaHgowbmKWGBDEiig7e4TRntHG545252tKV7HgKa",
+   "name": "Yenai / SOL",
+   "created_price": 3.499845201466221e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "J3FXcjZHSRTmSoBDVNxgA7NLNhPr9Dy99yobxs5DhzY2": {
+   "addr": "J3FXcjZHSRTmSoBDVNxgA7NLNhPr9Dy99yobxs5DhzY2",
+   "name": "Saul / SOL",
+   "created_price": 2.1353070403000346e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "G3RSMmqYXRrDq11h5YHNfTwN7TffTceqyz6qL93jH8mz": {
+   "addr": "G3RSMmqYXRrDq11h5YHNfTwN7TffTceqyz6qL93jH8mz",
+   "name": "COBIE / SOL",
+   "created_price": 4.588078833706044e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "CroKTDkjYT6rMqE2msbJKXCZHFkFCoRmZaFm2qHWKGHx": {
+   "addr": "CroKTDkjYT6rMqE2msbJKXCZHFkFCoRmZaFm2qHWKGHx",
+   "name": "TAYKISS / SOL",
+   "created_price": 2.068719160212977e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "HZQjE6Z3fy4EZuiDhWVz8oWcGstuhAL8X5eNk3LZagLE": {
+   "addr": "HZQjE6Z3fy4EZuiDhWVz8oWcGstuhAL8X5eNk3LZagLE",
+   "name": "ADVYTH / SOL",
+   "created_price": 2.1650436322255457e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "ArawHyTnjLN5kQ9hY2DiVzhd94Ay6DqZgqiCE7mtL76K": {
+   "addr": "ArawHyTnjLN5kQ9hY2DiVzhd94Ay6DqZgqiCE7mtL76K",
+   "name": "RAKO / SOL",
+   "created_price": 2.073395531430734e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "GztW2s2MHB1YNurHuBMciTkfE9pKuo8QjC2TnYnFf2XD": {
+   "addr": "GztW2s2MHB1YNurHuBMciTkfE9pKuo8QjC2TnYnFf2XD",
+   "name": "StarshipX / SOL",
+   "created_price": 2.326427045750859e-06,
+   "status": "watching",
+   "first_seen": 1784934200
+  },
+  "6ipcQat96vkHVu2Ap8yvPHhHQiPfRod1CnNXnNosYdAv": {
+   "addr": "6ipcQat96vkHVu2Ap8yvPHhHQiPfRod1CnNXnNosYdAv",
+   "name": "ORCAPEDO / SOL",
+   "created_price": 2.0670017391308568e-06,
+   "status": "watching",
+   "first_seen": 1784934200
   }
  },
  "seen": [
