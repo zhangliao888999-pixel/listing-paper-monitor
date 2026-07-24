@@ -155,6 +155,56 @@ def klines_1h(exch, sym, t_from):
     return []
 
 
+def orderbook_audit(exch, sym, size_usd=POS_SIZE):
+    """实盘前滑点审计：抓当前订单簿，算价差 + 吃进 size_usd 的实际成本(bps)。失败返回 None。"""
+    try:
+        if exch == "gate":
+            d = get("https://api.gateio.ws/api/v4/futures/usdt/order_book",
+                    {"contract": sym, "limit": 20})
+            asks = [(float(a["p"]), float(a["s"])) for a in (d or {}).get("asks", [])]
+            bids = [(float(b["p"]), float(b["s"])) for b in (d or {}).get("bids", [])]
+        elif exch == "mexc":
+            d = get(f"https://contract.mexc.com/api/v1/contract/depth/{sym}")
+            dd = (d or {}).get("data") or {}
+            asks = [(float(a[0]), float(a[1])) for a in dd.get("asks", [])[:20]]
+            bids = [(float(b[0]), float(b[1])) for b in dd.get("bids", [])[:20]]
+        elif exch == "lbank":
+            d = get("https://api.lbkex.com/v2/depth.do", {"symbol": sym, "size": 20})
+            dd = (d or {}).get("data") or {}
+            asks = [(float(a[0]), float(a[1])) for a in dd.get("asks", [])]
+            bids = [(float(b[0]), float(b[1])) for b in dd.get("bids", [])]
+        elif exch == "xt":
+            d = get("https://sapi.xt.com/v4/public/depth", {"symbol": sym, "limit": 20})
+            dd = (d or {}).get("result") or {}
+            asks = [(float(a[0]), float(a[1])) for a in dd.get("asks", [])]
+            bids = [(float(b[0]), float(b[1])) for b in dd.get("bids", [])]
+        elif exch == "htx":
+            d = get("https://api.huobi.pro/market/depth", {"symbol": sym, "type": "step0"})
+            tick = (d or {}).get("tick") or {}
+            asks = [(float(a[0]), float(a[1])) for a in tick.get("asks", [])[:20]]
+            bids = [(float(b[0]), float(b[1])) for b in tick.get("bids", [])[:20]]
+        else:
+            return None
+        if not asks or not bids:
+            return None
+        mid = (asks[0][0] + bids[0][0]) / 2
+        spread_bps = (asks[0][0] - bids[0][0]) / mid * 1e4
+        # walk the ask side to fill size_usd
+        remain, cost = size_usd, 0.0
+        for p, q in asks:
+            take = min(remain, p * q)
+            cost += take * (p / mid - 1)
+            remain -= take
+            if remain <= 0:
+                break
+        fill_bps = cost / (size_usd - max(remain, 0)) * 1e4 if size_usd > remain else None
+        return {"spread_bps": round(spread_bps, 1),
+                "fill_cost_bps": round(fill_bps, 1) if fill_bps is not None else None,
+                "depth_filled_usd": round(size_usd - max(remain, 0), 0)}
+    except (KeyError, TypeError, ValueError, ZeroDivisionError):
+        return None
+
+
 def real_base(bars):
     """skip placeholder bars: first bar with vol >= 2% of max vol in first 24"""
     if not bars:
@@ -222,12 +272,16 @@ def main():
                 log(f"SETUP but no capacity: {key}")
                 continue
             entry = last * (1 + SLIP)
+            ob = orderbook_audit(w["exch"], w["sym"])
             state["cash"] -= POS_SIZE
             state["positions"][key] = {"exch": w["exch"], "sym": w["sym"], "entry": entry,
                                        "qty": POS_SIZE / entry, "usd": POS_SIZE,
-                                       "t_entry": NOW, "base": base, "low": low}
+                                       "t_entry": NOW, "base": base, "low": low,
+                                       "ob_at_entry": ob}
             w["status"] = "entered"
-            log(f"BUY {key} @ {entry:.6g} (base {base:.6g}, dip {(low/base-1)*100:.1f}%, rebound confirmed)")
+            ob_s = (f", 盘口: spread {ob['spread_bps']}bps, 吃{POS_SIZE:.0f}U成本 {ob['fill_cost_bps']}bps"
+                    if ob else ", 盘口: 抓取失败")
+            log(f"BUY {key} @ {entry:.6g} (base {base:.6g}, dip {(low/base-1)*100:.1f}%, rebound confirmed{ob_s})")
         time.sleep(0.15)
 
     # 3) manage positions
