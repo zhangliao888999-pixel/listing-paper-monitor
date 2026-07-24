@@ -1,0 +1,49 @@
+name: paper-monitors
+
+on:
+  schedule:
+    - cron: '7 * * * *'   # hourly at :07 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monitors
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: install deps
+        run: pip install --quiet requests
+
+      - name: strategy A (newcoin)
+        continue-on-error: true
+        run: python newcoin_monitor.py
+
+      - name: strategy B (dip-reversal)
+        continue-on-error: true
+        run: python dip_monitor.py
+
+      - name: launchpad (every 6h)
+        continue-on-error: true
+        run: |
+          H=$(date -u +%H)
+          if [ $((10#$H % 6)) -eq 0 ]; then python paper_monitor.py; else echo "skip (runs at 00/06/12/18 UTC)"; fi
+
+      - name: commit state
+        run: |
+          git config user.name "monitor-bot"
+          git config user.email "monitor-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "cycle $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
+          for i in 1 2 3; do git push && break || { git pull --rebase; sleep 3; }; done

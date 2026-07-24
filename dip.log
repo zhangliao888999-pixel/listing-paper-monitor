@@ -1,0 +1,12 @@
+[2026-07-24 09:16 UTC] INIT dip-reversal paper: 10000.0 USDT, 5 exchanges, dip-10%/rebound+5%
+[2026-07-24 09:16 UTC] lbank: seeded 1304 pairs (first run, no signals)
+[2026-07-24 09:16 UTC] xt: seeded 1005 pairs (first run, no signals)
+[2026-07-24 09:16 UTC] NEW LISTING mexc:AIINU_USDT (listed 23.8h ago) -> watching for dip-reversal
+[2026-07-24 09:16 UTC] NEW LISTING mexc:GMEROBINHOOD_USDT (listed 23.8h ago) -> watching for dip-reversal
+[2026-07-24 09:16 UTC] NEW LISTING mexc:NVD_USDT (listed 23.8h ago) -> watching for dip-reversal
+[2026-07-24 09:16 UTC] NEW LISTING mexc:RIOTSTOCK_USDT (listed 23.8h ago) -> watching for dip-reversal
+[2026-07-24 09:16 UTC] NEW LISTING mexc:WABSTOCK_USDT (listed 23.8h ago) -> watching for dip-reversal
+[2026-07-24 09:16 UTC] NEW LISTING mexc:ARWRSTOCK_USDT (listed 23.8h ago) -> watching for dip-reversal
+[2026-07-24 09:16 UTC] BUY mexc:AIINU_USDT @ 0.00688058 (base 0.00933, dip -34.6%, rebound confirmed)
+[2026-07-24 09:16 UTC] BUY mexc:GMEROBINHOOD_USDT @ 0.000106418 (base 0.0001438, dip -56.7%, rebound confirmed)
+[2026-07-24 09:16 UTC] CYCLE OK nav=9997.01 pos=2 watch=4 closed=0

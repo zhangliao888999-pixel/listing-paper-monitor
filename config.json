@@ -1,0 +1,21 @@
+{
+  "capital_usdt": 10000,
+  "sleeves": {
+    "bnb_core": 0.60,
+    "tge": 0.25,
+    "satellite": 0.15
+  },
+  "assumptions": {
+    "_comment": "可校准参数：模拟盘跑出真实事件后用实际数据替换",
+    "launchpool_yield_per_event": 0.004,
+    "hodler_yield_per_event": 0.002,
+    "megadrop_yield_per_event": 0.003,
+    "tge_commit_bnb": 3,
+    "tge_uplift": 3.0,
+    "tge_fill_rate": 0.03,
+    "poolx_yield_per_event": 0.002,
+    "fees_sell": 0.001
+  },
+  "poll_sources": ["binance_ann", "bitget_ann"],
+  "started": null
+}
