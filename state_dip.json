@@ -1,6 +1,6 @@
 {
  "created": "2026-07-24 09:16 UTC",
- "cash": 9000.0,
+ "cash": 9423.725,
  "positions": {
   "mexc:AIINU_USDT": {
    "exch": "mexc",
@@ -11,9 +11,11 @@
    "t_entry": 1784884586,
    "base": 0.00933,
    "low": 0.0061,
-   "mark": 0.0068
-  },
-  "mexc:GMEROBINHOOD_USDT": {
+   "mark": 0.0084
+  }
+ },
+ "closed": [
+  {
    "exch": "mexc",
    "sym": "GMEROBINHOOD_USDT",
    "entry": 0.00010641829999999999,
@@ -22,10 +24,14 @@
    "t_entry": 1784884586,
    "base": 0.0001438,
    "low": 6.22e-05,
-   "mark": 9.91e-05
+   "mark": 9.91e-05,
+   "key": "mexc:GMEROBINHOOD_USDT",
+   "exit": 9.045555499999999e-05,
+   "reason": "SL",
+   "pnl": -76.27,
+   "t_exit": 1784893724
   }
- },
- "closed": [],
+ ],
  "watch": {
   "mexc:AIINU_USDT": {
    "exch": "mexc",
@@ -43,25 +49,25 @@
    "exch": "mexc",
    "sym": "NVD_USDT",
    "listed": 1784798940,
-   "status": "watching"
+   "status": "expired"
   },
   "mexc:RIOTSTOCK_USDT": {
    "exch": "mexc",
    "sym": "RIOTSTOCK_USDT",
    "listed": 1784799000,
-   "status": "watching"
+   "status": "expired"
   },
   "mexc:WABSTOCK_USDT": {
    "exch": "mexc",
    "sym": "WABSTOCK_USDT",
    "listed": 1784798880,
-   "status": "watching"
+   "status": "expired"
   },
   "mexc:ARWRSTOCK_USDT": {
    "exch": "mexc",
    "sym": "ARWRSTOCK_USDT",
    "listed": 1784799000,
-   "status": "watching"
+   "status": "expired"
   }
  },
  "seen": [
@@ -2387,5 +2393,5 @@
    "龙虾_usdt"
   ]
  },
- "realized_pnl": 0.0
+ "realized_pnl": -76.27499999999998
 }

@@ -11,3 +11,5 @@
 [2026-07-24 09:16 UTC] BUY mexc:GMEROBINHOOD_USDT @ 0.000106418 (base 0.0001438, dip -56.7%, rebound confirmed)
 [2026-07-24 09:16 UTC] CYCLE OK nav=9997.01 pos=2 watch=4 closed=0
 [2026-07-24 09:28 UTC] CYCLE OK nav=9959.76 pos=2 watch=4 closed=0
+[2026-07-24 11:48 UTC] EXIT mexc:GMEROBINHOOD_USDT [SL] pnl -76.27U
+[2026-07-24 11:48 UTC] CYCLE OK nav=10034.14 pos=1 watch=0 closed=1
