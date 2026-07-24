@@ -92,6 +92,7 @@ def parse_pool(attrs):
             "chg_m5": float((attrs.get("price_change_percentage") or {}).get("m5") or 0),
             "chg_m15": float((attrs.get("price_change_percentage") or {}).get("m15") or 0),
             "chg_h1": float((attrs.get("price_change_percentage") or {}).get("h1") or 0),
+            "vol_m5": float((attrs.get("volume_usd") or {}).get("m5") or 0),
             "vol_h1": float((attrs.get("volume_usd") or {}).get("h1") or 0),
             "name": attrs.get("name", "?"),
         }
@@ -110,9 +111,13 @@ def try_enter(state, addr, p, source):
         return False
     # 入场信号(原文两种形态的简化编码):
     #  a) 动量确认: 短周期在涨,且有真实成交量支撑("已经慢慢在起了")
-    #  b) 企稳反弹: 跌了一段后近5分钟企稳/转正("跌到这然后不动/反弹")
+    #  b) 企稳反弹: 跌了一段后近5分钟确认转涨、且仍有真实成交量("跌到这然后不动/反弹")
+    #     v8修正(用户实盘观察反馈): 原来"跌幅收窄到-2%以内"太松，会把"已经死透没人交易、
+    #     价格趴着不动"的死币也当成企稳信号买入。改为要求最近5分钟真正转正 + 有成交量支撑，
+    #     排除"只是不再下跌"但其实没有资金在推动的假企稳。
     momentum = p["chg_m15"] > 5 and p["chg_h1"] > 0 and p["vol_h1"] > MIN_LIQUIDITY_USD * 0.3
-    stabilize = p["chg_h1"] < -10 and p["chg_m5"] > -2
+    stabilize = (p["chg_h1"] < -10 and p["chg_m5"] > 0.5
+                and p["vol_m5"] > MIN_LIQUIDITY_USD * 0.01)
     if not (momentum or stabilize):
         return False
     if len(state["positions"]) >= MAX_POS or state["cash"] < POS_SIZE:
