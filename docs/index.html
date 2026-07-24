@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>模拟盘实时看盘</title>
+<style>
+  :root {
+    --bg: #0b0e14; --panel: #131722; --panel2: #1a1f2e; --border: #2a3040;
+    --text: #e6e9ef; --dim: #8b93a7; --green: #26a69a; --red: #ef5350;
+    --accent: #5b8def; --yellow: #d4a72c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px; line-height: 1.5;
+  }
+  header {
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+  #status { font-size: 12px; color: var(--dim); }
+  #status.live { color: var(--green); }
+  #status.stale { color: var(--yellow); }
+  #status.error { color: var(--red); }
+  main {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 14px; padding: 16px;
+  }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; overflow: hidden;
+  }
+  .card h2 {
+    font-size: 15px; margin: 0 0 4px; display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .card .sub { font-size: 12px; color: var(--dim); margin-bottom: 10px; }
+  .nav-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+  .nav-val { font-size: 26px; font-weight: 700; }
+  .nav-pct { font-size: 14px; font-weight: 600; padding: 2px 8px; border-radius: 5px; }
+  .pos { color: var(--green); background: rgba(38,166,154,0.15); }
+  .neg { color: var(--red); background: rgba(239,83,80,0.15); }
+  .zero { color: var(--dim); background: rgba(139,147,167,0.12); }
+  svg.spark { width: 100%; height: 40px; display: block; margin-bottom: 10px; }
+  .stats { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; font-size: 12px; color: var(--dim); }
+  .stats b { color: var(--text); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 6px; }
+  table caption { text-align: left; font-size: 12px; color: var(--dim); margin-bottom: 4px; caption-side: top; }
+  th, td {
+    text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--border);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px;
+  }
+  th { color: var(--dim); font-weight: 500; }
+  .log-feed { font-family: "SF Mono", Consolas, monospace; font-size: 11px; color: var(--dim);
+    max-height: 140px; overflow-y: auto; margin-top: 8px; background: var(--panel2);
+    border-radius: 6px; padding: 8px; }
+  .log-feed div { padding: 1px 0; }
+  .empty { color: var(--dim); font-style: italic; padding: 6px 0; }
+  footer { text-align: center; padding: 20px; color: var(--dim); font-size: 12px; }
+  a { color: var(--accent); }
+  .badge { font-size: 10px; padding: 1px 6px; border-radius: 4px; background: var(--panel2); color: var(--dim); }
+</style>
+</head>
+<body>
+<header>
+  <h1>📡 模拟盘实时看盘</h1>
+  <div id="status">连接中…</div>
+</header>
+<main id="main">
+  <div class="card"><div class="empty">加载中…</div></div>
+</main>
+<footer>
+  数据源: <a href="https://github.com/zhangliao888999-pixel/listing-paper-monitor" target="_blank">listing-paper-monitor</a>
+  · 每 30 秒自动刷新 · 仓库更新节奏取决于各策略的云端定时任务(15分钟~6小时不等)
+</footer>
+
+<script>
+const REPO = "zhangliao888999-pixel/listing-paper-monitor";
+const BRANCH = "master";
+const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/`;
+
+const STRATEGIES = [
+  { key: "launchpad", title: "打新（Launchpool/HODLer/TGE）", nav: "nav.csv", state: "state.json", log: "monitor.log",
+    kind: "launchpad" },
+  { key: "newcoin", title: "策略A：无差别买新永续", nav: "nav_newcoin.csv", state: "state_newcoin.json", log: "newcoin.log",
+    kind: "newcoin" },
+  { key: "dip", title: "策略B：九所回撤反转(v7)", nav: "nav_dip.csv", state: "state_dip.json", log: "dip.log",
+    kind: "dip" },
+  { key: "pumpfun", title: "策略C：模仿访谈操盘手(Solana)", nav: "nav_pumpfun.csv", state: "state_pumpfun.json", log: "pumpfun.log",
+    kind: "pumpfun" },
+];
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+async function fetchText(path) {
+  const r = await fetch(RAW + path + "?t=" + Date.now(), { cache: "no-store" });
+  if (!r.ok) throw new Error(`${path} HTTP ${r.status}`);
+  return r.text();
+}
+
+function parseCSV(text) {
+  const lines = text.trim().split("\n");
+  const header = lines[0].split(",");
+  return lines.slice(1).map(line => {
+    const vals = line.split(",");
+    const row = {};
+    header.forEach((h, i) => row[h] = vals[i]);
+    return row;
+  });
+}
+
+function sparkline(values) {
+  if (values.length < 2) return "";
+  const w = 320, h = 36, pad = 3;
+  const min = Math.min(...values), max = Math.max(...values);
+  const range = (max - min) || 1;
+  const pts = values.map((v, i) => {
+    const x = pad + (i / (values.length - 1)) * (w - 2 * pad);
+    const y = h - pad - ((v - min) / range) * (h - 2 * pad);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(" ");
+  const last = values[values.length - 1], first = values[0];
+  const color = last >= first ? "var(--green)" : "var(--red)";
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>`;
+}
+
+function fmtAge(tsSec) {
+  const s = Math.max(0, Math.floor(Date.now() / 1000 - tsSec));
+  if (s < 3600) return `${Math.floor(s / 60)}分钟前`;
+  if (s < 86400) return `${(s / 3600).toFixed(1)}小时前`;
+  return `${(s / 86400).toFixed(1)}天前`;
+}
+
+function renderPositionsTable(positions, kind) {
+  const entries = Object.entries(positions || {});
+  if (!entries.length) return `<div class="empty">当前无持仓</div>`;
+  const rows = entries.map(([key, p]) => {
+    const name = p.name || p.sym || key;
+    const entry = p.entry;
+    const mark = p.mark ?? p.entry;
+    const ret = mark && entry ? (mark / entry - 1) * 100 : 0;
+    const retCls = ret > 0.05 ? "pos" : ret < -0.05 ? "neg" : "zero";
+    const held = p.t_entry ? fmtAge(p.t_entry) : "-";
+    return `<tr><td>${esc(name)}</td><td>${entry ? Number(entry).toPrecision(5) : "-"}</td>
+      <td><span class="badge ${retCls}">${ret >= 0 ? "+" : ""}${ret.toFixed(1)}%</span></td><td>${held}</td></tr>`;
+  }).join("");
+  return `<table><caption>当前持仓 (${entries.length})</caption>
+    <thead><tr><th>标的</th><th>入场价</th><th>浮盈</th><th>持有</th></tr></thead>
+    <tbody>${rows}</tbody></table>`;
+}
+
+function renderLog(text) {
+  if (!text) return `<div class="empty">暂无日志</div>`;
+  const lines = text.trim().split("\n").filter(Boolean).slice(-8).reverse();
+  return `<div class="log-feed">${lines.map(l => `<div>${esc(l)}</div>`).join("")}</div>`;
+}
+
+async function loadStrategy(s) {
+  const capital = 10000;
+  let navRows = [], state = {}, log = "";
+  try { navRows = parseCSV(await fetchText(s.nav)); } catch (e) { /* not yet created */ }
+  try { state = JSON.parse(await fetchText(s.state)); } catch (e) { /* not yet created */ }
+  try { log = await fetchText(s.log); } catch (e) { /* not yet created */ }
+
+  const last = navRows[navRows.length - 1];
+  const nav = last ? parseFloat(last.nav) : capital;
+  const pct = (nav / capital - 1) * 100;
+  const pctCls = pct > 0.05 ? "pos" : pct < -0.05 ? "neg" : "zero";
+  const sparkVals = navRows.slice(-60).map(r => parseFloat(r.nav)).filter(v => !isNaN(v));
+
+  let statsHtml = "";
+  let extraTable = "";
+
+  if (s.kind === "launchpad") {
+    const active = Object.values(state.events || {}).filter(e => e.status === "active").length;
+    const settled = Object.values(state.events || {}).filter(e => e.status === "settled").length;
+    statsHtml = `<div class="stats"><span>进行中活动 <b>${active}</b></span><span>已结算 <b>${settled}</b></span></div>`;
+  } else {
+    const posCount = Object.keys(state.positions || {}).length;
+    const closedCount = (state.closed || []).length;
+    const watchCount = last ? (last.watching ?? "-") : "-";
+    const wins = (state.closed || []).filter(c => c.pnl > 0).length;
+    const winRate = closedCount ? ((wins / closedCount) * 100).toFixed(0) : "-";
+    statsHtml = `<div class="stats"><span>持仓 <b>${posCount}</b></span><span>观察中 <b>${watchCount}</b></span>
+      <span>已平仓 <b>${closedCount}</b></span><span>胜率 <b>${winRate}${closedCount ? "%" : ""}</b></span></div>`;
+    extraTable = renderPositionsTable(state.positions, s.kind);
+  }
+
+  return `
+  <div class="card">
+    <h2>${esc(s.title)}</h2>
+    <div class="sub">${last ? "最后更新 " + fmtAge(parseInt(last.ts)) : "尚无数据"}</div>
+    <div class="nav-row">
+      <span class="nav-val">${nav.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+      <span class="nav-pct ${pctCls}">${pct >= 0 ? "+" : ""}${pct.toFixed(2)}%</span>
+    </div>
+    ${sparkline(sparkVals)}
+    ${statsHtml}
+    ${extraTable}
+    ${renderLog(log)}
+  </div>`;
+}
+
+async function refresh() {
+  const statusEl = document.getElementById("status");
+  try {
+    const cards = await Promise.all(STRATEGIES.map(s => loadStrategy(s).catch(e =>
+      `<div class="card"><h2>${esc(s.title)}</h2><div class="empty">加载失败: ${esc(e.message)}</div></div>`)));
+    document.getElementById("main").innerHTML = cards.join("");
+    statusEl.textContent = "● 实时  " + new Date().toLocaleTimeString("zh-CN");
+    statusEl.className = "live";
+  } catch (e) {
+    statusEl.textContent = "刷新失败: " + e.message;
+    statusEl.className = "error";
+  }
+}
+
+refresh();
+setInterval(refresh, 30000);
+</script>
+</body>
+</html>
