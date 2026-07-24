@@ -183,12 +183,19 @@ async function loadStrategy(s) {
     statsHtml = `<div class="stats"><span>进行中活动 <b>${active}</b></span><span>已结算 <b>${settled}</b></span></div>`;
   } else {
     const posCount = Object.keys(state.positions || {}).length;
-    const closedCount = (state.closed || []).length;
+    const closed = state.closed || [];
+    const closedCount = closed.length;
     const watchCount = last ? (last.watching ?? "-") : "-";
-    const wins = (state.closed || []).filter(c => c.pnl > 0).length;
+    const wins = closed.filter(c => c.pnl > 0).length;
     const winRate = closedCount ? ((wins / closedCount) * 100).toFixed(0) : "-";
+    const avgPnl = closedCount ? closed.reduce((a, c) => a + (c.pnl || 0), 0) / closedCount : null;
+    const avgCls = avgPnl > 0.01 ? "pos" : avgPnl < -0.01 ? "neg" : "zero";
+    const avgHtml = avgPnl === null ? `<span>均笔盈亏 <b>-</b></span>`
+      : `<span>均笔盈亏 <span class="badge ${avgCls}">${avgPnl >= 0 ? "+" : ""}${avgPnl.toFixed(2)}U</span></span>`;
+    const sig = closedCount < 30
+      ? `<div class="sub" style="margin-top:4px;">样本仅${closedCount}笔，均笔盈亏还看不出真实期望，需要更多笔数积累</div>` : "";
     statsHtml = `<div class="stats"><span>持仓 <b>${posCount}</b></span><span>观察中 <b>${watchCount}</b></span>
-      <span>已平仓 <b>${closedCount}</b></span><span>胜率 <b>${winRate}${closedCount ? "%" : ""}</b></span></div>`;
+      <span>已平仓 <b>${closedCount}</b></span><span>胜率 <b>${winRate}${closedCount ? "%" : ""}</b></span>${avgHtml}</div>${sig}`;
     extraTable = renderPositionsTable(state.positions, s.kind);
   }
 
