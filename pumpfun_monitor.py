@@ -43,6 +43,11 @@ TP, SL = 0.40, -0.20      # "吃几十个点"就走；给点容错空间的止�
 MAX_HOLD_MIN = 150        # 他拿几分钟到几小时；给轮询延迟留余量，2.5小时强制离场
 SLIP = 0.02               # 链上滑点远高于CEX，AMM薄流动性下的保守假设
 
+# 取样范围：实测 Solana 新池子真实生成速度约 24个/分钟，15分钟一轮的话真实会有~360个新池子。
+# 15页new_pools(300个) + 3页trending(60个) 覆盖大部分窗口，同时把请求间隔拉长避开限速(约6次/次触发429)。
+NEW_POOLS_PAGES = 15
+TRENDING_PAGES = 3
+
 GT_BASE = "https://api.geckoterminal.com/api/v2"
 S = requests.Session()
 S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
@@ -127,15 +132,14 @@ def try_enter(state, addr, p, source):
     return True
 
 
-def scan_new_pools(state, pages=2):
+def scan_new_pools(state):
     """扫最近新建的池子 + 热门池子列表：一次性拿到价格/涨跌幅/流动性等全部字段，
     既用来维护观察名单，也直接在同一次拉取里判断入场——不再对每个池子单独发请求，
     避免观察名单变大后请求量线性膨胀导致超时。"""
     found = entered = 0
-    for kind, url in [("new", f"{GT_BASE}/networks/solana/new_pools"),
-                      ("trend", f"{GT_BASE}/networks/solana/trending_pools")]:
-        pg_range = range(1, pages + 1) if kind == "new" else [1]
-        for page in pg_range:
+    for kind, url, pages in [("new", f"{GT_BASE}/networks/solana/new_pools", NEW_POOLS_PAGES),
+                             ("trend", f"{GT_BASE}/networks/solana/trending_pools", TRENDING_PAGES)]:
+        for page in range(1, pages + 1):
             d = get(url, {"page": page})
             rows = (d or {}).get("data") or []
             if not rows:
@@ -154,7 +158,7 @@ def scan_new_pools(state, pages=2):
                 if w and w["status"] == "watching":
                     if try_enter(state, addr, p, kind):
                         entered += 1
-            time.sleep(0.3)
+            time.sleep(0.5)
     # 用我们自己记的 first_seen 做年龄淘汰，不需要额外请求
     for addr, w in state["watch"].items():
         if w["status"] == "watching" and (NOW - w["first_seen"]) > MAX_AGE_HOURS * 3600:
