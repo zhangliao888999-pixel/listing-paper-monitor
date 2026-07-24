@@ -99,15 +99,39 @@ def new_listings_htx(seen):
     return out
 
 
+def new_listings_blofin(seen):
+    d = get("https://openapi.blofin.com/api/v1/market/instruments")
+    out = []
+    for x in (d or {}).get("data") or []:
+        lt = int(x.get("listTime") or 0) // 1000
+        if x["instId"] not in seen and lt and 0 < NOW - lt < WATCH_MAX_H * 3600:
+            out.append((x["instId"], lt))
+    return out
+
+
 def new_listings_listdiff(exch, seen_lists):
-    """lbank/xt: diff current pair list vs stored; first run seeds silently."""
+    """lbank/xt/ourbit/coinw/poloniex: diff pair list vs stored; first run seeds silently."""
     if exch == "lbank":
         d = get("https://api.lbkex.com/v2/currencyPairs.do")
         cur = set(p for p in ((d or {}).get("data") or []) if p.endswith("_usdt"))
-    else:
+    elif exch == "xt":
         d = get("https://sapi.xt.com/v4/public/symbol")
         cur = set(s["symbol"] for s in (((d or {}).get("result") or {}).get("symbols") or [])
                   if s.get("symbol", "").endswith("_usdt") and s.get("state") == "ONLINE")
+    elif exch == "ourbit":
+        d = get("https://api.ourbit.com/api/v3/exchangeInfo")
+        cur = set(s["symbol"] for s in (d or {}).get("symbols") or []
+                  if s.get("symbol", "").endswith("USDT"))
+    elif exch == "coinw":
+        d = get("https://api.coinw.com/api/v1/public", {"command": "returnSymbol"})
+        rows = (d or {}).get("data") or []
+        cur = set(r["currencyPair"] for r in rows
+                  if isinstance(r, dict) and r.get("currencyPair", "").endswith("_USDT"))
+    elif exch == "poloniex":
+        d = get("https://api.poloniex.com/markets")
+        cur = set(m["symbol"] for m in d or [] if m.get("symbol", "").endswith("_USDT"))
+    else:
+        cur = set()
     if not cur:
         return []
     prev = set(seen_lists.get(exch) or [])
@@ -150,6 +174,39 @@ def klines_1h(exch, sym, t_from):
             rows = sorted((d or {}).get("result") or [], key=lambda r: int(r["t"]))
             return [(int(r["t"]) // 1000, float(r["o"]), float(r["h"]), float(r["l"]),
                      float(r["c"]), float(r["v"])) for r in rows if int(r["t"]) // 1000 >= t_from]
+        if exch == "blofin":
+            d = get("https://openapi.blofin.com/api/v1/market/candles",
+                    {"instId": sym, "bar": "1H", "limit": "200"})
+            rows = sorted((d or {}).get("data") or [], key=lambda r: int(r[0]))
+            return [(int(r[0]) // 1000, float(r[1]), float(r[2]), float(r[3]), float(r[4]),
+                     float(r[6])) for r in rows if int(r[0]) // 1000 >= t_from]
+        if exch == "ourbit":
+            d = get("https://api.ourbit.com/api/v3/klines",
+                    {"symbol": sym, "interval": "60m", "limit": 200})
+            rows = d if isinstance(d, list) else []
+            return [(int(r[0]) // 1000, float(r[1]), float(r[2]), float(r[3]), float(r[4]),
+                     float(r[7])) for r in rows if int(r[0]) // 1000 >= t_from]
+        if exch == "coinw":
+            d = get("https://api.coinw.com/api/v1/public",
+                    {"command": "returnChartData", "currencyPair": sym, "period": 1800,
+                     "start": int(t_from), "end": NOW})
+            bars = []
+            for r in (d or {}).get("data") or []:
+                if not isinstance(r, dict):
+                    continue
+                t = int(r.get("date", r.get("time", 0)))
+                if t > 10**12:
+                    t //= 1000
+                bars.append((t, float(r["open"]), float(r["high"]), float(r["low"]),
+                             float(r["close"]), float(r.get("volume", 0))))
+            return sorted(bars)
+        if exch == "poloniex":
+            d = get(f"https://api.poloniex.com/markets/{sym}/candles",
+                    {"interval": "HOUR_1", "limit": 200})
+            rows = d if isinstance(d, list) else []
+            bars = [(int(r[12]) // 1000, float(r[2]), float(r[1]), float(r[0]), float(r[3]),
+                     float(r[5])) for r in rows]
+            return sorted(b for b in bars if b[0] >= t_from)
     except (KeyError, TypeError, ValueError):
         return []
     return []
@@ -183,6 +240,15 @@ def orderbook_audit(exch, sym, size_usd=POS_SIZE):
             tick = (d or {}).get("tick") or {}
             asks = [(float(a[0]), float(a[1])) for a in tick.get("asks", [])[:20]]
             bids = [(float(b[0]), float(b[1])) for b in tick.get("bids", [])[:20]]
+        elif exch == "ourbit":
+            d = get("https://api.ourbit.com/api/v3/depth", {"symbol": sym, "limit": 20})
+            asks = [(float(a[0]), float(a[1])) for a in (d or {}).get("asks", [])]
+            bids = [(float(b[0]), float(b[1])) for b in (d or {}).get("bids", [])]
+        elif exch == "blofin":
+            d = get("https://openapi.blofin.com/api/v1/market/books", {"instId": sym, "size": 20})
+            bk = ((d or {}).get("data") or [{}])[0]
+            asks = [(float(a[0]), float(a[1])) for a in bk.get("asks", [])]
+            bids = [(float(b[0]), float(b[1])) for b in bk.get("bids", [])]
         else:
             return None
         if not asks or not bids:
@@ -232,12 +298,13 @@ def main():
 
     # 1) detect new listings
     found = []
-    for exch, fn in [("gate", new_listings_gate), ("mexc", new_listings_mexc), ("htx", new_listings_htx)]:
+    for exch, fn in [("gate", new_listings_gate), ("mexc", new_listings_mexc),
+                     ("htx", new_listings_htx), ("blofin", new_listings_blofin)]:
         try:
-            found += [(exch, sym, lt) for sym, lt in fn(seen)]
+            found += [(exch, sym, lt) for sym, lt in fn(seen if exch == "blofin" else seen)]
         except Exception as e:
             log(f"WARN {exch} detect failed: {e}")
-    for exch in ("lbank", "xt"):
+    for exch in ("lbank", "xt", "ourbit", "coinw", "poloniex"):
         try:
             found += [(exch, sym, lt) for sym, lt in new_listings_listdiff(exch, state["seen_lists"])]
         except Exception as e:
@@ -338,14 +405,14 @@ def main():
     wins = [c for c in closed if c["pnl"] > 0]
     watching = [w for w in state["watch"].values() if w["status"] == "watching"]
     lines = [
-        "# 策略B：五所新币回撤反转 模拟盘",
+        "# 策略B：九所新币回撤反转 模拟盘",
         "",
         f"更新: {NOW_STR}  |  起始: {CAPITAL:,.0f} USDT ({state['created'][:10]})",
         "",
         f"## NAV: **{nav:,.2f} USDT**  ({(nav/CAPITAL-1)*100:+.2f}%)",
         "",
-        f"规则: 五所(LBank/XT/MEXC/HTX/Gate)新币，回撤≥10%后反弹≥5%入场，TP+50%/SL-15%/72h",
-        f"研究依据: 先砸-10%的新币翻倍率 14.6%（走稳币 4.4%）；五所合计~12 暴涨候选/月",
+        f"规则: 九所(LBank/XT/MEXC/HTX/Gate/Ourbit/BloFin/CoinW/Poloniex)新币，回撤≥10%后反弹≥5%入场，TP+50%/SL-15%/72h",
+        f"研究依据: 先砸-10%的新币翻倍率 14.6%（走稳币 4.4%）；九所合计~18 暴涨候选/月",
         "",
         f"持仓 {len(state['positions'])} | 观察中 {len(watching)} | 已平仓 {len(closed)} | "
         f"胜率 {len(wins)/len(closed)*100 if closed else 0:.0f}% | 已实现 {state['realized_pnl']:+.2f}U",
