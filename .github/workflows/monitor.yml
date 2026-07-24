@@ -34,14 +34,10 @@ jobs:
         continue-on-error: true
         run: python dip_monitor.py
 
-      - name: launchpad (every 6h, state-based not wall-clock — GH free cron drifts and may never hit an exact hour)
+      - name: launchpad (every 6h, state-based not wall-clock - GH free cron drifts and may never hit an exact hour)
         continue-on-error: true
         run: |
-          LAST=$(python -c "import json
-try:
-    print(json.load(open('state.json'))['last_run'])
-except Exception:
-    print(0)" 2>/dev/null || echo 0)
+          LAST=$(python -c "import json; print(json.load(open('state.json')).get('last_run', 0))" 2>/dev/null || echo 0)
           NOW_S=$(date -u +%s)
           AGE=$((NOW_S - LAST))
           if [ "$AGE" -ge 19800 ]; then python paper_monitor.py; else echo "skip (last run ${AGE}s ago, <5.5h)"; fi
