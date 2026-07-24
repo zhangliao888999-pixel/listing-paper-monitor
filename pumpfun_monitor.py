@@ -94,71 +94,73 @@ def parse_pool(attrs):
         return None
 
 
-def scan_new_pools(state, pages=3):
-    """扫最近新建的池子，加入观察名单(未去重跨轮的用 seen 集合)"""
-    found = 0
-    for page in range(1, pages + 1):
-        d = get(f"{GT_BASE}/networks/solana/new_pools", {"page": page})
-        rows = (d or {}).get("data") or []
-        if not rows:
-            break
-        for row in rows:
-            addr = row["id"].split("_")[-1]
-            if addr in state["seen"]:
-                continue
-            p = parse_pool(row["attributes"])
-            if not p:
-                continue
-            state["seen"].append(addr)
-            state["watch"][addr] = {"addr": addr, "name": p["name"],
-                                    "created_price": p["price"], "status": "watching",
-                                    "first_seen": NOW}
-            found += 1
-        time.sleep(0.3)
-    if found:
-        log(f"scanned new_pools: +{found} 加入观察名单")
-
-
-def check_entries(state):
-    """对观察名单中在年龄窗口内的池子，检查动量确认/企稳入场信号"""
-    entered = 0
-    for addr, w in list(state["watch"].items()):
-        if w["status"] != "watching":
-            continue
-        d = get(f"{GT_BASE}/networks/solana/pools/{addr}")
-        if not d:
-            continue
-        p = parse_pool(d["data"]["attributes"])
-        if not p:
-            continue
-        if p["age_min"] > MAX_AGE_HOURS * 60:
+def try_enter(state, addr, p, source):
+    """用列表接口自带的字段直接判断入场，不再为每个观察中的池子单独发请求"""
+    if p["age_min"] > MAX_AGE_HOURS * 60:
+        w = state["watch"].get(addr)
+        if w:
             w["status"] = "expired"
-            continue
-        if p["age_min"] < MIN_AGE_MIN:
-            time.sleep(0.25)
-            continue  # 还太新，继续观察
-        if p["liq"] < MIN_LIQUIDITY_USD:
-            time.sleep(0.25)
-            continue  # 流动性不够，可能是貔貅雏形，先不进
-        # 入场信号(原文两种形态的简化编码):
-        #  a) 动量确认: 短周期在涨,且有真实成交量支撑("已经慢慢在起了")
-        #  b) 企稳反弹: 跌了一段后近5分钟企稳/转正("跌到这然后不动/反弹")
-        momentum = p["chg_m15"] > 5 and p["chg_h1"] > 0 and p["vol_h1"] > MIN_LIQUIDITY_USD * 0.3
-        stabilize = p["chg_h1"] < -10 and p["chg_m5"] > -2  # 前面跌了不少，最近5分钟企稳
-        if momentum or stabilize:
-            if len(state["positions"]) >= MAX_POS or state["cash"] < POS_SIZE:
-                w["status"] = "skipped_capacity"
-                continue
-            entry = p["price"] * (1 + SLIP)
-            state["cash"] -= POS_SIZE
-            state["positions"][addr] = {"name": p["name"], "entry": entry,
-                                        "qty": POS_SIZE / entry, "usd": POS_SIZE,
-                                        "t_entry": NOW, "signal": "momentum" if momentum else "stabilize"}
-            w["status"] = "entered"
-            log(f"BUY {p['name']} ({addr[:8]}...) @ {entry:.10g}  "
-                f"[{'momentum' if momentum else 'stabilize'}] liq=${p['liq']:,.0f} age={p['age_min']:.0f}min")
-            entered += 1
-        time.sleep(0.25)
+        return False
+    if p["age_min"] < MIN_AGE_MIN or p["liq"] < MIN_LIQUIDITY_USD:
+        return False
+    # 入场信号(原文两种形态的简化编码):
+    #  a) 动量确认: 短周期在涨,且有真实成交量支撑("已经慢慢在起了")
+    #  b) 企稳反弹: 跌了一段后近5分钟企稳/转正("跌到这然后不动/反弹")
+    momentum = p["chg_m15"] > 5 and p["chg_h1"] > 0 and p["vol_h1"] > MIN_LIQUIDITY_USD * 0.3
+    stabilize = p["chg_h1"] < -10 and p["chg_m5"] > -2
+    if not (momentum or stabilize):
+        return False
+    if len(state["positions"]) >= MAX_POS or state["cash"] < POS_SIZE:
+        w = state["watch"].get(addr)
+        if w:
+            w["status"] = "skipped_capacity"
+        return False
+    entry = p["price"] * (1 + SLIP)
+    state["cash"] -= POS_SIZE
+    state["positions"][addr] = {"name": p["name"], "entry": entry,
+                                "qty": POS_SIZE / entry, "usd": POS_SIZE,
+                                "t_entry": NOW, "signal": "momentum" if momentum else "stabilize"}
+    if addr in state["watch"]:
+        state["watch"][addr]["status"] = "entered"
+    log(f"BUY {p['name']} ({addr[:8]}...) @ {entry:.10g}  [{'momentum' if momentum else 'stabilize'}/{source}] "
+        f"liq=${p['liq']:,.0f} age={p['age_min']:.0f}min")
+    return True
+
+
+def scan_new_pools(state, pages=2):
+    """扫最近新建的池子 + 热门池子列表：一次性拿到价格/涨跌幅/流动性等全部字段，
+    既用来维护观察名单，也直接在同一次拉取里判断入场——不再对每个池子单独发请求，
+    避免观察名单变大后请求量线性膨胀导致超时。"""
+    found = entered = 0
+    for kind, url in [("new", f"{GT_BASE}/networks/solana/new_pools"),
+                      ("trend", f"{GT_BASE}/networks/solana/trending_pools")]:
+        pg_range = range(1, pages + 1) if kind == "new" else [1]
+        for page in pg_range:
+            d = get(url, {"page": page})
+            rows = (d or {}).get("data") or []
+            if not rows:
+                break
+            for row in rows:
+                addr = row["id"].split("_")[-1]
+                p = parse_pool(row["attributes"])
+                if not p:
+                    continue
+                if addr not in state["watch"] and addr not in state["positions"]:
+                    state["watch"][addr] = {"addr": addr, "name": p["name"],
+                                            "created_price": p["price"], "status": "watching",
+                                            "first_seen": NOW}
+                    found += 1
+                w = state["watch"].get(addr)
+                if w and w["status"] == "watching":
+                    if try_enter(state, addr, p, kind):
+                        entered += 1
+            time.sleep(0.3)
+    # 用我们自己记的 first_seen 做年龄淘汰，不需要额外请求
+    for addr, w in state["watch"].items():
+        if w["status"] == "watching" and (NOW - w["first_seen"]) > MAX_AGE_HOURS * 3600:
+            w["status"] = "expired"
+    if found or entered:
+        log(f"scan: +{found} 新加入观察名单, {entered} 笔新入场")
     return entered
 
 
@@ -201,19 +203,16 @@ def main():
         state = json.loads(STATE_F.read_text(encoding="utf-8"))
     else:
         state = {"created": NOW_STR, "cash": CAPITAL, "positions": {}, "closed": [],
-                 "watch": {}, "seen": [], "realized_pnl": 0.0}
+                 "watch": {}, "realized_pnl": 0.0}
         log(f"INIT pumpfun-style paper: {CAPITAL} USDT, {POS_SIZE}/单, TP+{TP*100:.0f}%/SL{SL*100:.0f}%/最长{MAX_HOLD_MIN}分钟")
         log("说明: 实时模拟、不做历史回测(用户明确要求)；无法获取开发者持仓%字段，用流动性/成交量代理防貔貅")
 
-    scan_new_pools(state)
-    n_new = check_entries(state)
+    n_new = scan_new_pools(state)
     manage_positions(state)
 
     # prune expired/old watch entries to keep state small
     state["watch"] = {k: w for k, w in state["watch"].items()
                       if w["status"] == "watching" or NOW - w["first_seen"] < 2 * 86400}
-    if len(state["seen"]) > 20000:
-        state["seen"] = state["seen"][-15000:]
 
     # NAV
     open_val = sum(p["qty"] * p.get("mark", p["entry"]) for p in state["positions"].values())
