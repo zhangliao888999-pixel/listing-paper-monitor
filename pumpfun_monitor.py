@@ -32,6 +32,7 @@ STATE_F = HERE / "state_pumpfun.json"
 NAV_F = HERE / "nav_pumpfun.csv"
 DASH_F = HERE / "DASHBOARD_PUMPFUN.md"
 LOG_F = HERE / "pumpfun.log"
+RESEARCH_LOG_F = HERE / "research" / "tx_snapshots.jsonl"
 
 CAPITAL = 10000.0
 # v9(用户判断: 这是广撒网赌概率的游戏，回测测不出什么，只能极小仓位快进快出):
@@ -97,6 +98,9 @@ def parse_pool(attrs):
             "chg_h1": float((attrs.get("price_change_percentage") or {}).get("h1") or 0),
             "vol_m5": float((attrs.get("volume_usd") or {}).get("m5") or 0),
             "vol_h1": float((attrs.get("volume_usd") or {}).get("h1") or 0),
+            "tx_m5": (attrs.get("transactions") or {}).get("m5") or {},
+            "tx_h1": (attrs.get("transactions") or {}).get("h1") or {},
+            "liq_raw": attrs.get("reserve_in_usd"),
             "name": attrs.get("name", "?"),
         }
     except (KeyError, ValueError, TypeError):
@@ -140,33 +144,46 @@ def try_enter(state, addr, p, source):
     return True
 
 
+def log_snapshot(f, addr, p):
+    """研究用：记录买卖笔数/买卖人数快照，供几天后做'拉升前是否有买压先兆'分析。
+    GeckoTerminal不提供这个字段的历史，只能从现在起持续采样攒时间序列。"""
+    f.write(json.dumps({
+        "ts": NOW, "addr": addr, "name": p["name"], "age_min": round(p["age_min"], 1),
+        "price": p["price"], "liq": p["liq"], "chg_m5": p["chg_m5"], "chg_h1": p["chg_h1"],
+        "vol_m5": p["vol_m5"], "vol_h1": p["vol_h1"], "tx_m5": p["tx_m5"], "tx_h1": p["tx_h1"],
+    }, ensure_ascii=False) + "\n")
+
+
 def scan_new_pools(state):
     """扫最近新建的池子 + 热门池子列表：一次性拿到价格/涨跌幅/流动性等全部字段，
     既用来维护观察名单，也直接在同一次拉取里判断入场——不再对每个池子单独发请求，
-    避免观察名单变大后请求量线性膨胀导致超时。"""
+    避免观察名单变大后请求量线性膨胀导致超时。同时给研究用途记一份买卖快照。"""
     found = entered = 0
-    for kind, url, pages in [("new", f"{GT_BASE}/networks/solana/new_pools", NEW_POOLS_PAGES),
-                             ("trend", f"{GT_BASE}/networks/solana/trending_pools", TRENDING_PAGES)]:
-        for page in range(1, pages + 1):
-            d = get(url, {"page": page})
-            rows = (d or {}).get("data") or []
-            if not rows:
-                break
-            for row in rows:
-                addr = row["id"].split("_")[-1]
-                p = parse_pool(row["attributes"])
-                if not p:
-                    continue
-                if addr not in state["watch"] and addr not in state["positions"]:
-                    state["watch"][addr] = {"addr": addr, "name": p["name"],
-                                            "created_price": p["price"], "status": "watching",
-                                            "first_seen": NOW}
-                    found += 1
-                w = state["watch"].get(addr)
-                if w and w["status"] == "watching":
-                    if try_enter(state, addr, p, kind):
-                        entered += 1
-            time.sleep(0.5)
+    RESEARCH_LOG_F.parent.mkdir(exist_ok=True)
+    with RESEARCH_LOG_F.open("a", encoding="utf-8") as rf:
+        for kind, url, pages in [("new", f"{GT_BASE}/networks/solana/new_pools", NEW_POOLS_PAGES),
+                                 ("trend", f"{GT_BASE}/networks/solana/trending_pools", TRENDING_PAGES)]:
+            for page in range(1, pages + 1):
+                d = get(url, {"page": page})
+                rows = (d or {}).get("data") or []
+                if not rows:
+                    break
+                for row in rows:
+                    addr = row["id"].split("_")[-1]
+                    p = parse_pool(row["attributes"])
+                    if not p:
+                        continue
+                    log_snapshot(rf, addr, p)
+                    if addr not in state["watch"] and addr not in state["positions"]:
+                        state["watch"][addr] = {"addr": addr, "name": p["name"],
+                                                "created_price": p["price"], "status": "watching",
+                                                "first_seen": NOW}
+                        found += 1
+                    w = state["watch"].get(addr)
+                    if w and w["status"] == "watching":
+                        if try_enter(state, addr, p, kind):
+                            entered += 1
+                time.sleep(0.5)
     # 用我们自己记的 first_seen 做年龄淘汰，不需要额外请求
     for addr, w in state["watch"].items():
         if w["status"] == "watching" and (NOW - w["first_seen"]) > MAX_AGE_HOURS * 3600:
