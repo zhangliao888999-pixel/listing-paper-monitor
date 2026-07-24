@@ -1,19 +1,7 @@
 {
  "created": "2026-07-24 09:16 UTC",
- "cash": 9423.725,
- "positions": {
-  "mexc:AIINU_USDT": {
-   "exch": "mexc",
-   "sym": "AIINU_USDT",
-   "entry": 0.006880579999999999,
-   "qty": 72668.29249859751,
-   "usd": 500.0,
-   "t_entry": 1784884586,
-   "base": 0.00933,
-   "low": 0.0061,
-   "mark": 0.0084
-  }
- },
+ "cash": 10171.475,
+ "positions": {},
  "closed": [
   {
    "exch": "mexc",
@@ -30,6 +18,22 @@
    "reason": "SL",
    "pnl": -76.27,
    "t_exit": 1784893724
+  },
+  {
+   "exch": "mexc",
+   "sym": "AIINU_USDT",
+   "entry": 0.006880579999999999,
+   "qty": 72668.29249859751,
+   "usd": 500.0,
+   "t_entry": 1784884586,
+   "base": 0.00933,
+   "low": 0.0061,
+   "mark": 0.0084,
+   "key": "mexc:AIINU_USDT",
+   "exit": 0.01032087,
+   "reason": "TP",
+   "pnl": 247.75,
+   "t_exit": 1784901804
   }
  ],
  "watch": {
@@ -68,11 +72,18 @@
    "sym": "ARWRSTOCK_USDT",
    "listed": 1784799000,
    "status": "expired"
+  },
+  "mexc:GGLL_USDT": {
+   "exch": "mexc",
+   "sym": "GGLL_USDT",
+   "listed": 1784898900,
+   "status": "watching"
   }
  },
  "seen": [
   "mexc:AIINU_USDT",
   "mexc:ARWRSTOCK_USDT",
+  "mexc:GGLL_USDT",
   "mexc:GMEROBINHOOD_USDT",
   "mexc:NVD_USDT",
   "mexc:RIOTSTOCK_USDT",
@@ -2393,5 +2404,5 @@
    "龙虾_usdt"
   ]
  },
- "realized_pnl": -76.27499999999998
+ "realized_pnl": 171.47500000000002
 }
