@@ -44,19 +44,26 @@ def get(url, params=None, tries=3):
 
 
 def collect_candidates():
+    """注意: GeckoTerminal的池子地址(pool/pair地址)不是代币铸造地址(mint)，两者不同。
+    GMGN等钱包分析工具需要mint地址。用 include=base_token 在同一次列表请求里批量拿到，
+    不需要为每个池子单独发请求。"""
     cands = {}
     for page in range(1, 11):
-        d = get(f"{GT_BASE}/networks/solana/trending_pools", {"page": page})
+        d = get(f"{GT_BASE}/networks/solana/trending_pools", {"page": page, "include": "base_token"})
         rows = (d or {}).get("data") or []
         if not rows:
             break
+        mint_by_id = {inc["id"]: inc["attributes"]["address"]
+                     for inc in (d.get("included") or []) if inc.get("type") == "token"}
         for row in rows:
             addr = row["id"].split("_")[-1]
             attrs = row["attributes"]
             created = dt.datetime.fromisoformat(attrs["pool_created_at"].replace("Z", "+00:00"))
             age_h = (dt.datetime.now(dt.timezone.utc) - created).total_seconds() / 3600
+            base_tok_id = (row.get("relationships", {}).get("base_token", {}).get("data", {}) or {}).get("id")
+            mint = mint_by_id.get(base_tok_id)
             if MIN_AGE_H <= age_h <= MAX_AGE_DAYS * 24:
-                cands[addr] = {"addr": addr, "name": attrs.get("name", "?"),
+                cands[addr] = {"addr": addr, "mint": mint, "name": attrs.get("name", "?"),
                                "created": created.timestamp(), "source": "trending"}
         time.sleep(0.6)
     # 混入我们自己的观察名单(即使年轻)
@@ -152,6 +159,7 @@ def main():
             rec = analyze(c["addr"], c["name"], c["created"], bars)
             if rec:
                 rec["source"] = c["source"]
+                rec["mint"] = c.get("mint")
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 f.flush()
                 n_ok += 1
