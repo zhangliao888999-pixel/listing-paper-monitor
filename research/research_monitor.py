@@ -224,6 +224,30 @@ def wallet_features(mint):
     return out
 
 
+def graduation_features(rec, pools_by_mint, young_trades_by_addr):
+    """检测'毕业'现象: 同一个mint如果对应多个池子(比如pump.fun绑定曲线池 -> 毕业后的
+    正规AMM池)，且创建时间不同(排除created完全相同的伪影,那种大概率是同一时刻被
+    重复记录，不是真实的两个先后池子)。
+    role: standalone(没有兄弟池子) / pre_graduation(自己更早,后面还有更晚的兄弟池)
+          / post_graduation(自己更晚,前面有更早的兄弟池)。"""
+    mint = rec.get("mint")
+    siblings = [p for p in pools_by_mint.get(mint, []) if p["addr"] != rec["addr"]
+               and p["created"] != rec["created"]]
+    if not siblings:
+        return {"pool_role": "standalone"}
+    earlier = [p for p in siblings if p["created"] < rec["created"]]
+    later = [p for p in siblings if p["created"] > rec["created"]]
+    if earlier:
+        pregrad = max(earlier, key=lambda p: p["created"])  # 离自己最近的那个更早的池子
+        gap_h = (rec["created"] - pregrad["created"]) / 3600
+        pregrad_trades = young_trades_by_addr.get(pregrad["addr"], [])
+        max_trade = max((t["usd"] for t in pregrad_trades), default=None)
+        return {"pool_role": "post_graduation", "pregrad_pool_addr": pregrad["addr"],
+               "time_to_graduate_h": gap_h, "pregrad_max_trade_usd": max_trade,
+               "pregrad_n_trades_captured": len(pregrad_trades)}
+    return {"pool_role": "pre_graduation", "n_later_pools": len(later)}
+
+
 def load_young_trades_by_addr():
     """加载年轻层反复采样积累的逐笔交易,按addr分组、按tx_hash去重(同一笔交易可能被
     多轮轮询重复抓到)。"""
@@ -267,14 +291,15 @@ def young_trade_features(trades, created_ts):
     return out
 
 
-def enrich_one(rec, young_trades_by_addr):
+def enrich_one(rec, young_trades_by_addr, pools_by_mint):
     bars = fetch_ohlcv(rec["addr"], rec["created"])
     pf = price_features(bars)
     if not pf:
         return None
     wf = wallet_features(rec.get("mint"))
     tf = young_trade_features(young_trades_by_addr.get(rec["addr"], []), rec["created"])
-    return {**rec, **pf, **wf, **tf, "enriched_at": NOW}
+    gf = graduation_features(rec, pools_by_mint, young_trades_by_addr)
+    return {**rec, **pf, **wf, **tf, **gf, "enriched_at": NOW}
 
 
 # ---------- 主流程 ----------
@@ -311,6 +336,10 @@ def main():
     log(f"年轻层: 当前{n_young_total}个池子在0~{YOUNG_HOURS}h窗口内, 本轮轮询{n_polled}个, 抓到{n_new_trades}笔交易")
 
     young_trades_by_addr = load_young_trades_by_addr()
+    pools_by_mint = {}
+    for r in recs:
+        if r.get("mint"):
+            pools_by_mint.setdefault(r["mint"], []).append(r)
     eligible = [r for r in recs if r["addr"] not in enriched_set
                and (NOW - r["created"]) / 3600 >= MATURITY_HOURS]
     log(f"成熟层: 待深度采集 {len(eligible)} 个(满{MATURITY_HOURS}h), 本轮处理上限 {MAX_ENRICH_PER_CYCLE}")
@@ -318,7 +347,7 @@ def main():
     n_done = 0
     with DATASET_F.open("a", encoding="utf-8") as f:
         for rec in eligible[:MAX_ENRICH_PER_CYCLE]:
-            full = enrich_one(rec, young_trades_by_addr)
+            full = enrich_one(rec, young_trades_by_addr, pools_by_mint)
             enriched_set.add(rec["addr"])
             if full:
                 f.write(json.dumps(full, ensure_ascii=False) + "\n")
