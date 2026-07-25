@@ -17,8 +17,9 @@
 
 筛选标准:
   年龄: MIN_AGE_MIN ~ MAX_AGE_MIN 之间(太新还看不出死活;太老早期窗口已经过了)
-  流动性: >= MIN_LIQUIDITY_USD (过滤明显貔貅雏形)
-  仍在被交易: 近15分钟成交量/笔数不能是0(过滤"开盘冲一下就没人管了"的死币)
+  流动性: MIN_LIQUIDITY_USD ~ MAX_LIQUIDITY_USD 之间(下限过滤貔貅雏形,上限过滤报价异常的假流动性)
+  仍在被交易: 近15分钟买卖笔数 >= MIN_TX_15M，纯按笔数论，不允许"金额大但笔数少"顶替
+             (曾经出现过AAIF/USDC只有1笔巨额买入就通过筛选的案例，用户明确要求剔除)
 
 本地+云端混合双跑: 设置环境变量 SCREENER_LOCAL=1 时视为本地实例，使用独立的
 screener_state_local.json / screener_candidates_local.json / screener_local.log，
@@ -49,8 +50,7 @@ MAX_AGE_MIN = 240        # 4小时,早期窗口过了就不再是"候选"
 PRUNE_AGE_MIN = MAX_AGE_MIN + 30   # 状态里超过这个年龄的条目直接丢弃,防止无限增长
 MIN_LIQUIDITY_USD = 8000
 MAX_LIQUIDITY_USD = 2_000_000  # 上限:这么年轻的币出现千万/上亿级流动性基本是报价异常导致reserve_in_usd失真,不是真实候选
-MIN_VOL_15M_USD = 500    # 近15分钟成交额门槛,过滤"没人交易"的死币
-MIN_TX_15M = 3           # 近15分钟买卖笔数门槛,单纯"买卖笔数不为0"太松(1-2笔可能是坏数据自成交)
+MIN_TX_15M = 5           # 近15分钟买卖笔数门槛,纯按笔数卡(不再允许用成交额金额顶替笔数不足)
 NEW_POOLS_PAGES = 12     # 覆盖约10分钟的新池子创建量(约24个/分钟),配合定时任务间隔
 TRENDING_PAGES = 2
 MULTI_CHUNK = 30         # /pools/multi 单批最多30个地址
@@ -166,8 +166,8 @@ def refresh_candidates(state):
             p = extract_stats(addr, w["name"], w["created"], row.get("attributes", {}))
             if not (MIN_LIQUIDITY_USD <= p["liq"] <= MAX_LIQUIDITY_USD):
                 continue
-            if p["vol_15m"] < MIN_VOL_15M_USD and (p["buys_15m"] + p["sells_15m"]) < MIN_TX_15M:
-                continue  # 近15分钟没什么真实成交,判定为已死(或坏数据)
+            if (p["buys_15m"] + p["sells_15m"]) < MIN_TX_15M:
+                continue  # 近15分钟买卖笔数不够,判定为已死(或坏数据),不看金额
             candidates.append(p)
         time.sleep(0.5)
     return candidates
