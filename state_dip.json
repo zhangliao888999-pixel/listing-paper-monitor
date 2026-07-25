@@ -78,11 +78,18 @@
    "sym": "GGLL_USDT",
    "listed": 1784898900,
    "status": "watching"
+  },
+  "mexc:FEFER_USDT": {
+   "exch": "mexc",
+   "sym": "FEFER_USDT",
+   "listed": 1784984400,
+   "status": "watching"
   }
  },
  "seen": [
   "mexc:AIINU_USDT",
   "mexc:ARWRSTOCK_USDT",
+  "mexc:FEFER_USDT",
   "mexc:GGLL_USDT",
   "mexc:GMEROBINHOOD_USDT",
   "mexc:NVD_USDT",
