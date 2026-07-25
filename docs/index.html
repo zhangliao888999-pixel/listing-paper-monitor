@@ -61,6 +61,11 @@
   footer { text-align: center; padding: 20px; color: var(--dim); font-size: 12px; }
   a { color: var(--accent); }
   .badge { font-size: 10px; padding: 1px 6px; border-radius: 4px; background: var(--panel2); color: var(--dim); }
+  .wide { grid-column: 1 / -1; }
+  .table-wrap { overflow-x: auto; }
+  .table-wrap table { min-width: 640px; }
+  a.name-link { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--dim); }
+  a.name-link:hover { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -214,12 +219,58 @@ async function loadStrategy(s) {
   </div>`;
 }
 
+function fmtAgeMin(ageMin) {
+  if (ageMin < 60) return `${ageMin.toFixed(0)}分钟`;
+  return `${(ageMin / 60).toFixed(1)}小时`;
+}
+
+function pctBadge(v) {
+  const cls = v > 0.05 ? "pos" : v < -0.05 ? "neg" : "zero";
+  return `<span class="badge ${cls}">${v >= 0 ? "+" : ""}${v.toFixed(1)}%</span>`;
+}
+
+function renderScreenerTable(cands) {
+  if (!cands.length) return `<div class="empty">当前无符合条件的候选币(年龄/流动性/活跃度过滤后)</div>`;
+  const rows = cands.map(c => `<tr>
+      <td><a class="name-link" href="${esc(c.dex_url)}" target="_blank">${esc(c.name)}</a></td>
+      <td>${fmtAgeMin(c.age_min)}</td>
+      <td>$${Math.round(c.liq).toLocaleString("en-US")}</td>
+      <td>$${Math.round(c.vol_15m).toLocaleString("en-US")}</td>
+      <td>${pctBadge(c.chg_15m)}</td>
+      <td>${pctBadge(c.chg_1h)}</td>
+      <td>${c.buys_15m}/${c.sells_15m}</td>
+    </tr>`).join("");
+  return `<div class="table-wrap"><table>
+    <thead><tr><th>币种</th><th>年龄</th><th>流动性</th><th>15m成交额</th><th>15m涨跌</th><th>1h涨跌</th><th>15m买/卖笔数</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>`;
+}
+
+async function loadScreener() {
+  let data;
+  try {
+    data = JSON.parse(await fetchText("screener_candidates.json"));
+  } catch (e) {
+    return `<div class="card wide"><h2>🔎 候选币筛选</h2><div class="empty">尚无数据</div></div>`;
+  }
+  const cands = data.candidates || [];
+  return `
+  <div class="card wide">
+    <h2>🔎 候选币筛选 <span class="badge zero">${cands.length} 个候选</span></h2>
+    <div class="sub">${data.updated_at ? "最后更新 " + fmtAge(data.updated_at) : "尚无数据"} ·
+      只做选币过滤(年龄/流动性/是否仍有真实成交)，不做买卖决策 —— 买卖时机人工盯盘判断</div>
+    ${renderScreenerTable(cands)}
+  </div>`;
+}
+
 async function refresh() {
   const statusEl = document.getElementById("status");
   try {
-    const cards = await Promise.all(STRATEGIES.map(s => loadStrategy(s).catch(e =>
-      `<div class="card"><h2>${esc(s.title)}</h2><div class="empty">加载失败: ${esc(e.message)}</div></div>`)));
-    document.getElementById("main").innerHTML = cards.join("");
+    const [screenerCard, ...cards] = await Promise.all([
+      loadScreener().catch(e => `<div class="card wide"><h2>🔎 候选币筛选</h2><div class="empty">加载失败: ${esc(e.message)}</div></div>`),
+      ...STRATEGIES.map(s => loadStrategy(s).catch(e =>
+        `<div class="card"><h2>${esc(s.title)}</h2><div class="empty">加载失败: ${esc(e.message)}</div></div>`)),
+    ]);
+    document.getElementById("main").innerHTML = screenerCard + cards.join("");
     statusEl.textContent = "● 实时  " + new Date().toLocaleTimeString("zh-CN");
     statusEl.className = "live";
   } catch (e) {

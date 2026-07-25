@@ -1,0 +1,52 @@
+{
+ "updated_at": 1785001618,
+ "updated_at_str": "2026-07-25 17:46 UTC",
+ "n_candidates": 3,
+ "candidates": [
+  {
+   "addr": "7wff6zwWsUgD9aWremUSyXu1v8bfTMPuELZ2GiiD2XSp",
+   "name": "peep / SOL",
+   "age_min": 9.666666666666666,
+   "created": 1785001038.0,
+   "price": 3.2188654054684725e-05,
+   "liq": 14438.8729,
+   "vol_15m": 219227.924670321,
+   "vol_1h": 219227.924670321,
+   "chg_15m": 405.783,
+   "chg_1h": 405.783,
+   "buys_15m": 1207,
+   "sells_15m": 470,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/7wff6zwWsUgD9aWremUSyXu1v8bfTMPuELZ2GiiD2XSp"
+  },
+  {
+   "addr": "4hmNHeZT4uWSzCLQGPoMtvqbftmh3Ne16NNgcnHhtuC8",
+   "name": "BUKGC / SOL",
+   "age_min": 10.083333333333334,
+   "created": 1785001013.0,
+   "price": 0.0003450303982057184,
+   "liq": 333131.4035,
+   "vol_15m": 1937.1948402437,
+   "vol_1h": 1937.1948402437,
+   "chg_15m": 261.898,
+   "chg_1h": 261.898,
+   "buys_15m": 87,
+   "sells_15m": 0,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/4hmNHeZT4uWSzCLQGPoMtvqbftmh3Ne16NNgcnHhtuC8"
+  },
+  {
+   "addr": "CVqkApXfkkCocUmxZYd6F1C3DqAU4rNpFTGcCWy4hfs6",
+   "name": "AORP / SOL",
+   "age_min": 10.85,
+   "created": 1785000967.0,
+   "price": 0.00037600414987236613,
+   "liq": 43240.6696,
+   "vol_15m": 17722.7490931259,
+   "vol_1h": 17722.7490931259,
+   "chg_15m": 14.374,
+   "chg_1h": 14.374,
+   "buys_15m": 1728,
+   "sells_15m": 350,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/CVqkApXfkkCocUmxZYd6F1C3DqAU4rNpFTGcCWy4hfs6"
+  }
+ ]
+}
