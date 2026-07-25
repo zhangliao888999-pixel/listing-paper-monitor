@@ -83,7 +83,7 @@
    "exch": "mexc",
    "sym": "FEFER_USDT",
    "listed": 1784984400,
-   "status": "watching"
+   "status": "skipped_illiquid"
   }
  },
  "seen": [
