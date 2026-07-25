@@ -246,17 +246,39 @@ function renderScreenerTable(cands) {
 }
 
 async function loadScreener() {
-  let data;
-  try {
-    data = JSON.parse(await fetchText("screener_candidates.json"));
-  } catch (e) {
+  // 云端(screener_candidates.json)和本地(screener_candidates_local.json)是两个独立跑的
+  // 实例(避免同时提交同一个文件产生git冲突)，这里按地址合并去重，
+  // 同一个池子取两边里更新更晚的那份数据。
+  const [cloudRes, localRes] = await Promise.allSettled([
+    fetchText("screener_candidates.json").then(t => JSON.parse(t)),
+    fetchText("screener_candidates_local.json").then(t => JSON.parse(t)),
+  ]);
+  const cloud = cloudRes.status === "fulfilled" ? cloudRes.value : null;
+  const local = localRes.status === "fulfilled" ? localRes.value : null;
+  if (!cloud && !local) {
     return `<div class="card wide"><h2>🔎 候选币筛选</h2><div class="empty">尚无数据</div></div>`;
   }
-  const cands = data.candidates || [];
+
+  const merged = new Map();
+  for (const src of [cloud, local].filter(Boolean)) {
+    for (const c of (src.candidates || [])) {
+      const existing = merged.get(c.addr);
+      if (!existing || src.updated_at > existing.__src_ts) {
+        merged.set(c.addr, Object.assign({}, c, { __src_ts: src.updated_at }));
+      }
+    }
+  }
+  const cands = [...merged.values()].sort((a, b) => b.chg_1h - a.chg_1h);
+
+  const subParts = [];
+  if (cloud) subParts.push("云端 " + fmtAge(cloud.updated_at));
+  if (local) subParts.push("本地 " + fmtAge(local.updated_at));
+  const subLabel = subParts.length ? subParts.join(" · ") : "尚无数据";
+
   return `
   <div class="card wide">
     <h2>🔎 候选币筛选 <span class="badge zero">${cands.length} 个候选</span></h2>
-    <div class="sub">${data.updated_at ? "最后更新 " + fmtAge(data.updated_at) : "尚无数据"} ·
+    <div class="sub">${subLabel} ·
       只做选币过滤(年龄/流动性/是否仍有真实成交)，不做买卖决策 —— 买卖时机人工盯盘判断</div>
     ${renderScreenerTable(cands)}
   </div>`;

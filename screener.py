@@ -20,9 +20,16 @@
   流动性: >= MIN_LIQUIDITY_USD (过滤明显貔貅雏形)
   仍在被交易: 近15分钟成交量/笔数不能是0(过滤"开盘冲一下就没人管了"的死币)
 
-输出 screener_candidates.json，供看盘页面直接展示。
+本地+云端混合双跑: 设置环境变量 SCREENER_LOCAL=1 时视为本地实例，使用独立的
+screener_state_local.json / screener_candidates_local.json / screener_local.log，
+与云端实例(screener_state.json等，无后缀)完全隔离，避免两边同时提交同一个JSON文件
+产生git冲突。看盘页面(docs/index.html)会同时拉取两份候选文件并按地址去重合并展示，
+本地开机时能更高频地补上云端调度粒度不够细导致的漏检。
+
+输出 screener_candidates(_local).json，供看盘页面直接展示。
 """
 import json
+import os
 import time
 import datetime as dt
 from pathlib import Path
@@ -30,9 +37,11 @@ from pathlib import Path
 import requests
 
 HERE = Path(__file__).parent
-OUT_F = HERE / "screener_candidates.json"
-STATE_F = HERE / "screener_state.json"
-LOG_F = HERE / "screener.log"
+INSTANCE = "local" if os.environ.get("SCREENER_LOCAL") else "cloud"
+SUFFIX = "_local" if INSTANCE == "local" else ""
+OUT_F = HERE / f"screener_candidates{SUFFIX}.json"
+STATE_F = HERE / f"screener_state{SUFFIX}.json"
+LOG_F = HERE / f"screener{SUFFIX}.log"
 
 GT_BASE = "https://api.geckoterminal.com/api/v2"
 MIN_AGE_MIN = 8
