@@ -122,7 +122,10 @@ def try_enter(state, addr, p, source):
     #     v8修正(用户实盘观察反馈): 原来"跌幅收窄到-2%以内"太松，会把"已经死透没人交易、
     #     价格趴着不动"的死币也当成企稳信号买入。改为要求最近5分钟真正转正 + 有成交量支撑，
     #     排除"只是不再下跌"但其实没有资金在推动的假企稳。
-    momentum = p["chg_m15"] > 5 and p["chg_h1"] > 0 and p["vol_h1"] > MIN_LIQUIDITY_USD * 0.3
+    #     v10修正(用户实盘诊断发现的bug): 小池子成交本来就稀疏，很多真在拉升的币(实测h1涨
+    #     几十到几百个点)恰好最近15分钟没成交，chg_m15读数为0，被momentum条件误杀。
+    #     改成以更稳定的1小时窗口为主，不再硬性要求m15必须单独达标。
+    momentum = p["chg_h1"] > 15 and p["chg_m5"] > -5 and p["vol_h1"] > MIN_LIQUIDITY_USD * 0.3
     stabilize = (p["chg_h1"] < -10 and p["chg_m5"] > 0.5
                 and p["vol_m5"] > MIN_LIQUIDITY_USD * 0.01)
     if not (momentum or stabilize):
