@@ -1,32 +1,30 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 9902.503046291333,
+ "cash": 9887.353861848389,
  "positions": {
-  "4C4EgeGtQVsY8XkRYH31RX1pAAegfV6Yy1Zra59bANpr": {
-   "name": "Erth / SOL",
-   "entry": 7.278134952870046e-05,
-   "qty": 491238.48666616477,
-   "usd": 35.753,
-   "t_entry": 1785093063,
-   "bot_avg_trade_usd": 357.53,
-   "mark": 7.574364287239193e-05,
-   "mark_ret": 0.040701269801590056
+  "BbNEQqUcHQY55bVDvvs56vtwFRgzYwePUNCp7YDJCwtL": {
+   "name": "DOME / SOL",
+   "entry": 0.005845820704118965,
+   "qty": 1359.0906054306377,
+   "usd": 7.945,
+   "t_entry": 1785093602,
+   "bot_avg_trade_usd": 79.45
   },
-  "2trerNYnU4qBgALW5Xh1tAj6EMewAzrCDUpmAGNV4CtG": {
-   "name": "SalaryDog / SOL",
-   "entry": 0.00011460914605628385,
-   "qty": 43626.53568280258,
-   "usd": 5,
-   "t_entry": 1785093423,
-   "bot_avg_trade_usd": 4.64
+  "6DJVgshjjHRjGZQarBvAQ3oUd8pWEqWQ7A6NAFCky76v": {
+   "name": "SUMMER / SOL",
+   "entry": 4.00906995527545e-05,
+   "qty": 1247172.0513184376,
+   "usd": 50,
+   "t_entry": 1785093602,
+   "bot_avg_trade_usd": 553.29
   },
-  "F2Qiryq71XX5vPGEYuGEeC5nEiuWQNajP5xRkqiqBCLy": {
-   "name": "SHARKCAT / SOL",
-   "entry": 0.00010261857945970689,
-   "qty": 48724.12019660871,
+  "sVZP75VBYmTAeCErqsFHmX9w8fVWt9n9stPXh4gFyRF": {
+   "name": "BULLGOD / SOL",
+   "entry": 6.953223966953171e-05,
+   "qty": 71909.08884516986,
    "usd": 5,
-   "t_entry": 1785093423,
-   "bot_avg_trade_usd": 4.12
+   "t_entry": 1785093602,
+   "bot_avg_trade_usd": 7.22
   }
  },
  "closed": [
@@ -389,7 +387,52 @@
    "reason": "SL",
    "pnl": -0.9154,
    "t_exit": 1785093423
+  },
+  {
+   "name": "Erth / SOL",
+   "entry": 7.278134952870046e-05,
+   "qty": 491238.48666616477,
+   "usd": 35.753,
+   "t_entry": 1785093063,
+   "bot_avg_trade_usd": 357.53,
+   "mark": 7.783660758152263e-05,
+   "mark_ret": 0.06945815219912466,
+   "addr": "4C4EgeGtQVsY8XkRYH31RX1pAAegfV6Yy1Zra59bANpr",
+   "exit": 7.627987542989217e-05,
+   "reason": "TP",
+   "pnl": 1.7186,
+   "t_exit": 1785093602
+  },
+  {
+   "name": "SalaryDog / SOL",
+   "entry": 0.00011460914605628385,
+   "qty": 43626.53568280258,
+   "usd": 5,
+   "t_entry": 1785093423,
+   "bot_avg_trade_usd": 4.64,
+   "mark": 0.00013926982587617035,
+   "mark_ret": 0.21517200562488958,
+   "addr": "2trerNYnU4qBgALW5Xh1tAj6EMewAzrCDUpmAGNV4CtG",
+   "exit": 0.00013648442935864695,
+   "reason": "TP",
+   "pnl": 0.9543,
+   "t_exit": 1785093602
+  },
+  {
+   "name": "SHARKCAT / SOL",
+   "entry": 0.00010261857945970689,
+   "qty": 48724.12019660871,
+   "usd": 5,
+   "t_entry": 1785093423,
+   "bot_avg_trade_usd": 4.12,
+   "mark": 9.151613210560611e-05,
+   "mark_ret": -0.10819139587154525,
+   "addr": "F2Qiryq71XX5vPGEYuGEeC5nEiuWQNajP5xRkqiqBCLy",
+   "exit": 8.968580946349399e-05,
+   "reason": "SL",
+   "pnl": -0.6301,
+   "t_exit": 1785093602
   }
  ],
- "realized_pnl": -51.74395370866591
+ "realized_pnl": -49.70113815161073
 }
