@@ -86,15 +86,10 @@ const REPO = "zhangliao888999-pixel/listing-paper-monitor";
 const BRANCH = "master";
 const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/`;
 
+// 2026-07-26: 用户决定作废前4条策略(打新/A无差别买新/B回撤反转/C模仿操盘手)，
+// 只保留策略D。前4条的云端workflow已禁用(gh workflow disable)，不再产生新数据，
+// 卡片从看盘页面移除；历史代码/数据文件仍保留在仓库里，没有删除。
 const STRATEGIES = [
-  { key: "launchpad", title: "打新（Launchpool/HODLer/TGE）", nav: "nav.csv", state: "state.json", log: "monitor.log",
-    kind: "launchpad" },
-  { key: "newcoin", title: "策略A：无差别买新永续", nav: "nav_newcoin.csv", state: "state_newcoin.json", log: "newcoin.log",
-    kind: "newcoin" },
-  { key: "dip", title: "策略B：九所回撤反转(v7)", nav: "nav_dip.csv", state: "state_dip.json", log: "dip.log",
-    kind: "dip" },
-  { key: "pumpfun", title: "策略C：模仿访谈操盘手(Solana)", nav: "nav_pumpfun.csv", state: "state_pumpfun.json", log: "pumpfun.log",
-    kind: "pumpfun" },
   { key: "botscalp", title: "策略D：薅机器人羊毛", nav: "nav_botscalp.csv", state: "state_botscalp.json", log: "botscalp.log",
     kind: "pumpfun" },
 ];
@@ -300,9 +295,9 @@ async function loadScreener() {
       }
     }
   }
-  // 疑似刷量/脚本拉盘的排到最后面(不是排除,只是不占靠前的注意力),组内仍按1h涨跌排序
-  const isFlagged = c => c.scalping_flag || c.staircase_flag || c.early_bot_flag;
-  const cands = [...merged.values()].sort((a, b) => (isFlagged(a) - isFlagged(b)) || (b.chg_1h - a.chg_1h));
+  // 2026-07-26改向: 只留策略D(薅机器人羊毛)，要找的就是交易活跃/机器人在刷的币，
+  // 按近15分钟买卖笔数从高到低排，不再把机器人币排到后面
+  const cands = [...merged.values()].sort((a, b) => (b.buys_15m + b.sells_15m) - (a.buys_15m + a.sells_15m));
 
   const subParts = [];
   if (cloud) subParts.push("云端 " + fmtAge(cloud.updated_at));

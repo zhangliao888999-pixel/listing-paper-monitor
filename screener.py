@@ -309,11 +309,13 @@ def main():
     save_state(state)
     enrich_candidates(cands)
 
-    # 疑似刷量机器人/脚本化拉盘的排到最后面(不是排除,万一误判还能看到),
-    # 组内仍按1h涨跌排序;"出生就有机器人"跟"现在检测到机器人"都算在内
+    # 2026-07-26改向: 前4条交易策略作废,只留策略D(薅机器人羊毛)，它专门要找
+    # 交易活跃(尤其是有机器人在刷)的币下手，所以候选排序从"机器人排最后"反过来
+    # 改成"按近15分钟买卖笔数(最直接的活跃度指标)从高到低排"，机器人币笔数天然很高，
+    # 会自然排到前面——不再是要回避的信号，是这一条策略现在唯一要找的信号。
     def is_flagged(p):
         return bool(p.get("scalping_flag") or p.get("staircase_flag") or p.get("early_bot_flag"))
-    cands.sort(key=lambda p: (is_flagged(p), -p["chg_1h"]))
+    cands.sort(key=lambda p: -(p["buys_15m"] + p["sells_15m"]))
     out = {"updated_at": NOW, "updated_at_str": NOW_STR, "n_candidates": len(cands),
           "candidates": cands}
     OUT_F.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
