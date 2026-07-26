@@ -775,3 +775,12 @@
 [2026-07-26 22:50 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=0min
 [2026-07-26 22:50 UTC] EXIT PALWORLD / SOL [SL] ret=-3.7% pnl=-0.2824U held=0min
 [2026-07-26 22:50 UTC] CYCLE OK nav=11205.3114 扫描候选8 新入场3 持仓6 已平仓344
+[2026-07-26 22:53 UTC] BUY Kabosu / SOL (DMPWHE64...) @ 1.960734259e-05 仓位=$40.07(机器人单笔$401的10%)
+[2026-07-26 22:53 UTC] BUY FOMO / SOL (7JMPKJeX...) @ 0.000165024185 仓位=$7.73(机器人单笔$77的10%)
+[2026-07-26 22:53 UTC] BUY TBB / SOL (7NrFbXYv...) @ 0.07388560186 仓位=$27.65(机器人单笔$276的10%)
+[2026-07-26 22:53 UTC] BUY SalaryCat / SOL (FedX2ude...) @ 0.001583076464 仓位=$5.00(机器人单笔$44的10%)
+[2026-07-26 22:53 UTC] EXIT Fapcoin / CATE [SL] ret=-3.3% pnl=-0.2615U held=27min
+[2026-07-26 22:53 UTC] EXIT thesis / SOL [SL] ret=-43.7% pnl=-6.0075U held=3min
+[2026-07-26 22:53 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=0min
+[2026-07-26 22:53 UTC] EXIT SalaryCat / SOL [SL] ret=-20.5% pnl=-1.1058U held=0min
+[2026-07-26 22:53 UTC] CYCLE OK nav=11267.7807 扫描候选7 新入场4 持仓6 已平仓348
