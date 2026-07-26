@@ -414,3 +414,12 @@
 [2026-07-26 21:02 UTC] EXIT CALLOUT / SOL [SL] ret=-75.8% pnl=-3.8119U held=0min
 [2026-07-26 21:02 UTC] EXIT KOON / SOL [SL] ret=-7.4% pnl=-1.6030U held=0min
 [2026-07-26 21:02 UTC] CYCLE OK nav=10341.9484 扫描候选11 新入场5 持仓9 已平仓180
+[2026-07-26 21:05 UTC] BUY HOOD / SOL (DbkLT59b...) @ 1.904344558e-05 仓位=$50.00(机器人单笔$708的10%)
+[2026-07-26 21:05 UTC] BUY CALLOUT / SOL (5UkALcWz...) @ 2.808452405e-05 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-26 21:05 UTC] BUY KOON / SOL (BFE1Gs4U...) @ 1.801386541e-05 仓位=$17.35(机器人单笔$174的10%)
+[2026-07-26 21:05 UTC] EXIT Fapcoin / CATE [SL] ret=-3.2% pnl=-0.2578U held=18min
+[2026-07-26 21:05 UTC] EXIT Kumala / SOL [SL] ret=-8.9% pnl=-2.7493U held=6min
+[2026-07-26 21:05 UTC] EXIT HOOD / SOL [TP] ret=+13.0% pnl=+5.3579U held=0min
+[2026-07-26 21:05 UTC] EXIT CALLOUT / SOL [SL] ret=-84.5% pnl=-4.2401U held=0min
+[2026-07-26 21:05 UTC] EXIT KOON / SOL [SL] ret=-7.4% pnl=-1.6030U held=0min
+[2026-07-26 21:05 UTC] CYCLE OK nav=10338.6142 扫描候选11 新入场3 持仓7 已平仓185
