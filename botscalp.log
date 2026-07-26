@@ -226,3 +226,14 @@
 [2026-07-26 20:05 UTC] EXIT memecoin / SOL [SL] ret=-17.6% pnl=-4.8305U held=0min
 [2026-07-26 20:05 UTC] EXIT #memecoin / SOL [TP] ret=+26.7% pnl=+9.0216U held=0min
 [2026-07-26 20:05 UTC] CYCLE OK nav=10145.9457 扫描候选12 新入场2 持仓8 已平仓96
+[2026-07-26 20:08 UTC] BUY memecoin / SOL (C5YzmeHp...) @ 4.281924407e-05 仓位=$25.45(机器人单笔$254的10%)
+[2026-07-26 20:08 UTC] BUY #memecoin / SOL (6azedAHy...) @ 9.891107018e-06 仓位=$37.90(机器人单笔$379的10%)
+[2026-07-26 20:08 UTC] BUY USWR / SOL (2UmkeNTJ...) @ 0.02054399421 仓位=$5.58(机器人单笔$56的10%)
+[2026-07-26 20:08 UTC] BUY PALWORLD / SOL (6GXG74Mh...) @ 3.658102841e-05 仓位=$5.00(机器人单笔$13的10%)
+[2026-07-26 20:08 UTC] EXIT GDWR / USDC [TP] ret=+5.3% pnl=+0.1582U held=21min
+[2026-07-26 20:08 UTC] EXIT #memecoin / SOL [TP] ret=+90.2% pnl=+31.3645U held=6min
+[2026-07-26 20:08 UTC] EXIT CXMT / SOL [TP] ret=+5.7% pnl=+0.1813U held=6min
+[2026-07-26 20:08 UTC] EXIT memecoin / SOL [SL] ret=-19.6% pnl=-5.4038U held=0min
+[2026-07-26 20:08 UTC] EXIT #memecoin / SOL [TP] ret=+10.7% pnl=+3.2298U held=0min
+[2026-07-26 20:08 UTC] EXIT USWR / SOL [TP] ret=+6.6% pnl=+0.2484U held=0min
+[2026-07-26 20:08 UTC] CYCLE OK nav=10175.3721 扫描候选12 新入场4 持仓6 已平仓102
