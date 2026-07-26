@@ -79,3 +79,12 @@
 [2026-07-26 19:23 UTC] EXIT COMA / SOL [SL] ret=-21.1% pnl=-6.5428U held=0min
 [2026-07-26 19:23 UTC] EXIT Yeontan / SOL [TP] ret=+43.9% pnl=+16.5043U held=0min
 [2026-07-26 19:23 UTC] CYCLE OK nav=9927.7822 扫描候选9 新入场6 持仓5 已平仓31
+[2026-07-26 19:26 UTC] BUY SHARKCAT / SOL (F2Qiryq7...) @ 0.0001157852065 仓位=$5.00(机器人单笔$5的10%)
+[2026-07-26 19:26 UTC] BUY CATE / SOL (DTdnkYux...) @ 2.832254693e-05 仓位=$35.87(机器人单笔$359的10%)
+[2026-07-26 19:26 UTC] BUY COMA / SOL (6QPNhLbY...) @ 5.440958784e-05 仓位=$38.61(机器人单笔$386的10%)
+[2026-07-26 19:26 UTC] BUY Yeontan / SOL (BdEXFbhg...) @ 0.000111155038 仓位=$43.38(机器人单笔$434的10%)
+[2026-07-26 19:26 UTC] EXIT DOME / SOL [TP] ret=+53.6% pnl=+4.0168U held=6min
+[2026-07-26 19:26 UTC] EXIT SHARKCAT / SOL [SL] ret=-11.5% pnl=-0.6625U held=0min
+[2026-07-26 19:26 UTC] EXIT CATE / SOL [SL] ret=-88.1% pnl=-31.6946U held=0min
+[2026-07-26 19:26 UTC] EXIT Yeontan / SOL [TP] ret=+120.1% pnl=+50.1887U held=0min
+[2026-07-26 19:26 UTC] CYCLE OK nav=9950.9193 扫描候选9 新入场4 持仓5 已平仓35
