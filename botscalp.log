@@ -49,3 +49,7 @@
 [2026-07-26 19:08 UTC] EXIT Erth / SOL [TP] ret=+8.2% pnl=+1.7867U held=0min
 [2026-07-26 19:08 UTC] EXIT BULLGOD / SOL [SL] ret=-19.4% pnl=-1.0504U held=0min
 [2026-07-26 19:08 UTC] CYCLE OK nav=9944.0344 扫描候选6 新入场4 持仓4 已平仓19
+[2026-07-26 19:11 UTC] BUY Erth / SOL (4C4EgeGt...) @ 7.278134953e-05 仓位=$35.75(机器人单笔$358的10%)
+[2026-07-26 19:11 UTC] BUY BULLGOD / SOL (sVZP75VB...) @ 6.953223967e-05 仓位=$5.00(机器人单笔$4的10%)
+[2026-07-26 19:11 UTC] EXIT DOME / SOL [TP] ret=+11.5% pnl=+0.5331U held=3min
+[2026-07-26 19:11 UTC] CYCLE OK nav=9945.9588 扫描候选6 新入场2 持仓5 已平仓20
