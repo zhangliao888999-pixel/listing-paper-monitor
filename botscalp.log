@@ -821,3 +821,9 @@
 [2026-07-26 23:11 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=0min
 [2026-07-26 23:11 UTC] EXIT boobcoin / SOL [SL] ret=-64.4% pnl=-3.2560U held=0min
 [2026-07-26 23:11 UTC] CYCLE OK nav=12778.4169 扫描候选8 新入场2 持仓5 已平仓364
+[2026-07-26 23:14 UTC] BUY Kabosu / SOL (DMPWHE64...) @ 1.960734259e-05 仓位=$40.07(机器人单笔$401的10%)
+[2026-07-26 23:14 UTC] BUY TBB / SOL (7NrFbXYv...) @ 0.07700479193 仓位=$27.52(机器人单笔$275的10%)
+[2026-07-26 23:14 UTC] BUY boobcoin / SOL (EdqS4GUp...) @ 0.0001243596732 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-26 23:14 UTC] EXIT CATE / SOL [TP] ret=+9.4% pnl=+3.5939U held=6min
+[2026-07-26 23:14 UTC] EXIT boobcoin / SOL [SL] ret=-82.8% pnl=-4.1551U held=0min
+[2026-07-26 23:14 UTC] CYCLE OK nav=12779.0177 扫描候选8 新入场3 持仓6 已平仓366
