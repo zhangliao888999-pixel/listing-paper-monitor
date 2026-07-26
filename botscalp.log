@@ -784,3 +784,10 @@
 [2026-07-26 22:53 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=0min
 [2026-07-26 22:53 UTC] EXIT SalaryCat / SOL [SL] ret=-20.5% pnl=-1.1058U held=0min
 [2026-07-26 22:53 UTC] CYCLE OK nav=11267.7807 扫描候选7 新入场4 持仓6 已平仓348
+[2026-07-26 22:56 UTC] BUY Kabosu / SOL (DMPWHE64...) @ 1.960734259e-05 仓位=$40.07(机器人单笔$401的10%)
+[2026-07-26 22:56 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 1.171997477e-05 仓位=$13.98(机器人单笔$140的10%)
+[2026-07-26 22:56 UTC] BUY SalaryCat / SOL (FedX2ude...) @ 0.001583076464 仓位=$5.74(机器人单笔$57的10%)
+[2026-07-26 22:56 UTC] EXIT Trump 2028 / SOL [TIME] ret=+1.9% pnl=-0.0085U held=30min
+[2026-07-26 22:56 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=0min
+[2026-07-26 22:56 UTC] EXIT thesis / SOL [SL] ret=-15.9% pnl=-2.4586U held=0min
+[2026-07-26 22:56 UTC] CYCLE OK nav=11338.9304 扫描候选7 新入场3 持仓6 已平仓351
