@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 9848.338033674532,
+ "cash": 9888.1627084978,
  "positions": {
   "2UmkeNTJWS9HuHfzBwNpYJ48zfrhNcvuPuhViST7ci6r": {
    "name": "USWR / SOL",
@@ -9,8 +9,8 @@
    "usd": 5,
    "t_entry": 1785091896,
    "bot_avg_trade_usd": 5.76,
-   "mark": 0.016073909239608355,
-   "mark_ret": 0.014802659272494356
+   "mark": 0.016192408571716464,
+   "mark_ret": 0.022283940618105236
   },
   "6DJVgshjjHRjGZQarBvAQ3oUd8pWEqWQ7A6NAFCky76v": {
    "name": "SUMMER / SOL",
@@ -19,24 +19,8 @@
    "usd": 50,
    "t_entry": 1785092163,
    "bot_avg_trade_usd": 558.16,
-   "mark": 3.85584473450963e-05,
-   "mark_ret": -0.0073686210617520675
-  },
-  "6QPNhLbYsvqLjCBW8V32oGCzNCnhXyoNnArqdPNXxirR": {
-   "name": "COMA / SOL",
-   "entry": 3.057280393201713e-05,
-   "qty": 1403404.1527694825,
-   "usd": 42.906000000000006,
-   "t_entry": 1785092523,
-   "bot_avg_trade_usd": 429.06
-  },
-  "sVZP75VBYmTAeCErqsFHmX9w8fVWt9n9stPXh4gFyRF": {
-   "name": "BULLGOD / SOL",
-   "entry": 9.168964953282066e-05,
-   "qty": 54531.782218343316,
-   "usd": 5,
-   "t_entry": 1785092523,
-   "bot_avg_trade_usd": 7.53
+   "mark": 3.883994402779521e-05,
+   "mark_ret": -0.0001218966847785774
   }
  },
  "closed": [
@@ -264,7 +248,37 @@
    "reason": "TP",
    "pnl": 2.4661,
    "t_exit": 1785092523
+  },
+  {
+   "name": "COMA / SOL",
+   "entry": 3.057280393201713e-05,
+   "qty": 1403404.1527694825,
+   "usd": 42.906000000000006,
+   "t_entry": 1785092523,
+   "bot_avg_trade_usd": 429.06,
+   "mark": 2.5900618405269778e-05,
+   "mark_ret": -0.1528216233334897,
+   "addr": "6QPNhLbYsvqLjCBW8V32oGCzNCnhXyoNnArqdPNXxirR",
+   "exit": 2.5382606037164383e-05,
+   "reason": "SL",
+   "pnl": -7.2839,
+   "t_exit": 1785092702
+  },
+  {
+   "name": "BULLGOD / SOL",
+   "entry": 9.168964953282066e-05,
+   "qty": 54531.782218343316,
+   "usd": 5,
+   "t_entry": 1785092523,
+   "bot_avg_trade_usd": 7.53,
+   "mark": 7.8640155985091e-05,
+   "mark_ret": -0.1423224280408939,
+   "addr": "sVZP75VBYmTAeCErqsFHmX9w8fVWt9n9stPXh4gFyRF",
+   "exit": 7.706735286538918e-05,
+   "reason": "SL",
+   "pnl": -0.7974,
+   "t_exit": 1785092702
   }
  ],
- "realized_pnl": -48.75596632546734
+ "realized_pnl": -56.8372915021995
 }
