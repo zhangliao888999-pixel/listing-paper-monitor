@@ -1,0 +1,11 @@
+{
+  "rpcUrl": "https://api.mainnet-beta.solana.com",
+  "posSizeUsd": 5.0,
+  "tp": 0.05,
+  "sl": -0.03,
+  "maxHoldMin": 30,
+  "slippageBps": 200,
+  "maxPositions": 3,
+  "dailyMaxUsd": 50.0,
+  "dailyLossKillUsd": -20.0
+}
