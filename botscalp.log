@@ -381,3 +381,7 @@
 [2026-07-26 20:47 UTC] EXIT clude / SOL [TP] ret=+154.5% pnl=+18.9086U held=9min
 [2026-07-26 20:47 UTC] EXIT Kumala / SOL [SL] ret=-4.4% pnl=-1.6509U held=0min
 [2026-07-26 20:47 UTC] CYCLE OK nav=10338.5046 扫描候选6 新入场3 持仓7 已平仓167
+[2026-07-26 20:50 UTC] BUY Kumala / SOL (4ewWmeUj...) @ 8.641935832e-05 仓位=$28.94(机器人单笔$289的10%)
+[2026-07-26 20:50 UTC] EXIT CXMT / SOL [TP] ret=+5.9% pnl=+0.1890U held=12min
+[2026-07-26 20:50 UTC] EXIT HOOD / SOL [TP] ret=+31.6% pnl=+14.4904U held=6min
+[2026-07-26 20:50 UTC] CYCLE OK nav=10353.0808 扫描候选6 新入场1 持仓6 已平仓169

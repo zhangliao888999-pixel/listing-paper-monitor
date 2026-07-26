@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 10240.334072332445,
+ "cash": 10281.070438142622,
  "positions": {
   "2QP2wZRPTvDF9yo6h2BTDH4jGB3dyHhJSpPrS4eSs5xU": {
    "name": "GDWR / USDC",
@@ -19,26 +19,8 @@
    "usd": 5,
    "t_entry": 1785097922,
    "bot_avg_trade_usd": 0.38,
-   "mark": 0.10650627104149035,
-   "mark_ret": 0.03840040120866428
-  },
-  "BgUB1ywYTbckE4ZBvAHi2jFu9L7xj18CAtFhJZP5Dm5b": {
-   "name": "CXMT / SOL",
-   "entry": 3.1594922132866086,
-   "qty": 1.582532781367052,
-   "usd": 5,
-   "t_entry": 1785098283,
-   "bot_avg_trade_usd": 24.69,
-   "mark": 3.306771715962608,
-   "mark_ret": 0.04661492820164126
-  },
-  "DbkLT59b8K8wwxqeAy5mcKB4rAPUPtjz4VsoRW4PVp6i": {
-   "name": "HOOD / SOL",
-   "entry": 1.458599882232371e-05,
-   "qty": 3427944.881188085,
-   "usd": 50,
-   "t_entry": 1785098643,
-   "bot_avg_trade_usd": 743.55
+   "mark": 0.10742299060461998,
+   "mark_ret": 0.04733810931581228
   },
   "F2Qiryq71XX5vPGEYuGEeC5nEiuWQNajP5xRkqiqBCLy": {
    "name": "SHARKCAT / SOL",
@@ -46,7 +28,9 @@
    "qty": 39646.445102069454,
    "usd": 5,
    "t_entry": 1785098643,
-   "bot_avg_trade_usd": 0.31
+   "bot_avg_trade_usd": 0.31,
+   "mark": 0.000128265219702647,
+   "mark_ret": 0.017051998289174364
   },
   "6LQSsvAtsbsCTib4DWDX77jpdu1GbeT4hXWFWPraGSzA": {
    "name": "PONS / SOL",
@@ -65,6 +49,14 @@
    "usd": 5,
    "t_entry": 1785098823,
    "bot_avg_trade_usd": 3.99
+  },
+  "4ewWmeUjE5ZYHTjsmvEzjY3vmEQUHebhoVGyLH11ZrfV": {
+   "name": "Kumala / SOL",
+   "entry": 8.641935831734303e-05,
+   "qty": 334913.38704133366,
+   "usd": 28.943,
+   "t_entry": 1785099003,
+   "bot_avg_trade_usd": 289.43
   }
  },
  "closed": [
@@ -2572,7 +2564,37 @@
    "reason": "SL",
    "pnl": -1.6509,
    "t_exit": 1785098823
+  },
+  {
+   "name": "CXMT / SOL",
+   "entry": 3.1594922132866086,
+   "qty": 1.582532781367052,
+   "usd": 5,
+   "t_entry": 1785098283,
+   "bot_avg_trade_usd": 24.69,
+   "mark": 3.3458173590743137,
+   "mark_ret": 0.058973130240407734,
+   "addr": "BgUB1ywYTbckE4ZBvAHi2jFu9L7xj18CAtFhJZP5Dm5b",
+   "exit": 3.2789010118928275,
+   "reason": "TP",
+   "pnl": 0.189,
+   "t_exit": 1785099003
+  },
+  {
+   "name": "HOOD / SOL",
+   "entry": 1.458599882232371e-05,
+   "qty": 3427944.881188085,
+   "usd": 50,
+   "t_entry": 1785098643,
+   "bot_avg_trade_usd": 743.55,
+   "mark": 1.9197078807709235e-05,
+   "mark_ret": 0.3161305606530227,
+   "addr": "DbkLT59b8K8wwxqeAy5mcKB4rAPUPtjz4VsoRW4PVp6i",
+   "exit": 1.881313723155505e-05,
+   "reason": "TP",
+   "pnl": 14.4904,
+   "t_exit": 1785099003
   }
  ],
- "realized_pnl": 338.56007233243594
+ "realized_pnl": 353.239438142612
 }
