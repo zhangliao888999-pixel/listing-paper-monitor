@@ -791,3 +791,7 @@
 [2026-07-26 22:56 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=0min
 [2026-07-26 22:56 UTC] EXIT thesis / SOL [SL] ret=-15.9% pnl=-2.4586U held=0min
 [2026-07-26 22:56 UTC] CYCLE OK nav=11338.9304 扫描候选7 新入场3 持仓6 已平仓351
+[2026-07-26 22:59 UTC] BUY Kabosu / SOL (DMPWHE64...) @ 1.960734259e-05 仓位=$40.07(机器人单笔$401的10%)
+[2026-07-26 22:59 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 1.171997477e-05 仓位=$15.08(机器人单笔$151的10%)
+[2026-07-26 22:59 UTC] EXIT FOMO / SOL [TP] ret=+30.6% pnl=+2.1619U held=6min
+[2026-07-26 22:59 UTC] CYCLE OK nav=11341.3268 扫描候选7 新入场2 持仓7 已平仓352
