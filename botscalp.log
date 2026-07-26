@@ -767,3 +767,11 @@
 [2026-07-26 22:47 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+55.7977U held=3min
 [2026-07-26 22:47 UTC] EXIT PALWORLD / SOL [SL] ret=-4.2% pnl=-0.3048U held=0min
 [2026-07-26 22:47 UTC] CYCLE OK nav=11125.1827 扫描候选8 新入场2 持仓7 已平仓340
+[2026-07-26 22:50 UTC] BUY Kabosu / SOL (DMPWHE64...) @ 1.960734259e-05 仓位=$40.07(机器人单笔$401的10%)
+[2026-07-26 22:50 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 1.709738351e-05 仓位=$13.41(机器人单笔$134的10%)
+[2026-07-26 22:50 UTC] BUY PALWORLD / SOL (6GXG74Mh...) @ 2.467007113e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-26 22:50 UTC] EXIT CALLOUT / SOL [TP] ret=+66.2% pnl=+11.4218U held=12min
+[2026-07-26 22:50 UTC] EXIT SalaryCat / SOL [SL] ret=-14.8% pnl=-0.8767U held=3min
+[2026-07-26 22:50 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=0min
+[2026-07-26 22:50 UTC] EXIT PALWORLD / SOL [SL] ret=-3.7% pnl=-0.2824U held=0min
+[2026-07-26 22:50 UTC] CYCLE OK nav=11205.3114 扫描候选8 新入场3 持仓6 已平仓344
