@@ -913,3 +913,10 @@
 [2026-07-26 23:38 UTC] EXIT Trump2028 / SOL [TP] ret=+19.7% pnl=+8.6516U held=0min
 [2026-07-26 23:38 UTC] EXIT thesis / SOL [SL] ret=-3.7% pnl=-0.2805U held=0min
 [2026-07-26 23:38 UTC] CYCLE OK nav=13096.8792 扫描候选7 新入场4 持仓6 已平仓405
+[2026-07-26 23:41 UTC] BUY Trump2028 / SOL (BLQghhZp...) @ 0.0002297532703 仓位=$50.00(机器人单笔$866的10%)
+[2026-07-26 23:41 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 9.249363769e-06 仓位=$5.00(机器人单笔$29的10%)
+[2026-07-26 23:41 UTC] EXIT TBB / SOL [TP] ret=+6.4% pnl=+1.1790U held=15min
+[2026-07-26 23:41 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=6min
+[2026-07-26 23:41 UTC] EXIT Fapcoin / CATE [SL] ret=-4.3% pnl=-0.3124U held=6min
+[2026-07-26 23:41 UTC] EXIT thesis / SOL [SL] ret=-3.6% pnl=-0.2742U held=0min
+[2026-07-26 23:41 UTC] CYCLE OK nav=13166.0783 扫描候选7 新入场2 持仓4 已平仓409

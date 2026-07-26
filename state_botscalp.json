@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12937.202709922338,
+ "cash": 13030.35892864466,
  "positions": {
   "DcZkfifAqajxP6rdYownKdEEimNXrHZFVZFdxpbyts7b": {
    "name": "CATE / SOL",
@@ -9,34 +9,8 @@
    "usd": 19.096,
    "t_entry": 1785108003,
    "bot_avg_trade_usd": 190.96,
-   "mark": 2.120837126214386e-05,
-   "mark_ret": 0.025530196275430628
-  },
-  "7NrFbXYvAzHEnnowdLVx1SHh8C4EdzNSSGdtuxqtHbbf": {
-   "name": "TBB / SOL",
-   "entry": 0.08051901511631149,
-   "qty": 343.4344044081343,
-   "usd": 27.653,
-   "t_entry": 1785108363,
-   "bot_avg_trade_usd": 276.53,
-   "mark": 0.08391181504220996,
-   "mark_ret": 0.04213662972650001
-  },
-  "DMPWHE64eWU1J4z36PN4NVdNh5kZspJzctuiN1P3ubeK": {
-   "name": "Kabosu / SOL",
-   "entry": 1.9607342589625756e-05,
-   "qty": 2043826.1746496516,
-   "usd": 40.074000000000005,
-   "t_entry": 1785108903,
-   "bot_avg_trade_usd": 400.74
-  },
-  "E8cpFtV6UdKMv24urFMNLbZBhZZTnXaf2d2TVADbRxbi": {
-   "name": "Fapcoin / CATE",
-   "entry": 0.00038797777860276805,
-   "qty": 12887.336017043548,
-   "usd": 5,
-   "t_entry": 1785108903,
-   "bot_avg_trade_usd": 3.45
+   "mark": 2.1138135830913953e-05,
+   "mark_ret": 0.022133963972421844
   },
   "3fZP5XQZ3NquUR6F6VNxWfvoHCg3z7Nm4KxywMAnt6jx": {
    "name": "BABYCATE / SOL",
@@ -55,6 +29,14 @@
    "usd": 14.457,
    "t_entry": 1785109083,
    "bot_avg_trade_usd": 144.57
+  },
+  "BLQghhZpizTGwD9kuCVyRXm4yrDhx96qCkXppbLFML2h": {
+   "name": "Trump2028 / SOL",
+   "entry": 0.00022975327028123443,
+   "qty": 217624.75867610687,
+   "usd": 50,
+   "t_entry": 1785109263,
+   "bot_avg_trade_usd": 865.9
   }
  },
  "closed": [
@@ -6132,7 +6114,67 @@
    "reason": "SL",
    "pnl": -0.2805,
    "t_exit": 1785109083
+  },
+  {
+   "name": "TBB / SOL",
+   "entry": 0.08051901511631149,
+   "qty": 343.4344044081343,
+   "usd": 27.653,
+   "t_entry": 1785108363,
+   "bot_avg_trade_usd": 276.53,
+   "mark": 0.08566526710535859,
+   "mark_ret": 0.06391349896186904,
+   "addr": "7NrFbXYvAzHEnnowdLVx1SHh8C4EdzNSSGdtuxqtHbbf",
+   "exit": 0.08395196176325141,
+   "reason": "TP",
+   "pnl": 1.179,
+   "t_exit": 1785109263
+  },
+  {
+   "name": "Kabosu / SOL",
+   "entry": 1.9607342589625756e-05,
+   "qty": 2043826.1746496516,
+   "usd": 40.074000000000005,
+   "t_entry": 1785108903,
+   "bot_avg_trade_usd": 400.74,
+   "mark": 5.4874491442080224e-05,
+   "mark_ret": 1.798670507808351,
+   "addr": "DMPWHE64eWU1J4z36PN4NVdNh5kZspJzctuiN1P3ubeK",
+   "exit": 5.377700161323862e-05,
+   "reason": "TP",
+   "pnl": 69.8368,
+   "t_exit": 1785109263
+  },
+  {
+   "name": "Fapcoin / CATE",
+   "entry": 0.00038797777860276805,
+   "qty": 12887.336017043548,
+   "usd": 5,
+   "t_entry": 1785108903,
+   "bot_avg_trade_usd": 3.45,
+   "mark": 0.0003711580424735338,
+   "mark_ret": -0.04335231824308983,
+   "addr": "E8cpFtV6UdKMv24urFMNLbZBhZZTnXaf2d2TVADbRxbi",
+   "exit": 0.00036373488162406314,
+   "reason": "SL",
+   "pnl": -0.3124,
+   "t_exit": 1785109263
+  },
+  {
+   "name": "thesis / SOL",
+   "entry": 9.24936376881344e-06,
+   "qty": 540577.7224222448,
+   "usd": 5,
+   "t_entry": 1785109263,
+   "bot_avg_trade_usd": 28.85,
+   "mark": 8.920557576217449e-06,
+   "mark_ret": -0.03554906054237417,
+   "addr": "7jHjG1Vs5fm3GKsTZYwtULEZFnsshUUsVcPbMcVvup8W",
+   "exit": 8.7421464246931e-06,
+   "reason": "SL",
+   "pnl": -0.2742,
+   "t_exit": 1785109263
   }
  ],
- "realized_pnl": 3093.4827099223376
+ "realized_pnl": 3163.911928644659
 }
