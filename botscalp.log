@@ -247,3 +247,14 @@
 [2026-07-26 20:11 UTC] EXIT Kumala / SOL [TP] ret=+8.5% pnl=+1.1271U held=0min
 [2026-07-26 20:11 UTC] EXIT Erth / SOL [TP] ret=+38.2% pnl=+12.0185U held=0min
 [2026-07-26 20:11 UTC] CYCLE OK nav=10191.2649 扫描候选12 新入场5 持仓7 已平仓106
+[2026-07-26 20:14 UTC] BUY HOOD / SOL (DbkLT59b...) @ 1.458599882e-05 仓位=$50.00(机器人单笔$727的10%)
+[2026-07-26 20:14 UTC] BUY Kumala / SOL (4ewWmeUj...) @ 6.465854853e-05 仓位=$19.14(机器人单笔$191的10%)
+[2026-07-26 20:14 UTC] BUY Erth / SOL (4C4EgeGt...) @ 4.981709552e-05 仓位=$34.00(机器人单笔$340的10%)
+[2026-07-26 20:14 UTC] BUY #memecoin / SOL (6azedAHy...) @ 1.477203353e-05 仓位=$37.24(机器人单笔$372的10%)
+[2026-07-26 20:14 UTC] BUY USWR / SOL (2UmkeNTJ...) @ 0.0218264066 仓位=$5.00(机器人单笔$41的10%)
+[2026-07-26 20:14 UTC] EXIT #memecoin / SOL [TP] ret=+10.8% pnl=+1.6630U held=3min
+[2026-07-26 20:14 UTC] EXIT TRUMP / SOL [TP] ret=+60.7% pnl=+5.9055U held=3min
+[2026-07-26 20:14 UTC] EXIT HOOD / SOL [TP] ret=+9.1% pnl=+3.4584U held=0min
+[2026-07-26 20:14 UTC] EXIT Erth / SOL [TP] ret=+64.5% pnl=+20.8181U held=0min
+[2026-07-26 20:14 UTC] EXIT #memecoin / SOL [SL] ret=-18.4% pnl=-7.4512U held=0min
+[2026-07-26 20:14 UTC] CYCLE OK nav=10216.4192 扫描候选12 新入场5 持仓7 已平仓111
