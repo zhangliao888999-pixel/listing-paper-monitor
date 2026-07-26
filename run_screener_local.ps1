@@ -18,23 +18,34 @@ if (Test-Path $lockFile) {
 }
 Set-Content -Path $lockFile -Value (Get-Date).ToString() -Encoding utf8
 
+$prevEap = $ErrorActionPreference
 try {
-    git pull --rebase 2>&1 | Out-Null
+    # NOTE: do not use ANY stderr redirect (2>&1, 2>$null, etc) on git here. Under
+    # $ErrorActionPreference="Stop", PowerShell 5.1 intercepts a native exe's stderr
+    # through its error-record machinery as soon as ANY redirect operator touches it,
+    # regardless of the target - and git prints normal progress/status to stderr on
+    # every push/pull, success or not. That was turning successful operations into
+    # script-aborting "failures". Switch to Continue for this block so git's exit
+    # code (checked via $LASTEXITCODE) drives control flow instead.
+    $ErrorActionPreference = "Continue"
+
+    git pull --rebase | Out-Null
 
     $env:SCREENER_LOCAL = "1"
     $env:PYTHONIOENCODING = "utf-8"
     python screener.py
 
-    git add screener_state_local.json screener_candidates_local.json screener_local.log screener_enrich_cache_local.json 2>&1 | Out-Null
+    git add screener_state_local.json screener_candidates_local.json screener_local.log screener_enrich_cache_local.json | Out-Null
     $ts = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mmZ')
-    git commit -m "screener local cycle $ts" 2>&1 | Out-Null
+    git commit -m "screener local cycle $ts" | Out-Null
 
     for ($i = 0; $i -lt 3; $i++) {
-        git push 2>&1 | Out-Null
-        if ($?) { break }
-        git pull --rebase 2>&1 | Out-Null
+        git push | Out-Null
+        if ($LASTEXITCODE -eq 0) { break }
+        git pull --rebase | Out-Null
         Start-Sleep -Seconds 3
     }
 } finally {
+    $ErrorActionPreference = $prevEap
     Remove-Item -Path $lockFile -Force -ErrorAction SilentlyContinue
 }
