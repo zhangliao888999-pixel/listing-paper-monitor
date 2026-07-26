@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 10670.785084082747,
+ "cash": 10713.237302273934,
  "positions": {
   "GfL55wuJfEA2teyXixJST8Yfng5eNcTNQv7ZU67C7N1c": {
    "name": "LIFE / SOL",
@@ -32,21 +32,41 @@
    "mark": 0.0003831364847876688,
    "mark_ret": -0.004120112782401653
   },
-  "aRfKk3vB78MZwA1Tp7wsCiXa9GXRQJWU1FbJ8ddxHBP": {
-   "name": "CALLOUT / SOL",
-   "entry": 2.2207499715896453e-05,
-   "qty": 1531239.4657224165,
-   "usd": 34.005,
-   "t_entry": 1785103503,
-   "bot_avg_trade_usd": 340.05
+  "DcZkfifAqajxP6rdYownKdEEimNXrHZFVZFdxpbyts7b": {
+   "name": "CATE / SOL",
+   "entry": 2.4076896041443996e-05,
+   "qty": 712051.9177592379,
+   "usd": 17.144000000000002,
+   "t_entry": 1785103683,
+   "bot_avg_trade_usd": 171.44
   },
-  "4RYHTrkygVeoDWrvfqLadCrKfBtH7LZHPGfivKCpkuJV": {
-   "name": "BRODIE / SOL",
-   "entry": 1.1290842238215977e-05,
-   "qty": 4428367.6049219435,
-   "usd": 50,
-   "t_entry": 1785103503,
-   "bot_avg_trade_usd": 741.52
+  "6VEtgZd1tobR4PohnkDUo8NYB8nzG5Y7cfkUqXdfkDH3": {
+   "name": "PONS / SOL",
+   "entry": 1.5680206020176656e-05,
+   "qty": 971926.0053337172,
+   "usd": 15.240000000000002,
+   "t_entry": 1785103683,
+   "bot_avg_trade_usd": 152.4,
+   "mark": 1.592881812949254e-05,
+   "mark_ret": 0.01585515579297736
+  },
+  "EdqS4GUp1AZwMd9A7MzmXFXKWmWiFpZcAFCVsB2ggoe": {
+   "name": "boobcoin / SOL",
+   "entry": 9.165716293634518e-05,
+   "qty": 54551.110244078154,
+   "usd": 5,
+   "t_entry": 1785103683,
+   "bot_avg_trade_usd": 18.61,
+   "mark": 9.457651202581199e-05,
+   "mark_ret": 0.031850746804090724
+  },
+  "6GXG74MhFRpuq38QzuQDY7Zs6fFSiPLZkaAf5iFhxmpn": {
+   "name": "PALWORLD / SOL",
+   "entry": 3.1765616571571975e-05,
+   "qty": 157402.89469069062,
+   "usd": 5,
+   "t_entry": 1785103683,
+   "bot_avg_trade_usd": 5.67
   }
  },
  "closed": [
@@ -4234,7 +4254,67 @@
    "reason": "SL",
    "pnl": -0.8511,
    "t_exit": 1785103503
+  },
+  {
+   "name": "CALLOUT / SOL",
+   "entry": 2.2207499715896453e-05,
+   "qty": 1531239.4657224165,
+   "usd": 34.005,
+   "t_entry": 1785103503,
+   "bot_avg_trade_usd": 340.05,
+   "mark": 2.6321679994226767e-05,
+   "mark_ret": 0.18526085020662286,
+   "addr": "aRfKk3vB78MZwA1Tp7wsCiXa9GXRQJWU1FbJ8ddxHBP",
+   "exit": 2.5795246394342232e-05,
+   "reason": "TP",
+   "pnl": 5.4937,
+   "t_exit": 1785103683
+  },
+  {
+   "name": "BRODIE / SOL",
+   "entry": 1.1290842238215977e-05,
+   "qty": 4428367.6049219435,
+   "usd": 50,
+   "t_entry": 1785103503,
+   "bot_avg_trade_usd": 741.52,
+   "mark": 1.2530382491333916e-05,
+   "mark_ret": 0.10978279803808455,
+   "addr": "4RYHTrkygVeoDWrvfqLadCrKfBtH7LZHPGfivKCpkuJV",
+   "exit": 1.2279774841507237e-05,
+   "reason": "TP",
+   "pnl": 4.3794,
+   "t_exit": 1785103683
+  },
+  {
+   "name": "Trump2028 / SOL",
+   "entry": 0.0002445450466101577,
+   "qty": 204461.3076122031,
+   "usd": 50,
+   "t_entry": 1785103683,
+   "bot_avg_trade_usd": 885.17,
+   "mark": 0.0002010246711977857,
+   "mark_ret": -0.17796465729175115,
+   "addr": "8zWD6qbQxD4KsDpH9rgaVeowgXHVJAkBrZSzEuc5Fy3c",
+   "exit": 0.00019700417777382997,
+   "reason": "SL",
+   "pnl": -9.7203,
+   "t_exit": 1785103683
+  },
+  {
+   "name": "CXMT / SOL",
+   "entry": 3.629988715795094,
+   "qty": 1.377414750146083,
+   "usd": 5,
+   "t_entry": 1785103683,
+   "bot_avg_trade_usd": 49.42,
+   "mark": 4.2066605670002035,
+   "mark_ret": 0.15886326276879315,
+   "addr": "BgUB1ywYTbckE4ZBvAHi2jFu9L7xj18CAtFhJZP5Dm5b",
+   "exit": 4.1225273556602,
+   "reason": "TP",
+   "pnl": 0.6784,
+   "t_exit": 1785103683
   }
  ],
- "realized_pnl": 798.9710840827345
+ "realized_pnl": 799.8023022739227
 }
