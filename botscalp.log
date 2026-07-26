@@ -920,3 +920,10 @@
 [2026-07-26 23:41 UTC] EXIT Fapcoin / CATE [SL] ret=-4.3% pnl=-0.3124U held=6min
 [2026-07-26 23:41 UTC] EXIT thesis / SOL [SL] ret=-3.6% pnl=-0.2742U held=0min
 [2026-07-26 23:41 UTC] CYCLE OK nav=13166.0783 扫描候选7 新入场2 持仓4 已平仓409
+[2026-07-26 23:44 UTC] BUY Kabosu / SOL (DMPWHE64...) @ 1.960734259e-05 仓位=$40.07(机器人单笔$401的10%)
+[2026-07-26 23:44 UTC] BUY TBB / SOL (7NrFbXYv...) @ 0.08447151986 仓位=$27.25(机器人单笔$272的10%)
+[2026-07-26 23:44 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 9.249363769e-06 仓位=$5.00(机器人单笔$29的10%)
+[2026-07-26 23:44 UTC] EXIT CATE / SOL [TP] ret=+11.6% pnl=+1.7880U held=24min
+[2026-07-26 23:44 UTC] EXIT BABYCATE / SOL [TP] ret=+7.4% pnl=+2.6181U held=6min
+[2026-07-26 23:44 UTC] EXIT PONS / SOL [TP] ret=+9.8% pnl=+1.0928U held=6min
+[2026-07-26 23:44 UTC] CYCLE OK nav=13169.2732 扫描候选7 新入场3 持仓4 已平仓412
