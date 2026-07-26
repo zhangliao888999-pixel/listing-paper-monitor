@@ -879,3 +879,16 @@
 [2026-07-26 23:29 UTC] EXIT BABYCATE / SOL [TP] ret=+9.5% pnl=+3.6561U held=0min
 [2026-07-26 23:29 UTC] EXIT Fapcoin / CATE [SL] ret=-3.9% pnl=-0.2926U held=0min
 [2026-07-26 23:29 UTC] CYCLE OK nav=12994.7219 扫描候选10 新入场6 持仓5 已平仓390
+[2026-07-26 23:32 UTC] BUY Kabosu / SOL (DMPWHE64...) @ 1.960734259e-05 仓位=$40.07(机器人单笔$401的10%)
+[2026-07-26 23:32 UTC] BUY USOX / SOL (573qFJkb...) @ 0.02778819567 仓位=$5.00(机器人单笔$7的10%)
+[2026-07-26 23:32 UTC] BUY BRODIE / SOL (4RYHTrky...) @ 1.978480569e-05 仓位=$50.00(机器人单笔$755的10%)
+[2026-07-26 23:32 UTC] BUY Trump2028 / SOL (BLQghhZp...) @ 0.0002194081749 仓位=$50.00(机器人单笔$940的10%)
+[2026-07-26 23:32 UTC] BUY BABYCATE / SOL (3fZP5XQZ...) @ 5.49414513e-05 仓位=$50.00(机器人单笔$1320的10%)
+[2026-07-26 23:32 UTC] BUY boobcoin / SOL (EdqS4GUp...) @ 2.061051534e-05 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-26 23:32 UTC] EXIT SalaryCat / SOL [TP] ret=+9.9% pnl=+0.3837U held=12min
+[2026-07-26 23:32 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=0min
+[2026-07-26 23:32 UTC] EXIT USOX / SOL [TP] ret=+16.5% pnl=+0.7063U held=0min
+[2026-07-26 23:32 UTC] EXIT BRODIE / SOL [TP] ret=+14.9% pnl=+6.3083U held=0min
+[2026-07-26 23:32 UTC] EXIT Trump2028 / SOL [TP] ret=+8.5% pnl=+3.1749U held=0min
+[2026-07-26 23:32 UTC] EXIT boobcoin / SOL [SL] ret=-63.5% pnl=-3.2110U held=0min
+[2026-07-26 23:32 UTC] CYCLE OK nav=13073.0849 扫描候选10 新入场6 持仓5 已平仓396
