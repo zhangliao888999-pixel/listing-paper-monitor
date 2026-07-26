@@ -523,3 +523,15 @@
 [2026-07-26 21:38 UTC] EXIT HOOD / SOL [TP] ret=+26.9% pnl=+12.1638U held=0min
 [2026-07-26 21:38 UTC] EXIT TBB / SOL [TP] ret=+17.2% pnl=+4.0023U held=0min
 [2026-07-26 21:38 UTC] CYCLE OK nav=10483.6472 扫描候选10 新入场6 持仓6 已平仓230
+[2026-07-26 21:41 UTC] BUY HOOD / SOL (DbkLT59b...) @ 1.904344558e-05 仓位=$50.00(机器人单笔$768的10%)
+[2026-07-26 21:41 UTC] BUY STOGE / SOL (AXeP2Mth...) @ 1.435887014e-05 仓位=$7.71(机器人单笔$77的10%)
+[2026-07-26 21:41 UTC] BUY TBB / SOL (7NrFbXYv...) @ 0.04126558343 仓位=$27.02(机器人单笔$270的10%)
+[2026-07-26 21:41 UTC] BUY Fapcoin / CATE (E8cpFtV6...) @ 0.0003982989057 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-26 21:41 UTC] BUY PALWORLD / SOL (6GXG74Mh...) @ 2.32207512e-05 仓位=$5.00(机器人单笔$4的10%)
+[2026-07-26 21:41 UTC] EXIT PONS / SOL [TP] ret=+6.1% pnl=+0.6937U held=3min
+[2026-07-26 21:41 UTC] EXIT puf / SOL [TP] ret=+11.9% pnl=+1.3420U held=3min
+[2026-07-26 21:41 UTC] EXIT HOOD / SOL [TP] ret=+26.9% pnl=+12.1638U held=0min
+[2026-07-26 21:41 UTC] EXIT STOGE / SOL [TP] ret=+287.4% pnl=+21.5494U held=0min
+[2026-07-26 21:41 UTC] EXIT TBB / SOL [TP] ret=+18.9% pnl=+4.4625U held=0min
+[2026-07-26 21:41 UTC] EXIT Fapcoin / CATE [SL] ret=-6.0% pnl=-0.3927U held=0min
+[2026-07-26 21:41 UTC] CYCLE OK nav=10523.2603 扫描候选10 新入场5 持仓5 已平仓236
