@@ -799,3 +799,9 @@
 [2026-07-26 23:02 UTC] EXIT CATE / SOL [TP] ret=+5.3% pnl=+1.6149U held=24min
 [2026-07-26 23:02 UTC] EXIT CATE / SOL [SL] ret=-3.8% pnl=-1.1186U held=18min
 [2026-07-26 23:02 UTC] CYCLE OK nav=11338.9915 扫描候选7 新入场1 持仓6 已平仓354
+[2026-07-26 23:05 UTC] BUY CATE / SOL (DcZkfifA...) @ 2.068039668e-05 仓位=$18.29(机器人单笔$183的10%)
+[2026-07-26 23:05 UTC] EXIT CATE / SOL [TP] ret=+8.2% pnl=+3.0056U held=24min
+[2026-07-26 23:05 UTC] EXIT SalaryCat / SOL [SL] ret=-3.9% pnl=-0.3356U held=9min
+[2026-07-26 23:05 UTC] EXIT Kabosu / SOL [TP] ret=+179.9% pnl=+69.8368U held=6min
+[2026-07-26 23:05 UTC] EXIT thesis / SOL [TP] ret=+6.2% pnl=+0.6111U held=6min
+[2026-07-26 23:05 UTC] CYCLE OK nav=11411.8690 扫描候选7 新入场1 持仓3 已平仓358
