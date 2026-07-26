@@ -1,52 +1,22 @@
 {
- "updated_at": 1785022662,
- "updated_at_str": "2026-07-25 23:37 UTC",
- "n_candidates": 3,
+ "updated_at": 1785028302,
+ "updated_at_str": "2026-07-26 01:11 UTC",
+ "n_candidates": 1,
  "candidates": [
   {
-   "addr": "BsR8Xk1FbKnCcTPTmjyatk2CusWh7Up4n4dQEwtTx64b",
-   "name": "USOX / SOL",
-   "age_min": 67.98333333333333,
-   "created": 1785018583.0,
-   "price": 0.009114205212228913,
-   "liq": 217684.4439,
-   "vol_15m": 28191.9559083321,
-   "vol_1h": 115113.954447824,
-   "chg_15m": 16.335,
-   "chg_1h": 105.431,
-   "buys_15m": 305,
-   "sells_15m": 209,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/BsR8Xk1FbKnCcTPTmjyatk2CusWh7Up4n4dQEwtTx64b"
-  },
-  {
-   "addr": "651YGzq7u2Ku9V8bLBAvC3fevmyTVta6voGzb8GXzS25",
-   "name": "Ferret / SOL",
-   "age_min": 63.416666666666664,
-   "created": 1785018857.0,
-   "price": 9.232030711413416e-05,
-   "liq": 144422.9711,
-   "vol_15m": 1123704.32890588,
-   "vol_1h": 6300204.82954837,
-   "chg_15m": 11.734,
-   "chg_1h": 45.225,
-   "buys_15m": 917,
-   "sells_15m": 702,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/651YGzq7u2Ku9V8bLBAvC3fevmyTVta6voGzb8GXzS25"
-  },
-  {
-   "addr": "hqDuQyHaNSNe1P9Emq9gyMVJuW1SHqRXc3atNbzNwD8",
-   "name": "USWR / SOL",
-   "age_min": 170.26666666666668,
-   "created": 1785012446.0,
-   "price": 0.2321864784496191,
-   "liq": 1105455.2061,
-   "vol_15m": 14596.6853626983,
-   "vol_1h": 65865.2581496914,
-   "chg_15m": 0.595,
-   "chg_1h": 1.377,
-   "buys_15m": 968,
-   "sells_15m": 207,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/hqDuQyHaNSNe1P9Emq9gyMVJuW1SHqRXc3atNbzNwD8"
+   "addr": "FptVwkpv2mN2VYKzTiCkC6yGoNvGTmA9yppkcDVMuHj",
+   "name": "OGDOGE / SOL",
+   "age_min": 215.25,
+   "created": 1785015387.0,
+   "price": 0.0050118696311566265,
+   "liq": 17760.8926,
+   "vol_15m": 20567.2456574701,
+   "vol_1h": 99200.5322806205,
+   "chg_15m": 21.836,
+   "chg_1h": 75.912,
+   "buys_15m": 146,
+   "sells_15m": 139,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/FptVwkpv2mN2VYKzTiCkC6yGoNvGTmA9yppkcDVMuHj"
   }
  ]
 }
