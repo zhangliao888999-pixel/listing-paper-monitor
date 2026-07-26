@@ -289,3 +289,14 @@
 [2026-07-26 20:23 UTC] EXIT HOOD / SOL [TP] ret=+13.7% pnl=+5.7254U held=0min
 [2026-07-26 20:23 UTC] EXIT SHARKCAT / SOL [SL] ret=-11.1% pnl=-0.6430U held=0min
 [2026-07-26 20:23 UTC] CYCLE OK nav=10206.7161 扫描候选8 新入场4 持仓7 已平仓125
+[2026-07-26 20:26 UTC] BUY HOOD / SOL (DbkLT59b...) @ 1.458599882e-05 仓位=$50.00(机器人单笔$758的10%)
+[2026-07-26 20:26 UTC] BUY BRODIE / SOL (A98vTShH...) @ 9.362261066e-06 仓位=$50.00(机器人单笔$733的10%)
+[2026-07-26 20:26 UTC] BUY SHARKCAT / SOL (F2Qiryq7...) @ 0.0001368398531 仓位=$5.00(机器人单笔$7的10%)
+[2026-07-26 20:26 UTC] BUY Kumala / SOL (4ewWmeUj...) @ 6.940285813e-05 仓位=$21.94(机器人单笔$219的10%)
+[2026-07-26 20:26 UTC] EXIT Analos / SOL [SL] ret=-23.7% pnl=-3.5528U held=27min
+[2026-07-26 20:26 UTC] EXIT Erth / SOL [TP] ret=+26.2% pnl=+8.0847U held=6min
+[2026-07-26 20:26 UTC] EXIT HOOD / SOL [TP] ret=+15.7% pnl=+6.7074U held=0min
+[2026-07-26 20:26 UTC] EXIT BRODIE / SOL [TP] ret=+14.4% pnl=+6.0372U held=0min
+[2026-07-26 20:26 UTC] EXIT SHARKCAT / SOL [SL] ret=-16.1% pnl=-0.8901U held=0min
+[2026-07-26 20:26 UTC] EXIT Kumala / SOL [TP] ret=+22.4% pnl=+4.3855U held=0min
+[2026-07-26 20:26 UTC] CYCLE OK nav=10227.5124 扫描候选8 新入场4 持仓5 已平仓131
