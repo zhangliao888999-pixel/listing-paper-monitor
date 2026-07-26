@@ -10,7 +10,14 @@
      真实散户买盘的成交量应该有明显波动，几乎不波动的staircase是脚本下单的指纹
   2. 钱包画像(GMGN): 头部买家里有多少被标为is_suspicious，买入量是否高度一致(同一操盘方
      分散到多个钱包的迹象)，创建者钱包是否带rat_trader/transfer_in标签(资金内部转入而非
-     市场买入)，以及有没有真实卖出记录(全程0卖出=庄家自己也还没出货)
+     市场买入)，有没有真实卖出记录(全程0卖出=庄家自己也还没出货)，以及头部钱包的
+     sell_amount_percentage(已卖出比例)——判断主力是还在场内还是已经基本清仓离场
+
+注意: 这些都是"当下快照"事实，不是预测。用户在Phase 10已经明确过一次结论——
+新币的买卖时机本质是庄家/散户心理博弈，无法被可靠量化，此前专门做的钱包标签关联、
+开发者退出时机等信号研究在n=27-41样本下都没能找到稳健的预测力(dev退出时机甚至和
+见顶时机完全脱节)。所以这里只报告事实，不产出买/卖评分或"是否建议买入"的结论——
+避免重蹈同一个覆辙,把一个此前已经验证不可靠的信号套上"模型"的外壳当成可信依据。
 """
 import re
 import sys
@@ -104,6 +111,15 @@ def check_wallets(mint):
     creator_tags = creator.get("maker_token_tags") if creator else None
     internal_funded = creator_tags is not None and "transfer_in" in creator_tags
 
+    # 主力持仓状态: sell_amount_percentage是"这个钱包买过的量里已经卖掉的比例"，
+    # 不是"是否卖过"，能看出头部钱包是清仓了还是还捂着大部分仓位
+    sell_pcts = [r.get("sell_amount_percentage") for r in rows if r.get("sell_amount_percentage") is not None]
+    n_exited = sum(1 for p in sell_pcts if p >= 0.7)     # 卖掉70%+算基本清仓
+    n_holding = sum(1 for p in sell_pcts if p < 0.3)      # 卖掉不到30%算基本还拿着
+    usd_still_held = sum(r.get("usd_value") or 0 for r in rows)
+    usd_ever_invested = sum(r.get("total_cost") or 0 for r in rows)
+    exit_ratio = (1 - usd_still_held / usd_ever_invested) if usd_ever_invested else None
+
     flags = []
     if n and n_suspicious / n >= 0.5:
         flags.append(f"{n_suspicious}/{n}个头部钱包被GMGN标为可疑")
@@ -113,10 +129,17 @@ def check_wallets(mint):
         flags.append("头部钱包里没有一笔卖出记录，庄家/早期买家还未出货")
     if internal_funded:
         flags.append("创建者钱包标记为transfer_in(资金内部转入，不是市场买入)")
+    if sell_pcts and n_exited / len(sell_pcts) >= 0.8:
+        flags.append(f"{n_exited}/{len(sell_pcts)}个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕")
+    elif sell_pcts and n_holding / len(sell_pcts) >= 0.8:
+        flags.append(f"{n_holding}/{len(sell_pcts)}个头部钱包卖出不到30%，主力大部分仓位还在场内")
 
     return {
         "n_traders": n, "n_suspicious": n_suspicious, "buy_cv": buy_cv,
-        "n_sold": n_sold, "creator_tags": creator_tags, "flags": flags,
+        "n_sold": n_sold, "creator_tags": creator_tags,
+        "n_exited_70pct": n_exited, "n_holding_70pct": n_holding,
+        "usd_still_held": round(usd_still_held), "usd_ever_invested": round(usd_ever_invested),
+        "exit_ratio": exit_ratio, "flags": flags,
         "verdict": " / ".join(flags) if flags else "钱包画像未见明显控盘迹象",
     }
 
