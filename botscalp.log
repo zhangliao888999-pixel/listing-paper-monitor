@@ -580,3 +580,13 @@
 [2026-07-26 21:53 UTC] EXIT TBB / SOL [TP] ret=+24.2% pnl=+5.9431U held=0min
 [2026-07-26 21:53 UTC] EXIT puf / SOL [SL] ret=-26.3% pnl=-1.3867U held=0min
 [2026-07-26 21:53 UTC] CYCLE OK nav=10739.4484 扫描候选13 新入场4 持仓6 已平仓256
+[2026-07-26 21:56 UTC] BUY PONS / SOL (93vAAasQ...) @ 5.204637268e-05 仓位=$50.00(机器人单笔$855的10%)
+[2026-07-26 21:56 UTC] BUY STOGE / SOL (AXeP2Mth...) @ 2.446228831e-05 仓位=$13.22(机器人单笔$132的10%)
+[2026-07-26 21:56 UTC] BUY PONS / SOL (6VEtgZd1...) @ 1.527745613e-05 仓位=$16.90(机器人单笔$169的10%)
+[2026-07-26 21:56 UTC] BUY TBB / SOL (7NrFbXYv...) @ 0.04795514902 仓位=$27.38(机器人单笔$274的10%)
+[2026-07-26 21:56 UTC] BUY puf / SOL (DdoFHoEf...) @ 1.02288986e-05 仓位=$5.00(机器人单笔$41的10%)
+[2026-07-26 21:56 UTC] EXIT PALWORLD / SOL [SL] ret=-33.7% pnl=-1.7515U held=3min
+[2026-07-26 21:56 UTC] EXIT PONS / SOL [TP] ret=+6.2% pnl=+2.0581U held=0min
+[2026-07-26 21:56 UTC] EXIT STOGE / SOL [TP] ret=+369.8% pnl=+47.6505U held=0min
+[2026-07-26 21:56 UTC] EXIT puf / SOL [SL] ret=-26.3% pnl=-1.3867U held=0min
+[2026-07-26 21:56 UTC] CYCLE OK nav=10786.0815 扫描候选13 新入场5 持仓7 已平仓260
