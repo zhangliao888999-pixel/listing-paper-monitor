@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 9857.649399624112,
+ "cash": 9882.31546263537,
  "positions": {
   "2UmkeNTJWS9HuHfzBwNpYJ48zfrhNcvuPuhViST7ci6r": {
    "name": "USWR / SOL",
@@ -8,15 +8,9 @@
    "qty": 315.6676587335329,
    "usd": 5,
    "t_entry": 1785091896,
-   "bot_avg_trade_usd": 5.76
-  },
-  "6QPNhLbYsvqLjCBW8V32oGCzNCnhXyoNnArqdPNXxirR": {
-   "name": "COMA / SOL",
-   "entry": 3.057280393201713e-05,
-   "qty": 1365887.1490118122,
-   "usd": 41.759,
-   "t_entry": 1785092163,
-   "bot_avg_trade_usd": 417.59
+   "bot_avg_trade_usd": 5.76,
+   "mark": 0.016031313747485378,
+   "mark_ret": 0.012113455418281793
   },
   "6DJVgshjjHRjGZQarBvAQ3oUd8pWEqWQ7A6NAFCky76v": {
    "name": "SUMMER / SOL",
@@ -24,17 +18,25 @@
    "qty": 1287177.580121735,
    "usd": 50,
    "t_entry": 1785092163,
-   "bot_avg_trade_usd": 558.16
+   "bot_avg_trade_usd": 558.16,
+   "mark": 3.8738918775615654e-05,
+   "mark_ret": -0.002722645477411967
   },
-  "sVZP75VBYmTAeCErqsFHmX9w8fVWt9n9stPXh4gFyRF": {
-   "name": "BULLGOD / SOL",
-   "entry": 9.168964953282066e-05,
-   "qty": 54531.782218343316,
+  "BbNEQqUcHQY55bVDvvs56vtwFRgzYwePUNCp7YDJCwtL": {
+   "name": "DOME / SOL",
+   "entry": 0.005845820704118965,
+   "qty": 1180.8436059518806,
+   "usd": 6.9030000000000005,
+   "t_entry": 1785092342,
+   "bot_avg_trade_usd": 69.03
+  },
+  "F2Qiryq71XX5vPGEYuGEeC5nEiuWQNajP5xRkqiqBCLy": {
+   "name": "SHARKCAT / SOL",
+   "entry": 6.905644784520986e-05,
+   "qty": 72404.53507263373,
    "usd": 5,
-   "t_entry": 1785092163,
-   "bot_avg_trade_usd": 8.07,
-   "mark": 9.577852751588578e-05,
-   "mark_ret": 0.0445947607379773
+   "t_entry": 1785092342,
+   "bot_avg_trade_usd": 7.95
   }
  },
  "closed": [
@@ -202,7 +204,37 @@
    "reason": "TP",
    "pnl": 0.2548,
    "t_exit": 1785092163
+  },
+  {
+   "name": "COMA / SOL",
+   "entry": 3.057280393201713e-05,
+   "qty": 1365887.1490118122,
+   "usd": 41.759,
+   "t_entry": 1785092163,
+   "bot_avg_trade_usd": 417.59,
+   "mark": 2.3182464801829477e-05,
+   "mark_ret": -0.2417291899892826,
+   "addr": "6QPNhLbYsvqLjCBW8V32oGCzNCnhXyoNnArqdPNXxirR",
+   "exit": 2.2718815505792888e-05,
+   "reason": "SL",
+   "pnl": -10.7277,
+   "t_exit": 1785092342
+  },
+  {
+   "name": "BULLGOD / SOL",
+   "entry": 9.168964953282066e-05,
+   "qty": 54531.782218343316,
+   "usd": 5,
+   "t_entry": 1785092163,
+   "bot_avg_trade_usd": 8.07,
+   "mark": 0.0001036228678862756,
+   "mark_ret": 0.1301479328829085,
+   "addr": "sVZP75VBYmTAeCErqsFHmX9w8fVWt9n9stPXh4gFyRF",
+   "exit": 0.00010155041052855008,
+   "reason": "TP",
+   "pnl": 0.5377,
+   "t_exit": 1785092342
   }
  ],
- "realized_pnl": -40.591600375890174
+ "realized_pnl": -50.78153736463113
 }
