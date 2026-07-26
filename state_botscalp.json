@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 10028.278929223683,
+ "cash": 10008.439631886626,
  "positions": {
   "A98vTShHjYt5QpovbPN3FADrsmU9FNzUPnNavM21BaaZ": {
    "name": "BRODIE / SOL",
@@ -37,18 +37,8 @@
    "usd": 50,
    "t_entry": 1785096123,
    "bot_avg_trade_usd": 579.06,
-   "mark": 4.411062043044938e-05,
-   "mark_ret": 0.03521855927275386
-  },
-  "C5YzmeHpw85JZ6kWu8PAmBp9XxRcXCsDr9LBhQLd4vbU": {
-   "name": "memecoin / SOL",
-   "entry": 3.422145212704073e-05,
-   "qty": 737841.2788055897,
-   "usd": 25.25,
-   "t_entry": 1785096663,
-   "bot_avg_trade_usd": 252.5,
-   "mark": 3.375119472991278e-05,
-   "mark_ret": -0.013741596802561373
+   "mark": 4.401402069257295e-05,
+   "mark_ret": 0.032951489789379895
   },
   "4ewWmeUjE5ZYHTjsmvEzjY3vmEQUHebhoVGyLH11ZrfV": {
    "name": "Kumala / SOL",
@@ -67,16 +57,16 @@
    "usd": 5,
    "t_entry": 1785096843,
    "bot_avg_trade_usd": 41.27,
-   "mark": 0.02240661699905238,
-   "mark_ret": 0.02658295551328438
+   "mark": 0.022528172467965728,
+   "mark_ret": 0.03215214842362624
   },
-  "E6uivUhZhspzLuq6Vv8BKLqpKmUCNa9MxnMBrsWjrN8j": {
-   "name": "TRUMP / SOL",
-   "entry": 3.241571055327386e-05,
-   "qty": 333233.4789406318,
-   "usd": 10.802,
-   "t_entry": 1785097023,
-   "bot_avg_trade_usd": 108.02
+  "4C4EgeGtQVsY8XkRYH31RX1pAAegfV6Yy1Zra59bANpr": {
+   "name": "Erth / SOL",
+   "entry": 4.981709552318652e-05,
+   "qty": 686531.3933061738,
+   "usd": 34.201,
+   "t_entry": 1785097202,
+   "bot_avg_trade_usd": 342.01
   }
  },
  "closed": [
@@ -1804,7 +1794,97 @@
    "reason": "SL",
    "pnl": -10.1658,
    "t_exit": 1785097023
+  },
+  {
+   "name": "memecoin / SOL",
+   "entry": 3.422145212704073e-05,
+   "qty": 737841.2788055897,
+   "usd": 25.25,
+   "t_entry": 1785096663,
+   "bot_avg_trade_usd": 252.5,
+   "mark": 2.7891145754669088e-05,
+   "mark_ret": -0.1849806474860145,
+   "addr": "C5YzmeHpw85JZ6kWu8PAmBp9XxRcXCsDr9LBhQLd4vbU",
+   "exit": 2.7333322839575705e-05,
+   "reason": "SL",
+   "pnl": -5.0823,
+   "t_exit": 1785097202
+  },
+  {
+   "name": "TRUMP / SOL",
+   "entry": 3.241571055327386e-05,
+   "qty": 333233.4789406318,
+   "usd": 10.802,
+   "t_entry": 1785097023,
+   "bot_avg_trade_usd": 108.02,
+   "mark": 5.209004103100563e-05,
+   "mark_ret": 0.6069381217295187,
+   "addr": "E6uivUhZhspzLuq6Vv8BKLqpKmUCNa9MxnMBrsWjrN8j",
+   "exit": 5.1048240210385515e-05,
+   "reason": "TP",
+   "pnl": 6.209,
+   "t_exit": 1785097202
+  },
+  {
+   "name": "HOOD / SOL",
+   "entry": 1.458599882232371e-05,
+   "qty": 3427944.881188085,
+   "usd": 50,
+   "t_entry": 1785097202,
+   "bot_avg_trade_usd": 781.48,
+   "mark": 1.643372612097512e-05,
+   "mark_ret": 0.12667814670487165,
+   "addr": "DbkLT59b8K8wwxqeAy5mcKB4rAPUPtjz4VsoRW4PVp6i",
+   "exit": 1.6105051598555617e-05,
+   "reason": "TP",
+   "pnl": 5.2072,
+   "t_exit": 1785097202
+  },
+  {
+   "name": "#memecoin / SOL",
+   "entry": 0.0004126404465396994,
+   "qty": 76689.04070206189,
+   "usd": 31.645,
+   "t_entry": 1785097202,
+   "bot_avg_trade_usd": 316.45,
+   "mark": 0.00025991535269435326,
+   "mark_ret": -0.37011663574441367,
+   "addr": "AnnAkvAWiHLHFHgb6v2EJj2tBBYUAU9VA2WCxUoT8JJa",
+   "exit": 0.0002547170456404662,
+   "reason": "SL",
+   "pnl": -12.111,
+   "t_exit": 1785097202
+  },
+  {
+   "name": "#memecoin / SOL",
+   "entry": 1.4772033532022398e-05,
+   "qty": 2510216.343580378,
+   "usd": 37.081,
+   "t_entry": 1785097202,
+   "bot_avg_trade_usd": 370.81,
+   "mark": 8.770263334786982e-06,
+   "mark_ret": -0.4062927547669687,
+   "addr": "6azedAHy36Wy12yNPHwjfByaMvPTRjPrBpSAEs4s9MK4",
+   "exit": 8.594858068091242e-06,
+   "reason": "SL",
+   "pnl": -15.506,
+   "t_exit": 1785097202
+  },
+  {
+   "name": "SHARKCAT / SOL",
+   "entry": 0.00011719614471864413,
+   "qty": 42663.519452825276,
+   "usd": 5,
+   "t_entry": 1785097202,
+   "bot_avg_trade_usd": 3.03,
+   "mark": 0.00010985052579883817,
+   "mark_ret": -0.06267799113563655,
+   "addr": "F2Qiryq71XX5vPGEYuGEeC5nEiuWQNajP5xRkqiqBCLy",
+   "exit": 0.0001076535152828614,
+   "reason": "SL",
+   "pnl": -0.4071,
+   "t_exit": 1785097202
   }
  ],
- "realized_pnl": 216.89892922367974
+ "realized_pnl": 195.2086318866232
 }
