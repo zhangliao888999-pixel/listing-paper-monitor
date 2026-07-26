@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 10263.527842627807,
+ "cash": 10199.374193245349,
  "positions": {
   "fEtm4Bp4FAv6bDcsSndLq97inj4n1WPnkp6w9GCUfXd": {
    "name": "clude / SOL",
@@ -39,8 +39,8 @@
    "usd": 5,
    "t_entry": 1785100083,
    "bot_avg_trade_usd": 6.09,
-   "mark": 0.0003911520623002791,
-   "mark_ret": 0.023265624007734464
+   "mark": 0.0003892783599470521,
+   "mark_ret": 0.01836396198809842
   },
   "9Woki8odfFL7Ss9gGk6NaeDhd6RvDQv3GvSaUKMeqcx6": {
    "name": "VORF / SOL",
@@ -75,16 +75,26 @@
    "usd": 5,
    "t_entry": 1785100803,
    "bot_avg_trade_usd": 30.22,
-   "mark": 3.5289185111959918,
-   "mark_ret": -0.002242844177650194
+   "mark": 3.5346228719331823,
+   "mark_ret": -0.0006300081977694827
   },
-  "F2Qiryq71XX5vPGEYuGEeC5nEiuWQNajP5xRkqiqBCLy": {
-   "name": "SHARKCAT / SOL",
-   "entry": 0.000136693301285013,
-   "qty": 36578.23721423427,
-   "usd": 5,
-   "t_entry": 1785100803,
-   "bot_avg_trade_usd": 4.6
+  "DbkLT59b8K8wwxqeAy5mcKB4rAPUPtjz4VsoRW4PVp6i": {
+   "name": "HOOD / SOL",
+   "entry": 1.9043445580787437e-05,
+   "qty": 2625575.281946038,
+   "usd": 50,
+   "t_entry": 1785100983,
+   "bot_avg_trade_usd": 767.85
+  },
+  "6VEtgZd1tobR4PohnkDUo8NYB8nzG5Y7cfkUqXdfkDH3": {
+   "name": "PONS / SOL",
+   "entry": 1.3012310815177322e-05,
+   "qty": 1419348.2051211146,
+   "usd": 18.469,
+   "t_entry": 1785100983,
+   "bot_avg_trade_usd": 184.69,
+   "mark": 1.3168869971437115e-05,
+   "mark_ret": 0.012031618248557807
   }
  },
  "closed": [
@@ -3117,7 +3127,22 @@
    "reason": "TP",
    "pnl": 12.1638,
    "t_exit": 1785100803
+  },
+  {
+   "name": "SHARKCAT / SOL",
+   "entry": 0.000136693301285013,
+   "qty": 36578.23721423427,
+   "usd": 5,
+   "t_entry": 1785100803,
+   "bot_avg_trade_usd": 4.6,
+   "mark": 0.00012038357594163887,
+   "mark_ret": -0.1193162005017896,
+   "addr": "F2Qiryq71XX5vPGEYuGEeC5nEiuWQNajP5xRkqiqBCLy",
+   "exit": 0.00011797590442280609,
+   "reason": "SL",
+   "pnl": -0.6846,
+   "t_exit": 1785100983
   }
  ],
- "realized_pnl": 371.70084262779454
+ "realized_pnl": 371.0161932453358
 }
