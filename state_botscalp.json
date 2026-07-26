@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 9991.80079716868,
+ "cash": 9897.49530567746,
  "positions": {
   "2QP2wZRPTvDF9yo6h2BTDH4jGB3dyHhJSpPrS4eSs5xU": {
    "name": "GDWR / USDC",
@@ -39,8 +39,8 @@
    "usd": 50,
    "t_entry": 1785095943,
    "bot_avg_trade_usd": 702.56,
-   "mark": 1.4551670601684248e-05,
-   "mark_ret": -0.002353504964426767
+   "mark": 1.4721740423557102e-05,
+   "mark_ret": 0.009306294542245519
   },
   "A98vTShHjYt5QpovbPN3FADrsmU9FNzUPnNavM21BaaZ": {
    "name": "BRODIE / SOL",
@@ -49,8 +49,8 @@
    "usd": 50,
    "t_entry": 1785095943,
    "bot_avg_trade_usd": 735.23,
-   "mark": 9.340818552517424e-06,
-   "mark_ret": -0.002290313509383135
+   "mark": 9.419806908149407e-06,
+   "mark_ret": 0.006146575301903878
   },
   "5Jv3yDU7TCLzviS3K5JFPJSwTQ8sQ7G358S6isVdLB2J": {
    "name": "Analos / SOL",
@@ -77,8 +77,36 @@
    "usd": 5,
    "t_entry": 1785095943,
    "bot_avg_trade_usd": 43.54,
-   "mark": 0.021252660752002498,
-   "mark_ret": 0.03449507100298943
+   "mark": 0.021361930216719907,
+   "mark_ret": 0.03981387432744565
+  },
+  "AnnAkvAWiHLHFHgb6v2EJj2tBBYUAU9VA2WCxUoT8JJa": {
+   "name": "#memecoin / SOL",
+   "entry": 0.00022626741055733004,
+   "qty": 160518.03443782945,
+   "usd": 36.32,
+   "t_entry": 1785096123,
+   "bot_avg_trade_usd": 363.2
+  },
+  "6DJVgshjjHRjGZQarBvAQ3oUd8pWEqWQ7A6NAFCky76v": {
+   "name": "SUMMER / SOL",
+   "entry": 4.260995906162783e-05,
+   "qty": 1173434.5937221807,
+   "usd": 50,
+   "t_entry": 1785096123,
+   "bot_avg_trade_usd": 579.06,
+   "mark": 4.193748733199887e-05,
+   "mark_ret": -0.01578203181693627
+  },
+  "BgUB1ywYTbckE4ZBvAHi2jFu9L7xj18CAtFhJZP5Dm5b": {
+   "name": "CXMT / SOL",
+   "entry": 2.780356990485871,
+   "qty": 1.7983302205830207,
+   "usd": 5,
+   "t_entry": 1785096123,
+   "bot_avg_trade_usd": 31.73,
+   "mark": 2.872288356971611,
+   "mark_ret": 0.03306459091416003
   }
  },
  "closed": [
@@ -1416,7 +1444,37 @@
    "reason": "TP",
    "pnl": 11.3061,
    "t_exit": 1785095943
+  },
+  {
+   "name": "memecoin / SOL",
+   "entry": 4.281924406874036e-05,
+   "qty": 594522.4058400544,
+   "usd": 25.457,
+   "t_entry": 1785096123,
+   "bot_avg_trade_usd": 254.57,
+   "mark": 3.50462752249435e-05,
+   "mark_ret": -0.1815298007437599,
+   "addr": "C5YzmeHpw85JZ6kWu8PAmBp9XxRcXCsDr9LBhQLd4vbU",
+   "exit": 3.434534972044463e-05,
+   "reason": "SL",
+   "pnl": -5.0379,
+   "t_exit": 1785096123
+  },
+  {
+   "name": "#memecoin / SOL",
+   "entry": 9.891107017594792e-06,
+   "qty": 3746496.7201427678,
+   "usd": 37.057,
+   "t_entry": 1785096123,
+   "bot_avg_trade_usd": 370.57,
+   "mark": 1.0651972535392921e-05,
+   "mark_ret": 0.07692420236123865,
+   "addr": "6azedAHy36Wy12yNPHwjfByaMvPTRjPrBpSAEs4s9MK4",
+   "exit": 1.0438933084685063e-05,
+   "reason": "TP",
+   "pnl": 2.0524,
+   "t_exit": 1785096123
   }
  ],
- "realized_pnl": 140.2257971686717
+ "realized_pnl": 137.2403056774509
 }
