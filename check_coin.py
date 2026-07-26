@@ -118,7 +118,8 @@ def check_wallets(mint):
     n_holding = sum(1 for p in sell_pcts if p < 0.3)      # 卖掉不到30%算基本还拿着
     usd_still_held = sum(r.get("usd_value") or 0 for r in rows)
     usd_ever_invested = sum(r.get("total_cost") or 0 for r in rows)
-    exit_ratio = (1 - usd_still_held / usd_ever_invested) if usd_ever_invested else None
+    # 分母太小时(部分币的total_cost字段缺失/退化)除出来的比例会离谱地爆炸,不如直接判无效
+    exit_ratio = (1 - usd_still_held / usd_ever_invested) if usd_ever_invested >= 50 else None
 
     flags = []
     if n and n_suspicious / n >= 0.5:

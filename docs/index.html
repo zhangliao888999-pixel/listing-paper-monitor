@@ -229,6 +229,23 @@ function pctBadge(v) {
   return `<span class="badge ${cls}">${v >= 0 ? "+" : ""}${v.toFixed(1)}%</span>`;
 }
 
+function renderDiligence(d) {
+  if (!d) return `<span class="badge zero">排队中</span>`;
+  const parts = [];
+  if (d.staircase_flag) parts.push(`<span class="badge neg">疑似脚本拉盘</span>`);
+  if (d.exit_ratio != null) {
+    const pct = d.exit_ratio * 100;
+    const cls = pct >= 70 ? "neg" : pct <= 30 ? "pos" : "zero";
+    parts.push(`<span class="badge ${cls}">主力清仓${pct.toFixed(0)}%</span>`);
+  }
+  if (d.n_traders) {
+    const susCls = (d.n_suspicious / d.n_traders) >= 0.5 ? "neg" : "zero";
+    parts.push(`<span class="badge ${susCls}">可疑${d.n_suspicious}/${d.n_traders}</span>`);
+  }
+  if (!parts.length) parts.push(`<span class="badge zero">数据不足</span>`);
+  return parts.join(" ") + `<div style="font-size:10px;color:var(--dim);margin-top:2px;">${d.checked_min_ago.toFixed(0)}分钟前查</div>`;
+}
+
 function renderScreenerTable(cands) {
   if (!cands.length) return `<div class="empty">当前无符合条件的候选币(年龄/流动性/活跃度过滤后)</div>`;
   const rows = cands.map(c => `<tr>
@@ -239,9 +256,10 @@ function renderScreenerTable(cands) {
       <td>${pctBadge(c.chg_15m)}</td>
       <td>${pctBadge(c.chg_1h)}</td>
       <td>${c.buys_15m}/${c.sells_15m}</td>
+      <td>${renderDiligence(c.diligence)}</td>
     </tr>`).join("");
   return `<div class="table-wrap"><table>
-    <thead><tr><th>币种</th><th>年龄</th><th>流动性</th><th>15m成交额</th><th>15m涨跌</th><th>1h涨跌</th><th>15m买/卖笔数</th></tr></thead>
+    <thead><tr><th>币种</th><th>年龄</th><th>流动性</th><th>15m成交额</th><th>15m涨跌</th><th>1h涨跌</th><th>15m买/卖笔数</th><th>入场前尽调</th></tr></thead>
     <tbody>${rows}</tbody></table></div>`;
 }
 

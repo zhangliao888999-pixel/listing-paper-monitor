@@ -27,6 +27,12 @@ screener_state_local.json / screener_candidates_local.json / screener_local.log�
 产生git冲突。看盘页面(docs/index.html)会同时拉取两份候选文件并按地址去重合并展示，
 本地开机时能更高频地补上云端调度粒度不够细导致的漏检。
 
+尽调数据(check_coin.py同款检查，直接复用): 每个候选币附带K线脚本化检测+GMGN主力持仓
+状态(见check_coin.py顶部说明——只报告事实，不产出买卖建议)。GMGN有明确的限速/封锁
+(实测连续查十几次后403)，所以尽调不是每轮都对所有候选重查一遍，而是缓存在
+screener_enrich_cache(_local).json 里，每个币最多每 ENRICH_REFRESH_MIN 分钟重查一次，
+每轮最多查 MAX_ENRICH_PER_CYCLE 个(优先给从没查过的新候选)。
+
 输出 screener_candidates(_local).json，供看盘页面直接展示。
 """
 import json
@@ -37,12 +43,15 @@ from pathlib import Path
 
 import requests
 
+from check_coin import check_staircase, check_wallets
+
 HERE = Path(__file__).parent
 INSTANCE = "local" if os.environ.get("SCREENER_LOCAL") else "cloud"
 SUFFIX = "_local" if INSTANCE == "local" else ""
 OUT_F = HERE / f"screener_candidates{SUFFIX}.json"
 STATE_F = HERE / f"screener_state{SUFFIX}.json"
 LOG_F = HERE / f"screener{SUFFIX}.log"
+ENRICH_CACHE_F = HERE / f"screener_enrich_cache{SUFFIX}.json"
 
 GT_BASE = "https://api.geckoterminal.com/api/v2"
 MIN_AGE_MIN = 8
@@ -54,6 +63,8 @@ MIN_TX_15M = 5           # 近15分钟买卖笔数门槛,纯按笔数卡(不再�
 NEW_POOLS_PAGES = 12     # 覆盖约10分钟的新池子创建量(约24个/分钟),配合定时任务间隔
 TRENDING_PAGES = 2
 MULTI_CHUNK = 30         # /pools/multi 单批最多30个地址
+MAX_ENRICH_PER_CYCLE = 6   # 每轮最多做几个尽调检查(GMGN容易被限速/封锁,不能贪多)
+ENRICH_REFRESH_MIN = 20    # 同一个币的尽调结果最多每隔这么久重查一次
 
 S = requests.Session()
 S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
@@ -156,8 +167,10 @@ def refresh_candidates(state):
     candidates = []
     for i in range(0, len(in_window), MULTI_CHUNK):
         chunk = in_window[i:i + MULTI_CHUNK]
-        d = get(f"{GT_BASE}/networks/solana/pools/multi/{','.join(chunk)}")
+        d = get(f"{GT_BASE}/networks/solana/pools/multi/{','.join(chunk)}", {"include": "base_token"})
         rows = (d or {}).get("data") or []
+        mint_by_id = {inc["id"]: inc["attributes"].get("address")
+                     for inc in ((d or {}).get("included") or []) if inc.get("type") == "token"}
         for row in rows:
             addr = pool_id_addr(row)
             w = tracked.get(addr)
@@ -168,9 +181,64 @@ def refresh_candidates(state):
                 continue
             if (p["buys_15m"] + p["sells_15m"]) < MIN_TX_15M:
                 continue  # 近15分钟买卖笔数不够,判定为已死(或坏数据),不看金额
+            base_tok_id = (row.get("relationships", {}).get("base_token", {}).get("data", {}) or {}).get("id")
+            p["mint"] = mint_by_id.get(base_tok_id)
             candidates.append(p)
         time.sleep(0.5)
     return candidates
+
+
+def load_enrich_cache():
+    if ENRICH_CACHE_F.exists():
+        try:
+            return json.loads(ENRICH_CACHE_F.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {}
+
+
+def save_enrich_cache(cache):
+    ENRICH_CACHE_F.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+
+
+def enrich_candidates(candidates):
+    """给候选币附带check_coin.py同款尽调(K线脚本化+GMGN主力持仓状态)。
+    只报告事实,不产出买卖建议——只是把check_coin.py里已有的检查搬到看盘页面上
+    自动跑，用户不用每次手动敲命令。GMGN容易被限速，所以带缓存、限量、分优先级。"""
+    cache = load_enrich_cache()
+    stale = [c for c in candidates if NOW - cache.get(c["addr"], {}).get("checked_at", 0) > ENRICH_REFRESH_MIN * 60]
+    stale.sort(key=lambda c: cache.get(c["addr"], {}).get("checked_at", 0))  # 从没查过的(0)排最前面
+    to_check = stale[:MAX_ENRICH_PER_CYCLE]
+
+    for c in to_check:
+        stair = check_staircase(c["addr"])
+        wallets = check_wallets(c.get("mint"))
+        cache[c["addr"]] = {
+            "checked_at": NOW,
+            "staircase_flag": stair.get("flag", False), "up_ratio": stair.get("up_ratio"),
+            "n_traders": wallets.get("n_traders"), "n_suspicious": wallets.get("n_suspicious"),
+            "exit_ratio": wallets.get("exit_ratio"), "wallet_verdict": wallets.get("verdict"),
+        }
+        time.sleep(2)  # GMGN限速敏感,查完一个歇一下
+
+    for c in candidates:
+        e = cache.get(c["addr"])
+        if e:
+            c["diligence"] = {
+                "checked_min_ago": round((NOW - e["checked_at"]) / 60, 1),
+                "staircase_flag": e["staircase_flag"], "up_ratio": e["up_ratio"],
+                "n_traders": e["n_traders"], "n_suspicious": e["n_suspicious"],
+                "exit_ratio": e["exit_ratio"], "wallet_verdict": e["wallet_verdict"],
+            }
+        else:
+            c["diligence"] = None  # 还没排到,等下一轮或下下轮
+
+    # 缓存只留当前还在候选窗口里的币,过期的清掉防止无限增长
+    live_addrs = {c["addr"] for c in candidates}
+    for addr in list(cache.keys()):
+        if addr not in live_addrs:
+            del cache[addr]
+    save_enrich_cache(cache)
 
 
 def prune(state):
@@ -188,12 +256,14 @@ def main():
     cands = refresh_candidates(state)
     n_pruned = prune(state)
     save_state(state)
+    enrich_candidates(cands)
 
     cands.sort(key=lambda p: p["chg_1h"], reverse=True)
     out = {"updated_at": NOW, "updated_at_str": NOW_STR, "n_candidates": len(cands),
           "candidates": cands}
     OUT_F.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-    log(f"CYCLE OK: 新发现{n_new} 追踪中{len(state['tracked'])} 清理{n_pruned} -> 筛出候选{len(cands)}")
+    n_diligenced = sum(1 for c in cands if c.get("diligence"))
+    log(f"CYCLE OK: 新发现{n_new} 追踪中{len(state['tracked'])} 清理{n_pruned} -> 筛出候选{len(cands)}(已尽调{n_diligenced})")
 
 
 if __name__ == "__main__":
