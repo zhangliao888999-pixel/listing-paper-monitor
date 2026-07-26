@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 9887.353861848389,
+ "cash": 9854.907818477162,
  "positions": {
   "BbNEQqUcHQY55bVDvvs56vtwFRgzYwePUNCp7YDJCwtL": {
    "name": "DOME / SOL",
@@ -25,6 +25,24 @@
    "usd": 5,
    "t_entry": 1785093602,
    "bot_avg_trade_usd": 7.22
+  },
+  "2trerNYnU4qBgALW5Xh1tAj6EMewAzrCDUpmAGNV4CtG": {
+   "name": "SalaryDog / SOL",
+   "entry": 0.00012795915807221498,
+   "qty": 39074.967945461176,
+   "usd": 5,
+   "t_entry": 1785093783,
+   "bot_avg_trade_usd": 4.18
+  },
+  "9V8rtGEXGVvTCyB9cv8vts76NtmXiSQ65B2vkrJDDafQ": {
+   "name": "Index / SOL",
+   "entry": 0.0006119767237746864,
+   "qty": 8215.998753983946,
+   "usd": 5.0280000000000005,
+   "t_entry": 1785093783,
+   "bot_avg_trade_usd": 50.28,
+   "mark": 0.0005999771801712612,
+   "mark_ret": -0.019607843137254943
   }
  },
  "closed": [
@@ -432,7 +450,67 @@
    "reason": "SL",
    "pnl": -0.6301,
    "t_exit": 1785093602
+  },
+  {
+   "name": "SHARKCAT / SOL",
+   "entry": 0.00011578520654607337,
+   "qty": 43183.40960086637,
+   "usd": 5,
+   "t_entry": 1785093783,
+   "bot_avg_trade_usd": 4.42,
+   "mark": 9.104159470968774e-05,
+   "mark_ret": -0.2137027049870971,
+   "addr": "F2Qiryq71XX5vPGEYuGEeC5nEiuWQNajP5xRkqiqBCLy",
+   "exit": 8.922076281549399e-05,
+   "reason": "SL",
+   "pnl": -1.1471,
+   "t_exit": 1785093783
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 2.832254693218525e-05,
+   "qty": 1247980.9843596169,
+   "usd": 35.346,
+   "t_entry": 1785093783,
+   "bot_avg_trade_usd": 353.46,
+   "mark": 3.363413488790184e-06,
+   "mark_ret": -0.8812460794276923,
+   "addr": "DTdnkYuxUcVwLqyodSJL5d13im7oyZovuvoDgxoEFmxc",
+   "exit": 3.2961452190143804e-06,
+   "reason": "SL",
+   "pnl": -31.2325,
+   "t_exit": 1785093783
+  },
+  {
+   "name": "COMA / SOL",
+   "entry": 5.440958783855273e-05,
+   "qty": 530715.2865352065,
+   "usd": 28.876,
+   "t_entry": 1785093783,
+   "bot_avg_trade_usd": 288.76,
+   "mark": 4.294016971233637e-05,
+   "mark_ret": -0.21079773955004177,
+   "addr": "6QPNhLbYsvqLjCBW8V32oGCzNCnhXyoNnArqdPNXxirR",
+   "exit": 4.2081366318089644e-05,
+   "reason": "SL",
+   "pnl": -6.5428,
+   "t_exit": 1785093783
+  },
+  {
+   "name": "Yeontan / SOL",
+   "entry": 0.00011115503800130827,
+   "qty": 361773.975548699,
+   "usd": 40.213,
+   "t_entry": 1785093783,
+   "bot_avg_trade_usd": 402.13,
+   "mark": 0.00015997514960648716,
+   "mark_ret": 0.4392073673224266,
+   "addr": "BdEXFbhgST9W4gJpLcwhmg54UXnkZH3mpKx4vraPybdh",
+   "exit": 0.0001567756466143574,
+   "reason": "TP",
+   "pnl": 16.5043,
+   "t_exit": 1785093783
   }
  ],
- "realized_pnl": -49.70113815161073
+ "realized_pnl": -72.11918152283776
 }
