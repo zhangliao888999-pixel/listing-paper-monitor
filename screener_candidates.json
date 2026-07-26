@@ -1,22 +1,6 @@
 {
- "updated_at": 1785028302,
- "updated_at_str": "2026-07-26 01:11 UTC",
- "n_candidates": 1,
- "candidates": [
-  {
-   "addr": "FptVwkpv2mN2VYKzTiCkC6yGoNvGTmA9yppkcDVMuHj",
-   "name": "OGDOGE / SOL",
-   "age_min": 215.25,
-   "created": 1785015387.0,
-   "price": 0.0050118696311566265,
-   "liq": 17760.8926,
-   "vol_15m": 20567.2456574701,
-   "vol_1h": 99200.5322806205,
-   "chg_15m": 21.836,
-   "chg_1h": 75.912,
-   "buys_15m": 146,
-   "sells_15m": 139,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/FptVwkpv2mN2VYKzTiCkC6yGoNvGTmA9yppkcDVMuHj"
-  }
- ]
+ "updated_at": 1785040836,
+ "updated_at_str": "2026-07-26 04:40 UTC",
+ "n_candidates": 0,
+ "candidates": []
 }
