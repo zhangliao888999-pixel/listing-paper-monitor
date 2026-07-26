@@ -64,7 +64,13 @@ NEW_POOLS_PAGES = 12     # 覆盖约10分钟的新池子创建量(约24个/分�
 TRENDING_PAGES = 2
 MULTI_CHUNK = 30         # /pools/multi 单批最多30个地址
 MAX_ENRICH_PER_CYCLE = 6   # 每轮最多做几个尽调检查(GMGN容易被限速/封锁,不能贪多)
-ENRICH_REFRESH_MIN = 20    # 同一个币的尽调结果最多每隔这么久重查一次
+ENRICH_REFRESH_MIN = 20    # 同一个币的GMGN主力持仓尽调结果最多每隔这么久重查一次
+GT_REFRESH_MIN = 30        # K线形态+刷量检测(GeckoTerminal)的重查间隔,实测对所有候选每轮都查
+                           # 会把单轮耗时从1-3分钟推到5分钟+,所以也要缓存,不能来一轮查一轮
+
+EARLY_CHECK_MIN_AGE = 3    # 太新(<3分钟)基本还没几笔成交,查了也白查
+EARLY_CHECK_MAX_AGE = MIN_AGE_MIN  # 超过这个年龄就已经进入正常候选流程,不需要"早期"检测了
+MAX_EARLY_CHECK_PER_CYCLE = 10     # 实测30个/轮明显拖慢单轮耗时(可能顶到GeckoTerminal限速retry),先保守一点
 
 S = requests.Session()
 S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
@@ -159,6 +165,29 @@ def discover(state):
     return n_new
 
 
+def check_early_bots(state):
+    """新币刚上线的3-8分钟内先查一次是不是机器人刷量(只用GeckoTerminal,不占GMGN配额)。
+    等一个池子正式进入候选年龄窗口(>=MIN_AGE_MIN)才检测就太晚了——用户明确要求
+    "新币刚上线就要盯着机器人"，所以在候选流程之前单独跑一遍，检测结果记在
+    tracked[addr]里跟着这个池子一路带到候选阶段(见refresh_candidates的early_bot_flag)。
+    每个池子只查一次(early_checked标记)，防止同一个池子被反复检测浪费配额。"""
+    tracked = state["tracked"]
+    todo = [addr for addr, w in tracked.items()
+           if not w.get("early_checked")
+           and EARLY_CHECK_MIN_AGE <= (NOW - w["created"]) / 60 <= EARLY_CHECK_MAX_AGE]
+    todo.sort(key=lambda addr: tracked[addr]["created"])  # 快要超过窗口的优先查,不然就再也没机会了
+    to_check = todo[:MAX_EARLY_CHECK_PER_CYCLE]
+    n_bot = 0
+    for addr in to_check:
+        result = check_scalping(addr)
+        tracked[addr]["early_checked"] = True
+        tracked[addr]["early_bot_flag"] = result.get("flag", False)
+        if result.get("flag"):
+            n_bot += 1
+        time.sleep(0.3)
+    return len(to_check), n_bot
+
+
 def refresh_candidates(state):
     """对追踪列表中处于候选年龄窗口的池子,批量刷新最新数据并过滤"""
     tracked = state["tracked"]
@@ -183,6 +212,7 @@ def refresh_candidates(state):
                 continue  # 近15分钟买卖笔数不够,判定为已死(或坏数据),不看金额
             base_tok_id = (row.get("relationships", {}).get("base_token", {}).get("data", {}) or {}).get("id")
             p["mint"] = mint_by_id.get(base_tok_id)
+            p["early_bot_flag"] = w.get("early_bot_flag")  # None=太快进候选没来得及早期检测
             candidates.append(p)
         time.sleep(0.5)
     return candidates
@@ -220,20 +250,29 @@ def enrich_candidates(candidates):
 
     for c in to_check:
         wallets = check_wallets(c.get("mint"))
-        cache[c["addr"]] = {
+        e = cache.setdefault(c["addr"], {})  # 用setdefault+update,不要整个替换,免得把下面GT那部分缓存的字段冲掉
+        e.update({
             "checked_at": NOW,
             "n_traders": wallets.get("n_traders"), "n_suspicious": wallets.get("n_suspicious"),
             "exit_ratio": wallets.get("exit_ratio"), "wallet_verdict": wallets.get("verdict"),
-        }
+        })
         time.sleep(2)  # GMGN限速敏感,查完一个歇一下
 
     for c in candidates:
-        stair = check_staircase(c["addr"])
-        scalp = check_scalping(c["addr"])
-        c["staircase_flag"] = stair.get("flag", False)
-        c["scalping_flag"] = scalp.get("flag", False)
-        e = cache.get(c["addr"])
-        if e:
+        e = cache.setdefault(c["addr"], {})
+        if NOW - e.get("gt_checked_at", 0) > GT_REFRESH_MIN * 60:
+            # 实测"每轮都对所有候选查K线+刷量"直接把单轮耗时从1-3分钟推到5分钟+
+            # (每个候选2个GeckoTerminal请求,候选一多就堆起来了),所以这两项也要缓存/限频，
+            # 跟GMGN那部分用同一个cache文件但独立的时间戳
+            stair = check_staircase(c["addr"])
+            scalp = check_scalping(c["addr"])
+            e["gt_checked_at"] = NOW
+            e["staircase_flag"] = stair.get("flag", False)
+            e["scalping_flag"] = scalp.get("flag", False)
+            time.sleep(0.3)
+        c["staircase_flag"] = e.get("staircase_flag", False)
+        c["scalping_flag"] = e.get("scalping_flag", False)
+        if "checked_at" in e:
             c["diligence"] = {
                 "checked_min_ago": round((NOW - e["checked_at"]) / 60, 1),
                 "staircase_flag": c["staircase_flag"], "scalping_flag": c["scalping_flag"],
@@ -264,20 +303,26 @@ def prune(state):
 def main():
     state = load_state()
     n_new = discover(state)
+    n_early_checked, n_early_bot = check_early_bots(state)
     cands = refresh_candidates(state)
     n_pruned = prune(state)
     save_state(state)
     enrich_candidates(cands)
 
     # 疑似刷量机器人/脚本化拉盘的排到最后面(不是排除,万一误判还能看到),
-    # 组内仍按1h涨跌排序
-    cands.sort(key=lambda p: (p.get("scalping_flag") or p.get("staircase_flag") or False, -p["chg_1h"]))
+    # 组内仍按1h涨跌排序;"出生就有机器人"跟"现在检测到机器人"都算在内
+    def is_flagged(p):
+        return bool(p.get("scalping_flag") or p.get("staircase_flag") or p.get("early_bot_flag"))
+    cands.sort(key=lambda p: (is_flagged(p), -p["chg_1h"]))
     out = {"updated_at": NOW, "updated_at_str": NOW_STR, "n_candidates": len(cands),
           "candidates": cands}
     OUT_F.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     n_diligenced = sum(1 for c in cands if c.get("diligence"))
-    n_bot = sum(1 for c in cands if c.get("scalping_flag") or c.get("staircase_flag"))
-    log(f"CYCLE OK: 新发现{n_new} 追踪中{len(state['tracked'])} 清理{n_pruned} -> 筛出候选{len(cands)}(已尽调{n_diligenced} 疑似机器人{n_bot})")
+    n_bot = sum(1 for c in cands if is_flagged(c))
+    n_early_bot_in_cands = sum(1 for c in cands if c.get("early_bot_flag"))
+    log(f"CYCLE OK: 新发现{n_new} 追踪中{len(state['tracked'])} 清理{n_pruned} -> 筛出候选{len(cands)}"
+       f"(已尽调{n_diligenced} 疑似机器人{n_bot} 出生即机器人{n_early_bot_in_cands}) "
+       f"早期检测{n_early_checked}个(其中机器人{n_early_bot}个)")
 
 
 if __name__ == "__main__":

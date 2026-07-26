@@ -232,6 +232,7 @@ function pctBadge(v) {
 function renderDiligence(c) {
   const d = c.diligence;
   const parts = [];
+  if (c.early_bot_flag) parts.push(`<span class="badge neg">上线即机器人</span>`);
   if (c.staircase_flag) parts.push(`<span class="badge neg">疑似脚本拉盘</span>`);
   if (c.scalping_flag) parts.push(`<span class="badge neg">疑似刷量机器人</span>`);
   if (!d) {
@@ -298,7 +299,7 @@ async function loadScreener() {
     }
   }
   // 疑似刷量/脚本拉盘的排到最后面(不是排除,只是不占靠前的注意力),组内仍按1h涨跌排序
-  const isFlagged = c => c.scalping_flag || c.staircase_flag;
+  const isFlagged = c => c.scalping_flag || c.staircase_flag || c.early_bot_flag;
   const cands = [...merged.values()].sort((a, b) => (isFlagged(a) - isFlagged(b)) || (b.chg_1h - a.chg_1h));
 
   const subParts = [];
