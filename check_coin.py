@@ -162,9 +162,11 @@ def check_wallets(mint):
     sell_pcts = [r.get("sell_amount_percentage") for r in rows if r.get("sell_amount_percentage") is not None]
     n_exited = sum(1 for p in sell_pcts if p >= 0.7)     # 卖掉70%+算基本清仓
     n_holding = sum(1 for p in sell_pcts if p < 0.3)      # 卖掉不到30%算基本还拿着
-    usd_still_held = sum(r.get("usd_value") or 0 for r in rows)
-    usd_ever_invested = sum(r.get("total_cost") or 0 for r in rows)
-    # 分母太小时(部分币的total_cost字段缺失/退化)除出来的比例会离谱地爆炸,不如直接判无效
+    # 单个钱包的total_cost如果小到几乎为0(数据缺失/退化)，它当前的持仓市值再小
+    # 也能把汇总比例炸出几百%的离谱数字，所以先把这种钱包整个排除，而不是只在汇总层面设下限
+    solid = [r for r in rows if (r.get("total_cost") or 0) >= 5]
+    usd_still_held = sum(r.get("usd_value") or 0 for r in solid)
+    usd_ever_invested = sum(r.get("total_cost") or 0 for r in solid)
     exit_ratio = (1 - usd_still_held / usd_ever_invested) if usd_ever_invested >= 50 else None
 
     flags = []

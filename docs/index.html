@@ -235,8 +235,14 @@ function renderDiligence(d) {
   if (d.staircase_flag) parts.push(`<span class="badge neg">疑似脚本拉盘</span>`);
   if (d.exit_ratio != null) {
     const pct = d.exit_ratio * 100;
-    const cls = pct >= 70 ? "neg" : pct <= 30 ? "pos" : "zero";
-    parts.push(`<span class="badge ${cls}">主力清仓${pct.toFixed(0)}%</span>`);
+    if (pct < 0) {
+      // 负数意味着当前持仓市值反而超过了历史投入成本(还在裸持大额浮盈没卖)，
+      // 不是"清仓比例"这个说法本身的反义,数字上没有下限,显示原始百分比没有意义
+      parts.push(`<span class="badge pos">主力浮盈未卖</span>`);
+    } else {
+      const cls = pct >= 70 ? "neg" : pct <= 30 ? "pos" : "zero";
+      parts.push(`<span class="badge ${cls}">主力清仓${pct.toFixed(0)}%</span>`);
+    }
   }
   if (d.n_traders) {
     const susCls = (d.n_suspicious / d.n_traders) >= 0.5 ? "neg" : "zero";
