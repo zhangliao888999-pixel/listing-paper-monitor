@@ -1,15 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12657.91294766143,
+ "cash": 12745.121529643053,
  "positions": {
-  "DMPWHE64eWU1J4z36PN4NVdNh5kZspJzctuiN1P3ubeK": {
-   "name": "Kabosu / SOL",
-   "entry": 1.9607342589625756e-05,
-   "qty": 2043826.1746496516,
-   "usd": 40.074000000000005,
-   "t_entry": 1785107643,
-   "bot_avg_trade_usd": 400.74
-  },
   "7NrFbXYvAzHEnnowdLVx1SHh8C4EdzNSSGdtuxqtHbbf": {
    "name": "TBB / SOL",
    "entry": 0.07700479192826352,
@@ -27,6 +19,22 @@
    "usd": 50,
    "t_entry": 1785107824,
    "bot_avg_trade_usd": 558.0
+  },
+  "DcZkfifAqajxP6rdYownKdEEimNXrHZFVZFdxpbyts7b": {
+   "name": "CATE / SOL",
+   "entry": 2.0680396675953016e-05,
+   "qty": 923386.543267067,
+   "usd": 19.096,
+   "t_entry": 1785108003,
+   "bot_avg_trade_usd": 190.96
+  },
+  "FedX2udeq9xKfEra5XwMka1V6DuSi4eKX2UkG235Lr5o": {
+   "name": "SalaryCat / SOL",
+   "entry": 0.0015349654088535186,
+   "qty": 3257.402395624375,
+   "usd": 5,
+   "t_entry": 1785108003,
+   "bot_avg_trade_usd": 37.1
   }
  },
  "closed": [
@@ -5594,7 +5602,67 @@
    "reason": "SL",
    "pnl": -4.4941,
    "t_exit": 1785107824
+  },
+  {
+   "name": "Kabosu / SOL",
+   "entry": 1.9607342589625756e-05,
+   "qty": 2043826.1746496516,
+   "usd": 40.074000000000005,
+   "t_entry": 1785107643,
+   "bot_avg_trade_usd": 400.74,
+   "mark": 5.4874491442080224e-05,
+   "mark_ret": 1.798670507808351,
+   "addr": "DMPWHE64eWU1J4z36PN4NVdNh5kZspJzctuiN1P3ubeK",
+   "exit": 5.377700161323862e-05,
+   "reason": "TP",
+   "pnl": 69.8368,
+   "t_exit": 1785108003
+  },
+  {
+   "name": "BRODIE / SOL",
+   "entry": 1.8596349212053405e-05,
+   "qty": 2688699.778104404,
+   "usd": 50,
+   "t_entry": 1785108003,
+   "bot_avg_trade_usd": 748.44,
+   "mark": 2.037928800883874e-05,
+   "mark_ret": 0.09587574294580925,
+   "addr": "4RYHTrkygVeoDWrvfqLadCrKfBtH7LZHPGfivKCpkuJV",
+   "exit": 1.9971702248661964e-05,
+   "reason": "TP",
+   "pnl": 3.6979,
+   "t_exit": 1785108003
+  },
+  {
+   "name": "thesis / SOL",
+   "entry": 1.2068363896911395e-05,
+   "qty": 1336883.7845641286,
+   "usd": 16.134,
+   "t_entry": 1785108003,
+   "bot_avg_trade_usd": 161.34,
+   "mark": 1.4070534878451969e-05,
+   "mark_ret": 0.1659024370364719,
+   "addr": "7jHjG1Vs5fm3GKsTZYwtULEZFnsshUUsVcPbMcVvup8W",
+   "exit": 1.378912418088293e-05,
+   "reason": "TP",
+   "pnl": 2.3005,
+   "t_exit": 1785108003
+  },
+  {
+   "name": "boobcoin / SOL",
+   "entry": 0.00012435967316624686,
+   "qty": 40205.959638667475,
+   "usd": 5,
+   "t_entry": 1785108003,
+   "bot_avg_trade_usd": 8.92,
+   "mark": 1.0034317197539469e-05,
+   "mark_ret": -0.9193121295508282,
+   "addr": "EdqS4GUp1AZwMd9A7MzmXFXKWmWiFpZcAFCVsB2ggoe",
+   "exit": 9.83363085358868e-06,
+   "reason": "SL",
+   "pnl": -4.6046,
+   "t_exit": 1785108003
   }
  ],
- "realized_pnl": 2775.505947661426
+ "realized_pnl": 2846.736529643049
 }
