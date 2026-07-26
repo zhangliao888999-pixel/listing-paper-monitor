@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 10230.306507036514,
+ "cash": 10185.251299513318,
  "positions": {
   "6LQSsvAtsbsCTib4DWDX77jpdu1GbeT4hXWFWPraGSzA": {
    "name": "PONS / SOL",
@@ -67,6 +67,34 @@
    "usd": 19.939,
    "t_entry": 1785099723,
    "bot_avg_trade_usd": 199.39
+  },
+  "BFE1Gs4UW3KcVH9XHaDVR4ExFxYQSx3zDjZMxr4UjP6h": {
+   "name": "KOON / SOL",
+   "entry": 1.801386540922207e-05,
+   "qty": 963313.5146616704,
+   "usd": 17.353,
+   "t_entry": 1785100083,
+   "bot_avg_trade_usd": 173.53
+  },
+  "4ewWmeUjE5ZYHTjsmvEzjY3vmEQUHebhoVGyLH11ZrfV": {
+   "name": "Kumala / SOL",
+   "entry": 7.916977823047849e-05,
+   "qty": 312429.82553256175,
+   "usd": 24.735,
+   "t_entry": 1785100083,
+   "bot_avg_trade_usd": 247.35,
+   "mark": 7.745554880711021e-05,
+   "mark_ret": -0.021652573263219455
+  },
+  "E8cpFtV6UdKMv24urFMNLbZBhZZTnXaf2d2TVADbRxbi": {
+   "name": "Fapcoin / CATE",
+   "entry": 0.00038225857795191854,
+   "qty": 13080.151207565348,
+   "usd": 5,
+   "t_entry": 1785100083,
+   "bot_avg_trade_usd": 6.09,
+   "mark": 0.0003839846223230346,
+   "mark_ret": 0.004515384273032996
   }
  },
  "closed": [
@@ -2844,7 +2872,37 @@
    "reason": "SL",
    "pnl": -1.603,
    "t_exit": 1785099903
+  },
+  {
+   "name": "HOOD / SOL",
+   "entry": 1.9043445580787437e-05,
+   "qty": 2625575.281946038,
+   "usd": 50,
+   "t_entry": 1785100083,
+   "bot_avg_trade_usd": 718.78,
+   "mark": 2.194008895802198e-05,
+   "mark_ret": 0.15210710503759417,
+   "addr": "DbkLT59b8K8wwxqeAy5mcKB4rAPUPtjz4VsoRW4PVp6i",
+   "exit": 2.150128717886154e-05,
+   "reason": "TP",
+   "pnl": 6.4532,
+   "t_exit": 1785100083
+  },
+  {
+   "name": "CALLOUT / SOL",
+   "entry": 2.8084524051793545e-05,
+   "qty": 178033.99447962828,
+   "usd": 5,
+   "t_entry": 1785100083,
+   "bot_avg_trade_usd": 7.88,
+   "mark": 3.3216789130415346e-06,
+   "mark_ret": -0.8817256469464931,
+   "addr": "5UkALcWzhCXpMmyUvxM6yVM5roh1W8H24JizaENhGTNU",
+   "exit": 3.255245334780704e-06,
+   "reason": "SL",
+   "pnl": -4.4205,
+   "t_exit": 1785100083
   }
  ],
- "realized_pnl": 337.4445070365049
+ "realized_pnl": 339.47729951330916
 }
