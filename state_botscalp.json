@@ -1,27 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 10023.783495576792,
+ "cash": 10058.657004782799,
  "positions": {
-  "9V8rtGEXGVvTCyB9cv8vts76NtmXiSQ65B2vkrJDDafQ": {
-   "name": "Index / SOL",
-   "entry": 0.0006119767237746864,
-   "qty": 8215.998753983946,
-   "usd": 5.0280000000000005,
-   "t_entry": 1785093783,
-   "bot_avg_trade_usd": 50.28,
-   "mark": 0.0005999771801712612,
-   "mark_ret": -0.019607843137254943
-  },
-  "EbzyUvzcdBzUELGoeZtQutuvHYwFrfGQK5EE8pSPbQuq": {
-   "name": "MOON / SOL",
-   "entry": 2.452375859307844e-05,
-   "qty": 713838.3756942085,
-   "usd": 17.506,
-   "t_entry": 1785095042,
-   "bot_avg_trade_usd": 175.06,
-   "mark": 2.5532724907908866e-05,
-   "mark_ret": 0.04114240119437462
-  },
   "6DJVgshjjHRjGZQarBvAQ3oUd8pWEqWQ7A6NAFCky76v": {
    "name": "SUMMER / SOL",
    "entry": 4.1135993440779786e-05,
@@ -52,13 +32,31 @@
    "mark": 0.00019869990785378714,
    "mark_ret": -0.019607843137254832
   },
-  "6azedAHy36Wy12yNPHwjfByaMvPTRjPrBpSAEs4s9MK4": {
-   "name": "#memecoin / SOL",
-   "entry": 1.187064782675163e-05,
-   "qty": 3059563.4315889394,
-   "usd": 36.319,
-   "t_entry": 1785095403,
-   "bot_avg_trade_usd": 363.19
+  "BbNEQqUcHQY55bVDvvs56vtwFRgzYwePUNCp7YDJCwtL": {
+   "name": "DOME / SOL",
+   "entry": 0.005845820704118965,
+   "qty": 1567.2735213285716,
+   "usd": 9.162,
+   "t_entry": 1785095583,
+   "bot_avg_trade_usd": 91.62
+  },
+  "F2Qiryq71XX5vPGEYuGEeC5nEiuWQNajP5xRkqiqBCLy": {
+   "name": "SHARKCAT / SOL",
+   "entry": 9.376706365741242e-05,
+   "qty": 53323.62777475909,
+   "usd": 5,
+   "t_entry": 1785095583,
+   "bot_avg_trade_usd": 4.63,
+   "mark": 9.115347078021256e-05,
+   "mark_ret": -0.027873250747713407
+  },
+  "6GXG74MhFRpuq38QzuQDY7Zs6fFSiPLZkaAf5iFhxmpn": {
+   "name": "PALWORLD / SOL",
+   "entry": 2.693238544463928e-05,
+   "qty": 185650.09810503875,
+   "usd": 5,
+   "t_entry": 1785095583,
+   "bot_avg_trade_usd": 10.84
   }
  },
  "closed": [
@@ -1231,7 +1229,67 @@
    "reason": "SL",
    "pnl": -1.89,
    "t_exit": 1785095403
+  },
+  {
+   "name": "Index / SOL",
+   "entry": 0.0006119767237746864,
+   "qty": 8215.998753983946,
+   "usd": 5.0280000000000005,
+   "t_entry": 1785093783,
+   "bot_avg_trade_usd": 50.28,
+   "mark": 0.0005999771801712612,
+   "mark_ret": -0.019607843137254943,
+   "addr": "9V8rtGEXGVvTCyB9cv8vts76NtmXiSQ65B2vkrJDDafQ",
+   "exit": 0.0005879776365678359,
+   "reason": "TIME",
+   "pnl": -0.1972,
+   "t_exit": 1785095583
+  },
+  {
+   "name": "MOON / SOL",
+   "entry": 2.452375859307844e-05,
+   "qty": 713838.3756942085,
+   "usd": 17.506,
+   "t_entry": 1785095042,
+   "bot_avg_trade_usd": 175.06,
+   "mark": 3.0438573750663745e-05,
+   "mark_ret": 0.24118713838810568,
+   "addr": "EbzyUvzcdBzUELGoeZtQutuvHYwFrfGQK5EE8pSPbQuq",
+   "exit": 2.982980227565047e-05,
+   "reason": "TP",
+   "pnl": 3.7877,
+   "t_exit": 1785095583
+  },
+  {
+   "name": "#memecoin / SOL",
+   "entry": 1.187064782675163e-05,
+   "qty": 3059563.4315889394,
+   "usd": 36.319,
+   "t_entry": 1785095403,
+   "bot_avg_trade_usd": 363.19,
+   "mark": 9.929670506411767e-06,
+   "mark_ret": -0.1635106481691494,
+   "addr": "6azedAHy36Wy12yNPHwjfByaMvPTRjPrBpSAEs4s9MK4",
+   "exit": 9.73107709628353e-06,
+   "reason": "SL",
+   "pnl": -6.5462,
+   "t_exit": 1785095583
+  },
+  {
+   "name": "Cog / SOL",
+   "entry": 0.2826883963789994,
+   "qty": 17.68731955059279,
+   "usd": 5,
+   "t_entry": 1785095583,
+   "bot_avg_trade_usd": 38.14,
+   "mark": 0.18104636650571398,
+   "mark_ret": -0.3595550124279395,
+   "addr": "85EUghwApdSgSWX9LS2sH7oEU9ABGPAudXPWBeD4Nn2M",
+   "exit": 0.1774254391755997,
+   "reason": "SL",
+   "pnl": -1.8618,
+   "t_exit": 1785095583
   }
  ],
- "realized_pnl": 145.8184955767884
+ "realized_pnl": 141.00100478279478
 }
