@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 10238.647420606443,
+ "cash": 10240.334072332445,
  "positions": {
   "2QP2wZRPTvDF9yo6h2BTDH4jGB3dyHhJSpPrS4eSs5xU": {
    "name": "GDWR / USDC",
@@ -9,8 +9,8 @@
    "usd": 5,
    "t_entry": 1785097383,
    "bot_avg_trade_usd": 3.94,
-   "mark": 0.00021335404605854122,
-   "mark_ret": -0.019607843137254943
+   "mark": 0.0002165251604038263,
+   "mark_ret": -0.005036122140787858
   },
   "ERA5dToEp2PPY2KtoK5VPbVZ6sshkkrCrUKEVEGzgS65": {
    "name": "CXMT / SOL",
@@ -19,16 +19,8 @@
    "usd": 5,
    "t_entry": 1785097922,
    "bot_avg_trade_usd": 0.38,
-   "mark": 0.1057978150558884,
-   "mark_ret": 0.03149319309317988
-  },
-  "fEtm4Bp4FAv6bDcsSndLq97inj4n1WPnkp6w9GCUfXd": {
-   "name": "clude / SOL",
-   "entry": 2.3267071935500968e-05,
-   "qty": 543901.700870704,
-   "usd": 12.655000000000001,
-   "t_entry": 1785098283,
-   "bot_avg_trade_usd": 126.55
+   "mark": 0.10650627104149035,
+   "mark_ret": 0.03840040120866428
   },
   "BgUB1ywYTbckE4ZBvAHi2jFu9L7xj18CAtFhJZP5Dm5b": {
    "name": "CXMT / SOL",
@@ -55,6 +47,24 @@
    "usd": 5,
    "t_entry": 1785098643,
    "bot_avg_trade_usd": 0.31
+  },
+  "6LQSsvAtsbsCTib4DWDX77jpdu1GbeT4hXWFWPraGSzA": {
+   "name": "PONS / SOL",
+   "entry": 1.1747015815135713e-05,
+   "qty": 1977183.0025183011,
+   "usd": 23.226,
+   "t_entry": 1785098823,
+   "bot_avg_trade_usd": 232.26,
+   "mark": 1.151668217170168e-05,
+   "mark_ret": -0.019607843137254943
+  },
+  "E8cpFtV6UdKMv24urFMNLbZBhZZTnXaf2d2TVADbRxbi": {
+   "name": "Fapcoin / CATE",
+   "entry": 0.0003873377104018605,
+   "qty": 12908.632094748871,
+   "usd": 5,
+   "t_entry": 1785098823,
+   "bot_avg_trade_usd": 3.99
   }
  },
  "closed": [
@@ -2532,7 +2542,37 @@
    "reason": "TP",
    "pnl": 33.945,
    "t_exit": 1785098643
+  },
+  {
+   "name": "clude / SOL",
+   "entry": 2.3267071935500968e-05,
+   "qty": 543901.700870704,
+   "usd": 12.655000000000001,
+   "t_entry": 1785098283,
+   "bot_avg_trade_usd": 126.55,
+   "mark": 5.921605815031213e-05,
+   "mark_ret": 1.5450584549042499,
+   "addr": "fEtm4Bp4FAv6bDcsSndLq97inj4n1WPnkp6w9GCUfXd",
+   "exit": 5.8031736987305886e-05,
+   "reason": "TP",
+   "pnl": 18.9086,
+   "t_exit": 1785098823
+  },
+  {
+   "name": "Kumala / SOL",
+   "entry": 8.641935831734303e-05,
+   "qty": 305012.67902506696,
+   "usd": 26.358999999999998,
+   "t_entry": 1785098823,
+   "bot_avg_trade_usd": 263.59,
+   "mark": 8.265996717057785e-05,
+   "mark_ret": -0.043501724844567935,
+   "addr": "4ewWmeUjE5ZYHTjsmvEzjY3vmEQUHebhoVGyLH11ZrfV",
+   "exit": 8.100676782716629e-05,
+   "reason": "SL",
+   "pnl": -1.6509,
+   "t_exit": 1785098823
   }
  ],
- "realized_pnl": 321.3024206064333
+ "realized_pnl": 338.56007233243594
 }
