@@ -391,3 +391,6 @@
 [2026-07-26 20:53 UTC] EXIT CXMT / SOL [TP] ret=+5.1% pnl=+0.1509U held=21min
 [2026-07-26 20:53 UTC] EXIT SHARKCAT / SOL [SL] ret=-9.7% pnl=-0.5758U held=9min
 [2026-07-26 20:53 UTC] CYCLE OK nav=10352.3133 扫描候选6 新入场2 持仓5 已平仓172
+[2026-07-26 20:56 UTC] BUY SHARKCAT / SOL (F2Qiryq7...) @ 0.0001179377016 仓位=$5.00(机器人单笔$5的10%)
+[2026-07-26 20:56 UTC] EXIT Kumala / SOL [SL] ret=-19.4% pnl=-6.0918U held=6min
+[2026-07-26 20:56 UTC] CYCLE OK nav=10348.5384 扫描候选6 新入场1 持仓5 已平仓173
