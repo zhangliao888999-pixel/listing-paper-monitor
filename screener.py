@@ -43,7 +43,7 @@ from pathlib import Path
 
 import requests
 
-from check_coin import check_staircase, check_wallets
+from check_coin import check_staircase, check_wallets, check_scalping
 
 HERE = Path(__file__).parent
 INSTANCE = "local" if os.environ.get("SCREENER_LOCAL") else "cloud"
@@ -202,36 +202,47 @@ def save_enrich_cache(cache):
 
 
 def enrich_candidates(candidates):
-    """给候选币附带check_coin.py同款尽调(K线脚本化+GMGN主力持仓状态)。
+    """给候选币附带check_coin.py同款尽调(K线脚本化/刷量机器人/GMGN主力持仓状态)。
     只报告事实,不产出买卖建议——只是把check_coin.py里已有的检查搬到看盘页面上
-    自动跑，用户不用每次手动敲命令。GMGN容易被限速，所以带缓存、限量、分优先级。"""
+    自动跑，用户不用每次手动敲命令。
+
+    check_staircase/check_scalping只用GeckoTerminal(没有GMGN那种明显限速)，
+    所以每轮对所有候选都查，不用等排队；check_wallets要查GMGN(连续查十几次
+    就403)，所以单独走缓存+限量+优先级那一套，只有它才会有"排队中"的情况。
+    2026-07-26研究证实高频刷量机器人赢面只有约50%、均值净亏，且GMGN的历史盈利
+    字段对这类钱包完全失真——机器人活跃是警示信号，不是主力信号，所以
+    scalping_flag会用来把这个币排到候选列表靠后位置，而不只是摆在旁边好看。
+    """
     cache = load_enrich_cache()
     stale = [c for c in candidates if NOW - cache.get(c["addr"], {}).get("checked_at", 0) > ENRICH_REFRESH_MIN * 60]
     stale.sort(key=lambda c: cache.get(c["addr"], {}).get("checked_at", 0))  # 从没查过的(0)排最前面
     to_check = stale[:MAX_ENRICH_PER_CYCLE]
 
     for c in to_check:
-        stair = check_staircase(c["addr"])
         wallets = check_wallets(c.get("mint"))
         cache[c["addr"]] = {
             "checked_at": NOW,
-            "staircase_flag": stair.get("flag", False), "up_ratio": stair.get("up_ratio"),
             "n_traders": wallets.get("n_traders"), "n_suspicious": wallets.get("n_suspicious"),
             "exit_ratio": wallets.get("exit_ratio"), "wallet_verdict": wallets.get("verdict"),
         }
         time.sleep(2)  # GMGN限速敏感,查完一个歇一下
 
     for c in candidates:
+        stair = check_staircase(c["addr"])
+        scalp = check_scalping(c["addr"])
+        c["staircase_flag"] = stair.get("flag", False)
+        c["scalping_flag"] = scalp.get("flag", False)
         e = cache.get(c["addr"])
         if e:
             c["diligence"] = {
                 "checked_min_ago": round((NOW - e["checked_at"]) / 60, 1),
-                "staircase_flag": e["staircase_flag"], "up_ratio": e["up_ratio"],
+                "staircase_flag": c["staircase_flag"], "scalping_flag": c["scalping_flag"],
                 "n_traders": e["n_traders"], "n_suspicious": e["n_suspicious"],
                 "exit_ratio": e["exit_ratio"], "wallet_verdict": e["wallet_verdict"],
             }
         else:
-            c["diligence"] = None  # 还没排到,等下一轮或下下轮
+            c["diligence"] = None  # GMGN那部分还没排到,K线/刷量检查已经查完了(见上面两个字段)
+        time.sleep(0.3)
 
     # 缓存只留当前还在候选窗口里的币,过期的清掉防止无限增长
     live_addrs = {c["addr"] for c in candidates}
@@ -258,12 +269,15 @@ def main():
     save_state(state)
     enrich_candidates(cands)
 
-    cands.sort(key=lambda p: p["chg_1h"], reverse=True)
+    # 疑似刷量机器人/脚本化拉盘的排到最后面(不是排除,万一误判还能看到),
+    # 组内仍按1h涨跌排序
+    cands.sort(key=lambda p: (p.get("scalping_flag") or p.get("staircase_flag") or False, -p["chg_1h"]))
     out = {"updated_at": NOW, "updated_at_str": NOW_STR, "n_candidates": len(cands),
           "candidates": cands}
     OUT_F.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     n_diligenced = sum(1 for c in cands if c.get("diligence"))
-    log(f"CYCLE OK: 新发现{n_new} 追踪中{len(state['tracked'])} 清理{n_pruned} -> 筛出候选{len(cands)}(已尽调{n_diligenced})")
+    n_bot = sum(1 for c in cands if c.get("scalping_flag") or c.get("staircase_flag"))
+    log(f"CYCLE OK: 新发现{n_new} 追踪中{len(state['tracked'])} 清理{n_pruned} -> 筛出候选{len(cands)}(已尽调{n_diligenced} 疑似机器人{n_bot})")
 
 
 if __name__ == "__main__":

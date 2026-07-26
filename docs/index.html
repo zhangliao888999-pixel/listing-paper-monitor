@@ -229,10 +229,15 @@ function pctBadge(v) {
   return `<span class="badge ${cls}">${v >= 0 ? "+" : ""}${v.toFixed(1)}%</span>`;
 }
 
-function renderDiligence(d) {
-  if (!d) return `<span class="badge zero">排队中</span>`;
+function renderDiligence(c) {
+  const d = c.diligence;
   const parts = [];
-  if (d.staircase_flag) parts.push(`<span class="badge neg">疑似脚本拉盘</span>`);
+  if (c.staircase_flag) parts.push(`<span class="badge neg">疑似脚本拉盘</span>`);
+  if (c.scalping_flag) parts.push(`<span class="badge neg">疑似刷量机器人</span>`);
+  if (!d) {
+    parts.push(`<span class="badge zero">主力数据排队中</span>`);
+    return parts.join(" ");
+  }
   if (d.exit_ratio != null) {
     const pct = d.exit_ratio * 100;
     if (pct < 0) {
@@ -262,7 +267,7 @@ function renderScreenerTable(cands) {
       <td>${pctBadge(c.chg_15m)}</td>
       <td>${pctBadge(c.chg_1h)}</td>
       <td>${c.buys_15m}/${c.sells_15m}</td>
-      <td>${renderDiligence(c.diligence)}</td>
+      <td>${renderDiligence(c)}</td>
     </tr>`).join("");
   return `<div class="table-wrap"><table>
     <thead><tr><th>币种</th><th>年龄</th><th>流动性</th><th>15m成交额</th><th>15m涨跌</th><th>1h涨跌</th><th>15m买/卖笔数</th><th>入场前尽调</th></tr></thead>
@@ -292,7 +297,9 @@ async function loadScreener() {
       }
     }
   }
-  const cands = [...merged.values()].sort((a, b) => b.chg_1h - a.chg_1h);
+  // 疑似刷量/脚本拉盘的排到最后面(不是排除,只是不占靠前的注意力),组内仍按1h涨跌排序
+  const isFlagged = c => c.scalping_flag || c.staircase_flag;
+  const cands = [...merged.values()].sort((a, b) => (isFlagged(a) - isFlagged(b)) || (b.chg_1h - a.chg_1h));
 
   const subParts = [];
   if (cloud) subParts.push("云端 " + fmtAge(cloud.updated_at));
