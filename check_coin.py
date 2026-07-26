@@ -90,6 +90,52 @@ def check_staircase(addr):
     }
 
 
+def check_scalping(addr):
+    """检查最近的逐笔成交里,是不是被同一个钱包反复买卖刷量(做市/套利机器人的常见特征)。
+    关键不是这个钱包占了总成交的多大比例(如果取样窗口跨度长,占比会被稀释拉低)，
+    而是它自己前后两笔交易之间隔了多久——真人不可能几秒钟到几十秒钟就买卖反手一次，
+    连续做几分钟。"""
+    d = get(S, f"{GT_BASE}/networks/solana/pools/{addr}/trades")
+    rows = (d or {}).get("data", [])
+    if len(rows) < 10:
+        return {"n_trades": len(rows), "verdict": "成交笔数不够,跳过刷量检查"}
+
+    by_wallet = {}
+    for row in rows:
+        a = row["attributes"]
+        w = a.get("tx_from_address")
+        if not w:
+            continue
+        by_wallet.setdefault(w, []).append(a)
+
+    def parse_ts(a):
+        return dt.datetime.fromisoformat(a["block_timestamp"].replace("Z", "+00:00")).timestamp()
+
+    best = None
+    for w, trades in by_wallet.items():
+        if len(trades) < 8:
+            continue
+        kinds = {t["kind"] for t in trades}
+        if not ("buy" in kinds and "sell" in kinds):
+            continue
+        ts = sorted(parse_ts(t) for t in trades)
+        gaps = [b - a for a, b in zip(ts, ts[1:])]
+        median_gap = statistics.median(gaps)
+        if best is None or median_gap < best["median_gap_s"]:
+            best = {"wallet": w, "n_trades": len(trades), "median_gap_s": median_gap}
+
+    flag = best is not None and best["median_gap_s"] < 60
+    result = {"n_trades": len(rows), "n_wallets": len(by_wallet), "flag": flag}
+    if best:
+        result.update({"suspect_wallet": best["wallet"][:10] + "...",
+                       "suspect_wallet_trades": best["n_trades"],
+                       "suspect_wallet_median_gap_s": round(best["median_gap_s"], 1)})
+    result["verdict"] = (
+        f"钱包{best['wallet'][:10]}...在{best['n_trades']}笔买卖间反复横跳,相邻两笔中位间隔仅{best['median_gap_s']:.0f}秒，疑似做市/套利机器人"
+        if flag else "未见单一钱包高频反复刷量的迹象")
+    return result
+
+
 def check_wallets(mint):
     if not mint:
         return {"verdict": "拿不到mint地址,跳过钱包检查"}
@@ -172,6 +218,12 @@ def main():
         if k != "flag":
             print(f"  {k}: {v}")
 
+    print("\n--- 单一钱包刷量检查 ---")
+    scalp = check_scalping(addr)
+    for k, v in scalp.items():
+        if k != "flag":
+            print(f"  {k}: {v}")
+
     print("\n--- 钱包画像检查(GMGN) ---")
     wallets = check_wallets(mint)
     for k, v in wallets.items():
@@ -179,7 +231,7 @@ def main():
             print(f"  {k}: {v}")
     print(f"  结论: {wallets.get('verdict')}")
 
-    print(f"\n=== 综合: K线-{stair.get('verdict')} | 钱包-{wallets.get('verdict')} ===")
+    print(f"\n=== 综合: K线-{stair.get('verdict')} | 刷量-{scalp.get('verdict')} | 钱包-{wallets.get('verdict')} ===")
     print("(仅供参考,买卖决定自己判断)")
 
 
