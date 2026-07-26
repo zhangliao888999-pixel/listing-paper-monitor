@@ -1,0 +1,39 @@
+name: paper-monitor-botscalp
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'   # every 15 minutes (matches pumpfun cadence; GH free tier will drift anyway)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monitor-botscalp
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: install deps
+        run: pip install --quiet requests
+
+      - name: bot-scalp monitor
+        continue-on-error: true
+        run: python bot_scalp_monitor.py
+
+      - name: commit state
+        run: |
+          git config user.name "monitor-bot"
+          git config user.email "monitor-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "botscalp cycle $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
+          for i in 1 2 3; do git push && break || { git pull --rebase; sleep 3; }; done

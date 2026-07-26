@@ -122,14 +122,15 @@ def check_scalping(addr):
         gaps = [b - a for a, b in zip(ts, ts[1:])]
         median_gap = statistics.median(gaps)
         if best is None or median_gap < best["median_gap_s"]:
-            best = {"wallet": w, "n_trades": len(trades), "median_gap_s": median_gap}
+            avg_usd = statistics.mean(float(t["volume_in_usd"]) for t in trades)
+            best = {"wallet": w, "n_trades": len(trades), "median_gap_s": median_gap, "avg_trade_usd": avg_usd}
 
     flag = best is not None and best["median_gap_s"] < 60
     result = {"n_trades": len(rows), "n_wallets": len(by_wallet), "flag": flag}
     if best:
-        result.update({"suspect_wallet": best["wallet"][:10] + "...",
-                       "suspect_wallet_trades": best["n_trades"],
-                       "suspect_wallet_median_gap_s": round(best["median_gap_s"], 1)})
+        result.update({"suspect_wallet": best["wallet"], "suspect_wallet_trades": best["n_trades"],
+                       "suspect_wallet_median_gap_s": round(best["median_gap_s"], 1),
+                       "suspect_wallet_avg_trade_usd": round(best["avg_trade_usd"], 2)})
     result["verdict"] = (
         f"钱包{best['wallet'][:10]}...在{best['n_trades']}笔买卖间反复横跳,相邻两笔中位间隔仅{best['median_gap_s']:.0f}秒，疑似做市/套利机器人"
         if flag else "未见单一钱包高频反复刷量的迹象")
