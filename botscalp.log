@@ -827,3 +827,11 @@
 [2026-07-26 23:14 UTC] EXIT CATE / SOL [TP] ret=+9.4% pnl=+3.5939U held=6min
 [2026-07-26 23:14 UTC] EXIT boobcoin / SOL [SL] ret=-82.8% pnl=-4.1551U held=0min
 [2026-07-26 23:14 UTC] CYCLE OK nav=12779.0177 扫描候选8 新入场3 持仓6 已平仓366
+[2026-07-26 23:17 UTC] BUY CATE / SOL (EH5MDGkX...) @ 2.542181355e-05 仓位=$50.00(机器人单笔$558的10%)
+[2026-07-26 23:17 UTC] BUY boobcoin / SOL (EdqS4GUp...) @ 0.0001243596732 仓位=$5.00(机器人单笔$9的10%)
+[2026-07-26 23:17 UTC] EXIT CATE / SOL [TP] ret=+13.5% pnl=+2.0564U held=12min
+[2026-07-26 23:17 UTC] EXIT BRODIE / SOL [TP] ret=+6.4% pnl=+2.1391U held=9min
+[2026-07-26 23:17 UTC] EXIT thesis / SOL [TP] ret=+7.0% pnl=+0.7973U held=9min
+[2026-07-26 23:17 UTC] EXIT SalaryCat / SOL [SL] ret=-4.1% pnl=-0.3026U held=9min
+[2026-07-26 23:17 UTC] EXIT boobcoin / SOL [SL] ret=-89.7% pnl=-4.4941U held=0min
+[2026-07-26 23:17 UTC] CYCLE OK nav=12776.2995 扫描候选8 新入场2 持仓3 已平仓371

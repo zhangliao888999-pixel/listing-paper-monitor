@@ -1,47 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12618.043934250356,
+ "cash": 12657.91294766143,
  "positions": {
-  "DcZkfifAqajxP6rdYownKdEEimNXrHZFVZFdxpbyts7b": {
-   "name": "CATE / SOL",
-   "entry": 2.0680396675953016e-05,
-   "qty": 884364.0809494862,
-   "usd": 18.288999999999998,
-   "t_entry": 1785107103,
-   "bot_avg_trade_usd": 182.89,
-   "mark": 2.0641911676652697e-05,
-   "mark_ret": -0.0018609410594656595
-  },
-  "4RYHTrkygVeoDWrvfqLadCrKfBtH7LZHPGfivKCpkuJV": {
-   "name": "BRODIE / SOL",
-   "entry": 1.8596349212053405e-05,
-   "qty": 2688699.778104404,
-   "usd": 50,
-   "t_entry": 1785107284,
-   "bot_avg_trade_usd": 750.96,
-   "mark": 1.9444627168001837e-05,
-   "mark_ret": 0.04561529503858819
-  },
-  "7jHjG1Vs5fm3GKsTZYwtULEZFnsshUUsVcPbMcVvup8W": {
-   "name": "thesis / SOL",
-   "entry": 1.2068363896911395e-05,
-   "qty": 1357599.102906823,
-   "usd": 16.384,
-   "t_entry": 1785107284,
-   "bot_avg_trade_usd": 163.84,
-   "mark": 1.2641750141193335e-05,
-   "mark_ret": 0.0475115143344893
-  },
-  "FedX2udeq9xKfEra5XwMka1V6DuSi4eKX2UkG235Lr5o": {
-   "name": "SalaryCat / SOL",
-   "entry": 0.0015349654088535186,
-   "qty": 3257.402395624375,
-   "usd": 5,
-   "t_entry": 1785107284,
-   "bot_avg_trade_usd": 32.87,
-   "mark": 0.0015008900848498062,
-   "mark_ret": -0.022199408408273946
-  },
   "DMPWHE64eWU1J4z36PN4NVdNh5kZspJzctuiN1P3ubeK": {
    "name": "Kabosu / SOL",
    "entry": 1.9607342589625756e-05,
@@ -59,6 +19,14 @@
    "bot_avg_trade_usd": 275.19,
    "mark": 0.07922542559796215,
    "mark_ret": 0.028837603661955757
+  },
+  "EH5MDGkXc2s53E5z84RFaJWmHQsZVT4mkLkDLYqFvZmi": {
+   "name": "CATE / SOL",
+   "entry": 2.542181355172675e-05,
+   "qty": 1966814.833971741,
+   "usd": 50,
+   "t_entry": 1785107824,
+   "bot_avg_trade_usd": 558.0
   }
  },
  "closed": [
@@ -5551,7 +5519,82 @@
    "reason": "SL",
    "pnl": -4.1551,
    "t_exit": 1785107643
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 2.0680396675953016e-05,
+   "qty": 884364.0809494862,
+   "usd": 18.288999999999998,
+   "t_entry": 1785107103,
+   "bot_avg_trade_usd": 182.89,
+   "mark": 2.347517908915439e-05,
+   "mark_ret": 0.13514162503715998,
+   "addr": "DcZkfifAqajxP6rdYownKdEEimNXrHZFVZFdxpbyts7b",
+   "exit": 2.3005675507371303e-05,
+   "reason": "TP",
+   "pnl": 2.0564,
+   "t_exit": 1785107824
+  },
+  {
+   "name": "BRODIE / SOL",
+   "entry": 1.8596349212053405e-05,
+   "qty": 2688699.778104404,
+   "usd": 50,
+   "t_entry": 1785107284,
+   "bot_avg_trade_usd": 750.96,
+   "mark": 1.9787677497191468e-05,
+   "mark_ret": 0.06406248191800423,
+   "addr": "4RYHTrkygVeoDWrvfqLadCrKfBtH7LZHPGfivKCpkuJV",
+   "exit": 1.9391923947247637e-05,
+   "reason": "TP",
+   "pnl": 2.1391,
+   "t_exit": 1785107824
+  },
+  {
+   "name": "thesis / SOL",
+   "entry": 1.2068363896911395e-05,
+   "qty": 1357599.102906823,
+   "usd": 16.384,
+   "t_entry": 1785107284,
+   "bot_avg_trade_usd": 163.84,
+   "mark": 1.2913924821415273e-05,
+   "mark_ret": 0.07006425491696344,
+   "addr": "7jHjG1Vs5fm3GKsTZYwtULEZFnsshUUsVcPbMcVvup8W",
+   "exit": 1.2655646324986967e-05,
+   "reason": "TP",
+   "pnl": 0.7973,
+   "t_exit": 1785107824
+  },
+  {
+   "name": "SalaryCat / SOL",
+   "entry": 0.0015349654088535186,
+   "qty": 3257.402395624375,
+   "usd": 5,
+   "t_entry": 1785107284,
+   "bot_avg_trade_usd": 32.87,
+   "mark": 0.0014714997432463954,
+   "mark_ret": -0.041346642237707676,
+   "addr": "FedX2udeq9xKfEra5XwMka1V6DuSi4eKX2UkG235Lr5o",
+   "exit": 0.0014420697483814675,
+   "reason": "SL",
+   "pnl": -0.3026,
+   "t_exit": 1785107824
+  },
+  {
+   "name": "boobcoin / SOL",
+   "entry": 0.00012435967316624686,
+   "qty": 40205.959638667475,
+   "usd": 5,
+   "t_entry": 1785107824,
+   "bot_avg_trade_usd": 9.2,
+   "mark": 1.2838567034588827e-05,
+   "mark_ret": -0.896762618397799,
+   "addr": "EdqS4GUp1AZwMd9A7MzmXFXKWmWiFpZcAFCVsB2ggoe",
+   "exit": 1.258179569389705e-05,
+   "reason": "SL",
+   "pnl": -4.4941,
+   "t_exit": 1785107824
   }
  ],
- "realized_pnl": 2775.3099342503515
+ "realized_pnl": 2775.505947661426
 }
