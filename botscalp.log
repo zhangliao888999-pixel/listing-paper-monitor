@@ -701,3 +701,15 @@
 [2026-07-26 22:23 UTC] EXIT boobcoin / SOL [SL] ret=-11.8% pnl=-1.5379U held=0min
 [2026-07-26 22:23 UTC] EXIT thesis / SOL [SL] ret=-6.2% pnl=-1.2614U held=0min
 [2026-07-26 22:23 UTC] CYCLE OK nav=10888.2638 扫描候选11 新入场6 持仓7 已平仓311
+[2026-07-26 22:26 UTC] BUY CALLOUT / SOL (aRfKk3vB...) @ 2.220749972e-05 仓位=$36.51(机器人单笔$365的10%)
+[2026-07-26 22:26 UTC] BUY Trump 2028 / SOL (H8cSQZYP...) @ 0.3214833717 仓位=$5.00(机器人单笔$38的10%)
+[2026-07-26 22:26 UTC] BUY PONS / SOL (6VEtgZd1...) @ 1.477756783e-05 仓位=$16.78(机器人单笔$168的10%)
+[2026-07-26 22:26 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 9.840450866e-06 仓位=$16.16(机器人单笔$162的10%)
+[2026-07-26 22:26 UTC] BUY Fapcoin / CATE (E8cpFtV6...) @ 0.0003962486915 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-26 22:26 UTC] BUY PALWORLD / SOL (6GXG74Mh...) @ 2.416031206e-05 仓位=$5.00(机器人单笔$6的10%)
+[2026-07-26 22:26 UTC] EXIT USCC / SOL [SL] ret=-93.1% pnl=-4.6643U held=12min
+[2026-07-26 22:26 UTC] EXIT CALLOUT / SOL [TP] ret=+170.3% pnl=+60.2017U held=0min
+[2026-07-26 22:26 UTC] EXIT PONS / SOL [TP] ret=+11.9% pnl=+1.6149U held=0min
+[2026-07-26 22:26 UTC] EXIT thesis / SOL [TP] ret=+38.0% pnl=+5.7010U held=0min
+[2026-07-26 22:26 UTC] EXIT PALWORLD / SOL [SL] ret=-5.0% pnl=-0.3471U held=0min
+[2026-07-26 22:26 UTC] CYCLE OK nav=10953.1095 扫描候选9 新入场6 持仓8 已平仓316
