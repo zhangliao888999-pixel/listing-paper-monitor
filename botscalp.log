@@ -640,3 +640,13 @@
 [2026-07-26 22:08 UTC] EXIT Trump2028 / SOL [SL] ret=-17.8% pnl=-9.7203U held=0min
 [2026-07-26 22:08 UTC] EXIT CXMT / SOL [TP] ret=+15.9% pnl=+0.6784U held=0min
 [2026-07-26 22:08 UTC] CYCLE OK nav=10799.9186 扫描候选8 新入场6 持仓7 已平仓283
+[2026-07-26 22:11 UTC] BUY CALLOUT / SOL (aRfKk3vB...) @ 2.220749972e-05 仓位=$34.61(机器人单笔$346的10%)
+[2026-07-26 22:11 UTC] BUY Trump2028 / SOL (8zWD6qbQ...) @ 0.0002445450466 仓位=$50.00(机器人单笔$923的10%)
+[2026-07-26 22:11 UTC] BUY BRODIE / SOL (4RYHTrky...) @ 1.129084224e-05 仓位=$50.00(机器人单笔$740的10%)
+[2026-07-26 22:11 UTC] BUY CXMT / SOL (BgUB1ywY...) @ 3.629988716 仓位=$5.50(机器人单笔$55的10%)
+[2026-07-26 22:11 UTC] EXIT boobcoin / SOL [SL] ret=-13.5% pnl=-0.7600U held=3min
+[2026-07-26 22:11 UTC] EXIT PALWORLD / SOL [SL] ret=-7.0% pnl=-0.4437U held=3min
+[2026-07-26 22:11 UTC] EXIT Trump2028 / SOL [SL] ret=-8.4% pnl=-5.0920U held=0min
+[2026-07-26 22:11 UTC] EXIT BRODIE / SOL [TP] ret=+13.0% pnl=+5.3531U held=0min
+[2026-07-26 22:11 UTC] EXIT CXMT / SOL [TP] ret=+22.9% pnl=+1.1226U held=0min
+[2026-07-26 22:11 UTC] CYCLE OK nav=10799.9394 扫描候选8 新入场4 持仓6 已平仓288
