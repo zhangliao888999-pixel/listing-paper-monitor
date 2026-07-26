@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12766.388229430675,
+ "cash": 12879.441809843554,
  "positions": {
   "EH5MDGkXc2s53E5z84RFaJWmHQsZVT4mkLkDLYqFvZmi": {
    "name": "CATE / SOL",
@@ -30,24 +30,6 @@
    "mark": 0.0015353450412227475,
    "mark_ret": 0.00024732307779640195
   },
-  "EdqS4GUp1AZwMd9A7MzmXFXKWmWiFpZcAFCVsB2ggoe": {
-   "name": "boobcoin / SOL",
-   "entry": 0.00012435967316624686,
-   "qty": 40205.959638667475,
-   "usd": 5,
-   "t_entry": 1785108183,
-   "bot_avg_trade_usd": 9.01
-  },
-  "BLQghhZpizTGwD9kuCVyRXm4yrDhx96qCkXppbLFML2h": {
-   "name": "Trump2028 / SOL",
-   "entry": 0.0002194081749238679,
-   "qty": 227885.7659581254,
-   "usd": 50,
-   "t_entry": 1785108363,
-   "bot_avg_trade_usd": 925.18,
-   "mark": 0.00022702485953102943,
-   "mark_ret": 0.03471468011528933
-  },
   "7NrFbXYvAzHEnnowdLVx1SHh8C4EdzNSSGdtuxqtHbbf": {
    "name": "TBB / SOL",
    "entry": 0.08051901511631149,
@@ -55,6 +37,14 @@
    "usd": 27.653,
    "t_entry": 1785108363,
    "bot_avg_trade_usd": 276.53
+  },
+  "6VEtgZd1tobR4PohnkDUo8NYB8nzG5Y7cfkUqXdfkDH3": {
+   "name": "PONS / SOL",
+   "entry": 1.6969115278844602e-05,
+   "qty": 737044.9074379546,
+   "usd": 12.507,
+   "t_entry": 1785108543,
+   "bot_avg_trade_usd": 125.07
   }
  },
  "closed": [
@@ -5802,7 +5792,112 @@
    "reason": "SL",
    "pnl": -2.0109,
    "t_exit": 1785108363
+  },
+  {
+   "name": "boobcoin / SOL",
+   "entry": 0.00012435967316624686,
+   "qty": 40205.959638667475,
+   "usd": 5,
+   "t_entry": 1785108183,
+   "bot_avg_trade_usd": 9.01,
+   "mark": 7.630430725378844e-06,
+   "mark_ret": -0.938642242045954,
+   "addr": "EdqS4GUp1AZwMd9A7MzmXFXKWmWiFpZcAFCVsB2ggoe",
+   "exit": 7.477822110871267e-06,
+   "reason": "SL",
+   "pnl": -4.6993,
+   "t_exit": 1785108543
+  },
+  {
+   "name": "Trump2028 / SOL",
+   "entry": 0.0002194081749238679,
+   "qty": 227885.7659581254,
+   "usd": 50,
+   "t_entry": 1785108363,
+   "bot_avg_trade_usd": 925.18,
+   "mark": 0.00020862634454490734,
+   "mark_ret": -0.049140513486800264,
+   "addr": "BLQghhZpizTGwD9kuCVyRXm4yrDhx96qCkXppbLFML2h",
+   "exit": 0.0002044538176540092,
+   "reason": "SL",
+   "pnl": -3.4079,
+   "t_exit": 1785108543
+  },
+  {
+   "name": "Kabosu / SOL",
+   "entry": 1.9607342589625756e-05,
+   "qty": 2043826.1746496516,
+   "usd": 40.074000000000005,
+   "t_entry": 1785108543,
+   "bot_avg_trade_usd": 400.74,
+   "mark": 5.4874491442080224e-05,
+   "mark_ret": 1.798670507808351,
+   "addr": "DMPWHE64eWU1J4z36PN4NVdNh5kZspJzctuiN1P3ubeK",
+   "exit": 5.377700161323862e-05,
+   "reason": "TP",
+   "pnl": 69.8368,
+   "t_exit": 1785108543
+  },
+  {
+   "name": "USOX / SOL",
+   "entry": 0.02778819566992869,
+   "qty": 179.9325173678263,
+   "usd": 5,
+   "t_entry": 1785108543,
+   "bot_avg_trade_usd": 7.74,
+   "mark": 0.03113553648255326,
+   "mark_ret": 0.1204590917807209,
+   "addr": "573qFJkba2zrAxE8yCD85vpu11rRPrPdZtKpAbNbkCqu",
+   "exit": 0.030512825752902192,
+   "reason": "TP",
+   "pnl": 0.4902,
+   "t_exit": 1785108543
+  },
+  {
+   "name": "BRODIE / SOL",
+   "entry": 1.9784805689268034e-05,
+   "qty": 2527191.8655800465,
+   "usd": 50,
+   "t_entry": 1785108543,
+   "bot_avg_trade_usd": 756.56,
+   "mark": 2.2198239937152154e-05,
+   "mark_ret": 0.12198422798730091,
+   "addr": "4RYHTrkygVeoDWrvfqLadCrKfBtH7LZHPGfivKCpkuJV",
+   "exit": 2.175427513840911e-05,
+   "reason": "TP",
+   "pnl": 4.9772,
+   "t_exit": 1785108543
+  },
+  {
+   "name": "BABYCATE / SOL",
+   "entry": 5.494145129774211e-05,
+   "qty": 910059.6875214836,
+   "usd": 50,
+   "t_entry": 1785108543,
+   "bot_avg_trade_usd": 1327.24,
+   "mark": 6.016214769000447e-05,
+   "mark_ret": 0.09502290654773637,
+   "addr": "3fZP5XQZ3NquUR6F6VNxWfvoHCg3z7Nm4KxywMAnt6jx",
+   "exit": 5.895890473620438e-05,
+   "reason": "TP",
+   "pnl": 3.6561,
+   "t_exit": 1785108543
+  },
+  {
+   "name": "Fapcoin / CATE",
+   "entry": 0.00038797777860276805,
+   "qty": 12887.336017043548,
+   "usd": 5,
+   "t_entry": 1785108543,
+   "bot_avg_trade_usd": 3.49,
+   "mark": 0.00037272549533575247,
+   "mark_ret": -0.03931225989783205,
+   "addr": "E8cpFtV6UdKMv24urFMNLbZBhZZTnXaf2d2TVADbRxbi",
+   "exit": 0.0003652709854290374,
+   "reason": "SL",
+   "pnl": -0.2926,
+   "t_exit": 1785108543
   }
  ],
- "realized_pnl": 2923.137229430672
+ "realized_pnl": 2993.6978098435497
 }
