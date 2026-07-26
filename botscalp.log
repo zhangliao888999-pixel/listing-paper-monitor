@@ -845,3 +845,11 @@
 [2026-07-26 23:20 UTC] EXIT thesis / SOL [TP] ret=+16.6% pnl=+2.3005U held=0min
 [2026-07-26 23:20 UTC] EXIT boobcoin / SOL [SL] ret=-91.9% pnl=-4.6046U held=0min
 [2026-07-26 23:20 UTC] CYCLE OK nav=12847.5301 扫描候选8 新入场5 持仓4 已平仓375
+[2026-07-26 23:23 UTC] BUY Kabosu / SOL (DMPWHE64...) @ 1.960734259e-05 仓位=$40.07(机器人单笔$401的10%)
+[2026-07-26 23:23 UTC] BUY BRODIE / SOL (4RYHTrky...) @ 1.859634921e-05 仓位=$50.00(机器人单笔$750的10%)
+[2026-07-26 23:23 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 1.20683639e-05 仓位=$9.51(机器人单笔$95的10%)
+[2026-07-26 23:23 UTC] BUY boobcoin / SOL (EdqS4GUp...) @ 0.0001243596732 仓位=$5.00(机器人单笔$9的10%)
+[2026-07-26 23:23 UTC] EXIT TBB / SOL [TP] ret=+5.6% pnl=+0.9531U held=9min
+[2026-07-26 23:23 UTC] EXIT BRODIE / SOL [TP] ret=+12.4% pnl=+5.0897U held=0min
+[2026-07-26 23:23 UTC] EXIT thesis / SOL [SL] ret=-26.9% pnl=-2.6981U held=0min
+[2026-07-26 23:23 UTC] CYCLE OK nav=12851.1041 扫描候选8 新入场4 持仓5 已平仓378
