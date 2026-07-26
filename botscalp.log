@@ -113,3 +113,14 @@
 [2026-07-26 19:32 UTC] EXIT Cog / SOL [TP] ret=+108.9% pnl=+5.2346U held=0min
 [2026-07-26 19:32 UTC] EXIT Yeontan / SOL [TP] ret=+71.6% pnl=+26.4951U held=0min
 [2026-07-26 19:32 UTC] CYCLE OK nav=10012.5535 扫描候选11 新入场7 持仓4 已平仓47
+[2026-07-26 19:35 UTC] BUY DOME / SOL (BbNEQqUc...) @ 0.005845820704 仓位=$7.94(机器人单笔$79的10%)
+[2026-07-26 19:35 UTC] BUY Cate / SOL (8MvD6oTx...) @ 1.752072115e-05 仓位=$17.79(机器人单笔$178的10%)
+[2026-07-26 19:35 UTC] BUY CATE / SOL (AgwEy7n5...) @ 1.848541439e-06 仓位=$17.44(机器人单笔$174的10%)
+[2026-07-26 19:35 UTC] BUY Cog / SOL (85EUghwA...) @ 0.06972949784 仓位=$5.00(机器人单笔$37的10%)
+[2026-07-26 19:35 UTC] BUY Yeontan / SOL (BdEXFbhg...) @ 0.0002396929463 仓位=$37.59(机器人单笔$376的10%)
+[2026-07-26 19:35 UTC] BUY SUMMER / SOL (6DJVgshj...) @ 4.113599344e-05 仓位=$50.00(机器人单笔$578的10%)
+[2026-07-26 19:35 UTC] EXIT DOME / SOL [SL] ret=-82.3% pnl=-6.5611U held=0min
+[2026-07-26 19:35 UTC] EXIT CATE / SOL [TP] ret=+80.1% pnl=+13.3415U held=0min
+[2026-07-26 19:35 UTC] EXIT Cog / SOL [TP] ret=+156.3% pnl=+7.5570U held=0min
+[2026-07-26 19:35 UTC] EXIT Yeontan / SOL [TP] ret=+81.2% pnl=+29.1802U held=0min
+[2026-07-26 19:35 UTC] CYCLE OK nav=10056.2601 扫描候选11 新入场6 持仓6 已平仓51
