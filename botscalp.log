@@ -569,3 +569,14 @@
 [2026-07-26 21:50 UTC] EXIT puf / SOL [SL] ret=-26.3% pnl=-5.0893U held=0min
 [2026-07-26 21:50 UTC] EXIT PALWORLD / SOL [SL] ret=-27.5% pnl=-1.4460U held=0min
 [2026-07-26 21:50 UTC] CYCLE OK nav=10686.7365 扫描候选13 新入场5 持仓8 已平仓250
+[2026-07-26 21:53 UTC] BUY STOGE / SOL (AXeP2Mth...) @ 2.446228831e-05 仓位=$13.22(机器人单笔$132的10%)
+[2026-07-26 21:53 UTC] BUY TBB / SOL (7NrFbXYv...) @ 0.04795514902 仓位=$27.31(机器人单笔$273的10%)
+[2026-07-26 21:53 UTC] BUY puf / SOL (DdoFHoEf...) @ 1.02288986e-05 仓位=$5.00(机器人单笔$41的10%)
+[2026-07-26 21:53 UTC] BUY PALWORLD / SOL (6GXG74Mh...) @ 3.495457693e-05 仓位=$5.00(机器人单笔$11的10%)
+[2026-07-26 21:53 UTC] EXIT CXMT / SOL [TIME] ret=+0.6% pnl=-0.0714U held=33min
+[2026-07-26 21:53 UTC] EXIT PONS / SOL [TP] ret=+5.6% pnl=+0.4661U held=9min
+[2026-07-26 21:53 UTC] EXIT PONS / SOL [TP] ret=+7.0% pnl=+2.4303U held=3min
+[2026-07-26 21:53 UTC] EXIT STOGE / SOL [TP] ret=+369.8% pnl=+47.6505U held=0min
+[2026-07-26 21:53 UTC] EXIT TBB / SOL [TP] ret=+24.2% pnl=+5.9431U held=0min
+[2026-07-26 21:53 UTC] EXIT puf / SOL [SL] ret=-26.3% pnl=-1.3867U held=0min
+[2026-07-26 21:53 UTC] CYCLE OK nav=10739.4484 扫描候选13 新入场4 持仓6 已平仓256
