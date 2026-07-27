@@ -4749,3 +4749,14 @@
 [2026-07-27 20:56 UTC] EXIT Scam / SOL [TP] ret=+73.4% pnl=+12.4619U held=0min
 [2026-07-27 20:56 UTC] EXIT RYDER / SOL [SL] ret=-67.0% pnl=-3.3842U held=0min
 [2026-07-27 20:56 UTC] CYCLE OK nav=13404.0527 扫描候选10 新入场5 持仓6 已平仓2121
+[2026-07-27 20:59 UTC] BUY CRISCO / SOL (HkoGH7B3...) @ 1.969152095e-05 仓位=$16.46(机器人单笔$165的10%)
+[2026-07-27 20:59 UTC] BUY USWR / SOL (E6kQDqs7...) @ 0.02510689085 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-27 20:59 UTC] BUY Grok / SOL (JCoAfDiT...) @ 3.813150457e-05 仓位=$36.69(机器人单笔$367的10%)
+[2026-07-27 20:59 UTC] BUY Scam / SOL (221NFNug...) @ 0.0001934791953 仓位=$19.32(机器人单笔$193的10%)
+[2026-07-27 20:59 UTC] BUY ZVR / SOL (D7qEq9KU...) @ 4.98787856e-05 仓位=$50.00(机器人单笔$576的10%)
+[2026-07-27 20:59 UTC] BUY Codex / SOL (B2qP6ugZ...) @ 1.747410715e-05 仓位=$5.00(机器人单笔$13的10%)
+[2026-07-27 20:59 UTC] EXIT Ryder / SOL [TIME] ret=-0.7% pnl=-1.3563U held=30min
+[2026-07-27 20:59 UTC] EXIT PONS / SOL [SL] ret=-9.1% pnl=-5.4683U held=3min
+[2026-07-27 20:59 UTC] EXIT Scam / SOL [TP] ret=+7.9% pnl=+1.1073U held=0min
+[2026-07-27 20:59 UTC] EXIT Codex / SOL [TP] ret=+37.7% pnl=+1.7463U held=0min
+[2026-07-27 20:59 UTC] CYCLE OK nav=13401.9166 扫描候选9 新入场6 持仓8 已平仓2125
