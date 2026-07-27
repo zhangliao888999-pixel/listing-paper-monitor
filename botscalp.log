@@ -2171,3 +2171,9 @@
 [2026-07-27 06:26 UTC] EXIT SIRIUS / SOL [TP] ret=+7.3% pnl=+1.1185U held=0min
 [2026-07-27 06:26 UTC] EXIT dogi / SOL [SL] ret=-42.5% pnl=-5.0255U held=0min
 [2026-07-27 06:26 UTC] CYCLE OK nav=13684.5248 扫描候选7 新入场6 持仓7 已平仓968
+[2026-07-27 06:29 UTC] BUY HOOD / SOL (EZ7dPY8h...) @ 2.577322341e-05 仓位=$50.00(机器人单笔$819的10%)
+[2026-07-27 06:29 UTC] BUY SIRIUS / SOL (14UfqDjc...) @ 2.005986996e-05 仓位=$18.52(机器人单笔$185的10%)
+[2026-07-27 06:29 UTC] BUY dogi / SOL (2VCeMNNr...) @ 2.486937265e-05 仓位=$8.68(机器人单笔$87的10%)
+[2026-07-27 06:29 UTC] EXIT TBB / SOL [TIME] ret=-2.0% pnl=-0.2108U held=45min
+[2026-07-27 06:29 UTC] EXIT dogi / SOL [SL] ret=-37.2% pnl=-3.3364U held=0min
+[2026-07-27 06:29 UTC] CYCLE OK nav=13682.6225 扫描候选7 新入场3 持仓8 已平仓970

@@ -1,17 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13513.302675979217,
+ "cash": 13446.61142156822,
  "positions": {
-  "Hd87sgE95MDYA9kfJ435eY6qiEQy6PEdZfRysnrUFmmE": {
-   "name": "TBB / SOL",
-   "entry": 0.000508514250759004,
-   "qty": 10571.975105861495,
-   "usd": 5.376,
-   "t_entry": 1785131044,
-   "bot_avg_trade_usd": 53.76,
-   "mark": 0.0004985433830970627,
-   "mark_ret": -0.019607843137255054
-  },
   "8cfm1bXZS1T7ATDPpdNZeUFiFCi6WbDAgAwuKCVKgU2p": {
    "name": "GUGO / SOL",
    "entry": 1.5887425342233466e-05,
@@ -58,7 +48,9 @@
    "qty": 1064296.482767872,
    "usd": 36.631,
    "t_entry": 1785133563,
-   "bot_avg_trade_usd": 366.31
+   "bot_avg_trade_usd": 366.31,
+   "mark": 3.546960283948896e-05,
+   "mark_ret": 0.030552634305408777
   },
   "H9J4jtFWzh9YPKLns3QSFc7cdbgy7qgex6TzXz7syAD1": {
    "name": "memehouse / SOL",
@@ -67,8 +59,26 @@
    "usd": 5,
    "t_entry": 1785133563,
    "bot_avg_trade_usd": 10.37,
-   "mark": 2.169215727507015e-05,
-   "mark_ret": -0.01877296488658009
+   "mark": 2.1777158263179256e-05,
+   "mark_ret": -0.014928014544095536
+  },
+  "EZ7dPY8hSjLhp6ptgHvZoEwcTD2bC3HWhYuug4JTiNhc": {
+   "name": "HOOD / SOL",
+   "entry": 2.5773223405261693e-05,
+   "qty": 1939997.927841355,
+   "usd": 50,
+   "t_entry": 1785133743,
+   "bot_avg_trade_usd": 819.45
+  },
+  "14UfqDjc2iWMC8yK9EoBzauds9X1VnKJ4gCyJeqWvEWS": {
+   "name": "SIRIUS / SOL",
+   "entry": 2.0059869957084675e-05,
+   "qty": 923236.2941345575,
+   "usd": 18.52,
+   "t_entry": 1785133743,
+   "bot_avg_trade_usd": 185.2,
+   "mark": 2.049436098879509e-05,
+   "mark_ret": 0.021659713280292925
   }
  },
  "closed": [
@@ -14591,7 +14601,37 @@
    "reason": "SL",
    "pnl": -5.0255,
    "t_exit": 1785133563
+  },
+  {
+   "name": "TBB / SOL",
+   "entry": 0.000508514250759004,
+   "qty": 10571.975105861495,
+   "usd": 5.376,
+   "t_entry": 1785131044,
+   "bot_avg_trade_usd": 53.76,
+   "mark": 0.0004985433830970627,
+   "mark_ret": -0.019607843137255054,
+   "addr": "Hd87sgE95MDYA9kfJ435eY6qiEQy6PEdZfRysnrUFmmE",
+   "exit": 0.0004885725154351214,
+   "reason": "TIME",
+   "pnl": -0.2108,
+   "t_exit": 1785133743
+  },
+  {
+   "name": "dogi / SOL",
+   "entry": 2.48693726511002e-05,
+   "qty": 348943.2613257373,
+   "usd": 8.678,
+   "t_entry": 1785133743,
+   "bot_avg_trade_usd": 86.78,
+   "mark": 1.5620249298891558e-05,
+   "mark_ret": -0.37190818932054837,
+   "addr": "2VCeMNNrANPeywxfaqy2LvqJ3TgZs3r9hrWVDtcYWM79",
+   "exit": 1.5307844312913727e-05,
+   "reason": "SL",
+   "pnl": -3.3364,
+   "t_exit": 1785133743
   }
  ],
- "realized_pnl": 3682.9126759792202
+ "realized_pnl": 3679.365421568223
 }
