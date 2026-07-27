@@ -2121,3 +2121,16 @@
 [2026-07-27 06:14 UTC] EXIT WAN / SOL [TP] ret=+23.7% pnl=+7.2101U held=0min
 [2026-07-27 06:14 UTC] EXIT SIRIUS / SOL [SL] ret=-8.7% pnl=-2.4809U held=0min
 [2026-07-27 06:14 UTC] CYCLE OK nav=13631.1688 扫描候选12 新入场6 持仓7 已平仓945
+[2026-07-27 06:17 UTC] BUY Nongwan / SOL (J5zUqUVw...) @ 0.001164745946 仓位=$5.00(机器人单笔$9的10%)
+[2026-07-27 06:17 UTC] BUY HOOD / SOL (EZ7dPY8h...) @ 2.366976651e-05 仓位=$50.00(机器人单笔$798的10%)
+[2026-07-27 06:17 UTC] BUY IF / SOL (B4WujyZQ...) @ 3.266817354e-05 仓位=$41.09(机器人单笔$411的10%)
+[2026-07-27 06:17 UTC] BUY Nongwan / SOL (G36TotXP...) @ 2.972585588e-05 仓位=$49.81(机器人单笔$498的10%)
+[2026-07-27 06:17 UTC] BUY WAN / SOL (AQvSW9hu...) @ 1.087715206e-05 仓位=$35.01(机器人单笔$350的10%)
+[2026-07-27 06:17 UTC] BUY SIRIUS / SOL (14UfqDjc...) @ 2.039912954e-05 仓位=$23.17(机器人单笔$232的10%)
+[2026-07-27 06:17 UTC] EXIT CAT / SOL [TIME] ret=-2.0% pnl=-1.3756U held=33min
+[2026-07-27 06:17 UTC] EXIT MAGAVERSE / SOL [SL] ret=-13.6% pnl=-0.7669U held=6min
+[2026-07-27 06:17 UTC] EXIT Nongwan / SOL [SL] ret=-4.4% pnl=-0.3174U held=0min
+[2026-07-27 06:17 UTC] EXIT Nongwan / SOL [TP] ret=+41.1% pnl=+19.0770U held=0min
+[2026-07-27 06:17 UTC] EXIT WAN / SOL [TP] ret=+12.6% pnl=+3.6124U held=0min
+[2026-07-27 06:17 UTC] EXIT SIRIUS / SOL [SL] ret=-10.6% pnl=-2.8812U held=0min
+[2026-07-27 06:17 UTC] CYCLE OK nav=13650.1146 扫描候选12 新入场6 持仓7 已平仓951
