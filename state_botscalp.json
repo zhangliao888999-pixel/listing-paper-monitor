@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13314.886995188932,
+ "cash": 13322.272991738457,
  "positions": {
   "AsWVRGr21xDpTGcLLM5CeuEw87i5eTqF9iU8DrSYnG46": {
    "name": "MATH / SOL",
@@ -37,26 +37,24 @@
    "usd": 50,
    "t_entry": 1785181444,
    "bot_avg_trade_usd": 571.65,
-   "mark": 4.3601748226795834e-05,
-   "mark_ret": -0.001999620631101817
+   "mark": 4.3232650759544446e-05,
+   "mark_ret": -0.010447892256013502
   },
-  "BAhaTLVfNYZcTRxkTD9St4aWXtY8MjcjpyqMSJDepdNJ": {
-   "name": "Ayu Ayu / SOL",
-   "entry": 0.00010719957790851175,
-   "qty": 335523.70915766555,
-   "usd": 35.968,
-   "t_entry": 1785181624,
-   "bot_avg_trade_usd": 359.68,
-   "mark": 0.0001117563860271074,
-   "mark_ret": 0.04250770579045193
+  "GXQZW7nCDwdvMsX96oGNMVLfVEZpG5XLesHBi4N2q9Jf": {
+   "name": "IF / SOL",
+   "entry": 3.1002316521955495e-05,
+   "qty": 1612782.7081757118,
+   "usd": 50,
+   "t_entry": 1785181984,
+   "bot_avg_trade_usd": 547.54
   },
-  "G1jdEv9yp9AQZXKh53deSTSaXqkThN2vH9XBJxGgRVrL": {
-   "name": "Enigma / SOL",
-   "entry": 0.00015269540536375095,
-   "qty": 291914.48094862996,
-   "usd": 44.574000000000005,
-   "t_entry": 1785181804,
-   "bot_avg_trade_usd": 445.74
+  "CTRsNPEjGBmWTnGp1QKeYAGeCJQsnRTbYcdFBd7fc99X": {
+   "name": "AORP / SOL",
+   "entry": 0.010953673553325011,
+   "qty": 684.4279194101297,
+   "usd": 7.497,
+   "t_entry": 1785181984,
+   "bot_avg_trade_usd": 74.97
   }
  },
  "closed": [
@@ -30239,7 +30237,97 @@
    "reason": "SL",
    "pnl": -7.5781,
    "t_exit": 1785181804
+  },
+  {
+   "name": "Ayu Ayu / SOL",
+   "entry": 0.00010719957790851175,
+   "qty": 335523.70915766555,
+   "usd": 35.968,
+   "t_entry": 1785181624,
+   "bot_avg_trade_usd": 359.68,
+   "mark": 6.189443833431088e-05,
+   "mark_ret": -0.4226242347042264,
+   "addr": "BAhaTLVfNYZcTRxkTD9St4aWXtY8MjcjpyqMSJDepdNJ",
+   "exit": 6.065654956762466e-05,
+   "reason": "SL",
+   "pnl": -15.6163,
+   "t_exit": 1785181984
+  },
+  {
+   "name": "Enigma / SOL",
+   "entry": 0.00015269540536375095,
+   "qty": 291914.48094862996,
+   "usd": 44.574000000000005,
+   "t_entry": 1785181804,
+   "bot_avg_trade_usd": 445.74,
+   "mark": 0.00014532109953123694,
+   "mark_ret": -0.04829422218007762,
+   "addr": "G1jdEv9yp9AQZXKh53deSTSaXqkThN2vH9XBJxGgRVrL",
+   "exit": 0.0001424146775406122,
+   "reason": "SL",
+   "pnl": -3.0011,
+   "t_exit": 1785181984
+  },
+  {
+   "name": "GIGA / SOL",
+   "entry": 0.00019527829338882805,
+   "qty": 61158.87123316731,
+   "usd": 11.943000000000001,
+   "t_entry": 1785181984,
+   "bot_avg_trade_usd": 119.43,
+   "mark": 0.00014632491177637476,
+   "mark_ret": -0.25068521832572477,
+   "addr": "2c9BThSgdyFJDz29giPW2dP3UEegPcWgUGudRrDd7Skm",
+   "exit": 0.00014339841354084725,
+   "reason": "SL",
+   "pnl": -3.1729,
+   "t_exit": 1785181984
+  },
+  {
+   "name": "Ryder / SOL",
+   "entry": 6.286506196607256e-05,
+   "qty": 795354.3420824803,
+   "usd": 50,
+   "t_entry": 1785181984,
+   "bot_avg_trade_usd": 773.05,
+   "mark": 6.965010249095345e-05,
+   "mark_ret": 0.1079302288533921,
+   "addr": "7QLv8Yyf311MEN98FYeVWyuPMXwmCsKEqL5pNH8b6Xnc",
+   "exit": 6.825710044113438e-05,
+   "reason": "TP",
+   "pnl": 4.2886,
+   "t_exit": 1785181984
+  },
+  {
+   "name": "Tortuga / SOL",
+   "entry": 8.123785328801286e-05,
+   "qty": 61547.66279056491,
+   "usd": 5,
+   "t_entry": 1785181984,
+   "bot_avg_trade_usd": 9.05,
+   "mark": 5.209292350362808e-05,
+   "mark_ret": -0.3587604620848013,
+   "addr": "C4ykhmjTxSpSUuuENyYv2pXgMG49NE1kY4S9w5tZfciC",
+   "exit": 5.1051065033555516e-05,
+   "reason": "SL",
+   "pnl": -1.8579,
+   "t_exit": 1785181984
+  },
+  {
+   "name": "PONS / SOL",
+   "entry": 2.2545952233031557e-05,
+   "qty": 2217692.980239094,
+   "usd": 50,
+   "t_entry": 1785181984,
+   "bot_avg_trade_usd": 580.54,
+   "mark": 2.4708817327181058e-05,
+   "mark_ret": 0.09593141472999034,
+   "addr": "4zWjFSwhqri4hyvSsdXsouT7SNPtsFRD1Aw6GZnyPxa5",
+   "exit": 2.4214640980637436e-05,
+   "reason": "TP",
+   "pnl": 3.7006,
+   "t_exit": 1785181984
   }
  ],
- "realized_pnl": 3468.5309951889335
+ "realized_pnl": 3452.871991738458
 }
