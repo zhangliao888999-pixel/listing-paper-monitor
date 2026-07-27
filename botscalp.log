@@ -1254,3 +1254,9 @@
 [2026-07-27 01:29 UTC] EXIT HOUSECAT / SOL [TP] ret=+86.0% pnl=+9.6187U held=6min
 [2026-07-27 01:29 UTC] EXIT CAGE / SOL [SL] ret=-13.8% pnl=-2.5859U held=0min
 [2026-07-27 01:29 UTC] CYCLE OK nav=13085.2260 扫描候选4 新入场3 持仓4 已平仓558
+[2026-07-27 01:32 UTC] BUY CAGE / SOL (JBducxka...) @ 1.052339718e-05 仓位=$15.95(机器人单笔$159的10%)
+[2026-07-27 01:32 UTC] EXIT CATE / SOL [TP] ret=+9.6% pnl=+3.6853U held=9min
+[2026-07-27 01:32 UTC] EXIT neko / SOL [SL] ret=-26.7% pnl=-8.4550U held=3min
+[2026-07-27 01:32 UTC] EXIT CALVIN / SOL [TP] ret=+26.1% pnl=+4.0417U held=3min
+[2026-07-27 01:32 UTC] EXIT CAGE / SOL [SL] ret=-3.4% pnl=-0.8533U held=0min
+[2026-07-27 01:32 UTC] CYCLE OK nav=13080.6328 扫描候选4 新入场1 持仓1 已平仓562
