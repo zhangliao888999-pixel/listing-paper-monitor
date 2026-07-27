@@ -5076,3 +5076,10 @@
 [2026-07-27 22:44 UTC] EXIT Grok / SOL [TP] ret=+8.5% pnl=+2.6189U held=3min
 [2026-07-27 22:44 UTC] EXIT CATE / SOL [TP] ret=+13.6% pnl=+2.2966U held=0min
 [2026-07-27 22:44 UTC] CYCLE OK nav=13691.3695 扫描候选4 新入场1 持仓1 已平仓2219
+[2026-07-27 22:47 UTC] BUY SPY / SOL (De6CpuMp...) @ 1.084927546e-05 仓位=$50.00(机器人单笔$722的10%)
+[2026-07-27 22:47 UTC] BUY Grok / SOL (Gujdah8C...) @ 6.234555101e-05 仓位=$41.07(机器人单笔$411的10%)
+[2026-07-27 22:47 UTC] BUY CATE / SOL (CKtMRCAa...) @ 1.407913265e-05 仓位=$20.49(机器人单笔$205的10%)
+[2026-07-27 22:47 UTC] EXIT PONS / SOL [TP] ret=+17.5% pnl=+7.5872U held=9min
+[2026-07-27 22:47 UTC] EXIT SPY / SOL [TP] ret=+10.8% pnl=+4.2902U held=0min
+[2026-07-27 22:47 UTC] SKIP EXIT CHECK CATE / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-27 22:47 UTC] CYCLE OK nav=13700.8580 扫描候选4 新入场3 持仓2 已平仓2221
