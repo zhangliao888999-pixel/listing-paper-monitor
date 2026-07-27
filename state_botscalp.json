@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12936.28263472911,
+ "cash": 12888.493734903608,
  "positions": {
   "58W27d33eHda71Hq6aY4bZXwXg4hAdjFctnciAht6chG": {
    "name": "callcat / SOL",
@@ -37,6 +37,34 @@
    "usd": 42.971000000000004,
    "t_entry": 1785114303,
    "bot_avg_trade_usd": 429.71
+  },
+  "DTyknKdKpPQq29KmJpQmP66BZbt3u5eFM1e9xi5WzXiN": {
+   "name": "USOX / SOL",
+   "entry": 0.015396670555864163,
+   "qty": 528.2310854473903,
+   "usd": 8.133000000000001,
+   "t_entry": 1785114482,
+   "bot_avg_trade_usd": 81.33
+  },
+  "G7vXhMFbHfnoqDE62kMbUfjoSKhEeHSvSD2bT2PPmMxi": {
+   "name": "CALVIN / SOL",
+   "entry": 1.4041206423307365e-05,
+   "qty": 1474517.1729426961,
+   "usd": 20.704,
+   "t_entry": 1785114482,
+   "bot_avg_trade_usd": 207.04,
+   "mark": 1.3731714204968452e-05,
+   "mark_ret": -0.022041711303750877
+  },
+  "2KQgVrv1i6qfb3P9F8TLGS24seS5gq3WMV2g91o1FvqX": {
+   "name": "OS / SOL",
+   "entry": 2.398293692505191e-05,
+   "qty": 675980.596148981,
+   "usd": 16.212,
+   "t_entry": 1785114482,
+   "bot_avg_trade_usd": 162.12,
+   "mark": 2.393272196812315e-05,
+   "mark_ret": -0.0020937784678201066
   }
  },
  "closed": [
@@ -7854,7 +7882,37 @@
    "reason": "SL",
    "pnl": -2.1998,
    "t_exit": 1785114303
+  },
+  {
+   "name": "CHANGE / SOL",
+   "entry": 2.699806395058037e-05,
+   "qty": 1344281.5776136355,
+   "usd": 36.293,
+   "t_entry": 1785114482,
+   "bot_avg_trade_usd": 362.93,
+   "mark": 2.271167887264293e-05,
+   "mark_ret": -0.15876638731516524,
+   "addr": "4aP7qN7UpdFWzfQ5PgdZj2zuLgMt5kY6A995t3PiJznH",
+   "exit": 2.225744529519007e-05,
+   "reason": "SL",
+   "pnl": -6.3727,
+   "t_exit": 1785114482
+  },
+  {
+   "name": "HOUSECAT / SOL",
+   "entry": 0.00030853795396551217,
+   "qty": 37612.87663590712,
+   "usd": 11.605,
+   "t_entry": 1785114482,
+   "bot_avg_trade_usd": 116.05,
+   "mark": 0.0004133904115059124,
+   "mark_ret": 0.33983649723729115,
+   "addr": "HUAS6Fn2rTRPHc8xJ268c3kAiernyKHobVsSwZY4nFhH",
+   "exit": 0.0004051226032757941,
+   "reason": "TP",
+   "pnl": 3.6328,
+   "t_exit": 1785114482
   }
  ],
- "realized_pnl": 3057.2946347291063
+ "realized_pnl": 3054.5547349036037
 }
