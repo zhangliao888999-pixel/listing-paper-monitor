@@ -1359,3 +1359,10 @@
 [2026-07-27 02:29 UTC] EXIT Kittens / SOL [TP] ret=+6.2% pnl=+2.0524U held=0min
 [2026-07-27 02:29 UTC] EXIT CATE / SOL [TP] ret=+19.1% pnl=+1.1639U held=0min
 [2026-07-27 02:29 UTC] CYCLE OK nav=13006.4288 扫描候选8 新入场4 持仓9 已平仓598
+[2026-07-27 02:32 UTC] BUY Kittens / SOL (Hh4bYnYF...) @ 7.517546799e-05 仓位=$50.00(机器人单笔$703的10%)
+[2026-07-27 02:32 UTC] BUY CATE / SOL (HyQLVUuS...) @ 0.02147340257 仓位=$5.55(机器人单笔$55的10%)
+[2026-07-27 02:32 UTC] EXIT PONS / SOL [TP] ret=+8.4% pnl=+3.1135U held=9min
+[2026-07-27 02:32 UTC] EXIT PUSSY⁠ / SOL [SL] ret=-83.2% pnl=-5.1902U held=3min
+[2026-07-27 02:32 UTC] EXIT CALVIN / SOL [SL] ret=-17.1% pnl=-3.3360U held=3min
+[2026-07-27 02:32 UTC] EXIT CATE / SOL [TP] ret=+24.8% pnl=+1.2379U held=0min
+[2026-07-27 02:32 UTC] CYCLE OK nav=13002.2540 扫描候选8 新入场2 持仓7 已平仓602
