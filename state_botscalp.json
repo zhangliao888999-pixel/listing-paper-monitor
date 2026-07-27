@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16348.117450553307,
+ "cash": 16313.81868145478,
  "positions": {
   "53jcfzb1NXeyQGRULGjUABnYWfqaQ91iqk25ABrqMTpq": {
    "name": "BLOCK / SOL",
@@ -18,7 +18,9 @@
    "qty": 832.957489872242,
    "usd": 5,
    "t_entry": 1785168484,
-   "bot_avg_trade_usd": 31.5
+   "bot_avg_trade_usd": 31.5,
+   "mark": 0.005885007150923851,
+   "mark_ret": -0.019607843137254943
   },
   "Au8xu2cGK6eg6HBBQedYJQziohwL4RCUDXWYESGZjGdP": {
    "name": "USOP / SOL",
@@ -45,6 +47,24 @@
    "usd": 5.347,
    "t_entry": 1785168843,
    "bot_avg_trade_usd": 53.47
+  },
+  "3HxSnHALBjPZtEDYTeDcHMcL9ibDLsT1Tt4vmgo5V1nj": {
+   "name": "JimothyToy / SOL",
+   "entry": 1.8810797243521388e-05,
+   "qty": 978161.6250388926,
+   "usd": 18.400000000000002,
+   "t_entry": 1785169023,
+   "bot_avg_trade_usd": 184.0,
+   "mark": 1.8700566035365064e-05,
+   "mark_ret": -0.005859996614140717
+  },
+  "AtL7GgSLrkwRoYcSEYGjEccz3A8QWcgKVd7mgYuzTane": {
+   "name": "USWR / SOL",
+   "entry": 1.888220820603926e-05,
+   "qty": 828557.7528477906,
+   "usd": 15.645,
+   "t_entry": 1785169023,
+   "bot_avg_trade_usd": 156.45
   }
  },
  "closed": [
@@ -25817,7 +25837,37 @@
    "reason": "SL",
    "pnl": -1.375,
    "t_exit": 1785168843
+  },
+  {
+   "name": "SalaryCat / SOL",
+   "entry": 0.001974361865417785,
+   "qty": 2532.463824174387,
+   "usd": 5,
+   "t_entry": 1785169023,
+   "bot_avg_trade_usd": 38.65,
+   "mark": 0.0014754620510723936,
+   "mark_ret": -0.25268914634340434,
+   "addr": "AVFpKzmtLXJusLfF3m2etbSYeH3oLKDM9JX2oaeawS6Z",
+   "exit": 0.0014459528100509457,
+   "reason": "SL",
+   "pnl": -1.3382,
+   "t_exit": 1785169023
+  },
+  {
+   "name": "FoodPoop / SOL",
+   "entry": 2.932202140614587e-05,
+   "qty": 170520.3038611794,
+   "usd": 5,
+   "t_entry": 1785169023,
+   "bot_avg_trade_usd": 17.06,
+   "mark": 3.6409619054529416e-05,
+   "mark_ret": 0.2417158609296286,
+   "addr": "GrT7my4PzSUNUTYmJag3ej8RUsNr31U3dthzJ1LVKQna",
+   "exit": 3.568142667343883e-05,
+   "reason": "TP",
+   "pnl": 1.0844,
+   "t_exit": 1785169023
   }
  ],
- "realized_pnl": 6409.174450553326
+ "realized_pnl": 6408.920681454798
 }
