@@ -125,7 +125,11 @@ def check_scalping(addr):
 
 
 def log(msg):
-    line = f"[{NOW_STR}] {msg}"
+    # 用调用这一刻的真实时间,不用NOW_STR(那是整个进程启动时刻算的,一轮扫描里
+    # 好几十个候选跑下来实际经过了几秒到几十秒,如果都打同一个时间戳,实时tail
+    # 日志的时候就看不出"现在具体卡在哪一步"了
+    ts = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    line = f"[{ts}] {msg}"
     try:
         print(line)
     except UnicodeEncodeError:
