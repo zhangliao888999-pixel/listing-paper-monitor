@@ -3033,3 +3033,14 @@
 [2026-07-27 11:32 UTC] EXIT Nongwan / SOL [SL] ret=-73.1% pnl=-4.6326U held=0min
 [2026-07-27 11:32 UTC] EXIT dawang / SOL [SL] ret=-15.2% pnl=-1.6823U held=0min
 [2026-07-27 11:32 UTC] CYCLE OK nav=15632.5342 扫描候选9 新入场5 持仓9 已平仓1356
+[2026-07-27 11:35 UTC] BUY Nongwan / SOL (J5zUqUVw...) @ 0.001216549274 仓位=$5.00(机器人单笔$25的10%)
+[2026-07-27 11:35 UTC] BUY Nongwan / SOL (CTf8m9kZ...) @ 0.001230156773 仓位=$5.00(机器人单笔$18的10%)
+[2026-07-27 11:35 UTC] BUY 4FUN / SOL (EsXUqZ7J...) @ 4.557295187e-05 仓位=$46.50(机器人单笔$465的10%)
+[2026-07-27 11:35 UTC] BUY dawang / SOL (696XWFsW...) @ 0.0001672202762 仓位=$9.29(机器人单笔$93的10%)
+[2026-07-27 11:35 UTC] EXIT THETOKEN / SOL [TIME] ret=-2.0% pnl=-1.9608U held=42min
+[2026-07-27 11:35 UTC] EXIT 10Bill / SOL [TIME] ret=-2.0% pnl=-0.1961U held=39min
+[2026-07-27 11:35 UTC] EXIT CXMT / SOL [TP] ret=+16.2% pnl=+6.9069U held=9min
+[2026-07-27 11:35 UTC] EXIT Nongwan / SOL [SL] ret=-73.4% pnl=-3.6958U held=0min
+[2026-07-27 11:35 UTC] EXIT Nongwan / SOL [SL] ret=-73.7% pnl=-3.7096U held=0min
+[2026-07-27 11:35 UTC] EXIT dawang / SOL [SL] ret=-12.6% pnl=-1.3301U held=0min
+[2026-07-27 11:35 UTC] CYCLE OK nav=15627.6947 扫描候选9 新入场4 持仓7 已平仓1362
