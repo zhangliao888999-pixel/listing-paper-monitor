@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 14839.272590604902,
+ "cash": 14907.220138459343,
  "positions": {
   "HtgQWGD41wMGzzkc38bA5QNfxwzjSAceh5Lzt3cqA99R": {
    "name": "WILLY / SOL",
@@ -22,14 +22,6 @@
    "mark": 2.0119339689814192e-05,
    "mark_ret": -0.019607843137254832
   },
-  "BfMEoVXzUHCMjx9MrfczBEs5z2hdprPPfHruzMnhYrzB": {
-   "name": "Nongwan / SOL",
-   "entry": 0.00022728632964129532,
-   "qty": 219186.0816205844,
-   "usd": 49.818000000000005,
-   "t_entry": 1785146523,
-   "bot_avg_trade_usd": 498.18
-  },
   "9KPwfm9eqWF3J5vNgyueKYeudaGg84gkvnWewpSn6mU7": {
    "name": "ROBIN / SOL",
    "entry": 1.3656274096187764e-05,
@@ -39,14 +31,6 @@
    "bot_avg_trade_usd": 221.33,
    "mark": 1.3912100149622446e-05,
    "mark_ret": 0.01873322486300255
-  },
-  "FxuW1jyvf1mMZyfXB9xuH9HaxFBmmZAqEE9wNUULuTTP": {
-   "name": "Sydney / SOL",
-   "entry": 0.0002472845928625294,
-   "qty": 20219.6179799184,
-   "usd": 5,
-   "t_entry": 1785146523,
-   "bot_avg_trade_usd": 33.22
   },
   "6GJwQ4jDYZEKocZyecPggMmvQC46SBrsst56avfHBwzL": {
    "name": "cock / SOL",
@@ -58,24 +42,6 @@
    "mark": 6.899428203796184e-05,
    "mark_ret": -0.019607843137255054
   },
-  "mWz9x5vGxqzML8mi5WAnD6PkZqrrJxzr9VyvCmAZJ9H": {
-   "name": "Sara / SOL",
-   "entry": 1.1964216353736238e-05,
-   "qty": 949247.2941157894,
-   "usd": 11.357,
-   "t_entry": 1785146883,
-   "bot_avg_trade_usd": 113.57
-  },
-  "4vayZ97Ynfvwdp1pd4Td1Apvqst71y4LtuxMcgXGsDQg": {
-   "name": "RUN / SOL",
-   "entry": 0.0006343460558715623,
-   "qty": 34448.07419820142,
-   "usd": 21.852000000000004,
-   "t_entry": 1785146883,
-   "bot_avg_trade_usd": 218.52,
-   "mark": 0.000647114408675979,
-   "mark_ret": 0.020128371077949847
-  },
   "3TCdRkQ34agaSnYgXRpLoLefzVvYUBahbiJ9Cgs7shd5": {
    "name": "ROAR / SOL",
    "entry": 0.001341886138056299,
@@ -85,6 +51,14 @@
    "bot_avg_trade_usd": 34.52,
    "mark": 0.0013155746451532343,
    "mark_ret": -0.019607843137254943
+  },
+  "5YJTWrPFCTUS9VbuAkEzA4FzpokALkoTmqvCXfqTzXW2": {
+   "name": "SWA / SOL",
+   "entry": 1.8093065144829985e-05,
+   "qty": 1241193.7844825033,
+   "usd": 22.457,
+   "t_entry": 1785147243,
+   "bot_avg_trade_usd": 224.57
   }
  },
  "closed": [
@@ -18717,7 +18691,142 @@
    "reason": "TP",
    "pnl": 3.6735,
    "t_exit": 1785146883
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.00022728632964129532,
+   "qty": 219186.0816205844,
+   "usd": 49.818000000000005,
+   "t_entry": 1785146523,
+   "bot_avg_trade_usd": 498.18,
+   "mark": 0.0002651874788067642,
+   "mark_ret": 0.166755075966446,
+   "addr": "BfMEoVXzUHCMjx9MrfczBEs5z2hdprPPfHruzMnhYrzB",
+   "exit": 0.00025988372923062893,
+   "reason": "TP",
+   "pnl": 7.1449,
+   "t_exit": 1785147243
+  },
+  {
+   "name": "Sydney / SOL",
+   "entry": 0.0002472845928625294,
+   "qty": 20219.6179799184,
+   "usd": 5,
+   "t_entry": 1785146523,
+   "bot_avg_trade_usd": 33.22,
+   "mark": 8.286576215583372e-05,
+   "mark_ret": -0.6648971891188525,
+   "addr": "FxuW1jyvf1mMZyfXB9xuH9HaxFBmmZAqEE9wNUULuTTP",
+   "exit": 8.120844691271705e-05,
+   "reason": "SL",
+   "pnl": -3.358,
+   "t_exit": 1785147243
+  },
+  {
+   "name": "Sara / SOL",
+   "entry": 1.1964216353736238e-05,
+   "qty": 949247.2941157894,
+   "usd": 11.357,
+   "t_entry": 1785146883,
+   "bot_avg_trade_usd": 113.57,
+   "mark": 1.5339120387615116e-05,
+   "mark_ret": 0.282083166510521,
+   "addr": "mWz9x5vGxqzML8mi5WAnD6PkZqrrJxzr9VyvCmAZJ9H",
+   "exit": 1.5032337979862814e-05,
+   "reason": "TP",
+   "pnl": 2.9124,
+   "t_exit": 1785147243
+  },
+  {
+   "name": "RUN / SOL",
+   "entry": 0.0006343460558715623,
+   "qty": 34448.07419820142,
+   "usd": 21.852000000000004,
+   "t_entry": 1785146883,
+   "bot_avg_trade_usd": 218.52,
+   "mark": 0.0007123253321402806,
+   "mark_ret": 0.12292860584051146,
+   "addr": "4vayZ97Ynfvwdp1pd4Td1Apvqst71y4LtuxMcgXGsDQg",
+   "exit": 0.000698078825497475,
+   "reason": "TP",
+   "pnl": 2.1955,
+   "t_exit": 1785147243
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.0012165492744061412,
+   "qty": 4109.985600411254,
+   "usd": 5,
+   "t_entry": 1785147243,
+   "bot_avg_trade_usd": 26.19,
+   "mark": 0.00048301002739543615,
+   "mark_ret": -0.6029671485101025,
+   "addr": "J5zUqUVwjhtRTgixEFEL3bpNvZcW5Rfb12sR55Tc715L",
+   "exit": 0.00047334982684752743,
+   "reason": "SL",
+   "pnl": -3.0545,
+   "t_exit": 1785147243
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.0012301567727202884,
+   "qty": 4133.6194806742915,
+   "usd": 5.085000000000001,
+   "t_entry": 1785147243,
+   "bot_avg_trade_usd": 50.85,
+   "mark": 0.0004563472700211078,
+   "mark_ret": -0.6290332418265916,
+   "addr": "CTf8m9kZGu7VYudCqtotLWFfVR6wh9xNagM14h7h7kmj",
+   "exit": 0.00044722032462068566,
+   "reason": "SL",
+   "pnl": -3.2364,
+   "t_exit": 1785147243
+  },
+  {
+   "name": "HOOD / SOL",
+   "entry": 3.666990296998982e-05,
+   "qty": 1159643.1011775816,
+   "usd": 42.524,
+   "t_entry": 1785147243,
+   "bot_avg_trade_usd": 425.24,
+   "mark": 3.8595178081497206e-05,
+   "mark_ret": 0.052502868989945384,
+   "addr": "FkyuLuELyfNtF5cRWWHAzQpix82bKu5JEE4J43zNusnK",
+   "exit": 3.782327451986726e-05,
+   "reason": "TP",
+   "pnl": 1.3375,
+   "t_exit": 1785147243
+  },
+  {
+   "name": "USOX / SOL",
+   "entry": 0.020876246912474,
+   "qty": 422.82504307446567,
+   "usd": 8.827,
+   "t_entry": 1785147243,
+   "bot_avg_trade_usd": 88.27,
+   "mark": 0.01620919757222622,
+   "mark_ret": -0.22355787224662116,
+   "addr": "5wYRUoqGLFYrXEnasTwAKKfnFNSa5cXrb6B8qpdi3Sa2",
+   "exit": 0.015885013620781693,
+   "reason": "SL",
+   "pnl": -2.1104,
+   "t_exit": 1785147243
+  },
+  {
+   "name": "dawang / SOL",
+   "entry": 7.610950004898287e-05,
+   "qty": 135594.1110289545,
+   "usd": 10.32,
+   "t_entry": 1785147243,
+   "bot_avg_trade_usd": 103.2,
+   "mark": 8.17760961367826e-05,
+   "mark_ret": 0.07445320339974382,
+   "addr": "696XWFsWKyhFv1nrA3vXKSiVgFMaEJcDL3VqWFiw1aNS",
+   "exit": 8.014057421404695e-05,
+   "reason": "TP",
+   "pnl": 0.5466,
+   "t_exit": 1785147243
   }
  ],
- "realized_pnl": 5002.211590604909
+ "realized_pnl": 5004.589138459347
 }
