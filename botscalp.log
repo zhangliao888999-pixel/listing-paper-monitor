@@ -2177,3 +2177,8 @@
 [2026-07-27 06:29 UTC] EXIT TBB / SOL [TIME] ret=-2.0% pnl=-0.2108U held=45min
 [2026-07-27 06:29 UTC] EXIT dogi / SOL [SL] ret=-37.2% pnl=-3.3364U held=0min
 [2026-07-27 06:29 UTC] CYCLE OK nav=13682.6225 扫描候选7 新入场3 持仓8 已平仓970
+[2026-07-27 06:32 UTC] BUY dogi / SOL (2VCeMNNr...) @ 2.486937265e-05 仓位=$9.84(机器人单笔$98的10%)
+[2026-07-27 06:32 UTC] EXIT GUGO / SOL [TIME] ret=-2.0% pnl=-0.6903U held=33min
+[2026-07-27 06:32 UTC] EXIT CATE / SOL [TP] ret=+7.6% pnl=+2.7454U held=18min
+[2026-07-27 06:32 UTC] EXIT dogi / SOL [SL] ret=-34.7% pnl=-3.5399U held=0min
+[2026-07-27 06:32 UTC] CYCLE OK nav=13678.8724 扫描候选7 新入场1 持仓6 已平仓973
