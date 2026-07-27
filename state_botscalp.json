@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 14636.55723321754,
+ "cash": 14590.250251938878,
  "positions": {
   "CTf8m9kZGu7VYudCqtotLWFfVR6wh9xNagM14h7h7kmj": {
    "name": "Nongwan / SOL",
@@ -77,16 +77,26 @@
    "usd": 42.138000000000005,
    "t_entry": 1785142563,
    "bot_avg_trade_usd": 421.38,
-   "mark": 3.316901448899004e-06,
-   "mark_ret": 0.007812403461618489
+   "mark": 3.3656832584121923e-06,
+   "mark_ret": 0.022634342988043787
   },
-  "4vayZ97Ynfvwdp1pd4Td1Apvqst71y4LtuxMcgXGsDQg": {
-   "name": "RUN / SOL",
-   "entry": 0.00040906189921833066,
-   "qty": 48180.97221389133,
-   "usd": 19.709000000000003,
-   "t_entry": 1785142743,
-   "bot_avg_trade_usd": 197.09
+  "HUvDsAd1PFxyFyBGvKKDr1VSvNSuizGjL2LWjq5anoyj": {
+   "name": "WILLY / SOL",
+   "entry": 0.00015339566022998233,
+   "qty": 315869.43155598803,
+   "usd": 48.453,
+   "t_entry": 1785142923,
+   "bot_avg_trade_usd": 484.53
+  },
+  "6GJwQ4jDYZEKocZyecPggMmvQC46SBrsst56avfHBwzL": {
+   "name": "cock / SOL",
+   "entry": 0.00019860933150284084,
+   "qty": 118514.06891052006,
+   "usd": 23.538,
+   "t_entry": 1785142923,
+   "bot_avg_trade_usd": 235.38,
+   "mark": 0.00020518363371553632,
+   "mark_ret": 0.033101678370038856
   }
  },
  "closed": [
@@ -17309,7 +17319,22 @@
    "reason": "TP",
    "pnl": 1.4944,
    "t_exit": 1785142743
+  },
+  {
+   "name": "RUN / SOL",
+   "entry": 0.00040906189921833066,
+   "qty": 48180.97221389133,
+   "usd": 19.709000000000003,
+   "t_entry": 1785142743,
+   "bot_avg_trade_usd": 197.09,
+   "mark": 0.000543952958283319,
+   "mark_ret": 0.32975708400794446,
+   "addr": "4vayZ97Ynfvwdp1pd4Td1Apvqst71y4LtuxMcgXGsDQg",
+   "exit": 0.0005330738991176526,
+   "reason": "TP",
+   "pnl": 5.975,
+   "t_exit": 1785142923
   }
  ],
- "realized_pnl": 4868.709233217548
+ "realized_pnl": 4874.6842519388865
 }
