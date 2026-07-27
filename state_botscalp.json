@@ -2,27 +2,6 @@
  "created": "2026-07-26 18:25 UTC",
  "cash": 13628.256625470472,
  "positions": {
-  "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
-   "name": "CXMT / SOL",
-   "entry": 5.6143664453886797e-05,
-   "qty": 890572.435667557,
-   "usd": 50,
-   "t_entry": 1785180003,
-   "bot_avg_trade_usd": 646.26,
-   "total_checks": 8,
-   "consecutive_no_price": 0
-  },
-  "EHtYmEbzcHp2Zh9RsC23XAkL8Ybyap2bgyHjQ7LfTZ3Y": {
-   "name": "me-me / SOL",
-   "entry": 0.00016210142804957048,
-   "qty": 182533.86386547878,
-   "usd": 29.589,
-   "t_entry": 1785189363,
-   "bot_avg_trade_usd": 295.89,
-   "total_checks": 8,
-   "no_price_checks": 3,
-   "consecutive_no_price": 0
-  },
   "xZNHowbDcfWxFLLrHFqbXWKeBt429cyhaY9cZAy4wCM": {
    "name": "STANdx / SOL",
    "entry": 2.1662993115026732e-05,
@@ -33191,7 +33170,40 @@
    "reason": "TP",
    "pnl": 7.2342,
    "t_exit": 1785191522
+  },
+  {
+   "name": "CXMT / SOL",
+   "entry": 5.6143664453886797e-05,
+   "qty": 890572.435667557,
+   "usd": 50,
+   "t_entry": 1785180003,
+   "bot_avg_trade_usd": 646.26,
+   "total_checks": 8,
+   "consecutive_no_price": 0,
+   "addr": "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA",
+   "exit": 0.0,
+   "reason": "DEAD",
+   "pnl": -50,
+   "t_exit": 1785184800,
+   "_note": "人工核实链上真实流动性已趋近于0(CXMT/SOL liq=$0.0678),判定死亡按本金全亏平仓,不等自动机制的45分钟窗口"
+  },
+  {
+   "name": "me-me / SOL",
+   "entry": 0.00016210142804957048,
+   "qty": 182533.86386547878,
+   "usd": 29.589,
+   "t_entry": 1785189363,
+   "bot_avg_trade_usd": 295.89,
+   "total_checks": 8,
+   "no_price_checks": 3,
+   "consecutive_no_price": 0,
+   "addr": "EHtYmEbzcHp2Zh9RsC23XAkL8Ybyap2bgyHjQ7LfTZ3Y",
+   "exit": 0.0,
+   "reason": "DEAD",
+   "pnl": -29.589,
+   "t_exit": 1785184800,
+   "_note": "人工核实链上真实流动性已趋近于0(me-me/SOL liq=$0.0004),判定死亡按本金全亏平仓,不等自动机制的45分钟窗口"
   }
  ],
- "realized_pnl": 3655.7316254704547
+ "realized_pnl": 3576.1426254704547
 }
