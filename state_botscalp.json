@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13150.697448066061,
+ "cash": 13140.697448066061,
  "positions": {
   "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
    "name": "CXMT / SOL",
@@ -37,8 +37,8 @@
    "usd": 50,
    "t_entry": 1785185943,
    "bot_avg_trade_usd": 576.04,
-   "mark": 5.0480305114311906e-05,
-   "mark_ret": 0.012059626380619415
+   "mark": 5.007673156163981e-05,
+   "mark_ret": 0.003968540203356463
   },
   "7TrrWpNAmPb7VCuJRUA9GzEXJNCHdTWQ12aErsf4hgTt": {
    "name": "CATE / SOL",
@@ -67,6 +67,24 @@
    "bot_avg_trade_usd": 8.82,
    "mark": 1.7162296219312076e-05,
    "mark_ret": 0.016550434556015903
+  },
+  "E6kQDqs7eu6CsXrVy919cQqXfaD9cEhbrGNnt3qMHSo7": {
+   "name": "USWR / SOL",
+   "entry": 0.02685084822609496,
+   "qty": 186.21385655670858,
+   "usd": 5,
+   "t_entry": 1785187023,
+   "bot_avg_trade_usd": 3.75,
+   "mark": 0.027483969077551997,
+   "mark_ret": 0.023579175083256354
+  },
+  "B2qP6ugZbbfPmsxZCzS8KRekKTk9dvoHtytx3RxGLxyK": {
+   "name": "Codex / SOL",
+   "entry": 2.8381068641229007e-05,
+   "qty": 176173.77496267107,
+   "usd": 5,
+   "t_entry": 1785187023,
+   "bot_avg_trade_usd": 14.78
   }
  },
  "closed": [
