@@ -4193,3 +4193,10 @@
 [2026-07-27 18:23 UTC] EXIT pumpkets / SOL [TP] ret=+6.2% pnl=+1.6182U held=9min
 [2026-07-27 18:23 UTC] EXIT PONS / SOL [TP] ret=+11.0% pnl=+4.4030U held=0min
 [2026-07-27 18:23 UTC] CYCLE OK nav=16213.9684 扫描候选8 新入场3 持仓5 已平仓1877
+[2026-07-27 18:26 UTC] BUY SOLCEX / SOL (3SXT6xKD...) @ 3.37389368e-05 仓位=$50.00(机器人单笔$525的10%)
+[2026-07-27 18:26 UTC] BUY pumpkets / SOL (FRidHh25...) @ 3.608885323e-05 仓位=$39.87(机器人单笔$399的10%)
+[2026-07-27 18:26 UTC] BUY PONS / SOL (4zWjFSwh...) @ 1.78582578e-05 仓位=$50.00(机器人单笔$583的10%)
+[2026-07-27 18:26 UTC] EXIT CXMT / SOL [TP] ret=+9.6% pnl=+3.7252U held=6min
+[2026-07-27 18:26 UTC] EXIT pumpkets / SOL [TP] ret=+6.2% pnl=+1.6182U held=0min
+[2026-07-27 18:26 UTC] EXIT PONS / SOL [TP] ret=+11.6% pnl=+4.7011U held=0min
+[2026-07-27 18:26 UTC] CYCLE OK nav=16223.5628 扫描候选8 新入场3 持仓5 已平仓1880
