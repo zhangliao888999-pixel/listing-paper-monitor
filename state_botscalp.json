@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13522.49384917368,
+ "cash": 13535.972277036919,
  "positions": {
   "7JND8ib17tWeRXqviNzQrU5Do57GeUYjACpSCJqaZSKE": {
    "name": "UCOE / SOL",
@@ -9,8 +9,8 @@
    "usd": 50,
    "t_entry": 1785133383,
    "bot_avg_trade_usd": 729.25,
-   "mark": 6.004997781362494e-05,
-   "mark_ret": 0.04160489312908089
+   "mark": 5.855435284218278e-05,
+   "mark_ret": 0.01566233086244284
   },
   "14UfqDjc2iWMC8yK9EoBzauds9X1VnKJ4gCyJeqWvEWS": {
    "name": "SIRIUS / SOL",
@@ -19,24 +19,8 @@
    "usd": 18.52,
    "t_entry": 1785133743,
    "bot_avg_trade_usd": 185.2,
-   "mark": 2.0750507231222373e-05,
-   "mark_ret": 0.03442880116447511
-  },
-  "2VCeMNNrANPeywxfaqy2LvqJ3TgZs3r9hrWVDtcYWM79": {
-   "name": "dogi / SOL",
-   "entry": 2.48693726511002e-05,
-   "qty": 301977.86270526465,
-   "usd": 7.51,
-   "t_entry": 1785134103,
-   "bot_avg_trade_usd": 75.1
-  },
-  "AM1TWiG8Rm8zhN3fJ9EEDEPksX7J98E2p9b66NrUEQsX": {
-   "name": "JEETMAN / SOL",
-   "entry": 1.6410218077374823e-05,
-   "qty": 856722.3137261957,
-   "usd": 14.059000000000001,
-   "t_entry": 1785134284,
-   "bot_avg_trade_usd": 140.59
+   "mark": 2.059299630920487e-05,
+   "mark_ret": 0.026576760131583388
   },
   "55Hq58JJzsSARssDEDeRZRFb3nwZg5xFFRWCu7MEFj4D": {
    "name": "1CAPY / SOL",
@@ -14714,7 +14698,37 @@
    "reason": "TP",
    "pnl": 5.894,
    "t_exit": 1785134284
+  },
+  {
+   "name": "dogi / SOL",
+   "entry": 2.48693726511002e-05,
+   "qty": 301977.86270526465,
+   "usd": 7.51,
+   "t_entry": 1785134103,
+   "bot_avg_trade_usd": 75.1,
+   "mark": 1.889893672428662e-05,
+   "mark_ret": -0.24007183496643025,
+   "addr": "2VCeMNNrANPeywxfaqy2LvqJ3TgZs3r9hrWVDtcYWM79",
+   "exit": 1.8520957989800886e-05,
+   "reason": "SL",
+   "pnl": -1.9171,
+   "t_exit": 1785134466
+  },
+  {
+   "name": "JEETMAN / SOL",
+   "entry": 1.6410218077374823e-05,
+   "qty": 856722.3137261957,
+   "usd": 14.059000000000001,
+   "t_entry": 1785134284,
+   "bot_avg_trade_usd": 140.59,
+   "mark": 9.392118276029762e-06,
+   "mark_ret": -0.427666455634803,
+   "addr": "AM1TWiG8Rm8zhN3fJ9EEDEPksX7J98E2p9b66NrUEQsX",
+   "exit": 9.204275910509167e-06,
+   "reason": "SL",
+   "pnl": -6.1735,
+   "t_exit": 1785134466
   }
  ],
- "realized_pnl": 3685.1168491736794
+ "realized_pnl": 3677.026277036919
 }
