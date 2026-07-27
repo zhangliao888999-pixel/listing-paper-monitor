@@ -4522,3 +4522,14 @@
 [2026-07-27 19:56 UTC] EXIT Enigma / SOL [SL] ret=-70.4% pnl=-33.5316U held=0min
 [2026-07-27 19:56 UTC] EXIT Tortuga / SOL [SL] ret=-36.9% pnl=-1.9101U held=0min
 [2026-07-27 19:56 UTC] CYCLE OK nav=13502.2342 扫描候选9 新入场6 持仓8 已平仓2022
+[2026-07-27 19:59 UTC] BUY GIGA / SOL (2c9BThSg...) @ 0.0001629267872 仓位=$11.98(机器人单笔$120的10%)
+[2026-07-27 19:59 UTC] BUY breadcat / SOL (81bbDkSM...) @ 5.832852473e-05 仓位=$50.00(机器人单笔$1280的10%)
+[2026-07-27 19:59 UTC] BUY CXMT / SOL (27bRizm3...) @ 5.884003292e-05 仓位=$26.93(机器人单笔$269的10%)
+[2026-07-27 19:59 UTC] BUY Enigma / SOL (G1jdEv9y...) @ 0.0001380067634 仓位=$21.24(机器人单笔$212的10%)
+[2026-07-27 19:59 UTC] BUY bfstoken / SOL (97RUkWbt...) @ 0.0006632129609 仓位=$50.00(机器人单笔$18061的10%)
+[2026-07-27 19:59 UTC] BUY AORP / SOL (Ck3KcPz6...) @ 0.0006105164724 仓位=$5.00(机器人单笔$21的10%)
+[2026-07-27 19:59 UTC] EXIT Ryder / SOL [TP] ret=+14.8% pnl=+6.2296U held=3min
+[2026-07-27 19:59 UTC] EXIT GIGA / SOL [SL] ret=-10.2% pnl=-1.4358U held=0min
+[2026-07-27 19:59 UTC] EXIT Enigma / SOL [SL] ret=-36.0% pnl=-7.9226U held=0min
+[2026-07-27 19:59 UTC] EXIT AORP / SOL [SL] ret=-6.8% pnl=-0.4308U held=0min
+[2026-07-27 19:59 UTC] CYCLE OK nav=13501.1619 扫描候选10 新入场6 持仓10 已平仓2026
