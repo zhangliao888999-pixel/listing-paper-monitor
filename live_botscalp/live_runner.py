@@ -558,9 +558,13 @@ def write_dashboard_html(cfg, state):
   body {{ margin: 0; background: var(--bg); color: var(--text);
     font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     font-size: 14px; line-height: 1.5; }}
-  header {{ padding: 16px 20px; border-bottom: 1px solid var(--border); }}
+  header {{ padding: 16px 20px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; }}
   header h1 {{ font-size: 18px; margin: 0 0 4px; font-weight: 600; }}
   header .warn {{ font-size: 12px; color: var(--yellow); }}
+  #heartbeat {{ font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 8px; white-space: nowrap; }}
+  #heartbeat .dot {{ display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }}
+  #heartbeat .sub2 {{ display: block; font-size: 11px; font-weight: 400; color: var(--dim); margin-top: 2px; }}
   main {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 14px; padding: 16px; }}
   .card {{ background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }}
   .card.wide {{ grid-column: 1 / -1; }}
@@ -586,8 +590,11 @@ def write_dashboard_html(cfg, state):
 </head>
 <body>
 <header>
-  <h1>🔒 策略D 实盘监控 (真实钱包)</h1>
-  <div class="warn">本地专用文件,只在这台VPS上查看,不会上传/推送到任何公开的地方</div>
+  <div>
+    <h1>🔒 策略D 实盘监控 (真实钱包)</h1>
+    <div class="warn">本地专用文件,只在这台VPS上查看,不会上传/推送到任何公开的地方</div>
+  </div>
+  <div id="heartbeat">加载中...</div>
 </header>
 <main>
   <div class="card">
@@ -621,6 +628,35 @@ def write_dashboard_html(cfg, state):
   </div>
 </main>
 <footer>每20秒自动刷新此页面(需要保持浏览器标签页开着) · 数据每次run_live_vps.ps1跑完后更新</footer>
+<script>
+// 计划任务是每3分钟跑一次run_live_vps.ps1,这里心跳按这个周期算阈值:
+// 4分钟内=正常(可能还没到下一轮),4-10分钟=偏慢(该有点警觉了),10分钟以上=大概率任务
+// 停了/卡住了/VPS本身有问题——这样不用等页面20秒刷新也能一眼看出程序是不是还活着。
+const GENERATED_AT = {NOW};
+const HB_COLORS = {{
+  green: {{ fg: "#26a69a", bg: "rgba(38,166,154,0.15)" }},
+  yellow: {{ fg: "#d4a72c", bg: "rgba(212,167,44,0.15)" }},
+  red: {{ fg: "#ef5350", bg: "rgba(239,83,80,0.15)" }},
+}};
+function tickHeartbeat() {{
+  const ageSec = Math.floor(Date.now() / 1000 - GENERATED_AT);
+  const el = document.getElementById("heartbeat");
+  let key, label;
+  if (ageSec < 240) {{ key = "green"; label = "正常运行"; }}
+  else if (ageSec < 600) {{ key = "yellow"; label = "偏慢,留意一下"; }}
+  else {{ key = "red"; label = "可能停了!去VPS上检查计划任务/日志"; }}
+  const c = HB_COLORS[key];
+  const mins = Math.floor(ageSec / 60), secs = ageSec % 60;
+  const ageStr = ageSec < 60 ? `${{ageSec}}秒前` : `${{mins}}分${{secs}}秒前`;
+  el.style.background = c.bg;
+  el.style.color = c.fg;
+  el.style.border = `1px solid ${{c.fg}}`;
+  el.innerHTML = `<span class="dot" style="background:${{c.fg}}"></span>${{label}}` +
+    `<span class="sub2">页面生成于 ${{ageStr}}(计划任务约每3分钟跑一轮)</span>`;
+}}
+tickHeartbeat();
+setInterval(tickHeartbeat, 1000);
+</script>
 </body>
 </html>
 """
