@@ -3659,3 +3659,7 @@
 [2026-07-27 15:08 UTC] EXIT ◎ / SOL [TP] ret=+22.5% pnl=+4.3822U held=6min
 [2026-07-27 15:08 UTC] EXIT GM / SOL [SL] ret=-10.2% pnl=-0.6010U held=3min
 [2026-07-27 15:08 UTC] CYCLE OK nav=16344.1954 扫描候选5 新入场2 持仓5 已平仓1641
+[2026-07-27 15:11 UTC] BUY GM / SOL (56ZGu65i...) @ 4.281036916e-05 仓位=$5.00(机器人单笔$41的10%)
+[2026-07-27 15:11 UTC] EXIT VALOR / SOL [TIME] ret=-2.0% pnl=-1.2375U held=30min
+[2026-07-27 15:11 UTC] EXIT ◎ / SOL [TP] ret=+79.8% pnl=+3.8117U held=6min
+[2026-07-27 15:11 UTC] CYCLE OK nav=16345.8839 扫描候选5 新入场1 持仓4 已平仓1643
