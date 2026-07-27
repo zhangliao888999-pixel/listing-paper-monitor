@@ -1,17 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16190.542407033889,
+ "cash": 16139.611823712548,
  "positions": {
-  "FtupZv5mpMcNae9z96ViSLYoKMu9tNVyxu1rgJbCA8Ty": {
-   "name": "GONGFU / SOL",
-   "entry": 3.9126894116001647e-05,
-   "qty": 127789.34063041718,
-   "usd": 5,
-   "t_entry": 1785161462,
-   "bot_avg_trade_usd": 17.36,
-   "mark": 3.835970011372711e-05,
-   "mark_ret": -0.019607843137254832
-  },
   "86y5R1rHoBcnyUZ5dkrteoE9cAuQeededMNQy9GHynF5": {
    "name": "AEON / SOL",
    "entry": 4.649930179238758e-06,
@@ -48,7 +38,9 @@
    "qty": 267531.623518183,
    "usd": 15.713999999999999,
    "t_entry": 1785163083,
-   "bot_avg_trade_usd": 157.14
+   "bot_avg_trade_usd": 157.14,
+   "mark": 5.843384751022989e-05,
+   "mark_ret": -0.005160869745084562
   },
   "2ZWVnVozsqYwzxCgfPcYYfkjaon2UqiTPe112FJm5DnZ": {
    "name": "CASHBULL / SOL",
@@ -57,8 +49,36 @@
    "usd": 17.468,
    "t_entry": 1785163083,
    "bot_avg_trade_usd": 174.68,
-   "mark": 1.548111433196268e-05,
-   "mark_ret": 0.01645368622648591
+   "mark": 1.550972406771542e-05,
+   "mark_ret": 0.018332134427582192
+  },
+  "A9E9a7JiUvDiCMwaWTp1MYPpDcAbwRLCtkULBGKiJAuR": {
+   "name": "VALOR / SOL",
+   "entry": 2.2301226049496198e-05,
+   "qty": 1415034.3093227781,
+   "usd": 31.557000000000002,
+   "t_entry": 1785163263,
+   "bot_avg_trade_usd": 315.57
+  },
+  "BwRQL8QWcFBmSZ4441MijL5V45PfjYjEvz2XDyMFHNyh": {
+   "name": "CATE / SOL",
+   "entry": 0.0021190680476340954,
+   "qty": 10336.61945139301,
+   "usd": 21.904,
+   "t_entry": 1785163263,
+   "bot_avg_trade_usd": 219.04,
+   "mark": 0.0021020842539507005,
+   "mark_ret": -0.008014746719604893
+  },
+  "AjtLwy3UVe1ZtZpKZwyKbYq4hwNorj15GWMHnimzTjRV": {
+   "name": "◎ / SOL",
+   "entry": 0.0002858717853797643,
+   "qty": 17490.358460376865,
+   "usd": 5,
+   "t_entry": 1785163263,
+   "bot_avg_trade_usd": 35.48,
+   "mark": 0.0002907090515412715,
+   "mark_ret": 0.01692110382660239
   }
  },
  "closed": [
@@ -24271,7 +24291,37 @@
    "reason": "SL",
    "pnl": -1.0909,
    "t_exit": 1785163083
+  },
+  {
+   "name": "GONGFU / SOL",
+   "entry": 3.9126894116001647e-05,
+   "qty": 127789.34063041718,
+   "usd": 5,
+   "t_entry": 1785161462,
+   "bot_avg_trade_usd": 17.36,
+   "mark": 3.835970011372711e-05,
+   "mark_ret": -0.019607843137254832,
+   "addr": "FtupZv5mpMcNae9z96ViSLYoKMu9tNVyxu1rgJbCA8Ty",
+   "exit": 3.759250611145257e-05,
+   "reason": "TIME",
+   "pnl": -0.1961,
+   "t_exit": 1785163263
+  },
+  {
+   "name": "BONGO / SOL",
+   "entry": 9.861533835142103e-06,
+   "qty": 1052067.5762454045,
+   "usd": 10.375,
+   "t_entry": 1785163263,
+   "bot_avg_trade_usd": 103.75,
+   "mark": 1.2707237503667736e-05,
+   "mark_ret": 0.2885660300008115,
+   "addr": "4aoQhu7NnwuGrWCmaZFm3xHgPcjov1c2FfbF9VTduvAQ",
+   "exit": 1.245309275359438e-05,
+   "reason": "TP",
+   "pnl": 2.7265,
+   "t_exit": 1785163263
   }
  ],
- "realized_pnl": 6312.035407033907
+ "realized_pnl": 6314.565823712568
 }
