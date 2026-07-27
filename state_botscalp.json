@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16040.623481178593,
+ "cash": 15976.490430215958,
  "positions": {
   "BBKk2t2WBj1jy8u9YTVmBnntnApdAk4MmUGRSQMfLBN6": {
    "name": "CXMT / SOL",
@@ -34,7 +34,9 @@
    "qty": 1481967.268097317,
    "usd": 50,
    "t_entry": 1785175683,
-   "bot_avg_trade_usd": 565.49
+   "bot_avg_trade_usd": 565.49,
+   "mark": 3.424013213800642e-05,
+   "mark_ret": 0.014855101677050397
   },
   "GXQZW7nCDwdvMsX96oGNMVLfVEZpG5XLesHBi4N2q9Jf": {
    "name": "IF / SOL",
@@ -43,8 +45,26 @@
    "usd": 50,
    "t_entry": 1785175683,
    "bot_avg_trade_usd": 567.65,
-   "mark": 2.567522569586763e-05,
-   "mark_ret": 0.0035335052717886395
+   "mark": 2.613506624252233e-05,
+   "mark_ret": 0.021506683039209884
+  },
+  "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
+   "name": "CXMT / SOL",
+   "entry": 5.6143664453886797e-05,
+   "qty": 890572.435667557,
+   "usd": 50,
+   "t_entry": 1785175863,
+   "bot_avg_trade_usd": 675.77
+  },
+  "6xQ4bztgdr8oyRgE8B5FLVjQttSfnPiZU9QitBJADAys": {
+   "name": "ARF / SOL",
+   "entry": 6.075495886211495e-05,
+   "qty": 82297.8089960959,
+   "usd": 5,
+   "t_entry": 1785175863,
+   "bot_avg_trade_usd": 2.71,
+   "mark": 6.308030376210035e-05,
+   "mark_ret": 0.03827415808580903
   }
  },
  "closed": [
@@ -28007,7 +28027,52 @@
    "reason": "SL",
    "pnl": -10.6109,
    "t_exit": 1785175683
+  },
+  {
+   "name": "MANTEN / SOL",
+   "entry": 0.0002091080645908581,
+   "qty": 23911.081620802262,
+   "usd": 5,
+   "t_entry": 1785175863,
+   "bot_avg_trade_usd": 46.99,
+   "mark": 0.00018328909839706724,
+   "mark_ret": -0.12347188160489353,
+   "addr": "EtjBC1TqevVJpTZaBcrZRisKgua1wxU99hpseipEocLR",
+   "exit": 0.0001796233164291259,
+   "reason": "SL",
+   "pnl": -0.705,
+   "t_exit": 1785175863
+  },
+  {
+   "name": "USWR / SOL",
+   "entry": 0.045228487831130364,
+   "qty": 601.1034483732492,
+   "usd": 27.187,
+   "t_entry": 1785175863,
+   "bot_avg_trade_usd": 271.87,
+   "mark": 0.05224947997359623,
+   "mark_ret": 0.15523384661189987,
+   "addr": "2QT5A4XXm3wPNCCDgfGNhbJJMKhWssDufAiDJN5HiMaT",
+   "exit": 0.051204490374124306,
+   "reason": "TP",
+   "pnl": 3.5922,
+   "t_exit": 1785175863
+  },
+  {
+   "name": "pumpkets / SOL",
+   "entry": 5.376019588974547e-05,
+   "qty": 741682.5653272147,
+   "usd": 39.873000000000005,
+   "t_entry": 1785175863,
+   "bot_avg_trade_usd": 398.73,
+   "mark": 3.831988324378939e-05,
+   "mark_ret": -0.2872071500189838,
+   "addr": "FRidHh25WqGz2vZyiNzEL7N7NQFq6N6oKxBAK3KQjDQk",
+   "exit": 3.7553485578913603e-05,
+   "reason": "SL",
+   "pnl": -12.0202,
+   "t_exit": 1785175863
   }
  ],
- "realized_pnl": 6216.715481178598
+ "realized_pnl": 6207.582430215961
 }
