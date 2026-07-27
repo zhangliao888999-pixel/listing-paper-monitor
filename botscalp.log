@@ -4796,3 +4796,8 @@
 [2026-07-27 21:11 UTC] EXIT USOP / SOL [TIME] ret=-2.0% pnl=-0.6960U held=30min
 [2026-07-27 21:11 UTC] EXIT Codex / SOL [TP] ret=+40.3% pnl=+1.8745U held=3min
 [2026-07-27 21:11 UTC] CYCLE OK nav=13365.7125 扫描候选5 新入场3 持仓8 已平仓2139
+[2026-07-27 21:14 UTC] BUY Codex / SOL (B2qP6ugZ...) @ 2.838106864e-05 仓位=$5.00(机器人单笔$15的10%)
+[2026-07-27 21:14 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 21:14 UTC] EXIT USWR / SOL [TP] ret=+8.2% pnl=+0.3031U held=15min
+[2026-07-27 21:14 UTC] EXIT Codex / SOL [SL] ret=-12.4% pnl=-0.7085U held=0min
+[2026-07-27 21:14 UTC] CYCLE OK nav=13364.3994 扫描候选5 新入场1 持仓7 已平仓2141
