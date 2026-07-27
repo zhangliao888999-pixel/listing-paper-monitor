@@ -4860,3 +4860,14 @@
 [2026-07-27 21:38 UTC] EXIT CRISCO / SOL [TP] ret=+22.9% pnl=+6.8719U held=0min
 [2026-07-27 21:38 UTC] EXIT Enigma / SOL [TP] ret=+19.3% pnl=+0.8444U held=0min
 [2026-07-27 21:38 UTC] CYCLE OK nav=13543.3536 扫描候选7 新入场4 持仓6 已平仓2163
+[2026-07-27 21:41 UTC] BUY BILL / SOL (6Snm8iMo...) @ 1.348273745e-05 仓位=$31.30(机器人单笔$313的10%)
+[2026-07-27 21:41 UTC] BUY borg / SOL (AKMzYySg...) @ 1.589864543e-05 仓位=$5.00(机器人单笔$19的10%)
+[2026-07-27 21:41 UTC] BUY CRISCO / SOL (4XJ8sTHz...) @ 6.11835872e-05 仓位=$33.04(机器人单笔$330的10%)
+[2026-07-27 21:41 UTC] BUY Enigma / SOL (B2s14JhE...) @ 1.615913994e-05 仓位=$5.00(机器人单笔$9的10%)
+[2026-07-27 21:41 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 21:41 UTC] EXIT CATE / SOL [TIME] ret=-2.0% pnl=-1.3615U held=30min
+[2026-07-27 21:41 UTC] EXIT borg / SOL [TP] ret=+162.6% pnl=+37.8881U held=3min
+[2026-07-27 21:41 UTC] EXIT BILL / SOL [TP] ret=+88.0% pnl=+26.3671U held=0min
+[2026-07-27 21:41 UTC] EXIT borg / SOL [TP] ret=+57.5% pnl=+2.7194U held=0min
+[2026-07-27 21:41 UTC] EXIT Enigma / SOL [TP] ret=+18.5% pnl=+0.8073U held=0min
+[2026-07-27 21:41 UTC] CYCLE OK nav=13610.4548 扫描候选7 新入场4 持仓5 已平仓2168
