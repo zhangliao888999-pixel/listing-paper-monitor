@@ -4881,3 +4881,9 @@
 [2026-07-27 21:47 UTC] EXIT CRISCO / SOL [TP] ret=+28.1% pnl=+8.4541U held=6min
 [2026-07-27 21:47 UTC] EXIT me-me / SOL [TP] ret=+131.1% pnl=+34.3295U held=0min
 [2026-07-27 21:47 UTC] CYCLE OK nav=13652.4748 扫描候选7 新入场6 持仓8 已平仓2171
+[2026-07-27 21:50 UTC] BUY me-me / SOL (GbLikM4V...) @ 0.0001252985844 仓位=$36.82(机器人单笔$368的10%)
+[2026-07-27 21:50 UTC] BUY USWR / SOL (E6kQDqs7...) @ 0.03069024959 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-27 21:50 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 21:50 UTC] EXIT まんてん / SOL [SL] ret=-4.4% pnl=-0.3148U held=3min
+[2026-07-27 21:50 UTC] EXIT me-me / SOL [TP] ret=+108.6% pnl=+38.4336U held=0min
+[2026-07-27 21:50 UTC] CYCLE OK nav=13689.9129 扫描候选7 新入场2 持仓8 已平仓2173

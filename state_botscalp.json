@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13475.577537930993,
+ "cash": 13513.696378451832,
  "positions": {
   "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
    "name": "CXMT / SOL",
@@ -36,7 +36,9 @@
    "qty": 1964347.166503896,
    "usd": 34.717000000000006,
    "t_entry": 1785188823,
-   "bot_avg_trade_usd": 347.17
+   "bot_avg_trade_usd": 347.17,
+   "mark": 1.7327015860633728e-05,
+   "mark_ret": -0.019607843137254832
   },
   "6Snm8iMoKo7GApiXeiuJiTvD18CrHxpPksYFNQB2WAjM": {
    "name": "BILL / SOL",
@@ -68,13 +70,13 @@
    "mark": 3.3698402952058176e-05,
    "mark_ret": -0.019607843137254943
   },
-  "FepJFaupgnj31ZgWuD4GmofdysgiDnr67m6XJLDgdU2u": {
-   "name": "まんてん / SOL",
-   "entry": 2.43515583475565e-05,
-   "qty": 205325.6686343325,
+  "E6kQDqs7eu6CsXrVy919cQqXfaD9cEhbrGNnt3qMHSo7": {
+   "name": "USWR / SOL",
+   "entry": 0.03069024959069653,
+   "qty": 162.918192803349,
    "usd": 5,
-   "t_entry": 1785188823,
-   "bot_avg_trade_usd": 10.31
+   "t_entry": 1785189003,
+   "bot_avg_trade_usd": 3.29
   }
  },
  "closed": [
@@ -32642,7 +32644,37 @@
    "reason": "TP",
    "pnl": 34.3295,
    "t_exit": 1785188823
+  },
+  {
+   "name": "まんてん / SOL",
+   "entry": 2.43515583475565e-05,
+   "qty": 205325.6686343325,
+   "usd": 5,
+   "t_entry": 1785188823,
+   "bot_avg_trade_usd": 10.31,
+   "mark": 2.3284244035576397e-05,
+   "mark_ret": -0.04382940495006149,
+   "addr": "FepJFaupgnj31ZgWuD4GmofdysgiDnr67m6XJLDgdU2u",
+   "exit": 2.281855915486487e-05,
+   "reason": "SL",
+   "pnl": -0.3148,
+   "t_exit": 1785189003
+  },
+  {
+   "name": "me-me / SOL",
+   "entry": 0.00012529858443975026,
+   "qty": 293850.0874900498,
+   "usd": 36.819,
+   "t_entry": 1785189003,
+   "bot_avg_trade_usd": 368.19,
+   "mark": 0.0002613181867730925,
+   "mark_ret": 1.0855637590921643,
+   "addr": "GbLikM4VVXtSRir6Q6zr5pR3q3eCmNqKD49R9f5Qf7JL",
+   "exit": 0.0002560918230376307,
+   "reason": "TP",
+   "pnl": 38.4336,
+   "t_exit": 1785189003
   }
  ],
- "realized_pnl": 3571.5285379309853
+ "realized_pnl": 3609.647378451824
 }
