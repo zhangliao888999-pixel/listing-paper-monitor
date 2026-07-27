@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13369.500094867637,
+ "cash": 13382.204519854127,
  "positions": {
   "Hd87sgE95MDYA9kfJ435eY6qiEQy6PEdZfRysnrUFmmE": {
    "name": "TBB / SOL",
@@ -21,16 +21,6 @@
    "bot_avg_trade_usd": 350.79,
    "mark": 1.273682101065318e-05,
    "mark_ret": -0.019607843137254832
-  },
-  "14UfqDjc2iWMC8yK9EoBzauds9X1VnKJ4gCyJeqWvEWS": {
-   "name": "SIRIUS / SOL",
-   "entry": 1.8233842211945475e-05,
-   "qty": 1280860.0474067677,
-   "usd": 23.355000000000004,
-   "t_entry": 1785131403,
-   "bot_avg_trade_usd": 233.55,
-   "mark": 1.8419172223740075e-05,
-   "mark_ret": 0.01016406798086611
   },
   "2w4nQG3SrKj5fPkqsRa6hYWhWeRGvUZhX5pb7vDvLJJQ": {
    "name": "Bob / SOL",
@@ -79,8 +69,8 @@
    "usd": 5,
    "t_entry": 1785132304,
    "bot_avg_trade_usd": 44.09,
-   "mark": 0.0011819390441032101,
-   "mark_ret": -0.02739427723273702
+   "mark": 0.0011918249443844664,
+   "mark_ret": -0.019259269563579484
   },
   "EZ7dPY8hSjLhp6ptgHvZoEwcTD2bC3HWhYuug4JTiNhc": {
    "name": "HOOD / SOL",
@@ -89,6 +79,16 @@
    "usd": 50,
    "t_entry": 1785132304,
    "bot_avg_trade_usd": 846.84
+  },
+  "7GCBeSU9Dkip3NNzgkqWYA2HUHi81atFQcRygFocy7RN": {
+   "name": "WAN / SOL",
+   "entry": 9.986180528712995e-06,
+   "qty": 834553.3085484962,
+   "usd": 8.334000000000001,
+   "t_entry": 1785132484,
+   "bot_avg_trade_usd": 83.34,
+   "mark": 1.0200460889326943e-05,
+   "mark_ret": 0.02145768945372395
   }
  },
  "closed": [
@@ -14056,7 +14056,52 @@
    "reason": "SL",
    "pnl": -0.6034,
    "t_exit": 1785132304
+  },
+  {
+   "name": "SIRIUS / SOL",
+   "entry": 1.8233842211945475e-05,
+   "qty": 1280860.0474067677,
+   "usd": 23.355000000000004,
+   "t_entry": 1785131403,
+   "bot_avg_trade_usd": 233.55,
+   "mark": 1.9441087628075883e-05,
+   "mark_ret": 0.0662090524913892,
+   "addr": "14UfqDjc2iWMC8yK9EoBzauds9X1VnKJ4gCyJeqWvEWS",
+   "exit": 1.9052265875514364e-05,
+   "reason": "TP",
+   "pnl": 1.0483,
+   "t_exit": 1785132484
+  },
+  {
+   "name": "Kittens / SOL",
+   "entry": 0.00013533535056428934,
+   "qty": 369452.6211482944,
+   "usd": 50,
+   "t_entry": 1785132484,
+   "bot_avg_trade_usd": 784.36,
+   "mark": 0.00013004630454382956,
+   "mark_ret": -0.03908103831265641,
+   "addr": "Hh4bYnYFxnZY9Jk92eoWYgcDA95fYFQHiCov4dYBpZyA",
+   "exit": 0.00012744537845295296,
+   "reason": "SL",
+   "pnl": -2.915,
+   "t_exit": 1785132484
+  },
+  {
+   "name": "MAGAVERSE / SOL",
+   "entry": 0.00010036914331412289,
+   "qty": 49816.10717102188,
+   "usd": 5,
+   "t_entry": 1785132484,
+   "bot_avg_trade_usd": 0.05,
+   "mark": 9.320216565314468e-05,
+   "mark_ret": -0.07140618545032207,
+   "addr": "9DaLtnvU5SCN1F21FjLkm5KmNRtdYr7rzmQCTjUeKewX",
+   "exit": 9.133812234008178e-05,
+   "reason": "SL",
+   "pnl": -0.4499,
+   "t_exit": 1785132484
   }
  ],
- "realized_pnl": 3569.0490948676456
+ "realized_pnl": 3566.7325198541366
 }
