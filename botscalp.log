@@ -3616,3 +3616,8 @@
 [2026-07-27 14:47 UTC] BUY Clark / SOL (Byvfcd3R...) @ 1.941986681e-05 仓位=$5.00(机器人单笔$10的10%)
 [2026-07-27 14:47 UTC] EXIT ◎ / SOL [TP] ret=+19.3% pnl=+0.8472U held=0min
 [2026-07-27 14:47 UTC] CYCLE OK nav=16314.4174 扫描候选8 新入场3 持仓7 已平仓1622
+[2026-07-27 14:50 UTC] BUY ◎ / SOL (AjtLwy3U...) @ 0.0002858717854 仓位=$5.00(机器人单笔$39的10%)
+[2026-07-27 14:50 UTC] EXIT CASHBULL / SOL [SL] ret=-9.5% pnl=-1.9711U held=12min
+[2026-07-27 14:50 UTC] EXIT CATE / SOL [TP] ret=+12.0% pnl=+2.1392U held=9min
+[2026-07-27 14:50 UTC] EXIT USOH / SOL [TP] ret=+6.1% pnl=+0.2000U held=6min
+[2026-07-27 14:50 UTC] CYCLE OK nav=16315.8555 扫描候选8 新入场1 持仓5 已平仓1625
