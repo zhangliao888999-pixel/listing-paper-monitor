@@ -1695,3 +1695,17 @@
 [2026-07-27 04:14 UTC] EXIT wifcat / SOL [TP] ret=+24.8% pnl=+6.3496U held=0min
 [2026-07-27 04:14 UTC] EXIT SCHRÖDINGER / SOL [TP] ret=+40.0% pnl=+1.8582U held=0min
 [2026-07-27 04:14 UTC] CYCLE OK nav=13205.6930 扫描候选12 新入场5 持仓6 已平仓752
+[2026-07-27 04:17 UTC] BUY HOOD / SOL (EZ7dPY8h...) @ 1.547965508e-05 仓位=$50.00(机器人单笔$728的10%)
+[2026-07-27 04:17 UTC] BUY MAGAVERSE / SOL (Chysq8jg...) @ 9.467470576e-05 仓位=$50.00(机器人单笔$1311的10%)
+[2026-07-27 04:17 UTC] BUY MANDO / SOL (Cti9Ss2z...) @ 0.005782634164 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 04:17 UTC] BUY SEB / SOL (4ifthcff...) @ 8.669589523e-05 仓位=$46.84(机器人单笔$468的10%)
+[2026-07-27 04:17 UTC] BUY wifcat / SOL (H6DTNLW6...) @ 8.93375768e-06 仓位=$28.89(机器人单笔$289的10%)
+[2026-07-27 04:17 UTC] BUY SCHRÖDINGER / SOL (6wTLo8hg...) @ 1.880399351e-05 仓位=$11.53(机器人单笔$115的10%)
+[2026-07-27 04:17 UTC] EXIT Raquizzel / SOL [TP] ret=+46.7% pnl=+11.8328U held=15min
+[2026-07-27 04:17 UTC] EXIT USOX / SOL [TP] ret=+5.5% pnl=+0.1684U held=15min
+[2026-07-27 04:17 UTC] EXIT USOX / SOL [TP] ret=+6.8% pnl=+0.2336U held=3min
+[2026-07-27 04:17 UTC] EXIT HOOD / SOL [TP] ret=+7.1% pnl=+2.4844U held=0min
+[2026-07-27 04:17 UTC] EXIT MANDO / SOL [TP] ret=+35.8% pnl=+1.6532U held=0min
+[2026-07-27 04:17 UTC] EXIT wifcat / SOL [TP] ret=+6.0% pnl=+1.1311U held=0min
+[2026-07-27 04:17 UTC] EXIT SCHRÖDINGER / SOL [TP] ret=+55.8% pnl=+6.0759U held=0min
+[2026-07-27 04:17 UTC] CYCLE OK nav=13227.2206 扫描候选12 新入场6 持仓5 已平仓759
