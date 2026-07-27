@@ -3646,3 +3646,7 @@
 [2026-07-27 14:59 UTC] EXIT USOH / SOL [TP] ret=+6.5% pnl=+0.2170U held=6min
 [2026-07-27 14:59 UTC] EXIT ◎ / SOL [TP] ret=+22.5% pnl=+4.3822U held=0min
 [2026-07-27 14:59 UTC] CYCLE OK nav=16342.1462 扫描候选7 新入场2 持仓5 已平仓1636
+[2026-07-27 15:02 UTC] BUY ◎ / SOL (FbhuKsDC...) @ 2.13795812e-05 仓位=$21.89(机器人单笔$219的10%)
+[2026-07-27 15:02 UTC] EXIT GM / SOL [SL] ret=-31.4% pnl=-1.6410U held=6min
+[2026-07-27 15:02 UTC] EXIT ◎ / SOL [TP] ret=+36.2% pnl=+1.6748U held=6min
+[2026-07-27 15:02 UTC] CYCLE OK nav=16343.2930 扫描候选7 新入场1 持仓4 已平仓1638
