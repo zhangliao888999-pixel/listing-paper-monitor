@@ -3411,3 +3411,13 @@
 [2026-07-27 13:38 UTC] EXIT Kittens / SOL [TP] ret=+12.9% pnl=+5.3074U held=0min
 [2026-07-27 13:38 UTC] EXIT ◎ / SOL [SL] ret=-6.6% pnl=-1.9536U held=0min
 [2026-07-27 13:38 UTC] CYCLE OK nav=16215.3197 扫描候选9 新入场4 持仓11 已平仓1528
+[2026-07-27 13:41 UTC] BUY Kittens / SOL (Ej9KAot8...) @ 0.0001415109249 仓位=$50.00(机器人单笔$816的10%)
+[2026-07-27 13:41 UTC] BUY ◎ / SOL (FbhuKsDC...) @ 2.246797459e-05 仓位=$22.81(机器人单笔$228的10%)
+[2026-07-27 13:41 UTC] BUY dogi / SOL (2ZG9sytu...) @ 0.0001002832978 仓位=$10.85(机器人单笔$108的10%)
+[2026-07-27 13:41 UTC] EXIT AEON / SOL [TP] ret=+5.5% pnl=+1.7135U held=36min
+[2026-07-27 13:41 UTC] EXIT speedrun / SOL [TIME] ret=-2.3% pnl=-2.1178U held=36min
+[2026-07-27 13:41 UTC] EXIT brospeed / SOL [TIME] ret=-1.8% pnl=-0.1900U held=30min
+[2026-07-27 13:41 UTC] EXIT PCAT / SOL [TP] ret=+22.3% pnl=+4.2829U held=15min
+[2026-07-27 13:41 UTC] EXIT Jimothy / SOL [TP] ret=+5.4% pnl=+1.6571U held=3min
+[2026-07-27 13:41 UTC] EXIT Kittens / SOL [TP] ret=+15.4% pnl=+6.5459U held=0min
+[2026-07-27 13:41 UTC] CYCLE OK nav=16227.4117 扫描候选9 新入场3 持仓8 已平仓1534
