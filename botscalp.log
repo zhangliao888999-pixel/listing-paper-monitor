@@ -5027,3 +5027,19 @@
 [2026-07-27 22:29 UTC] SKIP EXIT CHECK SPY / SOL: 拿不到实时报价,这轮跳过止盈止损判断
 [2026-07-27 22:29 UTC] SKIP EXIT CHECK CATE / SOL: 拿不到实时报价,这轮跳过止盈止损判断
 [2026-07-27 22:29 UTC] CYCLE OK nav=13723.0948 扫描候选7 新入场2 持仓7 已平仓2204
+[2026-07-27 22:31 UTC] SKIP Bastille / SOL: 流动性只有$10,806,低于$15,000门槛,进得去也可能出不来
+[2026-07-27 22:31 UTC] SKIP まんてん / SOL: 流动性只有$14,887,低于$15,000门槛,进得去也可能出不来
+[2026-07-27 22:31 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 22:31 UTC] SKIP EXIT CHECK me-me / SOL: cur=1.961981445相对入场价异常(ret=1210242%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 22:31 UTC] EXIT Grok / SOL [TP] ret=+39.1% pnl=+13.6011U held=9min
+[2026-07-27 22:31 UTC] EXIT USWR / SOL [SL] ret=-86.6% pnl=-4.3413U held=6min
+[2026-07-27 22:31 UTC] EXIT SPY / SOL [TP] ret=+16.8% pnl=+7.2342U held=3min
+[2026-07-27 22:32 UTC] SKIP Bastille / SOL: 流动性只有$10,806,低于$15,000门槛,进得去也可能出不来
+[2026-07-27 22:32 UTC] SKIP まんてん / SOL: 流动性只有$14,887,低于$15,000门槛,进得去也可能出不来
+[2026-07-27 22:32 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 22:32 UTC] SKIP EXIT CHECK me-me / SOL: cur=1.961981445相对入场价异常(ret=1210242%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 22:32 UTC] EXIT Grok / SOL [TP] ret=+39.1% pnl=+13.6011U held=9min
+[2026-07-27 22:31 UTC] EXIT CATE / SOL [TP] ret=+5.3% pnl=+0.6754U held=3min
+[2026-07-27 22:32 UTC] EXIT USWR / SOL [SL] ret=-86.6% pnl=-4.3413U held=6min
+[2026-07-27 22:31 UTC] CYCLE OK nav=13738.5476 扫描候选7 新入场0 持仓3 已平仓2208
+[2026-07-27 22:32 UTC] EXIT SPY / SOL [TP] ret=+16.8% pnl=+7.2342U held=3min

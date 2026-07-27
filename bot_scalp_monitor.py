@@ -40,6 +40,7 @@ MIN_POS_USD = 5              # 地板:机器人单笔太小的话我们仓位会
 MAX_POS_USD = 50             # 天花板:防止某个异常大单把我们的仓位也算得离谱大
 TP, SL = 0.05, -0.03         # 用户指定：5%止盈/3%止损
 MAX_HOLD_MIN = 30            # "快进快出"，止盈止损都没触发的话30分钟强制离场
+DEAD_PRICE_STREAK = 15       # 连续15轮(每轮3分钟,约45分钟)拿不到报价,判定这个池子已经死了
 SLIP = 0.02                  # 链上滑点保守估计，跟策略C一致
 
 NOW = int(time.time())
@@ -141,12 +142,27 @@ def manage_positions(state):
         cur = get_price(addr)
         if cur is None:
             pos["no_price_checks"] = pos.get("no_price_checks", 0) + 1
+            pos["consecutive_no_price"] = pos.get("consecutive_no_price", 0) + 1
             # 2026-07-27修复: 这里原来是静默continue,一个持仓从买入到卖出全程拿不到
             # 报价的话,日志/记录里完全看不出发生过这件事——用户查breadcat/Grok/Tepe这几个
             # 闪崩+卖不掉的真实案例时发现的同一类盲区,live_runner.py那边也是同一个bug。
-            log(f"SKIP EXIT CHECK {pos['name']}: 拿不到实时报价,这轮跳过止盈止损判断")
+            log(f"SKIP EXIT CHECK {pos['name']}: 拿不到实时报价,这轮跳过止盈止损判断"
+               f"(连续{pos['consecutive_no_price']}轮)")
+            # 用户指出的更严重的漏洞: 止盈/止损/超时这三个判断全都要求先成功拿到价格才会
+            # 执行,如果一个池子彻底死透、永远查不到报价,原来的代码会让这个仓位永远挂在
+            # state["positions"]里,NAV计算时还按最后一次成功的价格(甚至买入价)继续算它的
+            # "账面价值"——利润被这些实际上已经清零的死仓位悄悄撑高。连续太多轮拿不到报价,
+            # 直接判死、强制平仓、按整笔本金全亏处理,不再让它悬空占着账面价值。
+            if pos["consecutive_no_price"] >= DEAD_PRICE_STREAK:
+                state["realized_pnl"] += -pos["usd"]
+                state["closed"].append({**pos, "addr": addr, "exit": 0.0, "reason": "DEAD",
+                                        "pnl": round(-pos["usd"], 4), "t_exit": NOW})
+                del state["positions"][addr]
+                log(f"EXIT {pos['name']} [DEAD] 连续{pos['consecutive_no_price']}轮拿不到报价,"
+                   f"判定池子已死,按本金全亏${pos['usd']:.2f}平仓")
             time.sleep(0.3)
             continue
+        pos["consecutive_no_price"] = 0
         ret = cur / pos["entry"] - 1
         # GeckoTerminal的报价偶尔会离谱出错(实测CXMT这个池子出现过价格差了几百万倍的情况，
         # 这份代码的live版本live_botscalp/live_runner.py也踩过同一个坑，是同一类报价异常，
