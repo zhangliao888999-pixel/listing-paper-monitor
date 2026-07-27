@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12955.465693152131,
+ "cash": 12983.145105600568,
  "positions": {
   "GukzrHwaobccHvjJNZ5chbq2L9FWF1URZLrjJ7TSAiUe": {
    "name": "USOX / SOL",
@@ -9,8 +9,8 @@
    "usd": 5,
    "t_entry": 1785116283,
    "bot_avg_trade_usd": 0.46,
-   "mark": 0.012369208758892589,
-   "mark_ret": 0.002641161503483147
+   "mark": 0.012461976257630588,
+   "mark_ret": 0.010160843198366853
   },
   "H4T9u2JPXWfUpH35VEaCMpZSLuMjQQhB1H2T9imtnhHb": {
    "name": "CHILLDOG / SOL",
@@ -21,22 +21,6 @@
    "bot_avg_trade_usd": 96.22,
    "mark": 1.3145025139608242e-05,
    "mark_ret": -0.019607843137254943
-  },
-  "G7vXhMFbHfnoqDE62kMbUfjoSKhEeHSvSD2bT2PPmMxi": {
-   "name": "CALVIN / SOL",
-   "entry": 1.3710975614494244e-05,
-   "qty": 1564367.1612489547,
-   "usd": 21.449,
-   "t_entry": 1785116643,
-   "bot_avg_trade_usd": 214.49
-  },
-  "JBducxkaEMRBJFtuJN9jd8mCnGiBt1PnhvszTGWdGNtF": {
-   "name": "CAGE / SOL",
-   "entry": 8.487361102055703e-06,
-   "qty": 1841208.3346159298,
-   "usd": 15.627000000000002,
-   "t_entry": 1785116643,
-   "bot_avg_trade_usd": 156.27
   }
  },
  "closed": [
@@ -8574,7 +8558,52 @@
    "reason": "SL",
    "pnl": -14.1097,
    "t_exit": 1785116643
+  },
+  {
+   "name": "CALVIN / SOL",
+   "entry": 1.3710975614494244e-05,
+   "qty": 1564367.1612489547,
+   "usd": 21.449,
+   "t_entry": 1785116643,
+   "bot_avg_trade_usd": 214.49,
+   "mark": 1.5260810922465435e-05,
+   "mark_ret": 0.11303610709750056,
+   "addr": "G7vXhMFbHfnoqDE62kMbUfjoSKhEeHSvSD2bT2PPmMxi",
+   "exit": 1.4955594704016125e-05,
+   "reason": "TP",
+   "pnl": 1.947,
+   "t_exit": 1785116823
+  },
+  {
+   "name": "CAGE / SOL",
+   "entry": 8.487361102055703e-06,
+   "qty": 1841208.3346159298,
+   "usd": 15.627000000000002,
+   "t_entry": 1785116643,
+   "bot_avg_trade_usd": 156.27,
+   "mark": 1.0042712626640664e-05,
+   "mark_ret": 0.18325501953819812,
+   "addr": "JBducxkaEMRBJFtuJN9jd8mCnGiBt1PnhvszTGWdGNtF",
+   "exit": 9.84185837410785e-06,
+   "reason": "TP",
+   "pnl": 2.4939,
+   "t_exit": 1785116823
+  },
+  {
+   "name": "neko / SOL",
+   "entry": 2.9030425965116544e-05,
+   "qty": 1255682.573993318,
+   "usd": 36.452999999999996,
+   "t_entry": 1785116823,
+   "bot_avg_trade_usd": 364.53,
+   "mark": 1.8378051920744572e-05,
+   "mark_ret": -0.36693826184886325,
+   "addr": "64W3ECiXi3HPNZK9yQiDpz7Kn7TZZxVFATbdputjeuF3",
+   "exit": 1.801049088232968e-05,
+   "reason": "SL",
+   "pnl": -13.8375,
+   "t_exit": 1785116823
   }
  ],
- "realized_pnl": 3007.1636931521302
+ "realized_pnl": 2997.7671056005656
 }
