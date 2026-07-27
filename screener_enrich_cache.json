@@ -1,1 +1,1 @@
-{"GXQZW7nCDwdvMsX96oGNMVLfVEZpG5XLesHBi4N2q9Jf": {"checked_at": 1785181634, "n_traders": 40, "n_suspicious": 0, "exit_ratio": null, "wallet_verdict": "钱包画像未见明显控盘迹象", "gt_checked_at": 1785181634, "staircase_flag": false, "scalping_flag": true}}
+{"7TrrWpNAmPb7VCuJRUA9GzEXJNCHdTWQ12aErsf4hgTt": {"checked_at": 1785185715, "n_traders": 40, "n_suspicious": 4, "exit_ratio": 0.9874409209292492, "wallet_verdict": "创建者钱包标记为transfer_in(资金内部转入，不是市场买入)", "gt_checked_at": 1785185715, "staircase_flag": false, "scalping_flag": true}}
