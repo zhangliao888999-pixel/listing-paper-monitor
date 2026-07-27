@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13628.256625470472,
+ "cash": 13619.1156620173,
  "positions": {
   "xZNHowbDcfWxFLLrHFqbXWKeBt429cyhaY9cZAy4wCM": {
    "name": "STANdx / SOL",
@@ -10,20 +10,31 @@
    "t_entry": 1785190983,
    "bot_avg_trade_usd": 87.13,
    "no_price_checks": 2,
-   "total_checks": 4,
-   "mark": 2.2266226496444457e-05,
-   "mark_ret": 0.02784626197380291,
+   "total_checks": 5,
+   "mark": 2.2505857209837406e-05,
+   "mark_ret": 0.03890801655778642,
    "consecutive_no_price": 0
   },
-  "CKtMRCAa9vD5yEPKNFgY88TBJ16jtGLrX9nzRpn4Tk5p": {
-   "name": "CATE / SOL",
-   "entry": 1.3504157448526467e-05,
-   "qty": 1560334.2955912591,
-   "usd": 21.071,
-   "t_entry": 1785191343,
-   "bot_avg_trade_usd": 210.71,
-   "no_price_checks": 2,
-   "total_checks": 2,
+  "Gujdah8CpGWDTpHLC2EUdePAwfPFGDBXz6NtXmSC4Jkw": {
+   "name": "Grok / SOL",
+   "entry": 4.159193987814418e-05,
+   "qty": 855670.5963768086,
+   "usd": 35.589,
+   "t_entry": 1785191702,
+   "bot_avg_trade_usd": 355.89,
+   "no_price_checks": 1,
+   "total_checks": 1,
+   "consecutive_no_price": 1
+  },
+  "E6kQDqs7eu6CsXrVy919cQqXfaD9cEhbrGNnt3qMHSo7": {
+   "name": "USWR / SOL",
+   "entry": 0.03496670432168849,
+   "qty": 142.9931729911044,
+   "usd": 5,
+   "t_entry": 1785191702,
+   "bot_avg_trade_usd": 2.74,
+   "no_price_checks": 1,
+   "total_checks": 1,
    "consecutive_no_price": 1
   }
  },
@@ -33203,7 +33214,43 @@
    "pnl": -29.589,
    "t_exit": 1785184800,
    "_note": "人工核实链上真实流动性已趋近于0(me-me/SOL liq=$0.0004),判定死亡按本金全亏平仓,不等自动机制的45分钟窗口"
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 1.3504157448526467e-05,
+   "qty": 1560334.2955912591,
+   "usd": 21.071,
+   "t_entry": 1785191343,
+   "bot_avg_trade_usd": 210.71,
+   "no_price_checks": 2,
+   "total_checks": 3,
+   "consecutive_no_price": 0,
+   "mark": 1.548329906641028e-05,
+   "mark_ret": 0.14655794894480945,
+   "addr": "CKtMRCAa9vD5yEPKNFgY88TBJ16jtGLrX9nzRpn4Tk5p",
+   "exit": 1.5173633085082073e-05,
+   "reason": "TP",
+   "pnl": 2.6049,
+   "t_exit": 1785191702
+  },
+  {
+   "name": "SPY / SOL",
+   "entry": 9.104299841616137e-06,
+   "qty": 5491910.511497864,
+   "usd": 50,
+   "t_entry": 1785191702,
+   "bot_avg_trade_usd": 713.0,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "consecutive_no_price": 0,
+   "mark": 1.0734173236923217e-05,
+   "mark_ret": 0.17902237664195342,
+   "addr": "De6CpuMpYQtswoGA5fpYcKdsxoYUYyKunjWfb1pLwUvM",
+   "exit": 1.0519489772184752e-05,
+   "reason": "TP",
+   "pnl": 7.7721,
+   "t_exit": 1785191702
   }
  ],
- "realized_pnl": 3576.1426254704547
+ "realized_pnl": 3586.519662017282
 }
