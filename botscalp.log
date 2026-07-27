@@ -1744,3 +1744,16 @@
 [2026-07-27 04:26 UTC] EXIT SEB / SOL [SL] ret=-7.4% pnl=-4.3462U held=0min
 [2026-07-27 04:26 UTC] EXIT CHIRP / SOL [TP] ret=+5.8% pnl=+0.7674U held=0min
 [2026-07-27 04:26 UTC] CYCLE OK nav=13244.6057 扫描候选12 新入场5 持仓7 已平仓774
+[2026-07-27 04:29 UTC] BUY HOOD / SOL (EZ7dPY8h...) @ 1.724952823e-05 仓位=$50.00(机器人单笔$731的10%)
+[2026-07-27 04:29 UTC] BUY Genshin / SOL (3YH6mNuD...) @ 0.0001280696132 仓位=$22.83(机器人单笔$228的10%)
+[2026-07-27 04:29 UTC] BUY MANDO / SOL (Cti9Ss2z...) @ 0.009510883633 仓位=$5.00(机器人单笔$17的10%)
+[2026-07-27 04:29 UTC] BUY UCOE / SOL (mfxnaMKW...) @ 2.644076108e-05 仓位=$33.37(机器人单笔$334的10%)
+[2026-07-27 04:29 UTC] BUY CHIRP / SOL (CQ8xtpL5...) @ 1.277364943e-05 仓位=$23.00(机器人单笔$230的10%)
+[2026-07-27 04:29 UTC] BUY SCHRÖDINGER / SOL (6wTLo8hg...) @ 4.649222118e-05 仓位=$5.00(机器人单笔$4的10%)
+[2026-07-27 04:29 UTC] EXIT USOX / SOL [TP] ret=+5.5% pnl=+0.1676U held=9min
+[2026-07-27 04:29 UTC] EXIT wifcat / SOL [TP] ret=+6.9% pnl=+1.4122U held=6min
+[2026-07-27 04:29 UTC] EXIT Raquizzel / SOL [SL] ret=-4.5% pnl=-1.9999U held=3min
+[2026-07-27 04:29 UTC] EXIT Genshin / SOL [TP] ret=+7.4% pnl=+1.1951U held=0min
+[2026-07-27 04:29 UTC] EXIT MANDO / SOL [TP] ret=+11.4% pnl=+0.4586U held=0min
+[2026-07-27 04:29 UTC] EXIT CHIRP / SOL [TP] ret=+9.7% pnl=+1.7266U held=0min
+[2026-07-27 04:29 UTC] CYCLE OK nav=13247.3583 扫描候选9 新入场6 持仓7 已平仓780
