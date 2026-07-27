@@ -115,6 +115,15 @@ def manage_positions(state):
             time.sleep(0.3)
             continue
         ret = cur / pos["entry"] - 1
+        # GeckoTerminal的报价偶尔会离谱出错(实测CXMT这个池子出现过价格差了几百万倍的情况，
+        # 这份代码的live版本live_botscalp/live_runner.py也踩过同一个坑，是同一类报价异常，
+        # 不是真实行情)。这么夸张的比例不能拿去当真触发止盈止损/算盈亏，跳过这一轮，
+        # 不更新mark/mark_ret，等下一轮报价恢复正常再判断。
+        if abs(ret) > 50:
+            log(f"SKIP EXIT CHECK {pos['name']}: cur={cur:.10g}相对入场价异常(ret={ret*100:.0f}%),"
+               f"疑似报价数据错误,这轮不判断止盈止损")
+            time.sleep(0.3)
+            continue
         hold_min = (NOW - pos["t_entry"]) / 60
         reason = None
         if ret >= TP:
