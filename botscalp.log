@@ -1929,3 +1929,16 @@
 [2026-07-27 05:20 UTC] EXIT Puffin / SOL [SL] ret=-24.7% pnl=-12.7462U held=0min
 [2026-07-27 05:20 UTC] EXIT SIRIUS / SOL [TP] ret=+67.1% pnl=+11.1034U held=0min
 [2026-07-27 05:20 UTC] CYCLE OK nav=13389.8331 扫描候选13 新入场6 持仓5 已平仓859
+[2026-07-27 05:23 UTC] BUY Nongwan / SOL (J5zUqUVw...) @ 0.0006967069799 仓位=$13.89(机器人单笔$139的10%)
+[2026-07-27 05:23 UTC] BUY IF / SOL (HgVR5zoj...) @ 5.789783299e-05 仓位=$50.00(机器人单笔$573的10%)
+[2026-07-27 05:23 UTC] BUY IF / SOL (B4WujyZQ...) @ 2.301204332e-05 仓位=$39.73(机器人单笔$397的10%)
+[2026-07-27 05:23 UTC] BUY Puffin / SOL (3G881yTc...) @ 5.494558604e-05 仓位=$48.90(机器人单笔$489的10%)
+[2026-07-27 05:23 UTC] BUY SIRIUS / SOL (14UfqDjc...) @ 9.389242456e-06 仓位=$19.59(机器人单笔$196的10%)
+[2026-07-27 05:23 UTC] BUY Hosico / SOL (Gus4qDAK...) @ 1.277305896e-05 仓位=$17.85(机器人单笔$179的10%)
+[2026-07-27 05:23 UTC] EXIT HOOD / SOL [TP] ret=+12.3% pnl=+5.0244U held=9min
+[2026-07-27 05:23 UTC] EXIT Nongwan / SOL [TP] ret=+68.3% pnl=+9.0185U held=0min
+[2026-07-27 05:23 UTC] EXIT IF / SOL [TP] ret=+107.3% pnl=+51.5865U held=0min
+[2026-07-27 05:23 UTC] EXIT IF / SOL [TP] ret=+7.2% pnl=+2.0045U held=0min
+[2026-07-27 05:23 UTC] EXIT Puffin / SOL [TP] ret=+12.7% pnl=+5.0962U held=0min
+[2026-07-27 05:23 UTC] EXIT Hosico / SOL [SL] ret=-5.8% pnl=-1.3662U held=0min
+[2026-07-27 05:23 UTC] CYCLE OK nav=13461.1968 扫描候选13 新入场6 持仓5 已平仓865
