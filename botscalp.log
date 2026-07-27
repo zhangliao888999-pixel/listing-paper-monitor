@@ -5043,3 +5043,5 @@
 [2026-07-27 22:32 UTC] EXIT USWR / SOL [SL] ret=-86.6% pnl=-4.3413U held=6min
 [2026-07-27 22:31 UTC] CYCLE OK nav=13738.5476 扫描候选7 新入场0 持仓3 已平仓2208
 [2026-07-27 22:32 UTC] EXIT SPY / SOL [TP] ret=+16.8% pnl=+7.2342U held=3min
+[2026-07-27 22:32 UTC] SKIP EXIT CHECK CATE / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-27 22:32 UTC] CYCLE OK nav=13737.8722 扫描候选7 新入场0 持仓4 已平仓2207
