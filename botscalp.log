@@ -1511,3 +1511,14 @@
 [2026-07-27 03:14 UTC] EXIT CHIRP / SOL [SL] ret=-6.1% pnl=-1.6969U held=0min
 [2026-07-27 03:14 UTC] EXIT BINU / SOL [SL] ret=-14.6% pnl=-4.0046U held=0min
 [2026-07-27 03:14 UTC] CYCLE OK nav=13033.5214 扫描候选15 新入场9 持仓5 已平仓669
+[2026-07-27 03:20 UTC] BUY Genshin / SOL (3YH6mNuD...) @ 9.064282293e-05 仓位=$23.65(机器人单笔$237的10%)
+[2026-07-27 03:20 UTC] BUY AORP / SOL (7yTytbqH...) @ 1.928163389e-06 仓位=$20.48(机器人单笔$205的10%)
+[2026-07-27 03:20 UTC] BUY MAGAVERSE / SOL (Ffwy9xfG...) @ 0.0003112484678 仓位=$23.09(机器人单笔$231的10%)
+[2026-07-27 03:20 UTC] BUY CATE / SOL (HyQLVUuS...) @ 0.04045380408 仓位=$6.49(机器人单笔$65的10%)
+[2026-07-27 03:20 UTC] BUY USOX / SOL (AebwXbAH...) @ 0.0157643623 仓位=$5.00(机器人单笔$42的10%)
+[2026-07-27 03:20 UTC] BUY memehouse / SOL (H9J4jtFW...) @ 2.529304393e-05 仓位=$5.00(机器人单笔$12的10%)
+[2026-07-27 03:20 UTC] EXIT IF / SOL [TP] ret=+23.5% pnl=+10.4923U held=6min
+[2026-07-27 03:20 UTC] EXIT Genshin / SOL [TP] ret=+22.2% pnl=+4.6769U held=0min
+[2026-07-27 03:20 UTC] EXIT MAGAVERSE / SOL [TP] ret=+29.9% pnl=+6.3104U held=0min
+[2026-07-27 03:20 UTC] EXIT memehouse / SOL [SL] ret=-15.1% pnl=-0.8398U held=0min
+[2026-07-27 03:20 UTC] CYCLE OK nav=13054.1154 扫描候选15 新入场6 持仓7 已平仓673
