@@ -4593,3 +4593,13 @@
 [2026-07-27 20:17 UTC] EXIT Ryder / SOL [SL] ret=-8.7% pnl=-5.2744U held=0min
 [2026-07-27 20:17 UTC] EXIT PONS / SOL [TP] ret=+5.4% pnl=+1.6611U held=0min
 [2026-07-27 20:17 UTC] CYCLE OK nav=13469.5287 扫描候选7 新入场4 持仓7 已平仓2052
+[2026-07-27 20:20 UTC] BUY breadcat / SOL (81bbDkSM...) @ 5.944671013e-05 仓位=$50.00(机器人单笔$1279的10%)
+[2026-07-27 20:20 UTC] BUY CATE / SOL (7TrrWpNA...) @ 7.328539522e-05 仓位=$39.71(机器人单笔$397的10%)
+[2026-07-27 20:20 UTC] BUY Ryder / SOL (7QLv8Yyf...) @ 7.560234265e-05 仓位=$50.00(机器人单笔$729的10%)
+[2026-07-27 20:20 UTC] BUY PONS / SOL (4zWjFSwh...) @ 2.338448564e-05 仓位=$50.00(机器人单笔$589的10%)
+[2026-07-27 20:20 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.4430192199相对入场价异常(ret=788981%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 20:20 UTC] EXIT まんてん / SOL [SL] ret=-64.1% pnl=-3.2417U held=6min
+[2026-07-27 20:20 UTC] EXIT CATE / SOL [TP] ret=+37.9% pnl=+13.9524U held=0min
+[2026-07-27 20:20 UTC] EXIT Ryder / SOL [SL] ret=-9.7% pnl=-5.7514U held=0min
+[2026-07-27 20:20 UTC] EXIT PONS / SOL [TP] ret=+8.9% pnl=+3.3579U held=0min
+[2026-07-27 20:20 UTC] CYCLE OK nav=13477.9182 扫描候选7 新入场4 持仓7 已平仓2056

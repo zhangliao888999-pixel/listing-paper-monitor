@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13272.85797723361,
+ "cash": 13236.175094606904,
  "positions": {
   "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
    "name": "CXMT / SOL",
@@ -55,16 +55,16 @@
    "usd": 5,
    "t_entry": 1785182882,
    "bot_avg_trade_usd": 9.55,
-   "mark": 0.0006182260242082208,
-   "mark_ret": 0.012627917740031691
+   "mark": 0.0006270692067938978,
+   "mark_ret": 0.02711267447507515
   },
-  "FepJFaupgnj31ZgWuD4GmofdysgiDnr67m6XJLDgdU2u": {
-   "name": "まんてん / SOL",
-   "entry": 7.065793185655237e-05,
-   "qty": 70763.46375592837,
-   "usd": 5,
-   "t_entry": 1785183243,
-   "bot_avg_trade_usd": 7.77
+  "81bbDkSMukVKrw1Z1ezj1XYJe8TYxtPq6TbkHNkwXpxP": {
+   "name": "breadcat / SOL",
+   "entry": 5.944671013240711e-05,
+   "qty": 841089.4377272313,
+   "usd": 50,
+   "t_entry": 1785183603,
+   "bot_avg_trade_usd": 1279.35
   }
  },
  "closed": [
@@ -30847,7 +30847,67 @@
    "reason": "TP",
    "pnl": 1.6611,
    "t_exit": 1785183422
+  },
+  {
+   "name": "まんてん / SOL",
+   "entry": 7.065793185655237e-05,
+   "qty": 70763.46375592837,
+   "usd": 5,
+   "t_entry": 1785183243,
+   "bot_avg_trade_usd": 7.77,
+   "mark": 2.535508195345683e-05,
+   "mark_ret": -0.6411573154315928,
+   "addr": "FepJFaupgnj31ZgWuD4GmofdysgiDnr67m6XJLDgdU2u",
+   "exit": 2.484798031438769e-05,
+   "reason": "SL",
+   "pnl": -3.2417,
+   "t_exit": 1785183603
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 7.328539521923547e-05,
+   "qty": 541867.8562243317,
+   "usd": 39.711000000000006,
+   "t_entry": 1785183603,
+   "bot_avg_trade_usd": 397.11,
+   "mark": 0.00010105515689948893,
+   "mark_ret": 0.3789262730613565,
+   "addr": "7TrrWpNAmPb7VCuJRUA9GzEXJNCHdTWQ12aErsf4hgTt",
+   "exit": 9.903405376149915e-05,
+   "reason": "TP",
+   "pnl": 13.9524,
+   "t_exit": 1785183603
+  },
+  {
+   "name": "Ryder / SOL",
+   "entry": 7.560234265104519e-05,
+   "qty": 661355.1676670003,
+   "usd": 50,
+   "t_entry": 1785183603,
+   "bot_avg_trade_usd": 729.45,
+   "mark": 6.827133015436873e-05,
+   "mark_ret": -0.09696805997816671,
+   "addr": "7QLv8Yyf311MEN98FYeVWyuPMXwmCsKEqL5pNH8b6Xnc",
+   "exit": 6.690590355128135e-05,
+   "reason": "SL",
+   "pnl": -5.7514,
+   "t_exit": 1785183603
+  },
+  {
+   "name": "PONS / SOL",
+   "entry": 2.338448564340359e-05,
+   "qty": 2138169.7576103946,
+   "usd": 50,
+   "t_entry": 1785183603,
+   "bot_avg_trade_usd": 588.51,
+   "mark": 2.546420289107684e-05,
+   "mark_ret": 0.08893577046711343,
+   "addr": "4zWjFSwhqri4hyvSsdXsouT7SNPtsFRD1Aw6GZnyPxa5",
+   "exit": 2.4954918833255302e-05,
+   "reason": "TP",
+   "pnl": 3.3579,
+   "t_exit": 1785183603
   }
  ],
- "realized_pnl": 3389.867977233614
+ "realized_pnl": 3398.185094606906
 }
