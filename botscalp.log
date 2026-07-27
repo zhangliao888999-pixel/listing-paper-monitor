@@ -4364,3 +4364,16 @@
 [2026-07-27 19:08 UTC] EXIT Enigma / SOL [TP] ret=+118.6% pnl=+52.3873U held=0min
 [2026-07-27 19:08 UTC] EXIT AORP / SOL [TP] ret=+10.1% pnl=+0.3941U held=0min
 [2026-07-27 19:08 UTC] CYCLE OK nav=130499355.8350 扫描候选13 新入场6 持仓3 已平仓1957
+[2026-07-27 19:11 UTC] BUY SOLCEX / SOL (3SXT6xKD...) @ 3.37389368e-05 仓位=$50.00(机器人单笔$587的10%)
+[2026-07-27 19:11 UTC] BUY IF / SOL (GXQZW7nC...) @ 2.558482159e-05 仓位=$50.00(机器人单笔$581的10%)
+[2026-07-27 19:11 UTC] BUY USWR / SOL (D3FJ6Dq8...) @ 0.0291343761 仓位=$5.00(机器人单笔$14的10%)
+[2026-07-27 19:11 UTC] BUY USOP / SOL (DWTFZZp7...) @ 0.01778500579 仓位=$5.00(机器人单笔$6的10%)
+[2026-07-27 19:11 UTC] BUY Enigma / SOL (G1jdEv9y...) @ 3.512963317e-05 仓位=$46.16(机器人单笔$462的10%)
+[2026-07-27 19:11 UTC] BUY Looks / SOL (71nN6JyC...) @ 4.426325174e-05 仓位=$5.00(机器人单笔$20的10%)
+[2026-07-27 19:11 UTC] EXIT Enigma / SOL [TP] ret=+17.7% pnl=+0.7677U held=3min
+[2026-07-27 19:11 UTC] EXIT SOLCEX / SOL [TP] ret=+10.4% pnl=+4.1002U held=0min
+[2026-07-27 19:11 UTC] EXIT IF / SOL [TP] ret=+9.5% pnl=+3.6743U held=0min
+[2026-07-27 19:11 UTC] EXIT USWR / SOL [TP] ret=+18.3% pnl=+0.7954U held=0min
+[2026-07-27 19:11 UTC] EXIT Enigma / SOL [TP] ret=+172.4% pnl=+77.0607U held=0min
+[2026-07-27 19:11 UTC] EXIT Looks / SOL [TP] ret=+36.5% pnl=+1.6869U held=0min
+[2026-07-27 19:11 UTC] CYCLE OK nav=130499443.9033 扫描候选13 新入场6 持仓3 已平仓1963
