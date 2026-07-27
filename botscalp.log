@@ -995,3 +995,11 @@
 [2026-07-27 00:08 UTC] EXIT USOX / SOL [TP] ret=+10.9% pnl=+0.6730U held=0min
 [2026-07-27 00:08 UTC] EXIT Kabosu / SOL [SL] ret=-9.6% pnl=-0.5682U held=0min
 [2026-07-27 00:08 UTC] CYCLE OK nav=13005.6189 扫描候选8 新入场6 持仓8 已平仓440
+[2026-07-27 00:11 UTC] BUY CHANGE / SOL (4aP7qN7U...) @ 2.699806395e-05 仓位=$32.71(机器人单笔$327的10%)
+[2026-07-27 00:11 UTC] BUY USOX / SOL (FStofE1H...) @ 0.02503344425 仓位=$10.27(机器人单笔$103的10%)
+[2026-07-27 00:11 UTC] BUY Kabosu / SOL (7LfFJ8vG...) @ 1.526198505e-05 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-27 00:11 UTC] EXIT Trump2028 / SOL [TIME] ret=+3.0% pnl=+0.4908U held=30min
+[2026-07-27 00:11 UTC] EXIT SalaryCat / SOL [SL] ret=-4.2% pnl=-0.3059U held=3min
+[2026-07-27 00:11 UTC] EXIT USOX / SOL [TP] ret=+14.6% pnl=+1.2604U held=0min
+[2026-07-27 00:11 UTC] EXIT Kabosu / SOL [SL] ret=-16.2% pnl=-0.8915U held=0min
+[2026-07-27 00:11 UTC] CYCLE OK nav=13004.3582 扫描候选8 新入场3 持仓7 已平仓444
