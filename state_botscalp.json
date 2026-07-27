@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13322.272991738457,
+ "cash": 13189.90216934171,
  "positions": {
   "AsWVRGr21xDpTGcLLM5CeuEw87i5eTqF9iU8DrSYnG46": {
    "name": "MATH / SOL",
@@ -37,8 +37,8 @@
    "usd": 50,
    "t_entry": 1785181444,
    "bot_avg_trade_usd": 571.65,
-   "mark": 4.3232650759544446e-05,
-   "mark_ret": -0.010447892256013502
+   "mark": 4.2676756573104854e-05,
+   "mark_ret": -0.023171753833075903
   },
   "GXQZW7nCDwdvMsX96oGNMVLfVEZpG5XLesHBi4N2q9Jf": {
    "name": "IF / SOL",
@@ -46,7 +46,9 @@
    "qty": 1612782.7081757118,
    "usd": 50,
    "t_entry": 1785181984,
-   "bot_avg_trade_usd": 547.54
+   "bot_avg_trade_usd": 547.54,
+   "mark": 3.1415949235203275e-05,
+   "mark_ret": 0.013341993749236503
   },
   "CTRsNPEjGBmWTnGp1QKeYAGeCJQsnRTbYcdFBd7fc99X": {
    "name": "AORP / SOL",
@@ -55,6 +57,24 @@
    "usd": 7.497,
    "t_entry": 1785181984,
    "bot_avg_trade_usd": 74.97
+  },
+  "7QLv8Yyf311MEN98FYeVWyuPMXwmCsKEqL5pNH8b6Xnc": {
+   "name": "Ryder / SOL",
+   "entry": 6.286506196607256e-05,
+   "qty": 795354.3420824803,
+   "usd": 50,
+   "t_entry": 1785182163,
+   "bot_avg_trade_usd": 772.55
+  },
+  "4zWjFSwhqri4hyvSsdXsouT7SNPtsFRD1Aw6GZnyPxa5": {
+   "name": "PONS / SOL",
+   "entry": 2.2545952233031557e-05,
+   "qty": 2217692.980239094,
+   "usd": 50,
+   "t_entry": 1785182163,
+   "bot_avg_trade_usd": 568.2,
+   "mark": 2.3179475305809647e-05,
+   "mark_ret": 0.028099193426389446
   }
  },
  "closed": [
@@ -30327,7 +30347,67 @@
    "reason": "TP",
    "pnl": 3.7006,
    "t_exit": 1785181984
+  },
+  {
+   "name": "GIGA / SOL",
+   "entry": 0.00019527829338882805,
+   "qty": 61343.22352023036,
+   "usd": 11.979000000000001,
+   "t_entry": 1785182163,
+   "bot_avg_trade_usd": 119.79,
+   "mark": 0.00014632491177637476,
+   "mark_ret": -0.25068521832572477,
+   "addr": "2c9BThSgdyFJDz29giPW2dP3UEegPcWgUGudRrDd7Skm",
+   "exit": 0.00014339841354084725,
+   "reason": "SL",
+   "pnl": -3.1825,
+   "t_exit": 1785182163
+  },
+  {
+   "name": "Ayu Ayu / SOL",
+   "entry": 0.00010719957790851175,
+   "qty": 305579.56140421506,
+   "usd": 32.758,
+   "t_entry": 1785182163,
+   "bot_avg_trade_usd": 327.58,
+   "mark": 0.00013026904510338668,
+   "mark_ret": 0.21520110102078305,
+   "addr": "BAhaTLVfNYZcTRxkTD9St4aWXtY8MjcjpyqMSJDepdNJ",
+   "exit": 0.00012766366420131895,
+   "reason": "TP",
+   "pnl": 6.2534,
+   "t_exit": 1785182163
+  },
+  {
+   "name": "Enigma / SOL",
+   "entry": 0.00015269540536375095,
+   "qty": 309498.507092729,
+   "usd": 47.259,
+   "t_entry": 1785182163,
+   "bot_avg_trade_usd": 472.59,
+   "mark": 4.5258846291067985e-05,
+   "mark_ret": -0.7036004706018995,
+   "addr": "G1jdEv9yp9AQZXKh53deSTSaXqkThN2vH9XBJxGgRVrL",
+   "exit": 4.435366936524663e-05,
+   "reason": "SL",
+   "pnl": -33.5316,
+   "t_exit": 1785182163
+  },
+  {
+   "name": "Tortuga / SOL",
+   "entry": 8.123785328801286e-05,
+   "qty": 61547.66279056491,
+   "usd": 5,
+   "t_entry": 1785182163,
+   "bot_avg_trade_usd": 11.82,
+   "mark": 5.122719270139374e-05,
+   "mark_ret": -0.3694172035814661,
+   "addr": "C4ykhmjTxSpSUuuENyYv2pXgMG49NE1kY4S9w5tZfciC",
+   "exit": 5.020264884736586e-05,
+   "reason": "SL",
+   "pnl": -1.9101,
+   "t_exit": 1785182163
   }
  ],
- "realized_pnl": 3452.871991738458
+ "realized_pnl": 3420.501169341713
 }
