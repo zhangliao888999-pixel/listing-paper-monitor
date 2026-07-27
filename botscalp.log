@@ -1247,3 +1247,10 @@
 [2026-07-27 01:26 UTC] EXIT neko / SOL [SL] ret=-22.7% pnl=-8.4028U held=0min
 [2026-07-27 01:26 UTC] EXIT CAGE / SOL [SL] ret=-9.3% pnl=-1.7457U held=0min
 [2026-07-27 01:26 UTC] CYCLE OK nav=13076.3077 扫描候选4 新入场3 持仓4 已平仓555
+[2026-07-27 01:29 UTC] BUY neko / SOL (64W3ECiX...) @ 2.781719011e-05 仓位=$30.04(机器人单笔$300的10%)
+[2026-07-27 01:29 UTC] BUY CALVIN / SOL (G7vXhMFb...) @ 1.083045511e-05 仓位=$17.16(机器人单笔$172的10%)
+[2026-07-27 01:29 UTC] BUY CAGE / SOL (JBducxka...) @ 1.052339718e-05 仓位=$16.66(机器人单笔$167的10%)
+[2026-07-27 01:29 UTC] EXIT callcat / SOL [TIME] ret=-2.0% pnl=-0.7557U held=30min
+[2026-07-27 01:29 UTC] EXIT HOUSECAT / SOL [TP] ret=+86.0% pnl=+9.6187U held=6min
+[2026-07-27 01:29 UTC] EXIT CAGE / SOL [SL] ret=-13.8% pnl=-2.5859U held=0min
+[2026-07-27 01:29 UTC] CYCLE OK nav=13085.2260 扫描候选4 新入场3 持仓4 已平仓558
