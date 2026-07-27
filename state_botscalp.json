@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16354.391633899626,
+ "cash": 16233.352942020032,
  "positions": {
   "FuBHngMdZ31ipG6mQ9UXTsFQpt868XDUH7dC3JDHC4gB": {
    "name": "CATE / SOL",
@@ -10,15 +10,33 @@
    "t_entry": 1785171542,
    "bot_avg_trade_usd": 385.1
   },
-  "ALgSdgqgDzSfVuP1qk19Uf2vTDZvg9cxeHhzXE3eZiGX": {
-   "name": "NTFS / SOL",
-   "entry": 0.011955638673623618,
-   "qty": 418.21270586162314,
-   "usd": 5,
-   "t_entry": 1785171542,
-   "bot_avg_trade_usd": 32.35,
-   "mark": 0.012440399071597042,
-   "mark_ret": 0.04054659154620466
+  "EjsZk21ywrKi58di9Kwn5XQNKc9x7NzEN2rv3VovRnEf": {
+   "name": "CC / SOL",
+   "entry": 4.709501763497716e-05,
+   "qty": 1061683.433002164,
+   "usd": 50,
+   "t_entry": 1785171722,
+   "bot_avg_trade_usd": 525.56
+  },
+  "CwmW9LiWpCrRvd2C3iFZEeD46L6xEGdHQSpMd3sqSwqZ": {
+   "name": "CATE / SOL",
+   "entry": 9.57364444213087e-05,
+   "qty": 522267.15021882684,
+   "usd": 50,
+   "t_entry": 1785171722,
+   "bot_avg_trade_usd": 795.19,
+   "mark": 9.723087958233668e-05,
+   "mark_ret": 0.015609887854737936
+  },
+  "HActhMEN8F38qDGSS36pJ3QGKR8yWD9AXdHJnyB9drdi": {
+   "name": "RUN / SOL",
+   "entry": 0.00019823095297783654,
+   "qty": 115536.95150000465,
+   "usd": 22.903000000000002,
+   "t_entry": 1785171722,
+   "bot_avg_trade_usd": 229.03,
+   "mark": 0.00019434407154689855,
+   "mark_ret": -0.019607843137254943
   }
  },
  "closed": [
@@ -26316,7 +26334,97 @@
    "reason": "SL",
    "pnl": -3.2116,
    "t_exit": 1785171542
+  },
+  {
+   "name": "NTFS / SOL",
+   "entry": 0.011955638673623618,
+   "qty": 418.21270586162314,
+   "usd": 5,
+   "t_entry": 1785171542,
+   "bot_avg_trade_usd": 32.35,
+   "mark": 0.012717658558760496,
+   "mark_ret": 0.06373727961669129,
+   "addr": "ALgSdgqgDzSfVuP1qk19Uf2vTDZvg9cxeHhzXE3eZiGX",
+   "exit": 0.012463305387585286,
+   "reason": "TP",
+   "pnl": 0.2123,
+   "t_exit": 1785171722
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 7.32647131285402e-05,
+   "qty": 534500.1478582909,
+   "usd": 39.160000000000004,
+   "t_entry": 1785171722,
+   "bot_avg_trade_usd": 391.6,
+   "mark": 6.528877399660021e-05,
+   "mark_ret": -0.10886467429342828,
+   "addr": "FanYmcJUUstykriBRApUuttBQsuVe6wjZCp9kzzZvp2v",
+   "exit": 6.39829985166682e-05,
+   "reason": "SL",
+   "pnl": -4.9611,
+   "t_exit": 1785171722
+  },
+  {
+   "name": "USWR / SOL",
+   "entry": 0.02432215133788602,
+   "qty": 1144.512243727346,
+   "usd": 27.837000000000003,
+   "t_entry": 1785171722,
+   "bot_avg_trade_usd": 278.37,
+   "mark": 0.027343542555031495,
+   "mark_ret": 0.12422384743734094,
+   "addr": "2QT5A4XXm3wPNCCDgfGNhbJJMKhWssDufAiDJN5HiMaT",
+   "exit": 0.026796671703930866,
+   "reason": "TP",
+   "pnl": 2.8321,
+   "t_exit": 1785171722
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 1.496362772836285e-05,
+   "qty": 1231385.8867976505,
+   "usd": 18.426,
+   "t_entry": 1785171722,
+   "bot_avg_trade_usd": 184.26,
+   "mark": 1.5769048641022865e-05,
+   "mark_ret": 0.05382524393689492,
+   "addr": "7tftsgD4qtUzC6PBa5oSFaCtQhFFTnU7W2viXB3iFSCG",
+   "exit": 1.545366766820241e-05,
+   "reason": "TP",
+   "pnl": 0.6034,
+   "t_exit": 1785171722
+  },
+  {
+   "name": "Tortuga / SOL",
+   "entry": 0.0001228738549698259,
+   "qty": 58930.355866007216,
+   "usd": 7.241,
+   "t_entry": 1785171722,
+   "bot_avg_trade_usd": 72.41,
+   "mark": 0.00014561455074344306,
+   "mark_ret": 0.18507351119732984,
+   "addr": "C4ykhmjTxSpSUuuENyYv2pXgMG49NE1kY4S9w5tZfciC",
+   "exit": 0.00014270225972857418,
+   "reason": "TP",
+   "pnl": 1.1685,
+   "t_exit": 1785171722
+  },
+  {
+   "name": "FoodPoop / SOL",
+   "entry": 4.8095202795032435e-05,
+   "qty": 103960.47234291796,
+   "usd": 5,
+   "t_entry": 1785171722,
+   "bot_avg_trade_usd": 11.55,
+   "mark": 1.9719339501053808e-05,
+   "mark_ret": -0.5899936302360171,
+   "addr": "GrT7my4PzSUNUTYmJag3ej8RUsNr31U3dthzJ1LVKQna",
+   "exit": 1.932495271103273e-05,
+   "reason": "SL",
+   "pnl": -2.991,
+   "t_exit": 1785171722
   }
  ],
- "realized_pnl": 6397.901633899642
+ "realized_pnl": 6394.765942020048
 }

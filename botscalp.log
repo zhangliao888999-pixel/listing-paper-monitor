@@ -3915,3 +3915,18 @@
 [2026-07-27 16:59 UTC] EXIT Tortuga / SOL [TP] ret=+30.7% pnl=+1.4054U held=0min
 [2026-07-27 16:59 UTC] EXIT FoodPoop / SOL [SL] ret=-63.5% pnl=-3.2116U held=0min
 [2026-07-27 16:59 UTC] CYCLE OK nav=16398.1044 扫描候选13 新入场7 持仓2 已平仓1753
+[2026-07-27 17:02 UTC] BUY CATE / SOL (FanYmcJU...) @ 7.326471313e-05 仓位=$39.16(机器人单笔$392的10%)
+[2026-07-27 17:02 UTC] BUY USWR / SOL (2QT5A4XX...) @ 0.02432215134 仓位=$27.84(机器人单笔$278的10%)
+[2026-07-27 17:02 UTC] BUY CATE / SOL (7tftsgD4...) @ 1.496362773e-05 仓位=$18.43(机器人单笔$184的10%)
+[2026-07-27 17:02 UTC] BUY CC / SOL (EjsZk21y...) @ 4.709501763e-05 仓位=$50.00(机器人单笔$526的10%)
+[2026-07-27 17:02 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 0.000122873855 仓位=$7.24(机器人单笔$72的10%)
+[2026-07-27 17:02 UTC] BUY CATE / SOL (CwmW9LiW...) @ 9.573644442e-05 仓位=$50.00(机器人单笔$795的10%)
+[2026-07-27 17:02 UTC] BUY FoodPoop / SOL (GrT7my4P...) @ 4.80952028e-05 仓位=$5.00(机器人单笔$12的10%)
+[2026-07-27 17:02 UTC] BUY RUN / SOL (HActhMEN...) @ 0.000198230953 仓位=$22.90(机器人单笔$229的10%)
+[2026-07-27 17:02 UTC] EXIT NTFS / SOL [TP] ret=+6.4% pnl=+0.2123U held=3min
+[2026-07-27 17:02 UTC] EXIT CATE / SOL [SL] ret=-10.9% pnl=-4.9611U held=0min
+[2026-07-27 17:02 UTC] EXIT USWR / SOL [TP] ret=+12.4% pnl=+2.8321U held=0min
+[2026-07-27 17:02 UTC] EXIT CATE / SOL [TP] ret=+5.4% pnl=+0.6034U held=0min
+[2026-07-27 17:02 UTC] EXIT Tortuga / SOL [TP] ret=+18.5% pnl=+1.1685U held=0min
+[2026-07-27 17:02 UTC] EXIT FoodPoop / SOL [SL] ret=-59.0% pnl=-2.9910U held=0min
+[2026-07-27 17:02 UTC] CYCLE OK nav=16395.0974 扫描候选13 新入场8 持仓4 已平仓1759
