@@ -4692,3 +4692,14 @@
 [2026-07-27 20:41 UTC] EXIT CATE / SOL [SL] ret=-3.3% pnl=-1.8829U held=0min
 [2026-07-27 20:41 UTC] EXIT Scam / SOL [SL] ret=-14.2% pnl=-2.8175U held=0min
 [2026-07-27 20:41 UTC] CYCLE OK nav=13395.9871 扫描候选10 新入场6 持仓5 已平仓2096
+[2026-07-27 20:44 UTC] BUY IF / SOL (GXQZW7nC...) @ 3.100231652e-05 仓位=$50.00(机器人单笔$574的10%)
+[2026-07-27 20:44 UTC] BUY breadcat / SOL (81bbDkSM...) @ 7.858397499e-05 仓位=$50.00(机器人单笔$1302的10%)
+[2026-07-27 20:44 UTC] BUY Grok / SOL (JCoAfDiT...) @ 3.375060915e-05 仓位=$38.77(机器人单笔$388的10%)
+[2026-07-27 20:44 UTC] BUY CATE / SOL (7TrrWpNA...) @ 1.98665899e-05 仓位=$37.17(机器人单笔$372的10%)
+[2026-07-27 20:44 UTC] BUY Scam / SOL (221NFNug...) @ 0.0001007217854 仓位=$18.15(机器人单笔$181的10%)
+[2026-07-27 20:44 UTC] BUY PONS / SOL (4zWjFSwh...) @ 2.923850612e-05 仓位=$50.00(机器人单笔$579的10%)
+[2026-07-27 20:44 UTC] EXIT IF / SOL [TP] ret=+13.8% pnl=+5.7617U held=0min
+[2026-07-27 20:44 UTC] EXIT Grok / SOL [TP] ret=+6.0% pnl=+1.5201U held=0min
+[2026-07-27 20:44 UTC] EXIT CATE / SOL [SL] ret=-41.4% pnl=-15.8302U held=0min
+[2026-07-27 20:44 UTC] EXIT PONS / SOL [SL] ret=-14.0% pnl=-7.8825U held=0min
+[2026-07-27 20:44 UTC] CYCLE OK nav=13378.5842 扫描候选10 新入场6 持仓7 已平仓2100
