@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12846.012578316106,
+ "cash": 12950.167831905415,
  "positions": {
   "DWcQas867ydYKPxUvGTY1rhMqpt7W1LLqUaUSQe25mc7": {
    "name": "SHIBUKI / SOL",
@@ -11,32 +11,6 @@
    "bot_avg_trade_usd": 176.63,
    "mark": 1.791424045557797e-05,
    "mark_ret": -0.019607843137254943
-  },
-  "mfxnaMKWxRkx8BArg174Eg72zP57gHf1VzRTtZ7YW5f": {
-   "name": "UCOE / SOL",
-   "entry": 1.6439985414350653e-05,
-   "qty": 2018858.2388295834,
-   "usd": 33.19,
-   "t_entry": 1785117183,
-   "bot_avg_trade_usd": 331.9,
-   "mark": 1.6671151262852596e-05,
-   "mark_ret": 0.014061195474063926
-  },
-  "7mN6uAZYcuq6c63ct1ipM93Esp3qtHJKw3S7tmq1KwvY": {
-   "name": "USOX / SOL",
-   "entry": 9.478902650116777e-05,
-   "qty": 371551.44746175985,
-   "usd": 35.219,
-   "t_entry": 1785117902,
-   "bot_avg_trade_usd": 352.19
-  },
-  "G7vXhMFbHfnoqDE62kMbUfjoSKhEeHSvSD2bT2PPmMxi": {
-   "name": "CALVIN / SOL",
-   "entry": 1.5352524438794778e-05,
-   "qty": 1502945.0102481898,
-   "usd": 23.074,
-   "t_entry": 1785117902,
-   "bot_avg_trade_usd": 230.74
   },
   "FENm9TkEMHUViL4NzDaidZcZJ3iBPqZ6ZmkPg3QFxurz": {
    "name": "ca / SOL",
@@ -8807,7 +8781,52 @@
    "reason": "TIME",
    "pnl": -0.3773,
    "t_exit": 1785118083
+  },
+  {
+   "name": "UCOE / SOL",
+   "entry": 1.6439985414350653e-05,
+   "qty": 2018858.2388295834,
+   "usd": 33.19,
+   "t_entry": 1785117183,
+   "bot_avg_trade_usd": 331.9,
+   "mark": 1.8622282535729583e-05,
+   "mark_ret": 0.13274325167429746,
+   "addr": "mfxnaMKWxRkx8BArg174Eg72zP57gHf1VzRTtZ7YW5f",
+   "exit": 1.824983688501499e-05,
+   "reason": "TP",
+   "pnl": 3.6538,
+   "t_exit": 1785118263
+  },
+  {
+   "name": "USOX / SOL",
+   "entry": 9.478902650116777e-05,
+   "qty": 371551.44746175985,
+   "usd": 35.219,
+   "t_entry": 1785117902,
+   "bot_avg_trade_usd": 352.19,
+   "mark": 8.726460174297509e-05,
+   "mark_ret": -0.07938075783592924,
+   "addr": "7mN6uAZYcuq6c63ct1ipM93Esp3qtHJKw3S7tmq1KwvY",
+   "exit": 8.551930970811559e-05,
+   "reason": "SL",
+   "pnl": -3.4442,
+   "t_exit": 1785118263
+  },
+  {
+   "name": "CALVIN / SOL",
+   "entry": 1.5352524438794778e-05,
+   "qty": 1502945.0102481898,
+   "usd": 23.074,
+   "t_entry": 1785117902,
+   "bot_avg_trade_usd": 230.74,
+   "mark": 2.412718572495675e-05,
+   "mark_ret": 0.5715451762440453,
+   "addr": "G7vXhMFbHfnoqDE62kMbUfjoSKhEeHSvSD2bT2PPmMxi",
+   "exit": 2.3644642010457613e-05,
+   "reason": "TP",
+   "pnl": 12.4626,
+   "t_exit": 1785118263
   }
  ],
- "realized_pnl": 3004.1125783160983
+ "realized_pnl": 3016.7848319054096
 }
