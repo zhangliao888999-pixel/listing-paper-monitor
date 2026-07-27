@@ -2182,3 +2182,7 @@
 [2026-07-27 06:32 UTC] EXIT CATE / SOL [TP] ret=+7.6% pnl=+2.7454U held=18min
 [2026-07-27 06:32 UTC] EXIT dogi / SOL [SL] ret=-34.7% pnl=-3.5399U held=0min
 [2026-07-27 06:32 UTC] CYCLE OK nav=13678.8724 扫描候选7 新入场1 持仓6 已平仓973
+[2026-07-27 06:35 UTC] BUY dogi / SOL (2VCeMNNr...) @ 2.486937265e-05 仓位=$7.51(机器人单笔$75的10%)
+[2026-07-27 06:35 UTC] EXIT MAGAVERSE / SOL [SL] ret=-4.8% pnl=-0.3373U held=15min
+[2026-07-27 06:35 UTC] EXIT memehouse / SOL [SL] ret=-6.7% pnl=-0.4269U held=9min
+[2026-07-27 06:35 UTC] CYCLE OK nav=13677.1777 扫描候选7 新入场1 持仓5 已平仓975
