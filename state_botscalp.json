@@ -1,17 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16372.403130248636,
+ "cash": 16334.347177761629,
  "positions": {
-  "53jcfzb1NXeyQGRULGjUABnYWfqaQ91iqk25ABrqMTpq": {
-   "name": "BLOCK / SOL",
-   "entry": 1.5557400701228935e-05,
-   "qty": 321390.4492159177,
-   "usd": 5,
-   "t_entry": 1785167764,
-   "bot_avg_trade_usd": 12.16,
-   "mark": 1.5252353628655818e-05,
-   "mark_ret": -0.019607843137254943
-  },
   "Gn83x4YbWrMt4W1bUYBM246xt39iSPzC4poVbysVaRbr": {
    "name": "MPGA / SOL",
    "entry": 0.006002707293942328,
@@ -32,14 +22,6 @@
    "mark": 1.8700566035365064e-05,
    "mark_ret": -0.005859996614140717
   },
-  "GrT7my4PzSUNUTYmJag3ej8RUsNr31U3dthzJ1LVKQna": {
-   "name": "FoodPoop / SOL",
-   "entry": 2.932202140614587e-05,
-   "qty": 170520.3038611794,
-   "usd": 5,
-   "t_entry": 1785169383,
-   "bot_avg_trade_usd": 37.46
-  },
   "AVFpKzmtLXJusLfF3m2etbSYeH3oLKDM9JX2oaeawS6Z": {
    "name": "SalaryCat / SOL",
    "entry": 0.001974361865417785,
@@ -47,6 +29,22 @@
    "usd": 5,
    "t_entry": 1785169563,
    "bot_avg_trade_usd": 46.08
+  },
+  "Au8xu2cGK6eg6HBBQedYJQziohwL4RCUDXWYESGZjGdP": {
+   "name": "USOP / SOL",
+   "entry": 0.0017885806498978726,
+   "qty": 16568.444929610578,
+   "usd": 29.634,
+   "t_entry": 1785169744,
+   "bot_avg_trade_usd": 296.34
+  },
+  "AtL7GgSLrkwRoYcSEYGjEccz3A8QWcgKVd7mgYuzTane": {
+   "name": "USWR / SOL",
+   "entry": 1.888220820603926e-05,
+   "qty": 995222.5817523604,
+   "usd": 18.791999999999998,
+   "t_entry": 1785169744,
+   "bot_avg_trade_usd": 187.92
   }
  },
  "closed": [
@@ -25954,7 +25952,37 @@
    "reason": "TP",
    "pnl": 1.2174,
    "t_exit": 1785169563
+  },
+  {
+   "name": "BLOCK / SOL",
+   "entry": 1.5557400701228935e-05,
+   "qty": 321390.4492159177,
+   "usd": 5,
+   "t_entry": 1785167764,
+   "bot_avg_trade_usd": 12.16,
+   "mark": 1.5252353628655818e-05,
+   "mark_ret": -0.019607843137254943,
+   "addr": "53jcfzb1NXeyQGRULGjUABnYWfqaQ91iqk25ABrqMTpq",
+   "exit": 1.4947306556082701e-05,
+   "reason": "TIME",
+   "pnl": -0.1961,
+   "t_exit": 1785169744
+  },
+  {
+   "name": "FoodPoop / SOL",
+   "entry": 2.932202140614587e-05,
+   "qty": 170520.3038611794,
+   "usd": 5,
+   "t_entry": 1785169383,
+   "bot_avg_trade_usd": 37.46,
+   "mark": 3.330817634488735e-05,
+   "mark_ret": 0.13594407027838762,
+   "addr": "GrT7my4PzSUNUTYmJag3ej8RUsNr31U3dthzJ1LVKQna",
+   "exit": 3.26420128179896e-05,
+   "reason": "TP",
+   "pnl": 0.5661,
+   "t_exit": 1785169744
   }
  ],
- "realized_pnl": 6410.803130248654
+ "realized_pnl": 6411.173177761646
 }
