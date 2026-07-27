@@ -4406,3 +4406,17 @@
 [2026-07-27 19:20 UTC] EXIT AORP / SOL [TP] ret=+79.0% pnl=+5.1498U held=0min
 [2026-07-27 19:20 UTC] EXIT Enigma / SOL [SL] ret=-8.3% pnl=-0.5048U held=0min
 [2026-07-27 19:20 UTC] CYCLE OK nav=13601.7987 扫描候选17 新入场8 持仓6 已平仓1971
+[2026-07-27 19:26 UTC] BUY IF / SOL (GXQZW7nC...) @ 2.558482159e-05 仓位=$50.00(机器人单笔$564的10%)
+[2026-07-27 19:26 UTC] BUY AORP / SOL (GmWmtu3x...) @ 0.02140612826 仓位=$5.00(机器人单笔$12的10%)
+[2026-07-27 19:26 UTC] BUY USWR / SOL (D3FJ6Dq8...) @ 0.03327881716 仓位=$5.00(机器人单笔$6的10%)
+[2026-07-27 19:26 UTC] BUY USOP / SOL (DWTFZZp7...) @ 0.02033690051 仓位=$5.00(机器人单笔$5的10%)
+[2026-07-27 19:26 UTC] BUY Ayu Ayu / SOL (BAhaTLVf...) @ 0.0002847699703 仓位=$36.71(机器人单笔$367的10%)
+[2026-07-27 19:26 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 3.583503564e-05 仓位=$5.00(机器人单笔$9的10%)
+[2026-07-27 19:26 UTC] BUY Enigma / SOL (B2s14JhE...) @ 2.28657135e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 19:26 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.4067793101相对入场价异常(ret=724433%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 19:26 UTC] EXIT IF / SOL [TP] ret=+12.1% pnl=+4.9119U held=0min
+[2026-07-27 19:26 UTC] EXIT AORP / SOL [TP] ret=+15.8% pnl=+0.6747U held=0min
+[2026-07-27 19:26 UTC] EXIT USOP / SOL [TP] ret=+15.8% pnl=+0.6723U held=0min
+[2026-07-27 19:26 UTC] EXIT Ayu Ayu / SOL [SL] ret=-44.2% pnl=-16.6367U held=0min
+[2026-07-27 19:26 UTC] EXIT Tortuga / SOL [TP] ret=+33.8% pnl=+1.5538U held=0min
+[2026-07-27 19:26 UTC] CYCLE OK nav=13593.0856 扫描候选17 新入场7 持仓8 已平仓1976
