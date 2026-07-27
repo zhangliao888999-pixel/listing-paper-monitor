@@ -3860,3 +3860,7 @@
 [2026-07-27 16:29 UTC] EXIT BLOCK / SOL [TIME] ret=-2.0% pnl=-0.1961U held=33min
 [2026-07-27 16:29 UTC] EXIT FoodPoop / SOL [TP] ret=+13.6% pnl=+0.5661U held=6min
 [2026-07-27 16:29 UTC] CYCLE OK nav=16410.9673 扫描候选5 新入场2 持仓5 已平仓1729
+[2026-07-27 16:32 UTC] BUY FoodPoop / SOL (GrT7my4P...) @ 3.178045691e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 16:32 UTC] EXIT SalaryCat / SOL [TP] ret=+27.1% pnl=+1.2268U held=6min
+[2026-07-27 16:32 UTC] EXIT USOP / SOL [TP] ret=+8.2% pnl=+1.8008U held=3min
+[2026-07-27 16:32 UTC] CYCLE OK nav=16413.9950 扫描候选3 新入场1 持仓4 已平仓1731

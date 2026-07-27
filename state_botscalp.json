@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16334.347177761629,
+ "cash": 16367.008828971319,
  "positions": {
   "Gn83x4YbWrMt4W1bUYBM246xt39iSPzC4poVbysVaRbr": {
    "name": "MPGA / SOL",
@@ -22,22 +22,6 @@
    "mark": 1.8700566035365064e-05,
    "mark_ret": -0.005859996614140717
   },
-  "AVFpKzmtLXJusLfF3m2etbSYeH3oLKDM9JX2oaeawS6Z": {
-   "name": "SalaryCat / SOL",
-   "entry": 0.001974361865417785,
-   "qty": 2532.463824174387,
-   "usd": 5,
-   "t_entry": 1785169563,
-   "bot_avg_trade_usd": 46.08
-  },
-  "Au8xu2cGK6eg6HBBQedYJQziohwL4RCUDXWYESGZjGdP": {
-   "name": "USOP / SOL",
-   "entry": 0.0017885806498978726,
-   "qty": 16568.444929610578,
-   "usd": 29.634,
-   "t_entry": 1785169744,
-   "bot_avg_trade_usd": 296.34
-  },
   "AtL7GgSLrkwRoYcSEYGjEccz3A8QWcgKVd7mgYuzTane": {
    "name": "USWR / SOL",
    "entry": 1.888220820603926e-05,
@@ -45,6 +29,14 @@
    "usd": 18.791999999999998,
    "t_entry": 1785169744,
    "bot_avg_trade_usd": 187.92
+  },
+  "GrT7my4PzSUNUTYmJag3ej8RUsNr31U3dthzJ1LVKQna": {
+   "name": "FoodPoop / SOL",
+   "entry": 3.178045691092378e-05,
+   "qty": 157329.39315549514,
+   "usd": 5,
+   "t_entry": 1785169924,
+   "bot_avg_trade_usd": 10.46
   }
  },
  "closed": [
@@ -25982,7 +25974,37 @@
    "reason": "TP",
    "pnl": 0.5661,
    "t_exit": 1785169744
+  },
+  {
+   "name": "SalaryCat / SOL",
+   "entry": 0.001974361865417785,
+   "qty": 2532.463824174387,
+   "usd": 5,
+   "t_entry": 1785169563,
+   "bot_avg_trade_usd": 46.08,
+   "mark": 0.0025089868479262548,
+   "mark_ret": 0.2707836855405128,
+   "addr": "AVFpKzmtLXJusLfF3m2etbSYeH3oLKDM9JX2oaeawS6Z",
+   "exit": 0.0024588071109677297,
+   "reason": "TP",
+   "pnl": 1.2268,
+   "t_exit": 1785169924
+  },
+  {
+   "name": "USOP / SOL",
+   "entry": 0.0017885806498978726,
+   "qty": 16568.444929610578,
+   "usd": 29.634,
+   "t_entry": 1785169744,
+   "bot_avg_trade_usd": 296.34,
+   "mark": 0.001935989650506629,
+   "mark_ret": 0.08241674794881249,
+   "addr": "Au8xu2cGK6eg6HBBQedYJQziohwL4RCUDXWYESGZjGdP",
+   "exit": 0.0018972698574964964,
+   "reason": "TP",
+   "pnl": 1.8008,
+   "t_exit": 1785169924
   }
  ],
- "realized_pnl": 6411.173177761646
+ "realized_pnl": 6414.200828971335
 }
