@@ -5055,3 +5055,13 @@
 [2026-07-27 22:35 UTC] SKIP EXIT CHECK Grok / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
 [2026-07-27 22:35 UTC] SKIP EXIT CHECK USWR / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
 [2026-07-27 22:35 UTC] CYCLE OK nav=13668.7567 扫描候选7 新入场3 持仓3 已平仓2211
+[2026-07-27 22:38 UTC] BUY SPY / SOL (De6CpuMp...) @ 1.084927546e-05 仓位=$50.00(机器人单笔$720的10%)
+[2026-07-27 22:38 UTC] BUY PONS / SOL (GxFrNEk3...) @ 1.914023986e-05 仓位=$50.00(机器人单笔$580的10%)
+[2026-07-27 22:38 UTC] BUY CATE / SOL (CKtMRCAa...) @ 1.407913265e-05 仓位=$20.60(机器人单笔$206的10%)
+[2026-07-27 22:38 UTC] EXIT STANdx / SOL [TP] ret=+6.1% pnl=+0.3468U held=15min
+[2026-07-27 22:38 UTC] EXIT Grok / SOL [TP] ret=+52.3% pnl=+17.5343U held=3min
+[2026-07-27 22:38 UTC] EXIT USWR / SOL [SL] ret=-96.1% pnl=-4.8085U held=3min
+[2026-07-27 22:38 UTC] SKIP EXIT CHECK SPY / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-27 22:38 UTC] SKIP EXIT CHECK PONS / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-27 22:38 UTC] SKIP EXIT CHECK CATE / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-27 22:38 UTC] CYCLE OK nav=13681.4902 扫描候选4 新入场3 持仓3 已平仓2214
