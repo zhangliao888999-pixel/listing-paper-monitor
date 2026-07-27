@@ -1012,3 +1012,12 @@
 [2026-07-27 00:14 UTC] EXIT USOX / SOL [TP] ret=+17.6% pnl=+1.2432U held=0min
 [2026-07-27 00:14 UTC] EXIT Kabosu / SOL [SL] ret=-20.5% pnl=-1.1056U held=0min
 [2026-07-27 00:14 UTC] CYCLE OK nav=12997.5704 扫描候选8 新入场3 持仓5 已平仓449
+[2026-07-27 00:17 UTC] BUY CHANGE / SOL (4aP7qN7U...) @ 2.699806395e-05 仓位=$32.38(机器人单笔$324的10%)
+[2026-07-27 00:17 UTC] BUY USOX / SOL (7mN6uAZY...) @ 0.0001134714204 仓位=$45.12(机器人单笔$451的10%)
+[2026-07-27 00:17 UTC] BUY TBB / SOL (7NrFbXYv...) @ 0.08799992101 仓位=$26.72(机器人单笔$267的10%)
+[2026-07-27 00:17 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 1.013017766e-05 仓位=$5.00(机器人单笔$27的10%)
+[2026-07-27 00:17 UTC] EXIT cat / SOL [TIME] ret=-0.2% pnl=-0.3940U held=30min
+[2026-07-27 00:17 UTC] EXIT CHANGE / SOL [SL] ret=-29.9% pnl=-10.1239U held=0min
+[2026-07-27 00:17 UTC] EXIT USOX / SOL [SL] ret=-4.2% pnl=-2.7390U held=0min
+[2026-07-27 00:17 UTC] EXIT thesis / SOL [SL] ret=-3.7% pnl=-0.2817U held=0min
+[2026-07-27 00:17 UTC] CYCLE OK nav=12984.0650 扫描候选7 新入场4 持仓5 已平仓453
