@@ -3840,3 +3840,8 @@
 [2026-07-27 16:17 UTC] EXIT SalaryCat / SOL [SL] ret=-25.3% pnl=-1.3382U held=0min
 [2026-07-27 16:17 UTC] EXIT FoodPoop / SOL [TP] ret=+24.2% pnl=+1.0844U held=0min
 [2026-07-27 16:17 UTC] CYCLE OK nav=16409.6861 扫描候选5 新入场4 持仓7 已平仓1720
+[2026-07-27 16:20 UTC] BUY SalaryCat / SOL (AVFpKzmt...) @ 0.001974361865 仓位=$5.00(机器人单笔$36的10%)
+[2026-07-27 16:20 UTC] EXIT USOP / SOL [TP] ret=+6.7% pnl=+1.3530U held=9min
+[2026-07-27 16:20 UTC] EXIT CASHBULL / SOL [SL] ret=-8.3% pnl=-1.6531U held=9min
+[2026-07-27 16:20 UTC] EXIT SalaryCat / SOL [SL] ret=-21.8% pnl=-1.1696U held=0min
+[2026-07-27 16:20 UTC] CYCLE OK nav=16407.1471 扫描候选5 新入场1 持仓5 已平仓1723
