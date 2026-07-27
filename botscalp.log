@@ -2825,3 +2825,15 @@
 [2026-07-27 10:26 UTC] EXIT Nongwan / SOL [SL] ret=-59.5% pnl=-3.0163U held=0min
 [2026-07-27 10:26 UTC] EXIT WANDENG / SOL [SL] ret=-10.6% pnl=-0.6178U held=0min
 [2026-07-27 10:26 UTC] CYCLE OK nav=15012.0831 扫描候选10 新入场6 持仓9 已平仓1262
+[2026-07-27 10:29 UTC] BUY Nongwan / SOL (J5zUqUVw...) @ 0.001216549274 仓位=$5.00(机器人单笔$16的10%)
+[2026-07-27 10:29 UTC] BUY USOX / SOL (5wYRUoqG...) @ 0.01677335227 仓位=$6.30(机器人单笔$63的10%)
+[2026-07-27 10:29 UTC] BUY WANDENG / SOL (4FJ5682Q...) @ 7.495937707e-05 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-27 10:29 UTC] BUY RUN / SOL (4vayZ97Y...) @ 0.0006680329804 仓位=$23.49(机器人单笔$235的10%)
+[2026-07-27 10:29 UTC] BUY dawang / SOL (696XWFsW...) @ 8.22619022e-05 仓位=$10.36(机器人单笔$104的10%)
+[2026-07-27 10:29 UTC] EXIT WILLY / SOL [TIME] ret=-2.6% pnl=-0.8232U held=45min
+[2026-07-27 10:29 UTC] EXIT Nongwan / SOL [SL] ret=-57.6% pnl=-2.9200U held=9min
+[2026-07-27 10:29 UTC] EXIT Sara / SOL [TP] ret=+15.0% pnl=+2.1335U held=3min
+[2026-07-27 10:29 UTC] EXIT Nongwan / SOL [SL] ret=-56.9% pnl=-2.8892U held=0min
+[2026-07-27 10:29 UTC] EXIT WANDENG / SOL [SL] ret=-10.3% pnl=-0.6040U held=0min
+[2026-07-27 10:29 UTC] EXIT RUN / SOL [SL] ret=-11.8% pnl=-3.1748U held=0min
+[2026-07-27 10:29 UTC] CYCLE OK nav=15004.8267 扫描候选10 新入场5 持仓8 已平仓1268
