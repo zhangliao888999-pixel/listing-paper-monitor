@@ -3153,3 +3153,11 @@
 [2026-07-27 12:14 UTC] EXIT speedrun / SOL [SL] ret=-19.8% pnl=-9.3255U held=0min
 [2026-07-27 12:14 UTC] EXIT Nongwan / SOL [TP] ret=+15.4% pnl=+1.3502U held=0min
 [2026-07-27 12:14 UTC] CYCLE OK nav=15856.5094 扫描候选9 新入场4 持仓8 已平仓1412
+[2026-07-27 12:17 UTC] BUY HOOD / SOL (FkyuLuEL...) @ 0.0001006939784 仓位=$50.00(机器人单笔$680的10%)
+[2026-07-27 12:17 UTC] BUY speedrun / SOL (9e1GFE73...) @ 2.896262461e-05 仓位=$42.53(机器人单笔$425的10%)
+[2026-07-27 12:17 UTC] BUY Nongwan / SOL (DqTqjGwb...) @ 0.0001724168288 仓位=$10.20(机器人单笔$102的10%)
+[2026-07-27 12:17 UTC] EXIT CXMT / SOL [TIME] ret=+4.2% pnl=+0.1044U held=36min
+[2026-07-27 12:17 UTC] EXIT USOX / SOL [SL] ret=-53.4% pnl=-4.6065U held=3min
+[2026-07-27 12:17 UTC] EXIT speedrun / SOL [SL] ret=-10.6% pnl=-5.2728U held=0min
+[2026-07-27 12:17 UTC] EXIT Nongwan / SOL [TP] ret=+12.7% pnl=+1.0685U held=0min
+[2026-07-27 12:17 UTC] CYCLE OK nav=15848.7002 扫描候选9 新入场3 持仓7 已平仓1416
