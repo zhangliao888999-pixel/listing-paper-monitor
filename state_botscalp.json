@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16126.246279526556,
+ "cash": 16103.025154597992,
  "positions": {
   "2tyZnBm1Yt59FMMW4i22EVPUgbM19rgMjtvZsUfAtY4R": {
    "name": "Simba / SOL",
@@ -87,8 +87,16 @@
    "usd": 5,
    "t_entry": 1785162003,
    "bot_avg_trade_usd": 9.71,
-   "mark": 1.9909577149734355e-05,
-   "mark_ret": 0.029511688829076288
+   "mark": 1.92464960171483e-05,
+   "mark_ret": -0.004775818710905599
+  },
+  "BwRQL8QWcFBmSZ4441MijL5V45PfjYjEvz2XDyMFHNyh": {
+   "name": "CATE / SOL",
+   "entry": 0.002740846252217778,
+   "qty": 8585.304622964424,
+   "usd": 23.531000000000002,
+   "t_entry": 1785162183,
+   "bot_avg_trade_usd": 235.31
   }
  },
  "closed": [
@@ -23881,7 +23889,22 @@
    "reason": "TP",
    "pnl": 0.8179,
    "t_exit": 1785162003
+  },
+  {
+   "name": "USWR / SOL",
+   "entry": 0.02012711975273689,
+   "qty": 248.42103894771626,
+   "usd": 5,
+   "t_entry": 1785162183,
+   "bot_avg_trade_usd": 20.11,
+   "mark": 0.021810712537724618,
+   "mark_ret": 0.08364797376230615,
+   "addr": "GhB3MChhrcqpEgFuCtmX7Tt19EkMA8nRgM9eHxRMkwXR",
+   "exit": 0.021374498286970123,
+   "reason": "TP",
+   "pnl": 0.3099,
+   "t_exit": 1785162183
   }
  ],
- "realized_pnl": 6354.251279526572
+ "realized_pnl": 6354.561154598007
 }
