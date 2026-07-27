@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13590.352621038586,
+ "cash": 13519.281621038586,
  "positions": {
   "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
    "name": "CXMT / SOL",
@@ -9,7 +9,7 @@
    "usd": 50,
    "t_entry": 1785180003,
    "bot_avg_trade_usd": 646.26,
-   "total_checks": 6
+   "total_checks": 7
   },
   "EHtYmEbzcHp2Zh9RsC23XAkL8Ybyap2bgyHjQ7LfTZ3Y": {
    "name": "me-me / SOL",
@@ -18,7 +18,7 @@
    "usd": 29.589,
    "t_entry": 1785189363,
    "bot_avg_trade_usd": 295.89,
-   "total_checks": 6,
+   "total_checks": 7,
    "no_price_checks": 3
   },
   "Gujdah8CpGWDTpHLC2EUdePAwfPFGDBXz6NtXmSC4Jkw": {
@@ -29,9 +29,9 @@
    "t_entry": 1785190983,
    "bot_avg_trade_usd": 374.81,
    "no_price_checks": 1,
-   "total_checks": 2,
-   "mark": 4.113180787444534e-05,
-   "mark_ret": -0.011063008963922538
+   "total_checks": 3,
+   "mark": 4.3533880119850214e-05,
+   "mark_ret": 0.04669030219305759
   },
   "xZNHowbDcfWxFLLrHFqbXWKeBt429cyhaY9cZAy4wCM": {
    "name": "STANdx / SOL",
@@ -41,7 +41,9 @@
    "t_entry": 1785190983,
    "bot_avg_trade_usd": 87.13,
    "no_price_checks": 2,
-   "total_checks": 2
+   "total_checks": 3,
+   "mark": 2.2183060360245208e-05,
+   "mark_ret": 0.024007174006703824
   },
   "E6kQDqs7eu6CsXrVy919cQqXfaD9cEhbrGNnt3qMHSo7": {
    "name": "USWR / SOL",
@@ -50,6 +52,26 @@
    "usd": 5,
    "t_entry": 1785191163,
    "bot_avg_trade_usd": 3.59,
+   "no_price_checks": 2,
+   "total_checks": 2
+  },
+  "De6CpuMpYQtswoGA5fpYcKdsxoYUYyKunjWfb1pLwUvM": {
+   "name": "SPY / SOL",
+   "entry": 9.104299841616137e-06,
+   "qty": 5491910.511497864,
+   "usd": 50,
+   "t_entry": 1785191343,
+   "bot_avg_trade_usd": 705.43,
+   "no_price_checks": 1,
+   "total_checks": 1
+  },
+  "CKtMRCAa9vD5yEPKNFgY88TBJ16jtGLrX9nzRpn4Tk5p": {
+   "name": "CATE / SOL",
+   "entry": 1.3504157448526467e-05,
+   "qty": 1560334.2955912591,
+   "usd": 21.071,
+   "t_entry": 1785191343,
+   "bot_avg_trade_usd": 210.71,
    "no_price_checks": 1,
    "total_checks": 1
   }
