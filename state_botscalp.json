@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12978.989117571005,
+ "cash": 12885.34934240158,
  "positions": {
   "E5LqRxojLMtYYhuVPHgCsoeQrwCurYHRTc4xdM2fyVBV": {
    "name": "NVIDIA / USDC",
@@ -49,8 +49,8 @@
    "usd": 5,
    "t_entry": 1785122402,
    "bot_avg_trade_usd": 42.46,
-   "mark": 0.015663927690666546,
-   "mark_ret": -0.006370990746586314
+   "mark": 0.015930855278325787,
+   "mark_ret": 0.010561352131010837
   },
   "9DaLtnvU5SCN1F21FjLkm5KmNRtdYr7rzmQCTjUeKewX": {
    "name": "MAGAVERSE / SOL",
@@ -58,7 +58,37 @@
    "qty": 64962.673614237814,
    "usd": 5,
    "t_entry": 1785122584,
-   "bot_avg_trade_usd": 8.76
+   "bot_avg_trade_usd": 8.76,
+   "mark": 7.848396466896877e-05,
+   "mark_ret": 0.019705636148318106
+  },
+  "Chysq8jgv4VfHMhNbAZMAXDkZqPVTEdA63MQixr2WqJb": {
+   "name": "MAGAVERSE / SOL",
+   "entry": 6.381826697743371e-05,
+   "qty": 783474.7380037775,
+   "usd": 50,
+   "t_entry": 1785122763,
+   "bot_avg_trade_usd": 1301.95
+  },
+  "CQ8xtpL5QiE8cYfyWVREzmbntNsSvCMk5CoXiXDUqmPY": {
+   "name": "CHIRP / SOL",
+   "entry": 1.2015381170466373e-05,
+   "qty": 2003015.9391993594,
+   "usd": 24.067,
+   "t_entry": 1785122763,
+   "bot_avg_trade_usd": 240.67,
+   "mark": 1.2521895680217856e-05,
+   "mark_ret": 0.04215550905671539
+  },
+  "5dZZQfiNfq1Y6ZuKThTfTjRgZkbdzURqCdM7CbJwFBbe": {
+   "name": "BINU / SOL",
+   "entry": 2.1759518865893508e-05,
+   "qty": 1009305.4049289605,
+   "usd": 21.962000000000003,
+   "t_entry": 1785122763,
+   "bot_avg_trade_usd": 219.62,
+   "mark": 2.1113540802101075e-05,
+   "mark_ret": -0.02968714831305197
   }
  },
  "closed": [
@@ -10231,7 +10261,37 @@
    "reason": "TP",
    "pnl": 1.4923,
    "t_exit": 1785122584
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 0.048181151431626996,
+   "qty": 153.54552102181222,
+   "usd": 7.398000000000001,
+   "t_entry": 1785122763,
+   "bot_avg_trade_usd": 73.98,
+   "mark": 0.05328082500212987,
+   "mark_ret": 0.10584374634009586,
+   "addr": "HyQLVUuSSXGsNf1JcHsAtg9AXRXXTww7J3FbFNWZ3VCe",
+   "exit": 0.052215208502087274,
+   "reason": "TP",
+   "pnl": 0.6194,
+   "t_exit": 1785122763
+  },
+  {
+   "name": "memehouse / SOL",
+   "entry": 1.8990853721599097e-05,
+   "qty": 263284.6355039473,
+   "usd": 5,
+   "t_entry": 1785122763,
+   "bot_avg_trade_usd": 12.04,
+   "mark": 2.6237660547524244e-05,
+   "mark_ret": 0.38159457874624403,
+   "addr": "H9J4jtFWzh9YPKLns3QSFc7cdbgy7qgex6TzXz7syAD1",
+   "exit": 2.5712907336573758e-05,
+   "reason": "TP",
+   "pnl": 1.7698,
+   "t_exit": 1785122763
   }
  ],
- "realized_pnl": 3066.2991175710044
+ "realized_pnl": 3068.6883424015764
 }
