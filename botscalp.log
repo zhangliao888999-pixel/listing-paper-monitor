@@ -3663,3 +3663,7 @@
 [2026-07-27 15:11 UTC] EXIT VALOR / SOL [TIME] ret=-2.0% pnl=-1.2375U held=30min
 [2026-07-27 15:11 UTC] EXIT ◎ / SOL [TP] ret=+79.8% pnl=+3.8117U held=6min
 [2026-07-27 15:11 UTC] CYCLE OK nav=16345.8839 扫描候选5 新入场1 持仓4 已平仓1643
+[2026-07-27 15:14 UTC] BUY ◎ / SOL (AjtLwy3U...) @ 0.0003939458083 仓位=$5.00(机器人单笔$43的10%)
+[2026-07-27 15:14 UTC] EXIT GM / SOL [TP] ret=+25.3% pnl=+1.1421U held=3min
+[2026-07-27 15:14 UTC] EXIT ◎ / SOL [TP] ret=+11.4% pnl=+0.4567U held=0min
+[2026-07-27 15:14 UTC] CYCLE OK nav=16347.4827 扫描候选5 新入场1 持仓3 已平仓1645

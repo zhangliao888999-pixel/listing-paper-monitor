@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16214.42177346692,
+ "cash": 16221.020602400691,
  "positions": {
   "46wtQJNCYXLTmipGhf88xQN1zUXmzcC9B6AddZY6ujSr": {
    "name": "JOEY / SOL",
@@ -31,14 +31,6 @@
    "bot_avg_trade_usd": 267.26,
    "mark": 5.0628808687985646e-05,
    "mark_ret": -0.019607843137254943
-  },
-  "56ZGu65iZKjKNdauDdBwLfxKj8YYGEYfW8HK8PcNLTe1": {
-   "name": "GM / SOL",
-   "entry": 4.281036916352987e-05,
-   "qty": 116794.13417110866,
-   "usd": 5,
-   "t_entry": 1785165063,
-   "bot_avg_trade_usd": 41.06
   }
  },
  "closed": [
@@ -24686,7 +24678,37 @@
    "reason": "TP",
    "pnl": 3.8117,
    "t_exit": 1785165063
+  },
+  {
+   "name": "GM / SOL",
+   "entry": 4.281036916352987e-05,
+   "qty": 116794.13417110866,
+   "usd": 5,
+   "t_entry": 1785165063,
+   "bot_avg_trade_usd": 41.06,
+   "mark": 5.36623617015595e-05,
+   "mark_ret": 0.2534898145021005,
+   "addr": "56ZGu65iZKjKNdauDdBwLfxKj8YYGEYfW8HK8PcNLTe1",
+   "exit": 5.258911446752831e-05,
+   "reason": "TP",
+   "pnl": 1.1421,
+   "t_exit": 1785165243
+  },
+  {
+   "name": "◎ / SOL",
+   "entry": 0.00039394580829999815,
+   "qty": 12692.10103180586,
+   "usd": 5,
+   "t_entry": 1785165243,
+   "bot_avg_trade_usd": 42.56,
+   "mark": 0.0004387051948195915,
+   "mark_ret": 0.11361813116566566,
+   "addr": "AjtLwy3UVe1ZtZpKZwyKbYq4hwNorj15GWMHnimzTjRV",
+   "exit": 0.0004299310909231997,
+   "reason": "TP",
+   "pnl": 0.4567,
+   "t_exit": 1785165243
   }
  ],
- "realized_pnl": 6346.147773466937
+ "realized_pnl": 6347.746602400709
 }
