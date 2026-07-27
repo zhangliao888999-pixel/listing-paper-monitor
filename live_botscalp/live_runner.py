@@ -44,6 +44,9 @@ CONFIG_F = HERE / "config.live.json"
 STATE_F = HERE / "live_state.json"
 ORDERS_LOG_F = HERE / "live_orders.jsonl"
 LOG_F = HERE / "live_runner.log"
+# 只在VPS本地生成,从不git add/push——这是真实钱包的持仓和盈亏,推到公开仓库
+# 等于把实盘账户信息暴露给所有人,跟纸盘那个公开看盘页面必须分开处理
+DASHBOARD_F = HERE / "DASHBOARD_LIVE.md"
 
 SOL_MINT = "So11111111111111111111111111111111111111112"
 # 注意: 老的 quote-api.jup.ag(v6) 已经失效(DNS都解析不到了),Jupiter把免费公共接口
@@ -470,6 +473,33 @@ def try_exit(cfg, wallet, state, addr, pos):
     audit({**record, "status": "filled", "sig": sig, "pnl_usd": round(pnl, 4)})
 
 
+def write_dashboard(cfg, state):
+    closed = state["closed"]
+    wins = [c for c in closed if c["pnl_usd"] > 0]
+    lines = [
+        "# 策略D 实盘 (真实钱包) —— 本地专用,不会推送到任何公开地方",
+        "",
+        f"更新: {NOW_STR}  |  模式: {cfg['sizingMode']} "
+        f"({'固定$%.2f' % cfg['posSizeUsd'] if cfg['sizingMode']=='fixed' else '机器人单笔的%.0f%%(区间$%.0f-$%.0f)' % (cfg['pctOfBot']*100, cfg['minPosUsd'], cfg['maxPosUsd'])})",
+        "",
+        f"持仓 {len(state['positions'])} | 已平仓 {len(closed)} | "
+        f"胜率 {len(wins)/len(closed)*100 if closed else 0:.0f}% | "
+        f"今日花费 ${state['spent_today_usd']:.2f} | 今日已实现盈亏 ${state['realized_pnl_usd']:+.2f}",
+        "",
+        "## 当前持仓",
+        "| 币种 | 仓位$ | 买入价 | 开仓时间(UTC) |",
+        "|---|---|---|---|",
+    ]
+    for addr, p in state["positions"].items():
+        t = dt.datetime.fromtimestamp(p["t_entry"], dt.timezone.utc).strftime("%H:%M:%S")
+        lines.append(f"| {p['name']} | ${p['usd']:.2f} | {p['entry_price_usd']:.10g} | {t} |")
+    lines += ["", "## 最近平仓 (20)", "| 币种 | 原因 | 仓位$ | 盈亏$ | 卖出sig |", "|---|---|---|---|---|"]
+    for c in closed[-20:][::-1]:
+        lines.append(f"| {c['name']} | {c['reason']} | ${c['usd']:.2f} | {c['pnl_usd']:+.4f} | "
+                     f"{c.get('sell_sig','')[:12]}... |")
+    DASHBOARD_F.write_text("\n".join(lines), encoding="utf-8")
+
+
 def main():
     cfg = load_config()
     state = load_state()
@@ -500,6 +530,7 @@ def main():
         except Exception as e:
             log(f"ERROR try_exit({addr}): {e}")
         save_state(state)
+    write_dashboard(cfg, state)
     log(f"CYCLE OK live_mode={is_live_mode()} 扫描候选{len(cands)} 新入场{n_entered} "
        f"持仓{len(state['positions'])} 今日花费${state['spent_today_usd']:.2f} "
        f"今日已实现盈亏${state['realized_pnl_usd']:+.2f}")
