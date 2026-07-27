@@ -1991,3 +1991,15 @@
 [2026-07-27 05:35 UTC] EXIT IF / SOL [TP] ret=+11.5% pnl=+3.5830U held=0min
 [2026-07-27 05:35 UTC] EXIT UCOE / SOL [TP] ret=+11.2% pnl=+3.0654U held=0min
 [2026-07-27 05:35 UTC] CYCLE OK nav=13606.7332 扫描候选9 新入场4 持仓4 已平仓888
+[2026-07-27 05:38 UTC] BUY HOOD / SOL (EZ7dPY8h...) @ 2.514698219e-05 仓位=$50.00(机器人单笔$803的10%)
+[2026-07-27 05:38 UTC] BUY MAGAVERSE / SOL (7D4yFziK...) @ 0.0001862148217 仓位=$50.00(机器人单笔$759的10%)
+[2026-07-27 05:38 UTC] BUY IF / SOL (B4WujyZQ...) @ 2.416706561e-05 仓位=$35.77(机器人单笔$358的10%)
+[2026-07-27 05:38 UTC] BUY Hosico / SOL (Gus4qDAK...) @ 1.100069099e-05 仓位=$15.57(机器人单笔$156的10%)
+[2026-07-27 05:38 UTC] BUY UCOE / SOL (mfxnaMKW...) @ 2.917556966e-05 仓位=$32.84(机器人单笔$328的10%)
+[2026-07-27 05:38 UTC] BUY Bob / SOL (2w4nQG3S...) @ 9.047712401e-06 仓位=$7.10(机器人单笔$71的10%)
+[2026-07-27 05:38 UTC] EXIT memehouse / SOL [SL] ret=-4.2% pnl=-0.3070U held=6min
+[2026-07-27 05:38 UTC] EXIT HOOD / SOL [TP] ret=+10.7% pnl=+4.2192U held=0min
+[2026-07-27 05:38 UTC] EXIT IF / SOL [TP] ret=+9.9% pnl=+2.7680U held=0min
+[2026-07-27 05:38 UTC] EXIT Hosico / SOL [TP] ret=+40.6% pnl=+5.8779U held=0min
+[2026-07-27 05:38 UTC] EXIT Bob / SOL [TP] ret=+7.8% pnl=+0.4020U held=0min
+[2026-07-27 05:38 UTC] CYCLE OK nav=13619.8364 扫描候选9 新入场6 持仓5 已平仓893
