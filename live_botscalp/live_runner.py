@@ -155,6 +155,14 @@ def load_config():
         "maxPositions": 3,           # 实盘先保守,远小于模拟盘的MAX_POS=20
         "dailyMaxUsd": 50.0,         # 每日累计开仓金额上限
         "dailyLossKillUsd": -20.0,   # 每日已实现亏损到这个数就停止开新仓(不影响已开仓位的止损平仓)
+        # 2026-07-27新增: breadcat闪崩事故后加的两道"进得去也要出得来"检查。
+        # 根因是同一个:breadcat崩盘后一查,池子真实流动性只剩$7.94,但24小时成交量
+        # 高达$1565万——成交量/流动性比值离谱到200万倍,典型"看着很活跃、兜不住"的池子。
+        # "闪崩后清零"和"想卖卖不掉(CXMT/Grok那种)"表面现象不同,但都是同一个根因
+        # (真实深度不够)导致的,买入前直接量深度比事后猜特征更直接。
+        "minLiquidityUsd": 15000.0,   # 流动性低于这个数,不管多活跃都不进场
+        "maxPriceImpactPct": 5.0,     # 买这一笔仓位对价格的冲击超过这个百分比,说明池子薄到连
+                                       # 我们这个小仓位都扛不住,大概率也卖不出去,不进场
     }
     if CONFIG_F.exists():
         default.update(json.loads(CONFIG_F.read_text(encoding="utf-8")))
@@ -339,6 +347,10 @@ def try_enter(cfg, wallet, state, c):
     if state["realized_pnl_usd"] <= cfg["dailyLossKillUsd"]:
         log(f"SKIP {c['name']}: 今日已实现亏损${state['realized_pnl_usd']:.2f}已触发熔断,停止开新仓")
         return False
+    liq = c.get("liq")
+    if liq is not None and liq < cfg["minLiquidityUsd"]:
+        log(f"SKIP {c['name']}: 流动性只有${liq:,.0f},低于${cfg['minLiquidityUsd']:,.0f}门槛,进得去也可能出不来")
+        return False
 
     pos_size_usd = decide_pos_size_usd(cfg, c["addr"])
     if pos_size_usd is None:
@@ -369,6 +381,13 @@ def try_enter(cfg, wallet, state, c):
     quote = jupiter_quote(SOL_MINT, mint, amount_lamports, cfg["slippageBps"])
     if not quote:
         log(f"SKIP {c['name']}: Jupiter拿不到报价(可能流动性不足以支撑这笔金额)")
+        return False
+    try:
+        price_impact = float(quote.get("priceImpactPct", 0)) * 100
+    except (TypeError, ValueError):
+        price_impact = 0
+    if price_impact > cfg["maxPriceImpactPct"]:
+        log(f"SKIP {c['name']}: 买入这笔仓位本身冲击价格达{price_impact:.1f}%(超过{cfg['maxPriceImpactPct']}%门槛),池子太薄")
         return False
 
     record = {"action": "BUY", "name": c["name"], "addr": c["addr"], "mint": mint,
