@@ -4126,3 +4126,13 @@
 [2026-07-27 17:56 UTC] EXIT RHNS / SOL [SL] ret=-24.1% pnl=-5.6323U held=0min
 [2026-07-27 17:56 UTC] EXIT Looks / SOL [TP] ret=+6.6% pnl=+0.2244U held=0min
 [2026-07-27 17:56 UTC] CYCLE OK nav=16323.5141 扫描候选12 新入场5 持仓3 已平仓1849
+[2026-07-27 17:59 UTC] BUY MANTEN / SOL (EtjBC1Tq...) @ 0.0002091080646 仓位=$5.00(机器人单笔$47的10%)
+[2026-07-27 17:59 UTC] BUY USWR / SOL (2QT5A4XX...) @ 0.04522848783 仓位=$27.83(机器人单笔$278的10%)
+[2026-07-27 17:59 UTC] BUY pumpkets / SOL (FRidHh25...) @ 5.376019589e-05 仓位=$35.64(机器人单笔$356的10%)
+[2026-07-27 17:59 UTC] BUY CATE / SOL (CybgsPhr...) @ 0.0001870025048 仓位=$5.11(机器人单笔$51的10%)
+[2026-07-27 17:59 UTC] BUY PONS / SOL (4zWjFSwh...) @ 1.756067286e-05 仓位=$50.00(机器人单笔$559的10%)
+[2026-07-27 17:59 UTC] EXIT CC / SOL [SL] ret=-62.5% pnl=-27.0576U held=3min
+[2026-07-27 17:59 UTC] EXIT MANTEN / SOL [SL] ret=-12.3% pnl=-0.7050U held=0min
+[2026-07-27 17:59 UTC] EXIT pumpkets / SOL [SL] ret=-73.2% pnl=-26.2785U held=0min
+[2026-07-27 17:59 UTC] EXIT CATE / SOL [TP] ret=+22.8% pnl=+1.0413U held=0min
+[2026-07-27 17:59 UTC] CYCLE OK nav=16270.5143 扫描候选7 新入场5 持仓4 已平仓1853
