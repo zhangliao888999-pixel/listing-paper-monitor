@@ -56,6 +56,15 @@ def log(msg):
         f.write(line + "\n")
 
 
+# 2026-07-27确认: GeckoTerminal对这个池子的报价持续异常(同一小时内先后读到
+# 0.00006/0.32/0.045/0.12/0.16这种互相对不上的"价格")，实盘那边live_runner.py
+# 的$1测试仓位因此吃了4笔假信号触发的亏损；纸盘这边同一个坑把cash炸到过1.3亿。
+# 不是一次性坏点，是这个池子的数据源本身不可信，直接拉黑不再进场。
+BLOCKED_POOL_ADDRS = {
+    "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA",  # CXMT / SOL
+}
+
+
 def load_bot_candidates():
     """复用screener的候选扫描结果(云端+本地合并),只要scalping_flag=True的"""
     cands, seen = [], set()
@@ -68,7 +77,7 @@ def load_bot_candidates():
         except (json.JSONDecodeError, OSError):
             continue
         for c in d.get("candidates", []):
-            if c.get("scalping_flag") and c["addr"] not in seen:
+            if c.get("scalping_flag") and c["addr"] not in seen and c["addr"] not in BLOCKED_POOL_ADDRS:
                 seen.add(c["addr"])
                 cands.append(c)
     return cands

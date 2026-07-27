@@ -291,6 +291,15 @@ CANDIDATES_URLS = [
 ]
 
 
+# 2026-07-27确认: GeckoTerminal对这个池子的报价持续异常(同一小时内先后读到
+# 0.00006/0.32/0.045/0.12/0.16这种互相对不上的"价格")，导致4笔$1测试仓位
+# 都在错误的止盈止损信号下平仓、实际净亏约-$3.66。不是一次性坏点，是这个
+# 池子的数据源本身不可信，直接拉黑不再进场。
+BLOCKED_POOL_ADDRS = {
+    "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA",  # CXMT / SOL
+}
+
+
 def load_bot_candidates():
     """跟bot_scalp_monitor.py同一个信号源: 复用screener已经在跑的候选扫描。
     直接从GitHub在线拉取(跟看盘页面同一套公开raw文件)，不依赖本地文件/仓库clone结构——
@@ -307,7 +316,7 @@ def load_bot_candidates():
         except (requests.RequestException, ValueError):
             continue
         for c in d.get("candidates", []):
-            if c.get("scalping_flag") and c["addr"] not in seen:
+            if c.get("scalping_flag") and c["addr"] not in seen and c["addr"] not in BLOCKED_POOL_ADDRS:
                 seen.add(c["addr"])
                 cands.append(c)
     return cands
