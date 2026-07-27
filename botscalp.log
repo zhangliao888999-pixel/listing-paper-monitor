@@ -2039,3 +2039,14 @@
 [2026-07-27 05:47 UTC] EXIT WAN / SOL [SL] ret=-9.1% pnl=-0.7187U held=0min
 [2026-07-27 05:47 UTC] EXIT memehouse / SOL [SL] ret=-16.1% pnl=-0.8889U held=0min
 [2026-07-27 05:47 UTC] CYCLE OK nav=13603.7302 扫描候选11 新入场6 持仓6 已平仓909
+[2026-07-27 05:50 UTC] BUY HOOD / SOL (EZ7dPY8h...) @ 2.775769519e-05 仓位=$50.00(机器人单笔$720的10%)
+[2026-07-27 05:50 UTC] BUY IF / SOL (B4WujyZQ...) @ 2.77719344e-05 仓位=$37.46(机器人单笔$375的10%)
+[2026-07-27 05:50 UTC] BUY SIRIUS / SOL (14UfqDjc...) @ 1.823384221e-05 仓位=$23.36(机器人单笔$234的10%)
+[2026-07-27 05:50 UTC] BUY Hosico / SOL (Gus4qDAK...) @ 1.473191127e-05 仓位=$15.70(机器人单笔$157的10%)
+[2026-07-27 05:50 UTC] BUY WAN / SOL (7GCBeSU9...) @ 9.676313993e-06 仓位=$5.42(机器人单笔$54的10%)
+[2026-07-27 05:50 UTC] BUY memehouse / SOL (H9J4jtFW...) @ 2.104995808e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 05:50 UTC] EXIT Bob / SOL [SL] ret=-6.8% pnl=-0.5513U held=3min
+[2026-07-27 05:50 UTC] EXIT HOOD / SOL [SL] ret=-23.6% pnl=-12.5736U held=0min
+[2026-07-27 05:50 UTC] EXIT Hosico / SOL [SL] ret=-14.7% pnl=-2.5794U held=0min
+[2026-07-27 05:50 UTC] EXIT memehouse / SOL [SL] ret=-9.5% pnl=-0.5647U held=0min
+[2026-07-27 05:50 UTC] CYCLE OK nav=13587.3965 扫描候选11 新入场6 持仓8 已平仓913
