@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12983.145105600568,
+ "cash": 12941.7134355881,
  "positions": {
   "GukzrHwaobccHvjJNZ5chbq2L9FWF1URZLrjJ7TSAiUe": {
    "name": "USOX / SOL",
@@ -9,8 +9,8 @@
    "usd": 5,
    "t_entry": 1785116283,
    "bot_avg_trade_usd": 0.46,
-   "mark": 0.012461976257630588,
-   "mark_ret": 0.010160843198366853
+   "mark": 0.012655929039643155,
+   "mark_ret": 0.025882547506583364
   },
   "H4T9u2JPXWfUpH35VEaCMpZSLuMjQQhB1H2T9imtnhHb": {
    "name": "CHILLDOG / SOL",
@@ -21,6 +21,22 @@
    "bot_avg_trade_usd": 96.22,
    "mark": 1.3145025139608242e-05,
    "mark_ret": -0.019607843137254943
+  },
+  "G7vXhMFbHfnoqDE62kMbUfjoSKhEeHSvSD2bT2PPmMxi": {
+   "name": "CALVIN / SOL",
+   "entry": 1.3710975614494244e-05,
+   "qty": 1447672.3289491585,
+   "usd": 19.849000000000004,
+   "t_entry": 1785117002,
+   "bot_avg_trade_usd": 198.49
+  },
+  "JBducxkaEMRBJFtuJN9jd8mCnGiBt1PnhvszTGWdGNtF": {
+   "name": "CAGE / SOL",
+   "entry": 8.487361102055703e-06,
+   "qty": 1835552.8665119067,
+   "usd": 15.579,
+   "t_entry": 1785117002,
+   "bot_avg_trade_usd": 155.79
   }
  },
  "closed": [
@@ -8603,7 +8619,22 @@
    "reason": "SL",
    "pnl": -13.8375,
    "t_exit": 1785116823
+  },
+  {
+   "name": "neko / SOL",
+   "entry": 2.9030425965116544e-05,
+   "qty": 1049278.437615847,
+   "usd": 30.461000000000002,
+   "t_entry": 1785117002,
+   "bot_avg_trade_usd": 304.61,
+   "mark": 2.378440104769143e-05,
+   "mark_ret": -0.18070781750597897,
+   "addr": "64W3ECiXi3HPNZK9yQiDpz7Kn7TZZxVFATbdputjeuF3",
+   "exit": 2.33087130267376e-05,
+   "reason": "SL",
+   "pnl": -6.0037,
+   "t_exit": 1785117002
   }
  ],
- "realized_pnl": 2997.7671056005656
+ "realized_pnl": 2991.763435588097
 }
