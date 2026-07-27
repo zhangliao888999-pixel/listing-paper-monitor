@@ -3781,3 +3781,18 @@
 [2026-07-27 15:53 UTC] EXIT CXMT / SOL [TP] ret=+13.6% pnl=+1.5264U held=0min
 [2026-07-27 15:53 UTC] EXIT CATE / SOL [TP] ret=+46.6% pnl=+3.9651U held=0min
 [2026-07-27 15:53 UTC] CYCLE OK nav=16404.6824 扫描候选8 新入场3 持仓6 已平仓1694
+[2026-07-27 15:56 UTC] BUY gib / SOL (6kJqXdib...) @ 0.0001518651039 仓位=$5.00(机器人单笔$38的10%)
+[2026-07-27 15:56 UTC] BUY kittyslop / SOL (FmsMaPHj...) @ 1.821793919e-05 仓位=$19.68(机器人单笔$197的10%)
+[2026-07-27 15:56 UTC] BUY CXMT / SOL (ACSu5mW6...) @ 8.988785327e-05 仓位=$11.83(机器人单笔$118的10%)
+[2026-07-27 15:56 UTC] BUY CATE / SOL (FuBHngMd...) @ 5.496826187e-05 仓位=$33.05(机器人单笔$331的10%)
+[2026-07-27 15:56 UTC] BUY SAYVAULT / SOL (13hcnCWa...) @ 0.0003304671147 仓位=$9.20(机器人单笔$92的10%)
+[2026-07-27 15:56 UTC] BUY SalaryCat / SOL (AVFpKzmt...) @ 0.001507114048 仓位=$5.00(机器人单笔$44的10%)
+[2026-07-27 15:56 UTC] BUY LFGBULL / SOL (E1zKSomf...) @ 1.221545516e-05 仓位=$5.00(机器人单笔$14的10%)
+[2026-07-27 15:56 UTC] BUY BLOCK / SOL (53jcfzb1...) @ 1.55574007e-05 仓位=$5.00(机器人单笔$12的10%)
+[2026-07-27 15:56 UTC] EXIT MISO / SOL [TP] ret=+11.6% pnl=+2.1850U held=9min
+[2026-07-27 15:56 UTC] EXIT ORANGECOIN / SOL [SL] ret=-11.5% pnl=-2.1574U held=6min
+[2026-07-27 15:56 UTC] EXIT gib / SOL [SL] ret=-59.9% pnl=-3.0338U held=0min
+[2026-07-27 15:56 UTC] EXIT kittyslop / SOL [TP] ret=+6.0% pnl=+0.7701U held=0min
+[2026-07-27 15:56 UTC] EXIT CXMT / SOL [TP] ret=+7.5% pnl=+0.6380U held=0min
+[2026-07-27 15:56 UTC] EXIT LFGBULL / SOL [SL] ret=-96.4% pnl=-4.8229U held=0min
+[2026-07-27 15:56 UTC] CYCLE OK nav=16398.1228 扫描候选12 新入场8 持仓8 已平仓1700
