@@ -4871,3 +4871,13 @@
 [2026-07-27 21:41 UTC] EXIT borg / SOL [TP] ret=+57.5% pnl=+2.7194U held=0min
 [2026-07-27 21:41 UTC] EXIT Enigma / SOL [TP] ret=+18.5% pnl=+0.8073U held=0min
 [2026-07-27 21:41 UTC] CYCLE OK nav=13610.4548 扫描候选7 新入场4 持仓5 已平仓2168
+[2026-07-27 21:47 UTC] BUY CATE / SOL (7TrrWpNA...) @ 1.767355618e-05 仓位=$34.72(机器人单笔$347的10%)
+[2026-07-27 21:47 UTC] BUY me-me / SOL (GbLikM4V...) @ 0.0001252985844 仓位=$27.14(机器人单笔$271的10%)
+[2026-07-27 21:47 UTC] BUY BILL / SOL (6Snm8iMo...) @ 2.585525744e-05 仓位=$31.30(机器人单笔$313的10%)
+[2026-07-27 21:47 UTC] BUY borg / SOL (AKMzYySg...) @ 2.059768895e-05 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-27 21:47 UTC] BUY borg / SOL (GhkxLWtM...) @ 3.437237101e-05 仓位=$24.09(机器人单笔$241的10%)
+[2026-07-27 21:47 UTC] BUY まんてん / SOL (FepJFaup...) @ 2.435155835e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 21:47 UTC] EXIT USWR / SOL [TP] ret=+6.3% pnl=+0.2094U held=12min
+[2026-07-27 21:47 UTC] EXIT CRISCO / SOL [TP] ret=+28.1% pnl=+8.4541U held=6min
+[2026-07-27 21:47 UTC] EXIT me-me / SOL [TP] ret=+131.1% pnl=+34.3295U held=0min
+[2026-07-27 21:47 UTC] CYCLE OK nav=13652.4748 扫描候选7 新入场6 持仓8 已平仓2171
