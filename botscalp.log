@@ -4082,3 +4082,19 @@
 [2026-07-27 17:44 UTC] EXIT Tortuga / SOL [SL] ret=-63.5% pnl=-3.2104U held=0min
 [2026-07-27 17:44 UTC] EXIT Looks / SOL [TP] ret=+30.0% pnl=+1.3701U held=0min
 [2026-07-27 17:44 UTC] CYCLE OK nav=16427.7543 扫描候选14 新入场6 持仓6 已平仓1827
+[2026-07-27 17:47 UTC] BUY CXMT / SOL (BBKk2t2W...) @ 1.668233666e-05 仓位=$18.62(机器人单笔$186的10%)
+[2026-07-27 17:47 UTC] BUY USWR / SOL (2QT5A4XX...) @ 0.03988722267 仓位=$27.39(机器人单笔$274的10%)
+[2026-07-27 17:47 UTC] BUY USOX / SOL (8tU8f9Vw...) @ 0.01509667372 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-27 17:47 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 8.676362992e-05 仓位=$5.32(机器人单笔$53的10%)
+[2026-07-27 17:47 UTC] BUY CXMT / SOL (FLUMAEUT...) @ 4.67985365e-05 仓位=$50.00(机器人单笔$673的10%)
+[2026-07-27 17:47 UTC] BUY pumpkets / SOL (FRidHh25...) @ 5.393602431e-05 仓位=$37.21(机器人单笔$372的10%)
+[2026-07-27 17:47 UTC] BUY SHAYDE / SOL (ECPdrdWg...) @ 3.426308337e-05 仓位=$45.07(机器人单笔$451的10%)
+[2026-07-27 17:47 UTC] EXIT CC / SOL [SL] ret=-56.4% pnl=-28.6593U held=45min
+[2026-07-27 17:47 UTC] EXIT CATE / SOL [TIME] ret=-0.5% pnl=-0.9733U held=33min
+[2026-07-27 17:47 UTC] EXIT CATE / SOL [TP] ret=+12.5% pnl=+1.5978U held=3min
+[2026-07-27 17:47 UTC] EXIT USWR / SOL [TP] ret=+8.1% pnl=+1.6356U held=0min
+[2026-07-27 17:47 UTC] EXIT USOX / SOL [TP] ret=+7.2% pnl=+0.2527U held=0min
+[2026-07-27 17:47 UTC] EXIT Tortuga / SOL [SL] ret=-12.8% pnl=-0.7743U held=0min
+[2026-07-27 17:47 UTC] EXIT CXMT / SOL [TP] ret=+5.4% pnl=+1.6622U held=0min
+[2026-07-27 17:47 UTC] EXIT SHAYDE / SOL [SL] ret=-57.1% pnl=-26.1292U held=0min
+[2026-07-27 17:47 UTC] CYCLE OK nav=16374.5963 扫描候选12 新入场7 持仓5 已平仓1835
