@@ -4472,3 +4472,16 @@
 [2026-07-27 19:44 UTC] EXIT Enigma / SOL [SL] ret=-10.7% pnl=-5.4699U held=0min
 [2026-07-27 19:44 UTC] EXIT Tortuga / SOL [SL] ret=-16.3% pnl=-0.8995U held=0min
 [2026-07-27 19:44 UTC] CYCLE OK nav=13534.0909 扫描候选11 新入场6 持仓7 已平仓2000
+[2026-07-27 19:47 UTC] BUY SOLCEX / SOL (3SXT6xKD...) @ 3.37389368e-05 仓位=$50.00(机器人单笔$596的10%)
+[2026-07-27 19:47 UTC] BUY IF / SOL (GXQZW7nC...) @ 2.558482159e-05 仓位=$50.00(机器人单笔$577的10%)
+[2026-07-27 19:47 UTC] BUY Ayu Ayu / SOL (BAhaTLVf...) @ 0.0001071995779 仓位=$35.97(机器人单笔$360的10%)
+[2026-07-27 19:47 UTC] BUY Ryder / SOL (7QLv8Yyf...) @ 6.286506197e-05 仓位=$50.00(机器人单笔$717的10%)
+[2026-07-27 19:47 UTC] BUY Enigma / SOL (G1jdEv9y...) @ 0.0001526954054 仓位=$46.58(机器人单笔$466的10%)
+[2026-07-27 19:47 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 8.123785329e-05 仓位=$5.35(机器人单笔$54的10%)
+[2026-07-27 19:47 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.4430192199相对入场价异常(ret=788981%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 19:47 UTC] EXIT PONS / SOL [TP] ret=+23.3% pnl=+10.4268U held=15min
+[2026-07-27 19:47 UTC] EXIT SOLCEX / SOL [TP] ret=+17.6% pnl=+7.6411U held=0min
+[2026-07-27 19:47 UTC] EXIT IF / SOL [TP] ret=+18.8% pnl=+8.2113U held=0min
+[2026-07-27 19:47 UTC] EXIT Enigma / SOL [SL] ret=-5.5% pnl=-3.4383U held=0min
+[2026-07-27 19:47 UTC] EXIT Tortuga / SOL [SL] ret=-14.4% pnl=-0.8599U held=0min
+[2026-07-27 19:47 UTC] CYCLE OK nav=13556.5485 扫描候选10 新入场6 持仓8 已平仓2005
