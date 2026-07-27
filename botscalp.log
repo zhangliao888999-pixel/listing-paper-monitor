@@ -2478,3 +2478,18 @@
 [2026-07-27 08:32 UTC] EXIT WAN / SOL [TP] ret=+43.1% pnl=+3.6488U held=0min
 [2026-07-27 08:32 UTC] EXIT WAN / SOL [SL] ret=-36.2% pnl=-1.8762U held=0min
 [2026-07-27 08:32 UTC] CYCLE OK nav=14768.3113 扫描候选12 新入场6 持仓8 已平仓1102
+[2026-07-27 08:35 UTC] BUY Family / SOL (2bgw83r6...) @ 0.0001521295408 仓位=$10.52(机器人单笔$105的10%)
+[2026-07-27 08:35 UTC] BUY MAGA / SOL (GgeuUvxj...) @ 0.0001206100625 仓位=$24.05(机器人单笔$241的10%)
+[2026-07-27 08:35 UTC] BUY Nongwan / SOL (AwyjRv3Y...) @ 0.000200930729 仓位=$44.25(机器人单笔$442的10%)
+[2026-07-27 08:35 UTC] BUY WAN / SOL (7GCBeSU9...) @ 1.510623258e-05 仓位=$7.26(机器人单笔$73的10%)
+[2026-07-27 08:35 UTC] BUY ROAR / SOL (3TCdRkQ3...) @ 0.0004088459671 仓位=$5.53(机器人单笔$55的10%)
+[2026-07-27 08:35 UTC] BUY WAN / SOL (EjM52KtK...) @ 0.000357757037 仓位=$5.00(机器人单笔$21的10%)
+[2026-07-27 08:35 UTC] EXIT Nongwan / SOL [SL] ret=-5.7% pnl=-1.0034U held=6min
+[2026-07-27 08:35 UTC] EXIT Nongwan / SOL [SL] ret=-9.3% pnl=-0.5536U held=3min
+[2026-07-27 08:35 UTC] EXIT Attlee / SOL [TP] ret=+16.3% pnl=+5.3141U held=3min
+[2026-07-27 08:35 UTC] EXIT Family / SOL [TP] ret=+34.2% pnl=+3.3203U held=0min
+[2026-07-27 08:35 UTC] EXIT MAGA / SOL [TP] ret=+19.8% pnl=+4.1755U held=0min
+[2026-07-27 08:35 UTC] EXIT WAN / SOL [TP] ret=+54.7% pnl=+3.7505U held=0min
+[2026-07-27 08:35 UTC] EXIT ROAR / SOL [TP] ret=+111.7% pnl=+5.9411U held=0min
+[2026-07-27 08:35 UTC] EXIT WAN / SOL [SL] ret=-30.7% pnl=-1.6024U held=0min
+[2026-07-27 08:35 UTC] CYCLE OK nav=14787.5668 扫描候选12 新入场6 持仓6 已平仓1110
