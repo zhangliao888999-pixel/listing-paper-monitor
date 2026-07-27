@@ -40,7 +40,10 @@ MIN_POS_USD = 5              # 地板:机器人单笔太小的话我们仓位会
 MAX_POS_USD = 50             # 天花板:防止某个异常大单把我们的仓位也算得离谱大
 TP, SL = 0.05, -0.03         # 用户指定：5%止盈/3%止损
 MAX_HOLD_MIN = 30            # "快进快出"，止盈止损都没触发的话30分钟强制离场
-DEAD_PRICE_STREAK = 15       # 连续15轮(每轮3分钟,约45分钟)拿不到报价,判定这个池子已经死了
+DEAD_PRICE_STREAK = 15       # 兜底:连续15轮(约45分钟)彻底拿不到任何数据(网络/接口问题),判定池子已死
+DEAD_LIQ_USD = 100.0         # 更直接的判死信号:同一次查价请求里顺便看流动性,趋近于0直接判死,
+                             # 不用等上面那个45分钟的间接推断(用户指出Phantom一查价格没了就知道
+                             # 死了,GeckoTerminal的池子接口本来就带流动性字段,没必要绕远路)
 SLIP = 0.02                  # 链上滑点保守估计，跟策略C一致
 
 NOW = int(time.time())
@@ -125,21 +128,38 @@ def try_enter(state, c):
     return True
 
 
-def get_price(addr):
+def get_price_and_liq(addr):
+    """一次请求同时拿价格和流动性——流动性字段(reserve_in_usd)本来就在同一个响应里,
+    不用另外调用,也不用靠"连续拿不到数据"这种间接推断去判断池子是否已死。"""
     d = get(S, f"{GT_BASE}/networks/solana/pools/{addr}")
     if not d:
-        return None
+        return None, None
+    attrs = d.get("data", {}).get("attributes", {})
     try:
-        return float(d["data"]["attributes"]["base_token_price_usd"])
+        price = float(attrs["base_token_price_usd"])
     except (KeyError, ValueError, TypeError):
-        return None
+        price = None
+    try:
+        liq = float(attrs.get("reserve_in_usd"))
+    except (TypeError, ValueError):
+        liq = None
+    return price, liq
 
 
 def manage_positions(state):
     for addr in list(state["positions"].keys()):
         pos = state["positions"][addr]
         pos["total_checks"] = pos.get("total_checks", 0) + 1
-        cur = get_price(addr)
+        cur, liq_now = get_price_and_liq(addr)
+        if liq_now is not None and liq_now < DEAD_LIQ_USD:
+            state["realized_pnl"] += -pos["usd"]
+            state["closed"].append({**pos, "addr": addr, "exit": 0.0, "reason": "DEAD",
+                                    "pnl": round(-pos["usd"], 4), "t_exit": NOW,
+                                    "_note": f"流动性只剩${liq_now:.4f},判定死亡,不用等连续多轮"})
+            del state["positions"][addr]
+            log(f"EXIT {pos['name']} [DEAD] 流动性只剩${liq_now:.4f}(低于${DEAD_LIQ_USD:.0f}门槛),"
+               f"判定池子已死,按本金全亏${pos['usd']:.2f}平仓")
+            continue
         if cur is None:
             pos["no_price_checks"] = pos.get("no_price_checks", 0) + 1
             pos["consecutive_no_price"] = pos.get("consecutive_no_price", 0) + 1
