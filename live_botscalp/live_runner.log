@@ -8,3 +8,14 @@
 [2026-07-26 22:37:31 UTC] SKIP thesis / SOL: 拿不到实时报价
 [2026-07-26 22:37:31 UTC] SKIP PALWORLD / SOL: 拿不到实时报价
 [2026-07-26 22:37:31 UTC] CYCLE OK live_mode=False 扫描候选8 新入场0 持仓0 今日花费$0.00 今日已实现盈亏$+0.00
+[2026-07-27 01:09:49 UTC] === DRY-RUN 模式 (设置 LIVE_TRADING=1 且 CONFIRM_LIVE_BOTSCALP=YES 才会真实下单) ===
+[2026-07-27 01:09:49 UTC] [DRY-RUN] 本来会 BUY CATE / SOL (DcZkfifA...) 报价内=2.44320326e-05 仓位=$5.0
+[2026-07-27 01:09:49 UTC] [DRY-RUN] 本来会 BUY CHANGE / SOL (4aP7qN7U...) 报价内=2.271167887e-05 仓位=$5.0
+[2026-07-27 01:09:49 UTC] SKIP HOUSECAT / SOL: 拿不到实时SOL价格,不猜
+[2026-07-27 01:09:49 UTC] SKIP callcat / SOL: 拿不到实时报价
+[2026-07-27 01:09:49 UTC] SKIP USOX / SOL: 拿不到实时报价
+[2026-07-27 01:09:49 UTC] SKIP neko / SOL: 拿不到实时报价
+[2026-07-27 01:09:49 UTC] SKIP USOX / SOL: 拿不到实时报价
+[2026-07-27 01:09:49 UTC] SKIP CALVIN / SOL: 拿不到实时报价
+[2026-07-27 01:09:49 UTC] SKIP OS / SOL: 拿不到实时报价
+[2026-07-27 01:09:49 UTC] CYCLE OK live_mode=False 扫描候选9 新入场0 持仓0 今日花费$0.00 今日已实现盈亏$+0.00

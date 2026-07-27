@@ -51,18 +51,53 @@
 7. 用最小金额观察真实成交是否符合预期(`live_orders.jsonl`里能看到每一笔的详情)，
    确认没问题后再逐步调大 `posSizeUsd`。
 
-## 定时运行
+## 部署到Windows VPS（美东这类云服务器，Windows Server 2019）
 
-跟模拟盘一样，这个策略是"快进快出"逻辑，需要频繁检查持仓才有意义。用Windows计划
-任务每2-3分钟跑一次（做法可以参考 `../run_botscalp_local.ps1` 的锁文件+git提交模式，
-把里面 `python bot_scalp_monitor.py` 换成 `python live_runner.py`，去掉git提交部分
-——实盘的状态文件不建议提交到公开仓库）。
+家里网络不稳定的话，实盘建议放VPS上跑，24小时不间断。步骤：
+
+1. VPS上装好 Python 3 + git，把这个仓库 clone 到VPS上(跟本地电脑一样的目录结构，
+   `live_botscalp/` 是 `paper/` 仓库下的一个子目录)。
+
+2. 跟本地一样：`pip install -r requirements.txt`，复制 `set_env.example.ps1` 为
+   `set_env.ps1` 并填入私钥。**这一步在VPS上做，私钥留在VPS的这个文件里，不会
+   经过Claude、不会提交到git**。
+
+3. 先手动跑一次确认没问题：
+   ```
+   cd live_botscalp
+   powershell -File .\run_live_vps.ps1
+   ```
+   默认dry-run，看`live_runner.log`确认候选扫描、报价获取都正常。
+
+4. 用Windows计划任务让它每2-3分钟自动跑一次（在VPS的PowerShell里执行，用管理员权限）：
+   ```
+   $action = "powershell.exe -NoProfile -ExecutionPolicy Bypass -File `"C:\完整路径\live_botscalp\run_live_vps.ps1`""
+   schtasks /create /tn "LiveBotscalp" /tr $action /sc minute /mo 3 /f
+   ```
+   (路径换成VPS上实际的仓库路径)
+
+5. `run_live_vps.ps1` 每次运行会先 `git pull` 拿到screener最新扫描的候选币数据——
+   这个数据是你家里电脑的本地任务和GitHub云端workflow共同产生、推到同一个仓库的，
+   VPS只要能访问外网git就能拿到，不需要在VPS上重新跑一遍screener。
+
+6. 默认**不会**把`live_state.json`/`live_orders.jsonl`这些真实交易记录推回git——
+   这个仓库是公开的，真实交易的tx签名能在Solscan上查到你的钱包地址，虽然Solana本身
+   就是公链、这些数据本来就查得到，但没必要额外把它们集中汇总到一个公开仓库里让人
+   更容易搜到。想让实盘状态也显示在看盘页面上的话，把`run_live_vps.ps1`最下面
+   git push那几行取消注释。
+
+## 本地电脑(非VPS)运行
+
+跟部署到VPS的步骤基本一样，把上面的`run_live_vps.ps1`换成任意路径运行、计划任务名
+换一个即可；也可以参考`../run_botscalp_local.ps1`的写法自己改一份。
 
 ## 文件说明
 
 - `live_runner.py` - 主执行逻辑
+- `run_live_vps.ps1` - Windows(含VPS)定时运行的包装脚本(锁文件+git pull+不自动push实盘数据)
+- `run_live_vps.sh` - Linux版本(如果以后换成Linux VPS用这个，本项目当前VPS是Windows Server 2019，用不上)
 - `config.live.json` - 参数配置(仓位/止盈止损/持仓上限/日限额等)
-- `set_env.example.ps1` - 环境变量模板，复制成`set_env.ps1`并填入私钥
-- `live_state.json` - 运行时生成，记录当前持仓/已实现盈亏(不含私钥，可以提交)
-- `live_orders.jsonl` - 每一笔尝试/成交的审计日志(不含私钥，可以提交)
+- `set_env.example.ps1` / `set_env.example.sh` - 环境变量模板，复制成`set_env.ps1`/`set_env.sh`并填入私钥
+- `live_state.json` - 运行时生成，记录当前持仓/已实现盈亏(不含私钥)
+- `live_orders.jsonl` - 每一笔尝试/成交的审计日志(不含私钥)
 - `live_runner.log` - 运行日志

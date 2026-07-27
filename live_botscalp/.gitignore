@@ -1,1 +1,3 @@
 set_env.ps1
+set_env.sh
+*.lock
