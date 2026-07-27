@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16071.387374288612,
+ "cash": 16059.94549230092,
  "positions": {
   "GXQZW7nCDwdvMsX96oGNMVLfVEZpG5XLesHBi4N2q9Jf": {
    "name": "IF / SOL",
@@ -22,16 +22,6 @@
    "mark": 0.00018328909839706724,
    "mark_ret": -0.019607843137254943
   },
-  "6xQ4bztgdr8oyRgE8B5FLVjQttSfnPiZU9QitBJADAys": {
-   "name": "ARF / SOL",
-   "entry": 6.514358479130899e-05,
-   "qty": 76753.52862477205,
-   "usd": 5,
-   "t_entry": 1785176583,
-   "bot_avg_trade_usd": 2.71,
-   "mark": 6.39144318971054e-05,
-   "mark_ret": -0.018868364369895363
-  },
   "3SXT6xKDs78nKzyFXVmCYv8uReCp3ikvEDGzGkpqDgqQ": {
    "name": "SOLCEX / SOL",
    "entry": 3.373893680134683e-05,
@@ -40,13 +30,23 @@
    "t_entry": 1785176763,
    "bot_avg_trade_usd": 525.04
   },
-  "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
-   "name": "CXMT / SOL",
-   "entry": 5.6143664453886797e-05,
-   "qty": 890572.435667557,
+  "B2s14JhE8CnGCHQeinjsd6qmzeeED5QFDUoosRfiM3gu": {
+   "name": "Enigma / SOL",
+   "entry": 5.7875554461739784e-05,
+   "qty": 86392.2608863365,
+   "usd": 5,
+   "t_entry": 1785177124,
+   "bot_avg_trade_usd": 1.14
+  },
+  "CwmW9LiWpCrRvd2C3iFZEeD46L6xEGdHQSpMd3sqSwqZ": {
+   "name": "CATE / SOL",
+   "entry": 0.00011102081680688343,
+   "qty": 450365.98935290787,
    "usd": 50,
-   "t_entry": 1785176943,
-   "bot_avg_trade_usd": 646.26
+   "t_entry": 1785177124,
+   "bot_avg_trade_usd": 705.73,
+   "mark": 0.00011567890084087581,
+   "mark_ret": 0.04195685248915915
   }
  },
  "closed": [
@@ -28294,7 +28294,97 @@
    "reason": "TP",
    "pnl": 2.6208,
    "t_exit": 1785176943
+  },
+  {
+   "name": "ARF / SOL",
+   "entry": 6.514358479130899e-05,
+   "qty": 76753.52862477205,
+   "usd": 5,
+   "t_entry": 1785176583,
+   "bot_avg_trade_usd": 2.71,
+   "mark": 6.209989503589828e-05,
+   "mark_ret": -0.0467227857533683,
+   "addr": "6xQ4bztgdr8oyRgE8B5FLVjQttSfnPiZU9QitBJADAys",
+   "exit": 6.085789713518031e-05,
+   "reason": "SL",
+   "pnl": -0.3289,
+   "t_exit": 1785177124
+  },
+  {
+   "name": "CXMT / SOL",
+   "entry": 5.6143664453886797e-05,
+   "qty": 890572.435667557,
+   "usd": 50,
+   "t_entry": 1785176943,
+   "bot_avg_trade_usd": 646.26,
+   "mark": 6.155770089130941e-05,
+   "mark_ret": 0.09643183233736718,
+   "addr": "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA",
+   "exit": 6.0326546873483216e-05,
+   "reason": "TP",
+   "pnl": 3.7252,
+   "t_exit": 1785177124
+  },
+  {
+   "name": "CXMT / SOL",
+   "entry": 8.507392513267255e-06,
+   "qty": 5877241.460532723,
+   "usd": 50,
+   "t_entry": 1785177124,
+   "bot_avg_trade_usd": 638.89,
+   "mark": 5.880015623991129e-06,
+   "mark_ret": -0.3088345677219828,
+   "addr": "AfxkqVF9MNcQMvULmSxwMSrthEB8f1KoafnwmanprYtk",
+   "exit": 5.762415311511307e-06,
+   "reason": "SL",
+   "pnl": -16.1329,
+   "t_exit": 1785177124
+  },
+  {
+   "name": "Enigma / SOL",
+   "entry": 3.698841501520404e-05,
+   "qty": 764590.7506005634,
+   "usd": 28.281000000000002,
+   "t_entry": 1785177124,
+   "bot_avg_trade_usd": 282.81,
+   "mark": 4.034380884561365e-05,
+   "mark_ret": 0.09071472321888852,
+   "addr": "Ep5ejmgFC6ZFkgut3CLEHtbGBtmfHFs8qmgGhsGqQh6Z",
+   "exit": 3.953693266870138e-05,
+   "reason": "TP",
+   "pnl": 1.9486,
+   "t_exit": 1785177124
+  },
+  {
+   "name": "ENIGMA / SOL",
+   "entry": 1.2023292169615636e-05,
+   "qty": 1338318.970628026,
+   "usd": 16.091,
+   "t_entry": 1785177124,
+   "bot_avg_trade_usd": 160.91,
+   "mark": 1.1488311328090462e-05,
+   "mark_ret": -0.04449537065040621,
+   "addr": "7XXHMErsHJ1K1uwp55gL7iibdwK3dL8nasHHCsa8nqyT",
+   "exit": 1.1258545101528653e-05,
+   "reason": "SL",
+   "pnl": -1.0235,
+   "t_exit": 1785177124
+  },
+  {
+   "name": "CXMT / SOL",
+   "entry": 3.9685230776469154,
+   "qty": 1.9611830012627343,
+   "usd": 7.783,
+   "t_entry": 1785177124,
+   "bot_avg_trade_usd": 77.83,
+   "mark": 4.241867142956696,
+   "mark_ret": 0.06887803345517063,
+   "addr": "GQRWdfkwmSoCprRSuqsUdRh5iNyXKaW1SQ7i6aGu6qDz",
+   "exit": 4.157029800097562,
+   "reason": "TP",
+   "pnl": 0.3697,
+   "t_exit": 1785177124
   }
  ],
- "realized_pnl": 6231.387374288614
+ "realized_pnl": 6219.945492300924
 }

@@ -4207,3 +4207,16 @@
 [2026-07-27 18:29 UTC] EXIT pumpkets / SOL [TP] ret=+6.2% pnl=+1.6182U held=0min
 [2026-07-27 18:29 UTC] EXIT PONS / SOL [TP] ret=+7.4% pnl=+2.6208U held=0min
 [2026-07-27 18:29 UTC] CYCLE OK nav=16229.9855 扫描候选8 新入场3 持仓5 已平仓1883
+[2026-07-27 18:32 UTC] BUY CXMT / SOL (AfxkqVF9...) @ 8.507392513e-06 仓位=$50.00(机器人单笔$639的10%)
+[2026-07-27 18:32 UTC] BUY Enigma / SOL (B2s14JhE...) @ 5.787555446e-05 仓位=$5.00(机器人单笔$1的10%)
+[2026-07-27 18:32 UTC] BUY Enigma / SOL (Ep5ejmgF...) @ 3.698841502e-05 仓位=$28.28(机器人单笔$283的10%)
+[2026-07-27 18:32 UTC] BUY CATE / SOL (CwmW9LiW...) @ 0.0001110208168 仓位=$50.00(机器人单笔$706的10%)
+[2026-07-27 18:32 UTC] BUY ENIGMA / SOL (7XXHMErs...) @ 1.202329217e-05 仓位=$16.09(机器人单笔$161的10%)
+[2026-07-27 18:32 UTC] BUY CXMT / SOL (GQRWdfkw...) @ 3.968523078 仓位=$7.78(机器人单笔$78的10%)
+[2026-07-27 18:32 UTC] EXIT ARF / SOL [SL] ret=-4.7% pnl=-0.3289U held=9min
+[2026-07-27 18:32 UTC] EXIT CXMT / SOL [TP] ret=+9.6% pnl=+3.7252U held=3min
+[2026-07-27 18:32 UTC] EXIT CXMT / SOL [SL] ret=-30.9% pnl=-16.1329U held=0min
+[2026-07-27 18:32 UTC] EXIT Enigma / SOL [TP] ret=+9.1% pnl=+1.9486U held=0min
+[2026-07-27 18:32 UTC] EXIT ENIGMA / SOL [SL] ret=-4.4% pnl=-1.0235U held=0min
+[2026-07-27 18:32 UTC] EXIT CXMT / SOL [TP] ret=+6.9% pnl=+0.3697U held=0min
+[2026-07-27 18:32 UTC] CYCLE OK nav=16220.7358 扫描候选12 新入场6 持仓5 已平仓1889
