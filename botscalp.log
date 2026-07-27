@@ -2574,3 +2574,9 @@
 [2026-07-27 08:56 UTC] EXIT WILLY / SOL [TP] ret=+5.2% pnl=+1.4944U held=0min
 [2026-07-27 08:56 UTC] EXIT RUN / SOL [TP] ret=+34.8% pnl=+7.1726U held=0min
 [2026-07-27 08:56 UTC] CYCLE OK nav=14862.4875 扫描候选8 新入场5 持仓10 已平仓1145
+[2026-07-27 08:59 UTC] BUY WILLY / SOL (HUvDsAd1...) @ 0.0001533956602 仓位=$48.45(机器人单笔$485的10%)
+[2026-07-27 08:59 UTC] BUY RUN / SOL (4vayZ97Y...) @ 0.0004090618992 仓位=$19.71(机器人单笔$197的10%)
+[2026-07-27 08:59 UTC] EXIT Family / SOL [TIME] ret=-2.0% pnl=-0.6908U held=30min
+[2026-07-27 08:59 UTC] EXIT cock / SOL [TP] ret=+23.8% pnl=+4.5753U held=3min
+[2026-07-27 08:59 UTC] EXIT WILLY / SOL [TP] ret=+5.2% pnl=+1.4944U held=0min
+[2026-07-27 08:59 UTC] CYCLE OK nav=14868.0584 扫描候选8 新入场2 持仓9 已平仓1148
