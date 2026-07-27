@@ -2373,3 +2373,19 @@
 [2026-07-27 07:59 UTC] EXIT Nongwan / SOL [TP] ret=+15.9% pnl=+5.8311U held=0min
 [2026-07-27 07:59 UTC] EXIT WAN / SOL [TP] ret=+16.4% pnl=+0.7047U held=0min
 [2026-07-27 07:59 UTC] CYCLE OK nav=13690.7071 扫描候选17 新入场7 持仓5 已平仓1055
+[2026-07-27 08:05 UTC] BUY CATE / SOL (JACUMR4Y...) @ 0.002640218501 仓位=$50.00(机器人单笔$740的10%)
+[2026-07-27 08:05 UTC] BUY USWR / SOL (6T3mbtTV...) @ 0.01001069654 仓位=$6.02(机器人单笔$60的10%)
+[2026-07-27 08:05 UTC] BUY Onigiri / SOL (cjSHkikq...) @ 0.0001544753657 仓位=$5.00(机器人单笔$4的10%)
+[2026-07-27 08:05 UTC] BUY WILLY / SOL (HUvDsAd1...) @ 0.0001642996988 仓位=$44.21(机器人单笔$442的10%)
+[2026-07-27 08:05 UTC] BUY Mee Hun / SOL (GjEcZqUm...) @ 8.999785353e-06 仓位=$18.80(机器人单笔$188的10%)
+[2026-07-27 08:05 UTC] BUY Nongwan / SOL (AwyjRv3Y...) @ 0.0001432750098 仓位=$45.23(机器人单笔$452的10%)
+[2026-07-27 08:05 UTC] BUY RUN / SOL (4vayZ97Y...) @ 0.0004207197275 仓位=$22.21(机器人单笔$222的10%)
+[2026-07-27 08:05 UTC] BUY Nongwan / SOL (ENJ439G8...) @ 0.0008938733076 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 08:05 UTC] EXIT SIRIUS / SOL [TP] ret=+4765.8% pnl=+1011.1402U held=12min
+[2026-07-27 08:05 UTC] EXIT IF / SOL [TP] ret=+10.4% pnl=+3.2597U held=6min
+[2026-07-27 08:05 UTC] EXIT Nongwan / SOL [TP] ret=+64.0% pnl=+24.3401U held=6min
+[2026-07-27 08:05 UTC] EXIT Onigiri / SOL [TP] ret=+55.8% pnl=+2.6352U held=0min
+[2026-07-27 08:05 UTC] EXIT WILLY / SOL [SL] ret=-27.1% pnl=-12.6057U held=0min
+[2026-07-27 08:05 UTC] EXIT Nongwan / SOL [TP] ret=+21.1% pnl=+8.4459U held=0min
+[2026-07-27 08:05 UTC] EXIT Nongwan / SOL [TP] ret=+5.5% pnl=+0.1676U held=0min
+[2026-07-27 08:05 UTC] CYCLE OK nav=14728.1177 扫描候选14 新入场8 持仓6 已平仓1062
