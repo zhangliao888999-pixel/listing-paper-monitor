@@ -1835,3 +1835,14 @@
 [2026-07-27 04:53 UTC] EXIT IF / SOL [TP] ret=+24.5% pnl=+10.9867U held=0min
 [2026-07-27 04:53 UTC] EXIT SalaryCat / SOL [TP] ret=+10.7% pnl=+0.4264U held=0min
 [2026-07-27 04:53 UTC] CYCLE OK nav=13251.1616 扫描候选9 新入场5 持仓5 已平仓816
+[2026-07-27 04:56 UTC] BUY CATE / SOL (JACUMR4Y...) @ 0.0009999110328 仓位=$50.00(机器人单笔$729的10%)
+[2026-07-27 04:56 UTC] BUY Genshin / SOL (3YH6mNuD...) @ 0.000139019733 仓位=$23.01(机器人单笔$230的10%)
+[2026-07-27 04:56 UTC] BUY IF / SOL (HgVR5zoj...) @ 4.916519811e-05 仓位=$50.00(机器人单笔$599的10%)
+[2026-07-27 04:56 UTC] BUY wifcat / SOL (H6DTNLW6...) @ 1.050474286e-05 仓位=$30.65(机器人单笔$307的10%)
+[2026-07-27 04:56 UTC] BUY SalaryCat / SOL (3RSWFQEy...) @ 0.003003436385 仓位=$5.00(机器人单笔$46的10%)
+[2026-07-27 04:56 UTC] EXIT HOOD / SOL [TP] ret=+14.5% pnl=+6.1075U held=3min
+[2026-07-27 04:56 UTC] EXIT SCHRÖDINGER / SOL [SL] ret=-95.7% pnl=-4.7881U held=3min
+[2026-07-27 04:56 UTC] EXIT Genshin / SOL [TP] ret=+14.6% pnl=+2.8335U held=0min
+[2026-07-27 04:56 UTC] EXIT IF / SOL [TP] ret=+14.4% pnl=+6.0759U held=0min
+[2026-07-27 04:56 UTC] EXIT SalaryCat / SOL [TP] ret=+10.7% pnl=+0.4264U held=0min
+[2026-07-27 04:56 UTC] CYCLE OK nav=13261.8167 扫描候选9 新入场5 持仓5 已平仓821
