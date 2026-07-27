@@ -1,6 +1,35 @@
 {
- "updated_at": 1785160846,
- "updated_at_str": "2026-07-27 14:00 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785169619,
+ "updated_at_str": "2026-07-27 16:26 UTC",
+ "n_candidates": 1,
+ "candidates": [
+  {
+   "addr": "GEFzdcEpcd6t6H2JgXCz4BZinxTxZiaxpb4QRDmDdu69",
+   "name": "USOH / SOL",
+   "age_min": 149.53333333333333,
+   "created": 1785160647.0,
+   "price": 0.025290757901428075,
+   "liq": 366274.1113,
+   "vol_15m": 18931.7876212446,
+   "vol_1h": 77101.9559890944,
+   "chg_15m": 10.196,
+   "chg_1h": 40.835,
+   "buys_15m": 2453,
+   "sells_15m": 118,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/GEFzdcEpcd6t6H2JgXCz4BZinxTxZiaxpb4QRDmDdu69",
+   "mint": "F95GVZewZDGM8H7wsRm6WVyY4vGFPuBpMcAgh8vLPump",
+   "early_bot_flag": null,
+   "staircase_flag": true,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": true,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": -12.903691172369761,
+    "wallet_verdict": "钱包画像未见明显控盘迹象"
+   }
+  }
+ ]
 }
