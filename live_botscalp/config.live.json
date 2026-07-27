@@ -1,6 +1,6 @@
 {
   "rpcUrl": "https://api.mainnet-beta.solana.com",
-  "sizingMode": "fixed",
+  "sizingMode": "pct_of_bot",
   "posSizeUsd": 1.0,
   "pctOfBot": 0.1,
   "minPosUsd": 5.0,
@@ -10,6 +10,6 @@
   "maxHoldMin": 30,
   "slippageBps": 200,
   "maxPositions": 3,
-  "dailyMaxUsd": 50.0,
+  "dailyMaxUsd": 200.0,
   "dailyLossKillUsd": -20.0
 }
