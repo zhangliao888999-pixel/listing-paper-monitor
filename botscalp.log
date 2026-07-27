@@ -3871,3 +3871,8 @@
 [2026-07-27 16:38 UTC] BUY USWR / SOL (AtL7GgSL...) @ 2.026500963e-05 仓位=$14.87(机器人单笔$149的10%)
 [2026-07-27 16:38 UTC] EXIT FoodPoop / SOL [TP] ret=+19.4% pnl=+0.8503U held=0min
 [2026-07-27 16:38 UTC] CYCLE OK nav=16418.5772 扫描候选3 新入场2 持仓3 已平仓1734
+[2026-07-27 16:41 UTC] BUY FoodPoop / SOL (GrT7my4P...) @ 3.178045691e-05 仓位=$5.00(机器人单笔$4的10%)
+[2026-07-27 16:41 UTC] EXIT MPGA / SOL [TIME] ret=-2.0% pnl=-0.1961U held=33min
+[2026-07-27 16:41 UTC] EXIT USWR / SOL [TP] ret=+14.7% pnl=+1.8412U held=3min
+[2026-07-27 16:41 UTC] EXIT FoodPoop / SOL [TP] ret=+6.7% pnl=+0.2285U held=0min
+[2026-07-27 16:41 UTC] CYCLE OK nav=16420.5488 扫描候选3 新入场1 持仓1 已平仓1737
