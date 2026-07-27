@@ -4446,3 +4446,14 @@
 [2026-07-27 19:38 UTC] EXIT Ayu Ayu / SOL [SL] ret=-51.7% pnl=-21.7256U held=0min
 [2026-07-27 19:38 UTC] EXIT Tortuga / SOL [TP] ret=+88.0% pnl=+4.2118U held=0min
 [2026-07-27 19:38 UTC] CYCLE OK nav=13539.1495 扫描候选12 新入场5 持仓8 已平仓1988
+[2026-07-27 19:41 UTC] BUY SOLCEX / SOL (3SXT6xKD...) @ 3.37389368e-05 仓位=$50.00(机器人单笔$560的10%)
+[2026-07-27 19:41 UTC] BUY AORP / SOL (GmWmtu3x...) @ 0.02428141527 仓位=$5.00(机器人单笔$13的10%)
+[2026-07-27 19:41 UTC] BUY Ayu Ayu / SOL (BAhaTLVf...) @ 0.0004282313776 仓位=$36.16(机器人单笔$362的10%)
+[2026-07-27 19:41 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 4.043666502e-05 仓位=$5.00(机器人单笔$21的10%)
+[2026-07-27 19:41 UTC] BUY GCLB / SOL (4MZLyUc9...) @ 2.949197137e-05 仓位=$35.90(机器人单笔$359的10%)
+[2026-07-27 19:41 UTC] EXIT IF / SOL [TP] ret=+25.8% pnl=+11.6507U held=3min
+[2026-07-27 19:41 UTC] EXIT SOLCEX / SOL [TP] ret=+20.7% pnl=+9.1304U held=0min
+[2026-07-27 19:41 UTC] EXIT AORP / SOL [SL] ret=-100.0% pnl=-4.9995U held=0min
+[2026-07-27 19:41 UTC] EXIT Tortuga / SOL [TP] ret=+68.8% pnl=+3.2700U held=0min
+[2026-07-27 19:41 UTC] EXIT GCLB / SOL [SL] ret=-50.2% pnl=-18.3833U held=0min
+[2026-07-27 19:41 UTC] CYCLE OK nav=13542.5993 扫描候选12 新入场5 持仓8 已平仓1993

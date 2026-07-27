@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13216.777505244389,
+ "cash": 13231.280896001846,
  "positions": {
   "QDEcCNzQWzQArpTv5jjLRkN5eKDbpKcfdKgXnLgX4wU": {
    "name": "MMM / SOL",
@@ -37,8 +37,8 @@
    "usd": 50,
    "t_entry": 1785180724,
    "bot_avg_trade_usd": 819.42,
-   "mark": 6.156582417985378e-05,
-   "mark_ret": -0.005119493588927937
+   "mark": 6.288803093011551e-05,
+   "mark_ret": 0.016246868979981954
   },
   "CwmW9LiWpCrRvd2C3iFZEeD46L6xEGdHQSpMd3sqSwqZ": {
    "name": "CATE / SOL",
@@ -47,8 +47,8 @@
    "usd": 50,
    "t_entry": 1785180724,
    "bot_avg_trade_usd": 780.71,
-   "mark": 0.00012545346024183182,
-   "mark_ret": 0.005989175062155905
+   "mark": 0.00012972611565858198,
+   "mark_ret": 0.040250845403777324
   },
   "4zWjFSwhqri4hyvSsdXsouT7SNPtsFRD1Aw6GZnyPxa5": {
    "name": "PONS / SOL",
@@ -60,14 +60,6 @@
    "mark": 2.219384272102209e-05,
    "mark_ret": 0.01953343950448172
   },
-  "GXQZW7nCDwdvMsX96oGNMVLfVEZpG5XLesHBi4N2q9Jf": {
-   "name": "IF / SOL",
-   "entry": 2.5584821593887854e-05,
-   "qty": 1954283.707491041,
-   "usd": 50,
-   "t_entry": 1785181084,
-   "bot_avg_trade_usd": 560.24
-  },
   "2viaGp5nM59VYN51ct24aysBFiET4Fqnj3VXA5R4Pg3A": {
    "name": "PORNHUB / SOL",
    "entry": 0.0061236678144068,
@@ -77,6 +69,14 @@
    "bot_avg_trade_usd": 28.7,
    "mark": 0.006003595896477255,
    "mark_ret": -0.019607843137254943
+  },
+  "BAhaTLVfNYZcTRxkTD9St4aWXtY8MjcjpyqMSJDepdNJ": {
+   "name": "Ayu Ayu / SOL",
+   "entry": 0.0004282313776050542,
+   "qty": 84452.00863668136,
+   "usd": 36.165,
+   "t_entry": 1785181263,
+   "bot_avg_trade_usd": 361.65
   }
  },
  "closed": [
@@ -29899,7 +29899,82 @@
    "reason": "TP",
    "pnl": 4.2118,
    "t_exit": 1785181084
+  },
+  {
+   "name": "IF / SOL",
+   "entry": 2.5584821593887854e-05,
+   "qty": 1954283.707491041,
+   "usd": 50,
+   "t_entry": 1785181084,
+   "bot_avg_trade_usd": 560.24,
+   "mark": 3.219027106488322e-05,
+   "mark_ret": 0.25817844563643133,
+   "addr": "GXQZW7nCDwdvMsX96oGNMVLfVEZpG5XLesHBi4N2q9Jf",
+   "exit": 3.154646564358556e-05,
+   "reason": "TP",
+   "pnl": 11.6507,
+   "t_exit": 1785181263
+  },
+  {
+   "name": "SOLCEX / SOL",
+   "entry": 3.373893680134683e-05,
+   "qty": 1481967.268097317,
+   "usd": 50,
+   "t_entry": 1785181263,
+   "bot_avg_trade_usd": 560.33,
+   "mark": 4.071420994038989e-05,
+   "mark_ret": 0.2067425295620049,
+   "addr": "3SXT6xKDs78nKzyFXVmCYv8uReCp3ikvEDGzGkpqDgqQ",
+   "exit": 3.989992574158209e-05,
+   "reason": "TP",
+   "pnl": 9.1304,
+   "t_exit": 1785181263
+  },
+  {
+   "name": "AORP / SOL",
+   "entry": 0.02428141527094863,
+   "qty": 205.91880432860202,
+   "usd": 5,
+   "t_entry": 1785181263,
+   "bot_avg_trade_usd": 12.89,
+   "mark": 2.6288127101396714e-06,
+   "mark_ret": -0.9998917356059849,
+   "addr": "GmWmtu3x3PTDAeuRukcLgSGXd9qwau2E2RCPBv6uXzZm",
+   "exit": 2.576236455936878e-06,
+   "reason": "SL",
+   "pnl": -4.9995,
+   "t_exit": 1785181263
+  },
+  {
+   "name": "Tortuga / SOL",
+   "entry": 4.043666501735781e-05,
+   "qty": 123650.15754523041,
+   "usd": 5,
+   "t_entry": 1785181263,
+   "bot_avg_trade_usd": 21.26,
+   "mark": 6.82474927452375e-05,
+   "mark_ret": 0.6877626460031172,
+   "addr": "C4ykhmjTxSpSUuuENyYv2pXgMG49NE1kY4S9w5tZfciC",
+   "exit": 6.688254289033275e-05,
+   "reason": "TP",
+   "pnl": 3.27,
+   "t_exit": 1785181263
+  },
+  {
+   "name": "GCLB / SOL",
+   "entry": 2.949197136855333e-05,
+   "qty": 1217314.3514672094,
+   "usd": 35.901,
+   "t_entry": 1785181263,
+   "bot_avg_trade_usd": 359.01,
+   "mark": 1.468412779351485e-05,
+   "mark_ret": -0.5020974484882272,
+   "addr": "4MZLyUc9qFAh8ibghCAqZGZdiLPosrVLjweRpXpyoZ5s",
+   "exit": 1.4390445237644553e-05,
+   "reason": "SL",
+   "pnl": -18.3833,
+   "t_exit": 1785181263
   }
  ],
- "realized_pnl": 3456.7775052443885
+ "realized_pnl": 3457.4458960018455
 }
