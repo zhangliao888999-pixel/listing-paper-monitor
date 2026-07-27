@@ -3881,3 +3881,8 @@
 [2026-07-27 16:44 UTC] EXIT FoodPoop / SOL [TP] ret=+46.6% pnl=+2.1827U held=0min
 [2026-07-27 16:44 UTC] EXIT USWR / SOL [TP] ret=+12.9% pnl=+2.0661U held=0min
 [2026-07-27 16:44 UTC] CYCLE OK nav=16424.7976 扫描候选3 新入场2 持仓1 已平仓1739
+[2026-07-27 16:47 UTC] BUY CC / SOL (EjsZk21y...) @ 4.806680592e-05 仓位=$50.00(机器人单笔$574的10%)
+[2026-07-27 16:47 UTC] BUY CATE / SOL (FuBHngMd...) @ 7.319141861e-05 仓位=$38.99(机器人单笔$390的10%)
+[2026-07-27 16:47 UTC] BUY CATE / SOL (CybgsPhr...) @ 7.717606073e-05 仓位=$9.95(机器人单笔$99的10%)
+[2026-07-27 16:47 UTC] EXIT CC / SOL [SL] ret=-9.0% pnl=-5.4018U held=0min
+[2026-07-27 16:47 UTC] CYCLE OK nav=16419.3959 扫描候选4 新入场3 持仓3 已平仓1740
