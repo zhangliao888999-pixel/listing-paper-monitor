@@ -3503,3 +3503,15 @@
 [2026-07-27 14:08 UTC] EXIT ◎ / SOL [SL] ret=-18.5% pnl=-5.0061U held=0min
 [2026-07-27 14:08 UTC] EXIT Clark / SOL [SL] ret=-16.8% pnl=-0.9208U held=0min
 [2026-07-27 14:08 UTC] CYCLE OK nav=16308.8799 扫描候选11 新入场6 持仓8 已平仓1571
+[2026-07-27 14:11 UTC] BUY SolCat / SOL (9yTJPorf...) @ 0.0001903746879 仓位=$21.88(机器人单笔$219的10%)
+[2026-07-27 14:11 UTC] BUY VALOR / SOL (E2wSudyW...) @ 1.554879377e-06 仓位=$30.14(机器人单笔$301的10%)
+[2026-07-27 14:11 UTC] BUY CASHBULL / SOL (2ZWVnVoz...) @ 9.738330806e-06 仓位=$11.84(机器人单笔$118的10%)
+[2026-07-27 14:11 UTC] BUY ◎ / SOL (FbhuKsDC...) @ 2.49764296e-05 仓位=$17.56(机器人单笔$176的10%)
+[2026-07-27 14:11 UTC] BUY Clark / SOL (Byvfcd3R...) @ 2.042981382e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 14:11 UTC] BUY GONGFU / SOL (FtupZv5m...) @ 3.912689412e-05 仓位=$5.00(机器人单笔$17的10%)
+[2026-07-27 14:11 UTC] EXIT CXMT / SOL [SL] ret=-16.9% pnl=-3.3309U held=6min
+[2026-07-27 14:11 UTC] EXIT SolCat / SOL [TP] ret=+72.9% pnl=+15.1940U held=0min
+[2026-07-27 14:11 UTC] EXIT VALOR / SOL [TP] ret=+45.1% pnl=+12.7328U held=0min
+[2026-07-27 14:11 UTC] EXIT CASHBULL / SOL [TP] ret=+39.4% pnl=+4.3294U held=0min
+[2026-07-27 14:11 UTC] EXIT Clark / SOL [SL] ret=-35.9% pnl=-1.8567U held=0min
+[2026-07-27 14:11 UTC] CYCLE OK nav=16335.8506 扫描候选11 新入场6 持仓9 已平仓1576
