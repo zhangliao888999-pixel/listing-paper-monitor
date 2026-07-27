@@ -215,12 +215,15 @@ def get_fresh_price_usd(mint_or_pool_addr, is_pool_addr=True):
     else:
         url = f"{GT_BASE}/networks/solana/tokens/{mint_or_pool_addr}"
         field = "price_usd"
+    # 2026-07-27修复: 这里原来是自己裸调requests.get,不走下面gt_get()那套429退避重试,
+    # 也没用带User-Agent的GT_S会话——1分钟一轮扫描+管理持仓,请求频率一高就被限流,
+    # 一撞到429就直接放弃,导致整轮所有候选/持仓齐刷刷"拿不到实时报价"。改成复用gt_get()。
+    d = gt_get(url)
+    if not d:
+        return None
     try:
-        r = requests.get(url, headers={"Accept": "application/json;version=20230302"}, timeout=15)
-        if r.status_code != 200:
-            return None
-        return float(r.json()["data"]["attributes"][field])
-    except (requests.RequestException, KeyError, ValueError, TypeError):
+        return float(d["data"]["attributes"][field])
+    except (KeyError, ValueError, TypeError):
         return None
 
 
