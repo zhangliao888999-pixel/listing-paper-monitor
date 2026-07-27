@@ -3239,3 +3239,14 @@
 [2026-07-27 12:41 UTC] EXIT PCAT / SOL [TP] ret=+14.1% pnl=+2.8221U held=0min
 [2026-07-27 12:41 UTC] EXIT ◎ / SOL [TP] ret=+21.6% pnl=+0.9577U held=0min
 [2026-07-27 12:41 UTC] CYCLE OK nav=15890.0462 扫描候选9 新入场3 持仓6 已平仓1452
+[2026-07-27 12:44 UTC] BUY oof / SOL (EXvKad1b...) @ 9.667628596e-05 仓位=$30.02(机器人单笔$300的10%)
+[2026-07-27 12:44 UTC] BUY PCAT / SOL (2wnKGvaJ...) @ 1.65931833e-05 仓位=$23.35(机器人单笔$234的10%)
+[2026-07-27 12:44 UTC] BUY Clark / SOL (Byvfcd3R...) @ 2.267533241e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 12:44 UTC] BUY ◎ / SOL (AjtLwy3U...) @ 0.000530978547 仓位=$5.00(机器人单笔$21的10%)
+[2026-07-27 12:44 UTC] EXIT 4FUN / SOL [TP] ret=+11.4% pnl=+1.9892U held=18min
+[2026-07-27 12:44 UTC] EXIT Kittens / SOL [TP] ret=+8.1% pnl=+2.9549U held=9min
+[2026-07-27 12:44 UTC] EXIT Nongwan / SOL [TP] ret=+14.2% pnl=+1.3214U held=6min
+[2026-07-27 12:44 UTC] EXIT oof / SOL [TP] ret=+11.1% pnl=+2.6521U held=0min
+[2026-07-27 12:44 UTC] EXIT Clark / SOL [TP] ret=+19.0% pnl=+0.8310U held=0min
+[2026-07-27 12:44 UTC] EXIT ◎ / SOL [TP] ret=+58.1% pnl=+2.7449U held=0min
+[2026-07-27 12:44 UTC] CYCLE OK nav=15901.6406 扫描候选9 新入场4 持仓4 已平仓1458
