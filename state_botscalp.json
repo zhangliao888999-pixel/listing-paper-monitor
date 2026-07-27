@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13179.222267726667,
+ "cash": 13161.343151143587,
  "positions": {
   "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
    "name": "CXMT / SOL",
@@ -65,8 +65,16 @@
    "usd": 50,
    "t_entry": 1785185943,
    "bot_avg_trade_usd": 576.04,
-   "mark": 5.070708681825732e-05,
-   "mark_ret": 0.01660628286467225
+   "mark": 5.1213362902214016e-05,
+   "mark_ret": 0.026756411379434075
+  },
+  "221NFNugMhQhy5A1x6KQVGfxXDAm4DmYrKs5gYf7bN9F": {
+   "name": "Scam / SOL",
+   "entry": 0.0001934791952543874,
+   "qty": 91141.58231232423,
+   "usd": 17.634,
+   "t_entry": 1785186303,
+   "bot_avg_trade_usd": 176.34
   }
  },
  "closed": [
@@ -32019,7 +32027,52 @@
    "reason": "SL",
    "pnl": -11.0002,
    "t_exit": 1785186123
+  },
+  {
+   "name": "Codex / SOL",
+   "entry": 1.747410714887999e-05,
+   "qty": 286137.65255070425,
+   "usd": 5,
+   "t_entry": 1785186303,
+   "bot_avg_trade_usd": 12.88,
+   "mark": 2.5426832734207206e-05,
+   "mark_ret": 0.45511484607309094,
+   "addr": "B2qP6ugZbbfPmsxZCzS8KRekKTk9dvoHtytx3RxGLxyK",
+   "exit": 2.4918296079523062e-05,
+   "reason": "TP",
+   "pnl": 2.1301,
+   "t_exit": 1785186303
+  },
+  {
+   "name": "PONS / SOL",
+   "entry": 2.585767200908194e-05,
+   "qty": 1933662.086147531,
+   "usd": 50,
+   "t_entry": 1785186303,
+   "bot_avg_trade_usd": 564.03,
+   "mark": 2.9918610885679933e-05,
+   "mark_ret": 0.15704967079680165,
+   "addr": "4zWjFSwhqri4hyvSsdXsouT7SNPtsFRD1Aw6GZnyPxa5",
+   "exit": 2.9320238667966335e-05,
+   "reason": "TP",
+   "pnl": 6.6954,
+   "t_exit": 1785186303
+  },
+  {
+   "name": "GCLB / SOL",
+   "entry": 2.956952916194941e-05,
+   "qty": 1526064.204568656,
+   "usd": 45.125,
+   "t_entry": 1785186303,
+   "bot_avg_trade_usd": 451.25,
+   "mark": 2.4107891728450437e-05,
+   "mark_ret": -0.1847049171322993,
+   "addr": "4MZLyUc9qFAh8ibghCAqZGZdiLPosrVLjweRpXpyoZ5s",
+   "exit": 2.3625733893881428e-05,
+   "reason": "SL",
+   "pnl": -9.0706,
+   "t_exit": 1785186303
   }
  ],
- "realized_pnl": 3311.069267726659
+ "realized_pnl": 3310.824151143577
 }

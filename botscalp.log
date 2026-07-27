@@ -4771,3 +4771,12 @@
 [2026-07-27 21:02 UTC] EXIT PONS / SOL [TP] ret=+10.6% pnl=+4.1863U held=0min
 [2026-07-27 21:02 UTC] EXIT GCLB / SOL [SL] ret=-22.6% pnl=-11.0002U held=0min
 [2026-07-27 21:02 UTC] CYCLE OK nav=13394.2221 扫描候选9 新入场4 持仓7 已平仓2130
+[2026-07-27 21:05 UTC] BUY Scam / SOL (221NFNug...) @ 0.0001934791953 仓位=$17.63(机器人单笔$176的10%)
+[2026-07-27 21:05 UTC] BUY Codex / SOL (B2qP6ugZ...) @ 1.747410715e-05 仓位=$5.00(机器人单笔$13的10%)
+[2026-07-27 21:05 UTC] BUY PONS / SOL (4zWjFSwh...) @ 2.585767201e-05 仓位=$50.00(机器人单笔$564的10%)
+[2026-07-27 21:05 UTC] BUY GCLB / SOL (4MZLyUc9...) @ 2.956952916e-05 仓位=$45.12(机器人单笔$451的10%)
+[2026-07-27 21:05 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 21:05 UTC] EXIT Codex / SOL [TP] ret=+45.5% pnl=+2.1301U held=0min
+[2026-07-27 21:05 UTC] EXIT PONS / SOL [TP] ret=+15.7% pnl=+6.6954U held=0min
+[2026-07-27 21:05 UTC] EXIT GCLB / SOL [SL] ret=-18.5% pnl=-9.0706U held=0min
+[2026-07-27 21:05 UTC] CYCLE OK nav=13394.4845 扫描候选9 新入场4 持仓8 已平仓2133
