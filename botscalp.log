@@ -4485,3 +4485,16 @@
 [2026-07-27 19:47 UTC] EXIT Enigma / SOL [SL] ret=-5.5% pnl=-3.4383U held=0min
 [2026-07-27 19:47 UTC] EXIT Tortuga / SOL [SL] ret=-14.4% pnl=-0.8599U held=0min
 [2026-07-27 19:47 UTC] CYCLE OK nav=13556.5485 扫描候选10 新入场6 持仓8 已平仓2005
+[2026-07-27 19:50 UTC] BUY IF / SOL (GXQZW7nC...) @ 3.100231652e-05 仓位=$50.00(机器人单笔$555的10%)
+[2026-07-27 19:50 UTC] BUY Enigma / SOL (G1jdEv9y...) @ 0.0001526954054 仓位=$44.57(机器人单笔$446的10%)
+[2026-07-27 19:50 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 8.123785329e-05 仓位=$5.00(机器人单笔$14的10%)
+[2026-07-27 19:50 UTC] BUY PONS / SOL (4zWjFSwh...) @ 2.254595223e-05 仓位=$50.00(机器人单笔$549的10%)
+[2026-07-27 19:50 UTC] BUY AORP / SOL (CTRsNPEj...) @ 0.01095367355 仓位=$7.69(机器人单笔$77的10%)
+[2026-07-27 19:50 UTC] EXIT MMM / SOL [TIME] ret=+3.1% pnl=+0.1837U held=36min
+[2026-07-27 19:50 UTC] EXIT GIGA / SOL [SL] ret=-9.3% pnl=-1.5906U held=6min
+[2026-07-27 19:50 UTC] EXIT Ryder / SOL [TP] ret=+8.3% pnl=+3.0703U held=3min
+[2026-07-27 19:50 UTC] EXIT IF / SOL [SL] ret=-4.6% pnl=-3.2659U held=0min
+[2026-07-27 19:50 UTC] EXIT Tortuga / SOL [SL] ret=-32.4% pnl=-1.6853U held=0min
+[2026-07-27 19:50 UTC] EXIT PONS / SOL [TP] ret=+14.3% pnl=+5.9882U held=0min
+[2026-07-27 19:50 UTC] EXIT AORP / SOL [SL] ret=-98.5% pnl=-7.5781U held=0min
+[2026-07-27 19:50 UTC] CYCLE OK nav=13550.7795 扫描候选9 新入场5 持仓6 已平仓2012
