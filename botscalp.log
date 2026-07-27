@@ -2731,3 +2731,25 @@
 [2026-07-27 09:50 UTC] EXIT cock / SOL [SL] ret=-33.7% pnl=-10.7526U held=0min
 [2026-07-27 09:50 UTC] EXIT Nongwan / SOL [SL] ret=-8.0% pnl=-4.9398U held=0min
 [2026-07-27 09:50 UTC] CYCLE OK nav=15003.5971 扫描候选16 新入场6 持仓5 已平仓1220
+[2026-07-27 09:56 UTC] BUY Nongwan / SOL (J5zUqUVw...) @ 0.001216549274 仓位=$5.00(机器人单笔$6的10%)
+[2026-07-27 09:56 UTC] BUY Nongwan / SOL (BfMEoVXz...) @ 0.0002272863296 仓位=$44.78(机器人单笔$448的10%)
+[2026-07-27 09:56 UTC] BUY Claude / SOL (3fsF3wiJ...) @ 4.078677892e-06 仓位=$42.33(机器人单笔$423的10%)
+[2026-07-27 09:56 UTC] BUY HOOD / SOL (FkyuLuEL...) @ 3.135307466e-05 仓位=$37.44(机器人单笔$374的10%)
+[2026-07-27 09:56 UTC] BUY Sydney / SOL (2WBj1eZ9...) @ 5.691653449e-05 仓位=$41.16(机器人单笔$412的10%)
+[2026-07-27 09:56 UTC] BUY USOX / SOL (5wYRUoqG...) @ 0.01920280592 仓位=$6.05(机器人单笔$61的10%)
+[2026-07-27 09:56 UTC] BUY Nongwan / SOL (iWnBbWWU...) @ 0.0001198516999 仓位=$50.00(机器人单笔$760的10%)
+[2026-07-27 09:56 UTC] BUY Sara / SOL (mWz9x5vG...) @ 9.250084305e-06 仓位=$15.14(机器人单笔$151的10%)
+[2026-07-27 09:56 UTC] BUY Sydney / SOL (FxuW1jyv...) @ 0.0002472845929 仓位=$5.00(机器人单笔$49的10%)
+[2026-07-27 09:56 UTC] BUY 中国人能飞 / SOL (HPVFtEv9...) @ 2.052172648e-05 仓位=$5.00(机器人单笔$2的10%)
+[2026-07-27 09:56 UTC] BUY Nongwan / SOL (DqTqjGwb...) @ 2.735963603e-05 仓位=$7.78(机器人单笔$78的10%)
+[2026-07-27 09:56 UTC] BUY WENGU / SOL (7JcHcK5n...) @ 2.462749353e-05 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-27 09:56 UTC] EXIT PILLDIERS / SOL [TIME] ret=-2.0% pnl=-0.7114U held=30min
+[2026-07-27 09:56 UTC] EXIT Nongwan / SOL [SL] ret=-39.6% pnl=-2.0385U held=6min
+[2026-07-27 09:56 UTC] EXIT Nongwan / SOL [SL] ret=-3.3% pnl=-2.3395U held=0min
+[2026-07-27 09:56 UTC] EXIT Claude / SOL [TP] ret=+16.3% pnl=+5.9064U held=0min
+[2026-07-27 09:56 UTC] EXIT HOOD / SOL [TP] ret=+12.9% pnl=+4.0014U held=0min
+[2026-07-27 09:56 UTC] EXIT Sydney / SOL [SL] ret=-5.2% pnl=-2.9258U held=0min
+[2026-07-27 09:56 UTC] EXIT Sara / SOL [TP] ret=+18.8% pnl=+2.4913U held=0min
+[2026-07-27 09:56 UTC] EXIT Sydney / SOL [SL] ret=-32.8% pnl=-1.7069U held=0min
+[2026-07-27 09:56 UTC] EXIT WENGU / SOL [TP] ret=+11.9% pnl=+0.4849U held=0min
+[2026-07-27 09:56 UTC] CYCLE OK nav=15009.0157 扫描候选19 新入场12 持仓8 已平仓1229
