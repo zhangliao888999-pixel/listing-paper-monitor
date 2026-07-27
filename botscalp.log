@@ -4186,3 +4186,10 @@
 [2026-07-27 18:20 UTC] EXIT Tortuga / SOL [SL] ret=-9.0% pnl=-0.5431U held=6min
 [2026-07-27 18:20 UTC] EXIT PONS / SOL [TP] ret=+12.2% pnl=+5.0012U held=0min
 [2026-07-27 18:20 UTC] CYCLE OK nav=16211.2996 扫描候选8 新入场2 持仓5 已平仓1874
+[2026-07-27 18:23 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 2.935912848e-05 仓位=$5.00(机器人单笔$11的10%)
+[2026-07-27 18:23 UTC] BUY PONS / SOL (4zWjFSwh...) @ 1.78582578e-05 仓位=$50.00(机器人单笔$567的10%)
+[2026-07-27 18:23 UTC] BUY ARF / SOL (6xQ4bztg...) @ 6.514358479e-05 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-27 18:23 UTC] EXIT SOLCEX / SOL [SL] ret=-6.1% pnl=-3.9734U held=15min
+[2026-07-27 18:23 UTC] EXIT pumpkets / SOL [TP] ret=+6.2% pnl=+1.6182U held=9min
+[2026-07-27 18:23 UTC] EXIT PONS / SOL [TP] ret=+11.0% pnl=+4.4030U held=0min
+[2026-07-27 18:23 UTC] CYCLE OK nav=16213.9684 扫描候选8 新入场3 持仓5 已平仓1877
