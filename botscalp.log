@@ -1783,3 +1783,11 @@
 [2026-07-27 04:38 UTC] EXIT SCHRÖDINGER / SOL [TP] ret=+179.9% pnl=+8.7134U held=3min
 [2026-07-27 04:38 UTC] EXIT wifcat / SOL [SL] ret=-8.7% pnl=-3.2389U held=0min
 [2026-07-27 04:38 UTC] CYCLE OK nav=13251.2516 扫描候选9 新入场3 持仓8 已平仓791
+[2026-07-27 04:41 UTC] BUY HOOD / SOL (EZ7dPY8h...) @ 1.724952823e-05 仓位=$50.00(机器人单笔$814的10%)
+[2026-07-27 04:41 UTC] BUY wifcat / SOL (H6DTNLW6...) @ 1.178222319e-05 仓位=$32.46(机器人单笔$325的10%)
+[2026-07-27 04:41 UTC] BUY SCHRÖDINGER / SOL (6wTLo8hg...) @ 4.649222118e-05 仓位=$6.56(机器人单笔$66的10%)
+[2026-07-27 04:41 UTC] EXIT Genshin / SOL [TP] ret=+17.1% pnl=+3.2833U held=3min
+[2026-07-27 04:41 UTC] EXIT CHIRP / SOL [TP] ret=+9.2% pnl=+1.5377U held=3min
+[2026-07-27 04:41 UTC] EXIT wifcat / SOL [SL] ret=-22.9% pnl=-7.9304U held=0min
+[2026-07-27 04:41 UTC] EXIT SCHRÖDINGER / SOL [TP] ret=+218.4% pnl=+13.9205U held=0min
+[2026-07-27 04:41 UTC] CYCLE OK nav=13262.4732 扫描候选9 新入场3 持仓7 已平仓795
