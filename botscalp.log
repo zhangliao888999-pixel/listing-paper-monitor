@@ -1387,3 +1387,11 @@
 [2026-07-27 02:38 UTC] EXIT IF / SOL [TP] ret=+14.1% pnl=+5.9043U held=0min
 [2026-07-27 02:38 UTC] EXIT USOX / SOL [TP] ret=+7.4% pnl=+0.5111U held=0min
 [2026-07-27 02:38 UTC] CYCLE OK nav=13005.4073 扫描候选7 新入场5 持仓6 已平仓612
+[2026-07-27 02:41 UTC] BUY Kittens / SOL (Hh4bYnYF...) @ 8.95828254e-05 仓位=$50.00(机器人单笔$699的10%)
+[2026-07-27 02:41 UTC] BUY IF / SOL (87KZzCsJ...) @ 1.896967878e-05 仓位=$50.00(机器人单笔$565的10%)
+[2026-07-27 02:41 UTC] BUY USOX / SOL (AebwXbAH...) @ 0.02219031924 仓位=$6.48(机器人单笔$65的10%)
+[2026-07-27 02:41 UTC] BUY SalaryCat / SOL (3RSWFQEy...) @ 0.002660449203 仓位=$5.00(机器人单笔$46的10%)
+[2026-07-27 02:41 UTC] EXIT ca / SOL [TIME] ret=-2.0% pnl=-0.7398U held=33min
+[2026-07-27 02:41 UTC] EXIT USOX / SOL [TP] ret=+11.2% pnl=+0.5824U held=0min
+[2026-07-27 02:41 UTC] EXIT SalaryCat / SOL [SL] ret=-10.3% pnl=-0.6062U held=0min
+[2026-07-27 02:41 UTC] CYCLE OK nav=13004.7250 扫描候选7 新入场4 持仓7 已平仓615
