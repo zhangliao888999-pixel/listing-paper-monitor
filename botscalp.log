@@ -4974,3 +4974,9 @@
 [2026-07-27 22:18 UTC] EXIT borg / SOL [TIME] ret=-2.0% pnl=-0.9445U held=31min
 [2026-07-27 22:17 UTC] SKIP EXIT CHECK CATE / SOL: 拿不到实时报价,这轮跳过止盈止损判断
 [2026-07-27 22:17 UTC] CYCLE OK nav=13725.6629 扫描候选6 新入场2 持仓8 已平仓2194
+[2026-07-27 22:18 UTC] SKIP EXIT CHECK USWR / SOL: 拿不到实时报价,这轮跳过止盈止损判断
+[2026-07-27 22:18 UTC] SKIP EXIT CHECK me-me / SOL: 拿不到实时报价,这轮跳过止盈止损判断
+[2026-07-27 22:18 UTC] SKIP EXIT CHECK USOX / SOL: 拿不到实时报价,这轮跳过止盈止损判断
+[2026-07-27 22:18 UTC] EXIT CATE / SOL [SL] ret=-5.9% pnl=-1.4362U held=0min
+[2026-07-27 22:18 UTC] EXIT CATE / SOL [TP] ret=+8.0% pnl=+1.2150U held=0min
+[2026-07-27 22:18 UTC] CYCLE OK nav=13725.1113 扫描候选6 新入场2 持仓4 已平仓2198

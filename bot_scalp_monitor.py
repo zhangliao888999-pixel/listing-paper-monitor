@@ -64,6 +64,15 @@ BLOCKED_POOL_ADDRS = {
     "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA",  # CXMT / SOL
 }
 
+# 2026-07-27新增: 实盘那边breadcat/Tepe/Grok三笔连续闪崩+卖不掉之后回查,三个池子出事
+# 后流动性都趴在接近0,但24小时成交量几十万到上千万美元不等——"看着活跃、兜不住"的
+# 典型信号,买入前直接量深度比事后猜特征更直接。这里照搬实盘live_runner.py同一版逻辑：
+# ①流动性地板值 ②模拟的价格冲击(纸盘没有真实Jupiter报价,用仓位占流动性的比例近似:
+# 对constant-product型AMM,小额交易的价格冲击大约是"仓位/流动性"比例的2倍左右,这里
+# 用2%的仓位占比近似对应实盘5%冲击门槛,不是精确复刻,只是同一个方向的粗略模拟)。
+MIN_LIQUIDITY_USD = 15000.0
+MAX_POS_LIQ_RATIO = 0.02
+
 
 def load_bot_candidates():
     """复用screener的候选扫描结果(云端+本地合并),只要scalping_flag=True的"""
@@ -87,6 +96,10 @@ def try_enter(state, c):
     addr = c["addr"]
     if addr in state["positions"] or len(state["positions"]) >= MAX_POS:
         return False
+    liq = c.get("liq")
+    if liq is not None and liq < MIN_LIQUIDITY_USD:
+        log(f"SKIP {c['name']}: 流动性只有${liq:,.0f},低于${MIN_LIQUIDITY_USD:,.0f}门槛,进得去也可能出不来")
+        return False
     result = check_scalping(addr)
     if not result.get("flag"):
         return False  # screener缓存可能有点旧,重新确认一遍还在刷量再进场
@@ -94,6 +107,9 @@ def try_enter(state, c):
     if not avg_bot_usd:
         return False
     pos_usd = max(MIN_POS_USD, min(MAX_POS_USD, avg_bot_usd * POS_SIZE_PCT_OF_BOT))
+    if liq and pos_usd / liq > MAX_POS_LIQ_RATIO:
+        log(f"SKIP {c['name']}: 仓位${pos_usd:.0f}占流动性${liq:,.0f}的{pos_usd/liq*100:.1f}%,池子太薄")
+        return False
     if state["cash"] < pos_usd:
         return False
     entry = c["price"] * (1 + SLIP)
@@ -101,6 +117,8 @@ def try_enter(state, c):
     state["positions"][addr] = {
         "name": c["name"], "entry": entry, "qty": pos_usd / entry, "usd": pos_usd,
         "t_entry": NOW, "bot_avg_trade_usd": avg_bot_usd,
+        "no_price_checks": 0,  # 持仓期间"拿不到报价"发生了几次,落进closed记录方便事后统计
+        "total_checks": 0,     # 持仓期间总共检查了几次(算比例用)
     }
     log(f"BUY {c['name']} ({addr[:8]}...) @ {entry:.10g} 仓位=${pos_usd:.2f}(机器人单笔${avg_bot_usd:.0f}的{POS_SIZE_PCT_OF_BOT*100:.0f}%)")
     return True
@@ -119,8 +137,14 @@ def get_price(addr):
 def manage_positions(state):
     for addr in list(state["positions"].keys()):
         pos = state["positions"][addr]
+        pos["total_checks"] = pos.get("total_checks", 0) + 1
         cur = get_price(addr)
         if cur is None:
+            pos["no_price_checks"] = pos.get("no_price_checks", 0) + 1
+            # 2026-07-27修复: 这里原来是静默continue,一个持仓从买入到卖出全程拿不到
+            # 报价的话,日志/记录里完全看不出发生过这件事——用户查breadcat/Grok/Tepe这几个
+            # 闪崩+卖不掉的真实案例时发现的同一类盲区,live_runner.py那边也是同一个bug。
+            log(f"SKIP EXIT CHECK {pos['name']}: 拿不到实时报价,这轮跳过止盈止损判断")
             time.sleep(0.3)
             continue
         ret = cur / pos["entry"] - 1
