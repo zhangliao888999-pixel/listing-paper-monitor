@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12871.097475355033,
+ "cash": 12937.050720218971,
  "positions": {
   "H4T9u2JPXWfUpH35VEaCMpZSLuMjQQhB1H2T9imtnhHb": {
    "name": "CHILLDOG / SOL",
@@ -29,24 +29,16 @@
    "usd": 33.19,
    "t_entry": 1785117183,
    "bot_avg_trade_usd": 331.9,
-   "mark": 1.686065068808668e-05,
-   "mark_ret": 0.025587934729481177
+   "mark": 1.7110776255164355e-05,
+   "mark_ret": 0.04080239877999903
   },
-  "7mN6uAZYcuq6c63ct1ipM93Esp3qtHJKw3S7tmq1KwvY": {
-   "name": "USOX / SOL",
-   "entry": 9.478902650116777e-05,
-   "qty": 441253.60860716,
-   "usd": 41.826,
-   "t_entry": 1785117363,
-   "bot_avg_trade_usd": 418.26
-  },
-  "G7vXhMFbHfnoqDE62kMbUfjoSKhEeHSvSD2bT2PPmMxi": {
-   "name": "CALVIN / SOL",
-   "entry": 1.5352524438794778e-05,
-   "qty": 1431100.1482258379,
-   "usd": 21.971000000000004,
-   "t_entry": 1785117544,
-   "bot_avg_trade_usd": 219.71
+  "3RSWFQEyAQiMhdSmLgQEpUcwbQfYsKPAGvwZrY8v3hAn": {
+   "name": "SalaryCat / SOL",
+   "entry": 0.0014958169803351432,
+   "qty": 3342.6549275297916,
+   "usd": 5,
+   "t_entry": 1785117724,
+   "bot_avg_trade_usd": 35.18
   }
  },
  "closed": [
@@ -8719,7 +8711,37 @@
    "reason": "TP",
    "pnl": 2.5708,
    "t_exit": 1785117544
+  },
+  {
+   "name": "USOX / SOL",
+   "entry": 9.478902650116777e-05,
+   "qty": 441253.60860716,
+   "usd": 41.826,
+   "t_entry": 1785117363,
+   "bot_avg_trade_usd": 418.26,
+   "mark": 8.726460174297509e-05,
+   "mark_ret": -0.07938075783592924,
+   "addr": "7mN6uAZYcuq6c63ct1ipM93Esp3qtHJKw3S7tmq1KwvY",
+   "exit": 8.551930970811559e-05,
+   "reason": "SL",
+   "pnl": -4.0903,
+   "t_exit": 1785117724
+  },
+  {
+   "name": "CALVIN / SOL",
+   "entry": 1.5352524438794778e-05,
+   "qty": 1431100.1482258379,
+   "usd": 21.971000000000004,
+   "t_entry": 1785117544,
+   "bot_avg_trade_usd": 219.71,
+   "mark": 2.3684890179482633e-05,
+   "mark_ret": 0.5427358721300932,
+   "addr": "G7vXhMFbHfnoqDE62kMbUfjoSKhEeHSvSD2bT2PPmMxi",
+   "exit": 2.321119237589298e-05,
+   "reason": "TP",
+   "pnl": 11.2465,
+   "t_exit": 1785117724
   }
  ],
- "realized_pnl": 2995.3694753550276
+ "realized_pnl": 3002.5257202189655
 }

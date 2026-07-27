@@ -1305,3 +1305,7 @@
 [2026-07-27 01:59 UTC] EXIT USOX / SOL [TP] ret=+5.8% pnl=+0.1819U held=21min
 [2026-07-27 01:59 UTC] EXIT SalaryCat / SOL [TP] ret=+54.5% pnl=+2.5708U held=6min
 [2026-07-27 01:59 UTC] CYCLE OK nav=12995.6837 扫描候选5 新入场1 持仓5 已平仓578
+[2026-07-27 02:02 UTC] BUY SalaryCat / SOL (3RSWFQEy...) @ 0.00149581698 仓位=$5.00(机器人单笔$35的10%)
+[2026-07-27 02:02 UTC] EXIT USOX / SOL [SL] ret=-7.9% pnl=-4.0903U held=6min
+[2026-07-27 02:02 UTC] EXIT CALVIN / SOL [TP] ret=+54.3% pnl=+11.2465U held=3min
+[2026-07-27 02:02 UTC] CYCLE OK nav=13003.3450 扫描候选5 新入场1 持仓4 已平仓580
