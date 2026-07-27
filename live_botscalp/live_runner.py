@@ -413,6 +413,10 @@ def try_enter(cfg, wallet, state, c):
 def try_exit(cfg, wallet, state, addr, pos):
     fresh_price = get_fresh_price_usd(addr, is_pool_addr=True)
     if fresh_price is None:
+        # 2026-07-27修复: 这里原来是静默return,拿不到报价就完全不出现在日志里——
+        # 排查Tepe那次时发现持仓已经开了几轮,日志里却对这个仓位只字未提,
+        # 完全看不出是"没查到价格"还是别的原因。现在必须至少留一行痕迹。
+        log(f"SKIP EXIT CHECK {pos['name']}: 拿不到实时报价,这轮跳过止盈止损判断")
         return
     ret = fresh_price / pos["entry_price_usd"] - 1
     # 报价源(GeckoTerminal)偶尔会给出离谱的坏数据(实测出现过池子price_usd差了240万倍的情况，
