@@ -5219,3 +5219,14 @@
 [2026-07-27 23:26 UTC] EXIT budi / SOL [SL] ret=-29.4% pnl=-1.5396U held=0min
 [2026-07-27 23:26 UTC] EXIT ANSEM / SOL [SL] ret=-5.9% pnl=-1.2774U held=0min
 [2026-07-27 23:26 UTC] CYCLE OK nav=13578.9097 扫描候选7 新入场4 持仓5 已平仓2243
+[2026-07-27 23:29 UTC] NOTE(未拦截) budi / SOL: 流动性锁仓比例只有0.0%
+[2026-07-27 23:29 UTC] NOTE(未拦截) budi / SOL: 过去1小时已经涨了3400%
+[2026-07-27 23:29 UTC] BUY budi / SOL (FdVfWxPi...) @ 0.0002783024207 仓位=$5.25(机器人单笔$53的10%)
+[2026-07-27 23:29 UTC] NOTE(未拦截) bulltom / SOL: 过去1小时已经涨了890%
+[2026-07-27 23:29 UTC] BUY bulltom / SOL (9cjQ6hDv...) @ 0.0003550259837 仓位=$5.00(机器人单笔$0的10%)
+[2026-07-27 23:29 UTC] SKIP EXIT CHECK duky / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-27 23:29 UTC] SKIP EXIT CHECK Grok / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-27 23:29 UTC] EXIT SPY / SOL [TP] ret=+7.4% pnl=+2.6275U held=3min
+[2026-07-27 23:29 UTC] EXIT budi / SOL [SL] ret=-40.0% pnl=-2.1646U held=0min
+[2026-07-27 23:29 UTC] EXIT bulltom / SOL [TP] ret=+16.2% pnl=+0.6953U held=0min
+[2026-07-27 23:29 UTC] CYCLE OK nav=13580.0672 扫描候选7 新入场2 持仓4 已平仓2246
