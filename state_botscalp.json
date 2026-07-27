@@ -1,17 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13040.661412464933,
+ "cash": 13104.007801019754,
  "positions": {
-  "9jZnugpCEkT2P1JimsNbEfJqbJibTzVSfKr8uiToyJL7": {
-   "name": "CXMT / SOL",
-   "entry": 7.393775188288569e-06,
-   "qty": 6762445.263307154,
-   "usd": 50,
-   "t_entry": 1785125643,
-   "bot_avg_trade_usd": 753.42,
-   "mark": 7.24879920420448e-06,
-   "mark_ret": -0.019607843137254943
-  },
   "Chysq8jgv4VfHMhNbAZMAXDkZqPVTEdA63MQixr2WqJb": {
    "name": "MAGAVERSE / SOL",
    "entry": 9.467470576428159e-05,
@@ -41,24 +31,6 @@
    "bot_avg_trade_usd": 333.66,
    "mark": 2.6163263724339943e-05,
    "mark_ret": -0.010495059277446761
-  },
-  "GukzrHwaobccHvjJNZ5chbq2L9FWF1URZLrjJ7TSAiUe": {
-   "name": "USOX / SOL",
-   "entry": 0.020108297698598995,
-   "qty": 248.65356953355453,
-   "usd": 5,
-   "t_entry": 1785126723,
-   "bot_avg_trade_usd": 0.49,
-   "mark": 0.020575544579759193,
-   "mark_ret": 0.023236520970780772
-  },
-  "3YH6mNuDhfrp7pt3wru39ZuxX3NSWdSuEJJtZ8LcaUu6": {
-   "name": "Genshin / SOL",
-   "entry": 0.00013901973300460023,
-   "qty": 171889.26696621746,
-   "usd": 23.896,
-   "t_entry": 1785127444,
-   "bot_avg_trade_usd": 238.96
   },
   "HgVR5zojmAGJSSjKysCLP64mQa6dxyZgCSiveGqnVREu": {
    "name": "IF / SOL",
@@ -12071,7 +12043,112 @@
    "reason": "TP",
    "pnl": 0.7454,
    "t_exit": 1785127444
+  },
+  {
+   "name": "CXMT / SOL",
+   "entry": 7.393775188288569e-06,
+   "qty": 6762445.263307154,
+   "usd": 50,
+   "t_entry": 1785125643,
+   "bot_avg_trade_usd": 753.42,
+   "mark": 7.24879920420448e-06,
+   "mark_ret": -0.019607843137254943,
+   "addr": "9jZnugpCEkT2P1JimsNbEfJqbJibTzVSfKr8uiToyJL7",
+   "exit": 7.10382322012039e-06,
+   "reason": "TIME",
+   "pnl": -1.9608,
+   "t_exit": 1785127623
+  },
+  {
+   "name": "USOX / SOL",
+   "entry": 0.020108297698598995,
+   "qty": 248.65356953355453,
+   "usd": 5,
+   "t_entry": 1785126723,
+   "bot_avg_trade_usd": 0.49,
+   "mark": 1.3437980239513561e-06,
+   "mark_ret": -0.9999331719649225,
+   "addr": "GukzrHwaobccHvjJNZ5chbq2L9FWF1URZLrjJ7TSAiUe",
+   "exit": 1.316922063472329e-06,
+   "reason": "SL",
+   "pnl": -4.9997,
+   "t_exit": 1785127623
+  },
+  {
+   "name": "Genshin / SOL",
+   "entry": 0.00013901973300460023,
+   "qty": 171889.26696621746,
+   "usd": 23.896,
+   "t_entry": 1785127444,
+   "bot_avg_trade_usd": 238.96,
+   "mark": 0.00015485633405883347,
+   "mark_ret": 0.11391620967729232,
+   "addr": "3YH6mNuDhfrp7pt3wru39ZuxX3NSWdSuEJJtZ8LcaUu6",
+   "exit": 0.0001517592073776568,
+   "reason": "TP",
+   "pnl": 2.1898,
+   "t_exit": 1785127623
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 0.0009999110327502151,
+   "qty": 50004.44875828303,
+   "usd": 50,
+   "t_entry": 1785127623,
+   "bot_avg_trade_usd": 793.06,
+   "mark": 0.0009175740643048723,
+   "mark_ret": -0.0823442943907502,
+   "addr": "JACUMR4YxyFcfbxRKimTffp972ynNLz2FCoHWqFQWbVf",
+   "exit": 0.0008992225830187748,
+   "reason": "SL",
+   "pnl": -5.0349,
+   "t_exit": 1785127623
+  },
+  {
+   "name": "HOOD / SOL",
+   "entry": 1.872358981492215e-05,
+   "qty": 2670428.0799909146,
+   "usd": 50,
+   "t_entry": 1785127623,
+   "bot_avg_trade_usd": 897.32,
+   "mark": 1.9953418998476675e-05,
+   "mark_ret": 0.06568340770712622,
+   "addr": "EZ7dPY8hSjLhp6ptgHvZoEwcTD2bC3HWhYuug4JTiNhc",
+   "exit": 1.955435061850714e-05,
+   "reason": "TP",
+   "pnl": 2.2185,
+   "t_exit": 1785127623
+  },
+  {
+   "name": "wifcat / SOL",
+   "entry": 1.050474286068433e-05,
+   "qty": 2722198.95139224,
+   "usd": 28.596,
+   "t_entry": 1785127623,
+   "bot_avg_trade_usd": 285.96,
+   "mark": 9.518394973012985e-06,
+   "mark_ret": -0.09389548137945469,
+   "addr": "H6DTNLW6widL1sT4ag8f9PrMLoGYPJk3esXjGJJ9hjCo",
+   "exit": 9.328027073552724e-06,
+   "reason": "SL",
+   "pnl": -3.2033,
+   "t_exit": 1785127623
+  },
+  {
+   "name": "SCHRÖDINGER / SOL",
+   "entry": 0.0001240374067942654,
+   "qty": 40310.420293559095,
+   "usd": 5,
+   "t_entry": 1785127623,
+   "bot_avg_trade_usd": 43.31,
+   "mark": 6.0931333006211625e-06,
+   "mark_ret": -0.950876647149456,
+   "addr": "6wTLo8hgFoTKgVKv9H9pZtc2zeYskuKYUVsAa2bKiJs7",
+   "exit": 5.97127063460874e-06,
+   "reason": "SL",
+   "pnl": -4.7593,
+   "t_exit": 1785127623
   }
  ],
- "realized_pnl": 3257.9234124649397
+ "realized_pnl": 3242.3738010197594
 }
