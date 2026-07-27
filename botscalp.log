@@ -4171,3 +4171,8 @@
 [2026-07-27 18:11 UTC] EXIT USWR / SOL [TP] ret=+15.5% pnl=+3.5922U held=0min
 [2026-07-27 18:11 UTC] EXIT pumpkets / SOL [SL] ret=-28.7% pnl=-12.0202U held=0min
 [2026-07-27 18:11 UTC] CYCLE OK nav=16209.2267 扫描候选10 新入场5 持仓7 已平仓1867
+[2026-07-27 18:14 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 2.935912848e-05 仓位=$5.00(机器人单笔$11的10%)
+[2026-07-27 18:14 UTC] BUY pumpkets / SOL (FRidHh25...) @ 3.608885323e-05 仓位=$39.87(机器人单笔$399的10%)
+[2026-07-27 18:14 UTC] BUY MANTEN / SOL (EtjBC1Tq...) @ 0.0001869548804 仓位=$5.00(机器人单笔$47的10%)
+[2026-07-27 18:14 UTC] EXIT CATE / SOL [TP] ret=+34.8% pnl=+2.3951U held=12min
+[2026-07-27 18:14 UTC] CYCLE OK nav=16213.7000 扫描候选8 新入场3 持仓9 已平仓1868
