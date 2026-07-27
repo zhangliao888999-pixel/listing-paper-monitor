@@ -4944,3 +4944,14 @@
 [2026-07-27 22:11 UTC] SKIP EXIT CHECK USOX / SOL: 拿不到实时报价,这轮跳过止盈止损判断
 [2026-07-27 22:11 UTC] EXIT CATE / SOL [TP] ret=+8.0% pnl=+1.1107U held=0min
 [2026-07-27 22:11 UTC] CYCLE OK nav=13725.9642 扫描候选6 新入场3 持仓7 已平仓2191
+[2026-07-27 22:14 UTC] BUY CATE / SOL (DtUKGpee...) @ 1.81733062e-05 仓位=$18.52(机器人单笔$185的10%)
+[2026-07-27 22:14 UTC] BUY CATE / SOL (CKtMRCAa...) @ 1.199123839e-05 仓位=$19.61(机器人单笔$196的10%)
+[2026-07-27 22:14 UTC] SKIP RYDER / SOL: 流动性只有$9,193,低于$15,000门槛,进得去也可能出不来
+[2026-07-27 22:14 UTC] SKIP まんてん / SOL: 流动性只有$11,584,低于$15,000门槛,进得去也可能出不来
+[2026-07-27 22:14 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 22:14 UTC] SKIP EXIT CHECK USWR / SOL: 拿不到实时报价,这轮跳过止盈止损判断
+[2026-07-27 22:14 UTC] SKIP EXIT CHECK me-me / SOL: 拿不到实时报价,这轮跳过止盈止损判断
+[2026-07-27 22:14 UTC] SKIP EXIT CHECK USOX / SOL: 拿不到实时报价,这轮跳过止盈止损判断
+[2026-07-27 22:14 UTC] EXIT CATE / SOL [SL] ret=-5.9% pnl=-1.4362U held=0min
+[2026-07-27 22:14 UTC] EXIT CATE / SOL [TP] ret=+15.4% pnl=+2.5710U held=0min
+[2026-07-27 22:14 UTC] CYCLE OK nav=13727.0991 扫描候选6 新入场2 持仓7 已平仓2193
