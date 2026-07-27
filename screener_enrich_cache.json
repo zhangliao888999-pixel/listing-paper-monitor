@@ -1,1 +1,1 @@
-{}
+{"7PamFVptyB8zSqTpciSamnYHfNT9AyUKZWgMy88TGdhj": {"checked_at": 1785128120, "n_traders": 40, "n_suspicious": 7, "exit_ratio": 0.7970683946923008, "wallet_verdict": "头部钱包里没有一笔卖出记录，庄家/早期买家还未出货 / 40/40个头部钱包卖出不到30%，主力大部分仓位还在场内", "gt_checked_at": 1785128120, "staircase_flag": true, "scalping_flag": false}, "FBYXdrkFKuiBx7uLPLpQhmVwBvgQERZYvUj1o5hi7jLs": {"checked_at": 1785128120, "n_traders": 40, "n_suspicious": 0, "exit_ratio": 0.19968941341651947, "wallet_verdict": "40/40个头部钱包卖出不到30%，主力大部分仓位还在场内", "gt_checked_at": 1785128120, "staircase_flag": true, "scalping_flag": false}}

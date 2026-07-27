@@ -1,6 +1,63 @@
 {
- "updated_at": 1785115017,
- "updated_at_str": "2026-07-27 01:16 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785128120,
+ "updated_at_str": "2026-07-27 04:55 UTC",
+ "n_candidates": 2,
+ "candidates": [
+  {
+   "addr": "7PamFVptyB8zSqTpciSamnYHfNT9AyUKZWgMy88TGdhj",
+   "name": "NTFS / USDC",
+   "age_min": 219.23333333333332,
+   "created": 1785114966.0,
+   "price": 3.909052641131602e-05,
+   "liq": 22945.5558,
+   "vol_15m": 54.8431198516,
+   "vol_1h": 264.511170346,
+   "chg_15m": 0.726,
+   "chg_1h": 3.817,
+   "buys_15m": 16,
+   "sells_15m": 0,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/7PamFVptyB8zSqTpciSamnYHfNT9AyUKZWgMy88TGdhj",
+   "mint": "7N18To7szFEqrQ4STkWdRAxjt6rFo8Ei4XExvcwdA5cv",
+   "early_bot_flag": null,
+   "staircase_flag": true,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": true,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 7,
+    "exit_ratio": 0.7970683946923008,
+    "wallet_verdict": "头部钱包里没有一笔卖出记录，庄家/早期买家还未出货 / 40/40个头部钱包卖出不到30%，主力大部分仓位还在场内"
+   }
+  },
+  {
+   "addr": "FBYXdrkFKuiBx7uLPLpQhmVwBvgQERZYvUj1o5hi7jLs",
+   "name": "NTFS / USDC",
+   "age_min": 221.38333333333333,
+   "created": 1785114837.0,
+   "price": 0.00022226812024569518,
+   "liq": 60887.1214,
+   "vol_15m": 32.2508455673,
+   "vol_1h": 157.7945567233,
+   "chg_15m": 0.183,
+   "chg_1h": 0.937,
+   "buys_15m": 12,
+   "sells_15m": 0,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/FBYXdrkFKuiBx7uLPLpQhmVwBvgQERZYvUj1o5hi7jLs",
+   "mint": "4phxCs5nLwbd5QT7LjgzjafNizB4heUruEf1FhqQmoon",
+   "early_bot_flag": null,
+   "staircase_flag": true,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": true,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": 0.19968941341651947,
+    "wallet_verdict": "40/40个头部钱包卖出不到30%，主力大部分仓位还在场内"
+   }
+  }
+ ]
 }
