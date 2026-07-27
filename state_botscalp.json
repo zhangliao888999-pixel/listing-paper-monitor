@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13601.85651807159,
+ "cash": 13477.80351807159,
  "positions": {
   "55Hq58JJzsSARssDEDeRZRFb3nwZg5xFFRWCu7MEFj4D": {
    "name": "1CAPY / SOL",
@@ -21,6 +21,52 @@
    "bot_avg_trade_usd": 18283.83,
    "mark": 0.00018732108013994923,
    "mark_ret": -0.019607843137254832
+  },
+  "6T3mbtTVzgSFy2t4CgxUiuAPAMSMtGmmNdkeXvQhvyFg": {
+   "name": "USWR / SOL",
+   "entry": 0.026654779725907695,
+   "qty": 234.59207182726257,
+   "usd": 6.253,
+   "t_entry": 1785135364,
+   "bot_avg_trade_usd": 62.53
+  },
+  "AwyjRv3Y9gfkeUpCmpmx5pUJNoJggPRBJBbdcYPQUdfJ": {
+   "name": "Nongwan / SOL",
+   "entry": 0.00015165113014356215,
+   "qty": 304864.1968987178,
+   "usd": 46.233000000000004,
+   "t_entry": 1785135364,
+   "bot_avg_trade_usd": 462.33
+  },
+  "5sRnC3uJvdaP6ogx5SH5H6xMnpyJ6ZFCL7jeCcM41Qak": {
+   "name": "C𖦹T / SOL",
+   "entry": 1.8957725855601294e-05,
+   "qty": 873891.7381857316,
+   "usd": 16.567,
+   "t_entry": 1785135364,
+   "bot_avg_trade_usd": 165.67,
+   "mark": 1.858600574078558e-05,
+   "mark_ret": -0.019607843137254943
+  },
+  "7D4yFziKHAidW59Y2EKSMYRG8pt6ZaA6ZCSwbmDXPUzM": {
+   "name": "MAGAVERSE / SOL",
+   "entry": 0.0002800290105108373,
+   "qty": 178552.92888686247,
+   "usd": 50,
+   "t_entry": 1785135364,
+   "bot_avg_trade_usd": 759.66,
+   "mark": 0.0002757683739613805,
+   "mark_ret": -0.015214982696558632
+  },
+  "ENJ439G85991g7HNzVLjHEGxedJZF2AukUfLEz2wsopg": {
+   "name": "Nongwan / SOL",
+   "entry": 0.001188539423554391,
+   "qty": 4206.844048174045,
+   "usd": 5,
+   "t_entry": 1785135364,
+   "bot_avg_trade_usd": 40.95,
+   "mark": 0.0012323916700069995,
+   "mark_ret": 0.03689591239764356
   }
  },
  "closed": [
