@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13602.411419479246,
+ "cash": 13600.865274526097,
  "positions": {
   "55Hq58JJzsSARssDEDeRZRFb3nwZg5xFFRWCu7MEFj4D": {
    "name": "1CAPY / SOL",
@@ -14768,7 +14768,37 @@
    "reason": "SL",
    "pnl": -4.6245,
    "t_exit": 1785134824
+  },
+  {
+   "name": "JEETMAN / SOL",
+   "entry": 1.6410218077374823e-05,
+   "qty": 836308.2035406722,
+   "usd": 13.724000000000002,
+   "t_entry": 1785135003,
+   "bot_avg_trade_usd": 137.24,
+   "mark": 1.106056353695974e-05,
+   "mark_ret": -0.32599533505229805,
+   "addr": "AM1TWiG8Rm8zhN3fJ9EEDEPksX7J98E2p9b66NrUEQsX",
+   "exit": 1.0839352266220545e-05,
+   "reason": "SL",
+   "pnl": -4.659,
+   "t_exit": 1785135003
+  },
+  {
+   "name": "UCOE / SOL",
+   "entry": 5.769089629246705e-05,
+   "qty": 866687.8695474301,
+   "usd": 50,
+   "t_entry": 1785135003,
+   "bot_avg_trade_usd": 703.25,
+   "mark": 6.253318264474078e-05,
+   "mark_ret": 0.08393501684781435,
+   "addr": "7JND8ib17tWeRXqviNzQrU5Do57GeUYjACpSCJqaZSKE",
+   "exit": 6.128251899184596e-05,
+   "reason": "TP",
+   "pnl": 3.1128,
+   "t_exit": 1785135003
   }
  ],
- "realized_pnl": 3674.945419479246
+ "realized_pnl": 3673.399274526096
 }
