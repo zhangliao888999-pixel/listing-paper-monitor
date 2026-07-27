@@ -3217,3 +3217,14 @@
 [2026-07-27 12:35 UTC] EXIT oof / SOL [SL] ret=-6.4% pnl=-3.7924U held=0min
 [2026-07-27 12:35 UTC] EXIT SOLdiers / SOL [TP] ret=+12.8% pnl=+1.8561U held=0min
 [2026-07-27 12:35 UTC] CYCLE OK nav=15893.0492 扫描候选12 新入场6 持仓8 已平仓1441
+[2026-07-27 12:38 UTC] BUY CXMT / SOL (GexkRAuL...) @ 5.030357297e-05 仓位=$50.00(机器人单笔$530的10%)
+[2026-07-27 12:38 UTC] BUY oof / SOL (EXvKad1b...) @ 9.667628596e-05 仓位=$30.54(机器人单笔$305的10%)
+[2026-07-27 12:38 UTC] BUY CXMT / SOL (E7hrkkWe...) @ 5.942715099 仓位=$5.00(机器人单笔$33的10%)
+[2026-07-27 12:38 UTC] BUY Nongwan / SOL (DqTqjGwb...) @ 0.000236972023 仓位=$11.11(机器人单笔$111的10%)
+[2026-07-27 12:38 UTC] BUY Clark / SOL (Byvfcd3R...) @ 2.267533241e-05 仓位=$5.00(机器人单笔$9的10%)
+[2026-07-27 12:38 UTC] BUY ◎ / SOL (AjtLwy3U...) @ 0.000530978547 仓位=$5.00(机器人单笔$24的10%)
+[2026-07-27 12:38 UTC] EXIT PCAT / SOL [TP] ret=+20.5% pnl=+4.3033U held=9min
+[2026-07-27 12:38 UTC] EXIT speedrun / SOL [SL] ret=-11.4% pnl=-5.5738U held=3min
+[2026-07-27 12:38 UTC] EXIT oof / SOL [SL] ret=-17.4% pnl=-5.8214U held=0min
+[2026-07-27 12:38 UTC] EXIT ◎ / SOL [TP] ret=+16.8% pnl=+0.7256U held=0min
+[2026-07-27 12:38 UTC] CYCLE OK nav=15884.5782 扫描候选9 新入场6 持仓10 已平仓1445
