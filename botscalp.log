@@ -5230,3 +5230,18 @@
 [2026-07-27 23:29 UTC] EXIT budi / SOL [SL] ret=-40.0% pnl=-2.1646U held=0min
 [2026-07-27 23:29 UTC] EXIT bulltom / SOL [TP] ret=+16.2% pnl=+0.6953U held=0min
 [2026-07-27 23:29 UTC] CYCLE OK nav=13580.0672 扫描候选7 新入场2 持仓4 已平仓2246
+[2026-07-27 23:32 UTC] NOTE(未拦截) SPY / SOL: 流动性锁仓比例只有0.0%
+[2026-07-27 23:32 UTC] NOTE(未拦截) SPY / SOL: 过去1小时买家3009人/卖家38人,比例79:1
+[2026-07-27 23:32 UTC] BUY SPY / SOL (De6CpuMp...) @ 5.631970632e-06 仓位=$50.00(机器人单笔$725的10%)
+[2026-07-27 23:32 UTC] BUY PATIENCE / SOL (Guz1tBNJ...) @ 0.0009671996088 仓位=$5.00(机器人单笔$24的10%)
+[2026-07-27 23:32 UTC] NOTE(未拦截) budi / SOL: 流动性锁仓比例只有0.0%
+[2026-07-27 23:32 UTC] NOTE(未拦截) budi / SOL: 过去1小时已经涨了2533%
+[2026-07-27 23:32 UTC] BUY budi / SOL (FdVfWxPi...) @ 0.0002783024207 仓位=$6.20(机器人单笔$62的10%)
+[2026-07-27 23:32 UTC] BUY ANSEM / SOL (a1cmKQ9t...) @ 1.42666063e-05 仓位=$15.37(机器人单笔$154的10%)
+[2026-07-27 23:32 UTC] SKIP EXIT CHECK duky / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续2轮)
+[2026-07-27 23:32 UTC] SKIP EXIT CHECK NTFS / USDC: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-27 23:32 UTC] EXIT SPY / SOL [TP] ret=+16.1% pnl=+6.9049U held=0min
+[2026-07-27 23:32 UTC] EXIT PATIENCE / SOL [TP] ret=+13.0% pnl=+0.5362U held=0min
+[2026-07-27 23:32 UTC] EXIT budi / SOL [SL] ret=-35.9% pnl=-2.3063U held=0min
+[2026-07-27 23:32 UTC] EXIT ANSEM / SOL [TP] ret=+14.2% pnl=+1.8251U held=0min
+[2026-07-27 23:32 UTC] CYCLE OK nav=13586.6237 扫描候选7 新入场4 持仓4 已平仓2250
