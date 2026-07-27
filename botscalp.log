@@ -4112,3 +4112,17 @@
 [2026-07-27 17:53 UTC] EXIT CXMT / SOL [TP] ret=+8.8% pnl=+3.2922U held=0min
 [2026-07-27 17:53 UTC] EXIT SHAYDE / SOL [SL] ret=-60.8% pnl=-27.2502U held=0min
 [2026-07-27 17:53 UTC] CYCLE OK nav=16321.9300 扫描候选12 新入场7 持仓6 已平仓1841
+[2026-07-27 17:56 UTC] BUY USWR / SOL (2QT5A4XX...) @ 0.03988722267 仓位=$27.02(机器人单笔$270的10%)
+[2026-07-27 17:56 UTC] BUY CC / SOL (EjsZk21y...) @ 5.464067213e-05 仓位=$42.80(机器人单笔$428的10%)
+[2026-07-27 17:56 UTC] BUY CXMT / SOL (FLUMAEUT...) @ 4.67985365e-05 仓位=$50.00(机器人单笔$652的10%)
+[2026-07-27 17:56 UTC] BUY RHNS / SOL (HxxX2wrE...) @ 1.463006368e-05 仓位=$21.98(机器人单笔$220的10%)
+[2026-07-27 17:56 UTC] BUY Looks / SOL (71nN6JyC...) @ 3.486567555e-05 仓位=$5.00(机器人单笔$38的10%)
+[2026-07-27 17:56 UTC] EXIT CATE / SOL [TP] ret=+5.7% pnl=+1.7853U held=12min
+[2026-07-27 17:56 UTC] EXIT pumpkets / SOL [TP] ret=+8.7% pnl=+2.4461U held=9min
+[2026-07-27 17:56 UTC] EXIT Tortuga / SOL [SL] ret=-18.7% pnl=-1.0166U held=3min
+[2026-07-27 17:56 UTC] EXIT CATE / SOL [SL] ret=-10.8% pnl=-1.9082U held=3min
+[2026-07-27 17:56 UTC] EXIT USWR / SOL [TP] ret=+16.1% pnl=+3.7112U held=0min
+[2026-07-27 17:56 UTC] EXIT CXMT / SOL [TP] ret=+6.6% pnl=+2.2417U held=0min
+[2026-07-27 17:56 UTC] EXIT RHNS / SOL [SL] ret=-24.1% pnl=-5.6323U held=0min
+[2026-07-27 17:56 UTC] EXIT Looks / SOL [TP] ret=+6.6% pnl=+0.2244U held=0min
+[2026-07-27 17:56 UTC] CYCLE OK nav=16323.5141 扫描候选12 新入场5 持仓3 已平仓1849
