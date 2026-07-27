@@ -2417,3 +2417,17 @@
 [2026-07-27 08:17 UTC] EXIT Nongwan / SOL [TP] ret=+22.5% pnl=+2.2826U held=0min
 [2026-07-27 08:17 UTC] EXIT WILLY / SOL [SL] ret=-10.9% pnl=-4.3342U held=0min
 [2026-07-27 08:17 UTC] CYCLE OK nav=14808.8177 扫描候选11 新入场6 持仓6 已平仓1075
+[2026-07-27 08:20 UTC] BUY Family / SOL (2bgw83r6...) @ 0.0001093864895 仓位=$10.96(机器人单笔$110的10%)
+[2026-07-27 08:20 UTC] BUY Nongwan / SOL (AwyjRv3Y...) @ 0.0001088032083 仓位=$47.94(机器人单笔$479的10%)
+[2026-07-27 08:20 UTC] BUY Nongwan / SOL (3qPqNetN...) @ 5.4203452e-05 仓位=$39.28(机器人单笔$393的10%)
+[2026-07-27 08:20 UTC] BUY Nongwan / SOL (J5zUqUVw...) @ 0.0008964032852 仓位=$5.00(机器人单笔$1的10%)
+[2026-07-27 08:20 UTC] BUY WILLY / SOL (3wZYRCtS...) @ 1.76430355e-05 仓位=$35.02(机器人单笔$350的10%)
+[2026-07-27 08:20 UTC] BUY RUN / SOL (4vayZ97Y...) @ 0.0005029900613 仓位=$23.78(机器人单笔$238的10%)
+[2026-07-27 08:20 UTC] EXIT CXMT / SOL [TIME] ret=-2.5% pnl=-2.2263U held=30min
+[2026-07-27 08:20 UTC] EXIT CATE / SOL [TP] ret=+5.1% pnl=+1.5052U held=3min
+[2026-07-27 08:20 UTC] EXIT Family / SOL [TP] ret=+27.2% pnl=+2.6976U held=0min
+[2026-07-27 08:20 UTC] EXIT Nongwan / SOL [TP] ret=+72.3% pnl=+32.9994U held=0min
+[2026-07-27 08:20 UTC] EXIT Nongwan / SOL [SL] ret=-6.1% pnl=-3.1243U held=0min
+[2026-07-27 08:20 UTC] EXIT Nongwan / SOL [TP] ret=+14.8% pnl=+0.6231U held=0min
+[2026-07-27 08:20 UTC] EXIT RUN / SOL [TP] ret=+11.4% pnl=+2.1782U held=0min
+[2026-07-27 08:20 UTC] CYCLE OK nav=14843.8354 扫描候选11 新入场6 持仓5 已平仓1082
