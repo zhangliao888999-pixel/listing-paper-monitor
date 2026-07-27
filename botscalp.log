@@ -3867,3 +3867,7 @@
 [2026-07-27 16:35 UTC] EXIT USWR / SOL [TP] ret=+14.2% pnl=+2.2334U held=6min
 [2026-07-27 16:35 UTC] EXIT FoodPoop / SOL [TP] ret=+32.6% pnl=+1.4985U held=3min
 [2026-07-27 16:35 UTC] CYCLE OK nav=16417.7269 扫描候选3 新入场0 持仓2 已平仓1733
+[2026-07-27 16:38 UTC] BUY FoodPoop / SOL (GrT7my4P...) @ 3.178045691e-05 仓位=$5.00(机器人单笔$4的10%)
+[2026-07-27 16:38 UTC] BUY USWR / SOL (AtL7GgSL...) @ 2.026500963e-05 仓位=$14.87(机器人单笔$149的10%)
+[2026-07-27 16:38 UTC] EXIT FoodPoop / SOL [TP] ret=+19.4% pnl=+0.8503U held=0min
+[2026-07-27 16:38 UTC] CYCLE OK nav=16418.5772 扫描候选3 新入场2 持仓3 已平仓1734
