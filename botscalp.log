@@ -4394,3 +4394,15 @@
 [2026-07-27 19:14 UTC] EXIT AORP / SOL [SL] ret=-3.4% pnl=-0.2683U held=0min
 [2026-07-27 19:14 UTC] EXIT Enigma / SOL [TP] ret=+7.4% pnl=+0.2621U held=0min
 [2026-07-27 19:14 UTC] CYCLE OK nav=130880554.5366 扫描候选17 新入场9 持仓5 已平仓1970
+[2026-07-27 19:20 UTC] BUY AORP / SOL (Ck3KcPz6...) @ 0.000528945302 仓位=$5.00(机器人单笔$17的10%)
+[2026-07-27 19:20 UTC] BUY AORP / SOL (CTRsNPEj...) @ 0.003419153698 仓位=$6.83(机器人单笔$68的10%)
+[2026-07-27 19:20 UTC] BUY Enigma / SOL (B2s14JhE...) @ 2.28657135e-05 仓位=$5.00(机器人单笔$11的10%)
+[2026-07-27 19:20 UTC] EXIT USOP / SOL [TP] ret=+24.9% pnl=+1.1209U held=9min
+[2026-07-27 19:20 UTC] EXIT Tortuga / SOL [TP] ret=+15.1% pnl=+0.6376U held=6min
+[2026-07-27 19:20 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.6269455308相对入场价异常(ret=1116581%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 19:20 UTC] EXIT IF / SOL [TP] ret=+15.1% pnl=+6.3752U held=0min
+[2026-07-27 19:20 UTC] EXIT AORP / SOL [TP] ret=+11.7% pnl=+0.4735U held=0min
+[2026-07-27 19:20 UTC] EXIT USWR / SOL [SL] ret=-100.0% pnl=-4.9998U held=0min
+[2026-07-27 19:20 UTC] EXIT AORP / SOL [TP] ret=+79.0% pnl=+5.1498U held=0min
+[2026-07-27 19:20 UTC] EXIT Enigma / SOL [SL] ret=-8.3% pnl=-0.5048U held=0min
+[2026-07-27 19:20 UTC] CYCLE OK nav=13601.7987 扫描候选17 新入场8 持仓6 已平仓1971
