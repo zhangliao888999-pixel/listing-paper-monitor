@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13179.330166015254,
+ "cash": 13215.978138547389,
  "positions": {
   "Hh4bYnYFxnZY9Jk92eoWYgcDA95fYFQHiCov4dYBpZyA": {
    "name": "Kittens / SOL",
@@ -9,8 +9,8 @@
    "usd": 50,
    "t_entry": 1785128343,
    "bot_avg_trade_usd": 777.33,
-   "mark": 0.000125941892487985,
-   "mark_ret": -0.0019412435624386326
+   "mark": 0.00012683895620563726,
+   "mark_ret": 0.005167767433014614
   },
   "E2sz1pRprZsi6TZXW3FJir4VFdkmebS5LMrgo4ak73jf": {
    "name": "LIVE / SOL",
@@ -36,7 +36,17 @@
    "qty": 1933982.1390194665,
    "usd": 50,
    "t_entry": 1785129243,
-   "bot_avg_trade_usd": 18339.23
+   "bot_avg_trade_usd": 18339.23,
+   "mark": 2.5346463575920256e-05,
+   "mark_ret": -0.019607843137254943
+  },
+  "HDqNuA8Dv22w3mDVnLF5bPap8EgZP1ZYbAGMHtkmWRAD": {
+   "name": "HUTCH / SOL",
+   "entry": 1.981273571760836e-05,
+   "qty": 993048.1221992,
+   "usd": 19.675,
+   "t_entry": 1785129603,
+   "bot_avg_trade_usd": 196.75
   }
  },
  "closed": [
@@ -12849,7 +12859,82 @@
    "reason": "TP",
    "pnl": 5.9093,
    "t_exit": 1785129243
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.0006967069799346424,
+   "qty": 12620.800786041884,
+   "usd": 8.793000000000001,
+   "t_entry": 1785129603,
+   "bot_avg_trade_usd": 87.93,
+   "mark": 0.0010300183326075736,
+   "mark_ret": 0.4784096647118403,
+   "addr": "J5zUqUVwjhtRTgixEFEL3bpNvZcW5Rfb12sR55Tc715L",
+   "exit": 0.001009417965955422,
+   "reason": "TP",
+   "pnl": 3.9467,
+   "t_exit": 1785129603
+  },
+  {
+   "name": "IF / SOL",
+   "entry": 5.789783299207741e-05,
+   "qty": 863590.179736811,
+   "usd": 50,
+   "t_entry": 1785129603,
+   "bot_avg_trade_usd": 573.16,
+   "mark": 0.00012003344285444036,
+   "mark_ret": 1.0731940497818875,
+   "addr": "HgVR5zojmAGJSSjKysCLP64mQa6dxyZgCSiveGqnVREu",
+   "exit": 0.00011763277399735155,
+   "reason": "TP",
+   "pnl": 51.5865,
+   "t_exit": 1785129603
+  },
+  {
+   "name": "IF / SOL",
+   "entry": 2.3012043320255466e-05,
+   "qty": 1661390.927695141,
+   "usd": 38.232,
+   "t_entry": 1785129603,
+   "bot_avg_trade_usd": 382.32,
+   "mark": 2.4975744254855882e-05,
+   "mark_ret": 0.08533361889128477,
+   "addr": "B4WujyZQFTwwz296Nvnw6KqP9ZP6a8xYD7gA8H42wGnK",
+   "exit": 2.4476229369758762e-05,
+   "reason": "TP",
+   "pnl": 2.4326,
+   "t_exit": 1785129603
+  },
+  {
+   "name": "Puffin / SOL",
+   "entry": 5.494558604393034e-05,
+   "qty": 884493.2504886546,
+   "usd": 48.599000000000004,
+   "t_entry": 1785129603,
+   "bot_avg_trade_usd": 485.99,
+   "mark": 4.136205555019402e-05,
+   "mark_ret": -0.24721786537822998,
+   "addr": "3G881yTcD7PsVwzyfp8wMvHrkXZvgycZn8HNLrEXTenU",
+   "exit": 4.0534814439190136e-05,
+   "reason": "SL",
+   "pnl": -12.7462,
+   "t_exit": 1785129603
+  },
+  {
+   "name": "SIRIUS / SOL",
+   "entry": 9.389242456467014e-06,
+   "qty": 1854249.6991339852,
+   "usd": 17.41,
+   "t_entry": 1785129603,
+   "bot_avg_trade_usd": 174.1,
+   "mark": 1.569117304195927e-05,
+   "mark_ret": 0.6711862660604409,
+   "addr": "14UfqDjc2iWMC8yK9EoBzauds9X1VnKJ4gCyJeqWvEWS",
+   "exit": 1.5377349581120086e-05,
+   "reason": "TP",
+   "pnl": 11.1034,
+   "t_exit": 1785129603
   }
  ],
- "realized_pnl": 3334.330166015265
+ "realized_pnl": 3390.653138547399
 }
