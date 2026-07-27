@@ -4809,3 +4809,10 @@
 [2026-07-27 21:20 UTC] EXIT ZVR / SOL [SL] ret=-3.2% pnl=-2.5834U held=21min
 [2026-07-27 21:20 UTC] EXIT Scam / SOL [TP] ret=+123.7% pnl=+24.0612U held=9min
 [2026-07-27 21:20 UTC] CYCLE OK nav=13385.3921 扫描候选5 新入场0 持仓7 已平仓2143
+[2026-07-27 21:23 UTC] BUY Tepe / SOL (GmhTrq9E...) @ 9.572434107e-05 仓位=$9.66(机器人单笔$97的10%)
+[2026-07-27 21:23 UTC] BUY CATE / SOL (FJofTfp5...) @ 1.767102111e-05 仓位=$18.09(机器人单笔$181的10%)
+[2026-07-27 21:23 UTC] BUY CRISCO / SOL (4XJ8sTHz...) @ 5.024510877e-05 仓位=$30.70(机器人单笔$307的10%)
+[2026-07-27 21:23 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 21:23 UTC] EXIT Codex / SOL [TP] ret=+27.6% pnl=+1.2509U held=6min
+[2026-07-27 21:23 UTC] EXIT CRISCO / SOL [TP] ret=+10.3% pnl=+2.4705U held=0min
+[2026-07-27 21:23 UTC] CYCLE OK nav=13389.1905 扫描候选6 新入场3 持仓8 已平仓2145
