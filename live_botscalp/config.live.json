@@ -11,5 +11,5 @@
   "slippageBps": 200,
   "maxPositions": 3,
   "dailyMaxUsd": 200.0,
-  "dailyLossKillUsd": -20.0
+  "dailyLossKillUsd": -100.0
 }
