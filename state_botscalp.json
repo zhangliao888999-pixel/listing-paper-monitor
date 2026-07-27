@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13557.990590582269,
+ "cash": 13541.367536031978,
  "positions": {
   "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
    "name": "CXMT / SOL",
@@ -30,16 +30,6 @@
    "mark": 2.534829160816587e-05,
    "mark_ret": -0.019607843137254943
   },
-  "AKMzYySgQJYtG1STv1NUft7H37KVr4rDHuLbQc9rYkXS": {
-   "name": "borg / SOL",
-   "entry": 2.0597688948129485e-05,
-   "qty": 242745.67950760608,
-   "usd": 5,
-   "t_entry": 1785188823,
-   "bot_avg_trade_usd": 7.67,
-   "mark": 2.1613431552125257e-05,
-   "mark_ret": 0.04931342572235575
-  },
   "GhkxLWtMpLcWC9cj6NMEVJdSSmPt5fyddac3RF3LU2Sy": {
    "name": "borg / SOL",
    "entry": 3.437237101109934e-05,
@@ -67,6 +57,14 @@
    "usd": 5,
    "t_entry": 1785189183,
    "bot_avg_trade_usd": 10.49
+  },
+  "EHtYmEbzcHp2Zh9RsC23XAkL8Ybyap2bgyHjQ7LfTZ3Y": {
+   "name": "me-me / SOL",
+   "entry": 0.00016210142804957048,
+   "qty": 182533.86386547878,
+   "usd": 29.589,
+   "t_entry": 1785189363,
+   "bot_avg_trade_usd": 295.89
   }
  },
  "closed": [
@@ -32709,7 +32707,37 @@
    "reason": "TP",
    "pnl": 22.2103,
    "t_exit": 1785189183
+  },
+  {
+   "name": "borg / SOL",
+   "entry": 2.0597688948129485e-05,
+   "qty": 242745.67950760608,
+   "usd": 5,
+   "t_entry": 1785188823,
+   "bot_avg_trade_usd": 7.67,
+   "mark": 1.943129146741962e-05,
+   "mark_ret": -0.056627589806175216,
+   "addr": "AKMzYySgQJYtG1STv1NUft7H37KVr4rDHuLbQc9rYkXS",
+   "exit": 1.9042665638071228e-05,
+   "reason": "SL",
+   "pnl": -0.3775,
+   "t_exit": 1785189363
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 8.89500880447432e-06,
+   "qty": 2303988.725642544,
+   "usd": 20.494,
+   "t_entry": 1785189363,
+   "bot_avg_trade_usd": 204.94,
+   "mark": 1.2771737596120409e-05,
+   "mark_ret": 0.435831922920193,
+   "addr": "CKtMRCAa9vD5yEPKNFgY88TBJ16jtGLrX9nzRpn4Tk5p",
+   "exit": 1.2516302844198e-05,
+   "reason": "TP",
+   "pnl": 8.3434,
+   "t_exit": 1785189363
   }
  ],
- "realized_pnl": 3631.1925905822604
+ "realized_pnl": 3639.1585360319705
 }

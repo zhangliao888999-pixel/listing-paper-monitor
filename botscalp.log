@@ -4894,3 +4894,10 @@
 [2026-07-27 21:53 UTC] EXIT CATE / SOL [TIME] ret=+0.4% pnl=-0.2862U held=30min
 [2026-07-27 21:53 UTC] EXIT me-me / SOL [TP] ret=+57.2% pnl=+22.2103U held=0min
 [2026-07-27 21:53 UTC] CYCLE OK nav=13711.7471 扫描候选7 新入场2 持仓7 已平仓2176
+[2026-07-27 21:56 UTC] BUY me-me / SOL (EHtYmEbz...) @ 0.000162101428 仓位=$29.59(机器人单笔$296的10%)
+[2026-07-27 21:56 UTC] BUY CATE / SOL (CKtMRCAa...) @ 8.895008804e-06 仓位=$20.49(机器人单笔$205的10%)
+[2026-07-27 21:56 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 21:56 UTC] EXIT borg / SOL [SL] ret=-5.7% pnl=-0.3775U held=9min
+[2026-07-27 21:56 UTC] SKIP EXIT CHECK me-me / SOL: cur=0.02948579302相对入场价异常(ret=18090%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 21:56 UTC] EXIT CATE / SOL [TP] ret=+43.6% pnl=+8.3434U held=0min
+[2026-07-27 21:56 UTC] CYCLE OK nav=13719.4665 扫描候选6 新入场2 持仓7 已平仓2178
