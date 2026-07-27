@@ -3277,3 +3277,17 @@
 [2026-07-27 12:50 UTC] EXIT CATE / SOL [TP] ret=+21.8% pnl=+2.8644U held=0min
 [2026-07-27 12:50 UTC] EXIT 4FUN / SOL [TP] ret=+14.6% pnl=+6.1436U held=0min
 [2026-07-27 12:50 UTC] CYCLE OK nav=15923.5663 扫描候选14 新入场6 持仓7 已平仓1469
+[2026-07-27 12:53 UTC] BUY Kittens / SOL (Ej9KAot8...) @ 0.0001415109249 仓位=$50.00(机器人单笔$753的10%)
+[2026-07-27 12:53 UTC] BUY WETRAC / SOL (4mYPRGzr...) @ 0.000182361811 仓位=$5.00(机器人单笔$39的10%)
+[2026-07-27 12:53 UTC] BUY CATE / SOL (25oHVjos...) @ 7.350818746e-05 仓位=$11.91(机器人单笔$119的10%)
+[2026-07-27 12:53 UTC] BUY 4FUN / SOL (EsXUqZ7J...) @ 4.803964612e-05 仓位=$47.50(机器人单笔$475的10%)
+[2026-07-27 12:53 UTC] BUY CXMT / SOL (E7hrkkWe...) @ 6.397943974 仓位=$5.00(机器人单笔$28的10%)
+[2026-07-27 12:53 UTC] BUY CXMT / SOL (8NmfVpMu...) @ 1.220175213e-05 仓位=$18.12(机器人单笔$181的10%)
+[2026-07-27 12:53 UTC] EXIT PCAT / SOL [TP] ret=+31.7% pnl=+6.7942U held=9min
+[2026-07-27 12:53 UTC] EXIT JOEY / SOL [TP] ret=+70.6% pnl=+20.1887U held=3min
+[2026-07-27 12:53 UTC] EXIT oof / SOL [TP] ret=+5.2% pnl=+1.2031U held=3min
+[2026-07-27 12:53 UTC] EXIT Kittens / SOL [TP] ret=+6.5% pnl=+2.2084U held=0min
+[2026-07-27 12:53 UTC] EXIT CATE / SOL [TP] ret=+25.4% pnl=+2.7300U held=0min
+[2026-07-27 12:53 UTC] EXIT 4FUN / SOL [TP] ret=+15.7% pnl=+6.3628U held=0min
+[2026-07-27 12:53 UTC] EXIT CXMT / SOL [TP] ret=+7.6% pnl=+0.2719U held=0min
+[2026-07-27 12:53 UTC] CYCLE OK nav=15962.0591 扫描候选14 新入场6 持仓6 已平仓1476
