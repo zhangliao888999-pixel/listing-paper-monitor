@@ -4623,3 +4623,16 @@
 [2026-07-27 20:26 UTC] EXIT Ryder / SOL [SL] ret=-7.6% pnl=-4.7346U held=0min
 [2026-07-27 20:26 UTC] EXIT PONS / SOL [TP] ret=+13.8% pnl=+5.7585U held=0min
 [2026-07-27 20:26 UTC] CYCLE OK nav=13496.1599 扫描候选7 新入场4 持仓7 已平仓2064
+[2026-07-27 20:29 UTC] BUY Scam / SOL (DcorpCgQ...) @ 5.048322679e-05 仓位=$18.45(机器人单笔$185的10%)
+[2026-07-27 20:29 UTC] BUY breadcat / SOL (81bbDkSM...) @ 7.078438983e-05 仓位=$50.00(机器人单笔$1304的10%)
+[2026-07-27 20:29 UTC] BUY Enigma / SOL (G1jdEv9y...) @ 1.952966991e-05 仓位=$34.11(机器人单笔$341的10%)
+[2026-07-27 20:29 UTC] BUY Scam / SOL (221NFNug...) @ 0.0001641426293 仓位=$20.00(机器人单笔$200的10%)
+[2026-07-27 20:29 UTC] BUY Ryder / SOL (7QLv8Yyf...) @ 7.096023633e-05 仓位=$50.00(机器人单笔$767的10%)
+[2026-07-27 20:29 UTC] BUY AORP / SOL (Ck3KcPz6...) @ 0.0006286772332 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 20:29 UTC] EXIT IF / SOL [TP] ret=+8.5% pnl=+3.1670U held=21min
+[2026-07-27 20:29 UTC] EXIT CATE / SOL [SL] ret=-78.9% pnl=-30.4899U held=6min
+[2026-07-27 20:29 UTC] EXIT まんてん / SOL [SL] ret=-69.7% pnl=-3.5160U held=3min
+[2026-07-27 20:29 UTC] EXIT Scam / SOL [TP] ret=+13.6% pnl=+2.0881U held=0min
+[2026-07-27 20:29 UTC] EXIT Scam / SOL [SL] ret=-42.8% pnl=-8.7846U held=0min
+[2026-07-27 20:29 UTC] EXIT AORP / SOL [TP] ret=+5.4% pnl=+0.1665U held=0min
+[2026-07-27 20:29 UTC] CYCLE OK nav=13459.2067 扫描候选12 新入场6 持仓7 已平仓2070
