@@ -1869,3 +1869,13 @@
 [2026-07-27 05:02 UTC] EXIT Puffin / SOL [SL] ret=-22.5% pnl=-11.5434U held=0min
 [2026-07-27 05:02 UTC] EXIT SalaryCat / SOL [SL] ret=-15.1% pnl=-0.8422U held=0min
 [2026-07-27 05:02 UTC] CYCLE OK nav=13243.4036 扫描候选10 新入场6 持仓8 已平仓830
+[2026-07-27 05:05 UTC] BUY HOOD / SOL (EZ7dPY8h...) @ 2.050245488e-05 仓位=$50.00(机器人单笔$770的10%)
+[2026-07-27 05:05 UTC] BUY Genshin / SOL (3YH6mNuD...) @ 0.0001551406735 仓位=$22.62(机器人单笔$226的10%)
+[2026-07-27 05:05 UTC] BUY Puffin / SOL (3G881yTc...) @ 7.323962388e-05 仓位=$44.34(机器人单笔$443的10%)
+[2026-07-27 05:05 UTC] BUY SalaryCat / SOL (3RSWFQEy...) @ 0.003821539234 仓位=$5.00(机器人单笔$43的10%)
+[2026-07-27 05:05 UTC] EXIT MAGAVERSE / SOL [TIME] ret=+1.5% pnl=-0.2712U held=48min
+[2026-07-27 05:05 UTC] EXIT UCOE / SOL [TP] ret=+8.3% pnl=+2.0616U held=36min
+[2026-07-27 05:05 UTC] EXIT HUTCH / SOL [TP] ret=+19.6% pnl=+3.8532U held=3min
+[2026-07-27 05:05 UTC] EXIT HOOD / SOL [TP] ret=+9.9% pnl=+3.8328U held=0min
+[2026-07-27 05:05 UTC] EXIT SalaryCat / SOL [SL] ret=-16.6% pnl=-0.9152U held=0min
+[2026-07-27 05:05 UTC] CYCLE OK nav=13248.5284 扫描候选10 新入场4 持仓7 已平仓835
