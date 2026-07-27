@@ -4666,3 +4666,17 @@
 [2026-07-27 20:35 UTC] EXIT まんてん / SOL [TP] ret=+19.2% pnl=+0.8412U held=0min
 [2026-07-27 20:35 UTC] EXIT AORP / SOL [TP] ret=+7.3% pnl=+0.2563U held=0min
 [2026-07-27 20:35 UTC] CYCLE OK nav=13420.8229 扫描候选12 新入场6 持仓4 已平仓2085
+[2026-07-27 20:38 UTC] BUY IF / SOL (GXQZW7nC...) @ 3.100231652e-05 仓位=$50.00(机器人单笔$556的10%)
+[2026-07-27 20:38 UTC] BUY Scam / SOL (DcorpCgQ...) @ 5.048322679e-05 仓位=$18.45(机器人单笔$185的10%)
+[2026-07-27 20:38 UTC] BUY breadcat / SOL (81bbDkSM...) @ 7.078438983e-05 仓位=$50.00(机器人单笔$1251的10%)
+[2026-07-27 20:38 UTC] BUY Scam / SOL (221NFNug...) @ 0.0001641426293 仓位=$18.27(机器人单笔$183的10%)
+[2026-07-27 20:38 UTC] BUY まんてん / SOL (FepJFaup...) @ 2.586218359e-05 仓位=$5.00(机器人单笔$13的10%)
+[2026-07-27 20:38 UTC] BUY AORP / SOL (Ck3KcPz6...) @ 0.0006286772332 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 20:38 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.4430192199相对入场价异常(ret=788981%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 20:38 UTC] EXIT CATE / SOL [SL] ret=-84.6% pnl=-30.5343U held=3min
+[2026-07-27 20:38 UTC] EXIT IF / SOL [TP] ret=+8.7% pnl=+3.2770U held=0min
+[2026-07-27 20:38 UTC] EXIT Scam / SOL [TP] ret=+13.6% pnl=+2.0881U held=0min
+[2026-07-27 20:38 UTC] EXIT Scam / SOL [SL] ret=-34.1% pnl=-6.4693U held=0min
+[2026-07-27 20:38 UTC] EXIT まんてん / SOL [TP] ret=+11.1% pnl=+0.4460U held=0min
+[2026-07-27 20:38 UTC] EXIT AORP / SOL [TP] ret=+5.5% pnl=+0.1671U held=0min
+[2026-07-27 20:38 UTC] CYCLE OK nav=13389.7975 扫描候选12 新入场6 持仓4 已平仓2091
