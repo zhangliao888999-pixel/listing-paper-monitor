@@ -3603,3 +3603,11 @@
 [2026-07-27 14:41 UTC] EXIT GONGFU / SOL [TIME] ret=-2.0% pnl=-0.1961U held=30min
 [2026-07-27 14:41 UTC] EXIT BONGO / SOL [TP] ret=+28.9% pnl=+2.7265U held=0min
 [2026-07-27 14:41 UTC] CYCLE OK nav=16313.8964 扫描候选8 新入场4 持仓8 已平仓1616
+[2026-07-27 14:44 UTC] BUY USOH / SOL (GEFzdcEp...) @ 0.01277169042 仓位=$5.00(机器人单笔$5的10%)
+[2026-07-27 14:44 UTC] BUY BONGO / SOL (4aoQhu7N...) @ 9.861533835e-06 仓位=$11.76(机器人单笔$118的10%)
+[2026-07-27 14:44 UTC] EXIT AEON / SOL [TIME] ret=-0.7% pnl=-1.3382U held=30min
+[2026-07-27 14:44 UTC] EXIT ily / SOL [TIME] ret=-2.0% pnl=-1.1102U held=30min
+[2026-07-27 14:44 UTC] EXIT Clark / SOL [SL] ret=-16.9% pnl=-0.9300U held=12min
+[2026-07-27 14:44 UTC] EXIT ◎ / SOL [SL] ret=-5.4% pnl=-0.3663U held=3min
+[2026-07-27 14:44 UTC] EXIT BONGO / SOL [TP] ret=+37.2% pnl=+4.0515U held=0min
+[2026-07-27 14:44 UTC] CYCLE OK nav=16315.5075 扫描候选8 新入场2 持仓5 已平仓1621
