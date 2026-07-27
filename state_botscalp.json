@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13542.459607100154,
+ "cash": 13546.261854412507,
  "positions": {
   "Bm8ecqxo8AEE6k3GgBVTYwKinF9pkQuZhmSUF3o1GxT6": {
    "name": "duky / SOL",
@@ -9,9 +9,9 @@
    "usd": 50,
    "t_entry": 1785193503,
    "bot_avg_trade_usd": 18258.78,
-   "no_price_checks": 2,
-   "total_checks": 4,
-   "consecutive_no_price": 0,
+   "no_price_checks": 3,
+   "total_checks": 5,
+   "consecutive_no_price": 1,
    "mark": 0.00010749351017919263,
    "mark_ret": 0.012675979504511492
   },
@@ -23,7 +23,7 @@
    "t_entry": 1785193682,
    "bot_avg_trade_usd": 174.08,
    "no_price_checks": 1,
-   "total_checks": 3,
+   "total_checks": 4,
    "entry_locked_liq_pct": 0.0,
    "entry_buyers_h1": 1269,
    "entry_sellers_h1": 218,
@@ -40,14 +40,14 @@
    "usd": 34.159,
    "t_entry": 1785194043,
    "bot_avg_trade_usd": 341.59,
-   "no_price_checks": 1,
-   "total_checks": 1,
+   "no_price_checks": 2,
+   "total_checks": 2,
    "entry_locked_liq_pct": 5.55986701110816e-10,
    "entry_buyers_h1": 2514,
    "entry_sellers_h1": 32,
    "entry_buy_sell_ratio_h1": 78.5625,
    "entry_price_change_h1_pct": 28.466,
-   "consecutive_no_price": 1
+   "consecutive_no_price": 2
   }
  },
  "closed": [
@@ -33709,7 +33709,53 @@
    "pnl": -14.751,
    "t_exit": 1785194043,
    "_note": "流动性只剩$0.0074,判定死亡,不用等连续多轮"
+  },
+  {
+   "name": "SPY / SOL",
+   "entry": 1.7049347174502965e-05,
+   "qty": 2932663.608069066,
+   "usd": 50,
+   "t_entry": 1785194223,
+   "bot_avg_trade_usd": 706.29,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": 8.15042839809544e-11,
+   "entry_buyers_h1": 3009,
+   "entry_sellers_h1": 38,
+   "entry_buy_sell_ratio_h1": 79.1842105263158,
+   "entry_price_change_h1_pct": 101.32,
+   "consecutive_no_price": 0,
+   "mark": 1.8530952622342155e-05,
+   "mark_ret": 0.08690100756789731,
+   "addr": "De6CpuMpYQtswoGA5fpYcKdsxoYUYyKunjWfb1pLwUvM",
+   "exit": 1.816033356989531e-05,
+   "reason": "TP",
+   "pnl": 3.2581,
+   "t_exit": 1785194223
+  },
+  {
+   "name": "budi / SOL",
+   "entry": 0.0002040256936294311,
+   "qty": 28726.77404369103,
+   "usd": 5.861000000000001,
+   "t_entry": 1785194223,
+   "bot_avg_trade_usd": 58.61,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": 3.57321662362567e-09,
+   "entry_buyers_h1": 2083,
+   "entry_sellers_h1": 77,
+   "entry_buy_sell_ratio_h1": 27.051948051948052,
+   "entry_price_change_h1_pct": 3329.268,
+   "consecutive_no_price": 0,
+   "mark": 0.00022751647003965426,
+   "mark_ret": 0.11513636342729017,
+   "addr": "FdVfWxPiz6KfV2zAgDcGYDutCLsUATHuktirYiA9GPG8",
+   "exit": 0.00022296614063886116,
+   "reason": "TP",
+   "pnl": 0.5441,
+   "t_exit": 1785194223
   }
  ],
- "realized_pnl": 3562.1286071001396
+ "realized_pnl": 3565.9308544124933
 }
