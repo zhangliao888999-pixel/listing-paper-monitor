@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13561.793050463417,
+ "cash": 13604.14322202729,
  "positions": {
   "5sRnC3uJvdaP6ogx5SH5H6xMnpyJ6ZFCL7jeCcM41Qak": {
    "name": "C𖦹T / SOL",
@@ -22,33 +22,15 @@
    "mark": 0.0002723403046117979,
    "mark_ret": -0.027456819152463674
   },
-  "AwyjRv3Y9gfkeUpCmpmx5pUJNoJggPRBJBbdcYPQUdfJ": {
-   "name": "Nongwan / SOL",
-   "entry": 0.00015165113014356215,
-   "qty": 329704.1041017431,
-   "usd": 50,
-   "t_entry": 1785135723,
-   "bot_avg_trade_usd": 516.46,
-   "mark": 0.00014889092906537142,
-   "mark_ret": -0.018200992472510724
-  },
-  "6T3mbtTVzgSFy2t4CgxUiuAPAMSMtGmmNdkeXvQhvyFg": {
-   "name": "USWR / SOL",
-   "entry": 0.029899358949149118,
-   "qty": 233.31603904499516,
-   "usd": 6.976000000000001,
-   "t_entry": 1785136083,
-   "bot_avg_trade_usd": 69.76,
-   "mark": 0.030951605004972342,
-   "mark_ret": 0.035192930310406156
-  },
   "7GCBeSU9Dkip3NNzgkqWYA2HUHi81atFQcRygFocy7RN": {
    "name": "WAN / SOL",
    "entry": 9.7121803419076e-06,
    "qty": 751015.708442597,
    "usd": 7.2940000000000005,
    "t_entry": 1785136083,
-   "bot_avg_trade_usd": 72.94
+   "bot_avg_trade_usd": 72.94,
+   "mark": 9.68598000615759e-06,
+   "mark_ret": -0.002697678052471675
   },
   "ENJ439G85991g7HNzVLjHEGxedJZF2AukUfLEz2wsopg": {
    "name": "Nongwan / SOL",
@@ -59,6 +41,14 @@
    "bot_avg_trade_usd": 14.96,
    "mark": 0.001158634339888054,
    "mark_ret": -0.015338952104930859
+  },
+  "9QqLsCE9kPY8jVoaVWFHayhjnb8Cuthj9eDe8PzuoeLz": {
+   "name": "CHILLDOG / SOL",
+   "entry": 1.083681425017729e-05,
+   "qty": 2049126.1995781383,
+   "usd": 22.206000000000003,
+   "t_entry": 1785136443,
+   "bot_avg_trade_usd": 222.06
   }
  },
  "closed": [
@@ -14986,7 +14976,37 @@
    "reason": "TP",
    "pnl": 10.2571,
    "t_exit": 1785136264
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.00015165113014356215,
+   "qty": 329704.1041017431,
+   "usd": 50,
+   "t_entry": 1785135723,
+   "bot_avg_trade_usd": 516.46,
+   "mark": 0.00017712771282853596,
+   "mark_ret": 0.16799467739446539,
+   "addr": "AwyjRv3Y9gfkeUpCmpmx5pUJNoJggPRBJBbdcYPQUdfJ",
+   "exit": 0.00017358515857196524,
+   "reason": "TP",
+   "pnl": 7.2317,
+   "t_exit": 1785136443
+  },
+  {
+   "name": "USWR / SOL",
+   "entry": 0.029899358949149118,
+   "qty": 233.31603904499516,
+   "usd": 6.976000000000001,
+   "t_entry": 1785136083,
+   "bot_avg_trade_usd": 69.76,
+   "mark": 0.032033419621736815,
+   "mark_ret": 0.07137479690508308,
+   "addr": "6T3mbtTVzgSFy2t4CgxUiuAPAMSMtGmmNdkeXvQhvyFg",
+   "exit": 0.03139275122930208,
+   "reason": "TP",
+   "pnl": 0.3484,
+   "t_exit": 1785136443
   }
  ],
- "realized_pnl": 3697.6300504634196
+ "realized_pnl": 3705.210222027294
 }
