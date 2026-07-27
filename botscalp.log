@@ -2263,3 +2263,9 @@
 [2026-07-27 07:26 UTC] EXIT USWR / SOL [SL] ret=-78.4% pnl=-5.3255U held=9min
 [2026-07-27 07:26 UTC] EXIT Nongwan / SOL [SL] ret=-11.7% pnl=-6.1839U held=9min
 [2026-07-27 07:26 UTC] CYCLE OK nav=13664.6026 扫描候选5 新入场1 持仓5 已平仓1005
+[2026-07-27 07:29 UTC] BUY USWR / SOL (6T3mbtTV...) @ 0.03225267969 仓位=$5.07(机器人单笔$51的10%)
+[2026-07-27 07:29 UTC] BUY Nongwan / SOL (AwyjRv3Y...) @ 0.0001731048921 仓位=$45.45(机器人单笔$455的10%)
+[2026-07-27 07:29 UTC] EXIT C𖦹T / SOL [TIME] ret=-2.0% pnl=-0.6497U held=33min
+[2026-07-27 07:29 UTC] EXIT MAGAVERSE / SOL [TIME] ret=-2.7% pnl=-2.3454U held=33min
+[2026-07-27 07:29 UTC] EXIT SIRIUS / SOL [SL] ret=-10.0% pnl=-1.6544U held=6min
+[2026-07-27 07:29 UTC] CYCLE OK nav=13662.4448 扫描候选5 新入场2 持仓4 已平仓1008
