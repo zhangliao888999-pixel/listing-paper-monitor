@@ -1465,3 +1465,11 @@
 [2026-07-27 03:02 UTC] EXIT CALVIN / SOL [TP] ret=+16.4% pnl=+2.6800U held=0min
 [2026-07-27 03:02 UTC] EXIT CHIRP / SOL [SL] ret=-13.7% pnl=-3.0380U held=0min
 [2026-07-27 03:02 UTC] CYCLE OK nav=13022.7574 扫描候选9 新入场6 持仓4 已平仓648
+[2026-07-27 03:05 UTC] BUY memehouse / SOL (H9J4jtFW...) @ 3.341284309e-05 仓位=$5.00(机器人单笔$15的10%)
+[2026-07-27 03:05 UTC] BUY CALVIN / SOL (G7vXhMFb...) @ 2.562872855e-05 仓位=$19.07(机器人单笔$191的10%)
+[2026-07-27 03:05 UTC] BUY CHIRP / SOL (CQ8xtpL5...) @ 1.395133371e-05 仓位=$19.96(机器人单笔$200的10%)
+[2026-07-27 03:05 UTC] BUY BINU / SOL (5dZZQfiN...) @ 2.668444831e-05 仓位=$23.39(机器人单笔$234的10%)
+[2026-07-27 03:05 UTC] EXIT CATE / SOL [TP] ret=+23.9% pnl=+1.2063U held=3min
+[2026-07-27 03:05 UTC] EXIT memehouse / SOL [SL] ret=-8.7% pnl=-0.5284U held=0min
+[2026-07-27 03:05 UTC] EXIT CHIRP / SOL [SL] ret=-20.2% pnl=-4.3440U held=0min
+[2026-07-27 03:05 UTC] CYCLE OK nav=13019.7879 扫描候选9 新入场4 持仓5 已平仓651
