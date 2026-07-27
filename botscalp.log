@@ -4816,3 +4816,8 @@
 [2026-07-27 21:23 UTC] EXIT Codex / SOL [TP] ret=+27.6% pnl=+1.2509U held=6min
 [2026-07-27 21:23 UTC] EXIT CRISCO / SOL [TP] ret=+10.3% pnl=+2.4705U held=0min
 [2026-07-27 21:23 UTC] CYCLE OK nav=13389.1905 扫描候选6 新入场3 持仓8 已平仓2145
+[2026-07-27 21:26 UTC] BUY CRISCO / SOL (4XJ8sTHz...) @ 5.024510877e-05 仓位=$30.89(机器人单笔$309的10%)
+[2026-07-27 21:26 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 21:26 UTC] EXIT Enigma / SOL [SL] ret=-6.3% pnl=-0.4103U held=15min
+[2026-07-27 21:26 UTC] EXIT CRISCO / SOL [TP] ret=+15.6% pnl=+4.1004U held=0min
+[2026-07-27 21:26 UTC] CYCLE OK nav=13392.7979 扫描候选6 新入场1 持仓7 已平仓2147
