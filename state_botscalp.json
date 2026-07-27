@@ -1,7 +1,19 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13649.540480428743,
- "positions": {},
+ "cash": 13599.540480428743,
+ "positions": {
+  "Bm8ecqxo8AEE6k3GgBVTYwKinF9pkQuZhmSUF3o1GxT6": {
+   "name": "duky / SOL",
+   "entry": 0.00010614798055325429,
+   "qty": 471040.5204074049,
+   "usd": 50,
+   "t_entry": 1785193503,
+   "bot_avg_trade_usd": 18258.78,
+   "no_price_checks": 1,
+   "total_checks": 1,
+   "consecutive_no_price": 1
+  }
+ },
  "closed": [
   {
    "name": "believe / SOL",
