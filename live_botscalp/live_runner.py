@@ -21,6 +21,7 @@
 import base64
 import json
 import os
+import statistics
 import sys
 import time
 import datetime as dt
@@ -51,8 +52,72 @@ JUPITER_QUOTE_URL = "https://lite-api.jup.ag/swap/v1/quote"
 JUPITER_SWAP_URL = "https://lite-api.jup.ag/swap/v1/swap"
 GT_BASE = "https://api.geckoterminal.com/api/v2"
 
+GT_S = requests.Session()
+GT_S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                     "Accept": "application/json;version=20230302"})
+
 NOW = int(time.time())
 NOW_STR = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+
+
+def gt_get(url, params=None, tries=3):
+    for i in range(tries):
+        try:
+            r = GT_S.get(url, params=params, timeout=20)
+            if r.status_code == 200:
+                return r.json()
+            if r.status_code == 429:
+                time.sleep(3 * (i + 1))
+                continue
+            return None
+        except requests.RequestException:
+            time.sleep(1.5 * (i + 1))
+    return None
+
+
+def check_scalping(addr):
+    """跟check_coin.py里的同名函数逻辑完全一样,直接内联复制过来，让live_botscalp/
+    这个文件夹可以整个单独打包部署，不需要依赖上一级目录的check_coin.py。
+    检查最近的逐笔成交里,是不是被同一个钱包反复买卖刷量(做市/套利机器人的常见特征)。
+    关键不是这个钱包占了总成交的多大比例(取样窗口跨度长的话占比会被稀释拉低)，
+    而是它自己前后两笔交易之间隔了多久——真人不可能几秒钟到几十秒钟就买卖反手一次，
+    连续做几分钟。"""
+    d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}/trades")
+    rows = (d or {}).get("data", [])
+    if len(rows) < 10:
+        return {"n_trades": len(rows), "verdict": "成交笔数不够,跳过刷量检查", "flag": False}
+
+    by_wallet = {}
+    for row in rows:
+        a = row["attributes"]
+        w = a.get("tx_from_address")
+        if w:
+            by_wallet.setdefault(w, []).append(a)
+
+    def parse_ts(a):
+        return dt.datetime.fromisoformat(a["block_timestamp"].replace("Z", "+00:00")).timestamp()
+
+    best = None
+    for w, trades in by_wallet.items():
+        if len(trades) < 8:
+            continue
+        kinds = {t["kind"] for t in trades}
+        if not ("buy" in kinds and "sell" in kinds):
+            continue
+        ts = sorted(parse_ts(t) for t in trades)
+        gaps = [b - a for a, b in zip(ts, ts[1:])]
+        median_gap = statistics.median(gaps)
+        if best is None or median_gap < best["median_gap_s"]:
+            avg_usd = statistics.mean(float(t["volume_in_usd"]) for t in trades)
+            best = {"wallet": w, "n_trades": len(trades), "median_gap_s": median_gap, "avg_trade_usd": avg_usd}
+
+    flag = best is not None and best["median_gap_s"] < 60
+    result = {"n_trades": len(rows), "n_wallets": len(by_wallet), "flag": flag}
+    if best:
+        result.update({"suspect_wallet": best["wallet"], "suspect_wallet_trades": best["n_trades"],
+                       "suspect_wallet_median_gap_s": round(best["median_gap_s"], 1),
+                       "suspect_wallet_avg_trade_usd": round(best["avg_trade_usd"], 2)})
+    return result
 
 
 def log(msg):
@@ -68,7 +133,15 @@ def log(msg):
 def load_config():
     default = {
         "rpcUrl": "https://api.mainnet-beta.solana.com",
-        "posSizeUsd": 5.0,          # 起步用小额验证,别一上来就用模拟盘的$5-50区间
+        # 仓位模式两选一:
+        #   "fixed"     - 每笔固定posSizeUsd金额，用于$1这种最小化验证阶段
+        #   "pct_of_bot"- 跟纸盘bot_scalp_monitor.py同一套逻辑:目标机器人钱包场均单笔
+        #                 交易金额的pctOfBot(默认10%)，下限minPosUsd上限maxPosUsd
+        # 验证阶段确认没bug之后，把sizingMode改成pct_of_bot就是跟纸盘一样的动态仓位，
+        # 不需要改代码。
+        "sizingMode": "fixed",
+        "posSizeUsd": 1.0,           # fixed模式下每笔的金额;先用$1验证整条链路能不能跑通
+        "pctOfBot": 0.10, "minPosUsd": 5.0, "maxPosUsd": 50.0,   # pct_of_bot模式的参数,对齐纸盘
         "tp": 0.05, "sl": -0.03, "maxHoldMin": 30,
         "slippageBps": 200,          # 2%,链上真实滑点比模拟盘假设的更真实,新币薄流动性给够余量
         "maxPositions": 3,           # 实盘先保守,远小于模拟盘的MAX_POS=20
@@ -78,6 +151,20 @@ def load_config():
     if CONFIG_F.exists():
         default.update(json.loads(CONFIG_F.read_text(encoding="utf-8")))
     return default
+
+
+def decide_pos_size_usd(cfg, addr):
+    """按sizingMode算这一笔要用多少钱。pct_of_bot模式需要重新查一次这个池子的
+    刷量机器人场均单笔金额(跟check_coin.py/check_scalping同一套检测,只用GeckoTerminal，
+    不占GMGN配额)——如果这时候已经检测不到机器人了(市场状况变了)，就跳过这笔，
+    不用旧数据硬凑仓位。"""
+    if cfg["sizingMode"] == "fixed":
+        return cfg["posSizeUsd"]
+    result = check_scalping(addr)
+    avg_bot_usd = result.get("suspect_wallet_avg_trade_usd")
+    if not result.get("flag") or not avg_bot_usd:
+        return None
+    return max(cfg["minPosUsd"], min(cfg["maxPosUsd"], avg_bot_usd * cfg["pctOfBot"]))
 
 
 def get_wallet():
@@ -198,17 +285,26 @@ def save_state(state):
     STATE_F.write_text(json.dumps(state, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
+CANDIDATES_URLS = [
+    "https://raw.githubusercontent.com/zhangliao888999-pixel/listing-paper-monitor/master/screener_candidates.json",
+    "https://raw.githubusercontent.com/zhangliao888999-pixel/listing-paper-monitor/master/screener_candidates_local.json",
+]
+
+
 def load_bot_candidates():
-    """跟bot_scalp_monitor.py同一个信号源: 复用screener已经在跑的候选扫描"""
+    """跟bot_scalp_monitor.py同一个信号源: 复用screener已经在跑的候选扫描。
+    直接从GitHub在线拉取(跟看盘页面同一套公开raw文件)，不依赖本地文件/仓库clone结构——
+    这样这个live_botscalp文件夹可以单独打包、单独部署，不需要连着paper/仓库其它文件一起搬。
+    (代价: raw.githubusercontent.com有几分钟到几十分钟不等的CDN缓存延迟，候选数据不是
+    绝对实时，但反正每次下单前也会重新拉一次实时报价再确认，不影响安全性)"""
     cands, seen = [], set()
-    paper_dir = HERE.parent
-    for name in ("screener_candidates.json", "screener_candidates_local.json"):
-        f = paper_dir / name
-        if not f.exists():
-            continue
+    for url in CANDIDATES_URLS:
         try:
-            d = json.loads(f.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
+            r = requests.get(url, params={"_": int(time.time())}, timeout=15)
+            if r.status_code != 200:
+                continue
+            d = r.json()
+        except (requests.RequestException, ValueError):
             continue
         for c in d.get("candidates", []):
             if c.get("scalping_flag") and c["addr"] not in seen:
@@ -220,11 +316,16 @@ def load_bot_candidates():
 def try_enter(cfg, wallet, state, c):
     if c["addr"] in state["positions"] or len(state["positions"]) >= cfg["maxPositions"]:
         return False
-    if state["spent_today_usd"] + cfg["posSizeUsd"] > cfg["dailyMaxUsd"]:
-        log(f"SKIP {c['name']}: 今日累计开仓将超过上限${cfg['dailyMaxUsd']}")
-        return False
     if state["realized_pnl_usd"] <= cfg["dailyLossKillUsd"]:
         log(f"SKIP {c['name']}: 今日已实现亏损${state['realized_pnl_usd']:.2f}已触发熔断,停止开新仓")
+        return False
+
+    pos_size_usd = decide_pos_size_usd(cfg, c["addr"])
+    if pos_size_usd is None:
+        log(f"SKIP {c['name']}: pct_of_bot模式下现在查不到机器人在刷(市场状况变了),不用旧数据凑仓位")
+        return False
+    if state["spent_today_usd"] + pos_size_usd > cfg["dailyMaxUsd"]:
+        log(f"SKIP {c['name']}: 今日累计开仓将超过上限${cfg['dailyMaxUsd']}")
         return False
 
     fresh_price = get_fresh_price_usd(c["addr"], is_pool_addr=True)
@@ -243,7 +344,7 @@ def try_enter(cfg, wallet, state, c):
     if not sol_price_usd:
         log(f"SKIP {c['name']}: 拿不到实时SOL价格,不猜")
         return False
-    amount_lamports = int(cfg["posSizeUsd"] / sol_price_usd * 1e9)
+    amount_lamports = int(pos_size_usd / sol_price_usd * 1e9)
 
     quote = jupiter_quote(SOL_MINT, mint, amount_lamports, cfg["slippageBps"])
     if not quote:
@@ -251,12 +352,12 @@ def try_enter(cfg, wallet, state, c):
         return False
 
     record = {"action": "BUY", "name": c["name"], "addr": c["addr"], "mint": mint,
-             "fresh_price_usd": fresh_price, "pos_size_usd": cfg["posSizeUsd"],
-             "live_mode": is_live_mode()}
+             "fresh_price_usd": fresh_price, "pos_size_usd": pos_size_usd,
+             "sizing_mode": cfg["sizingMode"], "live_mode": is_live_mode()}
 
     if not is_live_mode():
         log(f"[DRY-RUN] 本来会 BUY {c['name']} ({c['addr'][:8]}...) 报价内={fresh_price:.10g} "
-           f"仓位=${cfg['posSizeUsd']}")
+           f"仓位=${pos_size_usd:.2f}({cfg['sizingMode']})")
         audit({**record, "status": "dry_run"})
         return False  # dry-run不记为真实持仓
 
@@ -281,10 +382,10 @@ def try_enter(cfg, wallet, state, c):
     out_amount = int(quote["outAmount"])
     state["positions"][c["addr"]] = {
         "name": c["name"], "mint": mint, "entry_price_usd": fresh_price,
-        "qty_raw": out_amount, "usd": cfg["posSizeUsd"], "t_entry": NOW, "buy_sig": sig,
+        "qty_raw": out_amount, "usd": pos_size_usd, "t_entry": NOW, "buy_sig": sig,
     }
-    state["spent_today_usd"] += cfg["posSizeUsd"]
-    log(f"BUY {c['name']} ({c['addr'][:8]}...) 成交 sig={sig} 价格={fresh_price:.10g} 仓位=${cfg['posSizeUsd']}")
+    state["spent_today_usd"] += pos_size_usd
+    log(f"BUY {c['name']} ({c['addr'][:8]}...) 成交 sig={sig} 价格={fresh_price:.10g} 仓位=${pos_size_usd:.2f}")
     audit({**record, "status": "filled", "sig": sig})
     return True
 

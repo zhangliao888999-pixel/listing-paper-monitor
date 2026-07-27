@@ -1,6 +1,10 @@
 {
   "rpcUrl": "https://api.mainnet-beta.solana.com",
-  "posSizeUsd": 5.0,
+  "sizingMode": "fixed",
+  "posSizeUsd": 1.0,
+  "pctOfBot": 0.1,
+  "minPosUsd": 5.0,
+  "maxPosUsd": 50.0,
   "tp": 0.05,
   "sl": -0.03,
   "maxHoldMin": 30,
