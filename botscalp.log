@@ -2866,3 +2866,10 @@
 [2026-07-27 10:38 UTC] EXIT Nongwan / SOL [SL] ret=-65.4% pnl=-3.3023U held=3min
 [2026-07-27 10:38 UTC] EXIT dawang / SOL [TP] ret=+9.6% pnl=+0.7125U held=0min
 [2026-07-27 10:38 UTC] CYCLE OK nav=14995.6605 扫描候选7 新入场3 持仓6 已平仓1282
+[2026-07-27 10:41 UTC] BUY Nongwan / SOL (CTf8m9kZ...) @ 0.001230156773 仓位=$5.00(机器人单笔$46的10%)
+[2026-07-27 10:41 UTC] BUY dawang / SOL (696XWFsW...) @ 9.750262335e-05 仓位=$10.16(机器人单笔$102的10%)
+[2026-07-27 10:41 UTC] EXIT WILLY / SOL [SL] ret=-34.0% pnl=-16.1182U held=15min
+[2026-07-27 10:41 UTC] EXIT USOX / SOL [TP] ret=+16.5% pnl=+0.8952U held=12min
+[2026-07-27 10:41 UTC] EXIT WANDENG / SOL [SL] ret=-11.5% pnl=-0.6646U held=9min
+[2026-07-27 10:41 UTC] EXIT dawang / SOL [TP] ret=+12.1% pnl=+0.9997U held=0min
+[2026-07-27 10:41 UTC] CYCLE OK nav=14982.0457 扫描候选7 新入场2 持仓4 已平仓1286
