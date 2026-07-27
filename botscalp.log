@@ -1403,3 +1403,8 @@
 [2026-07-27 02:44 UTC] EXIT USOX / SOL [TP] ret=+14.3% pnl=+0.9090U held=0min
 [2026-07-27 02:44 UTC] EXIT SalaryCat / SOL [SL] ret=-9.9% pnl=-0.5841U held=0min
 [2026-07-27 02:44 UTC] CYCLE OK nav=13012.2757 扫描候选7 新入场2 持仓4 已平仓620
+[2026-07-27 02:47 UTC] BUY USOX / SOL (AebwXbAH...) @ 0.02219031924 仓位=$7.09(机器人单笔$71的10%)
+[2026-07-27 02:47 UTC] BUY OS / SOL (2KQgVrv1...) @ 2.527482855e-05 仓位=$22.22(机器人单笔$222的10%)
+[2026-07-27 02:47 UTC] BUY SalaryCat / SOL (3RSWFQEy...) @ 0.002660449203 仓位=$5.46(机器人单笔$55的10%)
+[2026-07-27 02:47 UTC] EXIT SalaryCat / SOL [SL] ret=-9.6% pnl=-0.6237U held=0min
+[2026-07-27 02:47 UTC] CYCLE OK nav=13014.3104 扫描候选7 新入场3 持仓6 已平仓621
