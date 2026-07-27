@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12901.48615704708,
+ "cash": 12896.48615704708,
  "positions": {
   "DWcQas867ydYKPxUvGTY1rhMqpt7W1LLqUaUSQe25mc7": {
    "name": "SHIBUKI / SOL",
@@ -39,8 +39,8 @@
    "usd": 5,
    "t_entry": 1785118083,
    "bot_avg_trade_usd": 0.65,
-   "mark": 0.013591448537188423,
-   "mark_ret": 0.008456855303167199
+   "mark": 0.013820708864140437,
+   "mark_ret": 0.02546748869748172
   },
   "7mN6uAZYcuq6c63ct1ipM93Esp3qtHJKw3S7tmq1KwvY": {
    "name": "USOX / SOL",
@@ -48,7 +48,9 @@
    "qty": 395675.1154866595,
    "usd": 35.219,
    "t_entry": 1785118443,
-   "bot_avg_trade_usd": 352.19
+   "bot_avg_trade_usd": 352.19,
+   "mark": 8.726460174297509e-05,
+   "mark_ret": -0.019607843137254943
   },
   "G7vXhMFbHfnoqDE62kMbUfjoSKhEeHSvSD2bT2PPmMxi": {
    "name": "CALVIN / SOL",
@@ -57,6 +59,14 @@
    "usd": 21.374000000000002,
    "t_entry": 1785118443,
    "bot_avg_trade_usd": 213.74
+  },
+  "HyQLVUuSSXGsNf1JcHsAtg9AXRXXTww7J3FbFNWZ3VCe": {
+   "name": "CATE / SOL",
+   "entry": 0.016698051347440863,
+   "qty": 299.4361375446542,
+   "usd": 5,
+   "t_entry": 1785118624,
+   "bot_avg_trade_usd": 46.39
   }
  },
  "closed": [
