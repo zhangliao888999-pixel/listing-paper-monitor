@@ -5180,3 +5180,16 @@
 [2026-07-27 23:17 UTC] EXIT SPY / SOL [TP] ret=+8.7% pnl=+3.2581U held=0min
 [2026-07-27 23:17 UTC] EXIT budi / SOL [TP] ret=+11.5% pnl=+0.5441U held=0min
 [2026-07-27 23:17 UTC] CYCLE OK nav=13648.1213 扫描候选8 新入场2 持仓3 已平仓2237
+[2026-07-27 23:20 UTC] NOTE(未拦截) SPY / SOL: 流动性锁仓比例只有0.0%
+[2026-07-27 23:20 UTC] NOTE(未拦截) SPY / SOL: 过去1小时买家3010人/卖家38人,比例79:1
+[2026-07-27 23:20 UTC] BUY SPY / SOL (De6CpuMp...) @ 1.704934717e-05 仓位=$50.00(机器人单笔$705的10%)
+[2026-07-27 23:20 UTC] NOTE(未拦截) PATIENCE / SOL: 过去1小时已经涨了216%
+[2026-07-27 23:20 UTC] NOTE(未拦截) budi / SOL: 流动性锁仓比例只有0.0%
+[2026-07-27 23:20 UTC] NOTE(未拦截) budi / SOL: 过去1小时已经涨了3542%
+[2026-07-27 23:20 UTC] BUY budi / SOL (FdVfWxPi...) @ 0.0002040256936 仓位=$6.34(机器人单笔$63的10%)
+[2026-07-27 23:20 UTC] SKIP RYDER / SOL: 流动性只有$11,381,低于$15,000门槛,进得去也可能出不来
+[2026-07-27 23:20 UTC] SKIP EXIT CHECK duky / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续2轮)
+[2026-07-27 23:20 UTC] SKIP EXIT CHECK Grok / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续3轮)
+[2026-07-27 23:20 UTC] EXIT SPY / SOL [SL] ret=-71.3% pnl=-35.9610U held=0min
+[2026-07-27 23:20 UTC] EXIT budi / SOL [TP] ret=+22.0% pnl=+1.2396U held=0min
+[2026-07-27 23:20 UTC] CYCLE OK nav=13613.3999 扫描候选8 新入场2 持仓3 已平仓2239
