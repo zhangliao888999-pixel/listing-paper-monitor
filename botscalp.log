@@ -2556,3 +2556,13 @@
 [2026-07-27 08:50 UTC] EXIT cock / SOL [TP] ret=+87.0% pnl=+24.1242U held=0min
 [2026-07-27 08:50 UTC] EXIT SWA / SOL [SL] ret=-4.7% pnl=-1.3597U held=0min
 [2026-07-27 08:50 UTC] CYCLE OK nav=14810.2592 扫描候选11 新入场5 持仓8 已平仓1138
+[2026-07-27 08:53 UTC] BUY MAGA / SOL (GgeuUvxj...) @ 0.0001467486569 仓位=$23.18(机器人单笔$232的10%)
+[2026-07-27 08:53 UTC] BUY Claude / SOL (3fsF3wiJ...) @ 2.896671293e-06 仓位=$42.49(机器人单笔$425的10%)
+[2026-07-27 08:53 UTC] BUY cock / SOL (6GJwQ4jD...) @ 9.302878409e-05 仓位=$29.33(机器人单笔$293的10%)
+[2026-07-27 08:53 UTC] BUY SWA / SOL (5YJTWrPF...) @ 1.834765778e-05 仓位=$16.71(机器人单笔$167的10%)
+[2026-07-27 08:53 UTC] EXIT Nongwan / SOL [SL] ret=-6.7% pnl=-0.4263U held=12min
+[2026-07-27 08:53 UTC] EXIT ROAR / SOL [TP] ret=+36.6% pnl=+1.8244U held=6min
+[2026-07-27 08:53 UTC] EXIT MAGA / SOL [TP] ret=+12.1% pnl=+2.2864U held=0min
+[2026-07-27 08:53 UTC] EXIT Claude / SOL [TP] ret=+11.0% pnl=+3.7164U held=0min
+[2026-07-27 08:53 UTC] EXIT cock / SOL [TP] ret=+125.2% pnl=+35.3920U held=0min
+[2026-07-27 08:53 UTC] CYCLE OK nav=14853.3288 扫描候选11 新入场4 持仓7 已平仓1143

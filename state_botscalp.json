@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 14635.269404879331,
+ "cash": 14671.742304118026,
  "positions": {
   "3iR74t8eiASkcc1dU7NHpmP7F7Upvptpgi62d8LHQHBG": {
    "name": "Family / SOL",
@@ -11,16 +11,6 @@
    "bot_avg_trade_usd": 176.16,
    "mark": 8.306057374023443e-06,
    "mark_ret": -0.019607843137255054
-  },
-  "J5zUqUVwjhtRTgixEFEL3bpNvZcW5Rfb12sR55Tc715L": {
-   "name": "Nongwan / SOL",
-   "entry": 0.0012165492744061412,
-   "qty": 4109.985600411254,
-   "usd": 5,
-   "t_entry": 1785141662,
-   "bot_avg_trade_usd": 24.16,
-   "mark": 0.0012500253070169953,
-   "mark_ret": 0.027517202397901563
   },
   "CTf8m9kZGu7VYudCqtotLWFfVR6wh9xNagM14h7h7kmj": {
    "name": "Nongwan / SOL",
@@ -52,21 +42,15 @@
    "mark": 2.0099959331792508e-05,
    "mark_ret": -0.019607843137254943
   },
-  "3TCdRkQ34agaSnYgXRpLoLefzVvYUBahbiJ9Cgs7shd5": {
-   "name": "ROAR / SOL",
-   "entry": 0.00094000232912461,
-   "qty": 5736.155999763718,
-   "usd": 5.392,
-   "t_entry": 1785142023,
-   "bot_avg_trade_usd": 53.92
-  },
   "EmDa6uYFxxVD4L9StCRoft7VWk38PvjJt1B9X1AExeTC": {
    "name": "Attlee / SOL",
    "entry": 2.5565008688506146e-05,
    "qty": 1182475.6395874494,
    "usd": 30.230000000000004,
    "t_entry": 1785142203,
-   "bot_avg_trade_usd": 302.3
+   "bot_avg_trade_usd": 302.3,
+   "mark": 2.5915409570724075e-05,
+   "mark_ret": 0.013706268849244196
   },
   "iWnBbWWUnepXaHA3Ywxsyk5SbTFj2svEBq4VzF5Nk3s": {
    "name": "Nongwan / SOL",
@@ -77,6 +61,14 @@
    "bot_avg_trade_usd": 774.02,
    "mark": 0.00011581199197383961,
    "mark_ret": -0.0034047714345204483
+  },
+  "5YJTWrPFCTUS9VbuAkEzA4FzpokALkoTmqvCXfqTzXW2": {
+   "name": "SWA / SOL",
+   "entry": 1.8347657780070777e-05,
+   "qty": 910851.9572537793,
+   "usd": 16.712,
+   "t_entry": 1785142383,
+   "bot_avg_trade_usd": 167.12
   }
  },
  "closed": [
@@ -17149,7 +17141,82 @@
    "reason": "SL",
    "pnl": -1.3597,
    "t_exit": 1785142203
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.0012165492744061412,
+   "qty": 4109.985600411254,
+   "usd": 5,
+   "t_entry": 1785141662,
+   "bot_avg_trade_usd": 24.16,
+   "mark": 0.0011355436568254692,
+   "mark_ret": -0.06658638436179654,
+   "addr": "J5zUqUVwjhtRTgixEFEL3bpNvZcW5Rfb12sR55Tc715L",
+   "exit": 0.0011128327836889597,
+   "reason": "SL",
+   "pnl": -0.4263,
+   "t_exit": 1785142383
+  },
+  {
+   "name": "ROAR / SOL",
+   "entry": 0.00094000232912461,
+   "qty": 5736.155999763718,
+   "usd": 5.392,
+   "t_entry": 1785142023,
+   "bot_avg_trade_usd": 53.92,
+   "mark": 0.0012837328150281917,
+   "mark_ret": 0.3656698236308473,
+   "addr": "3TCdRkQ34agaSnYgXRpLoLefzVvYUBahbiJ9Cgs7shd5",
+   "exit": 0.0012580581587276279,
+   "reason": "TP",
+   "pnl": 1.8244,
+   "t_exit": 1785142383
+  },
+  {
+   "name": "MAGA / SOL",
+   "entry": 0.00014674865686322515,
+   "qty": 157977.59581273282,
+   "usd": 23.183000000000003,
+   "t_entry": 1785142383,
+   "bot_avg_trade_usd": 231.83,
+   "mark": 0.00016451174742726035,
+   "mark_ret": 0.12104431443342634,
+   "addr": "GgeuUvxjzPSz72no69u4G5sQmxVvnVpy7mmrAcfPWLqp",
+   "exit": 0.00016122151247871514,
+   "reason": "TP",
+   "pnl": 2.2864,
+   "t_exit": 1785142383
+  },
+  {
+   "name": "Claude / SOL",
+   "entry": 2.896671293343975e-06,
+   "qty": 14666835.03151456,
+   "usd": 42.48500000000001,
+   "t_entry": 1785142383,
+   "bot_avg_trade_usd": 424.85,
+   "mark": 3.214343880233241e-06,
+   "mark_ret": 0.10966815172271005,
+   "addr": "3fsF3wiJ3ZysDiphT85mKHMkyC67d8TY3n7cU8dG3YmZ",
+   "exit": 3.150057002628576e-06,
+   "reason": "TP",
+   "pnl": 3.7164,
+   "t_exit": 1785142383
+  },
+  {
+   "name": "cock / SOL",
+   "entry": 9.302878409348853e-05,
+   "qty": 315257.2645744468,
+   "usd": 29.328,
+   "t_entry": 1785142383,
+   "bot_avg_trade_usd": 293.28,
+   "mark": 0.00020948230258118275,
+   "mark_ret": 1.2518009304589555,
+   "addr": "6GJwQ4jDYZEKocZyecPggMmvQC46SBrsst56avfHBwzL",
+   "exit": 0.00020529265652955908,
+   "reason": "TP",
+   "pnl": 35.392,
+   "t_exit": 1785142383
   }
  ],
- "realized_pnl": 4811.870404879339
+ "realized_pnl": 4854.663304118034
 }
