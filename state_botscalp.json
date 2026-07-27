@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16145.598489903117,
+ "cash": 16143.349157182944,
  "positions": {
   "BBKk2t2WBj1jy8u9YTVmBnntnApdAk4MmUGRSQMfLBN6": {
    "name": "CXMT / SOL",
@@ -11,14 +11,6 @@
    "bot_avg_trade_usd": 186.25,
    "mark": 1.6355232022851736e-05,
    "mark_ret": -0.019607843137254832
-  },
-  "2QT5A4XXm3wPNCCDgfGNhbJJMKhWssDufAiDJN5HiMaT": {
-   "name": "USWR / SOL",
-   "entry": 0.045228487831130364,
-   "qty": 615.2759319281561,
-   "usd": 27.828,
-   "t_entry": 1785175143,
-   "bot_avg_trade_usd": 278.28
   },
   "4zWjFSwhqri4hyvSsdXsouT7SNPtsFRD1Aw6GZnyPxa5": {
    "name": "PONS / SOL",
@@ -35,6 +27,24 @@
    "usd": 7.4670000000000005,
    "t_entry": 1785175323,
    "bot_avg_trade_usd": 74.67
+  },
+  "EtjBC1TqevVJpTZaBcrZRisKgua1wxU99hpseipEocLR": {
+   "name": "MANTEN / SOL",
+   "entry": 0.0002091080645908581,
+   "qty": 23911.081620802262,
+   "usd": 5,
+   "t_entry": 1785175503,
+   "bot_avg_trade_usd": 46.99
+  },
+  "6xQ4bztgdr8oyRgE8B5FLVjQttSfnPiZU9QitBJADAys": {
+   "name": "ARF / SOL",
+   "entry": 6.075495886211495e-05,
+   "qty": 82297.8089960959,
+   "usd": 5,
+   "t_entry": 1785175503,
+   "bot_avg_trade_usd": 2.71,
+   "mark": 6.354773452801448e-05,
+   "mark_ret": 0.04596786366422889
   }
  },
  "closed": [
@@ -27892,7 +27902,37 @@
    "reason": "TP",
    "pnl": 0.1762,
    "t_exit": 1785175323
+  },
+  {
+   "name": "USWR / SOL",
+   "entry": 0.045228487831130364,
+   "qty": 615.2759319281561,
+   "usd": 27.828,
+   "t_entry": 1785175143,
+   "bot_avg_trade_usd": 278.28,
+   "mark": 0.04919250883724416,
+   "mark_ret": 0.08764434090554296,
+   "addr": "2QT5A4XXm3wPNCCDgfGNhbJJMKhWssDufAiDJN5HiMaT",
+   "exit": 0.048208658660499275,
+   "reason": "TP",
+   "pnl": 1.8336,
+   "t_exit": 1785175503
+  },
+  {
+   "name": "pumpkets / SOL",
+   "entry": 5.376019588974547e-05,
+   "qty": 649997.631550026,
+   "usd": 34.944,
+   "t_entry": 1785175503,
+   "bot_avg_trade_usd": 349.44,
+   "mark": 2.046010578499768e-05,
+   "mark_ret": -0.6194190618844014,
+   "addr": "FRidHh25WqGz2vZyiNzEL7N7NQFq6N6oKxBAK3KQjDQk",
+   "exit": 2.0050903669297723e-05,
+   "reason": "SL",
+   "pnl": -21.911,
+   "t_exit": 1785175503
   }
  ],
- "realized_pnl": 6249.518489903124
+ "realized_pnl": 6229.4411571829505
 }

@@ -4145,3 +4145,9 @@
 [2026-07-27 18:02 UTC] EXIT pumpkets / SOL [SL] ret=-55.4% pnl=-19.8518U held=0min
 [2026-07-27 18:02 UTC] EXIT ARF / SOL [TP] ret=+5.6% pnl=+0.1762U held=0min
 [2026-07-27 18:02 UTC] CYCLE OK nav=16249.1533 扫描候选7 新入场4 持仓4 已平仓1857
+[2026-07-27 18:05 UTC] BUY MANTEN / SOL (EtjBC1Tq...) @ 0.0002091080646 仓位=$5.00(机器人单笔$47的10%)
+[2026-07-27 18:05 UTC] BUY pumpkets / SOL (FRidHh25...) @ 5.376019589e-05 仓位=$34.94(机器人单笔$349的10%)
+[2026-07-27 18:05 UTC] BUY ARF / SOL (6xQ4bztg...) @ 6.075495886e-05 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-27 18:05 UTC] EXIT USWR / SOL [TP] ret=+8.8% pnl=+1.8336U held=6min
+[2026-07-27 18:05 UTC] EXIT pumpkets / SOL [SL] ret=-61.9% pnl=-21.9110U held=0min
+[2026-07-27 18:05 UTC] CYCLE OK nav=16229.3058 扫描候选7 新入场3 持仓5 已平仓1859
