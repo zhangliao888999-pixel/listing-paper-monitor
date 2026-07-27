@@ -3897,3 +3897,7 @@
 [2026-07-27 16:53 UTC] BUY CATE / SOL (CybgsPhr...) @ 7.717606073e-05 仓位=$7.75(机器人单笔$77的10%)
 [2026-07-27 16:53 UTC] EXIT CATE / SOL [SL] ret=-6.2% pnl=-2.7907U held=0min
 [2026-07-27 16:53 UTC] CYCLE OK nav=16406.4634 扫描候选4 新入场3 持仓2 已平仓1745
+[2026-07-27 16:56 UTC] BUY CATE / SOL (FuBHngMd...) @ 7.319141861e-05 仓位=$36.77(机器人单笔$368的10%)
+[2026-07-27 16:56 UTC] EXIT CATE / SOL [TP] ret=+13.0% pnl=+0.8334U held=3min
+[2026-07-27 16:56 UTC] EXIT CATE / SOL [SL] ret=-6.4% pnl=-3.0545U held=0min
+[2026-07-27 16:56 UTC] CYCLE OK nav=16405.7507 扫描候选4 新入场1 持仓1 已平仓1747
