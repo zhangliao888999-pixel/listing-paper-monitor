@@ -1375,3 +1375,15 @@
 [2026-07-27 02:35 UTC] EXIT CATE / SOL [TP] ret=+28.1% pnl=+1.9099U held=0min
 [2026-07-27 02:35 UTC] EXIT CALVIN / SOL [SL] ret=-14.2% pnl=-2.5493U held=0min
 [2026-07-27 02:35 UTC] CYCLE OK nav=13002.5380 扫描候选8 新入场4 持仓7 已平仓606
+[2026-07-27 02:38 UTC] BUY Kittens / SOL (Hh4bYnYF...) @ 8.95828254e-05 仓位=$50.00(机器人单笔$706的10%)
+[2026-07-27 02:38 UTC] BUY IF / SOL (87KZzCsJ...) @ 1.896967878e-05 仓位=$50.00(机器人单笔$527的10%)
+[2026-07-27 02:38 UTC] BUY USOX / SOL (AebwXbAH...) @ 0.02219031924 仓位=$9.74(机器人单笔$97的10%)
+[2026-07-27 02:38 UTC] BUY C0IN / SOL (GpYHrYej...) @ 0.001158428566 仓位=$50.00(机器人单笔$18320的10%)
+[2026-07-27 02:38 UTC] BUY NVIDIA / USDC (E5LqRxoj...) @ 3.418985558e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 02:38 UTC] EXIT ca / SOL [TIME] ret=-2.0% pnl=-0.7128U held=30min
+[2026-07-27 02:38 UTC] EXIT SalaryCat / SOL [TP] ret=+8.3% pnl=+0.3242U held=15min
+[2026-07-27 02:38 UTC] EXIT USOX / SOL [TP] ret=+5.9% pnl=+0.1891U held=12min
+[2026-07-27 02:38 UTC] EXIT Kittens / SOL [SL] ret=-3.1% pnl=-2.5335U held=0min
+[2026-07-27 02:38 UTC] EXIT IF / SOL [TP] ret=+14.1% pnl=+5.9043U held=0min
+[2026-07-27 02:38 UTC] EXIT USOX / SOL [TP] ret=+7.4% pnl=+0.5111U held=0min
+[2026-07-27 02:38 UTC] CYCLE OK nav=13005.4073 扫描候选7 新入场5 持仓6 已平仓612
