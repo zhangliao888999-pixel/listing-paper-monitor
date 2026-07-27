@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13222.022694076863,
+ "cash": 13242.614939943835,
  "positions": {
   "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
    "name": "CXMT / SOL",
@@ -32274,7 +32274,37 @@
    "reason": "TP",
    "pnl": 4.1004,
    "t_exit": 1785187563
+  },
+  {
+   "name": "CRISCO / SOL",
+   "entry": 5.024510876742203e-05,
+   "qty": 642649.6188806386,
+   "usd": 32.29,
+   "t_entry": 1785187742,
+   "bot_avg_trade_usd": 322.9,
+   "mark": 8.480166799059275e-05,
+   "mark_ret": 0.68775966598318,
+   "addr": "4XJ8sTHzPtHhG2stEGZQnLYSAJnYrkpwkD7QooxV9qAA",
+   "exit": 8.31056346307809e-05,
+   "reason": "TP",
+   "pnl": 21.1178,
+   "t_exit": 1785187742
+  },
+  {
+   "name": "Enigma / SOL",
+   "entry": 1.7275628187754296e-05,
+   "qty": 289425.0759312019,
+   "usd": 5,
+   "t_entry": 1785187742,
+   "bot_avg_trade_usd": 8.89,
+   "mark": 1.577526260121608e-05,
+   "mark_ret": -0.08684868476167718,
+   "addr": "B2s14JhE8CnGCHQeinjsd6qmzeeED5QFDUoosRfiM3gu",
+   "exit": 1.5459757349191758e-05,
+   "reason": "SL",
+   "pnl": -0.5256,
+   "t_exit": 1785187742
   }
  ],
- "realized_pnl": 3310.744694076853
+ "realized_pnl": 3331.3369399438257
 }
