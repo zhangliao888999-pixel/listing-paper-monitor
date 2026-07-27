@@ -4565,3 +4565,10 @@
 [2026-07-27 20:08 UTC] EXIT Enigma / SOL [SL] ret=-86.1% pnl=-17.2894U held=6min
 [2026-07-27 20:08 UTC] EXIT Tortuga / SOL [SL] ret=-7.8% pnl=-0.4846U held=3min
 [2026-07-27 20:08 UTC] CYCLE OK nav=13478.6204 扫描候选10 新入场4 持仓11 已平仓2039
+[2026-07-27 20:11 UTC] BUY Enigma / SOL (G1jdEv9y...) @ 0.0001380067634 仓位=$34.11(机器人单笔$341的10%)
+[2026-07-27 20:11 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 7.419829205e-05 仓位=$5.00(机器人单笔$19的10%)
+[2026-07-27 20:11 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.4430192199相对入场价异常(ret=788981%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 20:11 UTC] EXIT PORNHUB / SOL [TIME] ret=-2.0% pnl=-0.1961U held=33min
+[2026-07-27 20:11 UTC] EXIT PONS / SOL [TP] ret=+10.7% pnl=+4.2562U held=15min
+[2026-07-27 20:11 UTC] EXIT Tortuga / SOL [SL] ret=-10.8% pnl=-0.6286U held=0min
+[2026-07-27 20:11 UTC] CYCLE OK nav=13480.7324 扫描候选10 新入场2 持仓10 已平仓2042

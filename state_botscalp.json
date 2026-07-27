@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13077.719504469298,
+ "cash": 13102.044028646274,
  "positions": {
   "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
    "name": "CXMT / SOL",
@@ -10,16 +10,6 @@
    "t_entry": 1785180003,
    "bot_avg_trade_usd": 646.26
   },
-  "2viaGp5nM59VYN51ct24aysBFiET4Fqnj3VXA5R4Pg3A": {
-   "name": "PORNHUB / SOL",
-   "entry": 0.0061236678144068,
-   "qty": 816.5041200041564,
-   "usd": 5,
-   "t_entry": 1785181084,
-   "bot_avg_trade_usd": 28.7,
-   "mark": 0.006003595896477255,
-   "mark_ret": -0.019607843137254943
-  },
   "D7qEq9KUj5GzBfDNq1J7u3U4xstB6hwWh1AnUtgyMuFY": {
    "name": "ZVR / SOL",
    "entry": 4.368910987225086e-05,
@@ -27,18 +17,8 @@
    "usd": 50,
    "t_entry": 1785181444,
    "bot_avg_trade_usd": 571.65,
-   "mark": 4.318327237792806e-05,
-   "mark_ret": -0.01157811399229447
-  },
-  "4zWjFSwhqri4hyvSsdXsouT7SNPtsFRD1Aw6GZnyPxa5": {
-   "name": "PONS / SOL",
-   "entry": 2.2545952233031557e-05,
-   "qty": 2217692.980239094,
-   "usd": 50,
-   "t_entry": 1785182163,
-   "bot_avg_trade_usd": 568.2,
-   "mark": 2.346840964299709e-05,
-   "mark_ret": 0.040914546453002076
+   "mark": 4.399302381486041e-05,
+   "mark_ret": 0.006956285982896215
   },
   "27bRizm3SoDTJfakp2P2J5YHQePgwpfwW87jfgshARvV": {
    "name": "CXMT / SOL",
@@ -75,8 +55,8 @@
    "usd": 50,
    "t_entry": 1785182882,
    "bot_avg_trade_usd": 573.73,
-   "mark": 3.247172645876831e-05,
-   "mark_ret": 0.04739677874626547
+   "mark": 3.238953409050225e-05,
+   "mark_ret": 0.04474561014059519
   },
   "81bbDkSMukVKrw1Z1ezj1XYJe8TYxtPq6TbkHNkwXpxP": {
    "name": "breadcat / SOL",
@@ -95,8 +75,8 @@
    "usd": 50,
    "t_entry": 1785182882,
    "bot_avg_trade_usd": 793.88,
-   "mark": 7.119950263700619e-05,
-   "mark_ret": 0.010099682145257471
+   "mark": 7.109921174488949e-05,
+   "mark_ret": 0.008676866051083199
   },
   "Ck3KcPz6JcHXWore7nLkPYuTJyDBdzBSYaEnU47gsHs8": {
    "name": "AORP / SOL",
@@ -104,7 +84,17 @@
    "qty": 8189.787214449057,
    "usd": 5,
    "t_entry": 1785182882,
-   "bot_avg_trade_usd": 9.55
+   "bot_avg_trade_usd": 9.55,
+   "mark": 0.0005989353905832061,
+   "mark_ret": -0.01896931918412148
+  },
+  "G1jdEv9yp9AQZXKh53deSTSaXqkThN2vH9XBJxGgRVrL": {
+   "name": "Enigma / SOL",
+   "entry": 0.0001380067633885827,
+   "qty": 247140.0615632558,
+   "usd": 34.107,
+   "t_entry": 1785183062,
+   "bot_avg_trade_usd": 341.07
   }
  },
  "closed": [
@@ -30692,7 +30682,52 @@
    "reason": "SL",
    "pnl": -0.4846,
    "t_exit": 1785182882
+  },
+  {
+   "name": "PORNHUB / SOL",
+   "entry": 0.0061236678144068,
+   "qty": 816.5041200041564,
+   "usd": 5,
+   "t_entry": 1785181084,
+   "bot_avg_trade_usd": 28.7,
+   "mark": 0.006003595896477255,
+   "mark_ret": -0.019607843137254943,
+   "addr": "2viaGp5nM59VYN51ct24aysBFiET4Fqnj3VXA5R4Pg3A",
+   "exit": 0.00588352397854771,
+   "reason": "TIME",
+   "pnl": -0.1961,
+   "t_exit": 1785183062
+  },
+  {
+   "name": "PONS / SOL",
+   "entry": 2.2545952233031557e-05,
+   "qty": 2217692.980239094,
+   "usd": 50,
+   "t_entry": 1785182163,
+   "bot_avg_trade_usd": 568.2,
+   "mark": 2.4964436736262613e-05,
+   "mark_ret": 0.10726912211265094,
+   "addr": "4zWjFSwhqri4hyvSsdXsouT7SNPtsFRD1Aw6GZnyPxa5",
+   "exit": 2.446514800153736e-05,
+   "reason": "TP",
+   "pnl": 4.2562,
+   "t_exit": 1785183062
+  },
+  {
+   "name": "Tortuga / SOL",
+   "entry": 7.4198292046188e-05,
+   "qty": 67386.99587434613,
+   "usd": 5,
+   "t_entry": 1785183062,
+   "bot_avg_trade_usd": 18.93,
+   "mark": 6.619419860946355e-05,
+   "mark_ret": -0.10787436227968628,
+   "addr": "C4ykhmjTxSpSUuuENyYv2pXgMG49NE1kY4S9w5tZfciC",
+   "exit": 6.487031463727428e-05,
+   "reason": "SL",
+   "pnl": -0.6286,
+   "t_exit": 1785183062
   }
  ],
- "realized_pnl": 3394.729504469301
+ "realized_pnl": 3398.1610286462783
 }
