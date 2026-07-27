@@ -2627,3 +2627,18 @@
 [2026-07-27 09:17 UTC] EXIT Luna / SOL [TP] ret=+15.0% pnl=+6.3296U held=0min
 [2026-07-27 09:17 UTC] EXIT SWA / SOL [TP] ret=+11.2% pnl=+2.1388U held=0min
 [2026-07-27 09:17 UTC] CYCLE OK nav=14955.0856 扫描候选13 新入场7 持仓5 已平仓1171
+[2026-07-27 09:23 UTC] BUY Nongwan / SOL (J5zUqUVw...) @ 0.001216549274 仓位=$5.00(机器人单笔$24的10%)
+[2026-07-27 09:23 UTC] BUY Nongwan / SOL (CTf8m9kZ...) @ 0.001230156773 仓位=$5.00(机器人单笔$26的10%)
+[2026-07-27 09:23 UTC] BUY Nongwan / SOL (BfMEoVXz...) @ 8.938372287e-05 仓位=$47.04(机器人单笔$470的10%)
+[2026-07-27 09:23 UTC] BUY Luna / SOL (DiE3ncjs...) @ 5.172122314e-05 仓位=$50.00(机器人单笔$1238的10%)
+[2026-07-27 09:23 UTC] BUY Claude / SOL (3fsF3wiJ...) @ 3.384351049e-06 仓位=$42.13(机器人单笔$421的10%)
+[2026-07-27 09:23 UTC] BUY SWA / SOL (5YJTWrPF...) @ 1.889540145e-05 仓位=$17.37(机器人单笔$174的10%)
+[2026-07-27 09:23 UTC] BUY ROAR / SOL (3TCdRkQ3...) @ 0.001343720033 仓位=$5.00(机器人单笔$45的10%)
+[2026-07-27 09:23 UTC] EXIT Attlee / SOL [TIME] ret=+1.4% pnl=-0.1985U held=33min
+[2026-07-27 09:23 UTC] EXIT Sydney / SOL [SL] ret=-11.8% pnl=-4.7350U held=12min
+[2026-07-27 09:23 UTC] EXIT Nongwan / SOL [SL] ret=-20.1% pnl=-1.0843U held=0min
+[2026-07-27 09:23 UTC] EXIT Nongwan / SOL [SL] ret=-18.8% pnl=-1.0226U held=0min
+[2026-07-27 09:23 UTC] EXIT Nongwan / SOL [TP] ret=+78.1% pnl=+35.0738U held=0min
+[2026-07-27 09:23 UTC] EXIT Claude / SOL [TP] ret=+14.2% pnl=+5.0299U held=0min
+[2026-07-27 09:23 UTC] EXIT SWA / SOL [TP] ret=+17.1% pnl=+2.5557U held=0min
+[2026-07-27 09:23 UTC] CYCLE OK nav=14989.7764 扫描候选13 新入场7 持仓5 已平仓1178
