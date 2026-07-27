@@ -2885,3 +2885,16 @@
 [2026-07-27 10:47 UTC] EXIT Nongwan / SOL [SL] ret=-63.8% pnl=-3.2271U held=6min
 [2026-07-27 10:47 UTC] EXIT WILLY / SOL [TP] ret=+5.4% pnl=+1.0509U held=3min
 [2026-07-27 10:47 UTC] CYCLE OK nav=14981.6341 扫描候选7 新入场2 持仓4 已平仓1291
+[2026-07-27 10:50 UTC] BUY Nongwan / SOL (CTf8m9kZ...) @ 0.001230156773 仓位=$5.00(机器人单笔$36的10%)
+[2026-07-27 10:50 UTC] BUY Claude / SOL (3fsF3wiJ...) @ 4.831764244e-06 仓位=$43.06(机器人单笔$431的10%)
+[2026-07-27 10:50 UTC] BUY CATE / SOL (25oHVjos...) @ 3.429211911e-05 仓位=$14.31(机器人单笔$143的10%)
+[2026-07-27 10:50 UTC] BUY WILLY / SOL (69EonTMb...) @ 9.492258073e-05 仓位=$15.95(机器人单笔$160的10%)
+[2026-07-27 10:50 UTC] BUY SOLdiers / SOL (C4T6ukMx...) @ 1.3339343e-05 仓位=$15.91(机器人单笔$159的10%)
+[2026-07-27 10:50 UTC] BUY Sara / SOL (mWz9x5vG...) @ 1.767175629e-05 仓位=$18.83(机器人单笔$188的10%)
+[2026-07-27 10:50 UTC] EXIT WANDENG / SOL [TP] ret=+44.0% pnl=+2.0567U held=6min
+[2026-07-27 10:50 UTC] EXIT dawang / SOL [TP] ret=+29.3% pnl=+2.4692U held=3min
+[2026-07-27 10:50 UTC] EXIT Nongwan / SOL [SL] ret=-66.0% pnl=-3.3319U held=0min
+[2026-07-27 10:50 UTC] EXIT Claude / SOL [TP] ret=+5.0% pnl=+1.2553U held=0min
+[2026-07-27 10:50 UTC] EXIT SOLdiers / SOL [TP] ret=+11.6% pnl=+1.4887U held=0min
+[2026-07-27 10:50 UTC] EXIT Sara / SOL [SL] ret=-4.1% pnl=-1.1386U held=0min
+[2026-07-27 10:50 UTC] CYCLE OK nav=14980.8833 扫描候选11 新入场6 持仓4 已平仓1297
