@@ -3639,3 +3639,10 @@
 [2026-07-27 14:56 UTC] EXIT ◎ / SOL [TP] ret=+22.5% pnl=+4.3822U held=0min
 [2026-07-27 14:56 UTC] EXIT CATE / SOL [TP] ret=+33.4% pnl=+6.7956U held=0min
 [2026-07-27 14:56 UTC] CYCLE OK nav=16337.1035 扫描候选7 新入场4 持仓7 已平仓1632
+[2026-07-27 14:59 UTC] BUY ◎ / SOL (FbhuKsDC...) @ 2.13795812e-05 仓位=$21.89(机器人单笔$219的10%)
+[2026-07-27 14:59 UTC] BUY CATE / SOL (BwRQL8QW...) @ 0.002232920497 仓位=$22.62(机器人单笔$226的10%)
+[2026-07-27 14:59 UTC] EXIT BONGO / SOL [TP] ret=+22.8% pnl=+1.8557U held=12min
+[2026-07-27 14:59 UTC] EXIT Clark / SOL [SL] ret=-24.5% pnl=-1.3005U held=12min
+[2026-07-27 14:59 UTC] EXIT USOH / SOL [TP] ret=+6.5% pnl=+0.2170U held=6min
+[2026-07-27 14:59 UTC] EXIT ◎ / SOL [TP] ret=+22.5% pnl=+4.3822U held=0min
+[2026-07-27 14:59 UTC] CYCLE OK nav=16342.1462 扫描候选7 新入场2 持仓5 已平仓1636
