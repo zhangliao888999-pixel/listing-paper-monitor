@@ -399,20 +399,20 @@ def try_enter(cfg, wallet, state, c):
         return False
     fresh_price = dil["price"]
 
-    if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < cfg["minLockedLiqPct"]:
-        log(f"SKIP {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%,LP随时能被抽干,不进场")
-        return False
+    # 2026-07-27调整: 用户发现这三条一上来就100%拦截(锁仓比例这类新币普遍是0%),
+    # 直接硬拦会导致完全选不到币、拿不到任何数据去判断门槛设得合不合理。改成只记录
+    # 不拦截,先观察一天真实分布(这些值现在会跟着进closed记录),明天用真实数据定门槛,
+    # 不是现在拍脑袋定的50%/30:1/100%这几个数字。
     buyers, sellers = dil["buyers_h1"], dil["sellers_h1"]
+    buy_sell_ratio = None
     if buyers and sellers is not None:
-        ratio = buyers / max(sellers, 1)
-        if sellers == 0 and buyers > 20:
-            ratio = float("inf")
-        if ratio > cfg["maxBuySellRatio"]:
-            log(f"SKIP {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例过于失衡,像是广撒网吸引接盘")
-            return False
+        buy_sell_ratio = float("inf") if (sellers == 0 and buyers > 20) else buyers / max(sellers, 1)
+    if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < cfg["minLockedLiqPct"]:
+        log(f"NOTE(未拦截) {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%")
+    if buy_sell_ratio is not None and buy_sell_ratio > cfg["maxBuySellRatio"]:
+        log(f"NOTE(未拦截) {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例{buy_sell_ratio:.0f}:1")
     if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > cfg["maxRecentPumpPct"]:
-        log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘")
-        return False
+        log(f"NOTE(未拦截) {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%")
 
     mint = c.get("mint")
     if not mint:
@@ -471,6 +471,13 @@ def try_enter(cfg, wallet, state, c):
     state["positions"][c["addr"]] = {
         "name": c["name"], "mint": mint, "entry_price_usd": fresh_price,
         "qty_raw": out_amount, "usd": pos_size_usd, "t_entry": NOW, "buy_sig": sig,
+        # 入场时的尽调快照,只记录不拦截,明天回看这些值分布跟实际盈亏的关系再定门槛。
+        # ratio存None统一代表"数据缺失或买家人数远超卖家(sellers=0)导致比例无穷大",
+        # 靠下面两个原始人数字段区分是哪种情况,JSON不支持Infinity所以不能直接存
+        "entry_locked_liq_pct": dil["locked_liq_pct"],
+        "entry_buyers_h1": buyers, "entry_sellers_h1": sellers,
+        "entry_buy_sell_ratio_h1": None if buy_sell_ratio == float("inf") else buy_sell_ratio,
+        "entry_price_change_h1_pct": dil["price_change_h1_pct"],
     }
     state["spent_today_usd"] += pos_size_usd
     log(f"BUY {c['name']} ({c['addr'][:8]}...) 成交 sig={sig} 价格={fresh_price:.10g} 仓位=${pos_size_usd:.2f}")

@@ -134,20 +134,21 @@ def try_enter(state, c):
     if liq is not None and liq < MIN_LIQUIDITY_USD:
         log(f"SKIP {c['name']}: 流动性只有${liq:,.0f},低于${MIN_LIQUIDITY_USD:,.0f}门槛,进得去也可能出不来")
         return False
+    # 2026-07-27调整: 这三条一上来就100%拦截(锁仓比例这类新币普遍是0%),直接硬拦
+    # 会导致完全选不到币、拿不到任何数据判断门槛合不合理。改成只记录不拦截,这些值
+    # 会跟着进closed记录,明天用一天的真实分布数据定门槛,不是现在拍脑袋定的数字。
     dil = get_pool_diligence(addr)
+    buy_sell_ratio, buyers, sellers = None, None, None
     if dil:
-        if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < MIN_LOCKED_LIQ_PCT:
-            log(f"SKIP {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%,LP随时能被抽干,不进场")
-            return False
         buyers, sellers = dil["buyers_h1"], dil["sellers_h1"]
         if buyers and sellers is not None:
-            ratio = float("inf") if sellers == 0 and buyers > 20 else buyers / max(sellers, 1)
-            if ratio > MAX_BUY_SELL_RATIO:
-                log(f"SKIP {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例过于失衡,像是广撒网吸引接盘")
-                return False
+            buy_sell_ratio = float("inf") if (sellers == 0 and buyers > 20) else buyers / max(sellers, 1)
+        if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < MIN_LOCKED_LIQ_PCT:
+            log(f"NOTE(未拦截) {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%")
+        if buy_sell_ratio is not None and buy_sell_ratio > MAX_BUY_SELL_RATIO:
+            log(f"NOTE(未拦截) {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例{buy_sell_ratio:.0f}:1")
         if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > MAX_RECENT_PUMP_PCT:
-            log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘")
-            return False
+            log(f"NOTE(未拦截) {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%")
     result = check_scalping(addr)
     if not result.get("flag"):
         return False  # screener缓存可能有点旧,重新确认一遍还在刷量再进场
@@ -167,6 +168,13 @@ def try_enter(state, c):
         "t_entry": NOW, "bot_avg_trade_usd": avg_bot_usd,
         "no_price_checks": 0,  # 持仓期间"拿不到报价"发生了几次,落进closed记录方便事后统计
         "total_checks": 0,     # 持仓期间总共检查了几次(算比例用)
+        # 入场时的尽调快照,只记录不拦截,明天回看这些值分布跟实际盈亏的关系再定门槛。
+        # ratio存None统一代表"数据缺失或买家人数远超卖家(sellers=0)导致比例无穷大",
+        # 靠entry_buyers_h1/entry_sellers_h1两个原始人数字段区分是哪种情况
+        "entry_locked_liq_pct": dil["locked_liq_pct"] if dil else None,
+        "entry_buyers_h1": buyers, "entry_sellers_h1": sellers,
+        "entry_buy_sell_ratio_h1": None if buy_sell_ratio == float("inf") else buy_sell_ratio,
+        "entry_price_change_h1_pct": dil["price_change_h1_pct"] if dil else None,
     }
     log(f"BUY {c['name']} ({addr[:8]}...) @ {entry:.10g} 仓位=${pos_usd:.2f}(机器人单笔${avg_bot_usd:.0f}的{POS_SIZE_PCT_OF_BOT*100:.0f}%)")
     return True
