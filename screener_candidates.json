@@ -1,6 +1,91 @@
 {
- "updated_at": 1785189490,
- "updated_at_str": "2026-07-27 21:58 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785193311,
+ "updated_at_str": "2026-07-27 23:01 UTC",
+ "n_candidates": 3,
+ "candidates": [
+  {
+   "addr": "Gujdah8CpGWDTpHLC2EUdePAwfPFGDBXz6NtXmSC4Jkw",
+   "name": "Grok / SOL",
+   "age_min": 66.86666666666666,
+   "created": 1785189299.0,
+   "price": 4.9446082167047086e-05,
+   "liq": 80543.0046,
+   "vol_15m": 818129.154374232,
+   "vol_1h": 4095302.82033859,
+   "chg_15m": -25.811,
+   "chg_1h": 26.984,
+   "buys_15m": 1656,
+   "sells_15m": 1090,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/Gujdah8CpGWDTpHLC2EUdePAwfPFGDBXz6NtXmSC4Jkw",
+   "mint": "HYvR2Ap9zHBc4D9od4Un8xuDs6fiMWdvXVUQ9LrsQGmN",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": true,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": true,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": null,
+    "wallet_verdict": "32/40个头部钱包卖出不到30%，主力大部分仓位还在场内"
+   }
+  },
+  {
+   "addr": "Guz1tBNJQGKuVFRta7oe9NmoRnAPSwZpHr83YG1Sjwpy",
+   "name": "PATIENCE / SOL",
+   "age_min": 68.61666666666666,
+   "created": 1785189194.0,
+   "price": 0.0005660918653658891,
+   "liq": 56633.7562,
+   "vol_15m": 67467.2585358847,
+   "vol_1h": 244327.905770667,
+   "chg_15m": 11.727,
+   "chg_1h": 169.911,
+   "buys_15m": 682,
+   "sells_15m": 567,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/Guz1tBNJQGKuVFRta7oe9NmoRnAPSwZpHr83YG1Sjwpy",
+   "mint": "Fg9P4xK8pbYaumHhz7QEt2Uma3kNr4PSpEQtUVCgpump",
+   "early_bot_flag": false,
+   "staircase_flag": false,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": 0.9029962472954715,
+    "wallet_verdict": "35/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
+   }
+  },
+  {
+   "addr": "6wCZywuTL7vRS9FU45d5iQWfQ5nZJtEvHMQuMgKYXEWM",
+   "name": "VORF / SOL",
+   "age_min": 67.9,
+   "created": 1785189237.0,
+   "price": 0.015549424109821445,
+   "liq": 283431.2175,
+   "vol_15m": 35395.3127003012,
+   "vol_1h": 100601.65953896,
+   "chg_15m": 14.179,
+   "chg_1h": 51.263,
+   "buys_15m": 493,
+   "sells_15m": 67,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/6wCZywuTL7vRS9FU45d5iQWfQ5nZJtEvHMQuMgKYXEWM",
+   "mint": "HFVPqit7dekqsqtruyDy6AgdpwVbBMefHYXGY1CZPump",
+   "early_bot_flag": null,
+   "staircase_flag": true,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": true,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": -3.267212083183521,
+    "wallet_verdict": "钱包画像未见明显控盘迹象"
+   }
+  }
+ ]
 }
