@@ -1890,3 +1890,14 @@
 [2026-07-27 05:08 UTC] EXIT SalaryCat / SOL [SL] ret=-16.5% pnl=-0.9102U held=0min
 [2026-07-27 05:08 UTC] EXIT UCOE / SOL [TP] ret=+15.3% pnl=+4.4494U held=0min
 [2026-07-27 05:08 UTC] CYCLE OK nav=13252.9197 扫描候选10 新入场4 持仓5 已平仓841
+[2026-07-27 05:11 UTC] BUY HUTCH / SOL (HDqNuA8D...) @ 1.734527994e-05 仓位=$22.97(机器人单笔$230的10%)
+[2026-07-27 05:11 UTC] BUY Puffin / SOL (3G881yTc...) @ 7.323962388e-05 仓位=$50.00(机器人单笔$500的10%)
+[2026-07-27 05:11 UTC] BUY wifcat / SOL (H6DTNLW6...) @ 1.089528994e-05 仓位=$30.15(机器人单笔$301的10%)
+[2026-07-27 05:11 UTC] BUY SalaryCat / SOL (3RSWFQEy...) @ 0.003821539234 仓位=$5.00(机器人单笔$34的10%)
+[2026-07-27 05:11 UTC] BUY UCOE / SOL (mfxnaMKW...) @ 2.618408101e-05 仓位=$33.44(机器人单笔$334的10%)
+[2026-07-27 05:11 UTC] EXIT HOOD / SOL [TP] ret=+14.5% pnl=+6.1123U held=3min
+[2026-07-27 05:11 UTC] EXIT HUTCH / SOL [TP] ret=+32.4% pnl=+6.8340U held=0min
+[2026-07-27 05:11 UTC] EXIT wifcat / SOL [TP] ret=+37.0% pnl=+10.3351U held=0min
+[2026-07-27 05:11 UTC] EXIT SalaryCat / SOL [SL] ret=-17.8% pnl=-0.9730U held=0min
+[2026-07-27 05:11 UTC] EXIT UCOE / SOL [TP] ret=+20.8% pnl=+6.1383U held=0min
+[2026-07-27 05:11 UTC] CYCLE OK nav=13284.3989 扫描候选10 新入场5 持仓5 已平仓846
