@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13604.14322202729,
+ "cash": 13556.038713554815,
  "positions": {
   "5sRnC3uJvdaP6ogx5SH5H6xMnpyJ6ZFCL7jeCcM41Qak": {
    "name": "C𖦹T / SOL",
@@ -29,18 +29,8 @@
    "usd": 7.2940000000000005,
    "t_entry": 1785136083,
    "bot_avg_trade_usd": 72.94,
-   "mark": 9.68598000615759e-06,
-   "mark_ret": -0.002697678052471675
-  },
-  "ENJ439G85991g7HNzVLjHEGxedJZF2AukUfLEz2wsopg": {
-   "name": "Nongwan / SOL",
-   "entry": 0.0011766834306738256,
-   "qty": 4249.231245770801,
-   "usd": 5,
-   "t_entry": 1785136083,
-   "bot_avg_trade_usd": 14.96,
-   "mark": 0.001158634339888054,
-   "mark_ret": -0.015338952104930859
+   "mark": 9.724904718299799e-06,
+   "mark_ret": 0.00131014622301584
   },
   "9QqLsCE9kPY8jVoaVWFHayhjnb8Cuthj9eDe8PzuoeLz": {
    "name": "CHILLDOG / SOL",
@@ -49,6 +39,22 @@
    "usd": 22.206000000000003,
    "t_entry": 1785136443,
    "bot_avg_trade_usd": 222.06
+  },
+  "6T3mbtTVzgSFy2t4CgxUiuAPAMSMtGmmNdkeXvQhvyFg": {
+   "name": "USWR / SOL",
+   "entry": 0.029899358949149118,
+   "qty": 225.82423962611912,
+   "usd": 6.752,
+   "t_entry": 1785136623,
+   "bot_avg_trade_usd": 67.52
+  },
+  "AwyjRv3Y9gfkeUpCmpmx5pUJNoJggPRBJBbdcYPQUdfJ": {
+   "name": "Nongwan / SOL",
+   "entry": 0.00023182740212879455,
+   "qty": 198807.38677472947,
+   "usd": 46.089,
+   "t_entry": 1785136623,
+   "bot_avg_trade_usd": 460.89
   }
  },
  "closed": [
@@ -15006,7 +15012,22 @@
    "reason": "TP",
    "pnl": 0.3484,
    "t_exit": 1785136443
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.0011766834306738256,
+   "qty": 4249.231245770801,
+   "usd": 5,
+   "t_entry": 1785136083,
+   "bot_avg_trade_usd": 14.96,
+   "mark": 0.001137418591829573,
+   "mark_ret": -0.0333690760154306,
+   "addr": "ENJ439G85991g7HNzVLjHEGxedJZF2AukUfLEz2wsopg",
+   "exit": 0.0011146702199929816,
+   "reason": "SL",
+   "pnl": -0.2635,
+   "t_exit": 1785136623
   }
  ],
- "realized_pnl": 3705.210222027294
+ "realized_pnl": 3704.9467135548184
 }
