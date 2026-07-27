@@ -2918,3 +2918,11 @@
 [2026-07-27 10:56 UTC] EXIT Sara / SOL [SL] ret=-25.8% pnl=-4.6711U held=0min
 [2026-07-27 10:56 UTC] EXIT Nongwan / SOL [TP] ret=+14.4% pnl=+0.9633U held=0min
 [2026-07-27 10:56 UTC] CYCLE OK nav=14977.8487 扫描候选11 新入场5 持仓8 已平仓1304
+[2026-07-27 10:59 UTC] BUY SOLdiers / SOL (C4T6ukMx...) @ 1.3339343e-05 仓位=$14.45(机器人单笔$144的10%)
+[2026-07-27 10:59 UTC] BUY Sara / SOL (mWz9x5vG...) @ 1.767175629e-05 仓位=$17.12(机器人单笔$171的10%)
+[2026-07-27 10:59 UTC] BUY Nongwan / SOL (DqTqjGwb...) @ 9.358238666e-05 仓位=$8.10(机器人单笔$81的10%)
+[2026-07-27 10:59 UTC] EXIT Nongwan / SOL [SL] ret=-65.3% pnl=-3.3005U held=12min
+[2026-07-27 10:59 UTC] EXIT WILLY / SOL [TP] ret=+11.7% pnl=+1.5069U held=3min
+[2026-07-27 10:59 UTC] EXIT Sara / SOL [SL] ret=-25.8% pnl=-4.6711U held=0min
+[2026-07-27 10:59 UTC] EXIT Nongwan / SOL [TP] ret=+18.0% pnl=+1.2683U held=0min
+[2026-07-27 10:59 UTC] CYCLE OK nav=14973.2495 扫描候选11 新入场3 持仓7 已平仓1308
