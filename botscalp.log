@@ -3737,3 +3737,13 @@
 [2026-07-27 15:35 UTC] EXIT SalaryCat / SOL [SL] ret=-22.4% pnl=-1.1982U held=0min
 [2026-07-27 15:35 UTC] EXIT ◎ / SOL [SL] ret=-7.0% pnl=-0.4441U held=0min
 [2026-07-27 15:35 UTC] CYCLE OK nav=16370.3435 扫描候选9 新入场5 持仓8 已平仓1674
+[2026-07-27 15:38 UTC] BUY SalaryCat / SOL (AVFpKzmt...) @ 0.0015376715 仓位=$5.00(机器人单笔$41的10%)
+[2026-07-27 15:38 UTC] BUY CATE / SOL (CybgsPhr...) @ 2.284185529e-05 仓位=$7.80(机器人单笔$78的10%)
+[2026-07-27 15:38 UTC] BUY ◎ / SOL (AjtLwy3U...) @ 0.0005807281972 仓位=$5.00(机器人单笔$45的10%)
+[2026-07-27 15:38 UTC] EXIT AEON / SOL [TIME] ret=-2.0% pnl=-1.9608U held=30min
+[2026-07-27 15:38 UTC] EXIT BASEment / SOL [TIME] ret=-2.0% pnl=-1.0481U held=30min
+[2026-07-27 15:38 UTC] EXIT USOP / SOL [TP] ret=+6.4% pnl=+1.0888U held=3min
+[2026-07-27 15:38 UTC] EXIT ORANGECOIN / SOL [SL] ret=-14.8% pnl=-2.5120U held=3min
+[2026-07-27 15:38 UTC] EXIT CATE / SOL [TP] ret=+21.4% pnl=+1.4760U held=0min
+[2026-07-27 15:38 UTC] EXIT ◎ / SOL [SL] ret=-7.0% pnl=-0.4440U held=0min
+[2026-07-27 15:38 UTC] CYCLE OK nav=16368.3412 扫描候选9 新入场3 持仓5 已平仓1680
