@@ -1540,3 +1540,11 @@
 [2026-07-27 03:26 UTC] EXIT CATE / SOL [TP] ret=+10.6% pnl=+0.6194U held=0min
 [2026-07-27 03:26 UTC] EXIT memehouse / SOL [TP] ret=+38.2% pnl=+1.7698U held=0min
 [2026-07-27 03:26 UTC] CYCLE OK nav=13069.3253 扫描候选10 新入场5 持仓9 已平仓680
+[2026-07-27 03:29 UTC] BUY CATE / SOL (HyQLVUuS...) @ 0.04818115143 仓位=$6.29(机器人单笔$63的10%)
+[2026-07-27 03:29 UTC] BUY memehouse / SOL (H9J4jtFW...) @ 1.899085372e-05 仓位=$5.00(机器人单笔$12的10%)
+[2026-07-27 03:29 UTC] EXIT TRUMP2028 / SOL [SL] ret=-17.1% pnl=-8.8063U held=15min
+[2026-07-27 03:29 UTC] EXIT MAGAVERSE / SOL [TP] ret=+9.3% pnl=+3.5447U held=3min
+[2026-07-27 03:29 UTC] EXIT CHIRP / SOL [TP] ret=+8.4% pnl=+1.4990U held=3min
+[2026-07-27 03:29 UTC] EXIT CATE / SOL [TP] ret=+13.7% pnl=+0.7164U held=0min
+[2026-07-27 03:29 UTC] EXIT memehouse / SOL [TP] ret=+16.2% pnl=+0.6957U held=0min
+[2026-07-27 03:29 UTC] CYCLE OK nav=13066.6954 扫描候选10 新入场2 持仓6 已平仓685
