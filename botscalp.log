@@ -3809,3 +3809,12 @@
 [2026-07-27 16:02 UTC] EXIT CXMT / SOL [SL] ret=-55.4% pnl=-11.0663U held=0min
 [2026-07-27 16:02 UTC] EXIT MISO / SOL [TP] ret=+14.2% pnl=+3.6273U held=0min
 [2026-07-27 16:02 UTC] CYCLE OK nav=16391.5625 扫描候选12 新入场6 持仓8 已平仓1706
+[2026-07-27 16:08 UTC] BUY SalaryCat / SOL (AVFpKzmt...) @ 0.001626632987 仓位=$5.00(机器人单笔$45的10%)
+[2026-07-27 16:08 UTC] BUY MPGA / SOL (Gn83x4Yb...) @ 0.006002707294 仓位=$5.00(机器人单笔$32的10%)
+[2026-07-27 16:08 UTC] EXIT D / SOL [TIME] ret=+2.3% pnl=+0.0685U held=39min
+[2026-07-27 16:08 UTC] EXIT USWR / SOL [TP] ret=+12.2% pnl=+1.5951U held=21min
+[2026-07-27 16:08 UTC] EXIT USOP / SOL [TP] ret=+25.0% pnl=+6.9565U held=15min
+[2026-07-27 16:08 UTC] EXIT CASHBULL / SOL [SL] ret=-15.3% pnl=-2.5807U held=6min
+[2026-07-27 16:08 UTC] EXIT CATE / SOL [TP] ret=+70.7% pnl=+5.2881U held=6min
+[2026-07-27 16:08 UTC] EXIT SalaryCat / SOL [TP] ret=+14.8% pnl=+0.6264U held=0min
+[2026-07-27 16:08 UTC] CYCLE OK nav=16402.1715 扫描候选8 新入场2 持仓4 已平仓1712
