@@ -1408,3 +1408,8 @@
 [2026-07-27 02:47 UTC] BUY SalaryCat / SOL (3RSWFQEy...) @ 0.002660449203 仓位=$5.46(机器人单笔$55的10%)
 [2026-07-27 02:47 UTC] EXIT SalaryCat / SOL [SL] ret=-9.6% pnl=-0.6237U held=0min
 [2026-07-27 02:47 UTC] CYCLE OK nav=13014.3104 扫描候选7 新入场3 持仓6 已平仓621
+[2026-07-27 02:50 UTC] BUY SalaryCat / SOL (3RSWFQEy...) @ 0.002660449203 仓位=$5.00(机器人单笔$43的10%)
+[2026-07-27 02:50 UTC] EXIT Kittens / SOL [TP] ret=+6.2% pnl=+2.0357U held=9min
+[2026-07-27 02:50 UTC] EXIT IF / SOL [TP] ret=+26.2% pnl=+11.8206U held=9min
+[2026-07-27 02:50 UTC] EXIT USOX / SOL [SL] ret=-41.6% pnl=-3.0321U held=3min
+[2026-07-27 02:50 UTC] CYCLE OK nav=13022.9133 扫描候选7 新入场1 持仓4 已平仓624
