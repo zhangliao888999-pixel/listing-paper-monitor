@@ -2661,3 +2661,20 @@
 [2026-07-27 09:26 UTC] EXIT WILLY / SOL [SL] ret=-7.2% pnl=-1.6351U held=0min
 [2026-07-27 09:26 UTC] EXIT WAN / SOL [SL] ret=-8.1% pnl=-0.4972U held=0min
 [2026-07-27 09:26 UTC] CYCLE OK nav=14996.6255 扫描候选15 新入场10 持仓7 已平仓1186
+[2026-07-27 09:32 UTC] BUY Nongwan / SOL (CTf8m9kZ...) @ 0.001230156773 仓位=$5.00(机器人单笔$36的10%)
+[2026-07-27 09:32 UTC] BUY Nongwan / SOL (BfMEoVXz...) @ 0.0001463354931 仓位=$44.17(机器人单笔$442的10%)
+[2026-07-27 09:32 UTC] BUY Claude / SOL (3fsF3wiJ...) @ 3.563868803e-06 仓位=$41.85(机器人单笔$418的10%)
+[2026-07-27 09:32 UTC] BUY Luna / SOL (DiE3ncjs...) @ 6.502915884e-05 仓位=$50.00(机器人单笔$1310的10%)
+[2026-07-27 09:32 UTC] BUY ROBIN / SOL (9KPwfm9e...) @ 1.172370496e-05 仓位=$20.66(机器人单笔$207的10%)
+[2026-07-27 09:32 UTC] BUY Nongwan / SOL (iWnBbWWU...) @ 0.0001259762041 仓位=$50.00(机器人单笔$783的10%)
+[2026-07-27 09:32 UTC] BUY 中国人能飞 / SOL (HPVFtEv9...) @ 2.229859745e-05 仓位=$21.21(机器人单笔$212的10%)
+[2026-07-27 09:32 UTC] BUY WAN / SOL (7GCBeSU9...) @ 4.051207015e-05 仓位=$9.90(机器人单笔$99的10%)
+[2026-07-27 09:32 UTC] EXIT Sydney / SOL [TP] ret=+22.7% pnl=+8.5898U held=6min
+[2026-07-27 09:32 UTC] EXIT RPEPE / USDC [TP] ret=+78.5% pnl=+3.7474U held=6min
+[2026-07-27 09:32 UTC] EXIT Nongwan / SOL [TP] ret=+27.1% pnl=+10.8654U held=0min
+[2026-07-27 09:32 UTC] EXIT Claude / SOL [TP] ret=+16.6% pnl=+5.9674U held=0min
+[2026-07-27 09:32 UTC] EXIT ROBIN / SOL [TP] ret=+10.1% pnl=+1.6290U held=0min
+[2026-07-27 09:32 UTC] EXIT Nongwan / SOL [SL] ret=-4.7% pnl=-3.3247U held=0min
+[2026-07-27 09:32 UTC] EXIT 中国人能飞 / SOL [SL] ret=-9.8% pnl=-2.4632U held=0min
+[2026-07-27 09:32 UTC] EXIT WAN / SOL [SL] ret=-7.2% pnl=-0.8924U held=0min
+[2026-07-27 09:32 UTC] CYCLE OK nav=15020.8540 扫描候选15 新入场8 持仓7 已平仓1194

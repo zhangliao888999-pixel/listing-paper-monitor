@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 14857.451050507403,
+ "cash": 14874.001795650593,
  "positions": {
   "3VY8SuT5GBrFubs3TY1gR68Erk4ygS837Cis5sFmfnpQ": {
    "name": "Attlee / SOL",
@@ -29,8 +29,8 @@
    "usd": 5,
    "t_entry": 1785144182,
    "bot_avg_trade_usd": 45.37,
-   "mark": 0.0013087602342975223,
-   "mark_ret": -0.026017174656817743
+   "mark": 0.0013118986606109873,
+   "mark_ret": -0.02368154949965462
   },
   "J5zUqUVwjhtRTgixEFEL3bpNvZcW5Rfb12sR55Tc715L": {
    "name": "Nongwan / SOL",
@@ -50,23 +50,21 @@
    "mark": 1.59869318881326e-05,
    "mark_ret": -0.019607843137254943
   },
-  "2WBj1eZ9oCSyvP2jpLWxvGkiWczzQXsofqyYT82Byjyo": {
-   "name": "Sydney / SOL",
-   "entry": 5.4916427314640595e-05,
-   "qty": 772664.9761261459,
-   "usd": 42.432,
-   "t_entry": 1785144363,
-   "bot_avg_trade_usd": 424.32
-  },
-  "2qFdWuP55DsaFyvN2WQrvtbqCChCfmM8rg6FEMnn7etd": {
-   "name": "RPEPE / USDC",
-   "entry": 1.4874544725754107e-05,
-   "qty": 336144.7420533747,
+  "CTf8m9kZGu7VYudCqtotLWFfVR6wh9xNagM14h7h7kmj": {
+   "name": "Nongwan / SOL",
+   "entry": 0.0012301567727202884,
+   "qty": 4064.5225965332256,
    "usd": 5,
-   "t_entry": 1785144363,
-   "bot_avg_trade_usd": 1.46,
-   "mark": 1.4582886986033438e-05,
-   "mark_ret": -0.019607843137254943
+   "t_entry": 1785144723,
+   "bot_avg_trade_usd": 36.1
+  },
+  "DiE3ncjsmvtMbniNCh1S5Ef4Kh8mHtsYpP6FqiAQ3HUK": {
+   "name": "Luna / SOL",
+   "entry": 6.502915884428633e-05,
+   "qty": 768885.8488809003,
+   "usd": 50,
+   "t_entry": 1785144723,
+   "bot_avg_trade_usd": 1309.56
   }
  },
  "closed": [
@@ -17859,7 +17857,127 @@
    "reason": "SL",
    "pnl": -0.4972,
    "t_exit": 1785144363
+  },
+  {
+   "name": "Sydney / SOL",
+   "entry": 5.4916427314640595e-05,
+   "qty": 772664.9761261459,
+   "usd": 42.432,
+   "t_entry": 1785144363,
+   "bot_avg_trade_usd": 424.32,
+   "mark": 6.738118371271054e-05,
+   "mark_ret": 0.22697682656327633,
+   "addr": "2WBj1eZ9oCSyvP2jpLWxvGkiWczzQXsofqyYT82Byjyo",
+   "exit": 6.603356003845633e-05,
+   "reason": "TP",
+   "pnl": 8.5898,
+   "t_exit": 1785144723
+  },
+  {
+   "name": "RPEPE / USDC",
+   "entry": 1.4874544725754107e-05,
+   "qty": 336144.7420533747,
+   "usd": 5,
+   "t_entry": 1785144363,
+   "bot_avg_trade_usd": 1.46,
+   "mark": 2.655368422610271e-05,
+   "mark_ret": 0.785176266950012,
+   "addr": "2qFdWuP55DsaFyvN2WQrvtbqCChCfmM8rg6FEMnn7etd",
+   "exit": 2.6022610541580653e-05,
+   "reason": "TP",
+   "pnl": 3.7474,
+   "t_exit": 1785144723
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.00014633549309133807,
+   "qty": 301847.4812015007,
+   "usd": 44.171,
+   "t_entry": 1785144723,
+   "bot_avg_trade_usd": 441.71,
+   "mark": 0.00018605302961996175,
+   "mark_ret": 0.27141423922242325,
+   "addr": "BfMEoVXzUHCMjx9MrfczBEs5z2hdprPPfHruzMnhYrzB",
+   "exit": 0.0001823319690275625,
+   "reason": "TP",
+   "pnl": 10.8654,
+   "t_exit": 1785144723
+  },
+  {
+   "name": "Claude / SOL",
+   "entry": 3.5638688029565814e-06,
+   "qty": 11742295.329525866,
+   "usd": 41.848000000000006,
+   "t_entry": 1785144723,
+   "bot_avg_trade_usd": 418.48,
+   "mark": 4.155166354680661e-06,
+   "mark_ret": 0.16591451156494297,
+   "addr": "3fsF3wiJ3ZysDiphT85mKHMkyC67d8TY3n7cU8dG3YmZ",
+   "exit": 4.072063027587047e-06,
+   "reason": "TP",
+   "pnl": 5.9674,
+   "t_exit": 1785144723
+  },
+  {
+   "name": "ROBIN / SOL",
+   "entry": 1.172370496365493e-05,
+   "qty": 1762241.5494119641,
+   "usd": 20.66,
+   "t_entry": 1785144723,
+   "bot_avg_trade_usd": 206.6,
+   "mark": 1.290623210474535e-05,
+   "mark_ret": 0.1008663340434115,
+   "addr": "9KPwfm9eqWF3J5vNgyueKYeudaGg84gkvnWewpSn6mU7",
+   "exit": 1.2648107462650444e-05,
+   "reason": "TP",
+   "pnl": 1.629,
+   "t_exit": 1785144723
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.00012597620408971578,
+   "qty": 396900.35400964913,
+   "usd": 50,
+   "t_entry": 1785144723,
+   "bot_avg_trade_usd": 783.13,
+   "mark": 0.00011999953230799544,
+   "mark_ret": -0.04744286291928568,
+   "addr": "iWnBbWWUnepXaHA3Ywxsyk5SbTFj2svEBq4VzF5Nk3s",
+   "exit": 0.00011759954166183553,
+   "reason": "SL",
+   "pnl": -3.3247,
+   "t_exit": 1785144723
+  },
+  {
+   "name": "中国人能飞 / SOL",
+   "entry": 2.2298597451277642e-05,
+   "qty": 951091.2085990793,
+   "usd": 21.208000000000002,
+   "t_entry": 1785144723,
+   "bot_avg_trade_usd": 212.08,
+   "mark": 2.011094054437822e-05,
+   "mark_ret": -0.09810737700787886,
+   "addr": "HPVFtEv9Efn6ua9WPH6t5qHur4ErZY6gnuUPqqWtoBHs",
+   "exit": 1.9708721733490655e-05,
+   "reason": "SL",
+   "pnl": -2.4632,
+   "t_exit": 1785144723
+  },
+  {
+   "name": "WAN / SOL",
+   "entry": 4.0512070150735956e-05,
+   "qty": 244396.2987613492,
+   "usd": 9.901000000000002,
+   "t_entry": 1785144723,
+   "bot_avg_trade_usd": 99.01,
+   "mark": 3.761303954988646e-05,
+   "mark_ret": -0.07155967567351862,
+   "addr": "7GCBeSU9Dkip3NNzgkqWYA2HUHi81atFQcRygFocy7RN",
+   "exit": 3.686077875888873e-05,
+   "reason": "SL",
+   "pnl": -0.8924,
+   "t_exit": 1785144723
   }
  ],
- "realized_pnl": 4998.493050507411
+ "realized_pnl": 5022.611795650601
 }
