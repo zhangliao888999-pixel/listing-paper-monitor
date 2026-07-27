@@ -3169,3 +3169,12 @@
 [2026-07-27 12:20 UTC] EXIT USOX / SOL [SL] ret=-97.1% pnl=-5.9803U held=0min
 [2026-07-27 12:20 UTC] EXIT Nongwan / SOL [TP] ret=+15.3% pnl=+1.1711U held=0min
 [2026-07-27 12:20 UTC] CYCLE OK nav=15859.2954 扫描候选9 新入场3 持仓6 已平仓1420
+[2026-07-27 12:23 UTC] BUY HOOD / SOL (FkyuLuEL...) @ 0.0001006939784 仓位=$50.00(机器人单笔$720的10%)
+[2026-07-27 12:23 UTC] BUY SHIBCAT / SOL (3MwwpX31...) @ 4.617430035e-05 仓位=$50.00(机器人单笔$559的10%)
+[2026-07-27 12:23 UTC] BUY USOX / SOL (5wYRUoqG...) @ 0.001222513832 仓位=$5.00(机器人单笔$6的10%)
+[2026-07-27 12:23 UTC] BUY Nongwan / SOL (DqTqjGwb...) @ 0.0001724168288 仓位=$10.49(机器人单笔$105的10%)
+[2026-07-27 12:23 UTC] EXIT speedrun / SOL [SL] ret=-7.4% pnl=-3.6887U held=3min
+[2026-07-27 12:23 UTC] EXIT HOOD / SOL [TP] ret=+24.5% pnl=+11.0090U held=0min
+[2026-07-27 12:23 UTC] EXIT USOX / SOL [SL] ret=-99.9% pnl=-4.9944U held=0min
+[2026-07-27 12:23 UTC] EXIT Nongwan / SOL [TP] ret=+24.6% pnl=+2.3194U held=0min
+[2026-07-27 12:23 UTC] CYCLE OK nav=15863.5271 扫描候选9 新入场4 持仓6 已平仓1424
