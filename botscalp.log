@@ -4887,3 +4887,10 @@
 [2026-07-27 21:50 UTC] EXIT まんてん / SOL [SL] ret=-4.4% pnl=-0.3148U held=3min
 [2026-07-27 21:50 UTC] EXIT me-me / SOL [TP] ret=+108.6% pnl=+38.4336U held=0min
 [2026-07-27 21:50 UTC] CYCLE OK nav=13689.9129 扫描候选7 新入场2 持仓8 已平仓2173
+[2026-07-27 21:53 UTC] BUY me-me / SOL (GbLikM4V...) @ 0.0001252985844 仓位=$41.11(机器人单笔$411的10%)
+[2026-07-27 21:53 UTC] BUY まんてん / SOL (FepJFaup...) @ 2.435155835e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 21:53 UTC] SKIP EXIT CHECK CXMT / SOL: cur=0.3367829274相对入场价异常(ret=599759%),疑似报价数据错误,这轮不判断止盈止损
+[2026-07-27 21:53 UTC] EXIT Tepe / SOL [TIME] ret=-2.0% pnl=-0.3789U held=30min
+[2026-07-27 21:53 UTC] EXIT CATE / SOL [TIME] ret=+0.4% pnl=-0.2862U held=30min
+[2026-07-27 21:53 UTC] EXIT me-me / SOL [TP] ret=+57.2% pnl=+22.2103U held=0min
+[2026-07-27 21:53 UTC] CYCLE OK nav=13711.7471 扫描候选7 新入场2 持仓7 已平仓2176
