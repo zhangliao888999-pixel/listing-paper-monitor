@@ -1663,3 +1663,13 @@
 [2026-07-27 04:05 UTC] EXIT wifcat / SOL [TP] ret=+10.1% pnl=+2.5216U held=0min
 [2026-07-27 04:05 UTC] EXIT USOX / SOL [TP] ret=+5.6% pnl=+0.1964U held=0min
 [2026-07-27 04:05 UTC] CYCLE OK nav=13166.5535 扫描候选9 新入场4 持仓7 已平仓737
+[2026-07-27 04:08 UTC] BUY MAGAVERSE / SOL (Chysq8jg...) @ 8.629182413e-05 仓位=$50.00(机器人单笔$1273的10%)
+[2026-07-27 04:08 UTC] BUY SEB / SOL (4ifthcff...) @ 5.396609602e-05 仓位=$48.17(机器人单笔$482的10%)
+[2026-07-27 04:08 UTC] BUY wifcat / SOL (H6DTNLW6...) @ 8.618469523e-06 仓位=$28.14(机器人单笔$281的10%)
+[2026-07-27 04:08 UTC] BUY USOX / SOL (AebwXbAH...) @ 0.01775013574 仓位=$5.00(机器人单笔$41的10%)
+[2026-07-27 04:08 UTC] EXIT HUTCH / SOL [SL] ret=-8.9% pnl=-1.6178U held=6min
+[2026-07-27 04:08 UTC] EXIT BINU / SOL [SL] ret=-11.1% pnl=-3.0597U held=3min
+[2026-07-27 04:08 UTC] EXIT MAGAVERSE / SOL [TP] ret=+9.8% pnl=+3.7997U held=0min
+[2026-07-27 04:08 UTC] EXIT wifcat / SOL [TP] ret=+19.7% pnl=+4.8810U held=0min
+[2026-07-27 04:08 UTC] EXIT USOX / SOL [TP] ret=+7.1% pnl=+0.2495U held=0min
+[2026-07-27 04:08 UTC] CYCLE OK nav=13172.4015 扫描候选9 新入场4 持仓6 已平仓742
