@@ -2678,3 +2678,24 @@
 [2026-07-27 09:32 UTC] EXIT 中国人能飞 / SOL [SL] ret=-9.8% pnl=-2.4632U held=0min
 [2026-07-27 09:32 UTC] EXIT WAN / SOL [SL] ret=-7.2% pnl=-0.8924U held=0min
 [2026-07-27 09:32 UTC] CYCLE OK nav=15020.8540 扫描候选15 新入场8 持仓7 已平仓1194
+[2026-07-27 09:38 UTC] BUY Nongwan / SOL (BfMEoVXz...) @ 0.0001813491825 仓位=$46.08(机器人单笔$461的10%)
+[2026-07-27 09:38 UTC] BUY Claude / SOL (3fsF3wiJ...) @ 3.977630871e-06 仓位=$41.54(机器人单笔$415的10%)
+[2026-07-27 09:38 UTC] BUY Sydney / SOL (2WBj1eZ9...) @ 7.563934128e-05 仓位=$39.63(机器人单笔$396的10%)
+[2026-07-27 09:38 UTC] BUY ROBIN / SOL (9KPwfm9e...) @ 1.273239554e-05 仓位=$23.44(机器人单笔$234的10%)
+[2026-07-27 09:38 UTC] BUY SWA / SOL (5YJTWrPF...) @ 1.841106479e-05 仓位=$19.22(机器人单笔$192的10%)
+[2026-07-27 09:38 UTC] BUY cock / SOL (6GJwQ4jD...) @ 0.0002999966332 仓位=$26.54(机器人单笔$265的10%)
+[2026-07-27 09:38 UTC] BUY RUN / SOL (4vayZ97Y...) @ 0.0006098192306 仓位=$23.49(机器人单笔$235的10%)
+[2026-07-27 09:38 UTC] BUY Sydney / SOL (FxuW1jyv...) @ 0.0003502205207 仓位=$5.00(机器人单笔$42的10%)
+[2026-07-27 09:38 UTC] BUY RPEPE / USDC (2qFdWuP5...) @ 2.708475791e-05 仓位=$5.00(机器人单笔$2的10%)
+[2026-07-27 09:38 UTC] BUY WENGU / SOL (7JcHcK5n...) @ 4.139445832e-05 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-27 09:38 UTC] EXIT Attlee / SOL [TIME] ret=-2.0% pnl=-1.8091U held=54min
+[2026-07-27 09:38 UTC] EXIT Nongwan / SOL [SL] ret=-40.2% pnl=-2.0709U held=12min
+[2026-07-27 09:38 UTC] EXIT Nongwan / SOL [SL] ret=-42.7% pnl=-2.1941U held=6min
+[2026-07-27 09:38 UTC] EXIT Nongwan / SOL [TP] ret=+10.0% pnl=+3.5977U held=0min
+[2026-07-27 09:38 UTC] EXIT Claude / SOL [TP] ret=+10.6% pnl=+3.4857U held=0min
+[2026-07-27 09:38 UTC] EXIT ROBIN / SOL [SL] ret=-3.8% pnl=-1.3530U held=0min
+[2026-07-27 09:38 UTC] EXIT SWA / SOL [SL] ret=-15.2% pnl=-3.2533U held=0min
+[2026-07-27 09:38 UTC] EXIT cock / SOL [SL] ret=-18.2% pnl=-5.2636U held=0min
+[2026-07-27 09:38 UTC] EXIT RUN / SOL [TP] ret=+13.1% pnl=+2.5445U held=0min
+[2026-07-27 09:38 UTC] EXIT WENGU / SOL [SL] ret=-41.3% pnl=-2.1233U held=0min
+[2026-07-27 09:38 UTC] CYCLE OK nav=15013.2210 扫描候选16 新入场10 持仓7 已平仓1204
