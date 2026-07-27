@@ -1112,3 +1112,12 @@
 [2026-07-27 00:47 UTC] EXIT CALVIN / SOL [SL] ret=-6.7% pnl=-1.3643U held=0min
 [2026-07-27 00:47 UTC] EXIT thesis / SOL [SL] ret=-3.1% pnl=-0.2509U held=0min
 [2026-07-27 00:47 UTC] CYCLE OK nav=12955.8312 扫描候选8 新入场5 持仓6 已平仓493
+[2026-07-27 00:50 UTC] BUY CATE / SOL (DcZkfifA...) @ 2.108429147e-05 仓位=$14.53(机器人单笔$145的10%)
+[2026-07-27 00:50 UTC] BUY VORF / SOL (DJo2AJPC...) @ 0.01832115503 仓位=$6.36(机器人单笔$64的10%)
+[2026-07-27 00:50 UTC] BUY CALVIN / SOL (G7vXhMFb...) @ 1.337872369e-05 仓位=$16.76(机器人单笔$168的10%)
+[2026-07-27 00:50 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 9.723445421e-06 仓位=$5.00(机器人单笔$35的10%)
+[2026-07-27 00:50 UTC] EXIT SalaryCat / SOL [TP] ret=+19.4% pnl=+0.8510U held=21min
+[2026-07-27 00:50 UTC] EXIT HOUSECAT / SOL [TP] ret=+186.0% pnl=+19.8400U held=3min
+[2026-07-27 00:50 UTC] EXIT CATE / SOL [TP] ret=+15.9% pnl=+1.9709U held=0min
+[2026-07-27 00:50 UTC] EXIT thesis / SOL [SL] ret=-3.1% pnl=-0.2509U held=0min
+[2026-07-27 00:50 UTC] CYCLE OK nav=12978.1990 扫描候选8 新入场4 持仓6 已平仓497
