@@ -970,3 +970,18 @@
 [2026-07-27 00:02 UTC] EXIT CATE / SOL [TP] ret=+8.3% pnl=+1.0935U held=0min
 [2026-07-27 00:02 UTC] EXIT Kabosu / SOL [SL] ret=-16.8% pnl=-0.9216U held=0min
 [2026-07-27 00:02 UTC] CYCLE OK nav=13078.0494 扫描候选9 新入场3 持仓7 已平仓429
+[2026-07-27 00:05 UTC] BUY CATE / SOL (DcZkfifA...) @ 2.108429147e-05 仓位=$18.71(机器人单笔$187的10%)
+[2026-07-27 00:05 UTC] BUY BRODIE / SOL (4RYHTrky...) @ 2.687326505e-05 仓位=$50.00(机器人单笔$746的10%)
+[2026-07-27 00:05 UTC] BUY SMOOTHIE / SOL (ANS9Nnto...) @ 2.3184802e-05 仓位=$10.19(机器人单笔$102的10%)
+[2026-07-27 00:05 UTC] BUY USOX / SOL (FStofE1H...) @ 0.02503344425 仓位=$8.12(机器人单笔$81的10%)
+[2026-07-27 00:05 UTC] BUY SalaryCat / SOL (FedX2ude...) @ 0.002033369687 仓位=$5.00(机器人单笔$41的10%)
+[2026-07-27 00:05 UTC] BUY Kabosu / SOL (7LfFJ8vG...) @ 1.526198505e-05 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-27 00:05 UTC] EXIT thesis / SOL [TP] ret=+6.5% pnl=+0.2192U held=21min
+[2026-07-27 00:05 UTC] EXIT USOX / SOL [SL] ret=-100.0% pnl=-4.9998U held=18min
+[2026-07-27 00:05 UTC] EXIT CHANGE / SOL [SL] ret=-30.7% pnl=-11.2533U held=15min
+[2026-07-27 00:05 UTC] EXIT BABYCATE / SOL [SL] ret=-96.1% pnl=-48.0805U held=3min
+[2026-07-27 00:05 UTC] EXIT CATE / SOL [TP] ret=+6.8% pnl=+0.8649U held=0min
+[2026-07-27 00:05 UTC] EXIT USOX / SOL [TP] ret=+6.9% pnl=+0.3881U held=0min
+[2026-07-27 00:05 UTC] EXIT SalaryCat / SOL [SL] ret=-22.7% pnl=-1.2146U held=0min
+[2026-07-27 00:05 UTC] EXIT Kabosu / SOL [SL] ret=-6.0% pnl=-0.3928U held=0min
+[2026-07-27 00:05 UTC] CYCLE OK nav=13015.5198 扫描候选8 新入场6 持仓5 已平仓437
