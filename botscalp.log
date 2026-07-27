@@ -5083,3 +5083,10 @@
 [2026-07-27 22:47 UTC] EXIT SPY / SOL [TP] ret=+10.8% pnl=+4.2902U held=0min
 [2026-07-27 22:47 UTC] SKIP EXIT CHECK CATE / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
 [2026-07-27 22:47 UTC] CYCLE OK nav=13700.8580 扫描候选4 新入场3 持仓2 已平仓2221
+[2026-07-27 22:50 UTC] BUY SPY / SOL (De6CpuMp...) @ 1.218159563e-05 仓位=$50.00(机器人单笔$708的10%)
+[2026-07-27 22:50 UTC] BUY me-me / SOL (C75Spy9Q...) @ 8.808320457e-05 仓位=$34.55(机器人单笔$346的10%)
+[2026-07-27 22:50 UTC] EXIT Grok / SOL [TP] ret=+5.6% pnl=+1.4244U held=3min
+[2026-07-27 22:50 UTC] EXIT CATE / SOL [TP] ret=+15.9% pnl=+2.7864U held=3min
+[2026-07-27 22:50 UTC] EXIT SPY / SOL [TP] ret=+5.1% pnl=+1.4781U held=0min
+[2026-07-27 22:50 UTC] EXIT me-me / SOL [TP] ret=+23.5% pnl=+7.2786U held=0min
+[2026-07-27 22:50 UTC] CYCLE OK nav=13714.3809 扫描候选3 新入场2 持仓0 已平仓2225
