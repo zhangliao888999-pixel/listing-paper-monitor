@@ -47,6 +47,7 @@ LOG_F = HERE / "live_runner.log"
 # 只在VPS本地生成,从不git add/push——这是真实钱包的持仓和盈亏,推到公开仓库
 # 等于把实盘账户信息暴露给所有人,跟纸盘那个公开看盘页面必须分开处理
 DASHBOARD_F = HERE / "DASHBOARD_LIVE.md"
+DASHBOARD_HTML_F = HERE / "DASHBOARD_LIVE.html"
 
 SOL_MINT = "So11111111111111111111111111111111111111112"
 # 注意: 老的 quote-api.jup.ag(v6) 已经失效(DNS都解析不到了),Jupiter把免费公共接口
@@ -500,6 +501,132 @@ def write_dashboard(cfg, state):
     DASHBOARD_F.write_text("\n".join(lines), encoding="utf-8")
 
 
+def _esc(s):
+    return (str(s) if s is not None else "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def write_dashboard_html(cfg, state):
+    """跟纸盘的docs/index.html同一套视觉样式,但这份是服务端直接把数据渲染进HTML里的
+    静态文件(不用fetch/不用起本地服务器),双击用浏览器打开就能看,不联网也行。
+    只写在VPS本地磁盘,从不提交进git/推到任何公开仓库——真实钱包的持仓和盈亏不能公开。"""
+    closed = state["closed"]
+    wins = [c for c in closed if c["pnl_usd"] > 0]
+    win_rate = (len(wins) / len(closed) * 100) if closed else 0
+    mode_label = (f"固定 ${cfg['posSizeUsd']:.2f}" if cfg["sizingMode"] == "fixed"
+                 else f"机器人单笔的{cfg['pctOfBot']*100:.0f}%(${cfg['minPosUsd']:.0f}-${cfg['maxPosUsd']:.0f})")
+
+    pos_rows = ""
+    for addr, p in state["positions"].items():
+        t = dt.datetime.fromtimestamp(p["t_entry"], dt.timezone.utc).strftime("%H:%M:%S")
+        pos_rows += (f"<tr><td>{_esc(p['name'])}</td><td>${p['usd']:.2f}</td>"
+                    f"<td>{p['entry_price_usd']:.10g}</td><td>{t} UTC</td></tr>")
+    if not pos_rows:
+        pos_rows = '<tr><td colspan="4" class="empty">当前无持仓</td></tr>'
+
+    closed_rows = ""
+    for c in closed[-20:][::-1]:
+        cls = "pos" if c["pnl_usd"] > 0 else ("neg" if c["pnl_usd"] < 0 else "zero")
+        note = c.get("_corrected_note", "")
+        badge = ' <span class="badge neg" title="报价源坏数据,已用链上真实成交金额人工修正">已修正</span>' if note else ""
+        closed_rows += (f"<tr><td>{_esc(c['name'])}{badge}</td><td>{c['reason']}</td>"
+                        f"<td>${c['usd']:.2f}</td><td><span class=\"badge {cls}\">"
+                        f"{c['pnl_usd']:+.4f}</span></td>"
+                        f"<td>{_esc(c.get('sell_sig',''))[:10]}...</td></tr>")
+    if not closed_rows:
+        closed_rows = '<tr><td colspan="5" class="empty">尚无平仓记录</td></tr>'
+
+    log_lines = []
+    if LOG_F.exists():
+        log_lines = LOG_F.read_text(encoding="utf-8", errors="replace").splitlines()[-10:][::-1]
+    log_html = "".join(f"<div>{_esc(l)}</div>" for l in log_lines) or '<div class="empty">暂无日志</div>'
+
+    pnl_cls = "pos" if state["realized_pnl_usd"] > 0 else ("neg" if state["realized_pnl_usd"] < 0 else "zero")
+
+    html = f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="20">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实盘监控 (VPS本地专用)</title>
+<style>
+  :root {{
+    --bg: #0b0e14; --panel: #131722; --panel2: #1a1f2e; --border: #2a3040;
+    --text: #e6e9ef; --dim: #8b93a7; --green: #26a69a; --red: #ef5350; --yellow: #d4a72c;
+  }}
+  * {{ box-sizing: border-box; }}
+  body {{ margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px; line-height: 1.5; }}
+  header {{ padding: 16px 20px; border-bottom: 1px solid var(--border); }}
+  header h1 {{ font-size: 18px; margin: 0 0 4px; font-weight: 600; }}
+  header .warn {{ font-size: 12px; color: var(--yellow); }}
+  main {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 14px; padding: 16px; }}
+  .card {{ background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }}
+  .card.wide {{ grid-column: 1 / -1; }}
+  .card h2 {{ font-size: 15px; margin: 0 0 4px; }}
+  .sub {{ font-size: 12px; color: var(--dim); margin-bottom: 10px; }}
+  .stats {{ display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; font-size: 12px; color: var(--dim); }}
+  .stats b {{ color: var(--text); font-weight: 600; }}
+  table {{ width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 6px; }}
+  th, td {{ text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--border);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 160px; }}
+  th {{ color: var(--dim); font-weight: 500; }}
+  .badge {{ font-size: 10px; padding: 1px 6px; border-radius: 4px; background: var(--panel2); color: var(--dim); }}
+  .pos {{ color: var(--green); background: rgba(38,166,154,0.15); }}
+  .neg {{ color: var(--red); background: rgba(239,83,80,0.15); }}
+  .zero {{ color: var(--dim); background: rgba(139,147,167,0.12); }}
+  .empty {{ color: var(--dim); font-style: italic; padding: 6px 0; }}
+  .log-feed {{ font-family: "SF Mono", Consolas, monospace; font-size: 11px; color: var(--dim);
+    max-height: 200px; overflow-y: auto; margin-top: 8px; background: var(--panel2);
+    border-radius: 6px; padding: 8px; }}
+  .table-wrap {{ overflow-x: auto; }}
+  footer {{ text-align: center; padding: 20px; color: var(--dim); font-size: 12px; }}
+</style>
+</head>
+<body>
+<header>
+  <h1>🔒 策略D 实盘监控 (真实钱包)</h1>
+  <div class="warn">本地专用文件,只在这台VPS上查看,不会上传/推送到任何公开的地方</div>
+</header>
+<main>
+  <div class="card">
+    <h2>今日概况</h2>
+    <div class="sub">更新: {NOW_STR} · 仓位模式: {_esc(mode_label)}</div>
+    <div class="stats">
+      <span>持仓 <b>{len(state['positions'])}</b></span>
+      <span>已平仓 <b>{len(closed)}</b></span>
+      <span>胜率 <b>{win_rate:.0f}%</b></span>
+      <span>今日花费 <b>${state['spent_today_usd']:.2f}</b></span>
+      <span>今日已实现盈亏 <span class="badge {pnl_cls}">${state['realized_pnl_usd']:+.2f}</span></span>
+    </div>
+  </div>
+  <div class="card wide">
+    <h2>当前持仓</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>币种</th><th>仓位$</th><th>买入价</th><th>开仓时间</th></tr></thead>
+      <tbody>{pos_rows}</tbody>
+    </table></div>
+  </div>
+  <div class="card wide">
+    <h2>最近平仓 (20)</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>币种</th><th>原因</th><th>仓位$</th><th>盈亏$</th><th>卖出sig</th></tr></thead>
+      <tbody>{closed_rows}</tbody>
+    </table></div>
+  </div>
+  <div class="card wide">
+    <h2>最近日志</h2>
+    <div class="log-feed">{log_html}</div>
+  </div>
+</main>
+<footer>每20秒自动刷新此页面(需要保持浏览器标签页开着) · 数据每次run_live_vps.ps1跑完后更新</footer>
+</body>
+</html>
+"""
+    DASHBOARD_HTML_F.write_text(html, encoding="utf-8")
+
+
 def main():
     cfg = load_config()
     state = load_state()
@@ -531,6 +658,7 @@ def main():
             log(f"ERROR try_exit({addr}): {e}")
         save_state(state)
     write_dashboard(cfg, state)
+    write_dashboard_html(cfg, state)
     log(f"CYCLE OK live_mode={is_live_mode()} 扫描候选{len(cands)} 新入场{n_entered} "
        f"持仓{len(state['positions'])} 今日花费${state['spent_today_usd']:.2f} "
        f"今日已实现盈亏${state['realized_pnl_usd']:+.2f}")
