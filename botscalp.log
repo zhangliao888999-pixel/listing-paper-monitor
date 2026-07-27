@@ -2873,3 +2873,9 @@
 [2026-07-27 10:41 UTC] EXIT WANDENG / SOL [SL] ret=-11.5% pnl=-0.6646U held=9min
 [2026-07-27 10:41 UTC] EXIT dawang / SOL [TP] ret=+12.1% pnl=+0.9997U held=0min
 [2026-07-27 10:41 UTC] CYCLE OK nav=14982.0457 扫描候选7 新入场2 持仓4 已平仓1286
+[2026-07-27 10:44 UTC] BUY WILLY / SOL (69EonTMb...) @ 0.0001005653015 仓位=$31.79(机器人单笔$318的10%)
+[2026-07-27 10:44 UTC] BUY WANDENG / SOL (4FJ5682Q...) @ 6.910938181e-05 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-27 10:44 UTC] BUY dawang / SOL (696XWFsW...) @ 9.750262335e-05 仓位=$9.48(机器人单笔$95的10%)
+[2026-07-27 10:44 UTC] EXIT Nongwan / SOL [SL] ret=-66.7% pnl=-3.3683U held=6min
+[2026-07-27 10:44 UTC] EXIT dawang / SOL [TP] ret=+17.7% pnl=+1.4574U held=0min
+[2026-07-27 10:44 UTC] CYCLE OK nav=14981.8566 扫描候选7 新入场3 持仓5 已平仓1288

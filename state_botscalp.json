@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 14874.071670924,
+ "cash": 14840.367716271627,
  "positions": {
   "3pWRPXqWYpHkCbyXtn1XR78T7LKmgicdAiCy7Yae4EMb": {
    "name": "Jimothy / SOL",
@@ -9,16 +9,8 @@
    "usd": 50,
    "t_entry": 1785147963,
    "bot_avg_trade_usd": 733.75,
-   "mark": 1.4077671089017006e-05,
-   "mark_ret": 0.03158050923547906
-  },
-  "J5zUqUVwjhtRTgixEFEL3bpNvZcW5Rfb12sR55Tc715L": {
-   "name": "Nongwan / SOL",
-   "entry": 0.0012165492744061412,
-   "qty": 4109.985600411254,
-   "usd": 5,
-   "t_entry": 1785148683,
-   "bot_avg_trade_usd": 41.48
+   "mark": 1.4255892286186339e-05,
+   "mark_ret": 0.04464016322014497
   },
   "BfMEoVXzUHCMjx9MrfczBEs5z2hdprPPfHruzMnhYrzB": {
    "name": "Nongwan / SOL",
@@ -27,8 +19,8 @@
    "usd": 47.800000000000004,
    "t_entry": 1785148683,
    "bot_avg_trade_usd": 478.0,
-   "mark": 0.00028211639003026574,
-   "mark_ret": -0.029392398473807813
+   "mark": 0.00028861571211864903,
+   "mark_ret": -0.007031799633466895
   },
   "CTf8m9kZGu7VYudCqtotLWFfVR6wh9xNagM14h7h7kmj": {
    "name": "Nongwan / SOL",
@@ -37,6 +29,22 @@
    "usd": 5,
    "t_entry": 1785148863,
    "bot_avg_trade_usd": 45.51
+  },
+  "69EonTMbGbNHXNk2Hd7G2nANkZLTGbruqosSiwYqvt5S": {
+   "name": "WILLY / SOL",
+   "entry": 0.00010056530154823393,
+   "qty": 316142.8396329244,
+   "usd": 31.793000000000003,
+   "t_entry": 1785149043,
+   "bot_avg_trade_usd": 317.93
+  },
+  "4FJ5682QiXJ5JaYY6dUpDG8Kp7cJiMCbQzrpAuFps1mo": {
+   "name": "WANDENG / SOL",
+   "entry": 6.910938181050923e-05,
+   "qty": 72349.07720212985,
+   "usd": 5,
+   "t_entry": 1785149043,
+   "bot_avg_trade_usd": 3.3
   }
  },
  "closed": [
@@ -19329,7 +19337,37 @@
    "reason": "TP",
    "pnl": 0.9997,
    "t_exit": 1785148863
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.0012165492744061412,
+   "qty": 4109.985600411254,
+   "usd": 5,
+   "t_entry": 1785148683,
+   "bot_avg_trade_usd": 41.48,
+   "mark": 0.0004051022649219925,
+   "mark_ret": -0.6670071048953251,
+   "addr": "J5zUqUVwjhtRTgixEFEL3bpNvZcW5Rfb12sR55Tc715L",
+   "exit": 0.00039700021962355263,
+   "reason": "SL",
+   "pnl": -3.3683,
+   "t_exit": 1785149043
+  },
+  {
+   "name": "dawang / SOL",
+   "entry": 9.750262334765091e-05,
+   "qty": 97238.4093317672,
+   "usd": 9.481,
+   "t_entry": 1785149043,
+   "bot_avg_trade_usd": 94.81,
+   "mark": 0.00011478604479971175,
+   "mark_ret": 0.177261091636846,
+   "addr": "696XWFsWKyhFv1nrA3vXKSiVgFMaEJcDL3VqWFiw1aNS",
+   "exit": 0.00011249032390371752,
+   "reason": "TP",
+   "pnl": 1.4574,
+   "t_exit": 1785149043
   }
  ],
- "realized_pnl": 4981.871670924006
+ "realized_pnl": 4979.960716271631
 }
