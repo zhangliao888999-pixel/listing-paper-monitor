@@ -1522,3 +1522,13 @@
 [2026-07-27 03:20 UTC] EXIT MAGAVERSE / SOL [TP] ret=+29.9% pnl=+6.3104U held=0min
 [2026-07-27 03:20 UTC] EXIT memehouse / SOL [SL] ret=-15.1% pnl=-0.8398U held=0min
 [2026-07-27 03:20 UTC] CYCLE OK nav=13054.1154 扫描候选15 新入场6 持仓7 已平仓673
+[2026-07-27 03:23 UTC] BUY MAGAVERSE / SOL (9DaLtnvU...) @ 7.696727554e-05 仓位=$5.00(机器人单笔$9的10%)
+[2026-07-27 03:23 UTC] BUY CHIRP / SOL (CQ8xtpL5...) @ 1.201538117e-05 仓位=$22.56(机器人单笔$226的10%)
+[2026-07-27 03:23 UTC] BUY BINU / SOL (5dZZQfiN...) @ 2.175951887e-05 仓位=$22.39(机器人单笔$224的10%)
+[2026-07-27 03:23 UTC] BUY memehouse / SOL (H9J4jtFW...) @ 1.899085372e-05 仓位=$5.00(机器人单笔$12的10%)
+[2026-07-27 03:23 UTC] EXIT MAGAVERSE / SOL [TP] ret=+21.2% pnl=+9.4057U held=15min
+[2026-07-27 03:23 UTC] EXIT CATE / SOL [TP] ret=+27.3% pnl=+1.6062U held=3min
+[2026-07-27 03:23 UTC] EXIT CHIRP / SOL [TP] ret=+6.1% pnl=+0.9070U held=0min
+[2026-07-27 03:23 UTC] EXIT BINU / SOL [SL] ret=-6.8% pnl=-1.9415U held=0min
+[2026-07-27 03:23 UTC] EXIT memehouse / SOL [TP] ret=+32.5% pnl=+1.4923U held=0min
+[2026-07-27 03:23 UTC] CYCLE OK nav=13066.3903 扫描候选10 新入场4 持仓6 已平仓678
