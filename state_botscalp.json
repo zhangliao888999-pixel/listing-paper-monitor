@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13541.367536031978,
+ "cash": 13547.086932911508,
  "positions": {
   "FLUMAEUTHQ3X8xzAQdGA45BXS94yNjkmDZHx9WTR3fCA": {
    "name": "CXMT / SOL",
@@ -32737,7 +32737,37 @@
    "reason": "TP",
    "pnl": 8.3434,
    "t_exit": 1785189363
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 8.89500880447432e-06,
+   "qty": 2411239.8842383767,
+   "usd": 21.448,
+   "t_entry": 1785189543,
+   "bot_avg_trade_usd": 214.48,
+   "mark": 1.1900875911600417e-05,
+   "mark_ret": 0.3379273897530155,
+   "addr": "CKtMRCAa9vD5yEPKNFgY88TBJ16jtGLrX9nzRpn4Tk5p",
+   "exit": 1.166285839336841e-05,
+   "reason": "TP",
+   "pnl": 6.6739,
+   "t_exit": 1785189543
+  },
+  {
+   "name": "borg / SOL",
+   "entry": 2.249215805868608e-05,
+   "qty": 222299.7004980181,
+   "usd": 5,
+   "t_entry": 1785189543,
+   "bot_avg_trade_usd": 13.74,
+   "mark": 1.856956038266471e-05,
+   "mark_ret": -0.17439845771075446,
+   "addr": "AKMzYySgQJYtG1STv1NUft7H37KVr4rDHuLbQc9rYkXS",
+   "exit": 1.8198169175011417e-05,
+   "reason": "SL",
+   "pnl": -0.9546,
+   "t_exit": 1785189543
   }
  ],
- "realized_pnl": 3639.1585360319705
+ "realized_pnl": 3644.877932911502
 }
