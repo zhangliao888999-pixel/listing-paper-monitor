@@ -3421,3 +3421,10 @@
 [2026-07-27 13:41 UTC] EXIT Jimothy / SOL [TP] ret=+5.4% pnl=+1.6571U held=3min
 [2026-07-27 13:41 UTC] EXIT Kittens / SOL [TP] ret=+15.4% pnl=+6.5459U held=0min
 [2026-07-27 13:41 UTC] CYCLE OK nav=16227.4117 扫描候选9 新入场3 持仓8 已平仓1534
+[2026-07-27 13:44 UTC] BUY Kittens / SOL (Ej9KAot8...) @ 0.0001415109249 仓位=$50.00(机器人单笔$786的10%)
+[2026-07-27 13:44 UTC] BUY Jimothy / SOL (3pWRPXqW...) @ 2.537228862e-05 仓位=$50.00(机器人单笔$748的10%)
+[2026-07-27 13:44 UTC] BUY brospeed / SOL (9iAnwnRN...) @ 0.0001238908623 仓位=$5.00(机器人单笔$1的10%)
+[2026-07-27 13:44 UTC] EXIT BALD / SOL [TIME] ret=+0.9% pnl=-0.0579U held=39min
+[2026-07-27 13:44 UTC] EXIT Buddy / SOL [TIME] ret=-2.5% pnl=-1.3746U held=33min
+[2026-07-27 13:44 UTC] EXIT Kittens / SOL [TP] ret=+14.5% pnl=+6.1203U held=0min
+[2026-07-27 13:44 UTC] CYCLE OK nav=16232.9550 扫描候选9 新入场3 持仓8 已平仓1537
