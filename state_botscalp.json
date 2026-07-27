@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13599.540480428743,
+ "cash": 13550.110322005541,
  "positions": {
   "Bm8ecqxo8AEE6k3GgBVTYwKinF9pkQuZhmSUF3o1GxT6": {
    "name": "duky / SOL",
@@ -9,9 +9,43 @@
    "usd": 50,
    "t_entry": 1785193503,
    "bot_avg_trade_usd": 18258.78,
+   "no_price_checks": 2,
+   "total_checks": 2,
+   "consecutive_no_price": 2
+  },
+  "Gujdah8CpGWDTpHLC2EUdePAwfPFGDBXz6NtXmSC4Jkw": {
+   "name": "Grok / SOL",
+   "entry": 6.0006164759695444e-05,
+   "qty": 615053.472385715,
+   "usd": 36.907000000000004,
+   "t_entry": 1785193682,
+   "bot_avg_trade_usd": 369.07,
    "no_price_checks": 1,
    "total_checks": 1,
+   "entry_locked_liq_pct": 5.55986701110816e-10,
+   "entry_buyers_h1": 2511,
+   "entry_sellers_h1": 33,
+   "entry_buy_sell_ratio_h1": 76.0909090909091,
+   "entry_price_change_h1_pct": 32.305,
    "consecutive_no_price": 1
+  },
+  "2BF6kzWFq54wdi8pAkxeN85AH2h7Mvfvr9uon6pf6xQ8": {
+   "name": "USOP / SOL",
+   "entry": 1.8488076830975572e-05,
+   "qty": 941579.8170437083,
+   "usd": 17.408,
+   "t_entry": 1785193682,
+   "bot_avg_trade_usd": 174.08,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": 0.0,
+   "entry_buyers_h1": 1269,
+   "entry_sellers_h1": 218,
+   "entry_buy_sell_ratio_h1": 5.821100917431193,
+   "entry_price_change_h1_pct": 146.023,
+   "consecutive_no_price": 0,
+   "mark": 1.8125565520564287e-05,
+   "mark_ret": -0.019607843137254832
   }
  },
  "closed": [
@@ -33582,7 +33616,30 @@
    "pnl": -35.289,
    "t_exit": 1785192962,
    "_note": "流动性只剩$0.0002,判定死亡,不用等连续多轮"
+  },
+  {
+   "name": "SPY / SOL",
+   "entry": 1.3817559966340795e-05,
+   "qty": 3618583.897721353,
+   "usd": 50,
+   "t_entry": 1785193682,
+   "bot_avg_trade_usd": 707.33,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": 8.15042839809544e-11,
+   "entry_buyers_h1": 3010,
+   "entry_sellers_h1": 37,
+   "entry_buy_sell_ratio_h1": 81.35135135135135,
+   "entry_price_change_h1_pct": 89.141,
+   "consecutive_no_price": 0,
+   "mark": 1.547703244347973e-05,
+   "mark_ret": 0.12009880768973447,
+   "addr": "De6CpuMpYQtswoGA5fpYcKdsxoYUYyKunjWfb1pLwUvM",
+   "exit": 1.5167491794610136e-05,
+   "reason": "TP",
+   "pnl": 4.8848,
+   "t_exit": 1785193682
   }
  ],
- "realized_pnl": 3567.642480428729
+ "realized_pnl": 3572.527322005526
 }
