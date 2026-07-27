@@ -2356,3 +2356,20 @@
 [2026-07-27 07:53 UTC] EXIT WILLY / SOL [SL] ret=-26.9% pnl=-4.7686U held=0min
 [2026-07-27 07:53 UTC] EXIT WAN / SOL [SL] ret=-11.0% pnl=-0.6389U held=0min
 [2026-07-27 07:53 UTC] CYCLE OK nav=13666.5283 扫描候选17 新入场9 持仓7 已平仓1046
+[2026-07-27 07:59 UTC] BUY USWR / SOL (6T3mbtTV...) @ 0.008149346387 仓位=$5.00(机器人单笔$42的10%)
+[2026-07-27 07:59 UTC] BUY WILLY / SOL (3wZYRCtS...) @ 2.012946686e-05 仓位=$35.25(机器人单笔$352的10%)
+[2026-07-27 07:59 UTC] BUY Nongwan / SOL (J5zUqUVw...) @ 0.0009287460817 仓位=$5.00(机器人单笔$28的10%)
+[2026-07-27 07:59 UTC] BUY Nongwan / SOL (AwyjRv3Y...) @ 5.844391419e-05 仓位=$42.88(机器人单笔$429的10%)
+[2026-07-27 07:59 UTC] BUY IF / SOL (B4WujyZQ...) @ 4.672125691e-05 仓位=$39.66(机器人单笔$397的10%)
+[2026-07-27 07:59 UTC] BUY Nongwan / SOL (3qPqNetN...) @ 2.914346985e-05 仓位=$40.07(机器人单笔$401的10%)
+[2026-07-27 07:59 UTC] BUY WAN / SOL (EjM52KtK...) @ 0.0004363195781 仓位=$5.00(机器人单笔$36的10%)
+[2026-07-27 07:59 UTC] EXIT UCOE / SOL [TP] ret=+6.3% pnl=+2.0728U held=39min
+[2026-07-27 07:59 UTC] EXIT CATE / SOL [TP] ret=+7.3% pnl=+2.5715U held=9min
+[2026-07-27 07:59 UTC] EXIT Onigiri / SOL [TP] ret=+27.9% pnl=+1.2662U held=6min
+[2026-07-27 07:59 UTC] EXIT WILLY / SOL [TP] ret=+38.9% pnl=+16.2578U held=6min
+[2026-07-27 07:59 UTC] EXIT USWR / SOL [TP] ret=+29.4% pnl=+1.3409U held=0min
+[2026-07-27 07:59 UTC] EXIT WILLY / SOL [SL] ret=-14.7% pnl=-5.7850U held=0min
+[2026-07-27 07:59 UTC] EXIT Nongwan / SOL [SL] ret=-6.4% pnl=-0.4128U held=0min
+[2026-07-27 07:59 UTC] EXIT Nongwan / SOL [TP] ret=+15.9% pnl=+5.8311U held=0min
+[2026-07-27 07:59 UTC] EXIT WAN / SOL [TP] ret=+16.4% pnl=+0.7047U held=0min
+[2026-07-27 07:59 UTC] CYCLE OK nav=13690.7071 扫描候选17 新入场7 持仓5 已平仓1055
