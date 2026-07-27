@@ -1624,3 +1624,12 @@
 [2026-07-27 03:53 UTC] EXIT wifcat / SOL [SL] ret=-5.1% pnl=-2.1815U held=0min
 [2026-07-27 03:53 UTC] EXIT BONGOCAT / SOL [SL] ret=-24.9% pnl=-1.3218U held=0min
 [2026-07-27 03:53 UTC] CYCLE OK nav=13144.0950 扫描候选9 新入场4 持仓6 已平仓720
+[2026-07-27 03:56 UTC] BUY Raquizzel / SOL (AZot33UK...) @ 0.0001553383458 仓位=$30.10(机器人单笔$301的10%)
+[2026-07-27 03:56 UTC] BUY MAGAVERSE / SOL (Chysq8jg...) @ 7.613299741e-05 仓位=$50.00(机器人单笔$1292的10%)
+[2026-07-27 03:56 UTC] BUY wifcat / SOL (H6DTNLW6...) @ 9.664080923e-06 仓位=$31.98(机器人单笔$320的10%)
+[2026-07-27 03:56 UTC] BUY BONGOCAT / SOL (3j1zVgig...) @ 1.723087018e-05 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-27 03:56 UTC] EXIT HUTCH / SOL [SL] ret=-3.2% pnl=-1.0001U held=9min
+[2026-07-27 03:56 UTC] EXIT Raquizzel / SOL [SL] ret=-9.3% pnl=-3.3427U held=0min
+[2026-07-27 03:56 UTC] EXIT wifcat / SOL [SL] ret=-7.4% pnl=-2.9692U held=0min
+[2026-07-27 03:56 UTC] EXIT BONGOCAT / SOL [SL] ret=-19.9% pnl=-1.0736U held=0min
+[2026-07-27 03:56 UTC] CYCLE OK nav=13136.1717 扫描候选9 新入场4 持仓6 已平仓724
