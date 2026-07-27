@@ -1,27 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13481.940373208869,
+ "cash": 13561.793050463417,
  "positions": {
-  "55Hq58JJzsSARssDEDeRZRFb3nwZg5xFFRWCu7MEFj4D": {
-   "name": "1CAPY / SOL",
-   "entry": 1.6200956744071152e-05,
-   "qty": 1390905.509839502,
-   "usd": 22.534000000000002,
-   "t_entry": 1785134284,
-   "bot_avg_trade_usd": 225.34,
-   "mark": 1.5814372208371276e-05,
-   "mark_ret": -0.02386183370567596
-  },
-  "F1fknWQErKXHH3evBruh75KKrmNBP6tc3rYMHnzWuHwz": {
-   "name": "thetoken / SOL",
-   "entry": 0.0001910675017427482,
-   "qty": 261687.62109696504,
-   "usd": 50,
-   "t_entry": 1785134284,
-   "bot_avg_trade_usd": 18283.83,
-   "mark": 0.00018732108013994923,
-   "mark_ret": -0.019607843137254832
-  },
   "5sRnC3uJvdaP6ogx5SH5H6xMnpyJ6ZFCL7jeCcM41Qak": {
    "name": "C𖦹T / SOL",
    "entry": 1.8957725855601294e-05,
@@ -48,7 +28,9 @@
    "qty": 329704.1041017431,
    "usd": 50,
    "t_entry": 1785135723,
-   "bot_avg_trade_usd": 516.46
+   "bot_avg_trade_usd": 516.46,
+   "mark": 0.00014889092906537142,
+   "mark_ret": -0.018200992472510724
   },
   "6T3mbtTVzgSFy2t4CgxUiuAPAMSMtGmmNdkeXvQhvyFg": {
    "name": "USWR / SOL",
@@ -14959,7 +14941,52 @@
    "reason": "TP",
    "pnl": 6.7816,
    "t_exit": 1785136083
+  },
+  {
+   "name": "1CAPY / SOL",
+   "entry": 1.6200956744071152e-05,
+   "qty": 1390905.509839502,
+   "usd": 22.534000000000002,
+   "t_entry": 1785134284,
+   "bot_avg_trade_usd": 225.34,
+   "mark": 1.5814372208371276e-05,
+   "mark_ret": -0.02386183370567596,
+   "addr": "55Hq58JJzsSARssDEDeRZRFb3nwZg5xFFRWCu7MEFj4D",
+   "exit": 1.549808476420385e-05,
+   "reason": "TIME",
+   "pnl": -0.9776,
+   "t_exit": 1785136264
+  },
+  {
+   "name": "thetoken / SOL",
+   "entry": 0.0001910675017427482,
+   "qty": 261687.62109696504,
+   "usd": 50,
+   "t_entry": 1785134284,
+   "bot_avg_trade_usd": 18283.83,
+   "mark": 0.00018732108013994923,
+   "mark_ret": -0.019607843137254832,
+   "addr": "F1fknWQErKXHH3evBruh75KKrmNBP6tc3rYMHnzWuHwz",
+   "exit": 0.00018357465853715025,
+   "reason": "TIME",
+   "pnl": -1.9608,
+   "t_exit": 1785136264
+  },
+  {
+   "name": "CHILLDOG / SOL",
+   "entry": 1.083681425017729e-05,
+   "qty": 3577250.5742973117,
+   "usd": 38.766000000000005,
+   "t_entry": 1785136264,
+   "bot_avg_trade_usd": 387.66,
+   "mark": 1.3983801320287885e-05,
+   "mark_ret": 0.2903978048769369,
+   "addr": "9QqLsCE9kPY8jVoaVWFHayhjnb8Cuthj9eDe8PzuoeLz",
+   "exit": 1.3704125293882126e-05,
+   "reason": "TP",
+   "pnl": 10.2571,
+   "t_exit": 1785136264
   }
  ],
- "realized_pnl": 3690.311373208872
+ "realized_pnl": 3697.6300504634196
 }
