@@ -1028,3 +1028,10 @@
 [2026-07-27 00:20 UTC] EXIT USOX / SOL [SL] ret=-11.1% pnl=-4.2375U held=0min
 [2026-07-27 00:20 UTC] EXIT thesis / SOL [SL] ret=-6.0% pnl=-0.3958U held=0min
 [2026-07-27 00:20 UTC] CYCLE OK nav=12981.2570 扫描候选7 新入场3 持仓5 已平仓456
+[2026-07-27 00:23 UTC] BUY CATE / SOL (DcZkfifA...) @ 2.108429147e-05 仓位=$18.53(机器人单笔$185的10%)
+[2026-07-27 00:23 UTC] BUY USOX / SOL (7mN6uAZY...) @ 0.0001134714204 仓位=$37.21(机器人单笔$372的10%)
+[2026-07-27 00:23 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 1.013017766e-05 仓位=$5.00(机器人单笔$47的10%)
+[2026-07-27 00:23 UTC] EXIT SalaryCat / SOL [SL] ret=-4.2% pnl=-0.3059U held=9min
+[2026-07-27 00:23 UTC] EXIT USOX / SOL [SL] ret=-13.9% pnl=-5.8254U held=0min
+[2026-07-27 00:23 UTC] EXIT thesis / SOL [SL] ret=-5.6% pnl=-0.3748U held=0min
+[2026-07-27 00:23 UTC] CYCLE OK nav=12974.7642 扫描候选7 新入场3 持仓5 已平仓459
