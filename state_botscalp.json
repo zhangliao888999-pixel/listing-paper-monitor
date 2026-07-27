@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 14657.47041446219,
+ "cash": 14635.856177228314,
  "positions": {
   "BfMEoVXzUHCMjx9MrfczBEs5z2hdprPPfHruzMnhYrzB": {
    "name": "Nongwan / SOL",
@@ -70,24 +70,6 @@
    "mark": 0.00415778859370696,
    "mark_ret": -0.019607843137254832
   },
-  "CTf8m9kZGu7VYudCqtotLWFfVR6wh9xNagM14h7h7kmj": {
-   "name": "Nongwan / SOL",
-   "entry": 0.0012301567727202884,
-   "qty": 4064.5225965332256,
-   "usd": 5,
-   "t_entry": 1785150663,
-   "bot_avg_trade_usd": 25.24
-  },
-  "C4T6ukMxcUSjiBrToPS2z6w57fYkFN4UiQema3NWeJNS": {
-   "name": "SOLdiers / SOL",
-   "entry": 1.564361201476004e-05,
-   "qty": 1006672.8825249225,
-   "usd": 15.748,
-   "t_entry": 1785150663,
-   "bot_avg_trade_usd": 157.48,
-   "mark": 1.5764917430876928e-05,
-   "mark_ret": 0.0077543099382950675
-  },
   "DqTqjGwb9TV2hEr6HCkjjy2ZfAAVdbeD9SDgsAxGF7HQ": {
    "name": "Nongwan / SOL",
    "entry": 0.00010838091544524079,
@@ -95,6 +77,34 @@
    "usd": 9.562000000000001,
    "t_entry": 1785150663,
    "bot_avg_trade_usd": 95.62
+  },
+  "6Ppo4yMM8VeCFPmY1Si1AtB7mHBr4vXWRn5XAiVj3NYL": {
+   "name": "SKHY / SOL",
+   "entry": 1.6755663039236546e-05,
+   "qty": 1113951.7401545008,
+   "usd": 18.665000000000003,
+   "t_entry": 1785151023,
+   "bot_avg_trade_usd": 186.65,
+   "mark": 1.6427120626702495e-05,
+   "mark_ret": -0.019607843137254943
+  },
+  "BzGcW8evbzNV7xP2GHuLmSs19wHf1vjHXXUtTFmDaD2q": {
+   "name": "CXMT / SOL",
+   "entry": 6.537620658214525,
+   "qty": 0.7648042401661064,
+   "usd": 5,
+   "t_entry": 1785151023,
+   "bot_avg_trade_usd": 18.11
+  },
+  "696XWFsWKyhFv1nrA3vXKSiVgFMaEJcDL3VqWFiw1aNS": {
+   "name": "dawang / SOL",
+   "entry": 0.0001612880056542477,
+   "qty": 62930.90399889069,
+   "usd": 10.15,
+   "t_entry": 1785151023,
+   "bot_avg_trade_usd": 101.5,
+   "mark": 0.00016716840592405176,
+   "mark_ret": 0.03645900540434388
   }
  },
  "closed": [
@@ -20002,7 +20012,82 @@
    "reason": "TP",
    "pnl": 1.1294,
    "t_exit": 1785150663
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.0012301567727202884,
+   "qty": 4064.5225965332256,
+   "usd": 5,
+   "t_entry": 1785150663,
+   "bot_avg_trade_usd": 25.24,
+   "mark": 0.00032458619465287273,
+   "mark_ret": -0.7361424154621333,
+   "addr": "CTf8m9kZGu7VYudCqtotLWFfVR6wh9xNagM14h7h7kmj",
+   "exit": 0.0003180944707598153,
+   "reason": "SL",
+   "pnl": -3.7071,
+   "t_exit": 1785151023
+  },
+  {
+   "name": "SOLdiers / SOL",
+   "entry": 1.564361201476004e-05,
+   "qty": 1006672.8825249225,
+   "usd": 15.748,
+   "t_entry": 1785150663,
+   "bot_avg_trade_usd": 157.48,
+   "mark": 1.6736872458441918e-05,
+   "mark_ret": 0.06988542305001988,
+   "addr": "C4T6ukMxcUSjiBrToPS2z6w57fYkFN4UiQema3NWeJNS",
+   "exit": 1.640213500927308e-05,
+   "reason": "TP",
+   "pnl": 0.7636,
+   "t_exit": 1785151023
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.0012165492744061412,
+   "qty": 4109.985600411254,
+   "usd": 5,
+   "t_entry": 1785151023,
+   "bot_avg_trade_usd": 21.09,
+   "mark": 0.0003346507027554102,
+   "mark_ret": -0.7249180861015514,
+   "addr": "J5zUqUVwjhtRTgixEFEL3bpNvZcW5Rfb12sR55Tc715L",
+   "exit": 0.000327957688700302,
+   "reason": "SL",
+   "pnl": -3.6521,
+   "t_exit": 1785151023
+  },
+  {
+   "name": "WANDENG / SOL",
+   "entry": 0.00013322454934036008,
+   "qty": 37530.620480659876,
+   "usd": 5,
+   "t_entry": 1785151023,
+   "bot_avg_trade_usd": 3.33,
+   "mark": 0.00015419428898256292,
+   "mark_ret": 0.15740146801795274,
+   "addr": "4FJ5682QiXJ5JaYY6dUpDG8Kp7cJiMCbQzrpAuFps1mo",
+   "exit": 0.00015111040320291166,
+   "reason": "TP",
+   "pnl": 0.6713,
+   "t_exit": 1785151023
+  },
+  {
+   "name": "PONS / SOL",
+   "entry": 1.767984530774485e-05,
+   "qty": 1058776.2321540187,
+   "usd": 18.719,
+   "t_entry": 1785151023,
+   "bot_avg_trade_usd": 187.19,
+   "mark": 1.5512814693201064e-05,
+   "mark_ret": -0.12257067733474425,
+   "addr": "13QMUwhHXioy16Xao6DpD5CtY62iN2tR3jcGPDKrtaXS",
+   "exit": 1.5202558399337043e-05,
+   "reason": "SL",
+   "pnl": -2.6229,
+   "t_exit": 1785151023
   }
  ],
- "realized_pnl": 4949.107414462196
+ "realized_pnl": 4940.560177228323
 }
