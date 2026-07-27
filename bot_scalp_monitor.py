@@ -46,6 +46,11 @@ DEAD_LIQ_USD = 100.0         # 更直接的判死信号:同一次查价请求里
                              # 死了,GeckoTerminal的池子接口本来就带流动性字段,没必要绕远路)
 SLIP = 0.02                  # 链上滑点保守估计，跟策略C一致
 
+# 2026-07-27新增: 用户拿SPY/SOL这个真实案例点出的"拉高出货"风险,跟live_runner.py同一套逻辑
+MIN_LOCKED_LIQ_PCT = 50.0    # 流动性锁仓比例低于这个数,LP随时能被抽干,不进场
+MAX_BUY_SELL_RATIO = 30.0    # 过去1小时买家人数/卖家人数超过这个比例,像"广撒网吸引接盘"
+MAX_RECENT_PUMP_PCT = 100.0  # 过去1小时已经涨了这么多,大概率追高接盘
+
 NOW = int(time.time())
 NOW_STR = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
@@ -96,6 +101,31 @@ def load_bot_candidates():
     return cands
 
 
+def get_pool_diligence(addr):
+    """2026-07-27新增: 只在进场前调用一次。用户拿SPY/SOL这个真实池子举例点出的风险:
+    池子创建2-3小时内涨335%,过去1小时3011个钱包在买、只有38个在卖(典型"广撒网吸引
+    散户接盘,少数人偷偷出货"信号)，最要命的是locked_liquidity_percentage(流动性锁仓
+    比例)几乎是0——流动性提供方随时能把池子一次性抽干,这跟"流动性慢慢枯竭"是完全
+    不同的风险,是主动rug机制。这几个字段本来就在同一个pools接口响应里,跟查价格/
+    流动性是同一次请求,不用额外调用。"""
+    d = get(S, f"{GT_BASE}/networks/solana/pools/{addr}")
+    if not d:
+        return None
+    a = d.get("data", {}).get("attributes", {})
+    def _f(x):
+        try:
+            return float(x)
+        except (TypeError, ValueError):
+            return None
+    h1 = a.get("transactions", {}).get("h1", {}) or {}
+    return {
+        "locked_liq_pct": _f(a.get("locked_liquidity_percentage")),
+        "buyers_h1": h1.get("buyers"),
+        "sellers_h1": h1.get("sellers"),
+        "price_change_h1_pct": _f((a.get("price_change_percentage") or {}).get("h1")),
+    }
+
+
 def try_enter(state, c):
     addr = c["addr"]
     if addr in state["positions"] or len(state["positions"]) >= MAX_POS:
@@ -104,6 +134,20 @@ def try_enter(state, c):
     if liq is not None and liq < MIN_LIQUIDITY_USD:
         log(f"SKIP {c['name']}: 流动性只有${liq:,.0f},低于${MIN_LIQUIDITY_USD:,.0f}门槛,进得去也可能出不来")
         return False
+    dil = get_pool_diligence(addr)
+    if dil:
+        if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < MIN_LOCKED_LIQ_PCT:
+            log(f"SKIP {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%,LP随时能被抽干,不进场")
+            return False
+        buyers, sellers = dil["buyers_h1"], dil["sellers_h1"]
+        if buyers and sellers is not None:
+            ratio = float("inf") if sellers == 0 and buyers > 20 else buyers / max(sellers, 1)
+            if ratio > MAX_BUY_SELL_RATIO:
+                log(f"SKIP {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例过于失衡,像是广撒网吸引接盘")
+                return False
+        if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > MAX_RECENT_PUMP_PCT:
+            log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘")
+            return False
     result = check_scalping(addr)
     if not result.get("flag"):
         return False  # screener缓存可能有点旧,重新确认一遍还在刷量再进场

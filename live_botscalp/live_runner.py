@@ -163,6 +163,12 @@ def load_config():
         "minLiquidityUsd": 15000.0,   # 流动性低于这个数,不管多活跃都不进场
         "maxPriceImpactPct": 5.0,     # 买这一笔仓位对价格的冲击超过这个百分比,说明池子薄到连
                                        # 我们这个小仓位都扛不住,大概率也卖不出去,不进场
+        # 2026-07-27新增: 用户拿SPY/SOL这个真实案例点出的"拉高出货"风险,三条新防线:
+        "minLockedLiqPct": 50.0,      # 流动性锁仓比例低于这个数,LP随时能被抽干,不进场
+        "maxBuySellRatio": 30.0,      # 过去1小时买家人数/卖家人数超过这个比例,像是"广撒网
+                                       # 吸引散户接盘,少数人偷偷出货",不进场
+        "maxRecentPumpPct": 100.0,    # 过去1小时已经涨了这么多,大概率已经涨过头,追进去等于
+                                       # 替别人接盘,不进场
     }
     if CONFIG_F.exists():
         default.update(json.loads(CONFIG_F.read_text(encoding="utf-8")))
@@ -233,6 +239,33 @@ def get_fresh_price_usd(mint_or_pool_addr, is_pool_addr=True):
         return float(d["data"]["attributes"][field])
     except (KeyError, ValueError, TypeError):
         return None
+
+
+def get_pool_diligence(addr):
+    """2026-07-27新增: 只在进场前调用一次(不是每轮exit check都调,避免加重限流)。
+    用户拿SPY/SOL这个真实池子举例点出的风险: 池子创建2-3小时内涨335%,过去1小时
+    3011个钱包在买、只有38个在卖(典型"广撒网吸引散户接盘,少数人偷偷出货"信号)，
+    最要命的是locked_liquidity_percentage(流动性锁仓比例)几乎是0——流动性提供方
+    随时能把池子一次性抽干，这跟"流动性慢慢枯竭"是完全不同的风险，是主动rug机制。
+    这几个字段本来就在同一个pools接口响应里，跟查价格是同一次请求，不用额外调用。"""
+    d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}")
+    if not d:
+        return None
+    a = d.get("data", {}).get("attributes", {})
+    def _f(x):
+        try:
+            return float(x)
+        except (TypeError, ValueError):
+            return None
+    h1 = a.get("transactions", {}).get("h1", {}) or {}
+    return {
+        "price": _f(a.get("base_token_price_usd")),
+        "liq": _f(a.get("reserve_in_usd")),
+        "locked_liq_pct": _f(a.get("locked_liquidity_percentage")),
+        "buyers_h1": h1.get("buyers"),
+        "sellers_h1": h1.get("sellers"),
+        "price_change_h1_pct": _f((a.get("price_change_percentage") or {}).get("h1")),
+    }
 
 
 def jupiter_quote(input_mint, output_mint, amount_lamports, slippage_bps):
@@ -360,9 +393,25 @@ def try_enter(cfg, wallet, state, c):
         log(f"SKIP {c['name']}: 今日累计开仓将超过上限${cfg['dailyMaxUsd']}")
         return False
 
-    fresh_price = get_fresh_price_usd(c["addr"], is_pool_addr=True)
-    if fresh_price is None:
+    dil = get_pool_diligence(c["addr"])
+    if dil is None or dil["price"] is None:
         log(f"SKIP {c['name']}: 拿不到实时报价")
+        return False
+    fresh_price = dil["price"]
+
+    if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < cfg["minLockedLiqPct"]:
+        log(f"SKIP {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%,LP随时能被抽干,不进场")
+        return False
+    buyers, sellers = dil["buyers_h1"], dil["sellers_h1"]
+    if buyers and sellers is not None:
+        ratio = buyers / max(sellers, 1)
+        if sellers == 0 and buyers > 20:
+            ratio = float("inf")
+        if ratio > cfg["maxBuySellRatio"]:
+            log(f"SKIP {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例过于失衡,像是广撒网吸引接盘")
+            return False
+    if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > cfg["maxRecentPumpPct"]:
+        log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘")
         return False
 
     mint = c.get("mint")
