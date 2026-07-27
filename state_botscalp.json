@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 12935.780632554957,
+ "cash": 12925.265609691089,
  "positions": {
   "BLQghhZpizTGwD9kuCVyRXm4yrDhx96qCkXppbLFML2h": {
    "name": "Trump2028 / SOL",
@@ -19,8 +19,8 @@
    "usd": 27.248000000000005,
    "t_entry": 1785109443,
    "bot_avg_trade_usd": 272.48,
-   "mark": 0.0869749426326854,
-   "mark_ret": 0.029636293717065776
+   "mark": 0.0871229545390469,
+   "mark_ret": 0.031388504481212554
   },
   "7jHjG1Vs5fm3GKsTZYwtULEZFnsshUUsVcPbMcVvup8W": {
    "name": "thesis / SOL",
@@ -29,8 +29,8 @@
    "usd": 5,
    "t_entry": 1785109443,
    "bot_avg_trade_usd": 28.85,
-   "mark": 9.321993866898464e-06,
-   "mark_ret": 0.007852442600421394
+   "mark": 9.294489409425607e-06,
+   "mark_ret": 0.00487878320499413
   },
   "573qFJkba2zrAxE8yCD85vpu11rRPrPdZtKpAbNbkCqu": {
    "name": "USOX / SOL",
@@ -60,13 +60,13 @@
    "t_entry": 1785109804,
    "bot_avg_trade_usd": 350.39
   },
-  "3fZP5XQZ3NquUR6F6VNxWfvoHCg3z7Nm4KxywMAnt6jx": {
-   "name": "BABYCATE / SOL",
-   "entry": 7.007550571511171e-05,
-   "qty": 713516.0779755536,
-   "usd": 50,
-   "t_entry": 1785110164,
-   "bot_avg_trade_usd": 1296.57
+  "6VEtgZd1tobR4PohnkDUo8NYB8nzG5Y7cfkUqXdfkDH3": {
+   "name": "PONS / SOL",
+   "entry": 1.6884795439316712e-05,
+   "qty": 769331.2037261896,
+   "usd": 12.990000000000002,
+   "t_entry": 1785110343,
+   "bot_avg_trade_usd": 129.9
   }
  },
  "closed": [
@@ -6414,7 +6414,52 @@
    "reason": "SL",
    "pnl": -0.6987,
    "t_exit": 1785110164
+  },
+  {
+   "name": "BABYCATE / SOL",
+   "entry": 7.007550571511171e-05,
+   "qty": 713516.0779755536,
+   "usd": 50,
+   "t_entry": 1785110164,
+   "bot_avg_trade_usd": 1296.57,
+   "mark": 2.7450801552496777e-06,
+   "mark_ret": -0.9608268234779546,
+   "addr": "3fZP5XQZ3NquUR6F6VNxWfvoHCg3z7Nm4KxywMAnt6jx",
+   "exit": 2.690178552144684e-06,
+   "reason": "SL",
+   "pnl": -48.0805,
+   "t_exit": 1785110343
+  },
+  {
+   "name": "CATE / SOL",
+   "entry": 2.1084291472738347e-05,
+   "qty": 903516.2516431414,
+   "usd": 19.05,
+   "t_entry": 1785110343,
+   "bot_avg_trade_usd": 190.5,
+   "mark": 2.306531896706879e-05,
+   "mark_ret": 0.0939575084556139,
+   "addr": "DcZkfifAqajxP6rdYownKdEEimNXrHZFVZFdxpbyts7b",
+   "exit": 2.2604012587727412e-05,
+   "reason": "TP",
+   "pnl": 1.3731,
+   "t_exit": 1785110343
+  },
+  {
+   "name": "Kabosu / SOL",
+   "entry": 1.603979174748649e-05,
+   "qty": 311724.7454776664,
+   "usd": 5,
+   "t_entry": 1785110343,
+   "bot_avg_trade_usd": 7.57,
+   "mark": 1.369077655805748e-05,
+   "mark_ret": -0.14644923240958618,
+   "addr": "7LfFJ8vGoerkm9NAKoCfUSPGUG2biSY64vmNtU9VfoSC",
+   "exit": 1.341696102689633e-05,
+   "reason": "SL",
+   "pnl": -0.8176,
+   "t_exit": 1785110343
   }
  ],
- "realized_pnl": 3126.145632554958
+ "realized_pnl": 3078.6206096910887
 }

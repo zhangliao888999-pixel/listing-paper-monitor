@@ -956,3 +956,10 @@
 [2026-07-26 23:56 UTC] EXIT CATE / SOL [TP] ret=+8.1% pnl=+1.1668U held=0min
 [2026-07-26 23:56 UTC] EXIT Kabosu / SOL [SL] ret=-12.2% pnl=-0.6987U held=0min
 [2026-07-26 23:56 UTC] CYCLE OK nav=13128.6783 扫描候选9 新入场3 持仓7 已平仓423
+[2026-07-26 23:59 UTC] BUY CATE / SOL (DcZkfifA...) @ 2.108429147e-05 仓位=$19.05(机器人单笔$190的10%)
+[2026-07-26 23:59 UTC] BUY PONS / SOL (6VEtgZd1...) @ 1.688479544e-05 仓位=$12.99(机器人单笔$130的10%)
+[2026-07-26 23:59 UTC] BUY Kabosu / SOL (7LfFJ8vG...) @ 1.603979175e-05 仓位=$5.00(机器人单笔$8的10%)
+[2026-07-26 23:59 UTC] EXIT BABYCATE / SOL [SL] ret=-96.1% pnl=-48.0805U held=3min
+[2026-07-26 23:59 UTC] EXIT CATE / SOL [TP] ret=+9.4% pnl=+1.3731U held=0min
+[2026-07-26 23:59 UTC] EXIT Kabosu / SOL [SL] ret=-14.6% pnl=-0.8176U held=0min
+[2026-07-26 23:59 UTC] CYCLE OK nav=13081.1862 扫描候选9 新入场3 持仓7 已平仓426
