@@ -1079,3 +1079,13 @@
 [2026-07-27 00:38 UTC] EXIT VORF / SOL [TP] ret=+19.0% pnl=+1.1327U held=0min
 [2026-07-27 00:38 UTC] EXIT thesis / SOL [SL] ret=-3.2% pnl=-0.2574U held=0min
 [2026-07-27 00:38 UTC] CYCLE OK nav=12942.3811 扫描候选7 新入场4 持仓6 已平仓478
+[2026-07-27 00:41 UTC] BUY CHANGE / SOL (4aP7qN7U...) @ 2.699806395e-05 仓位=$32.39(机器人单笔$324的10%)
+[2026-07-27 00:41 UTC] BUY VORF / SOL (DJo2AJPC...) @ 0.01536160387 仓位=$5.00(机器人单笔$45的10%)
+[2026-07-27 00:41 UTC] BUY OS / SOL (2KQgVrv1...) @ 1.690074986e-05 仓位=$21.35(机器人单笔$214的10%)
+[2026-07-27 00:41 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 9.736762182e-06 仓位=$5.00(机器人单笔$35的10%)
+[2026-07-27 00:41 UTC] EXIT Fapcoin / CATE [TIME] ret=-1.4% pnl=-0.1676U held=33min
+[2026-07-27 00:41 UTC] EXIT BRODIE / SOL [TP] ret=+8.3% pnl=+3.0646U held=3min
+[2026-07-27 00:41 UTC] EXIT CHANGE / SOL [SL] ret=-35.3% pnl=-11.8438U held=0min
+[2026-07-27 00:41 UTC] EXIT OS / SOL [TP] ret=+20.2% pnl=+3.8041U held=0min
+[2026-07-27 00:41 UTC] EXIT thesis / SOL [SL] ret=-3.2% pnl=-0.2574U held=0min
+[2026-07-27 00:41 UTC] CYCLE OK nav=12937.0228 扫描候选7 新入场4 持仓5 已平仓483
