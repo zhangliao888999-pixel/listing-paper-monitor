@@ -1,35 +1,6 @@
 {
- "updated_at": 1785152818,
- "updated_at_str": "2026-07-27 11:46 UTC",
- "n_candidates": 1,
- "candidates": [
-  {
-   "addr": "Ej9KAot8BGxeCCdV5vMFhbHdtB8r4RR5sN5MxMw2hbSk",
-   "name": "Kittens / SOL",
-   "age_min": 209.0,
-   "created": 1785140278.0,
-   "price": 0.00013873620087458284,
-   "liq": 205472.5334,
-   "vol_15m": 423924.127046822,
-   "vol_1h": 3793061.86858198,
-   "chg_15m": 3.829,
-   "chg_1h": 12.404,
-   "buys_15m": 499,
-   "sells_15m": 273,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/Ej9KAot8BGxeCCdV5vMFhbHdtB8r4RR5sN5MxMw2hbSk",
-   "mint": "CdANoUiikv4yzi8XmjueLiYbNH2f9DJiX27tGzQwyA8W",
-   "early_bot_flag": null,
-   "staircase_flag": false,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 0.0,
-    "staircase_flag": false,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 0,
-    "exit_ratio": null,
-    "wallet_verdict": "钱包画像未见明显控盘迹象"
-   }
-  }
- ]
+ "updated_at": 1785160846,
+ "updated_at_str": "2026-07-27 14:00 UTC",
+ "n_candidates": 0,
+ "candidates": []
 }
