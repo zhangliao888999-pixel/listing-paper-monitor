@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 16402.256656470658,
+ "cash": 16406.505447423322,
  "positions": {
   "3HxSnHALBjPZtEDYTeDcHMcL9ibDLsT1Tt4vmgo5V1nj": {
    "name": "JimothyToy / SOL",
@@ -26068,7 +26068,37 @@
    "reason": "TP",
    "pnl": 0.2285,
    "t_exit": 1785170462
+  },
+  {
+   "name": "FoodPoop / SOL",
+   "entry": 3.178045691092378e-05,
+   "qty": 157329.39315549514,
+   "usd": 5,
+   "t_entry": 1785170643,
+   "bot_avg_trade_usd": 3.85,
+   "mark": 4.658559235803007e-05,
+   "mark_ret": 0.4658565950956286,
+   "addr": "GrT7my4PzSUNUTYmJag3ej8RUsNr31U3dthzJ1LVKQna",
+   "exit": 4.565388051086946e-05,
+   "reason": "TP",
+   "pnl": 2.1827,
+   "t_exit": 1785170643
+  },
+  {
+   "name": "USWR / SOL",
+   "entry": 2.0265009628787158e-05,
+   "qty": 957808.5752511765,
+   "usd": 19.41,
+   "t_entry": 1785170643,
+   "bot_avg_trade_usd": 194.1,
+   "mark": 2.287970877290106e-05,
+   "mark_ret": 0.12902530973385917,
+   "addr": "AtL7GgSLrkwRoYcSEYGjEccz3A8QWcgKVd7mgYuzTane",
+   "exit": 2.242211459744304e-05,
+   "reason": "TP",
+   "pnl": 2.0661,
+   "t_exit": 1785170643
   }
  ],
- "realized_pnl": 6420.656656470671
+ "realized_pnl": 6424.905447423335
 }
