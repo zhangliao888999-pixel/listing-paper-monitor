@@ -4738,3 +4738,14 @@
 [2026-07-27 20:53 UTC] EXIT RYDER / SOL [SL] ret=-71.8% pnl=-3.6198U held=0min
 [2026-07-27 20:53 UTC] EXIT PONS / SOL [SL] ret=-14.1% pnl=-7.8877U held=0min
 [2026-07-27 20:53 UTC] CYCLE OK nav=13378.3002 扫描候选10 新入场5 持仓6 已平仓2116
+[2026-07-27 20:56 UTC] BUY IF / SOL (GXQZW7nC...) @ 3.100231652e-05 仓位=$50.00(机器人单笔$550的10%)
+[2026-07-27 20:56 UTC] BUY breadcat / SOL (81bbDkSM...) @ 7.858397499e-05 仓位=$50.00(机器人单笔$1284的10%)
+[2026-07-27 20:56 UTC] BUY Scam / SOL (221NFNug...) @ 0.0001007217854 仓位=$17.81(机器人单笔$178的10%)
+[2026-07-27 20:56 UTC] BUY RYDER / SOL (GcdFfwa4...) @ 2.472667118e-05 仓位=$5.00(机器人单笔$10的10%)
+[2026-07-27 20:56 UTC] BUY PONS / SOL (4zWjFSwh...) @ 2.923850612e-05 仓位=$50.00(机器人单笔$567的10%)
+[2026-07-27 20:56 UTC] EXIT Grok / SOL [TP] ret=+15.9% pnl=+5.2456U held=6min
+[2026-07-27 20:56 UTC] EXIT IF / SOL [TP] ret=+15.3% pnl=+6.5154U held=0min
+[2026-07-27 20:56 UTC] EXIT breadcat / SOL [TP] ret=+12.1% pnl=+4.9139U held=0min
+[2026-07-27 20:56 UTC] EXIT Scam / SOL [TP] ret=+73.4% pnl=+12.4619U held=0min
+[2026-07-27 20:56 UTC] EXIT RYDER / SOL [SL] ret=-67.0% pnl=-3.3842U held=0min
+[2026-07-27 20:56 UTC] CYCLE OK nav=13404.0527 扫描候选10 新入场5 持仓6 已平仓2121
