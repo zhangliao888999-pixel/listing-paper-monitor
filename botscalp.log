@@ -1070,3 +1070,12 @@
 [2026-07-27 00:35 UTC] EXIT BRODIE / SOL [TP] ret=+5.9% pnl=+1.9045U held=0min
 [2026-07-27 00:35 UTC] EXIT thesis / SOL [SL] ret=-3.2% pnl=-0.2574U held=0min
 [2026-07-27 00:35 UTC] CYCLE OK nav=12946.2608 扫描候选7 新入场5 持仓6 已平仓474
+[2026-07-27 00:38 UTC] BUY CHANGE / SOL (4aP7qN7U...) @ 2.699806395e-05 仓位=$32.52(机器人单笔$325的10%)
+[2026-07-27 00:38 UTC] BUY BRODIE / SOL (4RYHTrky...) @ 3.218362239e-05 仓位=$50.00(机器人单笔$750的10%)
+[2026-07-27 00:38 UTC] BUY VORF / SOL (DJo2AJPC...) @ 0.01536160387 仓位=$6.81(机器人单笔$68的10%)
+[2026-07-27 00:38 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 9.736762182e-06 仓位=$5.00(机器人单笔$35的10%)
+[2026-07-27 00:38 UTC] EXIT OS / SOL [TP] ret=+23.2% pnl=+4.0474U held=3min
+[2026-07-27 00:38 UTC] EXIT CHANGE / SOL [SL] ret=-25.1% pnl=-8.6513U held=0min
+[2026-07-27 00:38 UTC] EXIT VORF / SOL [TP] ret=+19.0% pnl=+1.1327U held=0min
+[2026-07-27 00:38 UTC] EXIT thesis / SOL [SL] ret=-3.2% pnl=-0.2574U held=0min
+[2026-07-27 00:38 UTC] CYCLE OK nav=12942.3811 扫描候选7 新入场4 持仓6 已平仓478
