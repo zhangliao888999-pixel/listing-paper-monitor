@@ -395,6 +395,14 @@ def try_exit(cfg, wallet, state, addr, pos):
     if fresh_price is None:
         return
     ret = fresh_price / pos["entry_price_usd"] - 1
+    # 报价源(GeckoTerminal)偶尔会给出离谱的坏数据(实测出现过池子price_usd差了240万倍的情况，
+    # 跟之前screener那边碰到的"流动性显示14亿美元"是同一类报价异常)。这么夸张的比例基本可以
+    # 确定是数据错误而不是真实行情，不能拿它去触发止盈止损决策——先跳过这一轮，等下一轮报价
+    # 恢复正常再判断，比"按错误数据强行卖出"安全。
+    if abs(ret) > 50:
+        log(f"SKIP EXIT CHECK {pos['name']}: fresh_price={fresh_price:.10g}相对入场价异常(ret={ret*100:.0f}%),"
+           f"疑似报价数据错误,这轮不判断止盈止损")
+        return
     hold_min = (NOW - pos["t_entry"]) / 60
     reason = None
     if ret >= cfg["tp"]:
@@ -435,7 +443,15 @@ def try_exit(cfg, wallet, state, addr, pos):
         audit({**record, "status": "unconfirmed", "sig": sig})
         return
 
-    proceeds_usd = pos["usd"] * (1 + ret)  # 近似,真实到手金额以Jupiter报价的outAmount*SOL价为准
+    # 用Jupiter这笔卖出报价的实际outAmount(能拿到多少SOL)乘实时SOL价格算真实到手金额，
+    # 不再用fresh_price的比例去估算——那个比例来自第三方报价接口，偶尔会离谱出错(见上面
+    # ret>50的哨兵注释)，而Jupiter报价对应的是这笔交易实际会成交的数量，更可靠。
+    sol_out = int(quote["outAmount"]) / 1e9
+    sol_price_now = get_fresh_price_usd(SOL_MINT, is_pool_addr=False)
+    if sol_price_now:
+        proceeds_usd = sol_out * sol_price_now
+    else:
+        proceeds_usd = pos["usd"] * (1 + ret)  # 兜底:SOL价格也拿不到时才退回近似值
     pnl = proceeds_usd - pos["usd"]
     state["realized_pnl_usd"] += pnl
     state["closed"].append({**pos, "addr": addr, "exit_price_usd": fresh_price, "reason": reason,
