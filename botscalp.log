@@ -3845,3 +3845,9 @@
 [2026-07-27 16:20 UTC] EXIT CASHBULL / SOL [SL] ret=-8.3% pnl=-1.6531U held=9min
 [2026-07-27 16:20 UTC] EXIT SalaryCat / SOL [SL] ret=-21.8% pnl=-1.1696U held=0min
 [2026-07-27 16:20 UTC] CYCLE OK nav=16407.1471 扫描候选5 新入场1 持仓5 已平仓1723
+[2026-07-27 16:23 UTC] BUY USOP / SOL (Au8xu2cG...) @ 0.00178858065 仓位=$30.26(机器人单笔$303的10%)
+[2026-07-27 16:23 UTC] BUY SalaryCat / SOL (AVFpKzmt...) @ 0.001974361865 仓位=$5.00(机器人单笔$48的10%)
+[2026-07-27 16:23 UTC] BUY FoodPoop / SOL (GrT7my4P...) @ 2.932202141e-05 仓位=$5.00(机器人单笔$37的10%)
+[2026-07-27 16:23 UTC] EXIT CATE / SOL [TP] ret=+50.6% pnl=+2.5440U held=9min
+[2026-07-27 16:23 UTC] EXIT SalaryCat / SOL [SL] ret=-24.8% pnl=-1.3136U held=0min
+[2026-07-27 16:23 UTC] CYCLE OK nav=16408.3774 扫描候选5 新入场3 持仓6 已平仓1725
