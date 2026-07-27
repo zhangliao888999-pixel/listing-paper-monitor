@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13495.479897529212,
+ "cash": 13519.598486473995,
  "positions": {
   "5sRnC3uJvdaP6ogx5SH5H6xMnpyJ6ZFCL7jeCcM41Qak": {
    "name": "C𖦹T / SOL",
@@ -22,29 +22,15 @@
    "mark": 0.0002723403046117979,
    "mark_ret": -0.027456819152463674
   },
-  "6T3mbtTVzgSFy2t4CgxUiuAPAMSMtGmmNdkeXvQhvyFg": {
-   "name": "USWR / SOL",
-   "entry": 0.029899358949149118,
-   "qty": 225.82423962611912,
-   "usd": 6.752,
-   "t_entry": 1785136623,
-   "bot_avg_trade_usd": 67.52
-  },
-  "AwyjRv3Y9gfkeUpCmpmx5pUJNoJggPRBJBbdcYPQUdfJ": {
-   "name": "Nongwan / SOL",
-   "entry": 0.00023182740212879455,
-   "qty": 198807.38677472947,
-   "usd": 46.089,
-   "t_entry": 1785136623,
-   "bot_avg_trade_usd": 460.89
-  },
   "7JND8ib17tWeRXqviNzQrU5Do57GeUYjACpSCJqaZSKE": {
    "name": "UCOE / SOL",
    "entry": 6.253008631216188e-05,
    "qty": 799615.0804972609,
    "usd": 50,
    "t_entry": 1785136804,
-   "bot_avg_trade_usd": 705.07
+   "bot_avg_trade_usd": 705.07,
+   "mark": 6.110419910029284e-05,
+   "mark_ret": -0.022803218353973587
   },
   "14UfqDjc2iWMC8yK9EoBzauds9X1VnKJ4gCyJeqWvEWS": {
    "name": "SIRIUS / SOL",
@@ -53,6 +39,14 @@
    "usd": 14.062000000000001,
    "t_entry": 1785136983,
    "bot_avg_trade_usd": 140.62
+  },
+  "CuHfkjBkTQHGEQepY52dxaNq4fF5X6tzBhoJbG9gMApM": {
+   "name": "WILLY / SOL",
+   "entry": 3.501589565418077e-06,
+   "qty": 4915767.447446352,
+   "usd": 17.213,
+   "t_entry": 1785137162,
+   "bot_avg_trade_usd": 172.13
   }
  },
  "closed": [
@@ -15100,7 +15094,37 @@
    "reason": "SL",
    "pnl": -8.0058,
    "t_exit": 1785136983
+  },
+  {
+   "name": "USWR / SOL",
+   "entry": 0.029899358949149118,
+   "qty": 225.82423962611912,
+   "usd": 6.752,
+   "t_entry": 1785136623,
+   "bot_avg_trade_usd": 67.52,
+   "mark": 0.006445753836529239,
+   "mark_ret": -0.7844183265771096,
+   "addr": "6T3mbtTVzgSFy2t4CgxUiuAPAMSMtGmmNdkeXvQhvyFg",
+   "exit": 0.0063168387597986545,
+   "reason": "SL",
+   "pnl": -5.3255,
+   "t_exit": 1785137162
+  },
+  {
+   "name": "Nongwan / SOL",
+   "entry": 0.00023182740212879455,
+   "qty": 198807.38677472947,
+   "usd": 46.089,
+   "t_entry": 1785136623,
+   "bot_avg_trade_usd": 460.89,
+   "mark": 0.00020481876434083702,
+   "mark_ret": -0.11650321549543374,
+   "addr": "AwyjRv3Y9gfkeUpCmpmx5pUJNoJggPRBJBbdcYPQUdfJ",
+   "exit": 0.00020072238905402028,
+   "reason": "SL",
+   "pnl": -6.1839,
+   "t_exit": 1785137162
   }
  ],
- "realized_pnl": 3678.9498975292145
+ "realized_pnl": 3667.440486473997
 }

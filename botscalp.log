@@ -2259,3 +2259,7 @@
 [2026-07-27 07:23 UTC] EXIT CHILLDOG / SOL [SL] ret=-30.5% pnl=-7.0770U held=9min
 [2026-07-27 07:23 UTC] EXIT WILLY / SOL [SL] ret=-38.1% pnl=-8.0058U held=0min
 [2026-07-27 07:23 UTC] CYCLE OK nav=13677.2522 扫描候选5 新入场2 持仓6 已平仓1003
+[2026-07-27 07:26 UTC] BUY WILLY / SOL (CuHfkjBk...) @ 3.501589565e-06 仓位=$17.21(机器人单笔$172的10%)
+[2026-07-27 07:26 UTC] EXIT USWR / SOL [SL] ret=-78.4% pnl=-5.3255U held=9min
+[2026-07-27 07:26 UTC] EXIT Nongwan / SOL [SL] ret=-11.7% pnl=-6.1839U held=9min
+[2026-07-27 07:26 UTC] CYCLE OK nav=13664.6026 扫描候选5 新入场1 持仓5 已平仓1005
