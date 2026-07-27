@@ -1600,3 +1600,16 @@
 [2026-07-27 03:47 UTC] EXIT PONS / SOL [TP] ret=+23.4% pnl=+10.4748U held=0min
 [2026-07-27 03:47 UTC] EXIT MAGAVERSE / SOL [TP] ret=+12.7% pnl=+5.2430U held=0min
 [2026-07-27 03:47 UTC] CYCLE OK nav=13117.3302 扫描候选12 新入场6 持仓8 已平仓708
+[2026-07-27 03:50 UTC] BUY Raquizzel / SOL (AZot33UK...) @ 0.0001553383458 仓位=$24.80(机器人单笔$248的10%)
+[2026-07-27 03:50 UTC] BUY HOOD / SOL (EZ7dPY8h...) @ 1.37905245e-05 仓位=$50.00(机器人单笔$721的10%)
+[2026-07-27 03:50 UTC] BUY MAGAVERSE / SOL (Chysq8jg...) @ 7.613299741e-05 仓位=$50.00(机器人单笔$1289的10%)
+[2026-07-27 03:50 UTC] BUY MANDO / SOL (ExqkwrMw...) @ 1.5775562e-05 仓位=$19.91(机器人单笔$199的10%)
+[2026-07-27 03:50 UTC] BUY wifcat / SOL (H6DTNLW6...) @ 9.664080923e-06 仓位=$31.65(机器人单笔$317的10%)
+[2026-07-27 03:50 UTC] BUY USOX / SOL (AebwXbAH...) @ 0.01696910961 仓位=$5.00(机器人单笔$22的10%)
+[2026-07-27 03:50 UTC] EXIT FROGE / SOL [TP] ret=+104.8% pnl=+40.4723U held=9min
+[2026-07-27 03:50 UTC] EXIT MAGAVERSE / SOL [SL] ret=-18.4% pnl=-1.0030U held=3min
+[2026-07-27 03:50 UTC] EXIT Kittens / SOL [TP] ret=+7.7% pnl=+2.7792U held=3min
+[2026-07-27 03:50 UTC] EXIT BINU / SOL [TP] ret=+8.1% pnl=+1.3616U held=3min
+[2026-07-27 03:50 UTC] EXIT Raquizzel / SOL [SL] ret=-4.2% pnl=-1.5084U held=0min
+[2026-07-27 03:50 UTC] EXIT wifcat / SOL [SL] ret=-7.6% pnl=-2.9970U held=0min
+[2026-07-27 03:50 UTC] CYCLE OK nav=13156.4383 扫描候选9 新入场6 持仓8 已平仓714
