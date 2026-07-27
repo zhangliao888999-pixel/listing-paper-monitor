@@ -1683,3 +1683,15 @@
 [2026-07-27 04:11 UTC] EXIT HUTCH / SOL [SL] ret=-11.1% pnl=-2.4775U held=0min
 [2026-07-27 04:11 UTC] EXIT USOX / SOL [TP] ret=+9.0% pnl=+0.3758U held=0min
 [2026-07-27 04:11 UTC] CYCLE OK nav=13197.0826 扫描候选9 新入场5 持仓7 已平仓746
+[2026-07-27 04:14 UTC] BUY CXMT / SOL (9jZnugpC...) @ 7.393775188e-06 仓位=$50.00(机器人单笔$753的10%)
+[2026-07-27 04:14 UTC] BUY SEB / SOL (4ifthcff...) @ 8.669589523e-05 仓位=$46.84(机器人单笔$468的10%)
+[2026-07-27 04:14 UTC] BUY wifcat / SOL (H6DTNLW6...) @ 8.93375768e-06 仓位=$28.52(机器人单笔$285的10%)
+[2026-07-27 04:14 UTC] BUY SCHRÖDINGER / SOL (6wTLo8hg...) @ 1.880399351e-05 仓位=$5.00(机器人单笔$15的10%)
+[2026-07-27 04:14 UTC] BUY USOX / SOL (AebwXbAH...) @ 0.01889215958 仓位=$5.00(机器人单笔$38的10%)
+[2026-07-27 04:14 UTC] EXIT HOOD / SOL [TP] ret=+9.9% pnl=+3.8635U held=12min
+[2026-07-27 04:14 UTC] EXIT MAGAVERSE / SOL [TP] ret=+11.3% pnl=+4.5597U held=3min
+[2026-07-27 04:14 UTC] EXIT BINU / SOL [SL] ret=-11.1% pnl=-3.0597U held=3min
+[2026-07-27 04:14 UTC] EXIT SEB / SOL [SL] ret=-7.4% pnl=-4.3462U held=0min
+[2026-07-27 04:14 UTC] EXIT wifcat / SOL [TP] ret=+24.8% pnl=+6.3496U held=0min
+[2026-07-27 04:14 UTC] EXIT SCHRÖDINGER / SOL [TP] ret=+40.0% pnl=+1.8582U held=0min
+[2026-07-27 04:14 UTC] CYCLE OK nav=13205.6930 扫描候选12 新入场5 持仓6 已平仓752
