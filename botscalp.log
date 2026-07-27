@@ -4180,3 +4180,9 @@
 [2026-07-27 18:17 UTC] EXIT PONS / SOL [TP] ret=+6.1% pnl=+2.0003U held=18min
 [2026-07-27 18:17 UTC] EXIT CXMT / SOL [SL] ret=-3.9% pnl=-2.9027U held=6min
 [2026-07-27 18:17 UTC] CYCLE OK nav=16207.8702 扫描候选8 新入场0 持仓6 已平仓1871
+[2026-07-27 18:20 UTC] BUY CXMT / SOL (FLUMAEUT...) @ 5.614366445e-05 仓位=$50.00(机器人单笔$619的10%)
+[2026-07-27 18:20 UTC] BUY PONS / SOL (4zWjFSwh...) @ 1.78582578e-05 仓位=$50.00(机器人单笔$591的10%)
+[2026-07-27 18:20 UTC] EXIT ARF / SOL [TP] ret=+5.2% pnl=+0.1548U held=9min
+[2026-07-27 18:20 UTC] EXIT Tortuga / SOL [SL] ret=-9.0% pnl=-0.5431U held=6min
+[2026-07-27 18:20 UTC] EXIT PONS / SOL [TP] ret=+12.2% pnl=+5.0012U held=0min
+[2026-07-27 18:20 UTC] CYCLE OK nav=16211.2996 扫描候选8 新入场2 持仓5 已平仓1874
