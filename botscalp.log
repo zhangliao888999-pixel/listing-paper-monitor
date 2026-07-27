@@ -3980,3 +3980,12 @@
 [2026-07-27 17:14 UTC] EXIT $SAVEACT / SOL [SL] ret=-12.1% pnl=-1.9843U held=0min
 [2026-07-27 17:14 UTC] EXIT CATE / SOL [TP] ret=+25.8% pnl=+1.8179U held=0min
 [2026-07-27 17:14 UTC] CYCLE OK nav=16418.6127 扫描候选9 新入场6 持仓6 已平仓1781
+[2026-07-27 17:17 UTC] BUY Tortuga / SOL (C4ykhmjT...) @ 0.000151535329 仓位=$5.00(机器人单笔$15的10%)
+[2026-07-27 17:17 UTC] BUY AP / SOL (HKjd8e6Q...) @ 2.023846141e-05 仓位=$34.49(机器人单笔$345的10%)
+[2026-07-27 17:17 UTC] BUY $SAVEACT / SOL (4d6Uj2jn...) @ 8.889928583e-06 仓位=$14.55(机器人单笔$146的10%)
+[2026-07-27 17:17 UTC] BUY CATE / SOL (CybgsPhr...) @ 0.000100237335 仓位=$7.55(机器人单笔$76的10%)
+[2026-07-27 17:17 UTC] EXIT CATE / SOL [TP] ret=+8.9% pnl=+3.3788U held=15min
+[2026-07-27 17:17 UTC] EXIT Tortuga / SOL [TP] ret=+17.7% pnl=+0.7682U held=0min
+[2026-07-27 17:17 UTC] EXIT $SAVEACT / SOL [SL] ret=-3.3% pnl=-0.7639U held=0min
+[2026-07-27 17:17 UTC] EXIT CATE / SOL [TP] ret=+17.5% pnl=+1.1410U held=0min
+[2026-07-27 17:17 UTC] CYCLE OK nav=16422.1507 扫描候选9 新入场4 持仓6 已平仓1785
