@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 15712.91417890824,
+ "cash": 15643.087378969329,
  "positions": {
   "BZ9aaC3z8YNQcCeAJnMiZzwghgRvvwrQNYDXggBizAUd": {
    "name": "APPLE / SOL",
@@ -42,14 +42,6 @@
    "mark": 4.690575787815431e-05,
    "mark_ret": -0.005326318499088378
   },
-  "3MwwpX31TpFkzJCTSrB8MoJepDyYJ2dTjHnp9QcfqVqn": {
-   "name": "SHIBCAT / SOL",
-   "entry": 4.884760894139946e-05,
-   "qty": 1023591.555115482,
-   "usd": 50,
-   "t_entry": 1785155343,
-   "bot_avg_trade_usd": 590.39
-  },
   "2wnKGvaJvJcFWh5PgbqyDwHqivM8gjgxURJYCQFwdWa7": {
    "name": "PCAT / SOL",
    "entry": 1.5716300057289755e-05,
@@ -57,16 +49,36 @@
    "usd": 23.789,
    "t_entry": 1785155343,
    "bot_avg_trade_usd": 237.89,
-   "mark": 1.554847934972152e-05,
-   "mark_ret": -0.010678130791374918
+   "mark": 1.627200483415504e-05,
+   "mark_ret": 0.03535849880949127
   },
-  "AjtLwy3UVe1ZtZpKZwyKbYq4hwNorj15GWMHnimzTjRV": {
-   "name": "◎ / SOL",
-   "entry": 0.00043744015994622433,
-   "qty": 11430.134811158316,
-   "usd": 5,
-   "t_entry": 1785155343,
-   "bot_avg_trade_usd": 28.25
+  "Ej9KAot8BGxeCCdV5vMFhbHdtB8r4RR5sN5MxMw2hbSk": {
+   "name": "Kittens / SOL",
+   "entry": 0.0001415109248920745,
+   "qty": 353329.61068647716,
+   "usd": 50,
+   "t_entry": 1785155703,
+   "bot_avg_trade_usd": 748.68,
+   "mark": 0.00014347048856171344,
+   "mark_ret": 0.013847437370177795
+  },
+  "FkyuLuELyfNtF5cRWWHAzQpix82bKu5JEE4J43zNusnK": {
+   "name": "HOOD / SOL",
+   "entry": 0.00012772879678844506,
+   "qty": 391454.4038398335,
+   "usd": 50,
+   "t_entry": 1785155703,
+   "bot_avg_trade_usd": 671.71
+  },
+  "9e1GFE73x8DFamiuN8LGij1EvhkazvtQV74Nv3zEYZfa": {
+   "name": "speedrun / SOL",
+   "entry": 2.834878980425174e-05,
+   "qty": 1490433.993540813,
+   "usd": 42.252,
+   "t_entry": 1785155703,
+   "bot_avg_trade_usd": 422.52,
+   "mark": 2.869460342810574e-05,
+   "mark_ret": 0.012198532150466956
   }
  },
  "closed": [
@@ -21609,7 +21621,82 @@
    "reason": "SL",
    "pnl": -3.1922,
    "t_exit": 1785155343
+  },
+  {
+   "name": "SHIBCAT / SOL",
+   "entry": 4.884760894139946e-05,
+   "qty": 1023591.555115482,
+   "usd": 50,
+   "t_entry": 1785155343,
+   "bot_avg_trade_usd": 590.39,
+   "mark": 5.684400077783296e-05,
+   "mark_ret": 0.16370078310335412,
+   "addr": "3MwwpX31TpFkzJCTSrB8MoJepDyYJ2dTjHnp9QcfqVqn",
+   "exit": 5.57071207622763e-05,
+   "reason": "TP",
+   "pnl": 7.0213,
+   "t_exit": 1785155703
+  },
+  {
+   "name": "◎ / SOL",
+   "entry": 0.00043744015994622433,
+   "qty": 11430.134811158316,
+   "usd": 5,
+   "t_entry": 1785155343,
+   "bot_avg_trade_usd": 28.25,
+   "mark": 0.00041703698504556424,
+   "mark_ret": -0.046642207938037306,
+   "addr": "AjtLwy3UVe1ZtZpKZwyKbYq4hwNorj15GWMHnimzTjRV",
+   "exit": 0.00040869624534465296,
+   "reason": "SL",
+   "pnl": -0.3285,
+   "t_exit": 1785155703
+  },
+  {
+   "name": "oof / SOL",
+   "entry": 7.473333702778341e-05,
+   "qty": 461761.7969765044,
+   "usd": 34.509,
+   "t_entry": 1785155703,
+   "bot_avg_trade_usd": 345.09,
+   "mark": 0.00010425398189211038,
+   "mark_ret": 0.3950130696472467,
+   "addr": "EXvKad1bot9ZkrUH8si9fnqWjYVJ9EvWyDqhnUKcF4rf",
+   "exit": 0.00010216890225426817,
+   "reason": "TP",
+   "pnl": 12.6687,
+   "t_exit": 1785155703
+  },
+  {
+   "name": "oof / SOL",
+   "entry": 3.844429491591016e-05,
+   "qty": 1194143.3729091748,
+   "usd": 45.908,
+   "t_entry": 1785155703,
+   "bot_avg_trade_usd": 459.08,
+   "mark": 3.598824564363186e-05,
+   "mark_ret": -0.06388592319485786,
+   "addr": "8s9mfWguDwYCngRbfDkWzkcNujCRJF1nJCnYRei3X9Mj",
+   "exit": 3.5268480730759225e-05,
+   "reason": "SL",
+   "pnl": -3.7924,
+   "t_exit": 1785155703
+  },
+  {
+   "name": "SOLdiers / SOL",
+   "entry": 2.051638196468653e-05,
+   "qty": 861652.8991528797,
+   "usd": 17.678,
+   "t_entry": 1785155703,
+   "bot_avg_trade_usd": 176.78,
+   "mark": 2.31331490785456e-05,
+   "mark_ret": 0.1275452522946363,
+   "addr": "C4T6ukMxcUSjiBrToPS2z6w57fYkFN4UiQema3NWeJNS",
+   "exit": 2.267048609697469e-05,
+   "reason": "TP",
+   "pnl": 1.8561,
+   "t_exit": 1785155703
   }
  ],
- "realized_pnl": 5873.276178908249
+ "realized_pnl": 5890.70137896934
 }
