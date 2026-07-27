@@ -3826,3 +3826,10 @@
 [2026-07-27 16:11 UTC] EXIT SalaryCat / SOL [TP] ret=+21.7% pnl=+0.9627U held=0min
 [2026-07-27 16:11 UTC] EXIT CATE / SOL [TP] ret=+42.0% pnl=+2.5251U held=0min
 [2026-07-27 16:11 UTC] CYCLE OK nav=16407.6815 扫描候选8 新入场4 持仓5 已平仓1715
+[2026-07-27 16:14 UTC] BUY CATE / SOL (FuBHngMd...) @ 5.646130105e-05 仓位=$38.24(机器人单笔$382的10%)
+[2026-07-27 16:14 UTC] BUY SalaryCat / SOL (AVFpKzmt...) @ 0.001626632987 仓位=$5.00(机器人单笔$40的10%)
+[2026-07-27 16:14 UTC] BUY CATE / SOL (CybgsPhr...) @ 4.08136288e-05 仓位=$5.35(机器人单笔$53的10%)
+[2026-07-27 16:14 UTC] EXIT gib / SOL [SL] ret=-59.9% pnl=-3.0338U held=12min
+[2026-07-27 16:14 UTC] EXIT CATE / SOL [TP] ret=+20.4% pnl=+6.8731U held=0min
+[2026-07-27 16:14 UTC] EXIT SalaryCat / SOL [SL] ret=-26.0% pnl=-1.3750U held=0min
+[2026-07-27 16:14 UTC] CYCLE OK nav=16410.1457 扫描候选8 新入场3 持仓5 已平仓1718
