@@ -1041,3 +1041,8 @@
 [2026-07-27 00:26 UTC] EXIT SalaryCat / SOL [TP] ret=+19.4% pnl=+0.8510U held=0min
 [2026-07-27 00:26 UTC] EXIT thesis / SOL [SL] ret=-6.0% pnl=-0.3963U held=0min
 [2026-07-27 00:26 UTC] CYCLE OK nav=12974.7942 扫描候选7 新入场3 持仓6 已平仓461
+[2026-07-27 00:29 UTC] BUY SalaryCat / SOL (FedX2ude...) @ 0.001631322025 仓位=$5.00(机器人单笔$40的10%)
+[2026-07-27 00:29 UTC] BUY thesis / SOL (7jHjG1Vs...) @ 1.013017766e-05 仓位=$5.00(机器人单笔$38的10%)
+[2026-07-27 00:29 UTC] EXIT CHANGE / SOL [SL] ret=-34.7% pnl=-11.2923U held=9min
+[2026-07-27 00:29 UTC] EXIT thesis / SOL [SL] ret=-7.6% pnl=-0.4710U held=0min
+[2026-07-27 00:29 UTC] CYCLE OK nav=12963.0025 扫描候选7 新入场2 持仓6 已平仓463
