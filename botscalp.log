@@ -2948,3 +2948,14 @@
 [2026-07-27 11:05 UTC] EXIT Nongwan / SOL [SL] ret=-64.6% pnl=-3.2649U held=0min
 [2026-07-27 11:05 UTC] EXIT Nongwan / SOL [TP] ret=+13.6% pnl=+1.1561U held=0min
 [2026-07-27 11:05 UTC] CYCLE OK nav=14957.7908 扫描候选13 新入场5 持仓9 已平仓1317
+[2026-07-27 11:08 UTC] BUY Nongwan / SOL (J5zUqUVw...) @ 0.001216549274 仓位=$5.00(机器人单笔$30的10%)
+[2026-07-27 11:08 UTC] BUY Nongwan / SOL (CTf8m9kZ...) @ 0.001230156773 仓位=$5.00(机器人单笔$19的10%)
+[2026-07-27 11:08 UTC] BUY CATE / SOL (25oHVjos...) @ 3.628241445e-05 仓位=$14.78(机器人单笔$148的10%)
+[2026-07-27 11:08 UTC] BUY Nongwan / SOL (DqTqjGwb...) @ 0.0001083809154 仓位=$10.23(机器人单笔$102的10%)
+[2026-07-27 11:08 UTC] BUY Yajucoinbxa / SOL (CJiXi1go...) @ 0.004240944366 仓位=$50.00(机器人单笔$14502的10%)
+[2026-07-27 11:08 UTC] EXIT CXMT / SOL [TP] ret=+6.0% pnl=+0.1953U held=6min
+[2026-07-27 11:08 UTC] EXIT PONS / SOL [SL] ret=-5.4% pnl=-1.3904U held=3min
+[2026-07-27 11:08 UTC] EXIT SOLdiers / SOL [SL] ret=-37.0% pnl=-4.7810U held=3min
+[2026-07-27 11:08 UTC] EXIT Nongwan / SOL [SL] ret=-66.7% pnl=-3.3661U held=0min
+[2026-07-27 11:08 UTC] EXIT Nongwan / SOL [TP] ret=+26.6% pnl=+2.4562U held=0min
+[2026-07-27 11:08 UTC] CYCLE OK nav=14950.5201 扫描候选13 新入场5 持仓9 已平仓1322
