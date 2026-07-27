@@ -1,35 +1,6 @@
 {
- "updated_at": 1785185715,
- "updated_at_str": "2026-07-27 20:55 UTC",
- "n_candidates": 1,
- "candidates": [
-  {
-   "addr": "7TrrWpNAmPb7VCuJRUA9GzEXJNCHdTWQ12aErsf4hgTt",
-   "name": "CATE / SOL",
-   "age_min": 71.16666666666667,
-   "created": 1785181445.0,
-   "price": 1.7327015860633728e-05,
-   "liq": 10791.9881,
-   "vol_15m": 638485.66869566,
-   "vol_1h": 2647684.74466844,
-   "chg_15m": -15.953,
-   "chg_1h": -59.139,
-   "buys_15m": 926,
-   "sells_15m": 868,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/7TrrWpNAmPb7VCuJRUA9GzEXJNCHdTWQ12aErsf4hgTt",
-   "mint": "5kJy5Dnz4WpEHXJvjC8Xcr3rENRvQ9bU4YuZ8XuihaZL",
-   "early_bot_flag": true,
-   "staircase_flag": false,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 0.0,
-    "staircase_flag": false,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 4,
-    "exit_ratio": 0.9874409209292492,
-    "wallet_verdict": "创建者钱包标记为transfer_in(资金内部转入，不是市场买入)"
-   }
-  }
- ]
+ "updated_at": 1785189490,
+ "updated_at_str": "2026-07-27 21:58 UTC",
+ "n_candidates": 0,
+ "candidates": []
 }
