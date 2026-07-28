@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13080.05553601568,
+ "cash": 13080.468672011151,
  "positions": {},
  "closed": [
   {
@@ -37012,7 +37012,32 @@
    "reason": "TP",
    "pnl": 0.2961,
    "t_exit": 1785212044
+  },
+  {
+   "name": "Dogshit / SOL",
+   "entry": 0.0001580121165240968,
+   "qty": 31643.14300693201,
+   "usd": 5,
+   "t_entry": 1785212222,
+   "bot_avg_trade_usd": 14.49,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 497,
+   "entry_sellers_h1": 528,
+   "entry_buy_sell_ratio_h1": 0.9412878787878788,
+   "entry_price_change_h1_pct": -41.847,
+   "entry_n_wallets": 150,
+   "bot_wallet_addr": "TwCo2LkMcLRfzsuXf1Nu7MMXNnCha4D16YH4nLL86LF",
+   "consecutive_no_price": 0,
+   "mark": 0.00017455940319941574,
+   "mark_ret": 0.10472163172876359,
+   "addr": "2zvfzup9ZAbNKRLm2XguC4LnyRzGdN7KVmcUmypYYzdB",
+   "exit": 0.00017106821513542743,
+   "reason": "TP",
+   "pnl": 0.4131,
+   "t_exit": 1785212222
   }
  ],
- "realized_pnl": 2998.1575360156553
+ "realized_pnl": 2998.570672011126
 }
