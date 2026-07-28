@@ -51,6 +51,13 @@ MIN_LOCKED_LIQ_PCT = 50.0    # 流动性锁仓比例低于这个数,LP随时能�
 MAX_BUY_SELL_RATIO = 30.0    # 过去1小时买家人数/卖家人数超过这个比例,像"广撒网吸引接盘"
 MAX_RECENT_PUMP_PCT = 100.0  # 过去1小时已经涨了这么多,大概率追高接盘
 
+# 2026-07-27新增: 用户明确指出"流动性比3%止损重要得多——流动性没了是100%全亏,
+# 3%止损根本不算什么"。买候选慢(一轮要查很多候选),但盯着手上几个持仓的流动性很快,
+# 不用等下一次计划任务触发(最快1分钟)才复查一次——脚本内部在扫描完新候选后,进入
+# 一段高频复查窗口,持续盯着已有持仓直到没仓位或者到时间。
+EXIT_CHECK_INTERVAL_SEC = 15
+EXIT_CHECK_WINDOW_SEC = 150
+
 NOW = int(time.time())
 NOW_STR = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
@@ -302,7 +309,16 @@ def main():
         if try_enter(state, c):
             n_entered += 1
 
-    manage_positions(state)
+    # 高频复查持仓阶段: 流动性风险(可能100%全亏)远大于3%止损,盯着手上几个持仓的
+    # 流动性很快,不用等下一次计划任务触发才复查——脚本内部持续高频复查,直到跑满
+    # 窗口时间或者已经没持仓了。
+    window_end = time.time() + EXIT_CHECK_WINDOW_SEC
+    n_exit_rounds = 0
+    while state["positions"] and time.time() < window_end:
+        n_exit_rounds += 1
+        manage_positions(state)
+        if state["positions"] and time.time() < window_end:
+            time.sleep(EXIT_CHECK_INTERVAL_SEC)
 
     open_val = sum(p["qty"] * p.get("mark", p["entry"]) for p in state["positions"].values())
     nav = state["cash"] + open_val
@@ -345,7 +361,8 @@ def main():
     DASH_F.write_text("\n".join(lines), encoding="utf-8")
 
     STATE_F.write_text(json.dumps(state, ensure_ascii=False, indent=1), encoding="utf-8")
-    log(f"CYCLE OK nav={nav:.4f} 扫描候选{len(cands)} 新入场{n_entered} 持仓{len(state['positions'])} 已平仓{len(closed)}")
+    log(f"CYCLE OK nav={nav:.4f} 扫描候选{len(cands)} 新入场{n_entered} 高频复查{n_exit_rounds}轮 "
+       f"持仓{len(state['positions'])} 已平仓{len(closed)}")
 
 
 if __name__ == "__main__":

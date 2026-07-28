@@ -169,6 +169,12 @@ def load_config():
                                        # 吸引散户接盘,少数人偷偷出货",不进场
         "maxRecentPumpPct": 100.0,    # 过去1小时已经涨了这么多,大概率已经涨过头,追进去等于
                                        # 替别人接盘,不进场
+        # 2026-07-27新增: 用户明确指出"流动性比3%止损重要得多——流动性没了是100%全亏,
+        # 3%止损根本不算什么"。买候选慢(一轮要查10-15个池子的尽调),但盯着手上2-3个
+        # 持仓的流动性很快,不用等下一次计划任务触发(最快1分钟)才复查一次——脚本内部
+        # 在扫描完新候选后,进入一段高频复查窗口,持续盯着已有持仓直到没仓位或者到时间。
+        "exitCheckIntervalSec": 15,   # 持仓期间每隔几秒重新查一次流动性/价格
+        "exitCheckWindowSec": 150,    # 这段高频复查窗口最长跑多久(留量给计划任务下一次触发)
     }
     if CONFIG_F.exists():
         default.update(json.loads(CONFIG_F.read_text(encoding="utf-8")))
@@ -786,16 +792,26 @@ def main():
             log(f"ERROR try_enter({c.get('name')}): {e}")
         save_state(state)  # 每处理一个就落盘一次,防止中途崩溃丢失已经真实发生的交易记录
 
-    for addr in list(state["positions"].keys()):
-        try:
-            try_exit(cfg, wallet, state, addr, state["positions"][addr])
-        except Exception as e:
-            log(f"ERROR try_exit({addr}): {e}")
-        save_state(state)
+    # 高频复查持仓阶段: 流动性风险(可能100%全亏)远大于3%止损,买候选慢(要查很多池子的
+    # 尽调),但盯着手上2-3个持仓的流动性很快,不用等下一次计划任务触发(最快1分钟)才
+    # 复查一次——在这次脚本运行内部持续高频复查,直到跑满窗口时间或者已经没持仓了。
+    window_end = time.time() + cfg["exitCheckWindowSec"]
+    n_exit_rounds = 0
+    while state["positions"] and time.time() < window_end:
+        n_exit_rounds += 1
+        for addr in list(state["positions"].keys()):
+            try:
+                try_exit(cfg, wallet, state, addr, state["positions"][addr])
+            except Exception as e:
+                log(f"ERROR try_exit({addr}): {e}")
+            save_state(state)
+        if state["positions"] and time.time() < window_end:
+            time.sleep(cfg["exitCheckIntervalSec"])
+
     write_dashboard(cfg, state)
     write_dashboard_html(cfg, state)
     log(f"CYCLE OK live_mode={is_live_mode()} 扫描候选{len(cands)} 新入场{n_entered} "
-       f"持仓{len(state['positions'])} 今日花费${state['spent_today_usd']:.2f} "
+       f"持仓{len(state['positions'])} 高频复查{n_exit_rounds}轮 今日花费${state['spent_today_usd']:.2f} "
        f"今日已实现盈亏${state['realized_pnl_usd']:+.2f}")
 
 
