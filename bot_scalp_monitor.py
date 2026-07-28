@@ -141,9 +141,11 @@ def try_enter(state, c):
     if liq is not None and liq < MIN_LIQUIDITY_USD:
         log(f"SKIP {c['name']}: 流动性只有${liq:,.0f},低于${MIN_LIQUIDITY_USD:,.0f}门槛,进得去也可能出不来")
         return False
-    # 2026-07-27调整: 这三条一上来就100%拦截(锁仓比例这类新币普遍是0%),直接硬拦
-    # 会导致完全选不到币、拿不到任何数据判断门槛合不合理。改成只记录不拦截,这些值
-    # 会跟着进closed记录,明天用一天的真实分布数据定门槛,不是现在拍脑袋定的数字。
+    # 2026-07-27曾经改成三条全部只记录不拦截(发现锁仓比例一上来就100%拦截所有候选)，
+    # 但2026-07-28锁仓比例这条改回硬拦截了——用户当晚亲身踩坑印证:锁仓比例低意味着
+    # 主力随时能一笔交易瞬间抽干流动性,这个动作在链上一个区块内就完成,不管止盈止损
+    # 检查多快都来不及反应,是物理时间差不是代码速度问题,唯一有效的办法是压根不进场。
+    # 买卖比例/涨幅这两条继续只记录观察(那两个是"过程类"信号,反应速度还有意义)。
     dil = get_pool_diligence(addr)
     buy_sell_ratio, buyers, sellers = None, None, None
     if dil:
@@ -151,7 +153,8 @@ def try_enter(state, c):
         if buyers and sellers is not None:
             buy_sell_ratio = float("inf") if (sellers == 0 and buyers > 20) else buyers / max(sellers, 1)
         if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < MIN_LOCKED_LIQ_PCT:
-            log(f"NOTE(未拦截) {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%")
+            log(f"SKIP {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%,主力随时能一笔交易瞬间抽干,不进场")
+            return False
         if buy_sell_ratio is not None and buy_sell_ratio > MAX_BUY_SELL_RATIO:
             log(f"NOTE(未拦截) {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例{buy_sell_ratio:.0f}:1")
         if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > MAX_RECENT_PUMP_PCT:

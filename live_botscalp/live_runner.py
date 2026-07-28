@@ -405,16 +405,20 @@ def try_enter(cfg, wallet, state, c):
         return False
     fresh_price = dil["price"]
 
-    # 2026-07-27调整: 用户发现这三条一上来就100%拦截(锁仓比例这类新币普遍是0%),
-    # 直接硬拦会导致完全选不到币、拿不到任何数据去判断门槛设得合不合理。改成只记录
-    # 不拦截,先观察一天真实分布(这些值现在会跟着进closed记录),明天用真实数据定门槛,
-    # 不是现在拍脑袋定的50%/30:1/100%这几个数字。
+    # 2026-07-27曾经改成三条全部只记录不拦截(发现锁仓比例一上来就100%拦截所有候选)，
+    # 但2026-07-28锁仓比例这条改回硬拦截了(见下面),只有买卖比例/涨幅这两条继续记录观察。
     buyers, sellers = dil["buyers_h1"], dil["sellers_h1"]
     buy_sell_ratio = None
     if buyers and sellers is not None:
         buy_sell_ratio = float("inf") if (sellers == 0 and buyers > 20) else buyers / max(sellers, 1)
+    # 2026-07-28改回硬拦截: 用户当晚亲身踩坑印证——锁仓比例低意味着主力随时能一笔交易
+    # 瞬间抽干流动性,这个动作在链上一个区块内就完成,不管止盈止损检查多快(15秒/1秒都
+    # 一样)都来不及反应,是物理时间差不是代码速度问题。检查再快只能防"慢慢流失"，防不住
+    # "瞬间抽干"，唯一有效的办法是压根不进没锁仓的池子。买卖比例/涨幅这两条留作记录观察
+    # (那两个是"过程类"信号,反应速度还有意义),只有这条改回硬拦截。
     if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < cfg["minLockedLiqPct"]:
-        log(f"NOTE(未拦截) {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%")
+        log(f"SKIP {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%,主力随时能一笔交易瞬间抽干,不进场")
+        return False
     if buy_sell_ratio is not None and buy_sell_ratio > cfg["maxBuySellRatio"]:
         log(f"NOTE(未拦截) {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例{buy_sell_ratio:.0f}:1")
     if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > cfg["maxRecentPumpPct"]:
