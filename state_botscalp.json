@@ -1,28 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13071.199414169989,
- "positions": {
-  "C8uqUt3XUp17uv14Ug6M8dB463fEUVrw8TvFBvMf7aMg": {
-   "name": "TNOS / SOL",
-   "entry": 0.00021169042801500286,
-   "qty": 23619.395769966704,
-   "usd": 5,
-   "t_entry": 1785215822,
-   "bot_avg_trade_usd": 0.02,
-   "no_price_checks": 1,
-   "total_checks": 6,
-   "entry_locked_liq_pct": 100.0,
-   "entry_buyers_h1": 141,
-   "entry_sellers_h1": 129,
-   "entry_buy_sell_ratio_h1": 1.0930232558139534,
-   "entry_price_change_h1_pct": 53.876,
-   "entry_n_wallets": 82,
-   "bot_wallet_addr": "GtJepugNPNJpUKuxRQBv47F8nRdCoEUd6LdHZtEpRxd3",
-   "consecutive_no_price": 0,
-   "mark": 0.00022075819341465483,
-   "mark_ret": 0.04283502794471805
-  }
- },
+ "cash": 13076.35586167697,
+ "positions": {},
  "closed": [
   {
    "name": "believe / SOL",
@@ -37508,7 +37487,32 @@
    "reason": "TP",
    "pnl": 0.1454,
    "t_exit": 1785215643
+  },
+  {
+   "name": "TNOS / SOL",
+   "entry": 0.00021169042801500286,
+   "qty": 23619.395769966704,
+   "usd": 5,
+   "t_entry": 1785215822,
+   "bot_avg_trade_usd": 0.02,
+   "no_price_checks": 1,
+   "total_checks": 8,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 141,
+   "entry_sellers_h1": 129,
+   "entry_buy_sell_ratio_h1": 1.0930232558139534,
+   "entry_price_change_h1_pct": 53.876,
+   "entry_n_wallets": 82,
+   "bot_wallet_addr": "GtJepugNPNJpUKuxRQBv47F8nRdCoEUd6LdHZtEpRxd3",
+   "consecutive_no_price": 0,
+   "mark": 0.0002227695060795604,
+   "mark_ret": 0.052336225914628276,
+   "addr": "C8uqUt3XUp17uv14Ug6M8dB463fEUVrw8TvFBvMf7aMg",
+   "exit": 0.00021831411595796916,
+   "reason": "TP",
+   "pnl": 0.1564,
+   "t_exit": 1785216002
   }
  ],
- "realized_pnl": 2994.3014141699678
+ "realized_pnl": 2994.4578616769495
 }
