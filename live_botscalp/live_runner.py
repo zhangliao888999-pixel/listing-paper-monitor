@@ -171,6 +171,11 @@ def load_config():
                                        # 吸引散户接盘,少数人偷偷出货",不进场
         "maxRecentPumpPct": 100.0,    # 过去1小时已经涨了这么多,大概率已经涨过头,追进去等于
                                        # 替别人接盘,不进场
+        # 2026-07-28新增: 用户点出纯机器人币(几个钱包自己左右倒制造假活跃度)才是最危险的
+        # "随时被抽干"类型,真人参与多的币风险完全不同。check_scalping()已经在算n_wallets
+        # (最近300笔成交涉及的不同钱包数),不用额外请求。低于这个数就是"参与面太窄,大概率
+        # 就是那几个机器人钱包自己在玩",不进场。
+        "minWallets": 60,
         # 2026-07-27新增: 用户明确指出"流动性比3%止损重要得多——流动性没了是100%全亏,
         # 3%止损根本不算什么"。买候选慢(一轮要查10-15个池子的尽调),但盯着手上2-3个
         # 持仓的流动性很快,不用等下一次计划任务触发(最快1分钟)才复查一次——脚本内部
@@ -184,17 +189,20 @@ def load_config():
 
 
 def decide_pos_size_usd(cfg, addr):
-    """按sizingMode算这一笔要用多少钱。pct_of_bot模式需要重新查一次这个池子的
-    刷量机器人场均单笔金额(跟check_coin.py/check_scalping同一套检测,只用GeckoTerminal，
-    不占GMGN配额)——如果这时候已经检测不到机器人了(市场状况变了)，就跳过这笔，
-    不用旧数据硬凑仓位。"""
+    """按sizingMode算这一笔要用多少钱,顺带把check_scalping()里的n_wallets(最近300笔
+    成交涉及的不同钱包数)一起带出来——2026-07-28新增:用户点出纯机器人币(几个钱包
+    自己左右倒)和"真人+机器人混合"的币,风险完全不同,前者才是最危险的"随时抽干"
+    类型;n_wallets就是check_scalping()已经在算的数据,不用额外请求。fixed模式不查
+    机器人(不需要按机器人仓位算大小),所以n_wallets这里拿不到,留给try_enter()那边
+    单独查一次。"""
     if cfg["sizingMode"] == "fixed":
-        return cfg["posSizeUsd"]
+        return {"pos_size_usd": cfg["posSizeUsd"], "n_wallets": None}
     result = check_scalping(addr)
     avg_bot_usd = result.get("suspect_wallet_avg_trade_usd")
     if not result.get("flag") or not avg_bot_usd:
         return None
-    return max(cfg["minPosUsd"], min(cfg["maxPosUsd"], avg_bot_usd * cfg["pctOfBot"]))
+    pos_size_usd = max(cfg["minPosUsd"], min(cfg["maxPosUsd"], avg_bot_usd * cfg["pctOfBot"]))
+    return {"pos_size_usd": pos_size_usd, "n_wallets": result.get("n_wallets")}
 
 
 def get_wallet():
@@ -393,9 +401,17 @@ def try_enter(cfg, wallet, state, c):
         log(f"SKIP {c['name']}: 流动性只有${liq:,.0f},低于${cfg['minLiquidityUsd']:,.0f}门槛,进得去也可能出不来")
         return False
 
-    pos_size_usd = decide_pos_size_usd(cfg, c["addr"])
-    if pos_size_usd is None:
+    sizing = decide_pos_size_usd(cfg, c["addr"])
+    if sizing is None:
         log(f"SKIP {c['name']}: pct_of_bot模式下现在查不到机器人在刷(市场状况变了),不用旧数据凑仓位")
+        return False
+    pos_size_usd, n_wallets = sizing["pos_size_usd"], sizing["n_wallets"]
+    if n_wallets is None:
+        # fixed模式/尚未查过,单独查一次拿n_wallets(check_scalping本身也会顺带重新
+        # 确认一遍scalping_flag,双重确认没坏处)
+        n_wallets = check_scalping(c["addr"]).get("n_wallets")
+    if n_wallets is not None and n_wallets < cfg["minWallets"]:
+        log(f"SKIP {c['name']}: 最近300笔成交只涉及{n_wallets}个钱包,参与面太窄,大概率就是几个机器人钱包自己在玩,不进场")
         return False
     if state["spent_today_usd"] + pos_size_usd > cfg["dailyMaxUsd"]:
         log(f"SKIP {c['name']}: 今日累计开仓将超过上限${cfg['dailyMaxUsd']}")
@@ -497,6 +513,8 @@ def try_enter(cfg, wallet, state, c):
         "entry_buyers_h1": buyers, "entry_sellers_h1": sellers,
         "entry_buy_sell_ratio_h1": None if buy_sell_ratio == float("inf") else buy_sell_ratio,
         "entry_price_change_h1_pct": dil["price_change_h1_pct"],
+        "entry_n_wallets": n_wallets,  # 真人参与度,后续用来对比"纯机器人"和"真人+机器人混合"
+                                       # 这两类交易的实际胜率/均笔盈亏(尤其是TIME超时平仓那部分)
     }
     state["spent_today_usd"] += pos_size_usd
     log(f"BUY {c['name']} ({c['addr'][:8]}...) 成交 sig={sig} 价格={fresh_price:.10g} 仓位=${pos_size_usd:.2f}")

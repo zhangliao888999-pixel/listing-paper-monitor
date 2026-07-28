@@ -53,6 +53,12 @@ MIN_LOCKED_LIQ_PCT = 25.0    # 流动性锁仓比例低于这个数,LP随时能�
 MAX_BUY_SELL_RATIO = 30.0    # 过去1小时买家人数/卖家人数超过这个比例,像"广撒网吸引接盘"
 MAX_RECENT_PUMP_PCT = 100.0  # 过去1小时已经涨了这么多,大概率追高接盘
 
+# 2026-07-28新增: 用户点出纯机器人币(几个钱包自己左右倒制造假活跃度)才是最危险的
+# "随时被抽干"类型,真人参与多的币风险完全不同。check_scalping()已经在算n_wallets
+# (最近300笔成交涉及的不同钱包数),不用额外请求。低于这个数就是"参与面太窄,大概率
+# 就是那几个机器人钱包自己在玩",不进场。
+MIN_WALLETS = 60
+
 # 2026-07-27新增: 用户明确指出"流动性比3%止损重要得多——流动性没了是100%全亏,
 # 3%止损根本不算什么"。买候选慢(一轮要查很多候选),但盯着手上几个持仓的流动性很快,
 # 不用等下一次计划任务触发(最快1分钟)才复查一次——脚本内部在扫描完新候选后,进入
@@ -174,6 +180,10 @@ def try_enter(state, c):
     avg_bot_usd = result.get("suspect_wallet_avg_trade_usd")
     if not avg_bot_usd:
         return False
+    n_wallets = result.get("n_wallets")
+    if n_wallets is not None and n_wallets < MIN_WALLETS:
+        log(f"SKIP {c['name']}: 最近300笔成交只涉及{n_wallets}个钱包,参与面太窄,大概率就是几个机器人钱包自己在玩,不进场")
+        return False
     pos_usd = max(MIN_POS_USD, min(MAX_POS_USD, avg_bot_usd * POS_SIZE_PCT_OF_BOT))
     if liq and pos_usd / liq > MAX_POS_LIQ_RATIO:
         log(f"SKIP {c['name']}: 仓位${pos_usd:.0f}占流动性${liq:,.0f}的{pos_usd/liq*100:.1f}%,池子太薄")
@@ -194,6 +204,8 @@ def try_enter(state, c):
         "entry_buyers_h1": buyers, "entry_sellers_h1": sellers,
         "entry_buy_sell_ratio_h1": None if buy_sell_ratio == float("inf") else buy_sell_ratio,
         "entry_price_change_h1_pct": dil["price_change_h1_pct"] if dil else None,
+        "entry_n_wallets": n_wallets,  # 真人参与度,后续用来对比"纯机器人"和"真人+机器人混合"
+                                       # 这两类交易的实际胜率/均笔盈亏(尤其是TIME超时平仓那部分)
     }
     log(f"BUY {c['name']} ({addr[:8]}...) @ {entry:.10g} 仓位=${pos_usd:.2f}(机器人单笔${avg_bot_usd:.0f}的{POS_SIZE_PCT_OF_BOT*100:.0f}%)")
     return True
