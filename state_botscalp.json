@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13072.109807211635,
+ "cash": 13071.053977958227,
  "positions": {
   "C8uqUt3XUp17uv14Ug6M8dB463fEUVrw8TvFBvMf7aMg": {
    "name": "TNOS / SOL",
@@ -10,7 +10,7 @@
    "t_entry": 1785214922,
    "bot_avg_trade_usd": 0.05,
    "no_price_checks": 1,
-   "total_checks": 3,
+   "total_checks": 7,
    "entry_locked_liq_pct": 100.0,
    "entry_buyers_h1": 138,
    "entry_sellers_h1": 124,
@@ -19,8 +19,8 @@
    "entry_n_wallets": 90,
    "bot_wallet_addr": "7JmhrFZtWTh5UhVcjaEPgmKasakT2XFyWo3meTgiFoR5",
    "consecutive_no_price": 0,
-   "mark": 0.00020213696699386194,
-   "mark_ret": -0.00630833800055941
+   "mark": 0.00020532525230476366,
+   "mark_ret": 0.009365057007957533
   }
  },
  "closed": [
@@ -37433,7 +37433,57 @@
    "reason": "SL",
    "pnl": -0.4677,
    "t_exit": 1785214922
+  },
+  {
+   "name": "USOX / SOL",
+   "entry": 0.014119214337381555,
+   "qty": 354.12735301865695,
+   "usd": 5,
+   "t_entry": 1785215284,
+   "bot_avg_trade_usd": 38.13,
+   "no_price_checks": 1,
+   "total_checks": 2,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 262,
+   "entry_sellers_h1": 47,
+   "entry_buy_sell_ratio_h1": 5.574468085106383,
+   "entry_price_change_h1_pct": 92.556,
+   "entry_n_wallets": 112,
+   "bot_wallet_addr": "JipnE9R5NyaHGRrt2Cp4zrecEV48fqMBSz4M99tE992",
+   "consecutive_no_price": 0,
+   "mark": 0.016520734724943895,
+   "mark_ret": 0.17008881161355816,
+   "addr": "98Ad5CsioWfCja6XUwGUuacvBLKpakWGypf33hgJLFUU",
+   "exit": 0.016190320030445016,
+   "reason": "TP",
+   "pnl": 0.7334,
+   "t_exit": 1785215284
+  },
+  {
+   "name": "Dogshit / SOL",
+   "entry": 0.00013037701253653059,
+   "qty": 38350.318838599254,
+   "usd": 5,
+   "t_entry": 1785215284,
+   "bot_avg_trade_usd": 9.32,
+   "no_price_checks": 1,
+   "total_checks": 2,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 151,
+   "entry_sellers_h1": 177,
+   "entry_buy_sell_ratio_h1": 0.8531073446327684,
+   "entry_price_change_h1_pct": -17.805,
+   "entry_n_wallets": 114,
+   "bot_wallet_addr": "Gv2EmuyeoVRTYu3TJqiffwciabB6QqrwfQzEprsNp6N8",
+   "consecutive_no_price": 0,
+   "mark": 8.542981869806447e-05,
+   "mark_ret": -0.34474784292109983,
+   "addr": "2zvfzup9ZAbNKRLm2XguC4LnyRzGdN7KVmcUmypYYzdB",
+   "exit": 8.372122232410319e-05,
+   "reason": "SL",
+   "pnl": -1.7893,
+   "t_exit": 1785215284
   }
  ],
- "realized_pnl": 2995.2118072116123
+ "realized_pnl": 2994.1559779582053
 }
