@@ -5551,3 +5551,24 @@
 [2026-07-28 00:26 UTC] EXIT JBnut / SOL [TP] ret=+48.5% pnl=+16.7564U held=4min
 [2026-07-28 00:26 UTC] EXIT PONS / SOL [TP] ret=+6.1% pnl=+1.9867U held=4min
 [2026-07-28 00:26 UTC] CYCLE OK nav=13374.0079 扫描候选10 新入场6 高频复查3轮 持仓2 已平仓2315
+[2026-07-28 00:32 UTC] NOTE(未拦截) HOOD / SOL: 流动性锁仓比例只有0.0%
+[2026-07-28 00:32 UTC] BUY HOOD / SOL (Ggc2oFx9...) @ 0.001006057293 仓位=$50.00(机器人单笔$682的10%)
+[2026-07-28 00:32 UTC] NOTE(未拦截) Grok / SOL: 流动性锁仓比例只有0.0%
+[2026-07-28 00:32 UTC] BUY Grok / SOL (Gujdah8C...) @ 6.39004242e-05 仓位=$37.19(机器人单笔$372的10%)
+[2026-07-28 00:32 UTC] NOTE(未拦截) SPY / SOL: 流动性锁仓比例只有0.0%
+[2026-07-28 00:32 UTC] NOTE(未拦截) SPY / SOL: 过去1小时买家3003人/卖家22人,比例136:1
+[2026-07-28 00:32 UTC] BUY SPY / SOL (De6CpuMp...) @ 1.057892329e-05 仓位=$50.00(机器人单笔$701的10%)
+[2026-07-28 00:32 UTC] BUY PONS / SOL (GxFrNEk3...) @ 2.403353107e-05 仓位=$50.00(机器人单笔$572的10%)
+[2026-07-28 00:32 UTC] BUY ANSEM / SOL (a1cmKQ9t...) @ 1.678177608e-05 仓位=$17.87(机器人单笔$179的10%)
+[2026-07-28 00:32 UTC] BUY RYDER / SOL (GcdFfwa4...) @ 7.02137296e-05 仓位=$5.00(机器人单笔$18的10%)
+[2026-07-28 00:32 UTC] SKIP Codex / SOL: 流动性只有$13,701,低于$15,000门槛,进得去也可能出不来
+[2026-07-28 00:32 UTC] EXIT NTFS / USDC [TIME] ret=-2.0% pnl=-0.1973U held=30min
+[2026-07-28 00:32 UTC] SKIP EXIT CHECK PONS / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 00:32 UTC] EXIT Grok / SOL [TP] ret=+8.8% pnl=+2.4528U held=0min
+[2026-07-28 00:32 UTC] EXIT SPY / SOL [DEAD] 流动性只剩$0.0000(低于$100门槛),判定池子已死,按本金全亏$50.00平仓
+[2026-07-28 00:32 UTC] SKIP EXIT CHECK ANSEM / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 00:32 UTC] EXIT RYDER / SOL [TP] ret=+10.5% pnl=+0.4151U held=0min
+[2026-07-28 00:32 UTC] EXIT PONS / SOL [TP] ret=+29.2% pnl=+5.0343U held=6min
+[2026-07-28 00:32 UTC] SKIP EXIT CHECK ANSEM / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续2轮)
+[2026-07-28 00:32 UTC] EXIT ANSEM / SOL [SL] ret=-47.7% pnl=-8.7123U held=0min
+[2026-07-28 00:32 UTC] CYCLE OK nav=13324.2832 扫描候选10 新入场6 高频复查3轮 持仓2 已平仓2321
