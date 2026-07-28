@@ -37799,10 +37799,10 @@
    "entry_price_change_h1_pct": 6.282,
    "entry_n_wallets": 198,
    "bot_wallet_addr": "G6SWsNiq2ERGyHcEKU2ubTKQaAQWx52ATXW6BxSKjcrZ",
-   "total_checks": 15,
+   "total_checks": 20,
    "consecutive_no_price": 0,
-   "mark": 0.009481422962149912,
-   "mark_ret": -0.08124909599654351
+   "mark": 0.009592540586782543,
+   "mark_ret": -0.07048178622779988
   }
  },
  "shadow_closed": []
