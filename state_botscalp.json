@@ -37785,5 +37785,25 @@
    "t_exit": 1785218343
   }
  ],
- "realized_pnl": 2992.15864188905
+ "realized_pnl": 2992.15864188905,
+ "shadow": {
+  "FcL5bSbwFvJbdjvZf4Z4wLyddYVgwT7PfmhsQ8WnuzDP": {
+   "name": "USOS / SOL",
+   "entry": 0.010319905995014119,
+   "t_entry": 1785222663,
+   "bot_avg_trade_usd": 28.9,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 685,
+   "entry_sellers_h1": 161,
+   "entry_buy_sell_ratio_h1": 4.254658385093168,
+   "entry_price_change_h1_pct": 6.282,
+   "entry_n_wallets": 198,
+   "bot_wallet_addr": "G6SWsNiq2ERGyHcEKU2ubTKQaAQWx52ATXW6BxSKjcrZ",
+   "total_checks": 5,
+   "consecutive_no_price": 0,
+   "mark": 0.009504506659547614,
+   "mark_ret": -0.07901228323789489
+  }
+ },
+ "shadow_closed": []
 }
