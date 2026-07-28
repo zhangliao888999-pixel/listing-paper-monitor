@@ -1,7 +1,28 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13077.402553097581,
- "positions": {},
+ "cash": 13072.109807211635,
+ "positions": {
+  "C8uqUt3XUp17uv14Ug6M8dB463fEUVrw8TvFBvMf7aMg": {
+   "name": "TNOS / SOL",
+   "entry": 0.00020342021043744628,
+   "qty": 24579.6619187824,
+   "usd": 5,
+   "t_entry": 1785214922,
+   "bot_avg_trade_usd": 0.05,
+   "no_price_checks": 1,
+   "total_checks": 3,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 138,
+   "entry_sellers_h1": 124,
+   "entry_buy_sell_ratio_h1": 1.1129032258064515,
+   "entry_price_change_h1_pct": 40.006,
+   "entry_n_wallets": 90,
+   "bot_wallet_addr": "7JmhrFZtWTh5UhVcjaEPgmKasakT2XFyWo3meTgiFoR5",
+   "consecutive_no_price": 0,
+   "mark": 0.00020213696699386194,
+   "mark_ret": -0.00630833800055941
+  }
+ },
  "closed": [
   {
    "name": "believe / SOL",
@@ -37362,7 +37383,57 @@
    "reason": "SL",
    "pnl": -0.4475,
    "t_exit": 1785214742
+  },
+  {
+   "name": "USOX / SOL",
+   "entry": 0.014119214337381555,
+   "qty": 354.12735301865695,
+   "usd": 5,
+   "t_entry": 1785214922,
+   "bot_avg_trade_usd": 18.54,
+   "no_price_checks": 1,
+   "total_checks": 2,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 262,
+   "entry_sellers_h1": 47,
+   "entry_buy_sell_ratio_h1": 5.574468085106383,
+   "entry_price_change_h1_pct": 73.721,
+   "entry_n_wallets": 114,
+   "bot_wallet_addr": "3ACekf9y4H7JfUtPbyxBEKoiBLoecULgcDcpfsLWMxQm",
+   "consecutive_no_price": 0,
+   "mark": 0.014911426652408546,
+   "mark_ret": 0.056108810029858125,
+   "addr": "98Ad5CsioWfCja6XUwGUuacvBLKpakWGypf33hgJLFUU",
+   "exit": 0.014613198119360375,
+   "reason": "TP",
+   "pnl": 0.1749,
+   "t_exit": 1785214922
+  },
+  {
+   "name": "Dogshit / SOL",
+   "entry": 0.00013037701253653059,
+   "qty": 38350.318838599254,
+   "usd": 5,
+   "t_entry": 1785214922,
+   "bot_avg_trade_usd": 9.3,
+   "no_price_checks": 2,
+   "total_checks": 3,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 168,
+   "entry_sellers_h1": 190,
+   "entry_buy_sell_ratio_h1": 0.8842105263157894,
+   "entry_price_change_h1_pct": -17.715,
+   "entry_n_wallets": 112,
+   "bot_wallet_addr": "Gv2EmuyeoVRTYu3TJqiffwciabB6QqrwfQzEprsNp6N8",
+   "consecutive_no_price": 0,
+   "mark": 0.00012059397237829076,
+   "mark_ret": -0.0750365418558635,
+   "addr": "2zvfzup9ZAbNKRLm2XguC4LnyRzGdN7KVmcUmypYYzdB",
+   "exit": 0.00011818209293072495,
+   "reason": "SL",
+   "pnl": -0.4677,
+   "t_exit": 1785214922
   }
  ],
- "realized_pnl": 2995.50455309756
+ "realized_pnl": 2995.2118072116123
 }
