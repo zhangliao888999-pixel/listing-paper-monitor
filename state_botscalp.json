@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13076.960454409007,
+ "cash": 13077.250329465545,
  "positions": {},
  "closed": [
   {
@@ -37587,7 +37587,32 @@
    "reason": "TP",
    "pnl": 0.1923,
    "t_exit": 1785217082
+  },
+  {
+   "name": "TNOS / SOL",
+   "entry": 0.00022881544938020262,
+   "qty": 21851.671351491383,
+   "usd": 5,
+   "t_entry": 1785217262,
+   "bot_avg_trade_usd": 0.83,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 120,
+   "entry_sellers_h1": 124,
+   "entry_buy_sell_ratio_h1": 0.967741935483871,
+   "entry_price_change_h1_pct": 73.804,
+   "entry_n_wallets": 81,
+   "bot_wallet_addr": "QhG84cZt1EoDszJihoE2RkUSaubWJWtW6ZYEujWNFiu",
+   "consecutive_no_price": 0,
+   "mark": 0.00024702145678097133,
+   "mark_ret": 0.07956633806888358,
+   "addr": "C8uqUt3XUp17uv14Ug6M8dB463fEUVrw8TvFBvMf7aMg",
+   "exit": 0.0002420810276453519,
+   "reason": "TP",
+   "pnl": 0.2899,
+   "t_exit": 1785217262
   }
  ],
- "realized_pnl": 2995.0624544089865
+ "realized_pnl": 2995.352329465524
 }
