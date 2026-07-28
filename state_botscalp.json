@@ -37786,8 +37786,9 @@
   }
  ],
  "realized_pnl": 2992.15864188905,
- "shadow": {
-  "FcL5bSbwFvJbdjvZf4Z4wLyddYVgwT7PfmhsQ8WnuzDP": {
+ "shadow": {},
+ "shadow_closed": [
+  {
    "name": "USOS / SOL",
    "entry": 0.010319905995014119,
    "t_entry": 1785222663,
@@ -37799,11 +37800,15 @@
    "entry_price_change_h1_pct": 6.282,
    "entry_n_wallets": 198,
    "bot_wallet_addr": "G6SWsNiq2ERGyHcEKU2ubTKQaAQWx52ATXW6BxSKjcrZ",
-   "total_checks": 40,
+   "total_checks": 41,
    "consecutive_no_price": 0,
-   "mark": 0.009430512231117079,
-   "mark_ret": -0.08618235130501528
+   "mark": 0.009118505368147492,
+   "mark_ret": -0.1164158498582315,
+   "addr": "FcL5bSbwFvJbdjvZf4Z4wLyddYVgwT7PfmhsQ8WnuzDP",
+   "exit": 0.009118505368147492,
+   "reason": "SL",
+   "ret": -0.1164,
+   "t_exit": 1785224103
   }
- },
- "shadow_closed": []
+ ]
 }
