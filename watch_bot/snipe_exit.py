@@ -1,0 +1,360 @@
+# -*- coding: utf-8 -*-
+""""蹲机器人对倒币,真买家一到就跑"执行器 —— 跟live_botscalp/live_runner.py同一套
+安全边界,照抄过来,不是新发明:
+
+  - 私钥只从环境变量 WALLET_PRIVATE_KEY 读进内存,从不写日志/落盘/发网络请求携带。
+    必须由用户自己在自己的机器上设置并启动 —— 我(Claude)不会持有你的私钥,不会
+    在我这边替你真实下单。你部署、你启动、你负责。
+  - 默认 DRY_RUN(只打印"本来会做什么",不广播真实交易)。要真正下单,必须同时
+    设置 LIVE_TRADING=1 和 CONFIRM_LIVE_SNIPE=YES 两个环境变量(双重确认)。
+  - 入场/出场前都重新拉一次实时报价,不用缓存价格下单。
+  - 每一笔尝试/成交都记进 snipe_orders.jsonl,方便事后审计。
+
+策略本身(用户明确要求的思路,不设固定止盈止损):
+  1. 开局买入一笔很小金额(POS_SIZE_USD,默认$5) —— 小金额本身就是风险控制,亏光了
+     也就是几美元学费,不是想靠这一笔仓位赚大钱。
+  2. 持续监控最新成交,一旦出现"不在已知操盘方钱包名单里、金额超过阈值"的买入,
+     判定为疑似真买家入场,不管当前盈亏多少,立刻全部卖出。这是唯一的主动退出
+     触发条件——用户明确说了"赚多赚少无所谓,能跑就是赢"。
+  3. 独立安全网: 流动性一旦跌破EXIT_LIQ_THRESHOLD(默认$5000,比整晚其他脚本用的
+     门槛更低,因为这里买入金额本来就很小),不管有没有等到真买家信号,立刻卖出——
+     这条跟"不设止盈止损"不矛盾,是防"根本等不到信号、流动性却先没了"这种更糟的
+     结局,复用整晚验证过的LIQ_LOW逻辑。
+  4. 已知操盘方钱包名单的识别方法,复用分析TNOS时验证过的思路: GMGN头部交易者
+     里带bundler/transfer_in/creator/dev_team标签的,大概率是同一伙人控制的钱包群。
+
+局限性(用户已明确认可这个风险,让我照实现,不要过度设计):
+  - 不保证能抢在操盘方砸盘之前跑掉——如果操盘方自己的机器人在同一区块内就对
+    真买家信号做出反应并砸盘,这里再快的轮询也来不及,是链上确认速度的物理限制,
+    不是代码能优化掉的。
+  - 已知操盘方钱包名单只在启动时拉一次快照,操盘方后续换新钱包不会被识别,
+    可能被误判成"真买家"信号提前跑掉(误报,不是漏报,是相对安全的误差方向)。
+
+用法(在你自己的机器/VPS上,设置好WALLET_PRIVATE_KEY等环境变量后):
+  python snipe_exit.py <池子地址或GeckoTerminal链接>
+"""
+import base64
+import json
+import os
+import re
+import sys
+import time
+import datetime as dt
+from pathlib import Path
+
+import requests
+
+try:
+    from solders.keypair import Keypair
+    from solders.transaction import VersionedTransaction
+except ImportError:
+    print("缺依赖: pip install solders requests")
+    sys.exit(1)
+
+HERE = Path(__file__).parent
+LOG_F = HERE / "snipe_exit.log"
+ORDERS_LOG_F = HERE / "snipe_orders.jsonl"
+
+SOL_MINT = "So11111111111111111111111111111111111111112"
+JUPITER_QUOTE_URL = "https://lite-api.jup.ag/swap/v1/quote"
+JUPITER_SWAP_URL = "https://lite-api.jup.ag/swap/v1/swap"
+GT_BASE = "https://api.geckoterminal.com/api/v2"
+
+GT_S = requests.Session()
+GT_S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                     "Accept": "application/json;version=20230302"})
+GMGN_S = requests.Session()
+GMGN_S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+                       "Referer": "https://gmgn.ai/", "Accept": "application/json"})
+
+POS_SIZE_USD = float(os.environ.get("POS_SIZE_USD", "5.0"))
+MIN_REAL_BUYER_USD = float(os.environ.get("MIN_REAL_BUYER_USD", "50.0"))
+EXIT_LIQ_THRESHOLD = float(os.environ.get("EXIT_LIQ_THRESHOLD", "5000.0"))
+POLL_SEC = float(os.environ.get("POLL_SEC", "8"))
+MAX_MINUTES = float(os.environ.get("MAX_MINUTES", "40"))
+SLIPPAGE_BPS = int(os.environ.get("SLIPPAGE_BPS", "300"))
+
+NOW = int(time.time())
+NOW_STR = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+
+
+def log(msg):
+    ts = dt.datetime.now().strftime("%H:%M:%S")
+    line = f"[{ts}] {msg}"
+    try:
+        print(line)
+    except UnicodeEncodeError:
+        pass
+    with LOG_F.open("a", encoding="utf-8") as f:
+        f.write(line + "\n")
+
+
+def audit(record):
+    record["ts"] = int(time.time())
+    with ORDERS_LOG_F.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def is_live_mode():
+    return os.environ.get("LIVE_TRADING") == "1" and os.environ.get("CONFIRM_LIVE_SNIPE") == "YES"
+
+
+def get_wallet():
+    pk = os.environ.get("WALLET_PRIVATE_KEY")
+    if not pk:
+        log("FATAL: 环境变量 WALLET_PRIVATE_KEY 未设置，本机不持有私钥无法下单")
+        sys.exit(1)
+    try:
+        return Keypair.from_base58_string(pk)
+    except Exception:
+        log("FATAL: WALLET_PRIVATE_KEY 格式不对(需要base58编码的私钥字符串)")
+        sys.exit(1)
+
+
+def gt_get(url, params=None, tries=3):
+    for i in range(tries):
+        try:
+            r = GT_S.get(url, params=params, timeout=20)
+            if r.status_code == 200:
+                return r.json()
+            if r.status_code == 429:
+                time.sleep(3 * (i + 1))
+                continue
+            return None
+        except requests.RequestException:
+            time.sleep(1.5 * (i + 1))
+    return None
+
+
+def extract_addr(arg):
+    m = re.search(r"/pools/([A-Za-z0-9]+)", arg)
+    return m.group(1) if m else arg
+
+
+def check_pool_and_mint(addr):
+    d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}", {"include": "base_token"})
+    if not d:
+        return None, None
+    attrs = d["data"]["attributes"]
+    mint = None
+    for inc in d.get("included", []):
+        if inc.get("type") == "token":
+            mint = inc["attributes"].get("address")
+    return attrs, mint
+
+
+def get_pool_snapshot(addr):
+    d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}")
+    if not d:
+        return None
+    a = d.get("data", {}).get("attributes", {})
+    try:
+        price = float(a.get("base_token_price_usd"))
+    except (TypeError, ValueError):
+        price = None
+    try:
+        liq = float(a.get("reserve_in_usd"))
+    except (TypeError, ValueError):
+        liq = None
+    return {"price": price, "liq": liq}
+
+
+def load_known_insiders(mint):
+    r = GMGN_S.get(f"https://gmgn.ai/vas/api/v1/token_traders/sol/{mint}", params={"limit": 40}, timeout=15)
+    try:
+        d = r.json()
+    except Exception:
+        d = None
+    rows = (d or {}).get("data", {}).get("list", []) if d else []
+    insiders = set()
+    for row in rows:
+        tags = row.get("maker_token_tags") or []
+        if any(t in tags for t in ("bundler", "transfer_in", "creator", "dev_team")):
+            insiders.add(row["address"])
+    return insiders
+
+
+def get_fresh_sol_price_usd():
+    d = gt_get(f"{GT_BASE}/networks/solana/tokens/{SOL_MINT}")
+    try:
+        return float(d["data"]["attributes"]["price_usd"])
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
+def jupiter_quote(input_mint, output_mint, amount_lamports, slippage_bps):
+    try:
+        r = requests.get(JUPITER_QUOTE_URL, params={
+            "inputMint": input_mint, "outputMint": output_mint,
+            "amount": amount_lamports, "slippageBps": slippage_bps,
+        }, timeout=15)
+        return r.json() if r.status_code == 200 else None
+    except requests.RequestException:
+        return None
+
+
+def jupiter_swap_tx(quote, user_pubkey):
+    try:
+        r = requests.post(JUPITER_SWAP_URL, json={
+            "quoteResponse": quote, "userPublicKey": user_pubkey, "wrapAndUnwrapSol": True,
+            "dynamicComputeUnitLimit": True, "prioritizationFeeLamports": "auto",
+        }, timeout=15)
+        return r.json().get("swapTransaction") if r.status_code == 200 else None
+    except requests.RequestException:
+        return None
+
+
+def rpc_call(method, params):
+    try:
+        r = requests.post("https://api.mainnet-beta.solana.com",
+                          json={"jsonrpc": "2.0", "id": 1, "method": method, "params": params}, timeout=20)
+        r.raise_for_status()
+        return r.json()
+    except requests.RequestException as e:
+        return {"error": str(e)}
+
+
+def sign_and_send(wallet, swap_tx_b64):
+    try:
+        raw = base64.b64decode(swap_tx_b64)
+        tx = VersionedTransaction.from_bytes(raw)
+        tx = VersionedTransaction(tx.message, [wallet])
+        sig_b64 = base64.b64encode(bytes(tx)).decode()
+    except Exception as e:
+        return None, str(e)
+    resp = rpc_call("sendTransaction", [sig_b64, {"encoding": "base64", "skipPreflight": False, "maxRetries": 3}])
+    if "error" in resp:
+        return None, resp["error"]
+    return resp["result"], None
+
+
+def confirm_tx(sig, tries=15):
+    for _ in range(tries):
+        resp = rpc_call("getSignatureStatuses", [[sig]])
+        try:
+            status = resp["result"]["value"][0]
+        except (KeyError, IndexError, TypeError):
+            status = None
+        if status and status.get("confirmationStatus") in ("confirmed", "finalized"):
+            return status.get("err") is None
+        time.sleep(2)
+    return False
+
+
+def do_buy(wallet, mint, pos_size_usd):
+    sol_price = get_fresh_sol_price_usd()
+    if not sol_price:
+        log("SKIP 买入: 拿不到实时SOL价格,不猜")
+        return None
+    amount_lamports = int(pos_size_usd / sol_price * 1e9)
+    quote = jupiter_quote(SOL_MINT, mint, amount_lamports, SLIPPAGE_BPS)
+    if not quote:
+        log("FAIL 买入: Jupiter拿不到报价(可能还在bonding curve阶段,建议先去pump.fun官网确认能买)")
+        return None
+    if not is_live_mode():
+        log(f"[DRY-RUN] 本来会买入 ${pos_size_usd:.2f} 等值的代币")
+        audit({"action": "BUY", "mint": mint, "pos_size_usd": pos_size_usd, "status": "dry_run"})
+        return {"qty_raw": int(quote.get("outAmount", 0)), "entry_usd": pos_size_usd, "dry_run": True}
+    swap_tx = jupiter_swap_tx(quote, str(wallet.pubkey()))
+    if not swap_tx:
+        log("FAIL 买入: 构造交易失败")
+        audit({"action": "BUY", "mint": mint, "status": "build_failed"})
+        return None
+    sig, err = sign_and_send(wallet, swap_tx)
+    if err:
+        log(f"FAIL 买入: 广播失败 {err}")
+        audit({"action": "BUY", "mint": mint, "status": "send_failed", "error": err})
+        return None
+    ok = confirm_tx(sig)
+    log(f"买入{'成功' if ok else '未确认(可能失败,自己上链查一下)'} tx={sig}")
+    audit({"action": "BUY", "mint": mint, "pos_size_usd": pos_size_usd, "tx": sig, "status": "confirmed" if ok else "unconfirmed"})
+    if not ok:
+        return None
+    return {"qty_raw": int(quote.get("outAmount", 0)), "entry_usd": pos_size_usd, "dry_run": False}
+
+
+def do_sell(wallet, mint, qty_raw, reason, dry_run):
+    if dry_run:
+        log(f"[DRY-RUN] 本来会因为[{reason}]全部卖出")
+        audit({"action": "SELL", "mint": mint, "reason": reason, "status": "dry_run"})
+        return
+    quote = jupiter_quote(mint, SOL_MINT, qty_raw, SLIPPAGE_BPS)
+    if not quote:
+        log(f"FAIL 卖出[{reason}]: Jupiter拿不到报价")
+        audit({"action": "SELL", "mint": mint, "reason": reason, "status": "quote_failed"})
+        return
+    swap_tx = jupiter_swap_tx(quote, str(wallet.pubkey()))
+    if not swap_tx:
+        log(f"FAIL 卖出[{reason}]: 构造交易失败")
+        audit({"action": "SELL", "mint": mint, "reason": reason, "status": "build_failed"})
+        return
+    sig, err = sign_and_send(wallet, swap_tx)
+    if err:
+        log(f"FAIL 卖出[{reason}]: 广播失败 {err}")
+        audit({"action": "SELL", "mint": mint, "reason": reason, "status": "send_failed", "error": err})
+        return
+    ok = confirm_tx(sig)
+    out_sol_lamports = int(quote.get("outAmount", 0))
+    log(f"卖出[{reason}]{'成功' if ok else '未确认(自己上链查一下)'} tx={sig} 换回约{out_sol_lamports/1e9:.4f} SOL")
+    audit({"action": "SELL", "mint": mint, "reason": reason, "tx": sig, "out_lamports": out_sol_lamports,
+          "status": "confirmed" if ok else "unconfirmed"})
+
+
+def main():
+    if len(sys.argv) < 2:
+        print("用法: python snipe_exit.py <池子地址或GeckoTerminal链接>")
+        return
+    addr = extract_addr(sys.argv[1])
+    attrs, mint = check_pool_and_mint(addr)
+    if not attrs or not mint:
+        log("查不到这个池子,地址可能不对")
+        return
+
+    log(f"=== {attrs.get('name')} ({addr[:10]}...) ===")
+    log(f"模式: {'实盘(真金白银)' if is_live_mode() else 'DRY-RUN(只打印,不下单)'}  仓位=${POS_SIZE_USD:.2f}  "
+       f"真买家阈值=${MIN_REAL_BUYER_USD:.0f}  流动性安全网=${EXIT_LIQ_THRESHOLD:,.0f}")
+
+    insiders = load_known_insiders(mint)
+    log(f"已知操盘方钱包(bundler/transfer_in/creator/dev_team标签): {len(insiders)}个")
+
+    wallet = get_wallet() if is_live_mode() else None
+    pos = do_buy(wallet, mint, POS_SIZE_USD)
+    if not pos:
+        log("买入没成功,监控结束")
+        return
+
+    log(f"持仓建立: qty_raw={pos['qty_raw']} entry=${pos['entry_usd']:.2f}  开始监控退出信号...")
+
+    seen_tx = set()
+    first_pass = True
+    deadline = time.time() + MAX_MINUTES * 60
+    while time.time() < deadline:
+        snap = get_pool_snapshot(addr)
+        if snap and snap["liq"] is not None and snap["liq"] < EXIT_LIQ_THRESHOLD:
+            log(f"*** 流动性安全网触发: 只剩${snap['liq']:,.0f},不等真买家信号了,立刻卖出 ***")
+            do_sell(wallet, mint, pos["qty_raw"], "LIQ_LOW", pos["dry_run"])
+            return
+
+        d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}/trades", {"trade_volume_in_usd_greater_than": 0})
+        rows = (d or {}).get("data", [])
+        rows.sort(key=lambda r: r["attributes"]["block_timestamp"])
+        new_rows = [r for r in rows if r["attributes"]["tx_hash"] not in seen_tx]
+        for row in new_rows:
+            a = row["attributes"]
+            seen_tx.add(a["tx_hash"])
+            if first_pass or a["kind"] != "buy":
+                continue
+            w = a.get("tx_from_address")
+            usd = float(a.get("volume_in_usd") or 0)
+            if w and w not in insiders and usd >= MIN_REAL_BUYER_USD:
+                log(f"*** 疑似真买家信号: 钱包{w[:10]}...买入${usd:,.2f},立刻卖出,不等更多确认 ***")
+                do_sell(wallet, mint, pos["qty_raw"], "REAL_BUYER_DETECTED", pos["dry_run"])
+                return
+        first_pass = False
+        time.sleep(POLL_SEC)
+
+    log(f"=== {MAX_MINUTES:.0f}分钟窗口结束,没等到真买家信号,仍持有(需要自己决定要不要手动处理) ===")
+
+
+if __name__ == "__main__":
+    main()
