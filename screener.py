@@ -65,7 +65,8 @@ MIN_TX_15M = 5           # 近15分钟买卖笔数门槛,纯按笔数卡(不再�
 # 检查速度问题,唯一有效的办法是压根不碰没锁仓的币。这个字段(locked_liquidity_percentage)
 # 本来就在/pools/multi批量接口的同一次响应里,不用额外请求。查不到锁仓数据(GeckoTerminal
 # 没收录)一律当作"没锁仓"处理,不能因为"不知道"就当成安全放行——宁可错过,不能选错。
-MIN_LOCKED_LIQ_PCT = 50
+MIN_LOCKED_LIQ_PCT = 25   # 2026-07-28晚: 50%这个门槛把候选筛到接近0个(同一批币反复卡在
+                          # 0%被拦,新的合格候选进不来),先降到25%看效果,不是撤掉这道防线
 NEW_POOLS_PAGES = 12     # 覆盖约10分钟的新池子创建量(约24个/分钟),配合定时任务间隔
 TRENDING_PAGES = 2
 MULTI_CHUNK = 30         # /pools/multi 单批最多30个地址
