@@ -60,6 +60,10 @@ GT_S = requests.Session()
 GT_S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                      "Accept": "application/json;version=20230302"})
 
+GMGN_S = requests.Session()
+GMGN_S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+                       "Referer": "https://gmgn.ai/", "Accept": "application/json"})
+
 NOW = int(time.time())
 NOW_STR = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -95,6 +99,33 @@ def check_staircase(addr):
     up_ratio = up_bars / len(bars)
     flag = len(bars) >= 5 and up_ratio >= 0.9
     return {"n_bars": len(bars), "up_ratio": up_ratio, "flag": flag}
+
+
+def check_wallets(mint):
+    """跟check_coin.py里的同名函数逻辑完全一样,内联复制过来。2026-07-28新增(用户揪出
+    BDOVE这个案例后发现的漏洞): GMGN头部钱包画像里的exit_ratio/n_exited_70pct早就算出来
+    了、screener.py也早就在看盘页面展示这个字段(BDOVE当时就显示"35/40个头部钱包已卖出
+    70%+"),但从没被接进真正的入场拦截——跟check_staircase是同一类"造了但没接线"的漏洞。
+    注意: 这里跟session早期"钱包战绩预测未来涨跌"那个已经验证过无效的结论不是一回事——
+    那次测的是"能不能预测谁会涨",这里测的是"主力是不是已经跑了"的既成事实,是回顾性
+    判断,不是预测。"""
+    if not mint:
+        return {}
+    try:
+        r = GMGN_S.get(f"https://gmgn.ai/vas/api/v1/token_traders/sol/{mint}", params={"limit": 40}, timeout=20)
+        d = r.json() if r.status_code == 200 else None
+    except requests.RequestException:
+        d = None
+    if not d or d.get("code") != 0:
+        return {}
+    data = d.get("data")
+    rows = data.get("list", []) if isinstance(data, dict) else (data or [])
+    if not rows:
+        return {}
+    n = len(rows)
+    sell_pcts = [r.get("sell_amount_percentage") for r in rows if r.get("sell_amount_percentage") is not None]
+    n_exited = sum(1 for p in sell_pcts if p >= 0.7)
+    return {"n_traders": n, "n_exited_70pct": n_exited}
 
 
 def check_scalping(addr):
@@ -259,6 +290,11 @@ def load_config():
                                        # 吸引散户接盘,少数人偷偷出货",不进场
         "maxRecentPumpPct": 100.0,    # 过去1小时已经涨了这么多,大概率已经涨过头,追进去等于
                                        # 替别人接盘,不进场
+        "maxRecentCrashPct": -30.0,   # 2026-07-28新增(BDOVE案例): 之前只挡"涨太多追高接盘",
+                                       # 没挡"已经在崩"——BDOVE过去1小时跌了76.8%,现价只是
+                                       # 崩溃途中的反弹节点,不是真回踩,之前完全没被拦下来
+        "maxTopHolderExitRatio": 0.7, # 头部钱包(GMGN取样最多40个)里卖出70%+仓位的比例超过
+                                       # 这个数,判定主力已基本出货完毕,不进场
         # 2026-07-28新增: 用户点出纯机器人币(几个钱包自己左右倒制造假活跃度)才是最危险的
         # "随时被抽干"类型,真人参与多的币风险完全不同。check_scalping()已经在算n_wallets
         # (最近300笔成交涉及的不同钱包数),不用额外请求。低于这个数就是"参与面太窄,大概率
@@ -538,6 +574,9 @@ def try_enter(cfg, wallet, state, c):
     if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > cfg["maxRecentPumpPct"]:
         log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘,不进场")
         return False
+    if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] < cfg["maxRecentCrashPct"]:
+        log(f"SKIP {c['name']}: 过去1小时已经跌了{dil['price_change_h1_pct']:.0f}%,大概率是崩溃途中的反弹,不是真回踩,不进场")
+        return False
 
     stair = check_staircase(c["addr"])
     if stair.get("flag"):
@@ -547,6 +586,12 @@ def try_enter(cfg, wallet, state, c):
     mint = c.get("mint")
     if not mint:
         log(f"SKIP {c['name']}: 没有mint地址")
+        return False
+    wr = check_wallets(mint)
+    n_traders = wr.get("n_traders") or 0
+    n_exited = wr.get("n_exited_70pct") or 0
+    if n_traders >= 10 and n_exited / n_traders >= cfg["maxTopHolderExitRatio"]:
+        log(f"SKIP {c['name']}: 头部{n_traders}个钱包里{n_exited}个已卖出70%+仓位,主力大概率已基本出货完毕,不进场")
         return False
 
     # 用实时SOL价格换算lamports金额；拿不到就跳过这一轮,不用过期/瞎猜的价格算仓位大小

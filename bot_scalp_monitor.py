@@ -25,7 +25,7 @@ from pathlib import Path
 
 import requests
 
-from check_coin import check_scalping, check_wallet_dumping, check_buyer_collapse, check_staircase, GT_BASE, S, get
+from check_coin import check_scalping, check_wallet_dumping, check_buyer_collapse, check_staircase, check_wallets, GT_BASE, S, get
 
 HERE = Path(__file__).parent
 STATE_F = HERE / "state_botscalp.json"
@@ -53,6 +53,14 @@ MIN_LOCKED_LIQ_PCT = 25.0    # 流动性锁仓比例低于这个数,LP随时能�
                              # 反复卡在0%被拦、新候选进不来,先降到25%看效果,不是撤掉这道防线)
 MAX_BUY_SELL_RATIO = 30.0    # 过去1小时买家人数/卖家人数超过这个比例,像"广撒网吸引接盘"
 MAX_RECENT_PUMP_PCT = 100.0  # 过去1小时已经涨了这么多,大概率追高接盘
+MAX_RECENT_CRASH_PCT = -30.0 # 2026-07-28新增(用户揪出BDOVE案例后发现的漏洞): 之前只挡
+                              # "涨太多追高接盘",完全没挡"已经在崩"——BDOVE过去1小时跌了
+                              # 76.8%,现价只是崩溃途中的一个反弹节点,不是真回踩,但因为
+                              # 只检查涨幅上限,这种暴跌中的币完全没被拦下来
+MAX_TOP_HOLDER_EXIT_RATIO = 0.7  # 头部钱包(GMGN取样最多40个)里卖出70%+仓位的比例超过这个数,
+                              # 判定主力已基本出货完毕——这个字段screener.py早就在算、也在看盘
+                              # 页面上展示了(BDOVE当时就显示"35/40个头部钱包已卖出70%+"),
+                              # 但从没被接进真正的入场拦截,纯粹是接线漏掉,不是信号无效
 
 # 2026-07-28新增: 用户点出纯机器人币(几个钱包自己左右倒制造假活跃度)才是最危险的
 # "随时被抽干"类型,真人参与多的币风险完全不同。check_scalping()已经在算n_wallets
@@ -187,6 +195,25 @@ def try_enter(state, c):
         # 1小时已经涨了100%+,大概率是追高接盘在给别人接盘,应该直接跳过。
         if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > MAX_RECENT_PUMP_PCT:
             log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘,不进场")
+            return False
+        # 2026-07-28新增: 之前只挡"涨太多追高接盘",没挡"已经在崩"——BDOVE过去1小时跌了
+        # 76.8%,现价只是崩溃途中的反弹节点,不是真回踩,之前完全没被拦下来。
+        if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] < MAX_RECENT_CRASH_PCT:
+            log(f"SKIP {c['name']}: 过去1小时已经跌了{dil['price_change_h1_pct']:.0f}%,大概率是崩溃途中的反弹,不是真回踩,不进场")
+            return False
+    # 2026-07-28新增: check_wallets(GMGN头部钱包画像)早就在算exit_ratio/n_exited_70pct,
+    # screener.py也早就在看盘页面上展示这个字段(BDOVE当时就显示"35/40个头部钱包已卖出
+    # 70%+"),但这个信号从没被接进真正的入场拦截——跟check_staircase是同一类"造了但没接线"
+    # 的漏洞。注意: 这里跟session早期"钱包战绩预测未来涨跌"那个已经验证过无效的结论不是
+    # 一回事——那次测的是"能不能预测谁会涨",这里测的是"主力是不是已经跑了"的既成事实,
+    # 是回顾性判断,不是预测。
+    mint = c.get("mint")
+    if mint:
+        wr = check_wallets(mint)
+        n_traders = wr.get("n_traders") or 0
+        n_exited = wr.get("n_exited_70pct") or 0
+        if n_traders >= 10 and n_exited / n_traders >= MAX_TOP_HOLDER_EXIT_RATIO:
+            log(f"SKIP {c['name']}: 头部{n_traders}个钱包里{n_exited}个已卖出70%+仓位,主力大概率已基本出货完毕,不进场")
             return False
     # 2026-07-28修复: check_staircase()这个检测器session早期就写好了(check_coin.py),但
     # 一直只在check_coin.py自己的CLI诊断里用,从没接进真正的入场判断——直到用户报告USOS
