@@ -236,6 +236,24 @@ def manage_positions(state):
             continue
         pos["consecutive_no_price"] = 0
         ret = cur / pos["entry"] - 1
+        # 2026-07-27新增(用户明确要求): 流动性快要不足,不管别的条件,必须马上卖出——
+        # 不等跌到DEAD_LIQ_USD(=$100)那种彻底归零才处理,而是一旦低于MIN_LIQUIDITY_USD
+        # (入场门槛同一个数,$15000)这个"还有得救"的区间就立刻按当前价卖出,不用等
+        # 正常的止盈止损/超时判断——流动性告急是独立信号,不依赖(可能出错的)价格比例，
+        # 该跑就必须跑,等真的跌到DEAD级别再处理就晚了(CXMT/Grok/breadcat都是这样)。
+        if liq_now is not None and liq_now < MIN_LIQUIDITY_USD:
+            exit_px = cur * (1 - SLIP)
+            proceeds = pos["qty"] * exit_px
+            pnl = proceeds - pos["usd"]
+            state["cash"] += proceeds
+            state["realized_pnl"] += pnl
+            state["closed"].append({**pos, "addr": addr, "exit": exit_px, "reason": "LIQ_LOW",
+                                    "pnl": round(pnl, 4), "t_exit": NOW})
+            del state["positions"][addr]
+            log(f"EXIT {pos['name']} [LIQ_LOW] 流动性只剩${liq_now:,.0f}(低于${MIN_LIQUIDITY_USD:,.0f}门槛),"
+               f"不等止盈止损,立刻卖出 pnl={pnl:+.4f}U")
+            time.sleep(0.3)
+            continue
         # GeckoTerminal的报价偶尔会离谱出错(实测CXMT这个池子出现过价格差了几百万倍的情况，
         # 这份代码的live版本live_botscalp/live_runner.py也踩过同一个坑，是同一类报价异常，
         # 不是真实行情)。这么夸张的比例不能拿去当真触发止盈止损/算盈亏，跳过这一轮，

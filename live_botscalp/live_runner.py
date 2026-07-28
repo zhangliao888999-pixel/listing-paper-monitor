@@ -486,30 +486,43 @@ def try_enter(cfg, wallet, state, c):
 
 
 def try_exit(cfg, wallet, state, addr, pos):
-    fresh_price = get_fresh_price_usd(addr, is_pool_addr=True)
+    dil = get_pool_diligence(addr)
+    fresh_price = dil["price"] if dil else None
     if fresh_price is None:
         # 2026-07-27修复: 这里原来是静默return,拿不到报价就完全不出现在日志里——
         # 排查Tepe那次时发现持仓已经开了几轮,日志里却对这个仓位只字未提,
         # 完全看不出是"没查到价格"还是别的原因。现在必须至少留一行痕迹。
         log(f"SKIP EXIT CHECK {pos['name']}: 拿不到实时报价,这轮跳过止盈止损判断")
         return
-    ret = fresh_price / pos["entry_price_usd"] - 1
-    # 报价源(GeckoTerminal)偶尔会给出离谱的坏数据(实测出现过池子price_usd差了240万倍的情况，
-    # 跟之前screener那边碰到的"流动性显示14亿美元"是同一类报价异常)。这么夸张的比例基本可以
-    # 确定是数据错误而不是真实行情，不能拿它去触发止盈止损决策——先跳过这一轮，等下一轮报价
-    # 恢复正常再判断，比"按错误数据强行卖出"安全。
-    if abs(ret) > 50:
-        log(f"SKIP EXIT CHECK {pos['name']}: fresh_price={fresh_price:.10g}相对入场价异常(ret={ret*100:.0f}%),"
-           f"疑似报价数据错误,这轮不判断止盈止损")
-        return
-    hold_min = (NOW - pos["t_entry"]) / 60
+
+    # 2026-07-27新增(用户明确要求): 流动性快要不足,不管别的条件,必须马上卖出——
+    # 这个检查独立在最前面、不受下面abs(ret)>50那道"疑似坏数据跳过"哨兵影响,因为
+    # 流动性告急是另一个独立信号,不依赖(可能出错的)价格比例判断,该跑就必须跑,
+    # 等真的跌到DEAD_LIQ级别再处理就晚了(CXMT/Grok/breadcat都是流动性没了才发现)。
+    liq_now = dil["liq"]
     reason = None
-    if ret >= cfg["tp"]:
-        reason = "TP"
-    elif ret <= cfg["sl"]:
-        reason = "SL"
-    elif hold_min >= cfg["maxHoldMin"]:
-        reason = "TIME"
+    if liq_now is not None and liq_now < cfg["minLiquidityUsd"]:
+        reason = "LIQ_LOW"
+        log(f"{pos['name']} 流动性只剩${liq_now:,.0f}(低于${cfg['minLiquidityUsd']:,.0f}门槛),不管止盈止损,立刻卖出")
+
+    ret = fresh_price / pos["entry_price_usd"] - 1
+    if reason is None:
+        # 报价源(GeckoTerminal)偶尔会给出离谱的坏数据(实测出现过池子price_usd差了240万倍的情况，
+        # 跟之前screener那边碰到的"流动性显示14亿美元"是同一类报价异常)。这么夸张的比例基本可以
+        # 确定是数据错误而不是真实行情，不能拿它去触发止盈止损决策——先跳过这一轮，等下一轮报价
+        # 恢复正常再判断，比"按错误数据强行卖出"安全。(这条哨兵只挡止盈止损判断,不挡上面的
+        # 流动性紧急卖出,因为流动性告急不看价格比例,该跑就跑)
+        if abs(ret) > 50:
+            log(f"SKIP EXIT CHECK {pos['name']}: fresh_price={fresh_price:.10g}相对入场价异常(ret={ret*100:.0f}%),"
+               f"疑似报价数据错误,这轮不判断止盈止损")
+            return
+        hold_min = (NOW - pos["t_entry"]) / 60
+        if ret >= cfg["tp"]:
+            reason = "TP"
+        elif ret <= cfg["sl"]:
+            reason = "SL"
+        elif hold_min >= cfg["maxHoldMin"]:
+            reason = "TIME"
     if not reason:
         return
 

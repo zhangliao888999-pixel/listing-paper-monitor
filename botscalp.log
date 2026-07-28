@@ -5452,3 +5452,11 @@
 [2026-07-28 00:09 UTC] EXIT RYDER / SOL [SL] ret=-3.4% pnl=-0.2690U held=11min
 [2026-07-28 00:08 UTC] EXIT Looks / SOL [TP] ret=+9.2% pnl=+0.3525U held=0min
 [2026-07-28 00:08 UTC] CYCLE OK nav=13498.8925 扫描候选9 新入场6 持仓2 已平仓2297
+[2026-07-28 00:09 UTC] SKIP EXIT CHECK budi / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续2轮)
+[2026-07-28 00:09 UTC] EXIT Grok / SOL [TP] ret=+29.1% pnl=+9.7237U held=0min
+[2026-07-28 00:09 UTC] EXIT SPY / SOL [TP] ret=+10.0% pnl=+3.9116U held=0min
+[2026-07-28 00:09 UTC] EXIT JBnut / SOL [SL] ret=-12.5% pnl=-4.4497U held=0min
+[2026-07-28 00:09 UTC] EXIT PONS / SOL [SL] ret=-8.9% pnl=-5.3776U held=0min
+[2026-07-28 00:09 UTC] SKIP EXIT CHECK PIKACHU / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 00:09 UTC] EXIT Looks / SOL [TP] ret=+9.2% pnl=+0.3525U held=0min
+[2026-07-28 00:09 UTC] CYCLE OK nav=13529.4879 扫描候选9 新入场6 持仓3 已平仓2296
