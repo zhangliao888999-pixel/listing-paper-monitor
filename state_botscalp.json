@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13095.054489059352,
+ "cash": 13051.059146652682,
  "positions": {
   "Ggc2oFx96PnZAdJPuN8DCQKVLKGrCgzRWDXkRc7bMHk8": {
    "name": "HOOD / SOL",
@@ -9,16 +9,16 @@
    "usd": 50,
    "t_entry": 1785198724,
    "bot_avg_trade_usd": 681.97,
-   "no_price_checks": 2,
-   "total_checks": 19,
+   "no_price_checks": 3,
+   "total_checks": 23,
    "entry_locked_liq_pct": 7.9857500719207e-10,
    "entry_buyers_h1": 32,
    "entry_sellers_h1": 38,
    "entry_buy_sell_ratio_h1": 0.8421052631578947,
    "entry_price_change_h1_pct": -7.953,
    "consecutive_no_price": 0,
-   "mark": 0.0010544912790688497,
-   "mark_ret": 0.04814237383194353
+   "mark": 0.0010559496173937692,
+   "mark_ret": 0.04959193176008592
   },
   "FJtmHkC8Sq9FJwmahxKixKDAkUR3svSw88He7Z8AuLCc": {
    "name": "NTFS / USDC",
@@ -27,16 +27,16 @@
    "usd": 5,
    "t_entry": 1785199083,
    "bot_avg_trade_usd": 1.98,
-   "no_price_checks": 2,
-   "total_checks": 16,
+   "no_price_checks": 3,
+   "total_checks": 20,
    "entry_locked_liq_pct": null,
    "entry_buyers_h1": 1,
    "entry_sellers_h1": 1,
    "entry_buy_sell_ratio_h1": 1.0,
    "entry_price_change_h1_pct": 0.015,
    "consecutive_no_price": 0,
-   "mark": 0.0010009363167116836,
-   "mark_ret": -0.01959147732850075
+   "mark": 0.0010016972420111947,
+   "mark_ret": -0.018846157535121755
   }
  },
  "closed": [
@@ -36080,7 +36080,74 @@
    "pnl": -50,
    "t_exit": 1785200343,
    "_note": "流动性只剩$0.0000,判定死亡,不用等连续多轮"
+  },
+  {
+   "name": "Ryder / SOL",
+   "entry": 9.612693835844212e-05,
+   "qty": 520145.5580906772,
+   "usd": 50,
+   "t_entry": 1785200523,
+   "bot_avg_trade_usd": 798.51,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": 4.26802898424493e-10,
+   "entry_buyers_h1": 1004,
+   "entry_sellers_h1": 33,
+   "entry_buy_sell_ratio_h1": 30.424242424242426,
+   "entry_price_change_h1_pct": 40.95,
+   "addr": "B3EGfr6ryEaS8oSFrc6oAecz1ZdAFgRM5aueeqXZar7E",
+   "exit": 0.0,
+   "reason": "DEAD",
+   "pnl": -50,
+   "t_exit": 1785200523,
+   "_note": "流动性只剩$0.0000,判定死亡,不用等连续多轮"
+  },
+  {
+   "name": "Grok / SOL",
+   "entry": 6.390042420450055e-05,
+   "qty": 608759.6519783393,
+   "usd": 38.900000000000006,
+   "t_entry": 1785200523,
+   "bot_avg_trade_usd": 389.0,
+   "no_price_checks": 1,
+   "total_checks": 2,
+   "entry_locked_liq_pct": 5.55986701110816e-10,
+   "entry_buyers_h1": 31,
+   "entry_sellers_h1": 31,
+   "entry_buy_sell_ratio_h1": 1.0,
+   "entry_price_change_h1_pct": 21.429,
+   "consecutive_no_price": 0,
+   "mark": 7.749606459273061e-05,
+   "mark_ret": 0.21276291288333105,
+   "addr": "Gujdah8CpGWDTpHLC2EUdePAwfPFGDBXz6NtXmSC4Jkw",
+   "exit": 7.5946143300876e-05,
+   "reason": "TP",
+   "pnl": 7.3329,
+   "t_exit": 1785200523
+  },
+  {
+   "name": "TA / SOL",
+   "entry": 0.00011483976620060001,
+   "qty": 43538.925281910546,
+   "usd": 5,
+   "t_entry": 1785200523,
+   "bot_avg_trade_usd": 3.67,
+   "no_price_checks": 2,
+   "total_checks": 3,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 2706,
+   "entry_sellers_h1": 358,
+   "entry_buy_sell_ratio_h1": 7.558659217877095,
+   "entry_price_change_h1_pct": 43.255,
+   "consecutive_no_price": 0,
+   "mark": 8.605271392835363e-05,
+   "mark_ret": -0.25067146359355763,
+   "addr": "GBtwALr4wE2YaiUwpF5D7yikcebqVge5qsCAxQGvRuda",
+   "exit": 8.433165964978655e-05,
+   "reason": "SL",
+   "pnl": -1.3283,
+   "t_exit": 1785200523
   }
  ],
- "realized_pnl": 3068.156489059326
+ "realized_pnl": 3024.1611466526556
 }
