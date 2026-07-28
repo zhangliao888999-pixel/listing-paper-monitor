@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13070.723767410114,
+ "cash": 13069.914994847997,
  "positions": {
   "FcL5bSbwFvJbdjvZf4Z4wLyddYVgwT7PfmhsQ8WnuzDP": {
    "name": "USOS / SOL",
@@ -10,7 +10,7 @@
    "t_entry": 1785217443,
    "bot_avg_trade_usd": 15.78,
    "no_price_checks": 1,
-   "total_checks": 11,
+   "total_checks": 16,
    "entry_locked_liq_pct": 100.0,
    "entry_buyers_h1": 990,
    "entry_sellers_h1": 306,
@@ -19,8 +19,8 @@
    "entry_n_wallets": 202,
    "bot_wallet_addr": "4Ea9TxuwQoNjyWmAu2tuA9dYmqYHQjtsm2JA38gAMShY",
    "consecutive_no_price": 0,
-   "mark": 0.009855369382164149,
-   "mark_ret": 0.025696919290086884
+   "mark": 0.009953070803567996,
+   "mark_ret": 0.03586518828724383
   }
  },
  "closed": [
@@ -37683,7 +37683,32 @@
    "reason": "SL",
    "pnl": -0.8012,
    "t_exit": 1785217622
+  },
+  {
+   "name": "Dogshit / SOL",
+   "entry": 8.774524841022629e-05,
+   "qty": 56983.142570000105,
+   "usd": 5,
+   "t_entry": 1785217804,
+   "bot_avg_trade_usd": 10.94,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 93,
+   "entry_sellers_h1": 125,
+   "entry_buy_sell_ratio_h1": 0.744,
+   "entry_price_change_h1_pct": -58.061,
+   "entry_n_wallets": 135,
+   "bot_wallet_addr": "Gv2EmuyeoVRTYu3TJqiffwciabB6QqrwfQzEprsNp6N8",
+   "consecutive_no_price": 0,
+   "mark": 7.505312095526249e-05,
+   "mark_ret": -0.14464746165656295,
+   "addr": "2zvfzup9ZAbNKRLm2XguC4LnyRzGdN7KVmcUmypYYzdB",
+   "exit": 7.355205853615723e-05,
+   "reason": "SL",
+   "pnl": -0.8088,
+   "t_exit": 1785217804
   }
  ],
- "realized_pnl": 2993.8257674100914
+ "realized_pnl": 2993.0169948479743
 }
