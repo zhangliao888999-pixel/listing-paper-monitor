@@ -74,6 +74,7 @@ MIN_WALLETS = 60
 # 只留扫描+完整尽调日志("WOULD BUY"),把选币关卡验证扎实了再重新放开买入。
 # 已开的持仓不受影响,照常走止盈止损/LIQ_LOW/DUMPING/BUYER_COLLAPSE退出。
 ENTRY_PAUSED = True
+MAX_SHADOW = 60  # 影子持仓(选币验证用)同时最多跟踪这么多个,避免无限增长
 
 # 2026-07-27新增: 用户明确指出"流动性比3%止损重要得多——流动性没了是100%全亏,
 # 3%止损根本不算什么"。买候选慢(一轮要查很多候选),但盯着手上几个持仓的流动性很快,
@@ -242,6 +243,22 @@ def try_enter(state, c):
     if ENTRY_PAUSED:
         log(f"WOULD BUY {c['name']} ({addr[:8]}...) @ {c['price']:.10g} 仓位=${pos_usd:.2f}"
            f"(机器人单笔${avg_bot_usd:.0f}的{POS_SIZE_PCT_OF_BOT*100:.0f}%) —— 选币验证阶段,暂不真实开仓")
+        # 2026-07-28新增(用户要求"明天一起看选的好不好"): 光记一行日志不够,看不出这个候选
+        # 后来实际走势如何。开一个"影子持仓"——跟真实持仓完全一样地被manage_shadow_positions
+        # 持续跟踪(同一套LIQ_LOW/DUMPING/BUYER_COLLAPSE/TP/SL/TIME判断逻辑),只是不动用
+        # 虚拟资金、不影响NAV,平仓结果记进state["shadow_closed"]专门用来复盘选币质量。
+        shadow = state.setdefault("shadow", {})
+        if addr not in shadow and len(shadow) < MAX_SHADOW:
+            entry = c["price"] * (1 + SLIP)
+            shadow[addr] = {
+                "name": c["name"], "entry": entry, "t_entry": NOW, "bot_avg_trade_usd": avg_bot_usd,
+                "entry_locked_liq_pct": dil["locked_liq_pct"] if dil else None,
+                "entry_buyers_h1": buyers, "entry_sellers_h1": sellers,
+                "entry_buy_sell_ratio_h1": None if buy_sell_ratio == float("inf") else buy_sell_ratio,
+                "entry_price_change_h1_pct": dil["price_change_h1_pct"] if dil else None,
+                "entry_n_wallets": n_wallets,
+                "bot_wallet_addr": result.get("suspect_wallet"),
+            }
         return False
     entry = c["price"] * (1 + SLIP)
     state["cash"] -= pos_usd
@@ -413,6 +430,62 @@ def manage_positions(state):
         time.sleep(0.3)
 
 
+def manage_shadow_positions(state):
+    """2026-07-28新增(用户要求"明天一起看选的好不好"): ENTRY_PAUSED期间跟踪"影子持仓"——
+    跟manage_positions同一套退出判断(LIQ_LOW/DUMPING/BUYER_COLLAPSE/TP/SL/TIME),只是不动
+    虚拟资金、不影响NAV/state["closed"],平仓结果记进state["shadow_closed"]专门用来复盘
+    选币质量,而不是只有入场那一刻的静态快照。"""
+    shadow = state.setdefault("shadow", {})
+    shadow_closed = state.setdefault("shadow_closed", [])
+    for addr in list(shadow.keys()):
+        pos = shadow[addr]
+        pos["total_checks"] = pos.get("total_checks", 0) + 1
+        cur, liq_now = get_price_and_liq(addr)
+        if liq_now is not None and liq_now < DEAD_LIQ_USD:
+            shadow_closed.append({**pos, "addr": addr, "exit": 0.0, "reason": "DEAD", "ret": -1.0, "t_exit": NOW})
+            del shadow[addr]
+            log(f"[影子]EXIT {pos['name']} [DEAD] 流动性只剩${liq_now:.4f},若真买了就是本金全亏")
+            continue
+        if cur is None:
+            pos["consecutive_no_price"] = pos.get("consecutive_no_price", 0) + 1
+            if pos["consecutive_no_price"] >= DEAD_PRICE_STREAK:
+                shadow_closed.append({**pos, "addr": addr, "exit": 0.0, "reason": "DEAD", "ret": -1.0, "t_exit": NOW})
+                del shadow[addr]
+                log(f"[影子]EXIT {pos['name']} [DEAD] 连续{pos['consecutive_no_price']}轮拿不到报价")
+            time.sleep(0.3)
+            continue
+        pos["consecutive_no_price"] = 0
+        ret = cur / pos["entry"] - 1
+        hold_min = (NOW - pos["t_entry"]) / 60
+        reason = None
+        if liq_now is not None and liq_now < EXIT_LIQ_THRESHOLD:
+            reason = "LIQ_LOW"
+        bot_wallet = pos.get("bot_wallet_addr")
+        if reason is None and bot_wallet:
+            dump = check_wallet_dumping(addr, bot_wallet)
+            if dump and dump["consecutive_sells"] >= 3:
+                reason = "DUMPING"
+        if reason is None:
+            collapse = check_buyer_collapse(addr)
+            if collapse and collapse["collapse"]:
+                reason = "BUYER_COLLAPSE"
+        if reason is None and abs(ret) <= 50:
+            if ret >= TP:
+                reason = "TP"
+            elif ret <= SL:
+                reason = "SL"
+            elif hold_min >= MAX_HOLD_MIN:
+                reason = "TIME"
+        pos["mark"] = cur
+        pos["mark_ret"] = ret
+        if reason:
+            shadow_closed.append({**pos, "addr": addr, "exit": cur, "reason": reason,
+                                  "ret": round(ret, 4), "t_exit": NOW})
+            del shadow[addr]
+            log(f"[影子]EXIT {pos['name']} [{reason}] ret={ret*100:+.1f}% held={hold_min:.0f}min")
+        time.sleep(0.3)
+
+
 def main():
     if STATE_F.exists():
         state = json.loads(STATE_F.read_text(encoding="utf-8"))
@@ -434,10 +507,11 @@ def main():
     # 窗口时间或者已经没持仓了。
     window_end = time.time() + EXIT_CHECK_WINDOW_SEC
     n_exit_rounds = 0
-    while state["positions"] and time.time() < window_end:
+    while (state["positions"] or state.get("shadow")) and time.time() < window_end:
         n_exit_rounds += 1
         manage_positions(state)
-        if state["positions"] and time.time() < window_end:
+        manage_shadow_positions(state)
+        if (state["positions"] or state.get("shadow")) and time.time() < window_end:
             time.sleep(EXIT_CHECK_INTERVAL_SEC)
 
     open_val = sum(p["qty"] * p.get("mark", p["entry"]) for p in state["positions"].values())
@@ -478,11 +552,26 @@ def main():
     lines += ["", "## 最近平仓 (20)", "| 币种 | 原因 | 盈亏 |", "|---|---|---|"]
     for c in closed[-20:][::-1]:
         lines.append(f"| {c['name']} | {c['reason']} | {c['pnl']:+.4f}U |")
+
+    # 2026-07-28新增: ENTRY_PAUSED期间的"影子持仓"复盘——选币验证阶段没有真实盈亏,
+    # 但每个WOULD BUY候选后续实际走势(TP/SL/DEAD/DUMPING等)才是判断"选的好不好"的真凭据。
+    shadow = state.get("shadow", {})
+    shadow_closed = state.get("shadow_closed", [])
+    if ENTRY_PAUSED:
+        shadow_wins = [s for s in shadow_closed if s["ret"] > 0]
+        lines += [
+            "", "## 选币验证(暂不真实开仓,只跟踪走势) ##",
+            f"影子持仓中 {len(shadow)} | 影子已平仓 {len(shadow_closed)} | "
+            f"若真买了的胜率 {len(shadow_wins)/len(shadow_closed)*100 if shadow_closed else 0:.0f}%",
+            "| 币种 | 原因 | 涨跌幅 |", "|---|---|---|",
+        ]
+        for s in shadow_closed[-20:][::-1]:
+            lines.append(f"| {s['name']} | {s['reason']} | {s['ret']*100:+.1f}% |")
     DASH_F.write_text("\n".join(lines), encoding="utf-8")
 
     STATE_F.write_text(json.dumps(state, ensure_ascii=False, indent=1), encoding="utf-8")
     log(f"CYCLE OK nav={nav:.4f} 扫描候选{len(cands)} 新入场{n_entered} 高频复查{n_exit_rounds}轮 "
-       f"持仓{len(state['positions'])} 已平仓{len(closed)}")
+       f"持仓{len(state['positions'])} 已平仓{len(closed)} 影子持仓{len(shadow)} 影子已平仓{len(shadow_closed)}")
 
 
 if __name__ == "__main__":
