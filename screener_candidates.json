@@ -1,6 +1,36 @@
 {
- "updated_at": 1785236725,
- "updated_at_str": "2026-07-28 11:05 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785243584,
+ "updated_at_str": "2026-07-28 12:59 UTC",
+ "n_candidates": 1,
+ "candidates": [
+  {
+   "addr": "8G8xVnWfiFDhKTmymRZun4hQk6HsmTMQoG4HyKQ4ZaJi",
+   "name": "USOH / SOL",
+   "age_min": 117.76666666666667,
+   "created": 1785236518.0,
+   "price": 5.561988203869809e-05,
+   "liq": 15764.6672,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 4053.1990360299,
+   "vol_1h": 22946.9010683298,
+   "chg_15m": -2.633,
+   "chg_1h": 12.938,
+   "buys_15m": 90,
+   "sells_15m": 78,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/8G8xVnWfiFDhKTmymRZun4hQk6HsmTMQoG4HyKQ4ZaJi",
+   "mint": "n4kKUqHeVUNRpiqyS1Nnzc4qZF5TpNHWB1Vt5Xkpump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": -0.3256516636526743,
+    "wallet_verdict": "33/40个头部钱包卖出不到30%，主力大部分仓位还在场内"
+   }
+  }
+ ]
 }
