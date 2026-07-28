@@ -1,26 +1,7 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13034.139958579268,
- "positions": {
-  "GxFrNEk3sFrBjgvf9QbsQAc3rCksKMmL79DpWki1DaSN": {
-   "name": "PONS / SOL",
-   "entry": 2.5731747728694213e-05,
-   "qty": 1943124.9104095467,
-   "usd": 50,
-   "t_entry": 1785202503,
-   "bot_avg_trade_usd": 509.96,
-   "no_price_checks": 1,
-   "total_checks": 9,
-   "entry_locked_liq_pct": null,
-   "entry_buyers_h1": null,
-   "entry_sellers_h1": null,
-   "entry_buy_sell_ratio_h1": null,
-   "entry_price_change_h1_pct": null,
-   "consecutive_no_price": 0,
-   "mark": 2.6830329300958615e-05,
-   "mark_ret": 0.042693624383676854
-  }
- },
+ "cash": 13085.988018681315,
+ "positions": {},
  "closed": [
   {
    "name": "believe / SOL",
@@ -36631,7 +36612,30 @@
    "reason": "SL",
    "pnl": -0.8824,
    "t_exit": 1785202324
+  },
+  {
+   "name": "PONS / SOL",
+   "entry": 2.5731747728694213e-05,
+   "qty": 1943124.9104095467,
+   "usd": 50,
+   "t_entry": 1785202503,
+   "bot_avg_trade_usd": 509.96,
+   "no_price_checks": 3,
+   "total_checks": 12,
+   "entry_locked_liq_pct": null,
+   "entry_buyers_h1": null,
+   "entry_sellers_h1": null,
+   "entry_buy_sell_ratio_h1": null,
+   "entry_price_change_h1_pct": null,
+   "consecutive_no_price": 0,
+   "mark": 2.7227371485062515e-05,
+   "mark_ret": 0.05812367555199094,
+   "addr": "GxFrNEk3sFrBjgvf9QbsQAc3rCksKMmL79DpWki1DaSN",
+   "exit": 2.6682824055361264e-05,
+   "reason": "TP",
+   "pnl": 1.8481,
+   "t_exit": 1785202863
   }
  ],
- "realized_pnl": 3002.241958579245
+ "realized_pnl": 3004.0900186812923
 }
