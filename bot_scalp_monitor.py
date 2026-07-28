@@ -152,13 +152,20 @@ def try_enter(state, c):
         buyers, sellers = dil["buyers_h1"], dil["sellers_h1"]
         if buyers and sellers is not None:
             buy_sell_ratio = float("inf") if (sellers == 0 and buyers > 20) else buyers / max(sellers, 1)
-        if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < MIN_LOCKED_LIQ_PCT:
-            log(f"SKIP {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%,主力随时能一笔交易瞬间抽干,不进场")
+        # 2026-07-28修复: 原来"查不到锁仓数据就放行"是个漏洞——bulltom这笔真实持仓就是
+        # 靠"None"混过去的,不是真的验证过安全。查不到=当作没锁仓处理,宁可错过不能选错。
+        if dil["locked_liq_pct"] is None or dil["locked_liq_pct"] < MIN_LOCKED_LIQ_PCT:
+            pct_str = f"{dil['locked_liq_pct']:.1f}%" if dil["locked_liq_pct"] is not None else "查不到(当作0%处理)"
+            log(f"SKIP {c['name']}: 流动性锁仓比例{pct_str},主力随时能一笔交易瞬间抽干,不进场")
             return False
         if buy_sell_ratio is not None and buy_sell_ratio > MAX_BUY_SELL_RATIO:
             log(f"NOTE(未拦截) {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例{buy_sell_ratio:.0f}:1")
+        # 2026-07-28改回硬拦截: 入场时机是这个策略最粗糙的一环(检测到信号就立刻按当前价
+        # 买,不管是不是已经涨过头)。这条数据已经在查了,只是没拦——如果检测到信号时过去
+        # 1小时已经涨了100%+,大概率是追高接盘在给别人接盘,应该直接跳过。
         if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > MAX_RECENT_PUMP_PCT:
-            log(f"NOTE(未拦截) {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%")
+            log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘,不进场")
+            return False
     result = check_scalping(addr)
     if not result.get("flag"):
         return False  # screener缓存可能有点旧,重新确认一遍还在刷量再进场

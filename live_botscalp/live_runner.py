@@ -416,13 +416,20 @@ def try_enter(cfg, wallet, state, c):
     # 一样)都来不及反应,是物理时间差不是代码速度问题。检查再快只能防"慢慢流失"，防不住
     # "瞬间抽干"，唯一有效的办法是压根不进没锁仓的池子。买卖比例/涨幅这两条留作记录观察
     # (那两个是"过程类"信号,反应速度还有意义),只有这条改回硬拦截。
-    if dil["locked_liq_pct"] is not None and dil["locked_liq_pct"] < cfg["minLockedLiqPct"]:
-        log(f"SKIP {c['name']}: 流动性锁仓比例只有{dil['locked_liq_pct']:.1f}%,主力随时能一笔交易瞬间抽干,不进场")
+    # 2026-07-28修复: 原来"查不到锁仓数据就放行"是个漏洞——bulltom这笔真实持仓就是
+    # 靠"None"混过去的,不是真的验证过安全。查不到=当作没锁仓处理,宁可错过不能选错。
+    if dil["locked_liq_pct"] is None or dil["locked_liq_pct"] < cfg["minLockedLiqPct"]:
+        pct_str = f"{dil['locked_liq_pct']:.1f}%" if dil["locked_liq_pct"] is not None else "查不到(当作0%处理)"
+        log(f"SKIP {c['name']}: 流动性锁仓比例{pct_str},主力随时能一笔交易瞬间抽干,不进场")
         return False
     if buy_sell_ratio is not None and buy_sell_ratio > cfg["maxBuySellRatio"]:
         log(f"NOTE(未拦截) {c['name']}: 过去1小时买家{buyers}人/卖家{sellers}人,比例{buy_sell_ratio:.0f}:1")
+    # 2026-07-28改回硬拦截: 入场时机本来就是这个策略最粗糙的一环(检测到信号就立刻按
+    # 当前价买,完全不管当前是不是已经涨过头)。这条数据已经在查了,只是没拦——如果检测到
+    # 信号的时候过去1小时已经涨了100%+,大概率是追高接盘在给别人接盘,应该直接跳过。
     if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > cfg["maxRecentPumpPct"]:
-        log(f"NOTE(未拦截) {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%")
+        log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘,不进场")
+        return False
 
     mint = c.get("mint")
     if not mint:

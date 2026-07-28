@@ -60,6 +60,12 @@ PRUNE_AGE_MIN = MAX_AGE_MIN + 30   # 状态里超过这个年龄的条目直接�
 MIN_LIQUIDITY_USD = 8000
 MAX_LIQUIDITY_USD = 2_000_000  # 上限:这么年轻的币出现千万/上亿级流动性基本是报价异常导致reserve_in_usd失真,不是真实候选
 MIN_TX_15M = 5           # 近15分钟买卖笔数门槛,纯按笔数卡(不再允许用成交额金额顶替笔数不足)
+# 2026-07-28新增: 用户当晚手动交易踩坑印证——没锁仓的池子,主力随时能一笔交易瞬间抽干
+# 流动性,这个动作在链上一个区块内完成,不管盯得多紧都来不及反应,是物理时间差不是
+# 检查速度问题,唯一有效的办法是压根不碰没锁仓的币。这个字段(locked_liquidity_percentage)
+# 本来就在/pools/multi批量接口的同一次响应里,不用额外请求。查不到锁仓数据(GeckoTerminal
+# 没收录)一律当作"没锁仓"处理,不能因为"不知道"就当成安全放行——宁可错过,不能选错。
+MIN_LOCKED_LIQ_PCT = 50
 NEW_POOLS_PAGES = 12     # 覆盖约10分钟的新池子创建量(约24个/分钟),配合定时任务间隔
 TRENDING_PAGES = 2
 MULTI_CHUNK = 30         # /pools/multi 单批最多30个地址
@@ -126,10 +132,15 @@ def extract_stats(addr, name, created, attrs):
     chg = attrs.get("price_change_percentage") or {}
     tx = attrs.get("transactions") or {}
     age_min = (NOW - created) / 60
+    try:
+        locked_liq_pct = float(attrs.get("locked_liquidity_percentage"))
+    except (TypeError, ValueError):
+        locked_liq_pct = None
     return {
         "addr": addr, "name": name, "age_min": age_min, "created": created,
         "price": float(attrs.get("base_token_price_usd") or 0),
         "liq": float(attrs.get("reserve_in_usd") or 0),
+        "locked_liq_pct": locked_liq_pct,
         "vol_15m": float(vol.get("m15") or 0), "vol_1h": float(vol.get("h1") or 0),
         "chg_15m": float(chg.get("m15") or 0), "chg_1h": float(chg.get("h1") or 0),
         "buys_15m": (tx.get("m15") or {}).get("buys", 0),
@@ -210,6 +221,8 @@ def refresh_candidates(state):
                 continue
             if (p["buys_15m"] + p["sells_15m"]) < MIN_TX_15M:
                 continue  # 近15分钟买卖笔数不够,判定为已死(或坏数据),不看金额
+            if p["locked_liq_pct"] is None or p["locked_liq_pct"] < MIN_LOCKED_LIQ_PCT:
+                continue  # 没锁仓/查不到锁仓数据,主力随时能瞬间抽干,直接不进候选列表
             base_tok_id = (row.get("relationships", {}).get("base_token", {}).get("data", {}) or {}).get("id")
             p["mint"] = mint_by_id.get(base_tok_id)
             p["early_bot_flag"] = w.get("early_bot_flag")  # None=太快进候选没来得及早期检测

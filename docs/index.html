@@ -255,12 +255,22 @@ function renderDiligence(c) {
   return parts.join(" ") + `<div style="font-size:10px;color:var(--dim);margin-top:2px;">${d.checked_min_ago.toFixed(0)}分钟前查</div>`;
 }
 
+function lockedBadge(pct) {
+  // 2026-07-28新增: 没锁仓的池子,主力随时能一笔交易瞬间抽干流动性(链上一个区块内完成,
+  // 检查再快也来不及反应),screener.py现在直接把这类币剔出候选列表,不会出现在这个表里——
+  // 这里显示出来只是让你眼见为实确认一下,不是靠这个再筛一遍。
+  if (pct == null) return `<span class="badge neg">未锁仓</span>`;
+  const cls = pct >= 80 ? "pos" : pct >= 50 ? "zero" : "neg";
+  return `<span class="badge ${cls}">🔒${pct.toFixed(0)}%</span>`;
+}
+
 function renderScreenerTable(cands) {
-  if (!cands.length) return `<div class="empty">当前无符合条件的候选币(年龄/流动性/活跃度过滤后)</div>`;
+  if (!cands.length) return `<div class="empty">当前无符合条件的候选币(年龄/流动性/活跃度/锁仓过滤后)</div>`;
   const rows = cands.map(c => `<tr>
       <td><a class="name-link" href="${esc(c.dex_url)}" target="_blank">${esc(c.name)}</a></td>
       <td>${fmtAgeMin(c.age_min)}</td>
       <td>$${Math.round(c.liq).toLocaleString("en-US")}</td>
+      <td>${lockedBadge(c.locked_liq_pct)}</td>
       <td>$${Math.round(c.vol_15m).toLocaleString("en-US")}</td>
       <td>${pctBadge(c.chg_15m)}</td>
       <td>${pctBadge(c.chg_1h)}</td>
@@ -268,7 +278,7 @@ function renderScreenerTable(cands) {
       <td>${renderDiligence(c)}</td>
     </tr>`).join("");
   return `<div class="table-wrap"><table>
-    <thead><tr><th>币种</th><th>年龄</th><th>流动性</th><th>15m成交额</th><th>15m涨跌</th><th>1h涨跌</th><th>15m买/卖笔数</th><th>入场前尽调</th></tr></thead>
+    <thead><tr><th>币种</th><th>年龄</th><th>流动性</th><th>锁仓</th><th>15m成交额</th><th>15m涨跌</th><th>1h涨跌</th><th>15m买/卖笔数</th><th>入场前尽调</th></tr></thead>
     <tbody>${rows}</tbody></table></div>`;
 }
 
