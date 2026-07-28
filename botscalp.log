@@ -6128,3 +6128,7 @@
 [2026-07-28 04:11 UTC] SKIP EXIT CHECK Dogshit / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续2轮)
 [2026-07-28 04:11 UTC] EXIT Dogshit / SOL [TP] ret=+27.8% pnl=+1.2619U held=0min
 [2026-07-28 04:11 UTC] CYCLE OK nav=13079.7595 扫描候选5 新入场1 高频复查3轮 持仓0 已平仓2381
+[2026-07-28 04:14 UTC] BUY Dogshit / SOL (2zvfzup9...) @ 0.0001580121165 仓位=$5.00(机器人单笔$12的10%)
+[2026-07-28 04:14 UTC] SKIP EXIT CHECK Dogshit / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 04:14 UTC] EXIT Dogshit / SOL [TP] ret=+8.1% pnl=+0.2961U held=0min
+[2026-07-28 04:14 UTC] CYCLE OK nav=13080.0555 扫描候选2 新入场1 高频复查4轮 持仓0 已平仓2382
