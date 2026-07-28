@@ -137,6 +137,30 @@ def check_scalping(addr):
     return result
 
 
+def check_wallet_dumping(addr, wallet):
+    """2026-07-28新增: 实时盯着check_scalping抓到的那个机器人钱包最近是不是在出货——
+    这个钱包特征本来就是来回对倒(买卖都做),这里不是看"有没有卖"(它一直都在卖,这是它的
+    常态)。用户明确指出关键在于**连续性**:偶尔卖出1、2个大单可能只是拉盘节奏里的获利
+    了结,不代表出货;但如果连续好几笔都是卖、中间不再穿插买入,才是真的在收网离场。
+    所以这里算的是这个钱包最近"连续卖出、没有被买入打断"的连续笔数(trailing sell
+    streak),不是简单的卖出金额占比。"""
+    d = get(S, f"{GT_BASE}/networks/solana/pools/{addr}/trades")
+    rows = (d or {}).get("data", [])
+    wallet_trades = [row["attributes"] for row in rows if row["attributes"].get("tx_from_address") == wallet]
+    if len(wallet_trades) < 3:
+        return None
+    wallet_trades.sort(key=lambda a: a["block_timestamp"])
+    streak = 0
+    for t in reversed(wallet_trades):
+        if t["kind"] == "sell":
+            streak += 1
+        else:
+            break
+    last = wallet_trades[-1]
+    return {"consecutive_sells": streak, "n_recent": len(wallet_trades),
+           "last_kind": last["kind"], "last_usd": float(last["volume_in_usd"])}
+
+
 def check_wallets(mint):
     if not mint:
         return {"verdict": "拿不到mint地址,跳过钱包检查"}

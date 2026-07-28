@@ -25,7 +25,7 @@ from pathlib import Path
 
 import requests
 
-from check_coin import check_scalping, GT_BASE, S, get
+from check_coin import check_scalping, check_wallet_dumping, GT_BASE, S, get
 
 HERE = Path(__file__).parent
 STATE_F = HERE / "state_botscalp.json"
@@ -206,6 +206,7 @@ def try_enter(state, c):
         "entry_price_change_h1_pct": dil["price_change_h1_pct"] if dil else None,
         "entry_n_wallets": n_wallets,  # 真人参与度,后续用来对比"纯机器人"和"真人+机器人混合"
                                        # 这两类交易的实际胜率/均笔盈亏(尤其是TIME超时平仓那部分)
+        "bot_wallet_addr": result.get("suspect_wallet"),  # 持仓期间用来盯着这个钱包是不是开始连续出货
     }
     log(f"BUY {c['name']} ({addr[:8]}...) @ {entry:.10g} 仓位=${pos_usd:.2f}(机器人单笔${avg_bot_usd:.0f}的{POS_SIZE_PCT_OF_BOT*100:.0f}%)")
     return True
@@ -285,6 +286,26 @@ def manage_positions(state):
                f"不等止盈止损,立刻卖出 pnl={pnl:+.4f}U")
             time.sleep(0.3)
             continue
+        # 2026-07-28新增(用户明确要求): 在主力那个机器人钱包"出货结束前"跑掉——同样
+        # 独立在最前面检查、不依赖价格比例,因为等价格已经跌下来才反应就晚了。用户明确
+        # 指出关键在于连续性:偶尔卖1、2笔可能只是拉盘节奏里获利了结,连续卖(中间不穿插
+        # 买入)才是真的在收网离场。
+        bot_wallet = pos.get("bot_wallet_addr")
+        if bot_wallet:
+            dump = check_wallet_dumping(addr, bot_wallet)
+            if dump and dump["consecutive_sells"] >= 3:
+                exit_px = cur * (1 - SLIP)
+                proceeds = pos["qty"] * exit_px
+                pnl = proceeds - pos["usd"]
+                state["cash"] += proceeds
+                state["realized_pnl"] += pnl
+                state["closed"].append({**pos, "addr": addr, "exit": exit_px, "reason": "DUMPING",
+                                        "pnl": round(pnl, 4), "t_exit": NOW})
+                del state["positions"][addr]
+                log(f"EXIT {pos['name']} [DUMPING] 主力钱包连续卖出{dump['consecutive_sells']}笔(中间没有买入),"
+                   f"疑似正在出货,不管止盈止损,立刻卖出 pnl={pnl:+.4f}U")
+                time.sleep(0.3)
+                continue
         # GeckoTerminal的报价偶尔会离谱出错(实测CXMT这个池子出现过价格差了几百万倍的情况，
         # 这份代码的live版本live_botscalp/live_runner.py也踩过同一个坑，是同一类报价异常，
         # 不是真实行情)。这么夸张的比例不能拿去当真触发止盈止损/算盈亏，跳过这一轮，

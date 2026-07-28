@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13085.862634480553,
+ "cash": 13086.434913195091,
  "positions": {},
  "closed": [
   {
@@ -36682,7 +36682,32 @@
    "reason": "TP",
    "pnl": 0.8435,
    "t_exit": 1785208443
+  },
+  {
+   "name": "AMORFATI / SOL",
+   "entry": 5.306264816113058e-05,
+   "qty": 94228.24101837038,
+   "usd": 5,
+   "t_entry": 1785208530,
+   "bot_avg_trade_usd": 32.22,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 1868,
+   "entry_sellers_h1": 1634,
+   "entry_buy_sell_ratio_h1": 1.1432068543451652,
+   "entry_price_change_h1_pct": 31.2,
+   "entry_n_wallets": 178,
+   "bot_wallet_addr": "6uGBU8i16xkfjN7DZsgmbG2tTJLJExeBQ3zK2bDPtjw",
+   "consecutive_no_price": 0,
+   "mark": 6.034282956843087e-05,
+   "mark_ret": 0.13719973766090998,
+   "addr": "DsnWfzzSivM29PBNuhfhgqmPL3pxQd5wurcJ1RUqFNEr",
+   "exit": 5.913597297706225e-05,
+   "reason": "TP",
+   "pnl": 0.5723,
+   "t_exit": 1785208530
   }
  ],
- "realized_pnl": 3003.964634480531
+ "realized_pnl": 3004.5369131950692
 }

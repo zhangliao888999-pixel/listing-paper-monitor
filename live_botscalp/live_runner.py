@@ -124,6 +124,31 @@ def check_scalping(addr):
     return result
 
 
+def check_wallet_dumping(addr, wallet):
+    """2026-07-28新增: 用户要求实时盯着"主力那个机器人钱包"最近是不是在出货——
+    check_scalping抓到的那个钱包,特征本来就是来回对倒(买卖都做),这里不是看"有没有卖"
+    (它一直都在卖,这是它的常态)。用户明确指出关键在于**连续性**:偶尔卖出1、2个大单
+    可能只是拉盘节奏里的获利了结,不代表出货;但如果连续好几笔都是卖、中间不再穿插
+    买入,才是真的在收网离场。所以这里算的是"这个钱包最近连续卖出、没有被买入打断"
+    的连续笔数(trailing sell streak),不是简单的卖出金额占比。跟check_scalping同一个
+    /trades接口,持仓监控阶段每轮都会重新查一次(不像check_scalping只在进场前查一次)。"""
+    d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}/trades")
+    rows = (d or {}).get("data", [])
+    wallet_trades = [row["attributes"] for row in rows if row["attributes"].get("tx_from_address") == wallet]
+    if len(wallet_trades) < 3:
+        return None  # 这个钱包最近没怎么动,数据不够判断,不勉强下结论
+    wallet_trades.sort(key=lambda a: a["block_timestamp"])
+    streak = 0
+    for t in reversed(wallet_trades):  # 从最新的一笔往回数,数到第一次不是sell就停
+        if t["kind"] == "sell":
+            streak += 1
+        else:
+            break
+    last = wallet_trades[-1]
+    return {"consecutive_sells": streak, "n_recent": len(wallet_trades),
+           "last_kind": last["kind"], "last_usd": float(last["volume_in_usd"])}
+
+
 def log(msg):
     # 用调用这一刻的真实时间,不用NOW_STR(那是整个进程启动时刻算的,一轮扫描里
     # 好几十个候选跑下来实际经过了几秒到几十秒,如果都打同一个时间戳,实时tail
@@ -196,13 +221,14 @@ def decide_pos_size_usd(cfg, addr):
     机器人(不需要按机器人仓位算大小),所以n_wallets这里拿不到,留给try_enter()那边
     单独查一次。"""
     if cfg["sizingMode"] == "fixed":
-        return {"pos_size_usd": cfg["posSizeUsd"], "n_wallets": None}
+        return {"pos_size_usd": cfg["posSizeUsd"], "n_wallets": None, "bot_wallet": None}
     result = check_scalping(addr)
     avg_bot_usd = result.get("suspect_wallet_avg_trade_usd")
     if not result.get("flag") or not avg_bot_usd:
         return None
     pos_size_usd = max(cfg["minPosUsd"], min(cfg["maxPosUsd"], avg_bot_usd * cfg["pctOfBot"]))
-    return {"pos_size_usd": pos_size_usd, "n_wallets": result.get("n_wallets")}
+    return {"pos_size_usd": pos_size_usd, "n_wallets": result.get("n_wallets"),
+           "bot_wallet": result.get("suspect_wallet")}
 
 
 def get_wallet():
@@ -405,11 +431,12 @@ def try_enter(cfg, wallet, state, c):
     if sizing is None:
         log(f"SKIP {c['name']}: pct_of_bot模式下现在查不到机器人在刷(市场状况变了),不用旧数据凑仓位")
         return False
-    pos_size_usd, n_wallets = sizing["pos_size_usd"], sizing["n_wallets"]
+    pos_size_usd, n_wallets, bot_wallet = sizing["pos_size_usd"], sizing["n_wallets"], sizing["bot_wallet"]
     if n_wallets is None:
-        # fixed模式/尚未查过,单独查一次拿n_wallets(check_scalping本身也会顺带重新
-        # 确认一遍scalping_flag,双重确认没坏处)
-        n_wallets = check_scalping(c["addr"]).get("n_wallets")
+        # fixed模式/尚未查过,单独查一次拿n_wallets+bot_wallet(check_scalping本身也会
+        # 顺带重新确认一遍scalping_flag,双重确认没坏处)
+        _r = check_scalping(c["addr"])
+        n_wallets, bot_wallet = _r.get("n_wallets"), _r.get("suspect_wallet")
     if n_wallets is not None and n_wallets < cfg["minWallets"]:
         log(f"SKIP {c['name']}: 最近300笔成交只涉及{n_wallets}个钱包,参与面太窄,大概率就是几个机器人钱包自己在玩,不进场")
         return False
@@ -515,6 +542,7 @@ def try_enter(cfg, wallet, state, c):
         "entry_price_change_h1_pct": dil["price_change_h1_pct"],
         "entry_n_wallets": n_wallets,  # 真人参与度,后续用来对比"纯机器人"和"真人+机器人混合"
                                        # 这两类交易的实际胜率/均笔盈亏(尤其是TIME超时平仓那部分)
+        "bot_wallet_addr": bot_wallet,  # 持仓期间用来盯着这个钱包是不是开始连续出货
     }
     state["spent_today_usd"] += pos_size_usd
     log(f"BUY {c['name']} ({c['addr'][:8]}...) 成交 sig={sig} 价格={fresh_price:.10g} 仓位=${pos_size_usd:.2f}")
@@ -541,6 +569,17 @@ def try_exit(cfg, wallet, state, addr, pos):
     if liq_now is not None and liq_now < cfg["minLiquidityUsd"]:
         reason = "LIQ_LOW"
         log(f"{pos['name']} 流动性只剩${liq_now:,.0f}(低于${cfg['minLiquidityUsd']:,.0f}门槛),不管止盈止损,立刻卖出")
+
+    # 2026-07-28新增(用户明确要求): 在主力那个机器人钱包"出货结束前"跑掉——同样独立
+    # 在最前面检查、不依赖价格比例,因为等价格已经跌下来才反应就晚了。用户明确指出关键
+    # 在于连续性:偶尔卖1、2笔可能只是拉盘节奏里获利了结,连续卖(中间不穿插买入)才是
+    # 真的在收网离场。
+    bot_wallet = pos.get("bot_wallet_addr")
+    if reason is None and bot_wallet:
+        dump = check_wallet_dumping(addr, bot_wallet)
+        if dump and dump["consecutive_sells"] >= 3:
+            reason = "DUMPING"
+            log(f"{pos['name']} 主力钱包连续卖出{dump['consecutive_sells']}笔(中间没有买入),疑似正在出货,不管止盈止损,立刻卖出")
 
     ret = fresh_price / pos["entry_price_usd"] - 1
     if reason is None:
