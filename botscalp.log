@@ -6252,3 +6252,11 @@
 [2026-07-28 05:50 UTC] EXIT Dogshit / SOL [SL] ret=-14.5% pnl=-0.8088U held=0min
 [2026-07-28 05:50 UTC] CYCLE OK nav=13075.0943 扫描候选2 新入场1 高频复查5轮 持仓1 已平仓2409
 [2026-07-28 05:53 UTC] CYCLE OK nav=13075.1289 扫描候选2 新入场0 高频复查5轮 持仓1 已平仓2409
+[2026-07-28 05:56 UTC] SKIP EXIT CHECK USOS / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 05:56 UTC] SKIP EXIT CHECK BDOVE / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 05:56 UTC] SKIP EXIT CHECK Dogshit / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 05:56 UTC] EXIT USOS / SOL [TP] ret=+5.2% pnl=+0.1562U held=12min
+[2026-07-28 05:56 UTC] EXIT BDOVE / SOL [LIQ_LOW] 流动性只剩$13,302(低于$15,000门槛),不等止盈止损,立刻卖出 pnl=-0.3737U
+[2026-07-28 05:56 UTC] SKIP EXIT CHECK Dogshit / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续2轮)
+[2026-07-28 05:56 UTC] EXIT Dogshit / SOL [TP] ret=+16.1% pnl=+0.6909U held=0min
+[2026-07-28 05:56 UTC] CYCLE OK nav=13075.3883 扫描候选3 新入场2 高频复查3轮 持仓0 已平仓2412
