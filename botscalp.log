@@ -5683,3 +5683,21 @@
 [2026-07-28 01:05 UTC] EXIT Grok / SOL [TP] ret=+25.7% pnl=+8.4116U held=0min
 [2026-07-28 01:05 UTC] EXIT TA / SOL [SL] ret=-16.5% pnl=-0.9070U held=0min
 [2026-07-28 01:05 UTC] CYCLE OK nav=13063.8738 扫描候选6 新入场3 高频复查5轮 持仓1 已平仓2347
+[2026-07-28 01:08 UTC] NOTE(未拦截) HOOD / SOL: 流动性锁仓比例只有0.0%
+[2026-07-28 01:08 UTC] BUY HOOD / SOL (Ggc2oFx9...) @ 0.001006057293 仓位=$50.00(机器人单笔$664的10%)
+[2026-07-28 01:08 UTC] NOTE(未拦截) Grok / SOL: 流动性锁仓比例只有0.0%
+[2026-07-28 01:08 UTC] BUY Grok / SOL (Gujdah8C...) @ 6.39004242e-05 仓位=$32.65(机器人单笔$327的10%)
+[2026-07-28 01:08 UTC] NOTE(未拦截) SEAL / SOL: 流动性锁仓比例只有0.0%
+[2026-07-28 01:08 UTC] NOTE(未拦截) SEAL / SOL: 过去1小时已经涨了124%
+[2026-07-28 01:08 UTC] BUY SEAL / SOL (LrBuetbn...) @ 9.200694309e-05 仓位=$5.53(机器人单笔$55的10%)
+[2026-07-28 01:08 UTC] BUY TA / SOL (GBtwALr4...) @ 8.996333778e-05 仓位=$5.00(机器人单笔$4的10%)
+[2026-07-28 01:08 UTC] BUY PONS / SOL (GxFrNEk3...) @ 2.582390159e-05 仓位=$50.00(机器人单笔$553的10%)
+[2026-07-28 01:08 UTC] SKIP PIKACHU / SOL: 流动性只有$11,103,低于$15,000门槛,进得去也可能出不来
+[2026-07-28 01:08 UTC] EXIT NTFS / USDC [TIME] ret=-2.0% pnl=-0.1960U held=30min
+[2026-07-28 01:08 UTC] EXIT Grok / SOL [TP] ret=+24.2% pnl=+7.0921U held=0min
+[2026-07-28 01:08 UTC] SKIP EXIT CHECK SEAL / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 01:08 UTC] EXIT TA / SOL [TP] ret=+7.7% pnl=+0.2764U held=0min
+[2026-07-28 01:08 UTC] EXIT SEAL / SOL [SL] ret=-8.3% pnl=-0.5597U held=0min
+[2026-07-28 01:08 UTC] SKIP EXIT CHECK PONS / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 01:08 UTC] EXIT PONS / SOL [SL] ret=-3.5% pnl=-2.7029U held=0min
+[2026-07-28 01:08 UTC] CYCLE OK nav=13069.9831 扫描候选8 新入场5 高频复查5轮 持仓1 已平仓2352
