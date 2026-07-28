@@ -94,7 +94,13 @@ BLOCKED_POOL_ADDRS = {
 # ①流动性地板值 ②模拟的价格冲击(纸盘没有真实Jupiter报价,用仓位占流动性的比例近似:
 # 对constant-product型AMM,小额交易的价格冲击大约是"仓位/流动性"比例的2倍左右,这里
 # 用2%的仓位占比近似对应实盘5%冲击门槛,不是精确复刻,只是同一个方向的粗略模拟)。
-MIN_LIQUIDITY_USD = 15000.0
+MIN_LIQUIDITY_USD = 10000.0  # 2026-07-28晚从$15000降到$10000: 实测PIKACHU这个候选锁仓100%+
+                             # 钱包多样性89个,条件很好,只因为流动性$13,422差一点点被拦掉——
+                             # 锁仓+钱包多样性这两道更精确的门槛已经在真正把关,流动性门槛
+                             # 不用定这么高当主力防线
+EXIT_LIQ_THRESHOLD = 15000.0  # 持仓期间"流动性告急立刻卖"用的门槛,故意跟入场门槛分开、
+                              # 不跟着一起降——入场可以放宽,但已经进去的仓位该跑还是要
+                              # 尽早跑,不因为放宽了入场就跟着放松退出保护
 MAX_POS_LIQ_RATIO = 0.02
 
 
@@ -269,11 +275,12 @@ def manage_positions(state):
         pos["consecutive_no_price"] = 0
         ret = cur / pos["entry"] - 1
         # 2026-07-27新增(用户明确要求): 流动性快要不足,不管别的条件,必须马上卖出——
-        # 不等跌到DEAD_LIQ_USD(=$100)那种彻底归零才处理,而是一旦低于MIN_LIQUIDITY_USD
-        # (入场门槛同一个数,$15000)这个"还有得救"的区间就立刻按当前价卖出,不用等
-        # 正常的止盈止损/超时判断——流动性告急是独立信号,不依赖(可能出错的)价格比例，
-        # 该跑就必须跑,等真的跌到DEAD级别再处理就晚了(CXMT/Grok/breadcat都是这样)。
-        if liq_now is not None and liq_now < MIN_LIQUIDITY_USD:
+        # 不等跌到DEAD_LIQ_USD(=$100)那种彻底归零才处理,而是一旦低于EXIT_LIQ_THRESHOLD
+        # 这个"还有得救"的区间就立刻按当前价卖出,不用等正常的止盈止损/超时判断——
+        # 流动性告急是独立信号,不依赖(可能出错的)价格比例,该跑就必须跑,等真的跌到
+        # DEAD级别再处理就晚了(CXMT/Grok/breadcat都是这样)。这个门槛故意比入场门槛高,
+        # 放宽入场不等于放松已有仓位的退出保护。
+        if liq_now is not None and liq_now < EXIT_LIQ_THRESHOLD:
             exit_px = cur * (1 - SLIP)
             proceeds = pos["qty"] * exit_px
             pnl = proceeds - pos["usd"]
@@ -282,7 +289,7 @@ def manage_positions(state):
             state["closed"].append({**pos, "addr": addr, "exit": exit_px, "reason": "LIQ_LOW",
                                     "pnl": round(pnl, 4), "t_exit": NOW})
             del state["positions"][addr]
-            log(f"EXIT {pos['name']} [LIQ_LOW] 流动性只剩${liq_now:,.0f}(低于${MIN_LIQUIDITY_USD:,.0f}门槛),"
+            log(f"EXIT {pos['name']} [LIQ_LOW] 流动性只剩${liq_now:,.0f}(低于${EXIT_LIQ_THRESHOLD:,.0f}门槛),"
                f"不等止盈止损,立刻卖出 pnl={pnl:+.4f}U")
             time.sleep(0.3)
             continue

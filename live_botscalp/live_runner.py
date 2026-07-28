@@ -185,7 +185,14 @@ def load_config():
         # 高达$1565万——成交量/流动性比值离谱到200万倍,典型"看着很活跃、兜不住"的池子。
         # "闪崩后清零"和"想卖卖不掉(CXMT/Grok那种)"表面现象不同,但都是同一个根因
         # (真实深度不够)导致的,买入前直接量深度比事后猜特征更直接。
-        "minLiquidityUsd": 15000.0,   # 流动性低于这个数,不管多活跃都不进场
+        "minLiquidityUsd": 10000.0,   # 流动性低于这个数,不管多活跃都不进场
+                                       # (2026-07-28晚从$15000降到$10000: 实测PIKACHU这个候选
+                                       # 锁仓100%+钱包多样性89个,条件很好,只因为流动性$13,422
+                                       # 差一点点被拦掉——锁仓+钱包多样性这两道更精确的门槛已经
+                                       # 在真正把关,流动性门槛不用定这么高当主力防线)
+        "exitLiqThreshold": 15000.0,  # 持仓期间"流动性告急立刻卖"用的门槛,故意跟入场门槛分开、
+                                       # 不跟着一起降——入场可以放宽,但已经进去的仓位该跑还是要
+                                       # 尽早跑,不因为放宽了入场就跟着放松退出保护
         "maxPriceImpactPct": 5.0,     # 买这一笔仓位对价格的冲击超过这个百分比,说明池子薄到连
                                        # 我们这个小仓位都扛不住,大概率也卖不出去,不进场
         # 2026-07-27新增: 用户拿SPY/SOL这个真实案例点出的"拉高出货"风险,三条新防线:
@@ -566,9 +573,9 @@ def try_exit(cfg, wallet, state, addr, pos):
     # 等真的跌到DEAD_LIQ级别再处理就晚了(CXMT/Grok/breadcat都是流动性没了才发现)。
     liq_now = dil["liq"]
     reason = None
-    if liq_now is not None and liq_now < cfg["minLiquidityUsd"]:
+    if liq_now is not None and liq_now < cfg["exitLiqThreshold"]:
         reason = "LIQ_LOW"
-        log(f"{pos['name']} 流动性只剩${liq_now:,.0f}(低于${cfg['minLiquidityUsd']:,.0f}门槛),不管止盈止损,立刻卖出")
+        log(f"{pos['name']} 流动性只剩${liq_now:,.0f}(低于${cfg['exitLiqThreshold']:,.0f}门槛),不管止盈止损,立刻卖出")
 
     # 2026-07-28新增(用户明确要求): 在主力那个机器人钱包"出货结束前"跑掉——同样独立
     # 在最前面检查、不依赖价格比例,因为等价格已经跌下来才反应就晚了。用户明确指出关键
