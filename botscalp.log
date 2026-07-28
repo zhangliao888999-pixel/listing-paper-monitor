@@ -6246,3 +6246,5 @@
 [2026-07-28 05:44 UTC] SKIP EXIT CHECK USOS / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
 [2026-07-28 05:44 UTC] EXIT Dogshit / SOL [SL] ret=-12.8% pnl=-0.7253U held=0min
 [2026-07-28 05:44 UTC] CYCLE OK nav=13076.6170 扫描候选2 新入场2 高频复查6轮 持仓1 已平仓2407
+[2026-07-28 05:47 UTC] EXIT Dogshit / SOL [SL] ret=-14.3% pnl=-0.8012U held=0min
+[2026-07-28 05:47 UTC] CYCLE OK nav=13075.8523 扫描候选2 新入场1 高频复查5轮 持仓1 已平仓2408
