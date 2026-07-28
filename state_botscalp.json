@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13075.388289875682,
+ "cash": 13074.056641889072,
  "positions": {},
  "closed": [
   {
@@ -37760,7 +37760,30 @@
    "reason": "TP",
    "pnl": 0.6909,
    "t_exit": 1785218163
+  },
+  {
+   "name": "BDOVE / SOL",
+   "entry": 4.051544020059079e-05,
+   "qty": 123409.7414527682,
+   "usd": 5,
+   "t_entry": 1785218343,
+   "bot_avg_trade_usd": 9.81,
+   "no_price_checks": 1,
+   "total_checks": 2,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 1140,
+   "entry_sellers_h1": 979,
+   "entry_buy_sell_ratio_h1": 1.1644535240040859,
+   "entry_price_change_h1_pct": 14.998,
+   "entry_n_wallets": 153,
+   "bot_wallet_addr": "2tgUbS9UMoQD6GkDZBiqKYCURnGrSb6ocYwRABrSJUvY",
+   "consecutive_no_price": 0,
+   "addr": "Cqg2yBA6pFAz1ddpqQmJBzvnq1Uf915XiLTQCNLkGrRw",
+   "exit": 2.9724979326647258e-05,
+   "reason": "LIQ_LOW",
+   "pnl": -1.3316,
+   "t_exit": 1785218343
   }
  ],
- "realized_pnl": 2993.4902898756595
+ "realized_pnl": 2992.15864188905
 }
