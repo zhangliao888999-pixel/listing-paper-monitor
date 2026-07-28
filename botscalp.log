@@ -5607,3 +5607,22 @@
 [2026-07-28 00:44 UTC] EXIT SPUCEX / SOL [TP] ret=+9.4% pnl=+0.3582U held=0min
 [2026-07-28 00:44 UTC] EXIT PONS / SOL [SL] ret=-23.6% pnl=-5.2560U held=0min
 [2026-07-28 00:44 UTC] CYCLE OK nav=13196.7989 扫描候选11 新入场4 高频复查3轮 持仓3 已平仓2330
+[2026-07-28 00:50 UTC] NOTE(未拦截) Grok / SOL: 流动性锁仓比例只有0.0%
+[2026-07-28 00:50 UTC] BUY Grok / SOL (Gujdah8C...) @ 6.39004242e-05 仓位=$37.79(机器人单笔$378的10%)
+[2026-07-28 00:50 UTC] NOTE(未拦截) PONS / SOL: 流动性锁仓比例只有0.0%
+[2026-07-28 00:50 UTC] NOTE(未拦截) PONS / SOL: 过去1小时已经涨了108%
+[2026-07-28 00:50 UTC] BUY PONS / SOL (HQxr85eH...) @ 1.835605157e-05 仓位=$20.15(机器人单笔$202的10%)
+[2026-07-28 00:50 UTC] BUY ANSEM / SOL (a1cmKQ9t...) @ 1.529425437e-05 仓位=$15.28(机器人单笔$153的10%)
+[2026-07-28 00:50 UTC] SKIP PIKACHU / SOL: 流动性只有$10,920,低于$15,000门槛,进得去也可能出不来
+[2026-07-28 00:50 UTC] BUY Looks / SOL (7ZeWV2oU...) @ 0.0004024834364 仓位=$5.00(机器人单笔$40的10%)
+[2026-07-28 00:50 UTC] BUY SPUCEX / SOL (AKPd5uBJ...) @ 3.334795112e-05 仓位=$5.00(机器人单笔$3的10%)
+[2026-07-28 00:50 UTC] SKIP EXIT CHECK PONS / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 00:50 UTC] EXIT Grok / SOL [TP] ret=+8.3% pnl=+2.3125U held=0min
+[2026-07-28 00:50 UTC] EXIT PONS / SOL [SL] ret=-11.6% pnl=-2.6954U held=0min
+[2026-07-28 00:50 UTC] EXIT ANSEM / SOL [DEAD] 流动性只剩$0.0000(低于$100门槛),判定池子已死,按本金全亏$15.28平仓
+[2026-07-28 00:50 UTC] SKIP EXIT CHECK Looks / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续1轮)
+[2026-07-28 00:50 UTC] EXIT SPUCEX / SOL [TP] ret=+10.0% pnl=+0.3909U held=0min
+[2026-07-28 00:50 UTC] EXIT PONS / SOL [TP] ret=+5.5% pnl=+1.6856U held=18min
+[2026-07-28 00:50 UTC] SKIP EXIT CHECK Looks / SOL: 拿不到实时报价,这轮跳过止盈止损判断(连续2轮)
+[2026-07-28 00:50 UTC] EXIT Looks / SOL [SL] ret=-9.4% pnl=-0.5582U held=0min
+[2026-07-28 00:50 UTC] CYCLE OK nav=13183.1123 扫描候选11 新入场5 高频复查3轮 持仓2 已平仓2336
