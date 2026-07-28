@@ -60,6 +60,13 @@ MAX_RECENT_PUMP_PCT = 100.0  # 过去1小时已经涨了这么多,大概率追�
 # 就是那几个机器人钱包自己在玩",不进场。
 MIN_WALLETS = 60
 
+# 2026-07-28新增(用户明确指出): 选币这一关还在不断查出真实漏洞(锁仓None当成安全、
+# check_staircase写了半年没接线导致USOS这种脚本币直接买进去),这时候还在拿纸盘资金
+# 跑买卖,产出的盈亏数据本身就是噪音——分不清是策略问题还是选币问题。暂停实际开仓,
+# 只留扫描+完整尽调日志("WOULD BUY"),把选币关卡验证扎实了再重新放开买入。
+# 已开的持仓不受影响,照常走止盈止损/LIQ_LOW/DUMPING/BUYER_COLLAPSE退出。
+ENTRY_PAUSED = True
+
 # 2026-07-27新增: 用户明确指出"流动性比3%止损重要得多——流动性没了是100%全亏,
 # 3%止损根本不算什么"。买候选慢(一轮要查很多候选),但盯着手上几个持仓的流动性很快,
 # 不用等下一次计划任务触发(最快1分钟)才复查一次——脚本内部在扫描完新候选后,进入
@@ -204,6 +211,10 @@ def try_enter(state, c):
         log(f"SKIP {c['name']}: 仓位${pos_usd:.0f}占流动性${liq:,.0f}的{pos_usd/liq*100:.1f}%,池子太薄")
         return False
     if state["cash"] < pos_usd:
+        return False
+    if ENTRY_PAUSED:
+        log(f"WOULD BUY {c['name']} ({addr[:8]}...) @ {c['price']:.10g} 仓位=${pos_usd:.2f}"
+           f"(机器人单笔${avg_bot_usd:.0f}的{POS_SIZE_PCT_OF_BOT*100:.0f}%) —— 选币验证阶段,暂不真实开仓")
         return False
     entry = c["price"] * (1 + SLIP)
     state["cash"] -= pos_usd
