@@ -10,7 +10,7 @@
    "t_entry": 1785214922,
    "bot_avg_trade_usd": 0.05,
    "no_price_checks": 1,
-   "total_checks": 7,
+   "total_checks": 13,
    "entry_locked_liq_pct": 100.0,
    "entry_buyers_h1": 138,
    "entry_sellers_h1": 124,
@@ -19,8 +19,8 @@
    "entry_n_wallets": 90,
    "bot_wallet_addr": "7JmhrFZtWTh5UhVcjaEPgmKasakT2XFyWo3meTgiFoR5",
    "consecutive_no_price": 0,
-   "mark": 0.00020532525230476366,
-   "mark_ret": 0.009365057007957533
+   "mark": 0.00021039437519641428,
+   "mark_ret": 0.03428452238826396
   }
  },
  "closed": [
