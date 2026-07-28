@@ -1,1 +1,1 @@
-{"Gujdah8CpGWDTpHLC2EUdePAwfPFGDBXz6NtXmSC4Jkw": {"checked_at": 1785197303, "n_traders": 40, "n_suspicious": 0, "exit_ratio": null, "wallet_verdict": "32/40个头部钱包卖出不到30%，主力大部分仓位还在场内", "gt_checked_at": 1785197303, "staircase_flag": false, "scalping_flag": true}, "Ggc2oFx96PnZAdJPuN8DCQKVLKGrCgzRWDXkRc7bMHk8": {"checked_at": 1785197303, "n_traders": 40, "n_suspicious": 0, "exit_ratio": 0.9827159752702711, "wallet_verdict": "39/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕", "gt_checked_at": 1785197303, "staircase_flag": true, "scalping_flag": true}}
+{}

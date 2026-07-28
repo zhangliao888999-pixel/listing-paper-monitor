@@ -1,63 +1,6 @@
 {
- "updated_at": 1785197303,
- "updated_at_str": "2026-07-28 00:08 UTC",
- "n_candidates": 2,
- "candidates": [
-  {
-   "addr": "Ggc2oFx96PnZAdJPuN8DCQKVLKGrCgzRWDXkRc7bMHk8",
-   "name": "HOOD / SOL",
-   "age_min": 132.96666666666667,
-   "created": 1785189325.0,
-   "price": 0.0009863306791993353,
-   "liq": 263497.7818,
-   "vol_15m": 1476244.90056928,
-   "vol_1h": 8296739.42914517,
-   "chg_15m": 4.733,
-   "chg_1h": 24.596,
-   "buys_15m": 1075,
-   "sells_15m": 1077,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/Ggc2oFx96PnZAdJPuN8DCQKVLKGrCgzRWDXkRc7bMHk8",
-   "mint": "8k34oQ3MkcpPYMqWezgJovcoLMfnwafzSL9LMqET5bUe",
-   "early_bot_flag": null,
-   "staircase_flag": true,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 0.0,
-    "staircase_flag": true,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 0,
-    "exit_ratio": 0.9827159752702711,
-    "wallet_verdict": "39/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
-   }
-  },
-  {
-   "addr": "Gujdah8CpGWDTpHLC2EUdePAwfPFGDBXz6NtXmSC4Jkw",
-   "name": "Grok / SOL",
-   "age_min": 133.4,
-   "created": 1785189299.0,
-   "price": 6.264747471029466e-05,
-   "liq": 99764.4173,
-   "vol_15m": 761328.967115037,
-   "vol_1h": 2606432.52371119,
-   "chg_15m": 10.897,
-   "chg_1h": 27.565,
-   "buys_15m": 1039,
-   "sells_15m": 1039,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/Gujdah8CpGWDTpHLC2EUdePAwfPFGDBXz6NtXmSC4Jkw",
-   "mint": "HYvR2Ap9zHBc4D9od4Un8xuDs6fiMWdvXVUQ9LrsQGmN",
-   "early_bot_flag": null,
-   "staircase_flag": false,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 0.0,
-    "staircase_flag": false,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 0,
-    "exit_ratio": null,
-    "wallet_verdict": "32/40个头部钱包卖出不到30%，主力大部分仓位还在场内"
-   }
-  }
- ]
+ "updated_at": 1785209447,
+ "updated_at_str": "2026-07-28 03:30 UTC",
+ "n_candidates": 0,
+ "candidates": []
 }
