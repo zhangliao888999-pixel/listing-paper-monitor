@@ -149,6 +149,43 @@ def check_wallet_dumping(addr, wallet):
            "last_kind": last["kind"], "last_usd": float(last["volume_in_usd"])}
 
 
+def check_buyer_collapse(addr, window_sec=90, min_sellers=2, min_sell_usd=300.0, max_buyers=2):
+    """2026-07-28新增: bulltom案例的量价+钱包分析发现,check_wallet_dumping只盯着"那一个
+    被机器人检测揪出来的钱包"自己连不连续卖,但真正决定回踩能不能被接住的是整个市场当下
+    还有没有买方——bulltom能扛住反复砸盘是因为砸盘那几分钟仍有70+个不同买方钱包在接,
+    历史上那些一砸就死透的币(USWR/TA)砸盘时买方基本是空的。这里独立于DUMPING,看最近
+    window_sec秒内全市场的买卖双方钱包数和金额,只要还有明显卖压("有人在砸")但几乎没有
+    买方钱包在接("没人接"),就判定为买方塌陷——不管止盈止损线有没有到,跟流动性归零
+    (LIQ_LOW)同等优先级,必须立即离场。跟check_wallet_dumping同一个/trades接口。"""
+    d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}/trades", {"trade_volume_in_usd_greater_than": 0})
+    rows = (d or {}).get("data", [])
+    if not rows:
+        return None
+    parsed = []
+    for row in rows:
+        a = row["attributes"]
+        try:
+            ts = dt.datetime.fromisoformat(a["block_timestamp"].replace("Z", "+00:00"))
+            parsed.append({"ts": ts, "kind": a["kind"], "wallet": a.get("tx_from_address"),
+                           "usd": float(a.get("volume_in_usd") or 0)})
+        except (KeyError, ValueError, TypeError):
+            continue
+    if len(parsed) < 5:
+        return None
+    parsed.sort(key=lambda r: r["ts"])
+    cutoff = parsed[-1]["ts"] - dt.timedelta(seconds=window_sec)
+    window = [r for r in parsed if r["ts"] >= cutoff]
+    if len(window) < 5:
+        return None
+    buyers = {r["wallet"] for r in window if r["kind"] == "buy" and r["wallet"]}
+    sellers = {r["wallet"] for r in window if r["kind"] == "sell" and r["wallet"]}
+    buy_usd = sum(r["usd"] for r in window if r["kind"] == "buy")
+    sell_usd = sum(r["usd"] for r in window if r["kind"] == "sell")
+    collapse = len(sellers) >= min_sellers and sell_usd >= min_sell_usd and len(buyers) <= max_buyers
+    return {"collapse": collapse, "n_buyers": len(buyers), "n_sellers": len(sellers),
+           "buy_usd": round(buy_usd, 2), "sell_usd": round(sell_usd, 2), "window_sec": window_sec}
+
+
 def log(msg):
     # 用调用这一刻的真实时间,不用NOW_STR(那是整个进程启动时刻算的,一轮扫描里
     # 好几十个候选跑下来实际经过了几秒到几十秒,如果都打同一个时间戳,实时tail
@@ -175,7 +212,8 @@ def load_config():
         "sizingMode": "fixed",
         "posSizeUsd": 1.0,           # fixed模式下每笔的金额;先用$1验证整条链路能不能跑通
         "pctOfBot": 0.10, "minPosUsd": 5.0, "maxPosUsd": 50.0,   # pct_of_bot模式的参数,对齐纸盘
-        "tp": 0.05, "sl": -0.03, "maxHoldMin": 30,
+        "tp": 0.05, "sl": -0.10, "maxHoldMin": 30,   # 2026-07-28从-3%放宽到-10%,配合新增的
+                                                       # BUYER_COLLAPSE独立风控,双保险后止损不用卡那么死
         "slippageBps": 200,          # 2%,链上真实滑点比模拟盘假设的更真实,新币薄流动性给够余量
         "maxPositions": 3,           # 实盘先保守,远小于模拟盘的MAX_POS=20
         "dailyMaxUsd": 50.0,         # 每日累计开仓金额上限
@@ -587,6 +625,17 @@ def try_exit(cfg, wallet, state, addr, pos):
         if dump and dump["consecutive_sells"] >= 3:
             reason = "DUMPING"
             log(f"{pos['name']} 主力钱包连续卖出{dump['consecutive_sells']}笔(中间没有买入),疑似正在出货,不管止盈止损,立刻卖出")
+
+    # 2026-07-28新增(bulltom量价+钱包分析后用户明确要求的"双保险"第二层): DUMPING只盯着
+    # check_scalping揪出来的那一个机器人钱包自己连不连续卖,但真正决定回踩能不能被接住的是
+    # 整个市场当下还有没有买方。这里独立检查最近90秒全市场买卖双方钱包数,只要还有明显
+    # 卖压但几乎没人接盘,不管止盈止损线到没到,立刻跑。
+    if reason is None:
+        collapse = check_buyer_collapse(addr)
+        if collapse and collapse["collapse"]:
+            reason = "BUYER_COLLAPSE"
+            log(f"{pos['name']} 近{collapse['window_sec']}秒{collapse['n_sellers']}个卖方卖出${collapse['sell_usd']:,.0f},"
+               f"但只有{collapse['n_buyers']}个买方接盘,买方塌陷,不管止盈止损,立刻卖出")
 
     ret = fresh_price / pos["entry_price_usd"] - 1
     if reason is None:

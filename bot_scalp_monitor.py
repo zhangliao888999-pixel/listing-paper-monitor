@@ -25,7 +25,7 @@ from pathlib import Path
 
 import requests
 
-from check_coin import check_scalping, check_wallet_dumping, GT_BASE, S, get
+from check_coin import check_scalping, check_wallet_dumping, check_buyer_collapse, GT_BASE, S, get
 
 HERE = Path(__file__).parent
 STATE_F = HERE / "state_botscalp.json"
@@ -38,7 +38,8 @@ MAX_POS = 20
 POS_SIZE_PCT_OF_BOT = 0.10   # 用户指定：机器人单笔交易金额的10%
 MIN_POS_USD = 5              # 地板:机器人单笔太小的话我们仓位会小到手续费都覆盖不了
 MAX_POS_USD = 50             # 天花板:防止某个异常大单把我们的仓位也算得离谱大
-TP, SL = 0.05, -0.03         # 用户指定：5%止盈/3%止损
+TP, SL = 0.05, -0.10         # 5%止盈/10%止损(2026-07-28从-3%放宽到-10%,配合新增的
+                             # BUYER_COLLAPSE独立风控,双保险后止损不用卡得那么死)
 MAX_HOLD_MIN = 30            # "快进快出"，止盈止损都没触发的话30分钟强制离场
 DEAD_PRICE_STREAK = 15       # 兜底:连续15轮(约45分钟)彻底拿不到任何数据(网络/接口问题),判定池子已死
 DEAD_LIQ_USD = 100.0         # 更直接的判死信号:同一次查价请求里顺便看流动性,趋近于0直接判死,
@@ -313,6 +314,27 @@ def manage_positions(state):
                    f"疑似正在出货,不管止盈止损,立刻卖出 pnl={pnl:+.4f}U")
                 time.sleep(0.3)
                 continue
+        # 2026-07-28新增(bulltom量价+钱包分析后用户明确要求的"双保险"第二层): DUMPING只
+        # 盯着check_scalping揪出来的那一个机器人钱包自己连不连续卖,但真正决定回踩能不能被
+        # 接住的是整个市场当下还有没有买方——bulltom能扛住反复砸盘是因为砸盘那几分钟仍有
+        # 70+个不同买方钱包在接,而历史上那些一砸就死透的币(USWR/TA)砸盘时买方基本是空的。
+        # 这里独立于DUMPING,看最近90秒全市场买卖双方钱包数,只要还有明显卖压但几乎没人接,
+        # 不管止盈止损线到没到,立刻跑。
+        collapse = check_buyer_collapse(addr)
+        if collapse and collapse["collapse"]:
+            exit_px = cur * (1 - SLIP)
+            proceeds = pos["qty"] * exit_px
+            pnl = proceeds - pos["usd"]
+            state["cash"] += proceeds
+            state["realized_pnl"] += pnl
+            state["closed"].append({**pos, "addr": addr, "exit": exit_px, "reason": "BUYER_COLLAPSE",
+                                    "pnl": round(pnl, 4), "t_exit": NOW})
+            del state["positions"][addr]
+            log(f"EXIT {pos['name']} [BUYER_COLLAPSE] 近{collapse['window_sec']}秒{collapse['n_sellers']}个卖方"
+               f"卖出${collapse['sell_usd']:,.0f},但只有{collapse['n_buyers']}个买方接盘,买方塌陷,"
+               f"不管止盈止损,立刻卖出 pnl={pnl:+.4f}U")
+            time.sleep(0.3)
+            continue
         # GeckoTerminal的报价偶尔会离谱出错(实测CXMT这个池子出现过价格差了几百万倍的情况，
         # 这份代码的live版本live_botscalp/live_runner.py也踩过同一个坑，是同一类报价异常，
         # 不是真实行情)。这么夸张的比例不能拿去当真触发止盈止损/算盈亏，跳过这一轮，

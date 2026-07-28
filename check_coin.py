@@ -161,6 +161,43 @@ def check_wallet_dumping(addr, wallet):
            "last_kind": last["kind"], "last_usd": float(last["volume_in_usd"])}
 
 
+def check_buyer_collapse(addr, window_sec=90, min_sellers=2, min_sell_usd=300.0, max_buyers=2):
+    """2026-07-28新增: bulltom案例分析发现,check_wallet_dumping只盯着"那一个被机器人
+    检测揪出来的钱包"自己连不连续卖,但真正决定回踩能不能被接住的是整个市场当下还有没有
+    买方——bulltom能扛住反复砸盘是因为砸盘那几分钟仍有70+个不同买方钱包在接，历史上
+    那些一砸就死透的币(USWR/TA)砸盘时买方基本是空的。这里独立于check_wallet_dumping,
+    看最近window_sec秒内全市场的买卖双方钱包数和金额，只要还有明显卖压("有人在砸")
+    但几乎没有买方钱包在接("没人接")，就判定为买方塌陷——不管止盈止损线有没有到,
+    这个信号和流动性归零(LIQ_LOW)同等优先级,必须立即离场。"""
+    d = get(S, f"{GT_BASE}/networks/solana/pools/{addr}/trades", {"trade_volume_in_usd_greater_than": 0})
+    rows = (d or {}).get("data", [])
+    if not rows:
+        return None
+    parsed = []
+    for row in rows:
+        a = row["attributes"]
+        try:
+            ts = dt.datetime.fromisoformat(a["block_timestamp"].replace("Z", "+00:00"))
+            parsed.append({"ts": ts, "kind": a["kind"], "wallet": a.get("tx_from_address"),
+                           "usd": float(a.get("volume_in_usd") or 0)})
+        except (KeyError, ValueError, TypeError):
+            continue
+    if len(parsed) < 5:
+        return None
+    parsed.sort(key=lambda r: r["ts"])
+    cutoff = parsed[-1]["ts"] - dt.timedelta(seconds=window_sec)
+    window = [r for r in parsed if r["ts"] >= cutoff]
+    if len(window) < 5:
+        return None
+    buyers = {r["wallet"] for r in window if r["kind"] == "buy" and r["wallet"]}
+    sellers = {r["wallet"] for r in window if r["kind"] == "sell" and r["wallet"]}
+    buy_usd = sum(r["usd"] for r in window if r["kind"] == "buy")
+    sell_usd = sum(r["usd"] for r in window if r["kind"] == "sell")
+    collapse = len(sellers) >= min_sellers and sell_usd >= min_sell_usd and len(buyers) <= max_buyers
+    return {"collapse": collapse, "n_buyers": len(buyers), "n_sellers": len(sellers),
+           "buy_usd": round(buy_usd, 2), "sell_usd": round(sell_usd, 2), "window_sec": window_sec}
+
+
 def check_wallets(mint):
     if not mint:
         return {"verdict": "拿不到mint地址,跳过钱包检查"}
