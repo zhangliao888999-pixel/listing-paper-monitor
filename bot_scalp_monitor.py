@@ -25,7 +25,7 @@ from pathlib import Path
 
 import requests
 
-from check_coin import check_scalping, check_wallet_dumping, check_buyer_collapse, GT_BASE, S, get
+from check_coin import check_scalping, check_wallet_dumping, check_buyer_collapse, check_staircase, GT_BASE, S, get
 
 HERE = Path(__file__).parent
 STATE_F = HERE / "state_botscalp.json"
@@ -181,6 +181,14 @@ def try_enter(state, c):
         if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > MAX_RECENT_PUMP_PCT:
             log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘,不进场")
             return False
+    # 2026-07-28修复: check_staircase()这个检测器session早期就写好了(check_coin.py),但
+    # 一直只在check_coin.py自己的CLI诊断里用,从没接进真正的入场判断——直到用户报告USOS
+    # 这个诈骗币被纸盘买进去,回查才发现K线是33根5分钟K线连续33根全阳、一根回调都没有
+    # (up_ratio=1.0),教科书式脚本化拉盘特征,但因为没接线所以完全没被拦下来。
+    stair = check_staircase(addr)
+    if stair.get("flag"):
+        log(f"SKIP {c['name']}: K线连续{stair['n_bars']}根几乎不回调(up_ratio={stair['up_ratio']:.2f}),疑似脚本化拉盘,不进场")
+        return False
     result = check_scalping(addr)
     if not result.get("flag"):
         return False  # screener缓存可能有点旧,重新确认一遍还在刷量再进场

@@ -79,6 +79,24 @@ def gt_get(url, params=None, tries=3):
     return None
 
 
+def check_staircase(addr):
+    """跟check_coin.py里的同名函数逻辑完全一样,内联复制过来。2026-07-28修复: 这个检测器
+    session早期就写好了,但一直只在check_coin.py自己的CLI诊断里用,从没接进真正的入场
+    判断——直到用户报告USOS这个诈骗币被纸盘买进去,回查才发现K线是33根5分钟K线连续
+    33根全阳、一根回调都没有(up_ratio=1.0),教科书式脚本化拉盘特征,但因为没接线所以
+    完全没被拦下来。真实拉盘(哪怕是狂热买盘)中途也会有获利了结造成的回调K线;连续多根
+    K线一根不跌,比成交量是否均匀更能区分"脚本连续下单"和"真实买盘"。"""
+    d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}/ohlcv/minute", {"aggregate": 5, "limit": 100})
+    bars = (d or {}).get("data", {}).get("attributes", {}).get("ohlcv_list", [])
+    bars = sorted(bars, key=lambda b: b[0])
+    if len(bars) < 4:
+        return {"n_bars": len(bars), "flag": False}
+    up_bars = sum(1 for b in bars if b[4] >= b[1])
+    up_ratio = up_bars / len(bars)
+    flag = len(bars) >= 5 and up_ratio >= 0.9
+    return {"n_bars": len(bars), "up_ratio": up_ratio, "flag": flag}
+
+
 def check_scalping(addr):
     """跟check_coin.py里的同名函数逻辑完全一样,直接内联复制过来，让live_botscalp/
     这个文件夹可以整个单独打包部署，不需要依赖上一级目录的check_coin.py。
@@ -519,6 +537,11 @@ def try_enter(cfg, wallet, state, c):
     # 信号的时候过去1小时已经涨了100%+,大概率是追高接盘在给别人接盘,应该直接跳过。
     if dil["price_change_h1_pct"] is not None and dil["price_change_h1_pct"] > cfg["maxRecentPumpPct"]:
         log(f"SKIP {c['name']}: 过去1小时已经涨了{dil['price_change_h1_pct']:.0f}%,大概率追高接盘,不进场")
+        return False
+
+    stair = check_staircase(c["addr"])
+    if stair.get("flag"):
+        log(f"SKIP {c['name']}: K线连续{stair['n_bars']}根几乎不回调(up_ratio={stair['up_ratio']:.2f}),疑似脚本化拉盘,不进场")
         return False
 
     mint = c.get("mint")
