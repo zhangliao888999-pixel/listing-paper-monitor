@@ -1,7 +1,28 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13076.7682043705,
- "positions": {},
+ "cash": 13071.7682043705,
+ "positions": {
+  "C8uqUt3XUp17uv14Ug6M8dB463fEUVrw8TvFBvMf7aMg": {
+   "name": "TNOS / SOL",
+   "entry": 0.00022881544938020262,
+   "qty": 21851.671351491383,
+   "usd": 5,
+   "t_entry": 1785216543,
+   "bot_avg_trade_usd": 0.04,
+   "no_price_checks": 0,
+   "total_checks": 6,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 141,
+   "entry_sellers_h1": 131,
+   "entry_buy_sell_ratio_h1": 1.0763358778625953,
+   "entry_price_change_h1_pct": 61.101,
+   "entry_n_wallets": 77,
+   "bot_wallet_addr": "DQz4j3RJrtnhFDzxRXN7UBWJLUirUNcuHLcfy9aBL6Mm",
+   "consecutive_no_price": 0,
+   "mark": 0.00022845118105203652,
+   "mark_ret": -0.0015919743581684909
+  }
+ },
  "closed": [
   {
    "name": "believe / SOL",
