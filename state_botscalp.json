@@ -1,6 +1,6 @@
 {
  "created": "2026-07-26 18:25 UTC",
- "cash": 13074.000036570556,
+ "cash": 13077.897084376178,
  "positions": {},
  "closed": [
   {
@@ -36474,7 +36474,53 @@
    "reason": "SL",
    "pnl": -1.4598,
    "t_exit": 1785201761
+  },
+  {
+   "name": "PONS / SOL",
+   "entry": 2.5731747728694213e-05,
+   "qty": 1943124.9104095467,
+   "usd": 50,
+   "t_entry": 1785201964,
+   "bot_avg_trade_usd": 576.61,
+   "no_price_checks": 0,
+   "total_checks": 1,
+   "entry_locked_liq_pct": null,
+   "entry_buyers_h1": null,
+   "entry_sellers_h1": null,
+   "entry_buy_sell_ratio_h1": null,
+   "entry_price_change_h1_pct": null,
+   "consecutive_no_price": 0,
+   "mark": 2.866232612930104e-05,
+   "mark_ret": 0.11388959784254582,
+   "addr": "GxFrNEk3sFrBjgvf9QbsQAc3rCksKMmL79DpWki1DaSN",
+   "exit": 2.8089079606715017e-05,
+   "reason": "TP",
+   "pnl": 4.5806,
+   "t_exit": 1785201964
+  },
+  {
+   "name": "bulltom / SOL",
+   "entry": 0.0019207810932665448,
+   "qty": 6683.218636939501,
+   "usd": 12.837000000000002,
+   "t_entry": 1785201964,
+   "bot_avg_trade_usd": 128.37,
+   "no_price_checks": 1,
+   "total_checks": 2,
+   "entry_locked_liq_pct": null,
+   "entry_buyers_h1": 1403,
+   "entry_sellers_h1": 900,
+   "entry_buy_sell_ratio_h1": 1.558888888888889,
+   "entry_price_change_h1_pct": 96.055,
+   "consecutive_no_price": 0,
+   "mark": 0.0018556159734054068,
+   "mark_ret": -0.03392636469068733,
+   "addr": "9cjQ6hDvHVt2k2PbXSd4pnA5zwaZn3parLj5wEiXkpgc",
+   "exit": 0.0018185036539372986,
+   "reason": "SL",
+   "pnl": -0.6835,
+   "t_exit": 1785201964
   }
  ],
- "realized_pnl": 2992.1020365705335
+ "realized_pnl": 2995.9990843761548
 }
