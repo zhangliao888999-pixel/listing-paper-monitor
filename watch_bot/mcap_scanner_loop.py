@@ -17,7 +17,10 @@ for i in range(ROUNDS):
     ts = dt.datetime.now().strftime("%H:%M:%S")
     print(f"\n[{ts}] === 第{i+1}/{ROUNDS}轮 ===")
     try:
-        subprocess.run([sys.executable, str(HERE / "mcap_scanner.py"), "10"], cwd=str(HERE))
+        # 2026-07-29实测: 并发数调高完全没用(4个并发反而比1个更慢更多失败),
+        # 真正瓶颈是所有后台进程加起来的总请求量在打同一个限流接口,不是这个
+        # 脚本自己的并发设置。老实用1个线程。
+        subprocess.run([sys.executable, str(HERE / "mcap_scanner.py"), "10", "1"], cwd=str(HERE))
     except Exception as e:
         print(f"本轮出错: {e}")
     if i < ROUNDS - 1:
