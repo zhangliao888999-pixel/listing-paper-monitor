@@ -1,65 +1,6 @@
 {
- "updated_at": 1785320162,
- "updated_at_str": "2026-07-29 10:16 UTC",
- "n_candidates": 2,
- "candidates": [
-  {
-   "addr": "4r2Agrw9dL4Ep4ubt4DkiyyVjXriWCGooZW6fr3HgWVn",
-   "name": "TNOS / SOL",
-   "age_min": 175.53333333333333,
-   "created": 1785309630.0,
-   "price": 0.04205384758684243,
-   "liq": 467405.487,
-   "locked_liq_pct": 100.0,
-   "vol_15m": 22608.6283616976,
-   "vol_1h": 93647.8723447512,
-   "chg_15m": 4.486,
-   "chg_1h": 22.409,
-   "buys_15m": 1099,
-   "sells_15m": 107,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/4r2Agrw9dL4Ep4ubt4DkiyyVjXriWCGooZW6fr3HgWVn",
-   "mint": "31JDse9iuRGsnyunQcVG5VGnAsi4SPeJctS9qrxePump",
-   "early_bot_flag": null,
-   "staircase_flag": true,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 0.0,
-    "staircase_flag": true,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 0,
-    "exit_ratio": -5.561236728947826,
-    "wallet_verdict": "钱包画像未见明显控盘迹象"
-   }
-  },
-  {
-   "addr": "G7SD9ZBeGRq8D2RHQPSGWg2FvvMhyPAfkDu4ute1hRv8",
-   "name": "SCRAGE / SOL",
-   "age_min": 23.983333333333334,
-   "created": 1785318723.0,
-   "price": 0.00012365699347662593,
-   "liq": 89086.8485,
-   "locked_liq_pct": 100.0,
-   "vol_15m": 290.2472199967,
-   "vol_1h": 4310.4235540947,
-   "chg_15m": -0.024,
-   "chg_1h": 5850.045,
-   "buys_15m": 44,
-   "sells_15m": 40,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/G7SD9ZBeGRq8D2RHQPSGWg2FvvMhyPAfkDu4ute1hRv8",
-   "mint": "F5BqU3tZbVNGjM8RBXGbB1CHjyCa4ESZjTqE5YgBpump",
-   "early_bot_flag": null,
-   "staircase_flag": false,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 0.0,
-    "staircase_flag": false,
-    "scalping_flag": true,
-    "n_traders": 19,
-    "n_suspicious": 0,
-    "exit_ratio": 0.9619597735195925,
-    "wallet_verdict": "钱包画像未见明显控盘迹象"
-   }
-  }
- ]
+ "updated_at": 1785320762,
+ "updated_at_str": "2026-07-29 10:26 UTC",
+ "n_candidates": 0,
+ "candidates": []
 }
