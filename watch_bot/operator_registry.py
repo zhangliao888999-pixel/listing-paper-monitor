@@ -220,9 +220,14 @@ def matches_pregrad_ramp_signature(attrs, age_minutes):
         m5 = float((attrs.get("price_change_percentage") or {}).get("m5") or 0)
         tx_m5 = attrs.get("transactions", {}).get("m5") or {}
         n_tx = int(tx_m5.get("buys") or 0) + int(tx_m5.get("sells") or 0)
+        liq = float(attrs.get("reserve_in_usd") or 0)
     except (TypeError, ValueError):
         return False
-    return m5 >= 80 and n_tx >= 15
+    # 2026-07-29白天补: 419笔实盘数据回看发现LIQ_DEAD退出里46%(45/98)是"入场即死"
+    # (持仓<10秒,entry=exit=peak)——池子在被检测到的那一刻其实流动性已经没了,不是
+    # 拉升途中崩的,是信号本身漏判。加一道最低流动性门槛,过滤掉这类"进场就是空气"
+    # 的假信号,不改变原有涨幅/成交笔数门槛。
+    return m5 >= 80 and n_tx >= 15 and liq >= 3000
 
 
 def scan_from_tracked_state(state_path, max_scan=300, max_age_hours=48):

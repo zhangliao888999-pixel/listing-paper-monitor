@@ -20,6 +20,12 @@ pregrad_ramp,方便以后跟其他策略横向对比)。这个阶段的代币在
 GeckoTerminal自己报的价格做纸面结算——反正只是纸盘,不需要真实可执行的报价。
 
 用法: python pregrad_scalp_exit.py <池子地址> <mint> <文件前缀>
+
+2026-07-29白天补充: 用户看完统计后明确要求补一条"狗庄毕业币纸盘模拟买入"——
+既然17个已核实毕业样本里外部资金17/17全部净亏,这条腿定位是纯数据采集/验证,
+不是"找到了新的赚钱思路"。检测到大概率已毕业(连续查不到老池子)时,直接拉起
+post_grad_scalp_exit.py接手去查新池子、用更紧的风控参数单独跑一笔纸盘,数据
+写进同一份journal.jsonl(found_via=post_grad_scalp),不阻塞这个脚本自己收尾退出。
 """
 import json
 import re
@@ -40,10 +46,23 @@ S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                   "Accept": "application/json;version=20230302"})
 
 POS_SIZE_USD = 5.0
-POLL_SEC = 5              # 整个现象2-4分钟就走完,轮询必须比snipe_exit.py(8秒)更紧
+# 2026-07-29白天调: 419笔实盘回看后调整。原POLL_SEC=5秒时,HARD_STOP_LOSS中位数
+# 超调达13.3个百分点(45%的止损单超调超过20点),说明崩盘经常比轮询间隔更快。
+# 缩到3秒不能根治(链上瞬间归零的情况5秒3秒都来不及),但能缩小平均超调幅度。
+POLL_SEC = 3
+FAST_RECHECK_SEC = 1.5    # 新增: 一旦观察到价格开始从高点回落,不等到下一个完整
+                           # POLL_SEC,立刻用更短间隔再看一眼——只在"看起来要跌"的
+                           # 时候加密,不是全程都用最快频率,省着点用有限的限流额度
 MAX_HOLD_SEC = 180        # 硬超时3分钟——REDO/FRANK从创世到毕业都在这个量级内
-TRAIL_STOP_PCT = 20       # 从最高点回撤这么多就跑,不贪图猜中最高点
-HARD_STOP_LOSS_PCT = 35   # 从没盈利过、直接跌破入场价这么多,说明这次没被拉起来,止损离场
+PLATEAU_CHECK_SEC = 90    # 新增: 419笔数据显示HARD_TIMEOUT一半是中位数~0%的死账户,
+                           # 白白占了3分钟仓位。90秒时如果价格基本没动(在入场价±5%内),
+                           # 提前离场腾仓位,不硬等满3分钟
+PLATEAU_BAND_PCT = 5
+# 原20%/35%的止损止盈线,实测中位数超调都相当可观(尤其HARD_STOP_LOSS超调13.3pp,
+# 45%的单子超调>20pp)——既然结算价本来就会比设定线更差,把设定线本身收紧,
+# 让"更差的结算价"落在更能接受的范围,而不是继续放任-48%中位数这种结果。
+TRAIL_STOP_PCT = 15       # 从最高点回撤这么多就跑,不贪图猜中最高点(原20)
+HARD_STOP_LOSS_PCT = 20   # 从没盈利过、直接跌破入场价这么多,说明这次没被拉起来,止损离场(原35)
 
 LOG_F = None
 
@@ -109,6 +128,23 @@ def get_pool_snapshot(addr):
 
 def make_prefix(addr):
     return re.sub(r"[^A-Za-z0-9]", "", addr)[:8]
+
+
+def handoff_to_post_grad(old_addr, mint, name):
+    """检测到大概率已毕业时,拉起独立的post_grad_scalp_exit.py去查新池子、单独
+    跑一笔纸盘——用subprocess.Popen不等待,这个脚本自己该收尾就收尾,不因为
+    handoff卡住。"""
+    try:
+        py = sys.executable
+        prefix = re.sub(r"[^A-Za-z0-9]", "", mint)[:8]
+        kwargs = {"cwd": str(HERE), "stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
+        if sys.platform == "win32":
+            kwargs["creationflags"] = (subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP
+                                       | subprocess.CREATE_NO_WINDOW)
+        subprocess.Popen([py, str(HERE / "post_grad_scalp_exit.py"), mint, old_addr, prefix], **kwargs)
+        log(f"已交接给post_grad_scalp_exit.py去查{name}的新池子")
+    except Exception as e:
+        log(f"交接post_grad_scalp_exit.py失败: {e}")
 
 
 def count_prior_entries(mint):
@@ -223,24 +259,29 @@ def main():
 
     peak_price = entry_price
     n_fail_in_a_row = 0
-    deadline = time.time() + MAX_HOLD_SEC
+    was_declining = False   # 上一次观察到价格低于峰值,下一次用更短间隔加密复查
+    plateau_checked = False
+    entry_ts = entry_info["entry_ts"]
+    deadline = entry_ts + MAX_HOLD_SEC
     while time.time() < deadline:
-        time.sleep(POLL_SEC)
+        time.sleep(FAST_RECHECK_SEC if was_declining else POLL_SEC)
         snap = get_pool_snapshot(addr)
         if not snap or snap.get("price") is None:
             n_fail_in_a_row += 1
             # 2026-07-29: 查不到池子/价格,最可能的原因就是"已经毕业迁移到新池子了"
             # (老的bonding curve地址在GT上要么消失要么不再更新),其次才是纯API抖动。
-            # 连续3次(约15秒)查不到,判定为"没跑赢毕业,被留在老池子里"——用最后
+            # 连续3次查不到,判定为"没跑赢毕业,被留在老池子里"——用最后
             # 已知价格结算,老实记录这次没跑赢,不装作若无其事。
             if n_fail_in_a_row >= 3:
                 log("*** 连续查不到池子数据,大概率已经毕业迁移,没能抢在毕业前跑掉 ***")
                 entry_info["peak_price"] = peak_price
                 finish_trade(entry_info, "MISSED_EXIT_LIKELY_GRADUATED", peak_price)
+                handoff_to_post_grad(addr, mint, attrs.get("name"))
                 return
             continue
         n_fail_in_a_row = 0
         price = snap["price"]
+        was_declining = price < peak_price
         if price > peak_price:
             peak_price = price
 
@@ -263,6 +304,18 @@ def main():
             entry_info["peak_price"] = peak_price
             finish_trade(entry_info, "HARD_STOP_LOSS", price)
             return
+
+        # 2026-07-29白天新增: 419笔数据显示HARD_TIMEOUT一半是中位数~0%的死账户,
+        # 白白占满3分钟仓位没有任何意义。90秒时价格基本没挪窝(入场价±5%内),提前
+        # 离场腾仓位,不硬等满3分钟去赌一个已经看起来没有动能的池子。
+        if not plateau_checked and time.time() - entry_ts >= PLATEAU_CHECK_SEC:
+            plateau_checked = True
+            move_pct = abs(price / entry_price - 1) * 100
+            if move_pct < PLATEAU_BAND_PCT:
+                log(f"*** {PLATEAU_CHECK_SEC:.0f}秒时价格仍在入场价±{PLATEAU_BAND_PCT}%内(现变动{move_pct:.1f}%),判定没动能,提前离场腾仓位 ***")
+                entry_info["peak_price"] = peak_price
+                finish_trade(entry_info, "PLATEAU_NO_MOMENTUM", price)
+                return
 
     log(f"=== 硬超时{MAX_HOLD_SEC}秒到,不管当前盈亏直接离场(不恋战,不赌毕业后的行情) ===")
     final_snap = get_pool_snapshot(addr)
