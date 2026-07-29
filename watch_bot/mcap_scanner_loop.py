@@ -3,6 +3,7 @@
 池子)按MCAP排序,一旦有操盘方钱包真金白银开始砸某个币,MCAP会迅速冲进这一页
 的前几名,不需要深翻页/大批量扫描,所以这个可以跑得很勤(便宜,一次只查约
 10个候选的详情)。"""
+import os
 import subprocess
 import sys
 import time
@@ -12,8 +13,9 @@ from pathlib import Path
 HERE = Path(__file__).parent
 INTERVAL_SEC = 90   # 90秒一轮,比lifecycle_runner_loop(10分钟)勤得多,因为这个便宜
 # 2026-07-29晚间改: 原1小时(40轮)是配合逐小时手动续,通宵没人盯着风险更高,
-# 改成10小时(400*90秒),覆盖一整晚睡眠时间
-ROUNDS = 400
+# 改成10小时(400*90秒),覆盖一整晚睡眠时间。白天再改: 云端job单次最长6小时,
+# 用LOOP_ROUNDS环境变量覆盖,本地不设时还是默认值。
+ROUNDS = int(os.environ.get("LOOP_ROUNDS", "400"))
 
 for i in range(ROUNDS):
     ts = dt.datetime.now().strftime("%H:%M:%S")

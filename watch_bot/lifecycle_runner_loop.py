@@ -7,6 +7,7 @@ docs/journal.html公开页面上问"多久自动更新一次",之前的答案很
 每30秒重新拉取,但底层数据只有我手动push的时候才会变,不是真正的自动更新。
 现在补上,让数据采集这一步本身就包含推送,页面才算名副其实地"自动更新"。
 """
+import os
 import subprocess
 import sys
 import time
@@ -18,8 +19,9 @@ from lifecycle_logger import scan_and_log
 
 INTERVAL_SEC = 600   # 10分钟一轮
 # 2026-07-29晚间改: 原1小时(6轮)是为了切成小段方便随时检查,但通宵没人盯着重启,
-# 断档风险比"看不到中途进展"更糟,改成10小时(60*10分钟),覆盖一整晚睡眠时间
-ROUNDS = 60
+# 断档风险比"看不到中途进展"更糟,改成10小时(60*10分钟),覆盖一整晚睡眠时间。
+# 白天再改: 云端job单次最长6小时,用LOOP_ROUNDS环境变量覆盖,本地不设时还是默认值。
+ROUNDS = int(os.environ.get("LOOP_ROUNDS", "60"))
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 STATE_PATH = str(REPO_ROOT / "screener_state_local.json")

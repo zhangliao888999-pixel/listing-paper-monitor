@@ -10,6 +10,7 @@
 
 用法: python crash_watch.py <池子地址> <mint地址> <日志文件名前缀>
 """
+import os
 import sys
 import time
 import json
@@ -24,7 +25,9 @@ SELLPCT_POLL_SEC = 300
 LIQ_CRASH_THRESHOLD = 0.7
 # 2026-07-29晚间改: 原来1小时上限是为了配合Claude逐小时手动续,通宵没人盯着重启
 # 风险更高(错过一次通知,这个币就断档几小时没人看),改成8小时,覆盖一整晚睡眠时间。
-MAX_RUNTIME_SEC = 28800
+# 白天再改: 云端job单次最长6小时,容器到点就被强制杀掉,用MAX_RUNTIME_SEC环境
+# 变量覆盖,云端workflow设成比job本身timeout-minutes略短,本地不设时还是8小时。
+MAX_RUNTIME_SEC = int(os.environ.get("MAX_RUNTIME_SEC", "28800"))
 
 
 def log(log_f, msg):

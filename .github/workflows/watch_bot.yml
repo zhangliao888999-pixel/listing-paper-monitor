@@ -1,0 +1,67 @@
+name: operator-watch-bot
+
+# 2026-07-29白天新增: 把本地跑了一整晚的"操盘方检测三件套"(mcap_scanner发现+
+# pregrad_scanner发现+lifecycle_logger统计,以及它们各自拉起的crash_watch/
+# insider_sell_watch/snipe_exit/pregrad_scalp_exit监控)搬到GitHub Actions,
+# 用户的电脑只负责写代码,不用再一直开着通宵跑。
+#
+# 跟screener.yml(每5分钟一次性跑一轮)不一样——pregrad_ramp这条腿的整个生命
+# 周期只有2-4分钟,必须靠脚本自己内部30秒/5秒的轮询间隔才跟得上,cron本身的
+# 调度粒度(最快5分钟一次)完全跟不上。所以这里不用cron驱动"每轮一次",而是
+# 让job本身长跑(跑满GitHub Actions单个job的硬顶6小时),内部继续用原来的
+# *_loop.py脚本自己的sleep间隔——cron只负责在上一个6小时的job快跑完之前,
+# 提前拉起下一个job接力,尽量不断档。
+
+on:
+  schedule:
+    - cron: '0 */5 * * *'   # 每5小时接力一次(比单个job的运行时长略短,留出重叠交接的余量)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: operator-watch-bot
+  cancel-in-progress: false   # 交接期间允许短暂重叠,不强杀正在跑的上一班——三件套的git
+                                # 同步本来就有pull-rebase重试逻辑,扛得住并发提交
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350   # 5小时50分,留10分钟余量给下面各脚本自己更早地优雅结束
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: install deps
+        run: pip install --quiet requests solders
+
+      - name: git identity
+        run: |
+          git config user.name "watch-bot"
+          git config user.email "watch-bot@users.noreply.github.com"
+
+      - name: run three-piece discovery + monitoring loops in parallel
+        working-directory: watch_bot
+        env:
+          # 5小时45分,比job本身的350分钟timeout略短,让脚本自己先收尾退出,
+          # 不要被GitHub Actions直接SIGKILL在写文件写一半的时候
+          LOOP_ROUNDS_PREGRAD: "690"    # 30秒*690 ≈ 5小时45分
+          LOOP_ROUNDS_MCAP: "230"       # 90秒*230 ≈ 5小时45分
+          LOOP_ROUNDS_LIFECYCLE: "34"   # 600秒*34 ≈ 5小时40分
+          MAX_RUNTIME_SEC: "20700"      # crash_watch.py单次监控上限,同样是5小时45分
+        run: |
+          LOOP_ROUNDS=$LOOP_ROUNDS_PREGRAD python pregrad_scanner_loop.py &
+          LOOP_ROUNDS=$LOOP_ROUNDS_MCAP python mcap_scanner_loop.py &
+          LOOP_ROUNDS=$LOOP_ROUNDS_LIFECYCLE python lifecycle_runner_loop.py &
+          wait
+
+      - name: final commit (catch anything the loops themselves didn't push)
+        if: always()
+        run: |
+          git add -A -- ':!watch_bot/*_trades_archive.jsonl' ':!**/__pycache__'
+          git commit -m "watch_bot cloud shift end $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
+          for i in 1 2 3; do git push && break || { git pull --rebase; sleep 3; }; done
