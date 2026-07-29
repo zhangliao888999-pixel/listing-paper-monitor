@@ -1,65 +1,6 @@
 {
- "updated_at": 1785293462,
- "updated_at_str": "2026-07-29 02:51 UTC",
- "n_candidates": 2,
- "candidates": [
-  {
-   "addr": "4nTmU3GT9UUv8snw31nAPqoqG4iDfmUTbXBB1jFgHQCq",
-   "name": "BABYFRANK / SOL",
-   "age_min": 11.533333333333333,
-   "created": 1785292770.0,
-   "price": 0.00011594459092241197,
-   "liq": 23000.4373,
-   "locked_liq_pct": 100.0,
-   "vol_15m": 88038.4327038193,
-   "vol_1h": 93995.8490573649,
-   "chg_15m": -4.652,
-   "chg_1h": -0.276,
-   "buys_15m": 932,
-   "sells_15m": 263,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/4nTmU3GT9UUv8snw31nAPqoqG4iDfmUTbXBB1jFgHQCq",
-   "mint": "623FkuSkdX2HNh4LM2SApkLAMiefjNZF1F3kMUoppump",
-   "early_bot_flag": null,
-   "staircase_flag": false,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 0.0,
-    "staircase_flag": false,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 0,
-    "exit_ratio": -4.113991133643295,
-    "wallet_verdict": "35/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
-   }
-  },
-  {
-   "addr": "6stXLsnYBBoaRLGM1o4mhPRaY1WojmxwzHSNWkGnXKt",
-   "name": "TIKTOK / USDC",
-   "age_min": 22.5,
-   "created": 1785292112.0,
-   "price": 3.328093403085802e-05,
-   "liq": 20768.8537,
-   "locked_liq_pct": 100.0,
-   "vol_15m": 152.9112900049,
-   "vol_1h": 7935.4244308851,
-   "chg_15m": 2.256,
-   "chg_1h": 167.516,
-   "buys_15m": 12,
-   "sells_15m": 0,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/6stXLsnYBBoaRLGM1o4mhPRaY1WojmxwzHSNWkGnXKt",
-   "mint": "GQcKMSVut51wWj33BHFWB6CrT8iN59iiKRpmnLNXmoon",
-   "early_bot_flag": false,
-   "staircase_flag": false,
-   "scalping_flag": false,
-   "diligence": {
-    "checked_min_ago": 10.0,
-    "staircase_flag": false,
-    "scalping_flag": false,
-    "n_traders": 39,
-    "n_suspicious": 0,
-    "exit_ratio": 0.24361093265267464,
-    "wallet_verdict": "38/39个头部钱包卖出不到30%，主力大部分仓位还在场内"
-   }
-  }
- ]
+ "updated_at": 1785293762,
+ "updated_at_str": "2026-07-29 02:56 UTC",
+ "n_candidates": 0,
+ "candidates": []
 }
