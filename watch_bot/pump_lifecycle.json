@@ -1,0 +1,54 @@
+{
+ "jLVprkYrvzAgWaJDuYxhHaTRtXZAQw6MZWyHm1n22g9": {
+  "name": "TNOS / SOL",
+  "mint": "XQ3UaYsPJP5pvusq4PcnJDSV8STw33TGMJzq9ospump",
+  "first_seen": 1785259104,
+  "status": "alive",
+  "history": [
+   {
+    "ts": 1785290660.459933,
+    "price": 0.04032959075875089,
+    "liq": 458977.5209,
+    "insider_sell_pct": 0.06909916822581487,
+    "n_insiders": 39,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "13.816"
+   }
+  ]
+ },
+ "EqdhxP5vsNRvKRSnpKRt3xn85VdYC35jvHk1z2PqrZxy": {
+  "name": "GDWR / SOL",
+  "mint": "uWaByyZSB7CcDgNUAwJUoqH9MNiUJjqFuD7rvHxpump",
+  "first_seen": 1785252581,
+  "status": "alive",
+  "history": [
+   {
+    "ts": 1785290661.3981266,
+    "price": 0.0016889119951111005,
+    "liq": 92287.1889,
+    "insider_sell_pct": 0.06120419551170431,
+    "n_insiders": 23,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "3.79"
+   }
+  ]
+ },
+ "6YM2gfZHoYQAKrgfrUZwxQYrannmMhjtG9f5bsEw2CqB": {
+  "name": "CXMT / SOL(新)",
+  "mint": "Htc98Krdpch3mCJnCD9NXjWRgETgpYwj73SFKw9qXYbc",
+  "first_seen": 1785290708.795452,
+  "status": "alive",
+  "history": [
+   {
+    "ts": 1785290709.6965375,
+    "price": 1.3210213174771974e-05,
+    "liq": 18050.2196,
+    "insider_sell_pct": 0.976176950317203,
+    "n_insiders": 37,
+    "locked_liq_pct": "0.0",
+    "h1_chg": "98.082"
+   }
+  ],
+  "note": "0%锁仓,对照样本"
+ }
+}

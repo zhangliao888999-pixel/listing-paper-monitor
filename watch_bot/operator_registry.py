@@ -133,7 +133,80 @@ def scan_from_candidates_file(path):
     print(f"\n本轮新增达标操盘方: {n_qualified_new}  当前观察名单里达标总数: {n_total_qualified}  (总收录{len(watchlist)}个钱包)")
 
 
+def matches_pump_signature(attrs):
+    """判断这个池子像不像今晚TNOS这种"操盘方对倒拉升,真买家逐步跟进"的走势——
+    不要求通过我们那套严格的交易过滤器(那是给"能不能买"用的),这里只是想找到
+    "创建者操盘手法值得记录"的样本,门槛要松一些: 锁仓100%(至少不是随时能被
+    抽干的类型) + 有实质涨幅(说明真的拉起来过,不是发出来就死) + 流动性不算
+    太小(说明真的有资金规模,不是DINO/Look!那种没人理的量级)。"""
+    try:
+        locked = float(attrs.get("locked_liquidity_percentage") or 0)
+        liq = float(attrs.get("reserve_in_usd") or 0)
+        h6 = float((attrs.get("price_change_percentage") or {}).get("h6") or 0)
+    except (TypeError, ValueError):
+        return False
+    return locked >= 90 and liq >= 20000 and h6 >= 50
+
+
+def scan_from_tracked_state(state_path, max_scan=300, max_age_hours=48):
+    """直接扫screener.py已经在追踪的池子(screener_state_local.json),不用额外
+    重新去GeckoTerminal搜——这批池子本来就是screener持续在跑的,不用重复造轮子。
+    对符合matches_pump_signature的池子才去查creator(省着点用RugCheck/GMGN调用),
+    每个池子先查一次pools接口拿mint+涨跌幅+锁仓+流动性,这4个字段本来就在同一个
+    响应里,一次请求搞定。"""
+    if not Path(state_path).exists():
+        print(f"找不到 {state_path}")
+        return
+    from check_coin import GT_BASE, S, check_pool_and_mint
+
+    data = json.loads(Path(state_path).read_text(encoding="utf-8"))
+    tracked = data.get("tracked", {})
+    now = time.time()
+    # 太新的池子还没走出完整的"拉升"轨迹,没意义;太老的可能已经死透很久,优先看
+    # 还在合理时间窗口内、有机会正在发生这套操作的池子
+    candidates = [(addr, w) for addr, w in tracked.items()
+                 if 0 < (now - w.get("created", now)) / 3600 <= max_age_hours]
+    print(f"追踪池子总数: {len(tracked)}  时间窗口内({max_age_hours}h内): {len(candidates)}  本轮最多扫{max_scan}个")
+
+    watchlist = load_watchlist()
+    n_matched = 0
+    n_qualified_new = 0
+    for i, (addr, w) in enumerate(candidates[:max_scan]):
+        attrs, mint = check_pool_and_mint(addr)
+        time.sleep(0.2)  # 不管匹不匹配都停一下,1682个池子如果不间隔很容易把GT接口打到限流
+        if not attrs or not mint:
+            continue
+        if not matches_pump_signature(attrs):
+            continue
+        n_matched += 1
+        h6 = (attrs.get("price_change_percentage") or {}).get("h6")
+        creator = rugcheck_creator(mint)
+        if not creator:
+            continue
+        was_qualified = watchlist.get(creator, {}).get("qualified", False)
+        qualified = consider_creator(creator, watchlist, source_mint=mint)
+        tag = "*** 新收录 ***" if (qualified and not was_qualified) else ("已收录" if qualified else "")
+        if qualified:
+            print(f"{tag} {w.get('name')} (h6={h6}%) 创建者{creator[:10]}... "
+                 f"发过{watchlist[creator]['creator_created_count']}个币,历史盈亏+${watchlist[creator]['realized_profit']:,.0f}")
+            if not was_qualified:
+                n_qualified_new += 1
+        time.sleep(0.3)
+        if (i + 1) % 50 == 0:
+            save_watchlist(watchlist)  # 中途定期落盘,防止跑到一半中断丢进度
+            print(f"  ...已扫{i+1}/{min(max_scan,len(candidates))},匹配走势特征{n_matched}个")
+
+    save_watchlist(watchlist)
+    n_total_qualified = sum(1 for v in watchlist.values() if v.get("qualified"))
+    print(f"\n本轮完成: 匹配走势特征{n_matched}个池子  新增达标操盘方{n_qualified_new}  "
+         f"观察名单达标总数{n_total_qualified}(总收录{len(watchlist)}个钱包)")
+
+
 if __name__ == "__main__":
     import sys as _sys
-    candidates_path = _sys.argv[1] if len(_sys.argv) > 1 else str(HERE.parent / "screener_candidates_local.json")
-    scan_from_candidates_file(candidates_path)
+    if len(_sys.argv) > 1 and _sys.argv[1] == "--tracked":
+        state_path = _sys.argv[2] if len(_sys.argv) > 2 else str(HERE.parent / "screener_state_local.json")
+        scan_from_tracked_state(state_path)
+    else:
+        candidates_path = _sys.argv[1] if len(_sys.argv) > 1 else str(HERE.parent / "screener_candidates_local.json")
+        scan_from_candidates_file(candidates_path)
