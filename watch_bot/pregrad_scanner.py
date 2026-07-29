@@ -28,6 +28,11 @@ from operator_registry import matches_pregrad_ramp_signature
 
 HERE = Path(__file__).parent
 SEEN_F = HERE / "pregrad_seen.json"
+# 2026-07-29晚间新增: 原来判断是"这个策略活得短,不需要长期并发上限",但没考虑到
+# 一轮扫描可能同时命中好几个候选,叠加起来的并发数不受限——白天把轮询从5秒调紧到
+# 3秒+1.5秒自适应加密复查后,实测云端43分钟没有一笔交易完成,GT接口本身响应正常
+# (0.1-0.4秒),说明是同时活跃的仓位太多、请求量自己把限流顶爆了。补一个硬上限。
+MAX_CONCURRENT = 6
 DEPLOY_WINDOW_SEC = 240  # 比脚本自己的180秒硬超时留一点余量,过了这个时间就当它已经跑完了
 
 
@@ -74,6 +79,9 @@ def main():
 
     n_deployed = 0
     for row in rows:
+        if len(seen) >= MAX_CONCURRENT:
+            print(f"  已达并发上限({MAX_CONCURRENT}个在跑),本轮不再新部署,等旧仓位跑完腾位置")
+            break
         a = row["attributes"]
         addr = a.get("address")
         if not addr or addr in seen:
