@@ -145,7 +145,10 @@ def matches_pump_signature(attrs):
         h6 = float((attrs.get("price_change_percentage") or {}).get("h6") or 0)
     except (TypeError, ValueError):
         return False
-    return locked >= 90 and liq >= 20000 and h6 >= 50
+    # 2026-07-29放宽(用户明确要求"纸盘可以再大胆一些"): 门槛从liq>=20000/h6>=50
+    # 降到liq>=10000/h6>=30——纸盘不动真钱,宁可多抓一些弱样本(哪怕像TIKTOK那种
+    # 单钱包小体量的)进来跑,数据比精度更重要,弱样本本身也是有价值的对照组。
+    return locked >= 90 and liq >= 10000 and h6 >= 30
 
 
 def matches_early_signature(attrs, age_minutes):

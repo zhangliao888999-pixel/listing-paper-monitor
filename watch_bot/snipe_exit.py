@@ -474,7 +474,12 @@ def main():
             # TNOS那次实测: 一笔比背景噪音大5-10倍的操盘方卖出,21秒后价格就崩了
             # 98%,用户判断"21秒够机器人反应",这里直接测试这个假设是否成立——
             # 如果跑得比操盘方晚,pnl会是大幅负数,直接记录进台账,不用猜。
-            if a["kind"] == "sell" and w in insiders:
+            # 2026-07-29修复: 第一次实测(TNOS2)就暴露问题——不设金额门槛,任何
+            # 一笔操盘方卖出都触发,结果被一笔$17.17的正常背景噪音提前清仓,
+            # pnl几乎为0,不是真的死钱,是白白错过了后续还在健康上涨的仓位。
+            # 跟check_wallet_dumping同一个教训: 操盘方偶尔卖1-2笔小单是正常获利
+            # 了结,得设个门槛过滤掉背景噪音,只对明显异常放量的卖出反应。
+            if a["kind"] == "sell" and w in insiders and usd >= MIN_REAL_BUYER_USD:
                 log(f"*** 已知操盘方钱包卖出信号: {w[:10]}...卖出${usd:,.2f},立刻卖出,不等更多确认 ***")
                 exit_snap = get_pool_snapshot(addr)
                 do_sell(wallet, mint, pos["qty_raw"], "INSIDER_SELL_DETECTED", pos["dry_run"])
