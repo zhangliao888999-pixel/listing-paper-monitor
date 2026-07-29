@@ -37,6 +37,7 @@ import base64
 import json
 import os
 import re
+import subprocess
 import sys
 import time
 import datetime as dt
@@ -107,6 +108,29 @@ def write_journal(record):
     record["written_at"] = int(time.time())
     with JOURNAL_F.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def git_push_journal():
+    """2026-07-29新增: 用户要求交易一完成就立刻公开可见,不用等
+    lifecycle_runner_loop那10分钟一轮的循环才push。只提交journal.jsonl这一个
+    文件(不是整个watch_bot/,避免跟同时在跑的其他脚本互相踩踏太多文件),失败
+    重试3次(多个snipe_exit.py实例可能同时在推,跟lifecycle_runner_loop的
+    git_sync同一套retry逻辑)。"""
+    repo_root = HERE.parent
+    def run(cmd):
+        return subprocess.run(cmd, cwd=str(repo_root), capture_output=True, text=True)
+    run(["git", "add", "watch_bot/journal.jsonl"])
+    commit = run(["git", "commit", "-m", f"trade completed: {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}"])
+    if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
+        return
+    for _ in range(3):
+        push = run(["git", "push"])
+        if push.returncode == 0:
+            log("交易记录已立刻推送到GitHub,页面刷新即可见")
+            return
+        run(["git", "pull", "--rebase", "origin", "master"])
+        time.sleep(3)
+    log("交易记录推送失败(重试3次),会在下一轮lifecycle循环时补推")
 
 
 def count_prior_entries(mint):
@@ -357,6 +381,7 @@ def finish_trade(entry_info, exit_reason, exit_price):
     write_journal(record)
     log(f"台账记录完毕: {exit_reason} pnl={pnl_pct:+.2f}% 持仓{hold_sec:.0f}秒 "
        f"(这个币之前进过{entry_info['prior_entries']}次仓)")
+    git_push_journal()
 
 
 def lookup_found_via(addr):
