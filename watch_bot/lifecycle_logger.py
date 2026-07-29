@@ -23,7 +23,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from check_coin import GT_BASE, S, GMGN_S, get, check_pool_and_mint
-from operator_registry import matches_pump_signature, matches_early_signature, rugcheck_creator
+from operator_registry import matches_pump_signature, matches_early_signature, matches_origin_mcap_signature, rugcheck_creator
 
 HERE = Path(__file__).parent
 LIFECYCLE_F = HERE / "pump_lifecycle.json"
@@ -100,7 +100,7 @@ def scan_and_log(state_path, max_new_scan=300):
     if Path(state_path).exists():
         data = json.loads(Path(state_path).read_text(encoding="utf-8"))
         tracked = data.get("tracked", {})
-        n_new, n_new_early = 0, 0
+        n_new, n_new_early, n_new_mcap = 0, 0, 0
         for i, (addr, w) in enumerate(list(tracked.items())[:max_new_scan]):
             if addr in db:
                 continue
@@ -113,16 +113,24 @@ def scan_and_log(state_path, max_new_scan=300):
             # 这些窗口还没积累够数据。用户明确要求不用每秒盯,1-30分钟查一次能发现
             # 大多数案例(今晚TNOS/GDWR/CXMT都是几分钟内bundler买单就动了,不是延迟
             # 半小时才启动),漏掉故意延迟启动的操盘方可以接受。
+            # 2026-07-29新增: 用户提出"起点MCAP应该都很高"这个思路,拿DINO/Look!
+            # (死币,起点MCAP$2000级别) vs GDWR/TNOS(活下来的,起点MCAP$60万-$860万
+            # 级别)验证后区分度极其干净,而且开盘头10分钟就能查,比等15-90分钟的
+            # 涨幅百分比快得多,优先判断。
+            is_mcap = matches_origin_mcap_signature(attrs, age_minutes)
             is_early = matches_early_signature(attrs, age_minutes)
             is_late = matches_pump_signature(attrs)
-            if not (is_early or is_late):
+            if not (is_mcap or is_early or is_late):
                 continue
+            found_via = "origin_mcap" if is_mcap else ("early" if is_early else "late")
             db[addr] = {"name": w.get("name"), "mint": mint, "first_seen": time.time(),
-                       "status": "alive", "history": [], "found_via": "early" if is_early else "late"}
+                       "status": "alive", "history": [], "found_via": found_via}
             n_new += 1
-            if is_early:
+            if is_mcap:
+                n_new_mcap += 1
+            elif is_early:
                 n_new_early += 1
-        print(f"新发现符合特征的池子: {n_new}个(其中早期1-30分钟发现{n_new_early}个)")
+        print(f"新发现符合特征的池子: {n_new}个(起点MCAP发现{n_new_mcap}个,早期1-90分钟发现{n_new_early}个)")
 
     # 第二步: 给所有还活着的池子记一条新快照
     n_updated, n_died_this_round = 0, 0

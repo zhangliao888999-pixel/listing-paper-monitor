@@ -178,6 +178,28 @@ def matches_early_signature(attrs, age_minutes):
         return False
 
 
+def matches_origin_mcap_signature(attrs, age_minutes, min_mcap=50000):
+    """2026-07-29新增: 用户提出"这些币前期MCAP应该都很高"这个思路,拿4个真实
+    案例验证后发现区分度极其干净,而且比等涨幅百分比快得多——开盘第一分钟就能查:
+      DINO(没人理,死了)        起点MCAP $2,075
+      Look!(没人理,死了)       起点MCAP $2,064
+      GDWR(跑了11小时,真实崩盘) 起点MCAP $597,630  (死币的~290倍)
+      TNOS(跑了9.5小时+,还活着) 起点MCAP $8,624,530 (死币的~4,000倍)
+    逻辑: 操盘方一开局砸的真金白银越多,起点MCAP越高,说明这不是随手一发的
+    小打小闹,越有实力/动机把"表演"撑久去吸引真买家。样本量只有4个,门槛先
+    定保守一点($50000,死币的~25倍、比GDWR低一个数量级),后续攒够更多样本
+    再精调。这个检查不看涨幅,只看age早期阶段(<=10分钟)的fdv_usd,比
+    matches_early_signature的15-90分钟等待窗口快得多,可以更早触发。"""
+    if age_minutes > 10:
+        return False
+    try:
+        fdv = float(attrs.get("fdv_usd") or 0)
+        locked = float(attrs.get("locked_liquidity_percentage") or 0)
+    except (TypeError, ValueError):
+        return False
+    return locked >= 90 and fdv >= min_mcap
+
+
 def scan_from_tracked_state(state_path, max_scan=300, max_age_hours=48):
     """直接扫screener.py已经在追踪的池子(screener_state_local.json),不用额外
     重新去GeckoTerminal搜——这批池子本来就是screener持续在跑的,不用重复造轮子。
