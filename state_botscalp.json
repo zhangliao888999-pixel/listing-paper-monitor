@@ -37897,6 +37897,28 @@
    "reason": "TP",
    "ret": 0.0823,
    "t_exit": 1785299882
+  },
+  {
+   "name": "PIPEDOG / SOL",
+   "entry": 0.00025827627055845443,
+   "t_entry": 1785300062,
+   "bot_avg_trade_usd": 3.9,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 7426,
+   "entry_sellers_h1": 1032,
+   "entry_buy_sell_ratio_h1": 7.195736434108527,
+   "entry_price_change_h1_pct": 72.014,
+   "entry_n_wallets": 139,
+   "bot_wallet_addr": "HEuQXtJujEUfcoE3BQQ3Fp9LxQ11kntnrMaXMkX3xmnL",
+   "total_checks": 1,
+   "consecutive_no_price": 0,
+   "mark": 0.0002795418867345652,
+   "mark_ret": 0.0823367014326537,
+   "addr": "3GaLUfHJRwaZXWhwaByXrSxZp7ttH4DQ2wkWqCx4fNxu",
+   "exit": 0.0002795418867345652,
+   "reason": "TP",
+   "ret": 0.0823,
+   "t_exit": 1785300062
   }
  ]
 }
