@@ -1,6 +1,94 @@
 {
- "updated_at": 1785367562,
- "updated_at_str": "2026-07-29 23:26 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785368161,
+ "updated_at_str": "2026-07-29 23:36 UTC",
+ "n_candidates": 3,
+ "candidates": [
+  {
+   "addr": "67fXdNxif9XcZfUnZc2UvArnE2h1Q2iR8nzTRfUhxKvv",
+   "name": "Fraudci / SOL",
+   "age_min": 226.43333333333334,
+   "created": 1785354575.0,
+   "price": 0.0006052988229102878,
+   "liq": 70409.9719,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 144363.8188246,
+   "vol_1h": 766822.632219443,
+   "chg_15m": -3.473,
+   "chg_1h": 81.913,
+   "buys_15m": 1226,
+   "sells_15m": 995,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/67fXdNxif9XcZfUnZc2UvArnE2h1Q2iR8nzTRfUhxKvv",
+   "mint": "3DrBHMJ1rnWp7mMRNmNbWbp4zNiHkM483GqXSzRPpump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": true,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": true,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": 0.7273415818107288,
+    "wallet_verdict": "36/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
+   }
+  },
+  {
+   "addr": "9DpKo3RbS322NVY5zUcBc7pv7V1seJwXT65JrPr1eFVC",
+   "name": "$Malone / USDC",
+   "age_min": 12.85,
+   "created": 1785367390.0,
+   "price": 1.3107153054596439e-05,
+   "liq": 10096.5453,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 546.6256191531,
+   "vol_1h": 819.7071384892,
+   "chg_15m": 182.492,
+   "chg_1h": 225.063,
+   "buys_15m": 34,
+   "sells_15m": 20,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/9DpKo3RbS322NVY5zUcBc7pv7V1seJwXT65JrPr1eFVC",
+   "mint": "6VWrSY83WTaroLXQwYZAwypSQsHk7fvsb4ocpQPipump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": false,
+    "n_traders": 6,
+    "n_suspicious": 0,
+    "exit_ratio": -31.580944150597794,
+    "wallet_verdict": "钱包画像未见明显控盘迹象"
+   }
+  },
+  {
+   "addr": "BbRjRaHaYdH68GnDwLvPh6JBL7Gqif7JQpTSG7tULNG8",
+   "name": "MARV / SOL",
+   "age_min": 183.03333333333333,
+   "created": 1785357179.0,
+   "price": 2.7584185781573646e-05,
+   "liq": 10960.8989,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 3386.7207030297,
+   "vol_1h": 3733.4435280635,
+   "chg_15m": 49.254,
+   "chg_1h": 35.792,
+   "buys_15m": 23,
+   "sells_15m": 26,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/BbRjRaHaYdH68GnDwLvPh6JBL7Gqif7JQpTSG7tULNG8",
+   "mint": "6xycyGrZRxXcsAoX722kZwvy9evQEJ69d36puN15pump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": true,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": true,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": 0.9344103540124911,
+    "wallet_verdict": "39/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
+   }
+  }
+ ]
 }
