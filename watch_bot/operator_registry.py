@@ -133,6 +133,25 @@ def scan_from_candidates_file(path):
     print(f"\n本轮新增达标操盘方: {n_qualified_new}  当前观察名单里达标总数: {n_total_qualified}  (总收录{len(watchlist)}个钱包)")
 
 
+def is_decaying(attrs, min_hourly_usd=2000):
+    """2026-07-29白天新增: 用户点名的"GDWR撞名局"案例——第1小时暴拉+1685%,
+    之后5小时只阴跌式爬了30-50%,每小时成交量从$104K一路萎缩到$0.7K(最近1小时
+    成交速率只有前5小时均速的16.5%)。这类币的问题是h6这种累计涨跌幅字段会一直
+    停留在很唬人的数字上(哪怕早就没人气了),不看"最近还有没有真实成交"就会
+    一直被误判成"还在拉"。用h1成交额 vs (h6成交额-h1成交额)/5折算出的早期均速
+    对比,比值太低说明这个池子已经见顶在阴跌,不是还在被拉升。"""
+    try:
+        vol = attrs.get("volume_usd") or {}
+        h1_vol = float(vol.get("h1") or 0)
+        h6_vol = float(vol.get("h6") or 0)
+    except (TypeError, ValueError):
+        return False
+    older_hourly_avg = (h6_vol - h1_vol) / 5
+    if older_hourly_avg < min_hourly_usd:
+        return False  # 早期均速本来就很小,判断意义不大,不误伤
+    return (h1_vol / older_hourly_avg) < 0.3
+
+
 def matches_pump_signature(attrs):
     """判断这个池子像不像今晚TNOS这种"操盘方对倒拉升,真买家逐步跟进"的走势——
     不要求通过我们那套严格的交易过滤器(那是给"能不能买"用的),这里只是想找到
@@ -148,7 +167,8 @@ def matches_pump_signature(attrs):
     # 2026-07-29放宽(用户明确要求"纸盘可以再大胆一些"): 门槛从liq>=20000/h6>=50
     # 降到liq>=10000/h6>=30——纸盘不动真钱,宁可多抓一些弱样本(哪怕像TIKTOK那种
     # 单钱包小体量的)进来跑,数据比精度更重要,弱样本本身也是有价值的对照组。
-    return locked >= 90 and liq >= 10000 and h6 >= 30
+    # 2026-07-29白天补: 加上is_decaying排除"早就见顶只是累计数字还没掉下来"的假阳性。
+    return locked >= 90 and liq >= 10000 and h6 >= 30 and not is_decaying(attrs)
 
 
 def matches_early_signature(attrs, age_minutes):
