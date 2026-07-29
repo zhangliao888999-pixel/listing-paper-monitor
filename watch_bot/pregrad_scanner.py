@@ -53,9 +53,12 @@ def fetch_new_pools():
 def deploy(addr, mint, name):
     prefix = make_prefix(addr)
     py = sys.executable
-    kwargs = {"cwd": str(HERE)}
+    kwargs = {"cwd": str(HERE), "stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
     if sys.platform == "win32":
-        kwargs["creationflags"] = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP
+        # 2026-07-29晚间修复: 用户反馈屏幕上一直弹cmd窗口——DETACHED_PROCESS只是让
+        # 子进程脱离父进程的控制台,不等于"不开窗口",真正管这个的是CREATE_NO_WINDOW,
+        # 之前漏加了。
+        kwargs["creationflags"] = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW
     subprocess.Popen([py, str(HERE / "pregrad_scalp_exit.py"), addr, mint, prefix], **kwargs)
     print(f"  *** 已部署毕业前抢筹纸盘: {name} ({addr[:10]}...) ***")
 

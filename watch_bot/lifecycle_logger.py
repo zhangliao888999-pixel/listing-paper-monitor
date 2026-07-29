@@ -129,10 +129,13 @@ def deploy_full_stack(addr, mint, db):
     py = sys.executable
     # 用DETACHED_PROCESS+CREATE_NEW_PROCESS_GROUP,让子进程完全独立于lifecycle_logger
     # 自己这个父进程——lifecycle_runner_loop.py每小时会被我重启一次,不加这个的话
-    # 子进程会被一起杀掉,之前部署的监控全部白费
+    # 子进程会被一起杀掉,之前部署的监控全部白费。
+    # 2026-07-29晚间修复: 用户反馈屏幕上一直弹cmd窗口——DETACHED_PROCESS只是让
+    # 子进程脱离父进程的控制台,不等于"不开窗口",真正管这个的是CREATE_NO_WINDOW,
+    # 之前漏加了。
     creationflags = 0
     if hasattr(subprocess, "DETACHED_PROCESS"):
-        creationflags = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP
+        creationflags = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW
     log_devnull = subprocess.DEVNULL
     try:
         subprocess.Popen([py, str(here / "crash_watch.py"), addr, mint, prefix],

@@ -1,0 +1,2 @@
+{"action": "BUY", "mint": "96gbCGRyCP7BuZwyYQmMartfrXBf4qeSnzLR1R7yi9Ur", "pos_size_usd": 5.0, "status": "dry_run", "ts": 1785332863}
+{"action": "SELL", "mint": "96gbCGRyCP7BuZwyYQmMartfrXBf4qeSnzLR1R7yi9Ur", "reason": "LIQ_LOW", "status": "dry_run", "ts": 1785332863}
