@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>操盘方拉升 - 交易台账与生命周期数据库</title>
+<style>
+  :root {
+    --bg: #0b0e14; --panel: #131722; --panel2: #1a1f2e; --border: #2a3040;
+    --text: #e6e9ef; --dim: #8b93a7; --green: #26a69a; --red: #ef5350;
+    --accent: #5b8def; --yellow: #d4a72c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px; line-height: 1.5;
+  }
+  header {
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+  header a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  #status { font-size: 12px; color: var(--dim); }
+  #status.live { color: var(--green); }
+  #status.error { color: var(--red); }
+  main { padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px; overflow-x: auto; }
+  .card h2 { font-size: 15px; margin: 0 0 12px; }
+  .summary { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; font-size: 13px; color: var(--dim); }
+  .summary b { color: var(--text); font-size: 16px; }
+  table { border-collapse: collapse; width: 100%; font-size: 12.5px; white-space: nowrap; }
+  th, td { padding: 6px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+  th { color: var(--dim); font-weight: 500; position: sticky; top: 0; background: var(--panel); }
+  tr:hover { background: var(--panel2); }
+  .pos { color: var(--green); } .neg { color: var(--red); } .zero { color: var(--dim); }
+  .badge { padding: 2px 7px; border-radius: 5px; font-size: 11.5px; }
+  .badge.alive { background: rgba(38,166,154,.15); color: var(--green); }
+  .badge.dead { background: rgba(239,83,80,.15); color: var(--red); }
+  .empty { color: var(--dim); padding: 20px; text-align: center; }
+  footer { padding: 16px 20px; color: var(--dim); font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>操盘方拉升 · 交易台账 &amp; 生命周期数据库</h1>
+  <div style="display:flex; gap:14px; align-items:center;">
+    <a href="./index.html">← 返回主看盘页</a>
+    <span id="status">加载中…</span>
+  </div>
+</header>
+<main id="main">
+  <div class="card"><div class="empty">加载中…</div></div>
+</main>
+<footer>
+  数据源: <a href="https://github.com/zhangliao888999-pixel/listing-paper-monitor" target="_blank" style="color:var(--accent)">listing-paper-monitor / watch_bot</a>
+  · 每 30 秒自动刷新 · 全部dry-run模拟交易,不涉及真实资金
+</footer>
+
+<script>
+const REPO = "zhangliao888999-pixel/listing-paper-monitor";
+const BRANCH = "master";
+const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/`;
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+async function fetchText(path) {
+  const r = await fetch(RAW + path + "?t=" + Date.now(), { cache: "no-store" });
+  if (!r.ok) throw new Error(`${path} HTTP ${r.status}`);
+  return r.text();
+}
+
+function parseJsonl(text) {
+  return text.trim().split("\n").filter(Boolean).map(line => {
+    try { return JSON.parse(line); } catch (e) { return null; }
+  }).filter(Boolean);
+}
+
+function fmtNum(v, digits) {
+  if (v === null || v === undefined || v === "") return "-";
+  const n = Number(v);
+  if (isNaN(n)) return String(v);
+  return n.toLocaleString(undefined, { maximumFractionDigits: digits ?? 2 });
+}
+
+function fmtAgo(tsSec) {
+  if (!tsSec) return "-";
+  const s = Math.max(0, Math.floor(Date.now() / 1000 - tsSec));
+  if (s < 3600) return `${Math.floor(s / 60)}分钟前`;
+  if (s < 86400) return `${(s / 3600).toFixed(1)}小时前`;
+  return `${(s / 86400).toFixed(1)}天前`;
+}
+
+function renderJournal(records) {
+  if (!records.length) return `<div class="empty">还没有完整交易记录</div>`;
+  records = records.slice().reverse();
+  const nWin = records.filter(r => (r.pnl_pct ?? 0) > 0).length;
+  const totalPnl = records.reduce((a, r) => a + (r.pnl_pct ?? 0), 0);
+  const rows = records.map(r => {
+    const pnl = r.pnl_pct;
+    const pnlCls = pnl > 0.05 ? "pos" : pnl < -0.05 ? "neg" : "zero";
+    return `<tr>
+      <td>${esc(r.name)}</td>
+      <td>${esc(r.entry_ts_str)}</td>
+      <td>${fmtNum(r.coin_age_min_at_entry, 0)}分钟</td>
+      <td>$${fmtNum(r.pos_size_usd, 2)}</td>
+      <td>${fmtNum(r.hold_sec, 0)}秒</td>
+      <td>${esc(r.exit_reason)}</td>
+      <td class="${pnlCls}">${pnl == null ? "-" : (pnl >= 0 ? "+" : "") + pnl.toFixed(2) + "%"}</td>
+      <td>${fmtNum(r.entry_locked_liq_pct, 0)}%</td>
+      <td>$${fmtNum(r.entry_liq_usd, 0)}</td>
+      <td>$${fmtNum(r.entry_fdv_usd, 0)}</td>
+      <td>${fmtNum(r.n_insiders, 0)}</td>
+      <td>${esc(r.found_via)}</td>
+      <td>${r.prior_entries_on_this_mint || 0}</td>
+      <td>${r.dry_run ? "dry-run" : "实盘"}</td>
+    </tr>`;
+  }).join("");
+  return `
+    <div class="summary">
+      <span>完整交易数 <b>${records.length}</b></span>
+      <span>胜率 <b>${records.length ? (nWin / records.length * 100).toFixed(0) : 0}%</b></span>
+      <span>累计涨跌幅之和 <b class="${totalPnl >= 0 ? 'pos' : 'neg'}">${totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)}%</b></span>
+    </div>
+    <table>
+      <thead><tr>
+        <th>币种</th><th>建仓时间</th><th>建仓时币龄</th><th>仓位</th><th>持仓时长</th>
+        <th>退出原因</th><th>涨跌幅</th><th>锁仓%</th><th>建仓时流动性</th><th>建仓时MCAP</th>
+        <th>已知操盘方钱包数</th><th>发现方式</th><th>反复进入次数</th><th>模式</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+function renderLifecycle(db) {
+  const entries = Object.entries(db);
+  if (!entries.length) return `<div class="empty">还没有追踪样本</div>`;
+  entries.sort((a, b) => (b[1].first_seen || 0) - (a[1].first_seen || 0));
+  const nAlive = entries.filter(([, v]) => v.status === "alive").length;
+  const nDead = entries.filter(([, v]) => v.status === "dead").length;
+  const rows = entries.map(([addr, v]) => {
+    const hist = v.history || [];
+    const last = hist[hist.length - 1];
+    const sellPct = last && last.insider_sell_pct != null ? (last.insider_sell_pct * 100).toFixed(1) + "%" : "-";
+    return `<tr>
+      <td>${esc(v.name)}</td>
+      <td><span class="badge ${v.status}">${v.status === "alive" ? "存活" : "已死亡"}</span></td>
+      <td>${fmtAgo(v.first_seen)}</td>
+      <td>${v.status === "dead" ? fmtNum(v.hours_alive, 2) + "小时" : "-"}</td>
+      <td>${v.status === "dead" ? "$" + fmtNum(v.peak_price, 10) : (last ? "$" + fmtNum(last.price, 10) : "-")}</td>
+      <td>${sellPct}</td>
+      <td>${last ? "$" + fmtNum(last.liq, 0) : "-"}</td>
+      <td>${esc(v.found_via)}</td>
+      <td>${v.stack_deployed ? "是" : "否"}</td>
+      <td><a href="https://www.geckoterminal.com/solana/pools/${addr}" target="_blank" style="color:var(--accent)">查看</a></td>
+    </tr>`;
+  }).join("");
+  return `
+    <div class="summary">
+      <span>追踪样本总数 <b>${entries.length}</b></span>
+      <span>存活 <b class="pos">${nAlive}</b></span>
+      <span>已死亡 <b class="neg">${nDead}</b></span>
+    </div>
+    <table>
+      <thead><tr>
+        <th>币种</th><th>状态</th><th>首次记录</th><th>存活时长</th><th>价格(峰值/现价)</th>
+        <th>操盘方卖出比例</th><th>流动性</th><th>发现方式</th><th>已部署监控</th><th>链接</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+async function load() {
+  const status = document.getElementById("status");
+  const main = document.getElementById("main");
+  try {
+    const [journalText, lifecycleText] = await Promise.all([
+      fetchText("watch_bot/journal.jsonl").catch(() => ""),
+      fetchText("watch_bot/pump_lifecycle.json").catch(() => "{}"),
+    ]);
+    const journal = journalText ? parseJsonl(journalText) : [];
+    const lifecycle = lifecycleText ? JSON.parse(lifecycleText) : {};
+
+    main.innerHTML = `
+      <div class="card">
+        <h2>交易台账(每笔完整买入-卖出记录)</h2>
+        ${renderJournal(journal)}
+      </div>
+      <div class="card">
+        <h2>生命周期数据库(所有被识别为"操盘方拉升"特征的池子)</h2>
+        ${renderLifecycle(lifecycle)}
+      </div>
+    `;
+    status.textContent = "已更新 " + new Date().toLocaleTimeString("zh-CN");
+    status.className = "live";
+  } catch (e) {
+    status.textContent = "加载失败: " + e.message;
+    status.className = "error";
+  }
+}
+
+load();
+setInterval(load, 30000);
+</script>
+</body>
+</html>
