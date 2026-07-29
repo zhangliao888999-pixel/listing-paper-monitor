@@ -3,7 +3,7 @@
   "name": "TNOS / SOL",
   "mint": "XQ3UaYsPJP5pvusq4PcnJDSV8STw33TGMJzq9ospump",
   "first_seen": 1785259104,
-  "status": "alive",
+  "status": "dead",
   "history": [
    {
     "ts": 1785290660.459933,
@@ -31,8 +31,20 @@
     "n_insiders": 39,
     "locked_liq_pct": "100.0",
     "h1_chg": "16.503"
+   },
+   {
+    "ts": 1785301937.1944864,
+    "price": 1.373350000787485e-06,
+    "liq": 1401.3001,
+    "insider_sell_pct": 0.41807494611443374,
+    "n_insiders": 31,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "-99.998"
    }
-  ]
+  ],
+  "died_at": 1785301937.1944864,
+  "peak_price": 0.04980940025563635,
+  "hours_alive": 11.898109579549896
  },
  "EqdhxP5vsNRvKRSnpKRt3xn85VdYC35jvHk1z2PqrZxy": {
   "name": "GDWR / SOL",
