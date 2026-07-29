@@ -148,6 +148,27 @@ def matches_pump_signature(attrs):
     return locked >= 90 and liq >= 20000 and h6 >= 50
 
 
+def matches_early_signature(attrs, age_minutes):
+    """2026-07-29新增: matches_pump_signature要求h6涨幅>=50%,对刚发出来1-30分钟
+    的新币根本用不上(池子太年轻,GeckoTerminal的h1/h6/h24这些窗口还没积累够数据,
+    会直接跟m5/m15/m30的值一样)。用户明确要求"不用每秒盯,1-30分钟内查一次能
+    发现大多数"——今晚查过的TNOS/GDWR/CXMT,创建后几分钟内bundler买单就已经在
+    动了,不是等半小时才启动,所以这个早期窗口本身就能捕捉到大部分案例,漏掉
+    "故意延迟启动"的操盘方可以接受(先解决大多数,不追求100%)。
+    早期判断门槛(比后期版本更松,因为量还没起来): 锁仓100% + 已经有实质涨幅
+    (用m30,这是1-30分钟窗口里最可能有真实数据的字段) + 流动性哪怕还小也要
+    有个下限,排除掉像CXMT那种量小到几乎没人的池子。"""
+    if not (1 <= age_minutes <= 30):
+        return False
+    try:
+        locked = float(attrs.get("locked_liquidity_percentage") or 0)
+        liq = float(attrs.get("reserve_in_usd") or 0)
+        m30 = float((attrs.get("price_change_percentage") or {}).get("m30") or 0)
+    except (TypeError, ValueError):
+        return False
+    return locked >= 90 and liq >= 5000 and m30 >= 30
+
+
 def scan_from_tracked_state(state_path, max_scan=300, max_age_hours=48):
     """直接扫screener.py已经在追踪的池子(screener_state_local.json),不用额外
     重新去GeckoTerminal搜——这批池子本来就是screener持续在跑的,不用重复造轮子。
