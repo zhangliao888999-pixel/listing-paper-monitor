@@ -99,6 +99,19 @@ function renderJournal(records) {
   records = records.slice().reverse();
   const nWin = records.filter(r => (r.pnl_pct ?? 0) > 0).length;
   const totalPnl = records.reduce((a, r) => a + (r.pnl_pct ?? 0), 0);
+  // 2026-07-29新增: 用户要求台账要有真实美元口径的累计数字,不能只看涨跌幅之和——
+  // 涨跌幅之和把$5仓位和假设中更大仓位的交易同等加总,没有实际money on the table的
+  // 概念。这里按每笔pos_size_usd*pnl_pct%算出这一笔的美元盈亏,pnl_pct缺失(比如
+  // 拿不到退出价)的笔不计入盈亏统计,但本金仍然算已投入(钱确实压进去过)。
+  const totalInvested = records.reduce((a, r) => a + (Number(r.pos_size_usd) || 0), 0);
+  let totalProfit = 0, totalLoss = 0;
+  records.forEach(r => {
+    if (r.pnl_pct == null || r.pos_size_usd == null) return;
+    const dollarPnl = Number(r.pos_size_usd) * Number(r.pnl_pct) / 100;
+    if (dollarPnl > 0) totalProfit += dollarPnl;
+    else totalLoss += dollarPnl;
+  });
+  const netIncome = totalProfit + totalLoss;
   const rows = records.map(r => {
     const pnl = r.pnl_pct;
     const pnlCls = pnl > 0.05 ? "pos" : pnl < -0.05 ? "neg" : "zero";
@@ -124,6 +137,10 @@ function renderJournal(records) {
       <span>完整交易数 <b>${records.length}</b></span>
       <span>胜率 <b>${records.length ? (nWin / records.length * 100).toFixed(0) : 0}%</b></span>
       <span>累计涨跌幅之和 <b class="${totalPnl >= 0 ? 'pos' : 'neg'}">${totalPnl >= 0 ? '+' : ''}${totalPnl.toFixed(2)}%</b></span>
+      <span>累计投入 <b>$${fmtNum(totalInvested, 2)}</b></span>
+      <span>累计获利 <b class="pos">$${fmtNum(totalProfit, 2)}</b></span>
+      <span>累计亏损 <b class="neg">-$${fmtNum(Math.abs(totalLoss), 2)}</b></span>
+      <span>净收入 <b class="${netIncome >= 0 ? 'pos' : 'neg'}">${netIncome >= 0 ? '+' : '-'}$${fmtNum(Math.abs(netIncome), 2)}</b></span>
     </div>
     <table>
       <thead><tr>
