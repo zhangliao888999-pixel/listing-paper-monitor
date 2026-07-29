@@ -465,11 +465,22 @@ def main():
         for row in new_rows:
             a = row["attributes"]
             seen_tx.add(a["tx_hash"])
-            if first_pass or a["kind"] != "buy":
+            if first_pass:
                 continue
             w = a.get("tx_from_address")
             usd = float(a.get("volume_in_usd") or 0)
-            if w and w not in insiders and usd >= MIN_REAL_BUYER_USD:
+            # 2026-07-29新增(用户明确要求): 已知操盘方钱包一旦出现卖出,立刻跑,
+            # 不等流动性暴跌或者外部买家信号——这是比另外两个信号更早的一层。
+            # TNOS那次实测: 一笔比背景噪音大5-10倍的操盘方卖出,21秒后价格就崩了
+            # 98%,用户判断"21秒够机器人反应",这里直接测试这个假设是否成立——
+            # 如果跑得比操盘方晚,pnl会是大幅负数,直接记录进台账,不用猜。
+            if a["kind"] == "sell" and w in insiders:
+                log(f"*** 已知操盘方钱包卖出信号: {w[:10]}...卖出${usd:,.2f},立刻卖出,不等更多确认 ***")
+                exit_snap = get_pool_snapshot(addr)
+                do_sell(wallet, mint, pos["qty_raw"], "INSIDER_SELL_DETECTED", pos["dry_run"])
+                finish_trade(entry_info, "INSIDER_SELL_DETECTED", exit_snap.get("price") if exit_snap else None)
+                return
+            if a["kind"] == "buy" and w and w not in insiders and usd >= MIN_REAL_BUYER_USD:
                 log(f"*** 疑似真买家信号: 钱包{w[:10]}...买入${usd:,.2f},立刻卖出,不等更多确认 ***")
                 exit_snap = get_pool_snapshot(addr)
                 do_sell(wallet, mint, pos["qty_raw"], "REAL_BUYER_DETECTED", pos["dry_run"])
