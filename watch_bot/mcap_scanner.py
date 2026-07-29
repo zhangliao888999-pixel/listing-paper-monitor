@@ -27,6 +27,13 @@ from lifecycle_logger import load_lifecycle, save_lifecycle, deploy_full_stack
 
 PAGES = 3  # new_pools一页约20个,拉3页凑够约50-60个,对应用户说的"一页50个币"
 MIN_LOCKED_PCT = 90
+# 2026-07-29再修: REDO/SOL一案发现——locked_liquidity_percentage首次扫描常是None
+# (GT还没索引到锁仓/销毁交易),下一轮变成100%就被部署监控了,但完全没用起点MCAP
+# 这个已经验证过的信号过滤(REDO起点MCAP只有$12,511,DINO/Look!等死币也是$2000量级,
+# 而TNOS/GDWR这类真正被狗庄看上、有资金拉的币起点MCAP是$60万-$860万)。结果REDO
+# 白白占用一个监控位(MAX_CONCURRENT_DEPLOYED=8),2分钟就死了还是全员机器人对倒。
+# 补上MCAP门槛,跟lifecycle_logger.py的matches_origin_mcap_signature用同一个阈值。
+MIN_MCAP_USD = 50000
 
 
 def fetch_new_pools():
@@ -110,7 +117,7 @@ def main():
         mint = base_token_id.split("_")[-1] if "_" in base_token_id else None
 
         flag = ""
-        if locked_f >= MIN_LOCKED_PCT and mint and addr not in db:
+        if locked_f >= MIN_LOCKED_PCT and fdv >= MIN_MCAP_USD and mint and addr not in db:
             deployed = deploy_full_stack(addr, mint, db)
             if deployed:
                 db[addr] = {"name": name, "mint": mint, "first_seen": time.time(),

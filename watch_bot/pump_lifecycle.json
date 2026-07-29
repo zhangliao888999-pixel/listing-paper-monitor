@@ -150,5 +150,81 @@
   ],
   "found_via": "manual",
   "stack_deployed": true
+ },
+ "BKSxKPaEJ5PLfUoJzrf57TEbBr5xvArALBGoR6zcaA8E": {
+  "name": "SPCX4200 / SOL",
+  "mint": "4b1uiwbhMkqPTskQqTuFf68E8wY6gQfmDHytHwpApump",
+  "first_seen": 1785305518.2941692,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
+ },
+ "7ECPdcq8hxkW1UspHkLGf3JucFiwXeUo6RhbncgxPuX1": {
+  "name": "FRANK / SOL",
+  "mint": "CiSGU15anL48vZicgmXyi6aVWcqSng4CioV9BvxFnE5M",
+  "first_seen": 1785305518.4850945,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
+ },
+ "4GjG4TsyZmLNeL1DhhktLdZaXuT4hbLp9o1pe9Z6zpfa": {
+  "name": "REDO / SOL",
+  "mint": "77Pc5wKBDHmcChAo1Q5FnVRvLZVm9VPoqFTTViTMpump",
+  "first_seen": 1785305518.686424,
+  "status": "dead",
+  "history": [
+   {
+    "ts": 1785306565.086723,
+    "price": 2.930548541744169e-05,
+    "liq": 0.0,
+    "insider_sell_pct": 0.9447587002636328,
+    "n_insiders": 34,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "1301.207"
+   }
+  ],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true,
+  "died_at": 1785306565.086723,
+  "peak_price": 2.930548541744169e-05,
+  "hours_alive": 0.290666749742296
+ },
+ "2QKtLGvQE5iKq1ZrVhSiUe5ZJevcUp2Jvc1xxZJiCSJr": {
+  "name": "PANDZ / USDC",
+  "mint": "Az6YddsEi4zvoz37z29dgu73QBedmjYH2BTHFGTSpump",
+  "first_seen": 1785305527.318724,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
+ },
+ "4Kp8VTMNanaEwNPSdKKMkqSV5mavTeEEDCaFFgmzuAgF": {
+  "name": "HUMPCAT / SOL",
+  "mint": "2ibw1PmvyGVoVy1beiah8ktDisJonRvzCVUZhieWpump",
+  "first_seen": 1785305615.8021562,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
+ },
+ "DskbsV4aYKbzftmFKmVrw6nWecJ4Jz77SyjNwoCQee7T": {
+  "name": "grem / SOL",
+  "mint": "6DXP2qYaVxY2ysra4h9kmYoEPmaruAEBz8wWUDQJpump",
+  "first_seen": 1785305782.220255,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
+ },
+ "A2RipPbojAeM5HN3PuXNymTeQno4FiyY3VQ75We9tMv8": {
+  "name": "FRANK / SOL",
+  "mint": "FP5DqHVeAuFgmqAjm1NXfwwnp8oQtcbBqLR5rQrMRuPT",
+  "first_seen": 1785305784.5207036,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
  }
 }

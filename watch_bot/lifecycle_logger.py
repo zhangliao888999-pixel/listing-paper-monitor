@@ -108,7 +108,10 @@ def deploy_full_stack(addr, mint, db):
     加了并发上限(MAX_CONCURRENT_DEPLOYED),避免同时跑的池子太多把GMGN调用量
     和本机资源拖垮。"""
     here = Path(__file__).parent
-    n_deployed = sum(1 for v in db.values() if v.get("stack_deployed"))
+    # 2026-07-29修复: 原来数的是历史上所有stack_deployed=True的币,币死了这个
+    # 标记也不清零,导致部署满MAX_CONCURRENT_DEPLOYED次之后永久锁死、再也发现
+    # 不了新币(REDO/SOL确认死亡但仍占坑就是实例)。改成只数"还活着"的。
+    n_deployed = sum(1 for v in db.values() if v.get("stack_deployed") and v.get("status") != "dead")
     if n_deployed >= MAX_CONCURRENT_DEPLOYED:
         return False
 
