@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+"""让mcap_scanner.py高频反复跑——用户的洞察: 只盯new_pools第一页(最新~20个
+池子)按MCAP排序,一旦有操盘方钱包真金白银开始砸某个币,MCAP会迅速冲进这一页
+的前几名,不需要深翻页/大批量扫描,所以这个可以跑得很勤(便宜,一次只查约
+10个候选的详情)。"""
+import subprocess
+import sys
+import time
+import datetime as dt
+from pathlib import Path
+
+HERE = Path(__file__).parent
+INTERVAL_SEC = 90   # 90秒一轮,比lifecycle_runner_loop(10分钟)勤得多,因为这个便宜
+ROUNDS = 40          # 跑1小时(40*90秒)
+
+for i in range(ROUNDS):
+    ts = dt.datetime.now().strftime("%H:%M:%S")
+    print(f"\n[{ts}] === 第{i+1}/{ROUNDS}轮 ===")
+    try:
+        subprocess.run([sys.executable, str(HERE / "mcap_scanner.py"), "10"], cwd=str(HERE))
+    except Exception as e:
+        print(f"本轮出错: {e}")
+    if i < ROUNDS - 1:
+        time.sleep(INTERVAL_SEC)
+
+print("\n=== 循环结束 ===")

@@ -18,7 +18,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from check_coin import GT_BASE, S, get
 from lifecycle_logger import load_lifecycle, save_lifecycle, deploy_full_stack
 
-PAGES = 5  # new_pools一页20个,拉5页覆盖最近约100个新池子
+PAGES = 1  # 2026-07-29改: 用户指出的关键洞察——绝大多数新币MCAP基线就在2-3k
+           # (用户自己发的DINO起点就是$2.1k),一旦有钱包真金白银开始往里砸,
+           # MCAP会迅速甩开这个基线冲进排名前列,不需要深翻页去找,只盯第一页
+           # (最新20个池子)按MCAP排序,谁冒头了自然会冲到前面来
 MIN_LOCKED_PCT = 90
 
 
@@ -35,7 +38,7 @@ def fetch_new_pools():
 
 
 def main():
-    top_n = int(sys.argv[1]) if len(sys.argv) > 1 else 20
+    top_n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
     rows = fetch_new_pools()
     print(f"共拉到{len(rows)}个最新池子")
 
