@@ -1,0 +1,275 @@
+# -*- coding: utf-8 -*-
+"""2026-07-29新增: "毕业前抢筹,毕业前卖回curve"打法的纸盘执行器——跟snipe_exit.py
+是两套完全不同的退出逻辑,不能共用:
+
+  snipe_exit.py 的策略是"买入已毕业/接近毕业的池子,等真买家/操盘方卖出信号才跑",
+  会持仓跨越毕业这个瞬间,吃的是毕业后新池子里的行情。
+
+  这个脚本反过来: 只在老池子(bonding curve,毕业前)里买卖,全程不碰新池子。
+  用户的原话是"毕业后1秒马上跑",但REDO/FRANK两个案例分析发现毕业瞬间到底有没有
+  反应窗口是抛硬币(REDO有52秒窗口,FRANK毕业跟砸盘是同一秒),跟操盘方自己的
+  砸盘交易抢同一个身位赢面很小。所以改成更稳的版本: 只吃bonding curve内部本身
+  的涨幅(REDO这段实测涨了993%,比毕业瞬间那47%跳涨大得多),用移动止盈+硬止损+
+  硬超时控制风险,一旦观察到"这个池子好像要没了"(有可能是要毕业了,也可能是真的
+  死了),不管是哪种都不恋战,直接按当前价卖出离场——不去赌毕业后的行情。
+
+跟snipe_exit.py一样是纯DRY-RUN、写同一份journal.jsonl(found_via标记为
+pregrad_ramp,方便以后跟其他策略横向对比)。这个阶段的代币在Jupiter上大概率还
+查不到报价(bonding curve没接入聚合器路由,这也是"毕业后大家才能买"这件事本身
+的技术原因),所以不像snipe_exit.py那样调用Jupiter模拟买卖行情,直接用
+GeckoTerminal自己报的价格做纸面结算——反正只是纸盘,不需要真实可执行的报价。
+
+用法: python pregrad_scalp_exit.py <池子地址> <mint> <文件前缀>
+"""
+import json
+import re
+import subprocess
+import sys
+import time
+import datetime as dt
+from pathlib import Path
+
+import requests
+
+HERE = Path(__file__).parent
+JOURNAL_F = HERE / "journal.jsonl"
+
+GT_BASE = "https://api.geckoterminal.com/api/v2"
+S = requests.Session()
+S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                  "Accept": "application/json;version=20230302"})
+
+POS_SIZE_USD = 5.0
+POLL_SEC = 5              # 整个现象2-4分钟就走完,轮询必须比snipe_exit.py(8秒)更紧
+MAX_HOLD_SEC = 180        # 硬超时3分钟——REDO/FRANK从创世到毕业都在这个量级内
+TRAIL_STOP_PCT = 20       # 从最高点回撤这么多就跑,不贪图猜中最高点
+HARD_STOP_LOSS_PCT = 35   # 从没盈利过、直接跌破入场价这么多,说明这次没被拉起来,止损离场
+
+LOG_F = None
+
+
+def log(msg):
+    ts = dt.datetime.now().strftime("%H:%M:%S")
+    line = f"[{ts}] {msg}"
+    try:
+        print(line)
+    except UnicodeEncodeError:
+        pass
+    with LOG_F.open("a", encoding="utf-8") as f:
+        f.write(line + "\n")
+
+
+def get(url, params=None, tries=3):
+    for i in range(tries):
+        try:
+            r = S.get(url, params=params, timeout=15)
+            if r.status_code == 200:
+                return r.json()
+            if r.status_code == 429:
+                time.sleep(2 * (i + 1))
+                continue
+            return None
+        except requests.RequestException:
+            time.sleep(1.5 * (i + 1))
+    return None
+
+
+def extract_addr(arg):
+    m = re.search(r"/pools/([A-Za-z0-9]+)", arg)
+    return m.group(1) if m else arg
+
+
+def check_pool_and_mint(addr):
+    d = get(f"{GT_BASE}/networks/solana/pools/{addr}", {"include": "base_token"})
+    if not d:
+        return None, None
+    attrs = d["data"]["attributes"]
+    mint = None
+    for inc in d.get("included", []):
+        if inc.get("type") == "token":
+            mint = inc["attributes"].get("address")
+    return attrs, mint
+
+
+def get_pool_snapshot(addr):
+    d = get(f"{GT_BASE}/networks/solana/pools/{addr}")
+    if not d:
+        return None
+    a = d.get("data", {}).get("attributes", {})
+    try:
+        price = float(a.get("base_token_price_usd"))
+    except (TypeError, ValueError):
+        price = None
+    try:
+        liq = float(a.get("reserve_in_usd"))
+    except (TypeError, ValueError):
+        liq = None
+    return {"price": price, "liq": liq}
+
+
+def make_prefix(addr):
+    return re.sub(r"[^A-Za-z0-9]", "", addr)[:8]
+
+
+def count_prior_entries(mint):
+    if not JOURNAL_F.exists():
+        return 0
+    n = 0
+    with JOURNAL_F.open(encoding="utf-8") as f:
+        for line in f:
+            try:
+                rec = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if rec.get("mint") == mint:
+                n += 1
+    return n
+
+
+def write_journal(record):
+    record["written_at"] = int(time.time())
+    with JOURNAL_F.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def git_push_journal():
+    repo_root = HERE.parent
+    def run(cmd):
+        return subprocess.run(cmd, cwd=str(repo_root), capture_output=True, text=True)
+    run(["git", "add", "watch_bot/journal.jsonl"])
+    commit = run(["git", "commit", "-m", f"trade completed: {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}"])
+    if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
+        return
+    for _ in range(3):
+        push = run(["git", "push"])
+        if push.returncode == 0:
+            log("交易记录已立刻推送到GitHub,页面刷新即可见")
+            return
+        run(["git", "pull", "--rebase", "origin", "master"])
+        time.sleep(3)
+    log("交易记录推送失败(重试3次),会在下一轮lifecycle循环时补推")
+
+
+def finish_trade(entry_info, exit_reason, exit_price):
+    entry_price = entry_info["entry_price"]
+    pnl_pct = (exit_price / entry_price - 1) * 100 if (entry_price and exit_price) else None
+    hold_sec = time.time() - entry_info["entry_ts"]
+    record = {
+        "name": entry_info["name"], "mint": entry_info["mint"], "addr": entry_info["addr"],
+        "entry_ts": entry_info["entry_ts"], "entry_ts_str": dt.datetime.fromtimestamp(entry_info["entry_ts"]).strftime("%Y-%m-%d %H:%M:%S"),
+        "coin_age_min_at_entry": entry_info["coin_age_min_at_entry"],
+        "entry_price": entry_price, "entry_liq_usd": entry_info["entry_liq_usd"],
+        "entry_locked_liq_pct": entry_info["entry_locked_liq_pct"], "entry_fdv_usd": entry_info["entry_fdv_usd"],
+        "n_insiders": None, "found_via": "pregrad_ramp",
+        "pos_size_usd": POS_SIZE_USD, "dry_run": True,
+        "exit_reason": exit_reason, "exit_price": exit_price, "pnl_pct": pnl_pct,
+        "hold_sec": round(hold_sec, 1),
+        "prior_entries_on_this_mint": entry_info["prior_entries"],
+        "peak_price": entry_info.get("peak_price"),
+    }
+    write_journal(record)
+    pnl_str = f"{pnl_pct:+.2f}%" if pnl_pct is not None else "未知(拿不到退出价)"
+    log(f"台账记录完毕: {exit_reason} pnl={pnl_str} 持仓{hold_sec:.0f}秒 "
+       f"(这个币之前进过{entry_info['prior_entries']}次仓)")
+    git_push_journal()
+
+
+def main():
+    global LOG_F
+    if len(sys.argv) < 3:
+        print("用法: python pregrad_scalp_exit.py <池子地址> <mint> <文件前缀>")
+        return
+    addr = extract_addr(sys.argv[1])
+    mint = sys.argv[2]
+    prefix = sys.argv[3] if len(sys.argv) > 3 else make_prefix(addr)
+    LOG_F = HERE / f"{prefix}_pregrad_scalp.log"
+
+    attrs, mint_check = check_pool_and_mint(addr)
+    if not attrs:
+        log("查不到这个池子,地址可能不对")
+        return
+    if mint_check:
+        mint = mint_check
+
+    log(f"=== 毕业前抢筹纸盘: {attrs.get('name')} ({addr[:10]}...) ===")
+    log(f"仓位=${POS_SIZE_USD:.2f}(纸盘)  移动止盈回撤={TRAIL_STOP_PCT}%  硬止损={HARD_STOP_LOSS_PCT}%  硬超时={MAX_HOLD_SEC}秒")
+
+    prior_entries = count_prior_entries(mint)
+    if prior_entries:
+        log(f"注意: 这个币之前已经进过{prior_entries}次仓了,这次是反复进入")
+
+    try:
+        entry_price = float(attrs.get("base_token_price_usd") or 0)
+    except (TypeError, ValueError):
+        entry_price = None
+    if not entry_price:
+        log("拿不到入场价,放弃这次纸盘")
+        return
+
+    try:
+        created = dt.datetime.fromisoformat(attrs["pool_created_at"].replace("Z", "+00:00"))
+        coin_age_min = (dt.datetime.now(dt.timezone.utc) - created).total_seconds() / 60
+    except (KeyError, ValueError, TypeError):
+        coin_age_min = None
+
+    entry_info = {
+        "name": attrs.get("name"), "mint": mint, "addr": addr, "entry_ts": time.time(),
+        "coin_age_min_at_entry": coin_age_min, "entry_price": entry_price,
+        "entry_liq_usd": attrs.get("reserve_in_usd"), "entry_locked_liq_pct": attrs.get("locked_liquidity_percentage"),
+        "entry_fdv_usd": attrs.get("fdv_usd"), "prior_entries": prior_entries, "peak_price": entry_price,
+    }
+    log(f"[纸盘] 建仓 entry_price={entry_price}  (池子年龄约{coin_age_min:.1f}分钟)" if coin_age_min is not None
+        else f"[纸盘] 建仓 entry_price={entry_price}")
+
+    peak_price = entry_price
+    n_fail_in_a_row = 0
+    deadline = time.time() + MAX_HOLD_SEC
+    while time.time() < deadline:
+        time.sleep(POLL_SEC)
+        snap = get_pool_snapshot(addr)
+        if not snap or snap.get("price") is None:
+            n_fail_in_a_row += 1
+            # 2026-07-29: 查不到池子/价格,最可能的原因就是"已经毕业迁移到新池子了"
+            # (老的bonding curve地址在GT上要么消失要么不再更新),其次才是纯API抖动。
+            # 连续3次(约15秒)查不到,判定为"没跑赢毕业,被留在老池子里"——用最后
+            # 已知价格结算,老实记录这次没跑赢,不装作若无其事。
+            if n_fail_in_a_row >= 3:
+                log("*** 连续查不到池子数据,大概率已经毕业迁移,没能抢在毕业前跑掉 ***")
+                entry_info["peak_price"] = peak_price
+                finish_trade(entry_info, "MISSED_EXIT_LIKELY_GRADUATED", peak_price)
+                return
+            continue
+        n_fail_in_a_row = 0
+        price = snap["price"]
+        if price > peak_price:
+            peak_price = price
+
+        if snap.get("liq") is not None and snap["liq"] < 500:
+            log(f"*** 流动性只剩${snap['liq']:,.0f},判定已死透,卖出离场 ***")
+            entry_info["peak_price"] = peak_price
+            finish_trade(entry_info, "LIQ_DEAD", price)
+            return
+
+        drawdown_from_peak = (1 - price / peak_price) * 100 if peak_price else 0
+        if peak_price > entry_price and drawdown_from_peak >= TRAIL_STOP_PCT:
+            log(f"*** 移动止盈触发: 最高价{peak_price:.10g}回撤{drawdown_from_peak:.1f}%,卖出离场 ***")
+            entry_info["peak_price"] = peak_price
+            finish_trade(entry_info, "TRAILING_STOP", price)
+            return
+
+        loss_from_entry = (1 - price / entry_price) * 100
+        if loss_from_entry >= HARD_STOP_LOSS_PCT:
+            log(f"*** 硬止损触发: 跌破入场价{loss_from_entry:.1f}%,没被拉起来,止损离场 ***")
+            entry_info["peak_price"] = peak_price
+            finish_trade(entry_info, "HARD_STOP_LOSS", price)
+            return
+
+    log(f"=== 硬超时{MAX_HOLD_SEC}秒到,不管当前盈亏直接离场(不恋战,不赌毕业后的行情) ===")
+    final_snap = get_pool_snapshot(addr)
+    final_price = final_snap.get("price") if final_snap else peak_price
+    entry_info["peak_price"] = peak_price
+    finish_trade(entry_info, "HARD_TIMEOUT", final_price)
+
+
+if __name__ == "__main__":
+    main()

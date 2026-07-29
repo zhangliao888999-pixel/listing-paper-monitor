@@ -203,6 +203,28 @@ def matches_origin_mcap_signature(attrs, age_minutes, min_mcap=50000):
     return locked >= 90 and fdv >= min_mcap
 
 
+def matches_pregrad_ramp_signature(attrs, age_minutes):
+    """2026-07-29新增: 用户提出的"毕业前抢筹,毕业前卖回curve,不碰毕业瞬间"打法——
+    REDO/FRANK案例分析发现,真正好赚、风险还低的那段利润在bonding curve内部本身
+    (REDO创世到毕业前涨了993%),毕业瞬间(新池子)反而是风险最高、赏金最小的一段
+    (FRANK案例里毕业跟砸盘是同一秒,根本没有反应时间)。这条信号只负责找"正在被
+    bundler快速拉升的、还没毕业的极新池子",不要求起点MCAP高(REDO/FRANK起点都才
+    几千到一万出头,远低于matches_origin_mcap_signature的$50000门槛)——门槛低是
+    故意的,反正下游用极小仓位+严格止损止盈,抓错了代价也很小,漏掉了才是真正的
+    机会成本。窗口卡得很紧(<=3分钟)是因为这整个"创世->毕业"的过程实测只有
+    2-4分钟量级,超过这个窗口再判断"是不是正在被拉"意义不大(m5这个字段这么早
+    基本等价于"自创世以来涨幅")。"""
+    if not (0 < age_minutes <= 3):
+        return False
+    try:
+        m5 = float((attrs.get("price_change_percentage") or {}).get("m5") or 0)
+        tx_m5 = attrs.get("transactions", {}).get("m5") or {}
+        n_tx = int(tx_m5.get("buys") or 0) + int(tx_m5.get("sells") or 0)
+    except (TypeError, ValueError):
+        return False
+    return m5 >= 80 and n_tx >= 15
+
+
 def scan_from_tracked_state(state_path, max_scan=300, max_age_hours=48):
     """直接扫screener.py已经在追踪的池子(screener_state_local.json),不用额外
     重新去GeckoTerminal搜——这批池子本来就是screener持续在跑的,不用重复造轮子。
