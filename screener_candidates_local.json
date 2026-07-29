@@ -1,6 +1,94 @@
 {
- "updated_at": 1785324062,
- "updated_at_str": "2026-07-29 11:21 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785324962,
+ "updated_at_str": "2026-07-29 11:36 UTC",
+ "n_candidates": 3,
+ "candidates": [
+  {
+   "addr": "7gnPcVHLLmXMWLVtMDqFWyFK5KrFFF7CNwKL3s3MNSRr",
+   "name": "USWR / SOL",
+   "age_min": 128.66666666666666,
+   "created": 1785317242.0,
+   "price": 0.00019971768650741155,
+   "liq": 31712.8105,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 184.9764607759,
+   "vol_1h": 192735.17596077,
+   "chg_15m": 2.281,
+   "chg_1h": -98.957,
+   "buys_15m": 637,
+   "sells_15m": 0,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/7gnPcVHLLmXMWLVtMDqFWyFK5KrFFF7CNwKL3s3MNSRr",
+   "mint": "9u7tQ3VJYpCzUNh3d697ALxSH1e4yCDSP7fX4eeCPump",
+   "early_bot_flag": null,
+   "staircase_flag": true,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": true,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 14,
+    "exit_ratio": 0.6884348993644762,
+    "wallet_verdict": "33/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
+   }
+  },
+  {
+   "addr": "8siBdCpmMM7eGPkDw8W5xLVa7WQaoadMFWB2j5LgZV51",
+   "name": "GLADIATRICES / SOL",
+   "age_min": 47.86666666666667,
+   "created": 1785322090.0,
+   "price": 2.1116528430352067e-05,
+   "liq": 9452.8993,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 13725.1123524526,
+   "vol_1h": 175084.176001948,
+   "chg_15m": 29.204,
+   "chg_1h": -27.62,
+   "buys_15m": 166,
+   "sells_15m": 159,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/8siBdCpmMM7eGPkDw8W5xLVa7WQaoadMFWB2j5LgZV51",
+   "mint": "FcBrizhwVKycmZ5phHjUe4AnD6HSoS4AthB2whiepump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 4,
+    "exit_ratio": 0.9201873788070347,
+    "wallet_verdict": "34/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
+   }
+  },
+  {
+   "addr": "AXb2SyNHhdg6FgfU7gfrP73FNbxNEphYY7Pi55rij8FG",
+   "name": "USUR / SOL",
+   "age_min": 102.36666666666666,
+   "created": 1785318820.0,
+   "price": 4.759106782742287e-05,
+   "liq": 14432.0421,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 23.236778687,
+   "vol_1h": 31.024250197,
+   "chg_15m": 0.562,
+   "chg_1h": 1.674,
+   "buys_15m": 8,
+   "sells_15m": 0,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/AXb2SyNHhdg6FgfU7gfrP73FNbxNEphYY7Pi55rij8FG",
+   "mint": "hahkQzibVcMhmSdk2EoMzNBUCocKThWv8zq7Cmopump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": true,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": true,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": 0.2968786801016543,
+    "wallet_verdict": "钱包画像未见明显控盘迹象"
+   }
+  }
+ ]
 }
