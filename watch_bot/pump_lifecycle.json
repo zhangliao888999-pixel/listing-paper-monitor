@@ -500,5 +500,32 @@
   "history": [],
   "found_via": "late",
   "stack_deployed": true
+ },
+ "5NQVczipsbsbUJdbLPGqiM5DKp2xRg3YE2nn2QzRg7sW": {
+  "name": "MarsCoin / SOL",
+  "mint": "ACqRZc77WJR8f6XgGefJyVHUk8uBd5mZPLVXtcXPhi4B",
+  "first_seen": 1785319962.9578454,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
+ },
+ "3TRZ6n6tY9muQpm4SEpDYYAHqvdBJGCqH2B73EKKrLKo": {
+  "name": "TNOS / SOL",
+  "mint": "BXBvgFvmW78bft61tMn8uKJnjStqjGAHF7aCov8vpump",
+  "first_seen": 1785321218.0001807,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
+ },
+ "2L4SLLWbPfgScaTzocAiuLeARqz2bf1YqAHUbGdTPL23": {
+  "name": "TNOS / SOL",
+  "mint": "9Qe7RNtYfSAnEP28yCb3hgKnvzxaTyg4b58ch7Dvpump",
+  "first_seen": 1785321582.9791875,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
  }
 }
