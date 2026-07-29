@@ -128,6 +128,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "8.325"
+   },
+   {
+    "ts": 1785308750.986448,
+    "price": 4.622370196774152e-05,
+    "liq": 25318.7754,
+    "insider_sell_pct": 0.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "7.546"
    }
   ],
   "found_via": "late"
@@ -146,6 +155,15 @@
     "n_insiders": 19,
     "locked_liq_pct": "100.0",
     "h1_chg": "6.184"
+   },
+   {
+    "ts": 1785308760.8675606,
+    "price": 0.031310967118240995,
+    "liq": 404592.6225,
+    "insider_sell_pct": 0.18775691499754388,
+    "n_insiders": 19,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "5.558"
    }
   ],
   "found_via": "manual",
@@ -164,10 +182,23 @@
   "name": "FRANK / SOL",
   "mint": "CiSGU15anL48vZicgmXyi6aVWcqSng4CioV9BvxFnE5M",
   "first_seen": 1785305518.4850945,
-  "status": "alive",
-  "history": [],
+  "status": "dead",
+  "history": [
+   {
+    "ts": 1785308779.987935,
+    "price": 7.339528586912607e-05,
+    "liq": 0.0,
+    "insider_sell_pct": 0.8008715314043595,
+    "n_insiders": 21,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "894.911"
+   }
+  ],
   "found_via": "mcap_scanner",
-  "stack_deployed": true
+  "stack_deployed": true,
+  "died_at": 1785308779.987935,
+  "peak_price": 7.339528586912607e-05,
+  "hours_alive": 0.9059730112552643
  },
  "4GjG4TsyZmLNeL1DhhktLdZaXuT4hbLp9o1pe9Z6zpfa": {
   "name": "REDO / SOL",
@@ -176,27 +207,37 @@
   "status": "dead",
   "history": [
    {
-    "ts": 1785306565.086723,
+    "ts": 1785308789.7695312,
     "price": 2.930548541744169e-05,
     "liq": 0.0,
-    "insider_sell_pct": 0.9447587002636328,
-    "n_insiders": 34,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 31,
     "locked_liq_pct": "100.0",
     "h1_chg": "1301.207"
    }
   ],
   "found_via": "mcap_scanner",
   "stack_deployed": true,
-  "died_at": 1785306565.086723,
+  "died_at": 1785308789.7695312,
   "peak_price": 2.930548541744169e-05,
-  "hours_alive": 0.290666749742296
+  "hours_alive": 0.9086341964536243
  },
  "2QKtLGvQE5iKq1ZrVhSiUe5ZJevcUp2Jvc1xxZJiCSJr": {
   "name": "PANDZ / USDC",
   "mint": "Az6YddsEi4zvoz37z29dgu73QBedmjYH2BTHFGTSpump",
   "first_seen": 1785305527.318724,
   "status": "alive",
-  "history": [],
+  "history": [
+   {
+    "ts": 1785308799.7254705,
+    "price": 2.208724919192576e-05,
+    "liq": 17726.1142,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 3,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "440.489"
+   }
+  ],
   "found_via": "mcap_scanner",
   "stack_deployed": true
  },
@@ -205,7 +246,17 @@
   "mint": "2ibw1PmvyGVoVy1beiah8ktDisJonRvzCVUZhieWpump",
   "first_seen": 1785305615.8021562,
   "status": "alive",
-  "history": [],
+  "history": [
+   {
+    "ts": 1785308809.7018921,
+    "price": 7.177396027271429e-06,
+    "liq": 4046.6325,
+    "insider_sell_pct": 0.9996392671225242,
+    "n_insiders": 32,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "53.958"
+   }
+  ],
   "found_via": "mcap_scanner",
   "stack_deployed": true
  },
@@ -222,9 +273,22 @@
   "name": "FRANK / SOL",
   "mint": "FP5DqHVeAuFgmqAjm1NXfwwnp8oQtcbBqLR5rQrMRuPT",
   "first_seen": 1785305784.5207036,
-  "status": "alive",
-  "history": [],
+  "status": "dead",
+  "history": [
+   {
+    "ts": 1785308828.8276172,
+    "price": 4.636579411386447e-05,
+    "liq": 0.0,
+    "insider_sell_pct": 0.9307084583323034,
+    "n_insiders": 8,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "528.387"
+   }
+  ],
   "found_via": "mcap_scanner",
-  "stack_deployed": true
+  "stack_deployed": true,
+  "died_at": 1785308828.8276172,
+  "peak_price": 4.636579411386447e-05,
+  "hours_alive": 0.8456408093372981
  }
 }

@@ -1,0 +1,2 @@
+{"action": "BUY", "mint": "FP5DqHVeAuFgmqAjm1NXfwwnp8oQtcbBqLR5rQrMRuPT", "pos_size_usd": 5.0, "status": "dry_run", "ts": 1785305786}
+{"action": "SELL", "mint": "FP5DqHVeAuFgmqAjm1NXfwwnp8oQtcbBqLR5rQrMRuPT", "reason": "LIQ_LOW", "status": "dry_run", "ts": 1785305786}
