@@ -39,6 +39,7 @@ S.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
 POS_SIZE_USD = 5.0
 FAST_POLL_SEC = 2
 MAX_HOLD_SEC = 90          # REDO案例实测的毕业后存活窗口上限,超过这个算侥幸survived
+STRATEGY_VERSION = 1        # 这条腿是全新的,从v1开始记,方便以后调参时跟这批基线对比
 HARD_STOP_LOSS_PCT = 15    # 比pregrad_scalp_exit.py更紧——这里没有"等它再拉一拉"的
                             # 期待,纯粹是博反应速度,亏相跑得越早损失越小
 NEW_POOL_MAX_WAIT_SEC = 60  # 等新池子出现最多等这么久(FRANK案例新池子跟老池子
@@ -155,6 +156,7 @@ def finish_trade(entry_info, exit_reason, exit_price):
         "hold_sec": round(hold_sec, 1),
         "prior_entries_on_this_mint": entry_info["prior_entries"],
         "peak_price": entry_info.get("peak_price"),
+        "strategy_version": STRATEGY_VERSION,
     }
     write_journal(record)
     pnl_str = f"{pnl_pct:+.2f}%" if pnl_pct is not None else "未知"

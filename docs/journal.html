@@ -112,6 +112,37 @@ function renderJournal(records) {
     else totalLoss += dollarPnl;
   });
   const netIncome = totalProfit + totalLoss;
+
+  // 2026-07-29新增: 用户要求把参数改动前后的数据分开对比,不然新旧参数混在一起
+  // 没法判断优化有没有效果。按(策略,版本)分组,version缺失的历史记录会显示为
+  // "(无版本号)"——只有pregrad_ramp/post_grad_scalp这两个新策略才有版本概念。
+  const verGroups = {};
+  records.forEach(r => {
+    const key = `${r.found_via || "?"} · v${r.strategy_version ?? "(无版本号)"}`;
+    if (!verGroups[key]) verGroups[key] = [];
+    verGroups[key].push(r);
+  });
+  const verRows = Object.entries(verGroups).sort((a, b) => b[1].length - a[1].length).map(([key, rs]) => {
+    const invested = rs.reduce((a, r) => a + (Number(r.pos_size_usd) || 0), 0);
+    let profit = 0, loss = 0;
+    rs.forEach(r => {
+      if (r.pnl_pct == null || r.pos_size_usd == null) return;
+      const d = Number(r.pos_size_usd) * Number(r.pnl_pct) / 100;
+      if (d > 0) profit += d; else loss += d;
+    });
+    const net = profit + loss;
+    const pnls = rs.map(r => r.pnl_pct).filter(p => p != null).sort((a, b) => a - b);
+    const median = pnls.length ? (pnls.length % 2 ? pnls[(pnls.length - 1) / 2] : (pnls[pnls.length / 2 - 1] + pnls[pnls.length / 2]) / 2) : null;
+    return `<tr>
+      <td>${esc(key)}</td>
+      <td>${rs.length}</td>
+      <td>$${fmtNum(invested, 2)}</td>
+      <td class="${net >= 0 ? 'pos' : 'neg'}">${net >= 0 ? '+' : '-'}$${fmtNum(Math.abs(net), 2)}</td>
+      <td>${net && invested ? (net / invested * 100).toFixed(1) : '0.0'}%</td>
+      <td>${median == null ? '-' : (median >= 0 ? '+' : '') + median.toFixed(2) + '%'}</td>
+    </tr>`;
+  }).join("");
+
   const rows = records.map(r => {
     const pnl = r.pnl_pct;
     const pnlCls = pnl > 0.05 ? "pos" : pnl < -0.05 ? "neg" : "zero";
@@ -128,6 +159,7 @@ function renderJournal(records) {
       <td>$${fmtNum(r.entry_fdv_usd, 0)}</td>
       <td>${fmtNum(r.n_insiders, 0)}</td>
       <td>${esc(r.found_via)}</td>
+      <td>${r.strategy_version ?? "-"}</td>
       <td>${r.prior_entries_on_this_mint || 0}</td>
       <td>${r.dry_run ? "dry-run" : "实盘"}</td>
     </tr>`;
@@ -142,11 +174,17 @@ function renderJournal(records) {
       <span>累计亏损 <b class="neg">-$${fmtNum(Math.abs(totalLoss), 2)}</b></span>
       <span>净收入 <b class="${netIncome >= 0 ? 'pos' : 'neg'}">${netIncome >= 0 ? '+' : '-'}$${fmtNum(Math.abs(netIncome), 2)}</b></span>
     </div>
+    <table style="margin-bottom:16px;">
+      <thead><tr>
+        <th>策略 · 版本</th><th>笔数</th><th>投入</th><th>净收入</th><th>资金回报率</th><th>pnl中位数</th>
+      </tr></thead>
+      <tbody>${verRows}</tbody>
+    </table>
     <table>
       <thead><tr>
         <th>币种</th><th>建仓时间</th><th>建仓时币龄</th><th>仓位</th><th>持仓时长</th>
         <th>退出原因</th><th>涨跌幅</th><th>锁仓%</th><th>建仓时流动性</th><th>建仓时MCAP</th>
-        <th>已知操盘方钱包数</th><th>发现方式</th><th>反复进入次数</th><th>模式</th>
+        <th>已知操盘方钱包数</th><th>发现方式</th><th>版本</th><th>反复进入次数</th><th>模式</th>
       </tr></thead>
       <tbody>${rows}</tbody>
     </table>`;

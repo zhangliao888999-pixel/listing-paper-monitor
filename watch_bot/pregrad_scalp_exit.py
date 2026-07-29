@@ -64,6 +64,12 @@ PLATEAU_BAND_PCT = 5
 TRAIL_STOP_PCT = 15       # 从最高点回撤这么多就跑,不贪图猜中最高点(原20)
 HARD_STOP_LOSS_PCT = 20   # 从没盈利过、直接跌破入场价这么多,说明这次没被拉起来,止损离场(原35)
 
+# 2026-07-29白天新增: 用户明确要求把参数改动前后的数据分开标记,不然新旧参数
+# 混在一起没法判断这次优化到底有没有效果。v1=改动前(5秒轮询,20%/35%止盈止损,
+# 无流动性门槛,无90秒无动能提前离场);v2=本次改动后(见上面几个常量)。
+# journal.jsonl里v1时期的历史记录已经用一次性迁移脚本补上了这个字段。
+STRATEGY_VERSION = 2
+
 LOG_F = None
 
 
@@ -202,6 +208,7 @@ def finish_trade(entry_info, exit_reason, exit_price):
         "hold_sec": round(hold_sec, 1),
         "prior_entries_on_this_mint": entry_info["prior_entries"],
         "peak_price": entry_info.get("peak_price"),
+        "strategy_version": STRATEGY_VERSION,
     }
     write_journal(record)
     pnl_str = f"{pnl_pct:+.2f}%" if pnl_pct is not None else "未知(拿不到退出价)"
