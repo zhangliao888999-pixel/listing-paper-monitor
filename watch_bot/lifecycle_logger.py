@@ -26,7 +26,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from check_coin import GT_BASE, S, GMGN_S, get, check_pool_and_mint
 
-MAX_CONCURRENT_DEPLOYED = 8  # 同时自动部署监控+模拟交易的池子数上限,避免资源/GMGN调用量失控
+
+# 2026-07-29晚间调低: 云端迁移后连续3次重启,每次都在10-15分钟左右彻底卡死
+# (不是候选变少,是lifecycle_runner_loop自己每10分钟一次的git_sync都停了)。
+# 这个上限跟pregrad_scanner.py自己的MAX_CONCURRENT完全独立,互不知道对方——
+# 两边加起来最多可能同时有6个pregrad仓位+8个mcap全套监控(每套crash_watch/
+# insider_sell_watch/snipe_exit三个子进程),总共二三十个进程一起打同一个
+# GT/GMGN限流接口。云端在GitHub Actions共享IP上,能扛住的限流预算大概率比
+# 本地独享IP小,原来8这个上限是照着本地实测调的,先往下压到4,配合pregrad那边
+# 从6压到3(见pregrad_scanner.py),把系统总并发量砍掉一半以上再看是否还会卡死。
+MAX_CONCURRENT_DEPLOYED = 4
 from operator_registry import matches_pump_signature, matches_early_signature, matches_origin_mcap_signature, rugcheck_creator
 
 HERE = Path(__file__).parent
