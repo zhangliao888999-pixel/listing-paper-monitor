@@ -209,6 +209,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785355738.502803,
+    "price": 5.01436440572759e-06,
+    "liq": 5038.6625,
+    "insider_sell_pct": 0.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late"
@@ -217,7 +226,7 @@
   "name": "TNOS / SOL(第二个,撞名)",
   "mint": "A3P8MSeJ3e3Bi2GSKztbgctRqLwXhNMUFU65qdmgpump",
   "first_seen": 1785300922.2875211,
-  "status": "alive",
+  "status": "dead",
   "history": [
    {
     "ts": 1785305474.177887,
@@ -281,10 +290,22 @@
     "n_insiders": 21,
     "locked_liq_pct": "100.0",
     "h1_chg": "3.739"
+   },
+   {
+    "ts": 1785355742.1397,
+    "price": 1.4432859396000393e-06,
+    "liq": 1467.5613,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 23,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "-0.586"
    }
   ],
   "found_via": "manual",
-  "stack_deployed": true
+  "stack_deployed": true,
+  "died_at": 1785355742.1397,
+  "peak_price": 0.04834467546019934,
+  "hours_alive": 15.227736716336674
  },
  "BKSxKPaEJ5PLfUoJzrf57TEbBr5xvArALBGoR6zcaA8E": {
   "name": "SPCX4200 / SOL",
@@ -581,6 +602,15 @@
     "n_insiders": 40,
     "locked_liq_pct": "100.0",
     "h1_chg": "1.021"
+   },
+   {
+    "ts": 1785355761.1421924,
+    "price": 0.005154895754576592,
+    "liq": 162026.5918,
+    "insider_sell_pct": 0.033842629684899664,
+    "n_insiders": 40,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "4.331"
    }
   ],
   "found_via": "late",
@@ -795,6 +825,15 @@
     "n_insiders": 32,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785355770.758398,
+    "price": 7.690842273502484e-05,
+    "liq": 66349.9784,
+    "insider_sell_pct": 0.8209101418866039,
+    "n_insiders": 32,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -832,6 +871,15 @@
     "n_insiders": 2,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785355780.4262266,
+    "price": 2.4653424620314332e-05,
+    "liq": 17167.4645,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 2,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -865,6 +913,15 @@
     "ts": 1785341733.2951703,
     "price": 1.4989767296127738e-05,
     "liq": 12721.0192,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1785355790.0797606,
+    "price": 1.4989767296127738e-05,
+    "liq": 12752.5188,
     "insider_sell_pct": 1.0,
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
@@ -915,7 +972,7 @@
   "name": "GDWR / SOL",
   "mint": "26q7WfYEiB5VUi27DmRvpjXRsfces944uPPjHMwLPUMP",
   "first_seen": 1785330573.6923714,
-  "status": "alive",
+  "status": "dead",
   "history": [
    {
     "ts": 1785333762.5716617,
@@ -934,10 +991,22 @@
     "n_insiders": 8,
     "locked_liq_pct": "100.0",
     "h1_chg": "43.552"
+   },
+   {
+    "ts": 1785355809.0792763,
+    "price": 1.2986033419270497e-06,
+    "liq": 1343.2103,
+    "insider_sell_pct": 0.9997402077327059,
+    "n_insiders": 18,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "mcap_scanner",
-  "stack_deployed": true
+  "stack_deployed": true,
+  "died_at": 1785355809.0792763,
+  "peak_price": 0.038793785392677374,
+  "hours_alive": 7.009829695820809
  },
  "Fws2USpcu63TASDizHezF2kwRRXsdKua5m2fSrVrwYwN": {
   "name": "BCAT / SOL",
@@ -975,6 +1044,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785355818.7415178,
+    "price": 1.83443359777137e-05,
+    "liq": 14047.5758,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -994,6 +1072,15 @@
     "n_insiders": 3,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785355828.395605,
+    "price": 1.342723269450077e-05,
+    "liq": 10123.6683,
+    "insider_sell_pct": 0.4117799646282715,
+    "n_insiders": 3,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -1003,10 +1090,23 @@
   "name": "TNOS / SOL",
   "mint": "5xTJBERe21uZToiJHpUG45sD3wNtn2d4ra11j4FSPUMP",
   "first_seen": 1785341911.839228,
-  "status": "alive",
-  "history": [],
+  "status": "dead",
+  "history": [
+   {
+    "ts": 1785355838.037447,
+    "price": 1.3702222630057198e-06,
+    "liq": 1462.5845,
+    "insider_sell_pct": 0.9951839141144292,
+    "n_insiders": 11,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   }
+  ],
   "found_via": "mcap_scanner",
-  "stack_deployed": true
+  "stack_deployed": true,
+  "died_at": 1785355838.037447,
+  "peak_price": 1.3702222630057198e-06,
+  "hours_alive": 3.8683883941835826
  },
  "HoamtRRjRHV25KFXvFpf6zKi5vDMR3DAFfNHx2GrwARp": {
   "name": "Coyote / SOL",
