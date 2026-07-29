@@ -22,7 +22,9 @@ from check_coin import GT_BASE, S, GMGN_S, get
 PRICE_POLL_SEC = 60
 SELLPCT_POLL_SEC = 300
 LIQ_CRASH_THRESHOLD = 0.7
-MAX_RUNTIME_SEC = 3600
+# 2026-07-29晚间改: 原来1小时上限是为了配合Claude逐小时手动续,通宵没人盯着重启
+# 风险更高(错过一次通知,这个币就断档几小时没人看),改成8小时,覆盖一整晚睡眠时间。
+MAX_RUNTIME_SEC = 28800
 
 
 def log(log_f, msg):

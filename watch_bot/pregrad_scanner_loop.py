@@ -10,7 +10,8 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 INTERVAL_SEC = 30
-ROUNDS = 120   # 跑1小时(120*30秒)
+ROUNDS = 1200   # 2026-07-29晚间改: 原1小时(120轮)是配合逐小时手动续,通宵没人盯着
+                 # 风险更高,改成10小时(1200*30秒),覆盖一整晚睡眠时间
 
 for i in range(ROUNDS):
     ts = dt.datetime.now().strftime("%H:%M:%S")

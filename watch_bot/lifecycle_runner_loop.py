@@ -17,8 +17,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lifecycle_logger import scan_and_log
 
 INTERVAL_SEC = 600   # 10分钟一轮
-ROUNDS = 6           # 跑1小时(6*10分钟)——切成小段跑,方便及时检查+发现新币就推送通知,
-                     # 不用一次挂5小时看不到中途进展
+# 2026-07-29晚间改: 原1小时(6轮)是为了切成小段方便随时检查,但通宵没人盯着重启,
+# 断档风险比"看不到中途进展"更糟,改成10小时(60*10分钟),覆盖一整晚睡眠时间
+ROUNDS = 60
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 STATE_PATH = str(REPO_ROOT / "screener_state_local.json")
