@@ -1,6 +1,36 @@
 {
- "updated_at": 1785292562,
- "updated_at_str": "2026-07-29 02:36 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785292862,
+ "updated_at_str": "2026-07-29 02:41 UTC",
+ "n_candidates": 1,
+ "candidates": [
+  {
+   "addr": "6stXLsnYBBoaRLGM1o4mhPRaY1WojmxwzHSNWkGnXKt",
+   "name": "TIKTOK / USDC",
+   "age_min": 12.5,
+   "created": 1785292112.0,
+   "price": 3.255989466272861e-05,
+   "liq": 20501.1545,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 103.082294054,
+   "vol_1h": 7804.7632592914,
+   "chg_15m": 1.58,
+   "chg_1h": 162.073,
+   "buys_15m": 11,
+   "sells_15m": 0,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/6stXLsnYBBoaRLGM1o4mhPRaY1WojmxwzHSNWkGnXKt",
+   "mint": "GQcKMSVut51wWj33BHFWB6CrT8iN59iiKRpmnLNXmoon",
+   "early_bot_flag": false,
+   "staircase_flag": false,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": false,
+    "n_traders": 39,
+    "n_suspicious": 0,
+    "exit_ratio": 0.24361093265267464,
+    "wallet_verdict": "38/39个头部钱包卖出不到30%，主力大部分仓位还在场内"
+   }
+  }
+ ]
 }
