@@ -42,7 +42,17 @@ def make_prefix(addr):
 
 def load_seen():
     if SEEN_F.exists():
-        return json.loads(SEEN_F.read_text(encoding="utf-8"))
+        try:
+            return json.loads(SEEN_F.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            # 2026-07-29晚间修复: 本地实测踩到过一次——之前git stash pop冲突时
+            # 这个文件被留下了没解决的冲突标记,变成无效JSON,导致每一轮都在这一行
+            # 直接崩溃退出。pregrad_scanner_loop.py用subprocess.run(没有check=True)
+            # 调这个脚本,子进程崩溃不会让外层循环报错,只会静默地"什么也没发生",
+            # 每30秒重复失败,整条腿彻底停摆却看不出任何异常。文件坏了就清空重来,
+            # 顶多重复部署几个已经在跑的候选,总比直接死循环卡死强。
+            print(f"警告: {SEEN_F}内容不是有效JSON,当作空的重新开始")
+            return {}
     return {}
 
 

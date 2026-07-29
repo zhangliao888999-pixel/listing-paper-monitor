@@ -21,7 +21,13 @@ for i in range(ROUNDS):
     ts = dt.datetime.now().strftime("%H:%M:%S")
     print(f"\n[{ts}] === 第{i+1}/{ROUNDS}轮 ===")
     try:
-        subprocess.run([sys.executable, str(HERE / "pregrad_scanner.py")], cwd=str(HERE))
+        result = subprocess.run([sys.executable, str(HERE / "pregrad_scanner.py")], cwd=str(HERE))
+        # 2026-07-29晚间新增: subprocess.run不带check=True,子进程崩溃(比如
+        # pregrad_seen.json损坏导致的JSONDecodeError)不会被这层try/except抓到,
+        # 只会静默地"这轮什么也没打印",云端连续几十分钟看不出任何异常。加一行
+        # 显式检查退出码,崩溃了至少在日志里喊一声,方便事后排查。
+        if result.returncode != 0:
+            print(f"警告: pregrad_scanner.py本轮退出码非0({result.returncode}),可能崩溃了")
     except Exception as e:
         print(f"本轮出错: {e}")
     if i < ROUNDS - 1:
