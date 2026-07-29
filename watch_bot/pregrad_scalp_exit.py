@@ -55,10 +55,14 @@ POS_SIZE_USD = 5.0
 POLL_SEC = 5
 FAST_RECHECK_SEC = POLL_SEC  # 暂时跟POLL_SEC一致,相当于关闭加密复查,先保吞吐量
 MAX_HOLD_SEC = 180        # 硬超时3分钟——REDO/FRANK从创世到毕业都在这个量级内
-PLATEAU_CHECK_SEC = 90    # 新增: 419笔数据显示HARD_TIMEOUT一半是中位数~0%的死账户,
-                           # 白白占了3分钟仓位。90秒时如果价格基本没动(在入场价±5%内),
-                           # 提前离场腾仓位,不硬等满3分钟
-PLATEAU_BAND_PCT = 5
+# 2026-07-29晚间撤回: v3的90秒"无动能提前离场"检测,用户查了JESTERS这一笔实锤——
+# 91秒内价格深V(暴跌到entry的24%又拉回接近原价),净变动看起来~0%触发提前离场,
+# 但退场后20-30分钟price从1.03e-5一路拉到1.94e-5(+412% h6)。90秒的净变动量
+# 分不清"真的没动能"和"剧烈整理蓄势",而这个策略的收益完全靠偶尔抓到这种肥尾撑
+# 起来(v1数据: HARD_TIMEOUT中位数~0%,均值+27%全靠极少数暴力单)——错杀一个
+# 肥尾的机会成本,远大于另外4/5正确案例省下的那点"本来就快到0%"的亏损。整条
+# 规则移除,不再提前离场,只靠移动止盈/硬止损/硬超时三条线控制风险。
+PLATEAU_CHECK_SEC = None
 # 原20%/35%的止损止盈线,实测中位数超调都相当可观(尤其HARD_STOP_LOSS超调13.3pp,
 # 45%的单子超调>20pp)——既然结算价本来就会比设定线更差,把设定线本身收紧,
 # 让"更差的结算价"落在更能接受的范围,而不是继续放任-48%中位数这种结果。
@@ -69,10 +73,10 @@ HARD_STOP_LOSS_PCT = 20   # 从没盈利过、直接跌破入场价这么多,说
 # 混在一起没法判断这次优化到底有没有效果。v1=改动前(5秒轮询,20%/35%止盈止损,
 # 无流动性门槛,无90秒无动能提前离场);v2=本次改动后(见上面几个常量)。
 # journal.jsonl里v1时期的历史记录已经用一次性迁移脚本补上了这个字段。
-STRATEGY_VERSION = 3   # v2那版(3秒轮询+1.5秒自适应)在云端43分钟0笔交易完成,是
-                        # 半途夭折的坏版本,不能跟v1混着比较真实效果——这版(轮询改回
-                        # 5秒+并发上限,保留止损止盈线收紧/流动性门槛/90秒无动能检测)
-                        # 单独算v3,免得v2那批稀少又异常的数据污染对比结论
+STRATEGY_VERSION = 4   # v2=半途夭折的坏版本(3秒轮询无并发上限,云端卡死);
+                        # v3=轮询改回5秒+并发上限+90秒无动能提前离场;
+                        # v4=撤回90秒提前离场(JESTERS实锤证明会错杀肥尾),
+                        # 只保留移动止盈15%/硬止损20%/流动性入场门槛这几项改动
 
 LOG_F = None
 
@@ -271,7 +275,6 @@ def main():
     peak_price = entry_price
     n_fail_in_a_row = 0
     was_declining = False   # 上一次观察到价格低于峰值,下一次用更短间隔加密复查
-    plateau_checked = False
     entry_ts = entry_info["entry_ts"]
     deadline = entry_ts + MAX_HOLD_SEC
     while time.time() < deadline:
@@ -315,18 +318,6 @@ def main():
             entry_info["peak_price"] = peak_price
             finish_trade(entry_info, "HARD_STOP_LOSS", price)
             return
-
-        # 2026-07-29白天新增: 419笔数据显示HARD_TIMEOUT一半是中位数~0%的死账户,
-        # 白白占满3分钟仓位没有任何意义。90秒时价格基本没挪窝(入场价±5%内),提前
-        # 离场腾仓位,不硬等满3分钟去赌一个已经看起来没有动能的池子。
-        if not plateau_checked and time.time() - entry_ts >= PLATEAU_CHECK_SEC:
-            plateau_checked = True
-            move_pct = abs(price / entry_price - 1) * 100
-            if move_pct < PLATEAU_BAND_PCT:
-                log(f"*** {PLATEAU_CHECK_SEC:.0f}秒时价格仍在入场价±{PLATEAU_BAND_PCT}%内(现变动{move_pct:.1f}%),判定没动能,提前离场腾仓位 ***")
-                entry_info["peak_price"] = peak_price
-                finish_trade(entry_info, "PLATEAU_NO_MOMENTUM", price)
-                return
 
     log(f"=== 硬超时{MAX_HOLD_SEC}秒到,不管当前盈亏直接离场(不恋战,不赌毕业后的行情) ===")
     final_snap = get_pool_snapshot(addr)
