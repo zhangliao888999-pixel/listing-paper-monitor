@@ -1,0 +1,83 @@
+{
+ "D2LYWZG97jxqvhy4LxgsWgVJUAsbs8X2cwfHqGS6yVrd": {
+  "first_seen_mint": "XQ3UaYsPJP5pvusq4PcnJDSV8STw33TGMJzq9ospump",
+  "seen_tokens": [
+   "XQ3UaYsPJP5pvusq4PcnJDSV8STw33TGMJzq9ospump"
+  ],
+  "creator_created_count": 1,
+  "realized_profit": 40299.32502747369,
+  "total_profit_pnl": -1.000218903754548,
+  "total_volume": 8.81974287943,
+  "tags": [],
+  "qualified": false,
+  "last_checked": 1785284662.0350313
+ },
+ "DCwwwHgbnYGTdUQk7BMQKzWQcXSrTNudbb9QudR8QM3y": {
+  "first_seen_mint": "abebotGU6ZVRL6gm78CD4PYZ35CfGLKFk8A6hLgpump",
+  "seen_tokens": [
+   "abebotGU6ZVRL6gm78CD4PYZ35CfGLKFk8A6hLgpump"
+  ],
+  "creator_created_count": 1,
+  "realized_profit": 56706.016488575704,
+  "total_profit_pnl": -1.060684593870418,
+  "total_volume": 3244.30240667646,
+  "tags": [
+   "fresh_wallet"
+  ],
+  "qualified": false,
+  "last_checked": 1785284663.3848507
+ },
+ "6Wg4aeZ29WRKDsM695c7tTT8oYAcbvFq7DYn8416BPBg": {
+  "first_seen_mint": "uWaByyZSB7CcDgNUAwJUoqH9MNiUJjqFuD7rvHxpump",
+  "seen_tokens": [
+   "uWaByyZSB7CcDgNUAwJUoqH9MNiUJjqFuD7rvHxpump"
+  ],
+  "creator_created_count": 3,
+  "realized_profit": 52399.86044706695,
+  "total_profit_pnl": -1.893801454289328,
+  "total_volume": 45.87273935519,
+  "tags": [
+   "fresh_wallet"
+  ],
+  "qualified": false,
+  "last_checked": 1785284664.6253269
+ },
+ "14ZmvqkfaLktiWh2S7efeNpzQqQZ5RxxEae3ufepjiyp": {
+  "first_seen_mint": "9nw6iBfggduzf9bXP7Rk5JRpT2iisjaGL21LzMF9moon",
+  "seen_tokens": [
+   "9nw6iBfggduzf9bXP7Rk5JRpT2iisjaGL21LzMF9moon"
+  ],
+  "creator_created_count": 0,
+  "realized_profit": 0,
+  "total_profit_pnl": 0,
+  "total_volume": 0,
+  "tags": [],
+  "qualified": false,
+  "last_checked": 1785284665.8286808
+ },
+ "2kBJEUNjWNgDJwMjWbxgEeZ7krvH324mxwagoJgtmgGR": {
+  "first_seen_mint": null,
+  "seen_tokens": [],
+  "creator_created_count": 119,
+  "realized_profit": 3978.6074532747,
+  "total_profit_pnl": 0.10331084737440094,
+  "total_volume": 42489.64046083618,
+  "tags": [
+   "trojan",
+   "padre"
+  ],
+  "qualified": true,
+  "last_checked": 1785284683.703464
+ },
+ "GykU3Wkx2hFexJUoshCTKQeroCmM2pBULwkZE1aBrwRA": {
+  "first_seen_mint": null,
+  "seen_tokens": [],
+  "creator_created_count": 50,
+  "realized_profit": -24533.444745497247,
+  "total_profit_pnl": -0.10055539191626593,
+  "total_volume": 219445.96081364606,
+  "tags": [],
+  "qualified": false,
+  "last_checked": 1785284683.856427
+ }
+}
