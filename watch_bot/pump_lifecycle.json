@@ -13,6 +13,24 @@
     "n_insiders": 39,
     "locked_liq_pct": "100.0",
     "h1_chg": "13.816"
+   },
+   {
+    "ts": 1785292061.7708755,
+    "price": 0.042630245542273834,
+    "liq": 470893.4873,
+    "insider_sell_pct": 0.07097547681643095,
+    "n_insiders": 39,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "12.088"
+   },
+   {
+    "ts": 1785295639.5463707,
+    "price": 0.04980940025563635,
+    "liq": 509204.3637,
+    "insider_sell_pct": 0.07061152533060738,
+    "n_insiders": 39,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "16.503"
    }
   ]
  },
@@ -20,7 +38,7 @@
   "name": "GDWR / SOL",
   "mint": "uWaByyZSB7CcDgNUAwJUoqH9MNiUJjqFuD7rvHxpump",
   "first_seen": 1785252581,
-  "status": "alive",
+  "status": "dead",
   "history": [
    {
     "ts": 1785290661.3981266,
@@ -30,14 +48,26 @@
     "n_insiders": 23,
     "locked_liq_pct": "100.0",
     "h1_chg": "3.79"
+   },
+   {
+    "ts": 1785292062.8416297,
+    "price": 2.0373978592325585e-06,
+    "liq": 1723.2646,
+    "insider_sell_pct": 0.9994728479817818,
+    "n_insiders": 15,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "-99.879"
    }
-  ]
+  ],
+  "died_at": 1785292062.8416297,
+  "peak_price": 0.0016889119951111005,
+  "hours_alive": 10.967178230484327
  },
  "6YM2gfZHoYQAKrgfrUZwxQYrannmMhjtG9f5bsEw2CqB": {
   "name": "CXMT / SOL(新)",
   "mint": "Htc98Krdpch3mCJnCD9NXjWRgETgpYwj73SFKw9qXYbc",
   "first_seen": 1785290708.795452,
-  "status": "alive",
+  "status": "dead",
   "history": [
    {
     "ts": 1785290709.6965375,
@@ -47,8 +77,47 @@
     "n_insiders": 37,
     "locked_liq_pct": "0.0",
     "h1_chg": "98.082"
+   },
+   {
+    "ts": 1785292063.935356,
+    "price": 1.6062183570907867e-05,
+    "liq": 7.87692916e-05,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 40,
+    "locked_liq_pct": "0.0",
+    "h1_chg": "141.465"
    }
   ],
-  "note": "0%锁仓,对照样本"
+  "note": "0%锁仓,对照样本",
+  "died_at": 1785292063.935356,
+  "peak_price": 1.6062183570907867e-05,
+  "hours_alive": 0.3764277510510551
+ },
+ "6stXLsnYBBoaRLGM1o4mhPRaY1WojmxwzHSNWkGnXKt": {
+  "name": "TIKTOK / USDC",
+  "mint": "GQcKMSVut51wWj33BHFWB6CrT8iN59iiKRpmnLNXmoon",
+  "first_seen": 1785294142.6360219,
+  "status": "alive",
+  "history": [
+   {
+    "ts": 1785295649.512918,
+    "price": 3.503482213391749e-05,
+    "liq": 21416.1535,
+    "insider_sell_pct": 0.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "9.301"
+   }
+  ],
+  "found_via": "late"
+ },
+ "8QmHfY7PCi4HSDg5z8Fr3nTtab3hZeAxZPJxxzpPVUcy": {
+  "name": "TNOS / SOL(第二个,撞名)",
+  "mint": "A3P8MSeJ3e3Bi2GSKztbgctRqLwXhNMUFU65qdmgpump",
+  "first_seen": 1785300922.2875211,
+  "status": "alive",
+  "history": [],
+  "found_via": "manual",
+  "stack_deployed": true
  }
 }

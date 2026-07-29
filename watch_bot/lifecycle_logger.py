@@ -16,6 +16,8 @@
 用法: python lifecycle_logger.py [screener_state_local.json路径]
 """
 import json
+import re
+import subprocess
 import sys
 import time
 import statistics
@@ -23,6 +25,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from check_coin import GT_BASE, S, GMGN_S, get, check_pool_and_mint
+
+MAX_CONCURRENT_DEPLOYED = 8  # 同时自动部署监控+模拟交易的池子数上限,避免资源/GMGN调用量失控
 from operator_registry import matches_pump_signature, matches_early_signature, matches_origin_mcap_signature, rugcheck_creator
 
 HERE = Path(__file__).parent
@@ -91,6 +95,56 @@ def update_death_status(entry):
             entry["hours_alive"] = (cur["ts"] - entry["first_seen"]) / 3600
 
 
+def make_prefix(addr):
+    """拿池子地址前8位做日志文件名前缀,过滤掉可能有问题的字符。"""
+    return re.sub(r"[^A-Za-z0-9]", "", addr)[:8]
+
+
+def deploy_full_stack(addr, mint, db):
+    """2026-07-29新增: 用户明确要求"纸盘可以完全大胆尝试,筛选出来的币质量都
+    很高,全部拿去跑全流程采集数据"——不用我每次手动一个个接,发现新样本就自动
+    部署完整三件套(crash_watch取证监控 + insider_sell_watch已知钱包盯防 +
+    snipe_exit.py dry-run模拟买卖),全部只读/dry-run,不碰真钱。
+    加了并发上限(MAX_CONCURRENT_DEPLOYED),避免同时跑的池子太多把GMGN调用量
+    和本机资源拖垮。"""
+    here = Path(__file__).parent
+    n_deployed = sum(1 for v in db.values() if v.get("stack_deployed"))
+    if n_deployed >= MAX_CONCURRENT_DEPLOYED:
+        return False
+
+    prefix = make_prefix(addr)
+    wallets_f = here / f"{prefix}_insider_wallets.json"
+    try:
+        d = get(GMGN_S, f"https://gmgn.ai/vas/api/v1/token_traders/sol/{mint}", {"limit": 40})
+        rows = (d or {}).get("data", {}).get("list", [])
+        insiders = [r["address"] for r in rows if any(t in (r.get("maker_token_tags") or [])
+                   for t in ("bundler", "transfer_in", "creator", "dev_team"))]
+        wallets_f.write_text(json.dumps(insiders, ensure_ascii=False, indent=1), encoding="utf-8")
+    except Exception:
+        insiders = []
+
+    py = sys.executable
+    # 用DETACHED_PROCESS+CREATE_NEW_PROCESS_GROUP,让子进程完全独立于lifecycle_logger
+    # 自己这个父进程——lifecycle_runner_loop.py每小时会被我重启一次,不加这个的话
+    # 子进程会被一起杀掉,之前部署的监控全部白费
+    creationflags = 0
+    if hasattr(subprocess, "DETACHED_PROCESS"):
+        creationflags = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP
+    log_devnull = subprocess.DEVNULL
+    try:
+        subprocess.Popen([py, str(here / "crash_watch.py"), addr, mint, prefix],
+                         cwd=str(here), stdout=log_devnull, stderr=log_devnull, creationflags=creationflags)
+        if insiders:
+            subprocess.Popen([py, str(here / "insider_sell_watch.py"), addr, str(wallets_f), prefix],
+                             cwd=str(here), stdout=log_devnull, stderr=log_devnull, creationflags=creationflags)
+        subprocess.Popen([py, str(here / "snipe_exit.py"), addr],
+                         cwd=str(here), stdout=log_devnull, stderr=log_devnull, creationflags=creationflags)
+        return True
+    except Exception as e:
+        print(f"自动部署失败: {e}")
+        return False
+
+
 def scan_and_log(state_path, max_new_scan=300):
     """两步走: 1) 从追踪池子里找新的匹配"操盘方拉升"特征的池子,加入lifecycle库
     2) 给库里所有还"活着"的池子记一条新快照,顺便判断有没有刚刚死亡"""
@@ -130,6 +184,11 @@ def scan_and_log(state_path, max_new_scan=300):
                 n_new_mcap += 1
             elif is_early:
                 n_new_early += 1
+            # 2026-07-29新增: 用户明确要求发现新样本就自动全流程部署,不用手动一个个接
+            deployed = deploy_full_stack(addr, mint, db)
+            db[addr]["stack_deployed"] = deployed
+            if deployed:
+                print(f"  已自动部署监控+模拟交易: {w.get('name')} ({addr[:10]}...)")
         print(f"新发现符合特征的池子: {n_new}个(起点MCAP发现{n_new_mcap}个,早期1-90分钟发现{n_new_early}个)")
 
     # 第二步: 给所有还活着的池子记一条新快照
