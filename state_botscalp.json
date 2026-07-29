@@ -37831,6 +37831,28 @@
    "reason": "LIQ_LOW",
    "ret": 0.0869,
    "t_exit": 1785295383
+  },
+  {
+   "name": "Kettle / SOL",
+   "entry": 3.186056285155085e-05,
+   "t_entry": 1785295563,
+   "bot_avg_trade_usd": 16.39,
+   "entry_locked_liq_pct": 100.0,
+   "entry_buyers_h1": 81,
+   "entry_sellers_h1": 65,
+   "entry_buy_sell_ratio_h1": 1.2461538461538462,
+   "entry_price_change_h1_pct": 10.456,
+   "entry_n_wallets": 98,
+   "bot_wallet_addr": "2tgUbS9UMoQD6GkDZBiqKYCURnGrSb6ocYwRABrSJUvY",
+   "total_checks": 1,
+   "consecutive_no_price": 0,
+   "mark": 3.46413025961281e-05,
+   "mark_ret": 0.08727842497741345,
+   "addr": "2kzNWoW9EodxmCiFMUFMTzjCJmJSMCYvGKXYuzD8u37i",
+   "exit": 3.46413025961281e-05,
+   "reason": "LIQ_LOW",
+   "ret": 0.0873,
+   "t_exit": 1785295563
   }
  ]
 }
