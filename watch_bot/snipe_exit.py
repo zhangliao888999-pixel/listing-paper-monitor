@@ -52,8 +52,11 @@ except ImportError:
     sys.exit(1)
 
 HERE = Path(__file__).parent
-LOG_F = HERE / "snipe_exit.log"
-ORDERS_LOG_F = HERE / "snipe_orders.jsonl"
+JOURNAL_F = HERE / "journal.jsonl"  # 2026-07-29新增: 详细交易台账,所有币共用一份,
+                                     # 每笔完整的买卖记一整条(币的详细情况+进场时间点+
+                                     # 崩盘特征+仓位),不是简单的买/卖两条散记录
+LOG_F = None       # main()里按池子地址派生前缀后赋值,避免自动部署多个币同时跑
+ORDERS_LOG_F = None  # 时互相覆盖同一份文件
 
 SOL_MINT = "So11111111111111111111111111111111111111112"
 JUPITER_QUOTE_URL = "https://lite-api.jup.ag/swap/v1/quote"
@@ -93,6 +96,33 @@ def audit(record):
     record["ts"] = int(time.time())
     with ORDERS_LOG_F.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def write_journal(record):
+    """2026-07-29新增: 详细交易台账,一笔完整买卖(从建仓到清仓)写一整条,不是
+    audit()那种零散的买/卖动作记录。用户明确要求要详细:币的具体情况(名字/mint/
+    锁仓/流动性/MCAP/操盘方钱包结构)、进场时间点(相对这个币自己创建了多久)、
+    仓位大小、退出原因、崩盘特征(如果后来死了的话)、是否反复进入同一个币。
+    所有币共用一份文件,追加写入,方便以后横向统计对比。"""
+    record["written_at"] = int(time.time())
+    with JOURNAL_F.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def count_prior_entries(mint):
+    """查一下journal里这个mint之前进过几次仓,用来标记"是否反复进入"。"""
+    if not JOURNAL_F.exists():
+        return 0
+    n = 0
+    with JOURNAL_F.open(encoding="utf-8") as f:
+        for line in f:
+            try:
+                rec = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if rec.get("mint") == mint:
+                n += 1
+    return n
 
 
 def is_live_mode():
@@ -300,11 +330,56 @@ def do_sell(wallet, mint, qty_raw, reason, dry_run):
           "status": "confirmed" if ok else "unconfirmed"})
 
 
+def make_prefix(addr):
+    return re.sub(r"[^A-Za-z0-9]", "", addr)[:8]
+
+
+def finish_trade(entry_info, exit_reason, exit_price):
+    """2026-07-29新增: 一笔交易结束时,把完整的台账记下来——币的详细情况(名字/mint/
+    地址/锁仓/流动性/MCAP)、进场时间点(相对这个币自己创建了多久,不是相对我们脚本
+    启动的时间)、仓位大小、持仓时长、盈亏、退出原因、这个mint之前进过几次仓(是否
+    反复进入)。写进journal.jsonl,所有币共用一份,方便以后横向统计对比。"""
+    entry_price = entry_info["entry_price"]
+    pnl_pct = (exit_price / entry_price - 1) * 100 if entry_price else None
+    hold_sec = time.time() - entry_info["entry_ts"]
+    record = {
+        "name": entry_info["name"], "mint": entry_info["mint"], "addr": entry_info["addr"],
+        "entry_ts": entry_info["entry_ts"], "entry_ts_str": dt.datetime.fromtimestamp(entry_info["entry_ts"]).strftime("%Y-%m-%d %H:%M:%S"),
+        "coin_age_min_at_entry": entry_info["coin_age_min_at_entry"],
+        "entry_price": entry_price, "entry_liq_usd": entry_info["entry_liq_usd"],
+        "entry_locked_liq_pct": entry_info["entry_locked_liq_pct"], "entry_fdv_usd": entry_info["entry_fdv_usd"],
+        "n_insiders": entry_info["n_insiders"], "found_via": entry_info.get("found_via"),
+        "pos_size_usd": entry_info["pos_size_usd"], "dry_run": entry_info["dry_run"],
+        "exit_reason": exit_reason, "exit_price": exit_price, "pnl_pct": pnl_pct,
+        "hold_sec": round(hold_sec, 1),
+        "prior_entries_on_this_mint": entry_info["prior_entries"],
+    }
+    write_journal(record)
+    log(f"台账记录完毕: {exit_reason} pnl={pnl_pct:+.2f}% 持仓{hold_sec:.0f}秒 "
+       f"(这个币之前进过{entry_info['prior_entries']}次仓)")
+
+
+def lookup_found_via(addr):
+    """如果这个池子是被lifecycle_logger自动发现+部署的,从pump_lifecycle.json里
+    查一下当初是靠起点MCAP/早期涨幅/后期涨幅哪道信号发现的,记进台账方便以后
+    对比"哪种发现方式选出来的币质量更好"。查不到就返回None,不影响交易流程。"""
+    try:
+        db = json.loads((HERE / "pump_lifecycle.json").read_text(encoding="utf-8"))
+        return db.get(addr, {}).get("found_via")
+    except Exception:
+        return None
+
+
 def main():
+    global LOG_F, ORDERS_LOG_F
     if len(sys.argv) < 2:
         print("用法: python snipe_exit.py <池子地址或GeckoTerminal链接>")
         return
     addr = extract_addr(sys.argv[1])
+    prefix = make_prefix(addr)
+    LOG_F = HERE / f"{prefix}_snipe_exit.log"
+    ORDERS_LOG_F = HERE / f"{prefix}_snipe_orders.jsonl"
+
     attrs, mint = check_pool_and_mint(addr)
     if not attrs or not mint:
         log("查不到这个池子,地址可能不对")
@@ -317,13 +392,35 @@ def main():
     insiders = load_known_insiders(mint)
     log(f"已知操盘方钱包(bundler/transfer_in/creator/dev_team标签): {len(insiders)}个")
 
+    prior_entries = count_prior_entries(mint)
+    if prior_entries:
+        log(f"注意: 这个币之前已经进过{prior_entries}次仓了,这次是反复进入")
+
     wallet = get_wallet() if is_live_mode() else None
+    entry_ts = time.time()
     pos = do_buy(wallet, mint, POS_SIZE_USD)
     if not pos:
         log("买入没成功,监控结束")
         return
 
-    log(f"持仓建立: qty_raw={pos['qty_raw']} entry=${pos['entry_usd']:.2f}  开始监控退出信号...")
+    try:
+        created = dt.datetime.fromisoformat(attrs["pool_created_at"].replace("Z", "+00:00"))
+        coin_age_min = (dt.datetime.now(dt.timezone.utc) - created).total_seconds() / 60
+    except (KeyError, ValueError, TypeError):
+        coin_age_min = None
+    try:
+        entry_price = float(attrs.get("base_token_price_usd") or 0)
+    except (TypeError, ValueError):
+        entry_price = None
+    entry_info = {
+        "name": attrs.get("name"), "mint": mint, "addr": addr, "entry_ts": entry_ts,
+        "coin_age_min_at_entry": coin_age_min, "entry_price": entry_price,
+        "entry_liq_usd": attrs.get("reserve_in_usd"), "entry_locked_liq_pct": attrs.get("locked_liquidity_percentage"),
+        "entry_fdv_usd": attrs.get("fdv_usd"), "n_insiders": len(insiders), "found_via": lookup_found_via(addr),
+        "pos_size_usd": POS_SIZE_USD, "dry_run": pos["dry_run"], "prior_entries": prior_entries,
+    }
+
+    log(f"持仓建立: qty_raw={pos['qty_raw']} entry=${pos['entry_usd']:.2f} entry_price={entry_price}  开始监控退出信号...")
 
     seen_tx = set()
     first_pass = True
@@ -333,6 +430,7 @@ def main():
         if snap and snap["liq"] is not None and snap["liq"] < EXIT_LIQ_THRESHOLD:
             log(f"*** 流动性安全网触发: 只剩${snap['liq']:,.0f},不等真买家信号了,立刻卖出 ***")
             do_sell(wallet, mint, pos["qty_raw"], "LIQ_LOW", pos["dry_run"])
+            finish_trade(entry_info, "LIQ_LOW", snap.get("price"))
             return
 
         d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}/trades", {"trade_volume_in_usd_greater_than": 0})
@@ -348,12 +446,16 @@ def main():
             usd = float(a.get("volume_in_usd") or 0)
             if w and w not in insiders and usd >= MIN_REAL_BUYER_USD:
                 log(f"*** 疑似真买家信号: 钱包{w[:10]}...买入${usd:,.2f},立刻卖出,不等更多确认 ***")
+                exit_snap = get_pool_snapshot(addr)
                 do_sell(wallet, mint, pos["qty_raw"], "REAL_BUYER_DETECTED", pos["dry_run"])
+                finish_trade(entry_info, "REAL_BUYER_DETECTED", exit_snap.get("price") if exit_snap else None)
                 return
         first_pass = False
         time.sleep(POLL_SEC)
 
     log(f"=== {MAX_MINUTES:.0f}分钟窗口结束,没等到真买家信号,仍持有(需要自己决定要不要手动处理) ===")
+    timeout_snap = get_pool_snapshot(addr)
+    finish_trade(entry_info, "TIMEOUT_STILL_HOLDING", timeout_snap.get("price") if timeout_snap else None)
 
 
 if __name__ == "__main__":
