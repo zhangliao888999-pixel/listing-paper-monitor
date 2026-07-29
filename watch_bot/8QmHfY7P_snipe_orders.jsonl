@@ -1,2 +1,6 @@
 {"action": "BUY", "mint": "A3P8MSeJ3e3Bi2GSKztbgctRqLwXhNMUFU65qdmgpump", "pos_size_usd": 5.0, "status": "dry_run", "ts": 1785301234}
 {"action": "SELL", "mint": "A3P8MSeJ3e3Bi2GSKztbgctRqLwXhNMUFU65qdmgpump", "reason": "REAL_BUYER_DETECTED", "status": "dry_run", "ts": 1785301278}
+{"action": "BUY", "mint": "A3P8MSeJ3e3Bi2GSKztbgctRqLwXhNMUFU65qdmgpump", "pos_size_usd": 5.0, "status": "dry_run", "ts": 1785303280}
+{"action": "BUY", "mint": "A3P8MSeJ3e3Bi2GSKztbgctRqLwXhNMUFU65qdmgpump", "pos_size_usd": 5.0, "status": "dry_run", "ts": 1785303997}
+{"action": "SELL", "mint": "A3P8MSeJ3e3Bi2GSKztbgctRqLwXhNMUFU65qdmgpump", "reason": "INSIDER_SELL_DETECTED", "status": "dry_run", "ts": 1785304058}
+{"action": "BUY", "mint": "A3P8MSeJ3e3Bi2GSKztbgctRqLwXhNMUFU65qdmgpump", "pos_size_usd": 5.0, "status": "dry_run", "ts": 1785304183}

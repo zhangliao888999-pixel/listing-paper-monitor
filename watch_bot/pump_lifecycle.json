@@ -119,6 +119,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "9.301"
+   },
+   {
+    "ts": 1785305463.592591,
+    "price": 4.3405020465030504e-05,
+    "liq": 24368.6061,
+    "insider_sell_pct": 0.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "8.325"
    }
   ],
   "found_via": "late"
@@ -128,7 +137,17 @@
   "mint": "A3P8MSeJ3e3Bi2GSKztbgctRqLwXhNMUFU65qdmgpump",
   "first_seen": 1785300922.2875211,
   "status": "alive",
-  "history": [],
+  "history": [
+   {
+    "ts": 1785305474.177887,
+    "price": 0.029675933275733125,
+    "liq": 392410.8279,
+    "insider_sell_pct": 0.1798934105608809,
+    "n_insiders": 19,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "6.184"
+   }
+  ],
   "found_via": "manual",
   "stack_deployed": true
  }
