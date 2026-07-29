@@ -1007,5 +1007,14 @@
   "history": [],
   "found_via": "mcap_scanner",
   "stack_deployed": true
+ },
+ "HoamtRRjRHV25KFXvFpf6zKi5vDMR3DAFfNHx2GrwARp": {
+  "name": "Coyote / SOL",
+  "mint": "4fLrXy7akv6tEodfB9mjMRfEABYYs5xteRTmvZKKUEUY",
+  "first_seen": 1785349720.2105527,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
  }
 }
