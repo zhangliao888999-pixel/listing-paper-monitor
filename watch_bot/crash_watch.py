@@ -38,12 +38,21 @@ def log(log_f, msg):
         f.write(line + "\n")
 
 
-def archive_trades(addr, archive_f, tag=""):
+def archive_trades(addr, archive_f, seen_tx, tag=""):
+    """2026-07-29晚间修复: 原来每次把整段300笔/trades响应原样追加写入,慢速池子
+    (比如tnos2这种能健康跑好几个小时的)相邻两次轮询之间大量重复,几小时下来
+    文件涨到100MB+,把GitHub单文件100MB上限直接顶爆,导致整个push被拒绝(今晚
+    实测发现)。改成只追加没见过的tx_hash(逻辑跟snipe_exit.py的seen_tx去重
+    一样),存储量只跟真实发生的成交数成正比,不再被轮询次数乘出虚高体积。"""
     d = get(S, f"{GT_BASE}/networks/solana/pools/{addr}/trades", {"trade_volume_in_usd_greater_than": 0})
     rows = (d or {}).get("data", [])
-    with archive_f.open("a", encoding="utf-8") as f:
-        f.write(json.dumps({"archived_at": time.time(), "tag": tag, "n_trades": len(rows), "trades": rows}, ensure_ascii=False) + "\n")
-    return len(rows)
+    new_rows = [r for r in rows if r.get("attributes", {}).get("tx_hash") not in seen_tx]
+    for r in new_rows:
+        seen_tx.add(r.get("attributes", {}).get("tx_hash"))
+    if new_rows:
+        with archive_f.open("a", encoding="utf-8") as f:
+            f.write(json.dumps({"archived_at": time.time(), "tag": tag, "n_trades": len(new_rows), "trades": new_rows}, ensure_ascii=False) + "\n")
+    return len(new_rows)
 
 
 def get_pool(addr):
@@ -88,6 +97,7 @@ def main():
     last_sellpct_check = 0
     crashed = False
     t_start = time.time()
+    seen_tx = set()
 
     while time.time() - t_start < MAX_RUNTIME_SEC and not crashed:
         time.sleep(PRICE_POLL_SEC)
@@ -95,7 +105,7 @@ def main():
         if not pool:
             continue
         peak_liq = max(peak_liq, pool["liq"])
-        n_archived = archive_trades(addr, archive_f)
+        n_archived = archive_trades(addr, archive_f, seen_tx)
 
         line = f"价格${pool['price']:.8f}  流动性${pool['liq']:,.0f}(峰值${peak_liq:,.0f})  已存档{n_archived}笔逐笔"
 
@@ -108,7 +118,7 @@ def main():
 
         if pool["liq"] < peak_liq * (1 - LIQ_CRASH_THRESHOLD):
             log(log_f, "*** 流动性暴跌,疑似崩盘发生! 立刻加密取证 ***")
-            archive_trades(addr, archive_f, tag="CRASH_MOMENT")
+            archive_trades(addr, archive_f, seen_tx, tag="CRASH_MOMENT")
             sell_pct = get_insider_sell_pct(mint)
             log(log_f, f"崩盘时刻快照: 价格${pool['price']:.8f} 流动性${pool['liq']:,.0f} 操盘方卖出比例={sell_pct}")
             crashed = True

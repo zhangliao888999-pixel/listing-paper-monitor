@@ -998,5 +998,14 @@
   ],
   "found_via": "late",
   "stack_deployed": false
+ },
+ "DSbkLNh5xcxkm7RbzEvgMkhtbe5ahfDrCoztwruhewV2": {
+  "name": "TNOS / SOL",
+  "mint": "5xTJBERe21uZToiJHpUG45sD3wNtn2d4ra11j4FSPUMP",
+  "first_seen": 1785341911.839228,
+  "status": "alive",
+  "history": [],
+  "found_via": "mcap_scanner",
+  "stack_deployed": true
  }
 }

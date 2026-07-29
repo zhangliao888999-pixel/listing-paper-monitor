@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.lock
+
+# 2026-07-29晚间新增: crash_watch.py每60秒把完整/trades响应整段追加写入这些文件,
+# 跑得久的币(比如tnos2跑了好几个小时)会无限膨胀,tnos2_trades_archive.jsonl已经
+# 涨到125MB,超过GitHub单文件100MB硬限制导致整个push被拒绝。这些文件只是本地取证
+# 用的原始存档,docs/journal.html和docs/index.html都不读取它们,不需要进GitHub。
+watch_bot/*_trades_archive.jsonl
