@@ -149,24 +149,33 @@ def matches_pump_signature(attrs):
 
 
 def matches_early_signature(attrs, age_minutes):
-    """2026-07-29新增: matches_pump_signature要求h6涨幅>=50%,对刚发出来1-30分钟
-    的新币根本用不上(池子太年轻,GeckoTerminal的h1/h6/h24这些窗口还没积累够数据,
-    会直接跟m5/m15/m30的值一样)。用户明确要求"不用每秒盯,1-30分钟内查一次能
-    发现大多数"——今晚查过的TNOS/GDWR/CXMT,创建后几分钟内bundler买单就已经在
-    动了,不是等半小时才启动,所以这个早期窗口本身就能捕捉到大部分案例,漏掉
-    "故意延迟启动"的操盘方可以接受(先解决大多数,不追求100%)。
-    早期判断门槛(比后期版本更松,因为量还没起来): 锁仓100% + 已经有实质涨幅
-    (用m30,这是1-30分钟窗口里最可能有真实数据的字段) + 流动性哪怕还小也要
-    有个下限,排除掉像CXMT那种量小到几乎没人的池子。"""
-    if not (1 <= age_minutes <= 30):
+    """2026-07-29新增,同日晚些时候修正: 一开始设的1-30分钟+m30>=30%门槛,用TNOS
+    自己的真实早期数据回溯验证后发现是错的——TNOS的bundler买盘创世后2分钟就已经
+    在动(涨幅曲线一路平滑爬升,没有断档),但爬升速率是温和的(约每分钟0.4-0.5个
+    百分点,不是爆发式拉升),累计涨幅要到创世后52分钟才第一次突破30%,30分钟时
+    只有20.5%。原来的窗口设计只能抓"爆发型"早期拉升,像TNOS这种"慢慢阴柔式"的
+    完全抓不到——用户亲自要求验证并放宽,这不是猜测,是用真实历史K线倒推算出来的。
+    修正后: 窗口放宽到1-90分钟;30分钟以内仍用m30字段但门槛降到15%(实测TNOS
+    30分钟时20.5%,能稳定命中);超过30分钟改用h1字段(对不到90分钟大的池子,
+    h1基本等价于"接近自创世以来"的涨幅),门槛25%(实测TNOS 52分钟31%、90分钟
+    47%,能稳定命中)。"""
+    if not (1 <= age_minutes <= 90):
         return False
     try:
         locked = float(attrs.get("locked_liquidity_percentage") or 0)
         liq = float(attrs.get("reserve_in_usd") or 0)
-        m30 = float((attrs.get("price_change_percentage") or {}).get("m30") or 0)
     except (TypeError, ValueError):
         return False
-    return locked >= 90 and liq >= 5000 and m30 >= 30
+    if locked < 90 or liq < 5000:
+        return False
+    pct = attrs.get("price_change_percentage") or {}
+    try:
+        if age_minutes <= 30:
+            return float(pct.get("m30") or 0) >= 15
+        else:
+            return float(pct.get("h1") or 0) >= 25
+    except (TypeError, ValueError):
+        return False
 
 
 def scan_from_tracked_state(state_path, max_scan=300, max_age_hours=48):
