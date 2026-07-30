@@ -18,3 +18,12 @@ watch_bot/.live_wallet_key
 # 纯运行时状态(建仓创建/平仓删除),VPS本地的事实,不该跟着代码同步。
 watch_bot/.live_positions/
 watch_bot/.live_position_open
+
+# 2026-07-31新增: VPS运行时日志(supervisor/stdout/stderr)不再进git。
+# 这些文件被正在跑的进程持续写入,Windows下git更新它们时反复报
+# "unable to unlink old ...: Invalid argument",本会话已经因此卡住过多次pull,
+# 每次都要停任务/杀进程才能继续。它们是VPS本地的运行时输出,不是需要跨机器
+# 同步的数据(真正的数据是journal.jsonl/pump_lifecycle.json),不该被跟踪。
+watch_bot/vps_stdout_*.log
+watch_bot/vps_stderr_*.log
+watch_bot/vps_supervisor_*.log
