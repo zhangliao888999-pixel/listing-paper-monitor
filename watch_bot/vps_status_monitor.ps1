@@ -17,6 +17,12 @@
 $RepoRoot = "C:\claude_watchbot\listing-paper-monitor"
 $TaskNames = @("watchbot_live_runner_loop", "watchbot_git_push_flusher.py")
 
+# 2026-07-30再补: "正在交易"面板要记住"上一次展示的已卖出记录是哪一笔、什么
+# 时候开始展示的"——这两个变量在while循环外面声明,循环体每轮刷新都能读到
+# 上一轮的值,不会被每轮清零,这样才能实现"卖出后保留30秒自动消失"。
+$lastClosedKey = $null
+$lastClosedShownAt = $null
+
 function Get-MinutesAgo($epochSeconds) {
     $then = [DateTimeOffset]::FromUnixTimeSeconds([long]$epochSeconds).LocalDateTime
     return [math]::Round(((Get-Date) - $then).TotalMinutes, 1)
@@ -122,6 +128,71 @@ while ($true) {
         } else {
             Write-Host "  还没有任何真实成交记录" -ForegroundColor DarkGray
         }
+    }
+
+    # 6. 正在交易的币: 买入时间/买入价格/现价/涨跌幅,实时拉GT现价;卖出之后
+    # 这条记录保留30秒(用户明确要求),超过30秒就不再显示,回到"无持仓"。
+    Write-Host ""
+    Write-Host "--- 正在交易 ---"
+    $showedSomething = $false
+    if ((Test-Path $posMarker) -and $markerAgeMin -le 50) {
+        try {
+            $posInfo = Get-Content $posMarker -Raw | ConvertFrom-Json
+            $openedAt = [DateTimeOffset]::FromUnixTimeSeconds([long]$posInfo.opened_at).LocalDateTime
+            $entryPrice = [double]$posInfo.entry_price
+            $curPrice = $null
+            try {
+                $resp = Invoke-RestMethod -Uri ("https://api.geckoterminal.com/api/v2/networks/solana/pools/" + $posInfo.addr) `
+                    -Headers @{ "Accept" = "application/json;version=20230302" } -TimeoutSec 8
+                $curPrice = [double]$resp.data.attributes.base_token_price_usd
+            } catch {}
+            Write-Host ("  {0}" -f $posInfo.name) -ForegroundColor Cyan
+            Write-Host ("  买入时间: {0}   买入价格: `${1:N10}" -f $openedAt.ToString("HH:mm:ss"), $entryPrice)
+            if ($curPrice -and $entryPrice) {
+                $pctChange = ($curPrice / $entryPrice - 1) * 100
+                $chgColor = if ($pctChange -ge 0) { "Green" } else { "Red" }
+                Write-Host ("  现价: `${0:N10}   涨跌幅: {1:+0.00;-0.00}%" -f $curPrice, $pctChange) -ForegroundColor $chgColor
+            } else {
+                Write-Host "  现价: 拉取失败,下一轮重试" -ForegroundColor Yellow
+            }
+            $showedSomething = $true
+            $lastClosedKey = $null
+        } catch {
+            Write-Host "  (标记文件解析失败,可能刚好在写入中)" -ForegroundColor Yellow
+            $showedSomething = $true
+        }
+    }
+    if (-not $showedSomething -and (Test-Path $journalPath)) {
+        try {
+            $rec = (Get-Content $journalPath -Tail 1) | ConvertFrom-Json
+            if ($rec.dry_run -eq $false) {
+                $recKey = "$($rec.mint)_$($rec.written_at)"
+                if ($recKey -ne $lastClosedKey) {
+                    $lastClosedKey = $recKey
+                    $lastClosedShownAt = Get-Date
+                }
+                $elapsed = ((Get-Date) - $lastClosedShownAt).TotalSeconds
+                if ($elapsed -le 30) {
+                    $profitUsd = $null
+                    if ($null -ne $rec.entry_usd_actual -and $null -ne $rec.pnl_pct_actual) {
+                        $profitUsd = [double]$rec.entry_usd_actual * [double]$rec.pnl_pct_actual / 100
+                    }
+                    Write-Host ("  {0}  已卖出({1:N0}秒前)" -f $rec.name, $elapsed) -ForegroundColor Cyan
+                    Write-Host ("  卖出价格: `${0:N10}" -f $rec.exit_price)
+                    if ($null -ne $profitUsd) {
+                        $sign = if ($profitUsd -ge 0) { "+" } else { "-" }
+                        $profitColor = if ($profitUsd -ge 0) { "Green" } else { "Red" }
+                        Write-Host ("  利润金额: {0}`${1:N2}" -f $sign, [Math]::Abs($profitUsd)) -ForegroundColor $profitColor
+                    } else {
+                        Write-Host "  利润金额: 还没有真实盈亏数据" -ForegroundColor Yellow
+                    }
+                    $showedSomething = $true
+                }
+            }
+        } catch {}
+    }
+    if (-not $showedSomething) {
+        Write-Host "  (当前无持仓)" -ForegroundColor DarkGray
     }
 
     Write-Host ""

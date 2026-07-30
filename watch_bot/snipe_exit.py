@@ -502,11 +502,6 @@ def main():
     if not pos:
         log("买入没成功,监控结束")
         return
-    if not pos["dry_run"]:
-        try:
-            LIVE_POSITION_MARKER.write_text(json.dumps({"addr": addr, "mint": mint, "opened_at": entry_ts}), encoding="utf-8")
-        except OSError:
-            pass
 
     try:
         created = dt.datetime.fromisoformat(attrs["pool_created_at"].replace("Z", "+00:00"))
@@ -517,6 +512,20 @@ def main():
         entry_price = float(attrs.get("base_token_price_usd") or 0)
     except (TypeError, ValueError):
         entry_price = None
+
+    if not pos["dry_run"]:
+        # 2026-07-30新增: 用户要求监控窗口能实时显示"正在交易的币"(买入价/现价/
+        # 涨跌幅),标记文件里补上name/entry_price/pos_size_usd,监控脚本不用
+        # 再另外去查这些信息,只管拉现价算涨跌幅就行。
+        try:
+            LIVE_POSITION_MARKER.write_text(json.dumps({
+                "addr": addr, "mint": mint, "name": attrs.get("name"),
+                "opened_at": entry_ts, "entry_price": entry_price,
+                "pos_size_usd": POS_SIZE_USD,
+            }, ensure_ascii=False), encoding="utf-8")
+        except OSError:
+            pass
+
     entry_info = {
         "name": attrs.get("name"), "mint": mint, "addr": addr, "entry_ts": entry_ts,
         "coin_age_min_at_entry": coin_age_min, "entry_price": entry_price,
