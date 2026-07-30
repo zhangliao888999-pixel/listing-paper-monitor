@@ -4,3 +4,4 @@ survivors.csv
 results.csv
 forward_snapshots.jsonl
 .cg_api_key
+quota_usage.jsonl

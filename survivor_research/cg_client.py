@@ -46,6 +46,7 @@ if HAS_KEY:
     _H["x-cg-demo-api-key"] = _key
 
 _last = [0.0]
+_req_count = [0]   # 本进程累计请求数,退出时由atexit上报给quota_tracker
 
 
 def get(path, params=None, tries=4):
@@ -57,6 +58,8 @@ def get(path, params=None, tries=4):
         if gap < MIN_GAP_SEC:
             time.sleep(MIN_GAP_SEC - gap)
         _last[0] = time.time()
+        if HAS_KEY:
+            _req_count[0] += 1
         try:
             r = requests.get(url, params=params, headers=_H, timeout=25)
             if r.status_code == 200:
@@ -83,3 +86,24 @@ if __name__ == "__main__":
     print(f"key已加载: {HAS_KEY}   base={BASE}   最小间隔={MIN_GAP_SEC}s")
     d = get("networks/solana/trending_pools", {"duration": "6h", "page": 1})
     print("trending返回行数:", len((d or {}).get("data", [])))
+
+
+# 进程退出时把本次消耗记进额度台账(只统计用了key的请求;走公开接口的不占额度)
+import atexit as _atexit
+
+
+def _report_usage():
+    if not HAS_KEY or _req_count[0] == 0:
+        return
+    try:
+        import quota_tracker
+        quota_tracker.record(_req_count[0], os.environ.get("CG_TAG", "unknown"))
+        used, pct, warn = quota_tracker.check_and_warn()
+        print(f"[额度] 本次用了{_req_count[0]}次, 本月累计{used}/{quota_tracker.MONTHLY_LIMIT} ({pct:.1f}%)")
+        if warn:
+            print(warn)
+    except Exception:
+        pass
+
+
+_atexit.register(_report_usage)
