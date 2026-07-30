@@ -1,65 +1,6 @@
 {
- "updated_at": 1785426664,
- "updated_at_str": "2026-07-30 15:51 UTC",
- "n_candidates": 2,
- "candidates": [
-  {
-   "addr": "7xcRo6YSVj13DXhrzM9eawRqgTr5ki7sPDKb7sfzcp14",
-   "name": "Jimothy / SOL",
-   "age_min": 19.75,
-   "created": 1785425479.0,
-   "price": 0.044511519819748296,
-   "liq": 482910.0107,
-   "locked_liq_pct": 100.0,
-   "vol_15m": 52330.4782793341,
-   "vol_1h": 254355.561836022,
-   "chg_15m": 43.214,
-   "chg_1h": 5343.236,
-   "buys_15m": 5394,
-   "sells_15m": 160,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/7xcRo6YSVj13DXhrzM9eawRqgTr5ki7sPDKb7sfzcp14",
-   "mint": "3eQZwyfns6oHVsfSQPWxmTjYjL6v9aHCJ9tnyRCUpump",
-   "early_bot_flag": null,
-   "staircase_flag": false,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 5.0,
-    "staircase_flag": false,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 0,
-    "exit_ratio": -7.88969646114494,
-    "wallet_verdict": "钱包画像未见明显控盘迹象"
-   }
-  },
-  {
-   "addr": "5zwSnSzx42eN9Hmn2FKx2RFeLEB4iNin4FNWYmp3p3N7",
-   "name": "Cowsem / SOL",
-   "age_min": 16.133333333333333,
-   "created": 1785425696.0,
-   "price": 3.065750560134996e-05,
-   "liq": 11333.428,
-   "locked_liq_pct": 100.0,
-   "vol_15m": 8972.5268987006,
-   "vol_1h": 17661.2276302436,
-   "chg_15m": 26.758,
-   "chg_1h": -2.966,
-   "buys_15m": 181,
-   "sells_15m": 124,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/5zwSnSzx42eN9Hmn2FKx2RFeLEB4iNin4FNWYmp3p3N7",
-   "mint": "6RCgCTkPPtFE4Qzu6mZf4Kx3bKCDcLWbY3kY65zdpump",
-   "early_bot_flag": null,
-   "staircase_flag": false,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 5.0,
-    "staircase_flag": false,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 0,
-    "exit_ratio": 0.8195482775524238,
-    "wallet_verdict": "34/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
-   }
-  }
- ]
+ "updated_at": 1785426963,
+ "updated_at_str": "2026-07-30 15:56 UTC",
+ "n_candidates": 0,
+ "candidates": []
 }
