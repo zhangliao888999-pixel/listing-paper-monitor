@@ -51,7 +51,27 @@ DEPLOY_WINDOW_SEC = 240  # 比脚本自己的180秒硬超时留一点余量,过�
 # 仓位。没设私钥就拒绝下单只跳过,绝不静默降级成纸盘。
 SNIPE_LIVE_MODE = os.environ.get("SNIPE_LIVE_MODE") == "1"
 LIVE_POS_SIZE_USD = os.environ.get("LIVE_POS_SIZE_USD", "5")
+# 2026-07-31新增: 用户要求分阶段验证——先跑N笔实盘就自动停止开新仓,人工检查
+# 没问题再放开。0=不限。统计口径: journal.jsonl里dry_run=false且
+# found_via=pregrad_ramp的记录总数(账本是append-only的,这个数只增不减)。
+LIVE_MAX_TRADES = int(os.environ.get("LIVE_MAX_TRADES", "0"))
+JOURNAL_F = HERE / "journal.jsonl"
 from lifecycle_logger import count_live_open_positions, MAX_CONCURRENT_LIVE
+
+
+def count_live_pregrad_trades():
+    if not JOURNAL_F.exists():
+        return 0
+    n = 0
+    with JOURNAL_F.open(encoding="utf-8") as f:
+        for line in f:
+            try:
+                rec = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if rec.get("dry_run") is False and rec.get("found_via") == "pregrad_ramp":
+                n += 1
+    return n
 
 
 def make_prefix(addr):
@@ -100,6 +120,11 @@ def deploy(addr, mint, name):
         if not os.environ.get("WALLET_PRIVATE_KEY"):
             print("  [实盘]*** SNIPE_LIVE_MODE=1但没设WALLET_PRIVATE_KEY,拒绝假装在跑实盘,跳过 ***")
             return False
+        if LIVE_MAX_TRADES:
+            n_done = count_live_pregrad_trades()
+            if n_done >= LIVE_MAX_TRADES:
+                print(f"  [实盘]*** 已完成{n_done}/{LIVE_MAX_TRADES}笔实盘测试限额,不再开新仓,等人工检查后放开 ***")
+                return False
         n_live = count_live_open_positions(HERE)
         if n_live >= MAX_CONCURRENT_LIVE:
             print(f"  [实盘]真实仓位名额已满({n_live}/{MAX_CONCURRENT_LIVE}),跳过候选 {name}")

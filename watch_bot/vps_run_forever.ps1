@@ -32,6 +32,9 @@ if ($LiveMode) {
     $env:SNIPE_LIVE_MODE = "1"
     if (-not $env:MAX_CONCURRENT_LIVE) { $env:MAX_CONCURRENT_LIVE = "1" }
     if (-not $env:LIVE_POS_SIZE_USD) { $env:LIVE_POS_SIZE_USD = "5" }
+    # 2026-07-31新增: 分阶段验证——pregrad实盘先跑3笔就自动停止开新仓,人工检查
+    # 没问题后把这个值调大或设0(不限)再重启。
+    if (-not $env:LIVE_MAX_TRADES) { $env:LIVE_MAX_TRADES = "3" }
     # 2026-07-30新增: 实盘首跑10分钟无开仓的教训——纸盘时代lifecycle这条腿10分钟
     # 一轮无所谓(发现主力是pregrad/mcap高频腿),实盘模式下它是主要发现入口之一,
     # 10分钟一轮会让大部分年龄窗口内的候选直接过期。实盘把它提到3分钟一轮
