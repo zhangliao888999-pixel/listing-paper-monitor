@@ -140,7 +140,10 @@ def git_push_journal():
         commit = run(["git", "commit", "-m", f"trade completed: {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}"])
         if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
             return
-        for _ in range(3):
+        # 2026-07-30再修: 本机screener_local和云端GitHub Actions也在并发push
+        # 同一仓库,锁挡不住跨主机的fetch-first冲突,3次重试偶尔追不上,加到
+        # 6次+间隔拉长到5秒。
+        for _ in range(6):
             push = run(["git", "push"])
             if push.returncode == 0:
                 log("交易记录已立刻推送到GitHub,页面刷新即可见")
@@ -148,8 +151,8 @@ def git_push_journal():
             # 2026-07-30修复: --rebase遇到journal.jsonl只追加型冲突会卡住需要人工
             # --abort,改用普通merge能自动合并"两边各自追加新行"这种冲突。
             run(["git", "pull", "--no-edit", "origin", "master"])
-            time.sleep(3)
-        log("交易记录推送失败(重试3次),会在下一轮同步时补推")
+            time.sleep(5)
+        log("交易记录推送失败(重试6次),会在下一轮同步时补推")
 
 
 def finish_trade(entry_info, exit_reason, exit_price):

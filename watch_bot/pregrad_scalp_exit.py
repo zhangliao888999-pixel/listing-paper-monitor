@@ -209,7 +209,11 @@ def git_push_journal():
         commit = run(["git", "commit", "-m", f"trade completed: {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}"])
         if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
             return
-        for _ in range(3):
+        # 2026-07-30再修: 除了VPS内部这4个脚本,本机screener_local和云端GitHub
+        # Actions也在并发push同一仓库,锁只挡得住VPS内部互撞,挡不住跨主机的
+        # fetch-first冲突。实测3次重试偶尔追不上导致本地积压,加到6次+每次
+        # 间隔拉长到5秒,多给一点窗口等其他来源先推完。
+        for _ in range(6):
             push = run(["git", "push"])
             if push.returncode == 0:
                 log("交易记录已立刻推送到GitHub,页面刷新即可见")
@@ -218,8 +222,8 @@ def git_push_journal():
             # 只追加的文件冲突,rebase会直接卡住需要人工--abort,普通merge(不加--rebase)
             # 对这类"两边都只是各自追加了新行"的冲突能自动合并,不会卡死。
             run(["git", "pull", "--no-edit", "origin", "master"])
-            time.sleep(3)
-        log("交易记录推送失败(重试3次),会在下一轮lifecycle循环时补推")
+            time.sleep(5)
+        log("交易记录推送失败(重试6次),会在下一轮lifecycle循环时补推")
 
 
 def finish_trade(entry_info, exit_reason, exit_price):
