@@ -1,16 +1,21 @@
 ﻿# -*- coding: utf-8 -*-
 # 2026-07-30新增: 用户要求在VPS上开一个能实时看的窗口,自己就能第一时间发现
 # "卡住了"，不用每次都来问我。这里盯的都是之前踩过的坑对应的信号:
-#   - 3个计划任务是不是都在Running(不是的话supervisor没在跑)
+#   - 计划任务是不是都在Running(不是的话supervisor没在跑)
 #   - python进程数量(0个说明脚本层面挂了)
 #   - git本地有多少个提交还没推上去(这个数字持续变大就是我们之前修的那个
 #     "推送卡住"的bug,是最值得盯的信号)
 #   - 最近一次成功push是多久之前
 #   - journal.jsonl最新一笔交易是什么时候(纯参考,市场安静时本来就会很久
 #     没有新交易,不代表卡住)
+#
+# 2026-07-30再补: 纸盘三个发现循环(pregrad/mcap/lifecycle-纸盘)已经主动停掉
+# 转去跑实盘,故意是Ready状态,不该再当成"任务挂了"报红——只监控当前实际
+# 该跑的任务。新增实盘专属状态: 私钥文件在不在、当前是否占着那唯一一个
+# 真实仓位名额、最近一笔真实成交是什么结果。
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $RepoRoot = "C:\claude_watchbot\listing-paper-monitor"
-$TaskNames = @("watchbot_pregrad_scanner_loop.py", "watchbot_mcap_scanner_loop.py", "watchbot_lifecycle_runner_loop.py", "watchbot_git_push_flusher.py")
+$TaskNames = @("watchbot_live_runner_loop", "watchbot_git_push_flusher.py")
 
 function Get-MinutesAgo($epochSeconds) {
     $then = [DateTimeOffset]::FromUnixTimeSeconds([long]$epochSeconds).LocalDateTime
@@ -79,6 +84,42 @@ while ($true) {
         }
     } else {
         Write-Host "  journal.jsonl不存在" -ForegroundColor Red
+    }
+
+    # 5. 实盘状态
+    Write-Host ""
+    Write-Host "--- 实盘状态 ---"
+    $keyFile = Join-Path $RepoRoot "watch_bot\.live_wallet_key"
+    if (Test-Path $keyFile) {
+        Write-Host "  私钥文件: 已就位" -ForegroundColor Green
+    } else {
+        Write-Host "  私钥文件: 不存在(实盘只监控不下单)" -ForegroundColor Yellow
+    }
+    $lifecyclePath = Join-Path $RepoRoot "watch_bot\pump_lifecycle.json"
+    if (Test-Path $lifecyclePath) {
+        try {
+            $db = Get-Content $lifecyclePath -Raw | ConvertFrom-Json
+            $liveActive = 0
+            foreach ($prop in $db.PSObject.Properties) {
+                if ($prop.Value.live_deployed -and $prop.Value.status -ne "dead") { $liveActive++ }
+            }
+            Write-Host ("  当前占用的真实仓位名额: {0}" -f $liveActive)
+        } catch {
+            Write-Host "  (pump_lifecycle.json解析失败,可能刚好在写入中)" -ForegroundColor Yellow
+        }
+    }
+    if (Test-Path $journalPath) {
+        $liveLines = Get-Content $journalPath | Select-Object -Last 200 | ForEach-Object {
+            try { $r = $_ | ConvertFrom-Json; if ($r.dry_run -eq $false) { $r } } catch {}
+        }
+        if ($liveLines) {
+            $lastLive = $liveLines | Select-Object -Last 1
+            $agoMin = Get-MinutesAgo $lastLive.written_at
+            $pnlActualStr = if ($null -ne $lastLive.pnl_pct_actual) { "{0:+0.0;-0.0}%" -f $lastLive.pnl_pct_actual } else { "还没有真实盈亏数据" }
+            Write-Host ("  最近一笔真实成交: {0}  退出原因={1}  真实pnl={2}  ({3}分钟前)" -f $lastLive.name, $lastLive.exit_reason, $pnlActualStr, $agoMin) -ForegroundColor Cyan
+        } else {
+            Write-Host "  还没有任何真实成交记录" -ForegroundColor DarkGray
+        }
     }
 
     Write-Host ""
