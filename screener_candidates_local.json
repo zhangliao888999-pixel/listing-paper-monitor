@@ -1,6 +1,65 @@
 {
- "updated_at": 1785426963,
- "updated_at_str": "2026-07-30 15:56 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785427263,
+ "updated_at_str": "2026-07-30 16:01 UTC",
+ "n_candidates": 2,
+ "candidates": [
+  {
+   "addr": "7xcRo6YSVj13DXhrzM9eawRqgTr5ki7sPDKb7sfzcp14",
+   "name": "Jimothy / SOL",
+   "age_min": 29.733333333333334,
+   "created": 1785425479.0,
+   "price": 0.05272465541391384,
+   "liq": 522744.7838,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 74591.3647465943,
+   "vol_1h": 317124.944155913,
+   "chg_15m": 25.413,
+   "chg_1h": 6264.095,
+   "buys_15m": 6093,
+   "sells_15m": 1601,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/7xcRo6YSVj13DXhrzM9eawRqgTr5ki7sPDKb7sfzcp14",
+   "mint": "3eQZwyfns6oHVsfSQPWxmTjYjL6v9aHCJ9tnyRCUpump",
+   "early_bot_flag": null,
+   "staircase_flag": true,
+   "scalping_flag": true,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": true,
+    "scalping_flag": true,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": -8.369181159816538,
+    "wallet_verdict": "钱包画像未见明显控盘迹象"
+   }
+  },
+  {
+   "addr": "5zwSnSzx42eN9Hmn2FKx2RFeLEB4iNin4FNWYmp3p3N7",
+   "name": "Cowsem / SOL",
+   "age_min": 26.116666666666667,
+   "created": 1785425696.0,
+   "price": 1.8541831076390558e-05,
+   "liq": 8509.7713,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 5373.1945538757,
+   "vol_1h": 22094.8367126753,
+   "chg_15m": -21.585,
+   "chg_1h": -41.129,
+   "buys_15m": 131,
+   "sells_15m": 87,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/5zwSnSzx42eN9Hmn2FKx2RFeLEB4iNin4FNWYmp3p3N7",
+   "mint": "6RCgCTkPPtFE4Qzu6mZf4Kx3bKCDcLWbY3kY65zdpump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": true,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": true,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": 0.9620268987847155,
+    "wallet_verdict": "37/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
+   }
+  }
+ ]
 }

@@ -1,1 +1,1 @@
-{}
+{"5zwSnSzx42eN9Hmn2FKx2RFeLEB4iNin4FNWYmp3p3N7": {"checked_at": 1785427263, "n_traders": 40, "n_suspicious": 0, "exit_ratio": 0.9620268987847155, "wallet_verdict": "37/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕", "gt_checked_at": 1785427263, "staircase_flag": false, "scalping_flag": true}, "7xcRo6YSVj13DXhrzM9eawRqgTr5ki7sPDKb7sfzcp14": {"checked_at": 1785427263, "n_traders": 40, "n_suspicious": 0, "exit_ratio": -8.369181159816538, "wallet_verdict": "钱包画像未见明显控盘迹象", "gt_checked_at": 1785427263, "staircase_flag": true, "scalping_flag": true}}
