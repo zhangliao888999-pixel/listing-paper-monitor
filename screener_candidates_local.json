@@ -1,6 +1,36 @@
 {
- "updated_at": 1785442863,
- "updated_at_str": "2026-07-30 20:21 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785443462,
+ "updated_at_str": "2026-07-30 20:31 UTC",
+ "n_candidates": 1,
+ "candidates": [
+  {
+   "addr": "9hYsJ46R6zxyF2ypk6yTVquaPNG4QtYYwfeHTL6bPPGG",
+   "name": "CATMOTHY / SOL",
+   "age_min": 198.61666666666667,
+   "created": 1785431545.0,
+   "price": 2.9821222400516282e-05,
+   "liq": 11167.3992,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 1206.2540172097,
+   "vol_1h": 6152.8666474793,
+   "chg_15m": 15.487,
+   "chg_1h": 50.346,
+   "buys_15m": 32,
+   "sells_15m": 16,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/9hYsJ46R6zxyF2ypk6yTVquaPNG4QtYYwfeHTL6bPPGG",
+   "mint": "6smEdRen719LDLzRBZTeaYEVxV7a5LHVJjvnkECbpump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": 0.8985503415229497,
+    "wallet_verdict": "32/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
+   }
+  }
+ ]
 }
