@@ -297,12 +297,36 @@ def jupiter_trade(wallet, input_mint, output_mint, amount, slippage_bps):
 
 
 def do_live_buy(wallet, mint, pos_size_usd, sol_price):
-    """按发射台分流的实盘买入。返回(tx签名, 是否成功, 错误信息)。"""
+    """按发射台分流的实盘买入。返回(tx签名, 是否成功, 错误信息)。
+
+    2026-07-31修复(并发提到6后头三笔买入全军覆没的实测教训): 三笔全部因为
+    Jupiter滑点超限失败(0x1771),买入只试一次3%就放弃——而卖出早就有
+    3%->10%->30%的逐档放宽。pregrad盯的本来就是"正在快速拉升"的币,从拿报价
+    到交易上链这1-2秒里价格经常涨超3%,3%对入场太紧了。
+    买入也加逐档放宽,但上限只到10%(不像卖出放到30%): 卖不掉是灾难,买贵了
+    只是让这笔的起点变差——真实成本会如实体现在pnl_pct_actual里,不掩盖。
+    每档都重新拿报价(jupiter_trade内部就是这么做的),不拿旧报价硬撞。"""
     sol_amount = round(pos_size_usd / sol_price, 6)
     if venue_for(mint) == "pumpportal":
         return pumpportal_trade(wallet, "buy", mint, sol_amount, True, "pump")
     lamports = int(sol_amount * 1e9)
-    return jupiter_trade(wallet, SOL_MINT, mint, lamports, JUP_SLIPPAGE_BPS)
+    sig = err = None
+    for slippage_bps in (JUP_SLIPPAGE_BPS, 1000):
+        sig, ok, err = jupiter_trade(wallet, SOL_MINT, mint, lamports, slippage_bps)
+        if sig and ok:
+            if slippage_bps != JUP_SLIPPAGE_BPS:
+                log(f"买入在{slippage_bps/100:.0f}%滑点档成交(3%档没成),真实成本会体现在pnl_pct_actual里")
+            return sig, True, None
+        log(f"买入失败(滑点{slippage_bps/100:.0f}%): {str(err or '未确认')[:120]}")
+        # 重试前必须先确认"上一笔真的没成交"。confirm_tx超时(30秒没等到确认)
+        # 也返回False,但那笔可能稍后才落块——直接重试就会买成两笔。查一下钱包
+        # 里有没有这个币: 有就说明上一笔其实成了,当成功返回,绝不重复下单。
+        held = get_token_balance_raw(str(wallet.pubkey()), mint)
+        if held:
+            log(f"重试前查到钱包已持有该币({held}),说明上一笔其实已成交,不重复买入")
+            return sig, True, None
+        time.sleep(1.0)
+    return sig, False, err or "unconfirmed"
 
 
 def do_live_sell(wallet, mint, reason):
