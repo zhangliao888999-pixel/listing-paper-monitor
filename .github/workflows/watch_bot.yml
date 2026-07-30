@@ -56,10 +56,16 @@ jobs:
           # 2026-07-30新增: VPS也部署了同一套代码,两边推的是同一份journal.jsonl,
           # 打个来源标记才能对比云端和VPS各自的数据质量/效率。
           DEPLOY_ENV: "github_actions"
+          # 2026-07-30新增: VPS+本机screener_local+云端三方并发push同一仓库,
+          # 偶尔会有某一方6次重试全部撞车失败、把提交晾在本地——加一个每45秒
+          # 检查一次积压的保底扫地机,不用等下一笔交易凑巧触发重试才补推。
+          FLUSH_INTERVAL_SEC: "45"
+          FLUSH_MAX_ROUNDS: "460"       # 45秒*460 ≈ 5小时45分,跟其他几个循环一起收尾
         run: |
           LOOP_ROUNDS=$LOOP_ROUNDS_PREGRAD python pregrad_scanner_loop.py &
           LOOP_ROUNDS=$LOOP_ROUNDS_MCAP python mcap_scanner_loop.py &
           LOOP_ROUNDS=$LOOP_ROUNDS_LIFECYCLE python lifecycle_runner_loop.py &
+          python git_push_flusher.py &
           wait
 
       - name: final commit (catch anything the loops themselves didn't push)

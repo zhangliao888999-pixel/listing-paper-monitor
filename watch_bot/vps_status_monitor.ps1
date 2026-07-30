@@ -10,7 +10,7 @@
 #     没有新交易,不代表卡住)
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $RepoRoot = "C:\claude_watchbot\listing-paper-monitor"
-$TaskNames = @("watchbot_pregrad_scanner_loop.py", "watchbot_mcap_scanner_loop.py", "watchbot_lifecycle_runner_loop.py")
+$TaskNames = @("watchbot_pregrad_scanner_loop.py", "watchbot_mcap_scanner_loop.py", "watchbot_lifecycle_runner_loop.py", "watchbot_git_push_flusher.py")
 
 function Get-MinutesAgo($epochSeconds) {
     $then = [DateTimeOffset]::FromUnixTimeSeconds([long]$epochSeconds).LocalDateTime
