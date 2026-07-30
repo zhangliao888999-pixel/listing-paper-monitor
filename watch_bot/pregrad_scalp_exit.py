@@ -54,6 +54,21 @@ PUMPPORTAL_URL = "https://pumpportal.fun/api/trade-local"
 SLIPPAGE_PCT = float(os.environ.get("PUMP_SLIPPAGE_PCT", "10"))
 PRIORITY_FEE_SOL = float(os.environ.get("PUMP_PRIORITY_FEE_SOL", "0.0005"))
 SOL_MINT = "So11111111111111111111111111111111111111112"
+# 2026-07-31新增: 按发射台分流执行通道。分台统计发现纸盘893笔pregrad里
+# pump.fun占49%(均值-2.7%)、Meteora DBC系占49%(均值+13.6%),利润几乎全在
+# 后者——只做pump.fun等于专挑亏钱的那一半。PumpPortal不支持Meteora DBC,
+# 但实测Jupiter能路由它们的曲线池(CT/Fraggle实测路由=Meteora DAMM v2),
+# 所以: pump/bonk后缀走PumpPortal,其余走Jupiter,复用同一套本地签名流程。
+JUPITER_QUOTE_URL = "https://lite-api.jup.ag/swap/v1/quote"
+JUPITER_SWAP_URL = "https://lite-api.jup.ag/swap/v1/swap"
+JUP_SLIPPAGE_BPS = int(os.environ.get("SLIPPAGE_BPS", "300"))
+
+
+def venue_for(mint):
+    """哪条执行通道能做这个币: PumpPortal只支持pump.fun/letsbonk系,
+    Meteora DBC等其余发射台走Jupiter聚合器路由。"""
+    m = str(mint)
+    return "pumpportal" if (m.endswith("pump") or m.endswith("bonk")) else "jupiter"
 LIVE_POSITION_MARKER = HERE / ".live_position_open"  # 跟snipe_exit.py共用同一个
                                                       # 全局实盘名额标记文件
 
@@ -228,17 +243,89 @@ def pumpportal_trade(wallet, action, mint, amount, denominated_in_sol, pool):
     return sig, ok, None
 
 
+def jupiter_quote(input_mint, output_mint, amount, slippage_bps):
+    try:
+        r = requests.get(JUPITER_QUOTE_URL, params={
+            "inputMint": input_mint, "outputMint": output_mint,
+            "amount": amount, "slippageBps": slippage_bps}, timeout=15)
+        return r.json() if r.status_code == 200 else None
+    except requests.RequestException:
+        return None
+
+
+def jupiter_swap_tx(quote, user_pubkey):
+    try:
+        r = requests.post(JUPITER_SWAP_URL, json={
+            "quoteResponse": quote, "userPublicKey": user_pubkey, "wrapAndUnwrapSol": True,
+            "dynamicComputeUnitLimit": True, "prioritizationFeeLamports": "auto"}, timeout=15)
+        return r.json().get("swapTransaction") if r.status_code == 200 else None
+    except requests.RequestException:
+        return None
+
+
+def get_token_balance_raw(owner_pubkey_str, mint):
+    """卖出必须用钱包真实余额,不能用买入报价的预估值(有滑点偏差,会被链上
+    模拟以'卖的比持有多'拒掉)——这是snipe腿头两笔卡仓学到的教训。"""
+    resp = rpc_call("getTokenAccountsByOwner", [owner_pubkey_str, {"mint": mint}, {"encoding": "jsonParsed"}])
+    try:
+        accounts = resp["result"]["value"]
+        if not accounts:
+            return None
+        return int(accounts[0]["account"]["data"]["parsed"]["info"]["tokenAmount"]["amount"])
+    except (KeyError, IndexError, TypeError, ValueError):
+        return None
+
+
+def jupiter_trade(wallet, input_mint, output_mint, amount, slippage_bps):
+    """Jupiter报价->本地签名->广播->等确认。返回(tx签名, 是否确认, 错误)。"""
+    quote = jupiter_quote(input_mint, output_mint, amount, slippage_bps)
+    if not quote:
+        return None, False, "Jupiter拿不到报价"
+    swap_tx = jupiter_swap_tx(quote, str(wallet.pubkey()))
+    if not swap_tx:
+        return None, False, "Jupiter构造交易失败"
+    sig, err = sign_and_send(wallet, base64.b64decode(swap_tx))
+    if err:
+        return None, False, f"广播失败: {err}"
+    return sig, confirm_tx(sig), None
+
+
+def do_live_buy(wallet, mint, pos_size_usd, sol_price):
+    """按发射台分流的实盘买入。返回(tx签名, 是否成功, 错误信息)。"""
+    sol_amount = round(pos_size_usd / sol_price, 6)
+    if venue_for(mint) == "pumpportal":
+        return pumpportal_trade(wallet, "buy", mint, sol_amount, True, "pump")
+    lamports = int(sol_amount * 1e9)
+    return jupiter_trade(wallet, SOL_MINT, mint, lamports, JUP_SLIPPAGE_BPS)
+
+
 def do_live_sell(wallet, mint, reason):
     """实盘全仓卖出。pool用auto: 币还在curve里就走pump,已经毕业迁移就自动
     路由到新场地——MISSED_EXIT_LIKELY_GRADUATED这种场景下老curve已关,写死
     pump会卖不掉。失败重试一次(网络抖动),再失败就如实返回,不装成功。"""
-    for attempt in (1, 2):
-        sig, ok, err = pumpportal_trade(wallet, "sell", mint, "100%", False, "auto")
+    sig = err = None
+    if venue_for(mint) == "pumpportal":
+        for attempt in (1, 2):
+            sig, ok, err = pumpportal_trade(wallet, "sell", mint, "100%", False, "auto")
+            if sig and ok:
+                log(f"实盘卖出[{reason}]成功 tx={sig}")
+                return {"dry_run": False, "confirmed": True, "tx": sig}
+            log(f"实盘卖出[{reason}]第{attempt}次失败: {err or '交易未确认'} tx={sig}")
+            time.sleep(2)
+        return {"dry_run": False, "confirmed": False, "tx": sig, "error": err or "unconfirmed"}
+
+    # Jupiter通道: 用钱包真实余额,滑点逐档放宽——出不来比价格差更糟
+    qty = get_token_balance_raw(str(wallet.pubkey()), mint)
+    if not qty:
+        log(f"实盘卖出[{reason}]失败: 钱包里这个币余额为0")
+        return {"dry_run": False, "confirmed": False, "error": "zero_balance"}
+    for slippage_bps in (JUP_SLIPPAGE_BPS, 1000, 3000):
+        sig, ok, err = jupiter_trade(wallet, mint, SOL_MINT, qty, slippage_bps)
         if sig and ok:
-            log(f"实盘卖出[{reason}]成功 tx={sig}")
+            log(f"实盘卖出[{reason}]成功(滑点容忍{slippage_bps/100:.0f}%) tx={sig}")
             return {"dry_run": False, "confirmed": True, "tx": sig}
-        log(f"实盘卖出[{reason}]第{attempt}次失败: {err or '交易未确认'} tx={sig}")
-        time.sleep(2)
+        log(f"实盘卖出[{reason}]失败(滑点{slippage_bps/100:.0f}%): {err or '未确认'},换更高滑点重试")
+        time.sleep(1.5)
     return {"dry_run": False, "confirmed": False, "tx": sig, "error": err or "unconfirmed"}
 
 
@@ -471,13 +558,12 @@ def main():
             log("拿不到SOL实时价格,不猜,放弃这个候选")
             release_marker()
             return
-        sol_amount = round(POS_SIZE_USD / sol_price_at_entry, 6)
-        buy_tx, buy_ok, buy_err = pumpportal_trade(wallet, "buy", mint, sol_amount, True, "pump")
+        buy_tx, buy_ok, buy_err = do_live_buy(wallet, mint, POS_SIZE_USD, sol_price_at_entry)
         if not buy_tx or not buy_ok:
-            log(f"实盘买入失败: {buy_err or '交易未确认'} tx={buy_tx},放弃这个候选")
+            log(f"实盘买入失败({venue_for(mint)}通道): {buy_err or '交易未确认'} tx={buy_tx},放弃这个候选")
             release_marker()
             return
-        log(f"实盘买入成功 {sol_amount} SOL(≈${POS_SIZE_USD:.2f}) tx={buy_tx}")
+        log(f"实盘买入成功(≈${POS_SIZE_USD:.2f},{venue_for(mint)}通道) tx={buy_tx}")
         post_buy_lamports = get_wallet_lamports(str(wallet.pubkey()))
         try:
             os.write(marker_fd, json.dumps({

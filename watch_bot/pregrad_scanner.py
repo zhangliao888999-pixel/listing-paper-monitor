@@ -117,14 +117,12 @@ def deploy(addr, mint, name):
         # 实盘模式: 只在有空余真实仓位名额+私钥就位时才spawn,而且spawn的就是
         # 真实下单实例。名额被占/没私钥时直接跳过这个候选(不开纸盘实例——VPS
         # 实盘期的journal数据要保持干净,纸盘对照组在云端跑)。
-        # 2026-07-31修复(首批3个候选全部买入失败的实测教训): GT new_pools里混着
-        # 各家发射台的币(Meteora DBC/letsbonk/moonshot...),纸盘不挑食(纸面结算
-        # 谁都能记),但实盘执行通道PumpPortal只支持pump.fun——对Meteora DBC的币
-        # 构造交易直接HTTP 400。pump.fun的mint地址约定以"pump"结尾,用这个过滤,
-        # 其他发射台的候选跳过(以后如果要支持得另接对应执行通道)。
-        if not str(mint).endswith("pump"):
-            print(f"  [实盘]候选{name}不是pump.fun的币(mint不以pump结尾),执行通道不支持,跳过")
-            return False
+        # 2026-07-31放开(分台统计后的修正): 之前限定只做pump.fun,但按mint后缀
+        # 分台统计893笔pregrad纸盘发现——pump.fun占49%均值-2.7%,Meteora DBC系
+        # 占49%均值+13.6%,利润几乎全在后者,只做pump.fun等于专挑亏钱的一半。
+        # 实测Jupiter能路由Meteora DBC的曲线池,pregrad_scalp_exit.py已改成按
+        # 发射台分流执行通道(pump/bonk走PumpPortal,其余走Jupiter),这里不再
+        # 按发射台过滤,交给执行层自己选通道。
         if not os.environ.get("WALLET_PRIVATE_KEY"):
             print("  [实盘]*** SNIPE_LIVE_MODE=1但没设WALLET_PRIVATE_KEY,拒绝假装在跑实盘,跳过 ***")
             return False
