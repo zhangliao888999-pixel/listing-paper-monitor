@@ -13,6 +13,7 @@ pregrad_scalp_exit.py纸盘实例。
 """
 import io
 import json
+import os
 import re
 import subprocess
 import sys
@@ -37,7 +38,10 @@ SEEN_F = HERE / "pregrad_seen.json"
 # pregrad这一条腿,跟mcap_scanner那边的MAX_CONCURRENT_DEPLOYED完全独立,两边
 # 加起来系统总并发量还是很高。云端在GitHub Actions共享IP上,能扛住的限流预算
 # 大概率比本地小,先压到3,配合mcap那边从8压到4,把系统总并发砍掉一半以上。
-MAX_CONCURRENT = 3
+# 2026-07-30新增: VPS没有GitHub Actions那种共享IP限流顾虑,用户想试试把并发调高
+# 是不是能提升扫描效率,跟云端(继续用默认值3)直接对比。加环境变量开关,不改
+# 默认值,VPS这边单独设PREGRAD_MAX_CONCURRENT=6来测试。
+MAX_CONCURRENT = int(os.environ.get("PREGRAD_MAX_CONCURRENT", "3"))
 DEPLOY_WINDOW_SEC = 240  # 比脚本自己的180秒硬超时留一点余量,过了这个时间就当它已经跑完了
 
 

@@ -16,6 +16,7 @@
 用法: python lifecycle_logger.py [screener_state_local.json路径]
 """
 import json
+import os
 import re
 import subprocess
 import sys
@@ -35,7 +36,10 @@ from check_coin import GT_BASE, S, GMGN_S, get, check_pool_and_mint
 # GT/GMGN限流接口。云端在GitHub Actions共享IP上,能扛住的限流预算大概率比
 # 本地独享IP小,原来8这个上限是照着本地实测调的,先往下压到4,配合pregrad那边
 # 从6压到3(见pregrad_scanner.py),把系统总并发量砍掉一半以上再看是否还会卡死。
-MAX_CONCURRENT_DEPLOYED = 4
+# 2026-07-30新增: VPS没有GitHub Actions那种共享IP限流顾虑,用户想试试把并发调高
+# 是不是能提升扫描效率,跟云端(继续用默认值4)直接对比。加环境变量开关,不改
+# 默认值,VPS这边单独设MCAP_MAX_CONCURRENT_DEPLOYED=8来测试。
+MAX_CONCURRENT_DEPLOYED = int(os.environ.get("MCAP_MAX_CONCURRENT_DEPLOYED", "4"))
 from operator_registry import matches_pump_signature, matches_early_signature, matches_origin_mcap_signature, rugcheck_creator
 
 HERE = Path(__file__).parent
