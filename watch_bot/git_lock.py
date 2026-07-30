@@ -11,11 +11,15 @@ add/commit/push,而不是同时抢。Windows下用O_CREAT|O_EXCL模拟独占锁,
 互相打架导致的失败重试成本)。
 """
 import os
+import re
 import time
+import subprocess
 import contextlib
 from pathlib import Path
 
 LOCK_PATH = Path(__file__).parent / "git_push.lock"
+
+_MARKER_RE = re.compile(r"^(<{7} |={7}$|>{7} )")
 
 
 @contextlib.contextmanager
@@ -42,3 +46,53 @@ def git_lock(timeout=30, poll=0.3):
             LOCK_PATH.unlink()
         except FileNotFoundError:
             pass
+
+
+def resolve_stuck_merge(repo_root, log=print):
+    """2026-07-30再修: 真正的根因排查——journal.jsonl里两次出现的字面冲突
+    标记(<<<<<<< / ======= / >>>>>>>)不是历史遗留,是还在持续发生的bug:
+    如果某一轮`git pull --no-edit`真的撞上一个自动合并解决不了的冲突(不是
+    "两边都只是各自追加新行"这种简单情况),git会把冲突标记原样留在工作区
+    文件里、把仓库晾在"合并中"状态,而重试循环拿不到新提交,push还是会
+    失败,6次retry耗尽后直接放弃——但从没人真正解决这个卡住的合并。
+    下一轮任何脚本一旦对同一个文件`git add`+`git commit`,git会把当前工作区
+    内容(冲突标记原样还在)当成"已经手动解决"直接完成这次合并提交,冲突
+    标记就这样被永久烤进了历史——这才是两次复现同一个bug、且commit hash
+    每次都不一样的真正原因。
+
+    在每次真正commit之前,先检查有没有这种被前一轮晾在半路的合并:有的话
+    按文件类型自动收拾干净,而不是放任下一次commit糊里糊涂地把它坐实。"""
+    merge_head = repo_root / ".git" / "MERGE_HEAD"
+    if not merge_head.exists():
+        return False
+
+    status = subprocess.run(["git", "status", "--porcelain"], cwd=str(repo_root),
+                             capture_output=True, text=True)
+    conflicted = [line[3:].strip() for line in status.stdout.splitlines() if line.startswith("UU ")]
+    if not conflicted:
+        # MERGE_HEAD在,但没有UU文件了(可能已经被手动清过),直接尝试收尾
+        subprocess.run(["git", "commit", "--no-edit"], cwd=str(repo_root), capture_output=True, text=True)
+        return True
+
+    for rel_path in conflicted:
+        full = repo_root / rel_path
+        if rel_path.endswith(".jsonl"):
+            # 逐行独立的台账文件: 两边各自的行都是真实数据,不能只选一边,
+            # 把冲突标记这几行去掉、两边内容全部保留(union),不会丢交易记录。
+            if full.exists():
+                text = full.read_text(encoding="utf-8")
+                kept = [ln for ln in text.splitlines(keepends=True)
+                        if not _MARKER_RE.match(ln.rstrip("\n"))]
+                full.write_text("".join(kept), encoding="utf-8")
+        else:
+            # 整体结构化的json缓存/日志文件: 冲突意味着两边改的是同一段内容,
+            # 拼接两边行内容会拼出无法解析的文件,宁可用自己这边(HEAD)最新
+            # 版本覆盖、丢一点对方的缓存状态,也不要产出损坏的结构化文件。
+            subprocess.run(["git", "checkout", "--ours", rel_path], cwd=str(repo_root),
+                            capture_output=True, text=True)
+        subprocess.run(["git", "add", rel_path], cwd=str(repo_root), capture_output=True, text=True)
+
+    commit = subprocess.run(["git", "commit", "--no-edit"], cwd=str(repo_root),
+                             capture_output=True, text=True)
+    log(f"发现上一轮遗留的未解决合并,已自动清理冲突标记并收尾提交: {conflicted}")
+    return True

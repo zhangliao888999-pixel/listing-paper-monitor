@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lifecycle_logger import scan_and_log
-from git_lock import git_lock
+from git_lock import git_lock, resolve_stuck_merge
 
 INTERVAL_SEC = 600   # 10分钟一轮
 # 2026-07-29晚间改: 原1小时(6轮)是为了切成小段方便随时检查,但通宵没人盯着重启,
@@ -46,6 +46,8 @@ def git_sync():
         if not got_lock:
             print("  拿不到git锁(30秒超时,可能有很多进程在排队),这次先不推,交给下一轮补推")
             return
+        if resolve_stuck_merge(REPO_ROOT, log=print):
+            print("  清理了上一轮遗留的未解决合并冲突")
         add_cmd = ["git", "add"] + DATA_GLOBS
         run(add_cmd)
         commit = run(["git", "commit", "-m", f"watch_bot data sync {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')}"])
