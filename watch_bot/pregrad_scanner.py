@@ -44,6 +44,15 @@ SEEN_F = HERE / "pregrad_seen.json"
 MAX_CONCURRENT = int(os.environ.get("PREGRAD_MAX_CONCURRENT", "3"))
 DEPLOY_WINDOW_SEC = 240  # 比脚本自己的180秒硬超时留一点余量,过了这个时间就当它已经跑完了
 
+# 2026-07-31新增: pregrad上实盘(用户用数据拍板: 这条腿565笔/天 vs snipe腿35笔/天,
+# 要快速攒实盘样本只能靠它)。SNIPE_LIVE_MODE=1时spawn的pregrad_scalp_exit.py
+# 带LIVE_TRADING环境变量真实下单(走PumpPortal构造+本地签名);实盘名额跟snipe腿
+# 共用同一个.live_position_open标记文件,全局同时只有MAX_CONCURRENT_LIVE个真实
+# 仓位。没设私钥就拒绝下单只跳过,绝不静默降级成纸盘。
+SNIPE_LIVE_MODE = os.environ.get("SNIPE_LIVE_MODE") == "1"
+LIVE_POS_SIZE_USD = os.environ.get("LIVE_POS_SIZE_USD", "5")
+from lifecycle_logger import count_live_open_positions, MAX_CONCURRENT_LIVE
+
 
 def make_prefix(addr):
     return re.sub(r"[^A-Za-z0-9]", "", addr)[:8]
@@ -83,8 +92,30 @@ def deploy(addr, mint, name):
         # 子进程脱离父进程的控制台,不等于"不开窗口",真正管这个的是CREATE_NO_WINDOW,
         # 之前漏加了。
         kwargs["creationflags"] = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW
+
+    if SNIPE_LIVE_MODE:
+        # 实盘模式: 只在有空余真实仓位名额+私钥就位时才spawn,而且spawn的就是
+        # 真实下单实例。名额被占/没私钥时直接跳过这个候选(不开纸盘实例——VPS
+        # 实盘期的journal数据要保持干净,纸盘对照组在云端跑)。
+        if not os.environ.get("WALLET_PRIVATE_KEY"):
+            print("  [实盘]*** SNIPE_LIVE_MODE=1但没设WALLET_PRIVATE_KEY,拒绝假装在跑实盘,跳过 ***")
+            return False
+        n_live = count_live_open_positions(HERE)
+        if n_live >= MAX_CONCURRENT_LIVE:
+            print(f"  [实盘]真实仓位名额已满({n_live}/{MAX_CONCURRENT_LIVE}),跳过候选 {name}")
+            return False
+        live_env = dict(os.environ)
+        live_env["LIVE_TRADING"] = "1"
+        live_env["CONFIRM_LIVE_SNIPE"] = "YES"
+        live_env["POS_SIZE_USD"] = LIVE_POS_SIZE_USD
+        kwargs["env"] = live_env
+        subprocess.Popen([py, str(HERE / "pregrad_scalp_exit.py"), addr, mint, prefix], **kwargs)
+        print(f"  [实盘]*** 已部署毕业前抢筹真实交易: {name} ({addr[:10]}...) ${LIVE_POS_SIZE_USD} ***")
+        return True
+
     subprocess.Popen([py, str(HERE / "pregrad_scalp_exit.py"), addr, mint, prefix], **kwargs)
     print(f"  *** 已部署毕业前抢筹纸盘: {name} ({addr[:10]}...) ***")
+    return True
 
 
 def main():
@@ -121,9 +152,12 @@ def main():
         if not mint:
             continue
 
-        deploy(addr, mint, a.get("name"))
-        seen[addr] = now
-        n_deployed += 1
+        # 2026-07-31改: deploy在实盘模式下可能因为名额被占/没私钥而跳过,跳过的
+        # 候选不记入seen——名额几分钟后就会腾出来,30秒后的下一轮还能再试这个
+        # 候选,不该被240秒的去重窗口白白浪费掉。
+        if deploy(addr, mint, a.get("name")):
+            seen[addr] = now
+            n_deployed += 1
 
     save_seen(seen)
     print(f"本轮新部署: {n_deployed}个")

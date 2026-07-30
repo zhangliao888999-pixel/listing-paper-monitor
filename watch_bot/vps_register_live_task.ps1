@@ -19,9 +19,13 @@ $dir = Split-Path -Parent $MyInvocation.MyCommand.Path
 # mcap_scanner.py内部就是调lifecycle_logger.deploy_full_stack,实盘开关/名额
 # 限制/私钥检查全部自动生效,所以把它也注册成live任务——两条腿共用同一个
 # MAX_CONCURRENT_LIVE=1名额(标记文件是全局的),不会因为多一条腿就多开仓。
+# 2026-07-31再补: 加pregrad实盘腿——用户用数据拍板(pregrad纸盘565笔/天 vs
+# snipe腿35笔/天),要快速攒实盘样本必须靠它。执行通道走PumpPortal(毕业前的
+# 币不在Jupiter路由里),三条腿共用同一个实盘名额标记,全局同时最多1个真实仓位。
 $liveTasks = @(
-    @{ Name = "watchbot_live_runner_loop"; Script = "lifecycle_runner_loop.py" },
-    @{ Name = "watchbot_live_mcap_loop";   Script = "mcap_scanner_loop.py" }
+    @{ Name = "watchbot_live_runner_loop";  Script = "lifecycle_runner_loop.py" },
+    @{ Name = "watchbot_live_mcap_loop";    Script = "mcap_scanner_loop.py" },
+    @{ Name = "watchbot_live_pregrad_loop"; Script = "pregrad_scanner_loop.py" }
 )
 
 foreach ($t in $liveTasks) {
