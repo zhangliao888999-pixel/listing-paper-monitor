@@ -38,7 +38,7 @@ from pathlib import Path
 
 import requests
 
-from git_lock import git_lock
+from git_lock import git_lock, resolve_stuck_merge
 
 HERE = Path(__file__).parent
 JOURNAL_F = HERE / "journal.jsonl"
@@ -205,6 +205,8 @@ def git_push_journal():
         if not got_lock:
             log("拿不到git锁(30秒超时,可能有很多进程在排队),这次先不推,交给下一轮补推")
             return
+        if resolve_stuck_merge(repo_root, log=log):
+            log("清理了上一轮遗留的未解决合并冲突")
         run(["git", "add", "watch_bot/journal.jsonl"])
         commit = run(["git", "commit", "-m", f"trade completed: {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}"])
         if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
