@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实盘测试 - 真实成交台账</title>
+<style>
+  :root {
+    --bg: #0b0e14; --panel: #131722; --panel2: #1a1f2e; --border: #2a3040;
+    --text: #e6e9ef; --dim: #8b93a7; --green: #26a69a; --red: #ef5350;
+    --accent: #5b8def; --yellow: #d4a72c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px; line-height: 1.5;
+  }
+  header {
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+  header a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  #status { font-size: 12px; color: var(--dim); }
+  #status.live { color: var(--green); }
+  #status.error { color: var(--red); }
+  main { padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px; overflow-x: auto; }
+  .card h2 { font-size: 15px; margin: 0 0 4px; }
+  .card .sub { font-size: 12px; color: var(--dim); margin: 0 0 12px; }
+  .summary { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; font-size: 13px; color: var(--dim); }
+  .summary b { color: var(--text); font-size: 16px; }
+  table { border-collapse: collapse; width: 100%; font-size: 12.5px; white-space: nowrap; }
+  th, td { padding: 6px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+  th { color: var(--dim); font-weight: 500; position: sticky; top: 0; background: var(--panel); }
+  tr:hover { background: var(--panel2); }
+  .pos { color: var(--green); } .neg { color: var(--red); } .zero { color: var(--dim); }
+  .badge { padding: 2px 7px; border-radius: 5px; font-size: 11.5px; }
+  .badge.confirmed { background: rgba(38,166,154,.15); color: var(--green); }
+  .badge.unconfirmed { background: rgba(239,83,80,.15); color: var(--red); }
+  .empty { color: var(--dim); padding: 20px; text-align: center; }
+  .warn { background: rgba(212,167,44,.12); border: 1px solid rgba(212,167,44,.35); color: var(--yellow);
+          border-radius: 8px; padding: 10px 14px; font-size: 12.5px; margin-bottom: 14px; }
+  footer { padding: 16px 20px; color: var(--dim); font-size: 12px; text-align: center; }
+  a.txlink { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>实盘测试 · 真实成交台账</h1>
+  <div style="display:flex; gap:14px; align-items:center;">
+    <a href="./journal.html">← 纸盘台账</a>
+    <a href="./infra_compare.html">云端vs VPS对比</a>
+    <span id="status">加载中…</span>
+  </div>
+</header>
+<main id="main">
+  <div class="card"><div class="empty">加载中…</div></div>
+</main>
+<footer>
+  数据源: <a href="https://github.com/zhangliao888999-pixel/listing-paper-monitor" target="_blank" style="color:var(--accent)">listing-paper-monitor / watch_bot</a>
+  · 每 30 秒自动刷新 · 只统计dry_run=false的真实成交,不包含纸盘模拟
+</footer>
+
+<script>
+const REPO = "zhangliao888999-pixel/listing-paper-monitor";
+const BRANCH = "master";
+const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/`;
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+async function fetchText(path) {
+  const r = await fetch(RAW + path + "?t=" + Date.now(), { cache: "no-store" });
+  if (!r.ok) throw new Error(`${path} HTTP ${r.status}`);
+  return r.text();
+}
+
+function parseJsonl(text) {
+  return text.trim().split("\n").filter(Boolean).map(line => {
+    try { return JSON.parse(line); } catch (e) { return null; }
+  }).filter(Boolean);
+}
+
+function fmtNum(v, digits) {
+  if (v === null || v === undefined || v === "") return "-";
+  const n = Number(v);
+  if (isNaN(n)) return String(v);
+  return n.toLocaleString(undefined, { maximumFractionDigits: digits ?? 2 });
+}
+
+function pctCell(p) {
+  if (p == null) return `<td class="zero">-</td>`;
+  const cls = p > 0.05 ? "pos" : p < -0.05 ? "neg" : "zero";
+  return `<td class="${cls}">${p >= 0 ? "+" : ""}${p.toFixed(2)}%</td>`;
+}
+
+function shortTx(sig) {
+  if (!sig) return "-";
+  const short = sig.length > 12 ? sig.slice(0, 6) + "…" + sig.slice(-6) : sig;
+  return `<a class="txlink" href="https://solscan.io/tx/${sig}" target="_blank">${short}</a>`;
+}
+
+function renderLive(records) {
+  // 2026-07-30新增: 只看真实成交(dry_run===false),纸盘噪音一律过滤掉——这个
+  // 页面存在的唯一目的就是"实盘到底跟纸盘差多少",混进纸盘数据只会让这个
+  // 对比失真。
+  const live = records.filter(r => r.dry_run === false);
+  if (!live.length) {
+    return `<div class="warn">还没有真实成交记录。实盘任务已经部署好,等第一笔真实交易完成后这里会自动显示。</div>`;
+  }
+  live.sort((a, b) => (b.entry_ts || 0) - (a.entry_ts || 0));
+
+  const withActual = live.filter(r => r.pnl_pct_actual != null);
+  const nWin = withActual.filter(r => r.pnl_pct_actual > 0).length;
+  const totalInvestedActual = withActual.reduce((a, r) => a + (Number(r.entry_usd_actual) || 0), 0);
+  let totalProfit = 0, totalLoss = 0;
+  withActual.forEach(r => {
+    const d = Number(r.entry_usd_actual) * Number(r.pnl_pct_actual) / 100;
+    if (d > 0) totalProfit += d; else totalLoss += d;
+  });
+  const netIncome = totalProfit + totalLoss;
+
+  // 滑点缺口: pnl_pct_actual(真实) - pnl_pct(纸盘理想价) ,同一笔交易两个数字都在
+  const gaps = live.filter(r => r.pnl_pct_actual != null && r.pnl_pct != null)
+                    .map(r => r.pnl_pct_actual - r.pnl_pct);
+  const avgGap = gaps.length ? gaps.reduce((a, b) => a + b, 0) / gaps.length : null;
+
+  // 按strategy_version分组,方便对比每次调参前后的效率
+  const verGroups = {};
+  live.forEach(r => {
+    const key = `v${r.strategy_version ?? "(无版本号)"}`;
+    if (!verGroups[key]) verGroups[key] = [];
+    verGroups[key].push(r);
+  });
+  const verRows = Object.entries(verGroups).sort((a, b) => (a[0] > b[0] ? 1 : -1)).map(([key, rs]) => {
+    const withAct = rs.filter(r => r.pnl_pct_actual != null);
+    const invested = withAct.reduce((a, r) => a + (Number(r.entry_usd_actual) || 0), 0);
+    let profit = 0, loss = 0;
+    withAct.forEach(r => {
+      const d = Number(r.entry_usd_actual) * Number(r.pnl_pct_actual) / 100;
+      if (d > 0) profit += d; else loss += d;
+    });
+    const net = profit + loss;
+    const wins = withAct.filter(r => r.pnl_pct_actual > 0).length;
+    const posSizes = [...new Set(rs.map(r => r.pos_size_usd).filter(v => v != null))];
+    return `<tr>
+      <td>${esc(key)}</td>
+      <td>${rs.length}</td>
+      <td>$${posSizes.map(v => fmtNum(v, 2)).join(" / ")}</td>
+      <td>${withAct.length ? (wins / withAct.length * 100).toFixed(0) + "%" : "-"}</td>
+      <td>$${fmtNum(invested, 2)}</td>
+      <td class="${net >= 0 ? 'pos' : 'neg'}">${net >= 0 ? '+' : '-'}$${fmtNum(Math.abs(net), 2)}</td>
+      <td>${net && invested ? (net / invested * 100).toFixed(1) : '0.0'}%</td>
+    </tr>`;
+  }).join("");
+
+  const rows = live.map(r => {
+    const confirmed = r.sell_confirmed;
+    const badge = confirmed == null ? "" :
+      `<span class="badge ${confirmed ? 'confirmed' : 'unconfirmed'}">${confirmed ? '已确认' : '未确认'}</span>`;
+    const gap = (r.pnl_pct_actual != null && r.pnl_pct != null) ? r.pnl_pct_actual - r.pnl_pct : null;
+    return `<tr>
+      <td>${esc(r.name)}</td>
+      <td>${esc(r.entry_ts_str)}</td>
+      <td>${r.strategy_version ?? "-"}</td>
+      <td>$${fmtNum(r.entry_usd_actual ?? r.pos_size_usd, 2)}</td>
+      <td>${fmtNum(r.hold_sec, 0)}秒</td>
+      <td>${esc(r.exit_reason)}</td>
+      ${pctCell(r.pnl_pct)}
+      ${pctCell(r.pnl_pct_actual)}
+      <td>${gap == null ? "-" : (gap >= 0 ? "+" : "") + gap.toFixed(2) + "pp"}</td>
+      <td>${badge}</td>
+      <td>${shortTx(r.buy_tx)}</td>
+      <td>${shortTx(r.sell_tx)}</td>
+      <td>$${fmtNum(r.entry_liq_usd, 0)}</td>
+    </tr>`;
+  }).join("");
+
+  return `
+    ${avgGap != null && Math.abs(avgGap) > 3 ? `<div class="warn">真实成交跟纸盘理想价的平均缺口是 ${avgGap >= 0 ? '+' : ''}${avgGap.toFixed(2)} 个百分点——这就是真实滑点+优先费吃掉(或者意外好于)理想价的部分,加仓前先看这个数字稳不稳定。</div>` : ""}
+    <div class="summary">
+      <span>真实成交笔数 <b>${live.length}</b></span>
+      <span>已有真实盈亏数据 <b>${withActual.length}</b></span>
+      <span>胜率(真实) <b>${withActual.length ? (nWin / withActual.length * 100).toFixed(0) : 0}%</b></span>
+      <span>累计真实投入 <b>$${fmtNum(totalInvestedActual, 2)}</b></span>
+      <span>累计真实净收入 <b class="${netIncome >= 0 ? 'pos' : 'neg'}">${netIncome >= 0 ? '+' : '-'}$${fmtNum(Math.abs(netIncome), 2)}</b></span>
+      <span>真实vs纸盘平均缺口 <b class="${avgGap == null ? '' : (avgGap >= 0 ? 'pos' : 'neg')}">${avgGap == null ? '-' : (avgGap >= 0 ? '+' : '') + avgGap.toFixed(2) + 'pp'}</b></span>
+    </div>
+    <table style="margin-bottom:16px;">
+      <thead><tr>
+        <th>版本</th><th>笔数</th><th>仓位</th><th>胜率</th><th>真实投入</th><th>真实净收入</th><th>资金回报率</th>
+      </tr></thead>
+      <tbody>${verRows}</tbody>
+    </table>
+    <table>
+      <thead><tr>
+        <th>币种</th><th>建仓时间</th><th>版本</th><th>仓位USD</th><th>持仓时长</th><th>退出原因</th>
+        <th>纸盘理想pnl</th><th>真实pnl</th><th>缺口</th><th>卖出状态</th><th>买入tx</th><th>卖出tx</th><th>建仓流动性</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+async function load() {
+  const status = document.getElementById("status");
+  const main = document.getElementById("main");
+  try {
+    const journalText = await fetchText("watch_bot/journal.jsonl");
+    const journal = parseJsonl(journalText);
+    main.innerHTML = `<div class="card"><h2>实盘真实成交</h2><p class="sub">跟纸盘共用同一份journal.jsonl,这里只过滤dry_run=false的记录</p>${renderLive(journal)}</div>`;
+    status.textContent = "已更新 " + new Date().toLocaleTimeString("zh-CN");
+    status.className = "live";
+  } catch (e) {
+    status.textContent = "加载失败: " + e.message;
+    status.className = "error";
+  }
+}
+
+load();
+setInterval(load, 30000);
+</script>
+</body>
+</html>

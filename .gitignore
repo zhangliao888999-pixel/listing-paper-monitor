@@ -7,3 +7,9 @@ __pycache__/
 # 涨到125MB,超过GitHub单文件100MB硬限制导致整个push被拒绝。这些文件只是本地取证
 # 用的原始存档,docs/journal.html和docs/index.html都不读取它们,不需要进GitHub。
 watch_bot/*_trades_archive.jsonl
+
+# 2026-07-30新增: 实盘钱包私钥只能留在VPS本地,绝不能进git历史(哪怕仓库是
+# 私有的也不行,私钥一旦进过commit历史就等于泄露,删掉文件不等于删掉历史记录)。
+# vps_run_forever.ps1会从这个文件读私钥设成环境变量给snipe_exit.py用,用户
+# 自己在VPS上创建这个文件、自己填内容,我不会经手实际的私钥值。
+watch_bot/.live_wallet_key
