@@ -18,7 +18,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lifecycle_logger import scan_and_log
 from git_lock import git_lock, resolve_stuck_merge, run_git
 
-INTERVAL_SEC = 600   # 10分钟一轮
+# 2026-07-30改: 实盘首跑10分钟没有任何开仓,排查发现这条腿10分钟一轮的节奏
+# 是纸盘时代跟pregrad(30秒)/mcap(90秒)两条高频腿并行时定的——那时候它慢无
+# 所谓,发现主力是另外两条腿。现在VPS上纸盘腿停了,它成了唯一/主要的发现
+# 入口,10分钟一轮等于大部分1-30分钟年龄窗口的候选还没被看到就已经过期。
+# 改成环境变量可调,实盘模式(vps_run_forever.ps1 -LiveMode)设180秒,云端
+# 纸盘不设时维持600秒不变。
+INTERVAL_SEC = int(os.environ.get("LIFECYCLE_INTERVAL_SEC", "600"))
 # 2026-07-29晚间改: 原1小时(6轮)是为了切成小段方便随时检查,但通宵没人盯着重启,
 # 断档风险比"看不到中途进展"更糟,改成10小时(60*10分钟),覆盖一整晚睡眠时间。
 # 白天再改: 云端job单次最长6小时,用LOOP_ROUNDS环境变量覆盖,本地不设时还是默认值。
@@ -70,9 +76,26 @@ def git_sync():
         print("  git同步失败,重试6次后放弃,下一轮再试")
 
 
+def git_refresh():
+    """2026-07-30新增: 每轮扫描前先拉一次远端——发现的候选来源是本机screener
+    推上来的screener_state_local.json,VPS这边如果没人定期pull,这个文件会
+    一直停在部署那一刻的版本(实测停了13分钟,GitHub上已经有新版本),年龄
+    过滤(1-30分钟新币)会把过期候选全部筛掉,表现就是每轮都"发现0个新池子"、
+    实盘永远等不来第一笔交易。之前纸盘时代没暴露这个问题,是因为push重试
+    里的pull顺带把数据带新了——现在交易少了push也少,不能再靠那个副作用。"""
+    with git_lock() as got_lock:
+        if not got_lock:
+            return
+        resolve_stuck_merge(REPO_ROOT, log=print)
+        pull = run(["git", "pull", "--no-edit", "origin", "master"])
+        if pull.returncode != 0:
+            print(f"  轮前刷新pull失败(不影响本轮扫描,用现有数据继续): {(pull.stderr or '')[:120]}")
+
+
 for i in range(ROUNDS):
     ts = dt.datetime.now().strftime("%H:%M:%S")
     print(f"\n[{ts}] === 第{i+1}/{ROUNDS}轮 ===")
+    git_refresh()
     try:
         scan_and_log(STATE_PATH)
     except Exception as e:

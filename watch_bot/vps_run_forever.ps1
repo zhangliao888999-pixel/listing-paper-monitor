@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 # 2026-07-30新增: VPS部署专用的外层看守脚本——GitHub Actions那边云端job最长
 # 只能跑6小时,得靠cron每5小时接力重启;VPS没有这个限制,可以真正一直跑,但
 # 万一某个循环脚本自己崩了(未捕获异常/服务器重启),需要有人负责把它重新拉起来,
@@ -32,6 +32,11 @@ if ($LiveMode) {
     $env:SNIPE_LIVE_MODE = "1"
     if (-not $env:MAX_CONCURRENT_LIVE) { $env:MAX_CONCURRENT_LIVE = "1" }
     if (-not $env:LIVE_POS_SIZE_USD) { $env:LIVE_POS_SIZE_USD = "5" }
+    # 2026-07-30新增: 实盘首跑10分钟无开仓的教训——纸盘时代lifecycle这条腿10分钟
+    # 一轮无所谓(发现主力是pregrad/mcap高频腿),实盘模式下它是主要发现入口之一,
+    # 10分钟一轮会让大部分年龄窗口内的候选直接过期。实盘把它提到3分钟一轮
+    # (纸盘的高频腿已停,GT/GMGN调用量整体反而比以前低,不会触发限流)。
+    $env:LIFECYCLE_INTERVAL_SEC = "180"
     $keyFile = Join-Path $here ".live_wallet_key"
     if (Test-Path $keyFile) {
         $env:WALLET_PRIVATE_KEY = (Get-Content $keyFile -Raw).Trim()

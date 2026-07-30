@@ -15,7 +15,7 @@
 # 真实仓位名额、最近一笔真实成交是什么结果。
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $RepoRoot = "C:\claude_watchbot\listing-paper-monitor"
-$TaskNames = @("watchbot_live_runner_loop", "watchbot_git_push_flusher.py")
+$TaskNames = @("watchbot_live_runner_loop", "watchbot_live_mcap_loop", "watchbot_git_push_flusher.py")
 
 # 2026-07-30再补: "正在交易"面板要记住"上一次展示的已卖出记录是哪一笔、什么
 # 时候开始展示的"——这两个变量在while循环外面声明,循环体每轮刷新都能读到

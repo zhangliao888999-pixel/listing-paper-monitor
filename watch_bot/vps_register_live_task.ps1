@@ -13,20 +13,31 @@
 # 抢同一份pump_lifecycle.json),再跑这个脚本。真正开始下真钱之前,记得先在
 # watch_bot\.live_wallet_key里放好私钥(一行,不要有多余空格/换行)。
 $dir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$taskName = "watchbot_live_runner_loop"
 
-Unregister-ScheduledTask -TaskName $taskName -Confirm:$false -ErrorAction SilentlyContinue
+# 2026-07-30再补: 实盘首跑10分钟无开仓,排查发现纸盘时代真正高产的发现腿是
+# mcap_scanner(90秒一轮,42笔snipe成交的来源),lifecycle只是慢速兜底腿。
+# mcap_scanner.py内部就是调lifecycle_logger.deploy_full_stack,实盘开关/名额
+# 限制/私钥检查全部自动生效,所以把它也注册成live任务——两条腿共用同一个
+# MAX_CONCURRENT_LIVE=1名额(标记文件是全局的),不会因为多一条腿就多开仓。
+$liveTasks = @(
+    @{ Name = "watchbot_live_runner_loop"; Script = "lifecycle_runner_loop.py" },
+    @{ Name = "watchbot_live_mcap_loop";   Script = "mcap_scanner_loop.py" }
+)
 
-$argStr = "-NoProfile -ExecutionPolicy Bypass -File `"$dir\vps_run_forever.ps1`" -ScriptName lifecycle_runner_loop.py -LiveMode"
-$action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $argStr -WorkingDirectory $dir
-$trigger = New-ScheduledTaskTrigger -AtStartup
-$principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest
-$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries `
-    -ExecutionTimeLimit (New-TimeSpan -Days 0) -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1)
+foreach ($t in $liveTasks) {
+    Unregister-ScheduledTask -TaskName $t.Name -Confirm:$false -ErrorAction SilentlyContinue
 
-Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Force | Out-Null
-Start-ScheduledTask -TaskName $taskName
-Write-Host "已注册并启动: $taskName"
+    $argStr = "-NoProfile -ExecutionPolicy Bypass -File `"$dir\vps_run_forever.ps1`" -ScriptName $($t.Script) -LiveMode"
+    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $argStr -WorkingDirectory $dir
+    $trigger = New-ScheduledTaskTrigger -AtStartup
+    $principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest
+    $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries `
+        -ExecutionTimeLimit (New-TimeSpan -Days 0) -RestartCount 999 -RestartInterval (New-TimeSpan -Minutes 1)
+
+    Register-ScheduledTask -TaskName $t.Name -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Force | Out-Null
+    Start-ScheduledTask -TaskName $t.Name
+    Write-Host "已注册并启动: $($t.Name)"
+}
 
 $keyFile = Join-Path $dir ".live_wallet_key"
 if (Test-Path $keyFile) {
