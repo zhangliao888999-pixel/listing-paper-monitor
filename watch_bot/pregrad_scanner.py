@@ -65,18 +65,22 @@ from lifecycle_logger import count_live_open_positions, MAX_CONCURRENT_LIVE
 
 
 def count_live_pregrad_trades():
-    if not JOURNAL_F.exists():
-        return 0
+    """已完成 + 在途 的实盘笔数。
+
+    2026-07-31: 并发提到6之后,只数journal里已完成的笔数会超额——最多可能有
+    6笔在途还没写台账,限额20会实际跑到26笔。把当前持仓数也算进来,让限额
+    是"总共投入过多少笔"的真实上限。"""
     n = 0
-    with JOURNAL_F.open(encoding="utf-8") as f:
-        for line in f:
-            try:
-                rec = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            if rec.get("dry_run") is False and rec.get("found_via") == "pregrad_ramp":
-                n += 1
-    return n
+    if JOURNAL_F.exists():
+        with JOURNAL_F.open(encoding="utf-8") as f:
+            for line in f:
+                try:
+                    rec = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if rec.get("dry_run") is False and rec.get("found_via") == "pregrad_ramp":
+                    n += 1
+    return n + count_live_open_positions(HERE)
 
 
 def make_prefix(addr):

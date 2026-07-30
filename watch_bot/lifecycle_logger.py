@@ -130,26 +130,41 @@ def make_prefix(addr):
 LIVE_MARKER_STALE_SEC = 50 * 60
 
 
+def live_positions_dir(here):
+    """2026-07-31改: 原来用单个.live_position_open文件表示"有没有实盘仓位",
+    只能表达占用/空闲两种状态——用户要把并发从1加到6,单文件机制天生做不到
+    (6个进程抢同一个文件,永远只有1个能成功)。改成一个目录、每个持仓一个
+    以mint命名的标记文件: 数文件个数就是当前持仓数,用O_CREAT|O_EXCL创建
+    单个文件仍然是原子抢占。额外好处: 同一个币不会被两条腿同时买两次。"""
+    d = here / ".live_positions"
+    d.mkdir(exist_ok=True)
+    return d
+
+
 def count_live_open_positions(here):
-    """2026-07-30新增: 之前用pump_lifecycle.json里的live_deployed+status字段判断
-    "真实仓位名额占没占用",发现这两个字段代表的意思根本不对——live_deployed
-    从部署那一刻起永远是True不会清零,status是"这个池子本身死没死"(流动性/
-    回撤),两个都跟"我们这笔实盘交易到底平没平仓"没关系。真买家把我们打出来
-    之后池子往往还活得好好的,导致MAX_CONCURRENT_LIVE=1这个名额从第一笔交易
-    后就被永久占死,后续候选全部被跳过、且没有任何报错提示。
-    改成直接看snipe_exit.py自己维护的标记文件(建仓时创建、finish_trade()时
-    删除)在不在、新不新,这才是"仓位到底开着没开着"的真实信号。"""
-    marker = here / ".live_position_open"
-    if not marker.exists():
-        return 0
-    try:
-        age = time.time() - marker.stat().st_mtime
-    except OSError:
-        return 0
-    if age > LIVE_MARKER_STALE_SEC:
-        print(f"  [实盘]标记文件已经存在{age/60:.0f}分钟,大概率是上一个进程崩溃没清理,自动判定过期忽略")
-        return 0
-    return 1
+    """当前真实持仓数 = 标记目录里没过期的文件数。
+
+    2026-07-30背景: 之前用pump_lifecycle.json的live_deployed+status字段判断,
+    那两个字段跟"这笔交易平没平仓"没关系(live_deployed永不清零、status是
+    池子自己死没死),导致名额从第一笔交易后被永久占死。改用持仓脚本自己
+    维护的标记文件——建仓时创建、平仓时删除,这才是真实信号。"""
+    d = live_positions_dir(here)
+    n = 0
+    for f in d.glob("*.json"):
+        try:
+            age = time.time() - f.stat().st_mtime
+        except OSError:
+            continue
+        if age > LIVE_MARKER_STALE_SEC:
+            # 进程崩溃残留的标记: 清掉,不让它永久占着名额
+            print(f"  [实盘]标记{f.name}已存在{age/60:.0f}分钟,判定为崩溃残留,清理并释放名额")
+            try:
+                f.unlink()
+            except OSError:
+                pass
+            continue
+        n += 1
+    return n
 
 
 def deploy_full_stack(addr, mint, db):

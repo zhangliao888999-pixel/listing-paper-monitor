@@ -69,7 +69,14 @@ ORDERS_LOG_F = None  # 时互相覆盖同一份文件
 # 表现就是"只成交了一笔,之后再也没有了"。改用这个独立的标记文件: 建仓成功
 # 后创建,finish_trade()时删除,判断"名额占没占用"直接看文件在不在,不跟池子
 # 自己的生死状态混在一起。
-LIVE_POSITION_MARKER = HERE / ".live_position_open"
+# 2026-07-31改: 单文件标记支持不了并发>1(N个进程抢同一个文件只有1个能成功),
+# 改成目录+每个持仓一个以mint命名的标记文件,跟pregrad_scalp_exit.py共用。
+LIVE_POSITIONS_DIR = HERE / ".live_positions"
+
+
+def live_marker_path(mint):
+    safe = re.sub(r"[^A-Za-z0-9]", "", str(mint))[:44]
+    return LIVE_POSITIONS_DIR / f"{safe}.json"
 
 SOL_MINT = "So11111111111111111111111111111111111111112"
 JUPITER_QUOTE_URL = "https://lite-api.jup.ag/swap/v1/quote"
@@ -496,7 +503,7 @@ def finish_trade(entry_info, exit_reason, exit_price, sell_result=None):
     write_journal(record)
     if not entry_info["dry_run"]:
         try:
-            LIVE_POSITION_MARKER.unlink()
+            live_marker_path(entry_info["mint"]).unlink()
         except FileNotFoundError:
             pass
     pnl_str = f"{pnl_pct:+.2f}%" if pnl_pct is not None else "未知"
@@ -567,14 +574,26 @@ def main():
             log(f"实盘入场流动性检查不过: ${entry_liq:,.0f} < ${min_liq:,.0f},放弃这个候选(纸盘数据证明这种池子买进去就出不来)")
             return
 
-        # 2026-07-31修复: 头两笔实盘同一秒建仓,MAX_CONCURRENT_LIVE=1被并发竞速
-        # 绕过(原来标记是买入确认后才写,两个进程都在写之前就各买了一笔,$10下场
-        # 而不是$5)。改成买入前用O_CREAT|O_EXCL原子抢占标记文件,抢不到就直接
-        # 放弃这个候选——买入失败时释放标记。
+        # 2026-07-31修复: 头两笔实盘同一秒建仓,名额被并发竞速绕过(原来标记是
+        # 买入确认后才写,两个进程都赶在对方写之前各买了一笔)。改成买入前用
+        # O_CREAT|O_EXCL原子抢占,抢不到就放弃,买入失败时释放。
+        # 再改: 单文件->目录+每币一个标记,支持并发>1;抢到后复查总数防竞速超限。
+        LIVE_POSITIONS_DIR.mkdir(exist_ok=True)
+        max_live = int(os.environ.get("MAX_CONCURRENT_LIVE", "1"))
+        marker_path = live_marker_path(mint)
         try:
-            marker_fd = os.open(str(LIVE_POSITION_MARKER), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            marker_fd = os.open(str(marker_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
         except FileExistsError:
-            log("实盘仓位名额已被其他进程抢占,放弃这个候选")
+            log(f"这个币已经有实盘仓位在跑({marker_path.name}),放弃重复建仓")
+            return
+        n_now = len(list(LIVE_POSITIONS_DIR.glob("*.json")))
+        if n_now > max_live:
+            log(f"抢到标记后复查发现并发已达{n_now}>{max_live},退回名额放弃这个候选")
+            os.close(marker_fd)
+            try:
+                marker_path.unlink()
+            except FileNotFoundError:
+                pass
             return
 
     wallet = get_wallet() if is_live_mode() else None
@@ -585,7 +604,7 @@ def main():
         if marker_fd is not None:
             os.close(marker_fd)
             try:
-                LIVE_POSITION_MARKER.unlink()
+                live_marker_path(mint).unlink()
             except FileNotFoundError:
                 pass
         return

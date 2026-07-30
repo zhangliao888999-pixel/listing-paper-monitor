@@ -69,8 +69,14 @@ def venue_for(mint):
     Meteora DBC等其余发射台走Jupiter聚合器路由。"""
     m = str(mint)
     return "pumpportal" if (m.endswith("pump") or m.endswith("bonk")) else "jupiter"
-LIVE_POSITION_MARKER = HERE / ".live_position_open"  # 跟snipe_exit.py共用同一个
-                                                      # 全局实盘名额标记文件
+# 2026-07-31改: 单文件标记只能表示"有/无仓位",支持不了并发>1。改成一个目录、
+# 每个持仓一个以mint命名的标记文件,跟snipe_exit.py共用同一个目录做全局名额统计。
+LIVE_POSITIONS_DIR = HERE / ".live_positions"
+
+
+def live_marker_path(mint):
+    safe = re.sub(r"[^A-Za-z0-9]", "", str(mint))[:44]
+    return LIVE_POSITIONS_DIR / f"{safe}.json"
 
 
 def is_live_mode():
@@ -482,7 +488,7 @@ def finish_trade(entry_info, exit_reason, exit_price, sell_result=None):
     write_journal(record)
     if not is_dry:
         try:
-            LIVE_POSITION_MARKER.unlink()
+            live_marker_path(entry_info["mint"]).unlink()
         except FileNotFoundError:
             pass
     pnl_str = f"{pnl_pct:+.2f}%" if pnl_pct is not None else "未知(拿不到退出价)"
@@ -542,10 +548,16 @@ def main():
     post_buy_lamports = None
     sol_price_at_entry = None
     if live:
+        # 名额检查+原子抢占。先数当前持仓数(超上限直接放弃),再用O_EXCL创建
+        # 本币的标记文件——两步之间仍可能有别的进程插进来,所以创建成功后
+        # 再复查一次总数,超了就退回,避免并发竞速把上限撑破。
+        LIVE_POSITIONS_DIR.mkdir(exist_ok=True)
+        max_live = int(os.environ.get("MAX_CONCURRENT_LIVE", "1"))
+        marker = live_marker_path(mint)
         try:
-            marker_fd = os.open(str(LIVE_POSITION_MARKER), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            marker_fd = os.open(str(marker), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
         except FileExistsError:
-            log("实盘仓位名额已被其他进程抢占,放弃这个候选")
+            log(f"这个币已经有实盘仓位在跑(标记{marker.name}已存在),放弃重复建仓")
             return
 
         def release_marker():
@@ -554,9 +566,15 @@ def main():
             except OSError:
                 pass
             try:
-                LIVE_POSITION_MARKER.unlink()
+                marker.unlink()
             except FileNotFoundError:
                 pass
+
+        n_now = len(list(LIVE_POSITIONS_DIR.glob("*.json")))
+        if n_now > max_live:
+            log(f"抢到标记后复查发现并发已达{n_now}>{max_live},退回名额放弃这个候选")
+            release_marker()
+            return
 
         wallet = get_wallet()
         sol_price_at_entry = get_sol_price_usd()

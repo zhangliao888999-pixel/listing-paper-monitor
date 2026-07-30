@@ -105,17 +105,16 @@ while ($true) {
     # 发现这两个字段跟"仓位到底平没平"没关系(live_deployed一旦True永远不清零,
     # status是池子自己死没死,不是我们交易平没平),会一直显示"占用中"就算早
     # 就平仓了。改成看snipe_exit.py自己维护的标记文件(建仓时创建,平仓时删除)。
-    $posMarker = Join-Path $RepoRoot "watch_bot\.live_position_open"
-    if (Test-Path $posMarker) {
-        $markerAgeMin = ((Get-Date) - (Get-Item $posMarker).LastWriteTime).TotalMinutes
-        if ($markerAgeMin -gt 50) {
-            Write-Host ("  当前占用的真实仓位名额: 0 (标记文件存在但已{0:N0}分钟,大概率是上个进程崩溃没清理)" -f $markerAgeMin) -ForegroundColor Yellow
-        } else {
-            Write-Host ("  当前占用的真实仓位名额: 1 (已建仓{0:N0}分钟)" -f $markerAgeMin) -ForegroundColor Cyan
-        }
-    } else {
-        Write-Host "  当前占用的真实仓位名额: 0"
+    # 2026-07-31改: 并发从1提到6,单个标记文件换成了.live_positions/目录,
+    # 每个持仓一个以mint命名的文件——这里数文件个数得到当前持仓数。
+    $posDir = Join-Path $RepoRoot "watch_bot\.live_positions"
+    $openPositions = @()
+    if (Test-Path $posDir) {
+        $openPositions = @(Get-ChildItem -Path $posDir -Filter *.json -ErrorAction SilentlyContinue |
+            Where-Object { ((Get-Date) - $_.LastWriteTime).TotalMinutes -le 50 })
     }
+    $posColor = if ($openPositions.Count -gt 0) { "Cyan" } else { "Gray" }
+    Write-Host ("  当前真实持仓: {0} 个" -f $openPositions.Count) -ForegroundColor $posColor
     if (Test-Path $journalPath) {
         $liveLines = Get-Content $journalPath | Select-Object -Last 200 | ForEach-Object {
             try { $r = $_ | ConvertFrom-Json; if ($r.dry_run -eq $false) { $r } } catch {}
@@ -135,9 +134,9 @@ while ($true) {
     Write-Host ""
     Write-Host "--- 正在交易 ---"
     $showedSomething = $false
-    if ((Test-Path $posMarker) -and $markerAgeMin -le 50) {
+    foreach ($pf in $openPositions) {
         try {
-            $posInfo = Get-Content $posMarker -Raw | ConvertFrom-Json
+            $posInfo = Get-Content $pf.FullName -Raw | ConvertFrom-Json
             $openedAt = [DateTimeOffset]::FromUnixTimeSeconds([long]$posInfo.opened_at).LocalDateTime
             $entryPrice = [double]$posInfo.entry_price
             $curPrice = $null
@@ -146,19 +145,19 @@ while ($true) {
                     -Headers @{ "Accept" = "application/json;version=20230302" } -TimeoutSec 8
                 $curPrice = [double]$resp.data.attributes.base_token_price_usd
             } catch {}
-            Write-Host ("  {0}" -f $posInfo.name) -ForegroundColor Cyan
-            Write-Host ("  买入时间: {0}   买入价格: `${1:N10}" -f $openedAt.ToString("HH:mm:ss"), $entryPrice)
             if ($curPrice -and $entryPrice) {
                 $pctChange = ($curPrice / $entryPrice - 1) * 100
                 $chgColor = if ($pctChange -ge 0) { "Green" } else { "Red" }
-                Write-Host ("  现价: `${0:N10}   涨跌幅: {1:+0.00;-0.00}%" -f $curPrice, $pctChange) -ForegroundColor $chgColor
+                Write-Host ("  {0,-18} 买入{1}  `${2:N10} -> `${3:N10}  {4:+0.00;-0.00}%" -f `
+                    $posInfo.name, $openedAt.ToString("HH:mm:ss"), $entryPrice, $curPrice, $pctChange) -ForegroundColor $chgColor
             } else {
-                Write-Host "  现价: 拉取失败,下一轮重试" -ForegroundColor Yellow
+                Write-Host ("  {0,-18} 买入{1}  `${2:N10}  (现价拉取失败,下轮重试)" -f `
+                    $posInfo.name, $openedAt.ToString("HH:mm:ss"), $entryPrice) -ForegroundColor Yellow
             }
             $showedSomething = $true
             $lastClosedKey = $null
         } catch {
-            Write-Host "  (标记文件解析失败,可能刚好在写入中)" -ForegroundColor Yellow
+            Write-Host ("  ({0} 解析失败,可能刚好在写入中)" -f $pf.Name) -ForegroundColor Yellow
             $showedSomething = $true
         }
     }

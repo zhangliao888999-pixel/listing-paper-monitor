@@ -13,3 +13,8 @@ watch_bot/*_trades_archive.jsonl
 # vps_run_forever.ps1会从这个文件读私钥设成环境变量给snipe_exit.py用,用户
 # 自己在VPS上创建这个文件、自己填内容,我不会经手实际的私钥值。
 watch_bot/.live_wallet_key
+
+# 2026-07-31新增: 实盘持仓标记目录,每个在跑的真实仓位一个以mint命名的文件。
+# 纯运行时状态(建仓创建/平仓删除),VPS本地的事实,不该跟着代码同步。
+watch_bot/.live_positions/
+watch_bot/.live_position_open
