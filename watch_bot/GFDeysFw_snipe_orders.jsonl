@@ -1,0 +1,2 @@
+{"action": "BUY", "mint": "2pZnag18SV2DJ63LsTJqwfR52tVCy5HHmBFdWj6adQNM", "pos_size_usd": 5.0, "status": "dry_run", "ts": 1785378043}
+{"action": "SELL", "mint": "2pZnag18SV2DJ63LsTJqwfR52tVCy5HHmBFdWj6adQNM", "reason": "LIQ_LOW", "status": "dry_run", "ts": 1785378043}
