@@ -1,9 +1,0 @@
-﻿[2026-07-31 01:14:13] === 鐪嬪畧鍚姩: lifecycle_runner_loop.py [瀹炵洏妯″紡] ===
-[2026-07-31 01:14:13] *** 瀹炵洏妯″紡浣嗘壘涓嶅埌 C:\claude_watchbot\listing-paper-monitor\watch_bot\.live_wallet_key ,涓嶄細鐪熺殑涓嬪崟(lifecycle_logger.py浼氳嚜宸辨嫆缁濄€佸彧璺戠洃鎺т笉璺憇nipe_exit) ***
-[2026-07-31 01:14:13] 鍚姩 lifecycle_runner_loop.py ...
-[2026-07-31 01:37:46] === 鐪嬪畧鍚姩: lifecycle_runner_loop.py [瀹炵洏妯″紡] ===
-[2026-07-31 01:37:46] 瀹炵洏妯″紡: 宸蹭粠.live_wallet_key璇诲彇绉侀挜, MAX_CONCURRENT_LIVE=1 LIVE_POS_SIZE_USD=5
-[2026-07-31 01:37:46] 鍚姩 lifecycle_runner_loop.py ...
-[2026-07-31 01:52:53] === 鐪嬪畧鍚姩: lifecycle_runner_loop.py [瀹炵洏妯″紡] ===
-[2026-07-31 01:52:53] 瀹炵洏妯″紡: 宸蹭粠.live_wallet_key璇诲彇绉侀挜, MAX_CONCURRENT_LIVE=1 LIVE_POS_SIZE_USD=5
-[2026-07-31 01:52:53] 鍚姩 lifecycle_runner_loop.py ...
