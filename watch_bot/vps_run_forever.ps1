@@ -6,22 +6,40 @@
 # 子进程退出了就等5秒重新拉起,并把重启这件事写进日志方便事后排查。
 param(
     [Parameter(Mandatory=$true)][string]$ScriptName,
-    [string]$LoopRounds = "99999"
+    [string]$LoopRounds = "99999",
+    # 2026-07-30新增: 纸盘大框架跑通了,用户要求拿真钱小额测试——同一个
+    # lifecycle_runner_loop.py,加-LiveMode就切换成真实下单模式,不用另外
+    # 写一份脚本。日志文件名加live前缀,避免跟纸盘那份任务的日志互相覆盖。
+    [switch]$LiveMode
 )
 
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $here
-$logFile = Join-Path $here "vps_supervisor_$ScriptName.log"
+$logPrefix = if ($LiveMode) { "live_$ScriptName" } else { $ScriptName }
+$logFile = Join-Path $here "vps_supervisor_$logPrefix.log"
 
 function Log($msg) {
     $ts = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     "[$ts] $msg" | Out-File -Append -Encoding utf8 $logFile
 }
 
-Log "=== 看守启动: $ScriptName ==="
+Log "=== 看守启动: $ScriptName $(if ($LiveMode) {'[实盘模式]'} else {''}) ==="
 $env:LOOP_ROUNDS = $LoopRounds
 # 2026-07-30新增: 云端和VPS推的是同一份journal.jsonl,打个来源标记才能对比。
 $env:DEPLOY_ENV = "vps"
+
+if ($LiveMode) {
+    $env:SNIPE_LIVE_MODE = "1"
+    if (-not $env:MAX_CONCURRENT_LIVE) { $env:MAX_CONCURRENT_LIVE = "1" }
+    if (-not $env:LIVE_POS_SIZE_USD) { $env:LIVE_POS_SIZE_USD = "5" }
+    $keyFile = Join-Path $here ".live_wallet_key"
+    if (Test-Path $keyFile) {
+        $env:WALLET_PRIVATE_KEY = (Get-Content $keyFile -Raw).Trim()
+        Log "实盘模式: 已从.live_wallet_key读取私钥, MAX_CONCURRENT_LIVE=$($env:MAX_CONCURRENT_LIVE) LIVE_POS_SIZE_USD=$($env:LIVE_POS_SIZE_USD)"
+    } else {
+        Log "*** 实盘模式但找不到 $keyFile ,不会真的下单(lifecycle_logger.py会自己拒绝、只跑监控不跑snipe_exit) ***"
+    }
+}
 
 # 2026-07-30新增: 用户提出VPS没有GitHub Actions那种共享IP限流顾虑,想试试把
 # 并发调高(加倍)看扫描效率有没有提升,跟云端(默认值)直接对比。只在VPS这边
@@ -42,8 +60,8 @@ while ($true) {
     # 靠print()记日志的脚本时,日志文件看着一直是0字节,分不清"没在干活"还是
     # "干了但没写出来"。加-u强制无缓冲,让print()立刻落盘。
     $proc = Start-Process -FilePath "python" -ArgumentList "-u", $ScriptName -NoNewWindow -PassThru -Wait `
-        -RedirectStandardOutput "$here\vps_stdout_$ScriptName.log" `
-        -RedirectStandardError "$here\vps_stderr_$ScriptName.log"
+        -RedirectStandardOutput "$here\vps_stdout_$logPrefix.log" `
+        -RedirectStandardError "$here\vps_stderr_$logPrefix.log"
     Log "$ScriptName 退出,退出码=$($proc.ExitCode),5秒后重新拉起"
     Start-Sleep -Seconds 5
 }

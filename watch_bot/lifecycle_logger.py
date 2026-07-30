@@ -42,6 +42,17 @@ from check_coin import GT_BASE, S, GMGN_S, get, check_pool_and_mint
 MAX_CONCURRENT_DEPLOYED = int(os.environ.get("MCAP_MAX_CONCURRENT_DEPLOYED", "4"))
 from operator_registry import matches_pump_signature, matches_early_signature, matches_origin_mcap_signature, rugcheck_creator
 
+# 2026-07-30新增: 纸盘大框架跑通了,用户要求开始拿真钱小额测试——crash_watch/
+# insider_sell_watch这两个纯监控不管live/纸盘都照常部署,唯独snipe_exit.py这一个
+# 换成真实下单。SNIPE_LIVE_MODE=1时才切换,默认(不设或者=0)保持原来纸盘行为
+# 完全不变,不会因为这次改动影响现在还在跑的纸盘。
+# MAX_CONCURRENT_LIVE故意给一个很小的默认值(1)——这是小额测试阶段,不是要
+# 让全自动系统同时开好几个真实仓位,并发上限单独算,不跟纸盘的MAX_CONCURRENT_
+# DEPLOYED共用同一个计数,这样纸盘该怎么跑还怎么跑。
+SNIPE_LIVE_MODE = os.environ.get("SNIPE_LIVE_MODE") == "1"
+MAX_CONCURRENT_LIVE = int(os.environ.get("MAX_CONCURRENT_LIVE", "1"))
+LIVE_POS_SIZE_USD = os.environ.get("LIVE_POS_SIZE_USD", "5")
+
 HERE = Path(__file__).parent
 LIFECYCLE_F = HERE / "pump_lifecycle.json"
 
@@ -119,7 +130,14 @@ def deploy_full_stack(addr, mint, db):
     部署完整三件套(crash_watch取证监控 + insider_sell_watch已知钱包盯防 +
     snipe_exit.py dry-run模拟买卖),全部只读/dry-run,不碰真钱。
     加了并发上限(MAX_CONCURRENT_DEPLOYED),避免同时跑的池子太多把GMGN调用量
-    和本机资源拖垮。"""
+    和本机资源拖垮。
+
+    2026-07-30新增: SNIPE_LIVE_MODE=1时,snipe_exit.py这一步换成真实下单
+    (crash_watch/insider_sell_watch两个纯监控不受影响,不管live/纸盘都照常
+    部署)。真实仓位用独立的MAX_CONCURRENT_LIVE计数,不跟纸盘的并发上限混在
+    一起——小额测试阶段就该只开很少的真实仓位,不是让全自动系统一次性铺开。
+    没设WALLET_PRIVATE_KEY就直接跳过、不装死回退成纸盘,免得"以为在跑real
+    money实际上只是纸盘"这种更危险的误解。"""
     here = Path(__file__).parent
     # 2026-07-29修复: 原来数的是历史上所有stack_deployed=True的币,币死了这个
     # 标记也不清零,导致部署满MAX_CONCURRENT_DEPLOYED次之后永久锁死、再也发现
@@ -150,14 +168,40 @@ def deploy_full_stack(addr, mint, db):
     if hasattr(subprocess, "DETACHED_PROCESS"):
         creationflags = subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW
     log_devnull = subprocess.DEVNULL
+
+    live_this_one = False
+    if SNIPE_LIVE_MODE:
+        n_live = sum(1 for v in db.values() if v.get("live_deployed") and v.get("status") != "dead")
+        if n_live >= MAX_CONCURRENT_LIVE:
+            print(f"  [实盘]已有{n_live}个真实仓位达到上限MAX_CONCURRENT_LIVE={MAX_CONCURRENT_LIVE},这个候选先跳过实盘(纸盘/监控照常)")
+        elif not os.environ.get("WALLET_PRIVATE_KEY"):
+            print("  [实盘]*** SNIPE_LIVE_MODE=1但没设WALLET_PRIVATE_KEY,拒绝假装在跑实盘——这个候选跳过snipe_exit ***")
+        else:
+            live_this_one = True
+
     try:
         subprocess.Popen([py, str(here / "crash_watch.py"), addr, mint, prefix],
                          cwd=str(here), stdout=log_devnull, stderr=log_devnull, creationflags=creationflags)
         if insiders:
             subprocess.Popen([py, str(here / "insider_sell_watch.py"), addr, str(wallets_f), prefix],
                              cwd=str(here), stdout=log_devnull, stderr=log_devnull, creationflags=creationflags)
-        subprocess.Popen([py, str(here / "snipe_exit.py"), addr],
-                         cwd=str(here), stdout=log_devnull, stderr=log_devnull, creationflags=creationflags)
+        if SNIPE_LIVE_MODE:
+            if live_this_one:
+                live_env = dict(os.environ)
+                live_env["LIVE_TRADING"] = "1"
+                live_env["CONFIRM_LIVE_SNIPE"] = "YES"
+                live_env["POS_SIZE_USD"] = LIVE_POS_SIZE_USD
+                subprocess.Popen([py, str(here / "snipe_exit.py"), addr],
+                                 cwd=str(here), stdout=log_devnull, stderr=log_devnull,
+                                 creationflags=creationflags, env=live_env)
+                db[addr]["live_deployed"] = True
+                print(f"  [实盘]*** 真实下单已启动: {mint[:10]}... (${LIVE_POS_SIZE_USD}) ***")
+            # SNIPE_LIVE_MODE下,没资格实盘的候选也不额外起纸盘snipe_exit——
+            # 避免同一个候选同时占纸盘+实盘两份资源,监控(crash_watch/insider)
+            # 已经够用于观察这个候选后续走势。
+        else:
+            subprocess.Popen([py, str(here / "snipe_exit.py"), addr],
+                             cwd=str(here), stdout=log_devnull, stderr=log_devnull, creationflags=creationflags)
         return True
     except Exception as e:
         print(f"自动部署失败: {e}")
