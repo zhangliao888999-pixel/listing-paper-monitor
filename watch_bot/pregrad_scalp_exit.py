@@ -451,6 +451,12 @@ def finish_trade(entry_info, exit_reason, exit_price, sell_result=None):
     pnl_pct_actual = None
     if entry_usd_actual and exit_usd_actual is not None:
         pnl_pct_actual = (exit_usd_actual / entry_usd_actual - 1) * 100
+        # 2026-07-31新增: 现货全仓最多亏光本金(-100%),算出比这更小的数说明
+        # 上游语义又错了(第一笔实盘就出过-203%)。宁可留空也不要把不可能的
+        # 数字写进台账污染统计——留空看得见,错数看不见。
+        if pnl_pct_actual < -100:
+            log(f"*** 真实盈亏算出{pnl_pct_actual:.1f}%,现货不可能低于-100%,判定记账口径有误,留空并保留原始金额待查 ***")
+            pnl_pct_actual = None
 
     record = {
         "name": entry_info["name"], "mint": entry_info["mint"], "addr": entry_info["addr"],
@@ -585,8 +591,14 @@ def main():
     }
 
     def live_exit(reason):
-        """实盘退出统一入口: 全仓卖出 -> 用钱包余额差算真实到账USD。余额差
-        包含了滑点/服务费/优先费/gas的全部真实成本,不做任何理想化假设。"""
+        """实盘退出统一入口: 全仓卖出 -> 用钱包余额差算真实卖出到账USD。余额差
+        包含了滑点/服务费/优先费/gas的全部真实成本,不做任何理想化假设。
+
+        2026-07-31修复(第一笔实盘mer/SOL实测): 这里算的是"卖出这一步收回多少
+        SOL"(post_sell - post_buy),它是**卖出所得**,不是"整笔交易的净盈亏"。
+        原来finish_trade拿它当exit_usd_actual去和entry_usd_actual比,等于把
+        "卖回来的钱"当成了"净赚的钱"再减本金,pnl被算成-203%这种不可能的数
+        (链上核对实际是+9.0%盈利)。语义对齐: 这里返回的就是卖出到账USD。"""
         if not live:
             return None
         result = do_live_sell(wallet, mint, reason)
@@ -594,7 +606,12 @@ def main():
             post_sell = get_wallet_lamports(str(wallet.pubkey()))
             sol_price_now = get_sol_price_usd() or sol_price_at_entry
             if post_sell is not None and sol_price_now:
-                result["exit_usd_actual"] = (post_sell - post_buy_lamports) / 1e9 * sol_price_now
+                proceeds_sol = (post_sell - post_buy_lamports) / 1e9
+                if proceeds_sol > 0:
+                    result["exit_usd_actual"] = proceeds_sol * sol_price_now
+                else:
+                    # 余额没涨(卖出没真的到账/被手续费吃穿),不硬算,留空
+                    log(f"卖出后钱包余额没有增加(差值{proceeds_sol:+.6f} SOL),真实盈亏留空不臆测")
         return result
 
     log(f"[{mode_str}] 建仓 entry_price={entry_price}  (池子年龄约{coin_age_min:.1f}分钟)" if coin_age_min is not None
