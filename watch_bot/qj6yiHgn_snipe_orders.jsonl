@@ -1,0 +1,2 @@
+{"action": "BUY", "mint": "LCCX66EW9WBTsevqiz5fd4WSXxno731kbqtKCUAHfYd", "pos_size_usd": 5.0, "status": "dry_run", "ts": 1785406352}
+{"action": "SELL", "mint": "LCCX66EW9WBTsevqiz5fd4WSXxno731kbqtKCUAHfYd", "reason": "LIQ_LOW", "status": "dry_run", "ts": 1785406352}
