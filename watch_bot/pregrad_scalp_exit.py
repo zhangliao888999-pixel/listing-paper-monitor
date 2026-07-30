@@ -441,29 +441,51 @@ def main():
 
     # 2026-07-31新增: 实盘真实买入(PumpPortal构造+本地签名)。买入失败就直接放弃
     # 这个候选,不降级成纸盘——VPS实盘期的数据必须干净。
+    # 2026-07-31修复(snipe腿头两笔同一秒建仓的教训): 标记文件必须在买入之前用
+    # O_CREAT|O_EXCL原子抢占,不能买完再写——否则多条腿同时发现候选时,1个名额
+    # 的限制会被并发竞速绕过,实际下场的钱翻倍。抢不到就放弃,买入失败就释放。
     wallet = None
     buy_tx = None
     post_buy_lamports = None
     sol_price_at_entry = None
     if live:
+        try:
+            marker_fd = os.open(str(LIVE_POSITION_MARKER), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            log("实盘仓位名额已被其他进程抢占,放弃这个候选")
+            return
+
+        def release_marker():
+            try:
+                os.close(marker_fd)
+            except OSError:
+                pass
+            try:
+                LIVE_POSITION_MARKER.unlink()
+            except FileNotFoundError:
+                pass
+
         wallet = get_wallet()
         sol_price_at_entry = get_sol_price_usd()
         if not sol_price_at_entry:
             log("拿不到SOL实时价格,不猜,放弃这个候选")
+            release_marker()
             return
         sol_amount = round(POS_SIZE_USD / sol_price_at_entry, 6)
         buy_tx, buy_ok, buy_err = pumpportal_trade(wallet, "buy", mint, sol_amount, True, "pump")
         if not buy_tx or not buy_ok:
             log(f"实盘买入失败: {buy_err or '交易未确认'} tx={buy_tx},放弃这个候选")
+            release_marker()
             return
         log(f"实盘买入成功 {sol_amount} SOL(≈${POS_SIZE_USD:.2f}) tx={buy_tx}")
         post_buy_lamports = get_wallet_lamports(str(wallet.pubkey()))
         try:
-            LIVE_POSITION_MARKER.write_text(json.dumps({
+            os.write(marker_fd, json.dumps({
                 "addr": addr, "mint": mint, "name": attrs.get("name"),
                 "opened_at": time.time(), "entry_price": entry_price,
                 "pos_size_usd": POS_SIZE_USD,
-            }, ensure_ascii=False), encoding="utf-8")
+            }, ensure_ascii=False).encode("utf-8"))
+            os.close(marker_fd)
         except OSError:
             pass
 

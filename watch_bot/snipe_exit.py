@@ -361,42 +361,84 @@ def do_buy(wallet, mint, pos_size_usd):
     return {"qty_raw": int(quote.get("outAmount", 0)), "entry_usd": pos_size_usd, "dry_run": False, "buy_tx": sig}
 
 
+def get_token_balance_raw(owner_pubkey_str, mint):
+    """查钱包里这个币的真实余额(raw数量)。买入报价的outAmount和实际到账会因
+    滑点有偏差,卖出必须用真实余额,不然构造出的交易会因为'卖的比持有的多'
+    在链上模拟阶段直接被拒。"""
+    resp = rpc_call("getTokenAccountsByOwner", [owner_pubkey_str, {"mint": mint}, {"encoding": "jsonParsed"}])
+    try:
+        accounts = resp["result"]["value"]
+        if not accounts:
+            return None
+        return int(accounts[0]["account"]["data"]["parsed"]["info"]["tokenAmount"]["amount"])
+    except (KeyError, IndexError, TypeError, ValueError):
+        return None
+
+
 def do_sell(wallet, mint, qty_raw, reason, dry_run):
     """2026-07-30修复: 之前这个函数什么都不返回,导致finish_trade()记账时只能用
-    GT快照价格算pnl_pct——纸盘和实盘记的是同一套"理想化零冲击价",实盘真实的
-    滑点/优先费完全没体现在台账里。现在返回真实成交结果(卖出实际到账的USD、
-    tx签名、有没有真的确认成功),让调用方能算出entry_usd_actual/exit_usd_actual
-    这种真实经济账,不然今天开始的实盘测试统计出来的还是纸盘那套理想数字,
-    白测了。"""
+    GT快照价格算pnl_pct。现在返回真实成交结果。
+
+    2026-07-31再修(头两笔实盘的实测教训,两笔卖出全军覆没):
+    1. 卖出数量原来用买入报价的outAmount,和实际到账数量有滑点偏差,链上模拟
+       直接拒绝——改为卖出前查钱包真实余额。
+    2. 原来拿一次报价失败就放弃(Chiikawa那笔: 信号到广播之间价格动了,3%滑点
+       容忍被击穿,0x1788拒绝,币卡在钱包里)——改成每次重试都重新拿新报价,
+       滑点容忍逐档放宽3%->10%->30%: 这个策略的本质是'能跑就是赢',退出时
+       价格差点无所谓,卡在里面出不来才是最大的损失。"""
     if dry_run:
         log(f"[DRY-RUN] 本来会因为[{reason}]全部卖出")
         audit({"action": "SELL", "mint": mint, "reason": reason, "status": "dry_run"})
         return {"dry_run": True, "confirmed": True}
-    quote = jupiter_quote(mint, SOL_MINT, qty_raw, SLIPPAGE_BPS)
-    if not quote:
-        log(f"FAIL 卖出[{reason}]: Jupiter拿不到报价")
-        audit({"action": "SELL", "mint": mint, "reason": reason, "status": "quote_failed"})
-        return {"dry_run": False, "confirmed": False, "error": "quote_failed"}
-    swap_tx = jupiter_swap_tx(quote, str(wallet.pubkey()))
-    if not swap_tx:
-        log(f"FAIL 卖出[{reason}]: 构造交易失败")
-        audit({"action": "SELL", "mint": mint, "reason": reason, "status": "build_failed"})
-        return {"dry_run": False, "confirmed": False, "error": "build_failed"}
-    sig, err = sign_and_send(wallet, swap_tx)
-    if err:
-        log(f"FAIL 卖出[{reason}]: 广播失败 {err}")
-        audit({"action": "SELL", "mint": mint, "reason": reason, "status": "send_failed", "error": err})
-        return {"dry_run": False, "confirmed": False, "error": err, "tx": sig}
-    ok = confirm_tx(sig)
-    out_sol_lamports = int(quote.get("outAmount", 0))
-    sol_price = get_fresh_sol_price_usd()
-    exit_usd_actual = (out_sol_lamports / 1e9 * sol_price) if (ok and sol_price) else None
-    extra = f" (约${exit_usd_actual:.2f})" if exit_usd_actual is not None else ""
-    log(f"卖出[{reason}]{'成功' if ok else '未确认(自己上链查一下)'} tx={sig} 换回约{out_sol_lamports/1e9:.4f} SOL{extra}")
-    audit({"action": "SELL", "mint": mint, "reason": reason, "tx": sig, "out_lamports": out_sol_lamports,
-          "status": "confirmed" if ok else "unconfirmed", "exit_usd_actual": exit_usd_actual})
-    return {"dry_run": False, "confirmed": ok, "tx": sig, "out_lamports": out_sol_lamports,
-            "exit_usd_actual": exit_usd_actual}
+
+    real_qty = get_token_balance_raw(str(wallet.pubkey()), mint)
+    if real_qty:
+        if real_qty != qty_raw:
+            log(f"卖出数量校正: 报价预估{qty_raw} -> 钱包真实{real_qty}")
+        qty_raw = real_qty
+    elif real_qty == 0:
+        log(f"FAIL 卖出[{reason}]: 钱包里这个币余额为0(买入可能实际没成交?)")
+        return {"dry_run": False, "confirmed": False, "error": "zero_balance"}
+
+    last_err = None
+    sig = None
+    for slippage_bps in (SLIPPAGE_BPS, 1000, 3000):
+        quote = jupiter_quote(mint, SOL_MINT, qty_raw, slippage_bps)
+        if not quote:
+            last_err = "quote_failed"
+            log(f"卖出[{reason}]拿不到报价(滑点{slippage_bps/100:.0f}%),重试")
+            time.sleep(1.5)
+            continue
+        swap_tx = jupiter_swap_tx(quote, str(wallet.pubkey()))
+        if not swap_tx:
+            last_err = "build_failed"
+            log(f"卖出[{reason}]构造交易失败(滑点{slippage_bps/100:.0f}%),重试")
+            time.sleep(1.5)
+            continue
+        sig, err = sign_and_send(wallet, swap_tx)
+        if err:
+            last_err = str(err)
+            log(f"卖出[{reason}]广播失败(滑点{slippage_bps/100:.0f}%): {str(err)[:150]},换更高滑点重试")
+            time.sleep(1.5)
+            continue
+        ok = confirm_tx(sig)
+        if ok:
+            out_sol_lamports = int(quote.get("outAmount", 0))
+            sol_price = get_fresh_sol_price_usd()
+            exit_usd_actual = (out_sol_lamports / 1e9 * sol_price) if sol_price else None
+            extra = f" (约${exit_usd_actual:.2f})" if exit_usd_actual is not None else ""
+            log(f"卖出[{reason}]成功(滑点容忍{slippage_bps/100:.0f}%) tx={sig} 换回约{out_sol_lamports/1e9:.4f} SOL{extra}")
+            audit({"action": "SELL", "mint": mint, "reason": reason, "tx": sig, "out_lamports": out_sol_lamports,
+                  "status": "confirmed", "exit_usd_actual": exit_usd_actual})
+            return {"dry_run": False, "confirmed": True, "tx": sig, "out_lamports": out_sol_lamports,
+                    "exit_usd_actual": exit_usd_actual}
+        last_err = "unconfirmed"
+        log(f"卖出[{reason}]交易未确认(滑点{slippage_bps/100:.0f}%) tx={sig},换更高滑点重试")
+        time.sleep(1.5)
+
+    log(f"FAIL 卖出[{reason}]: 三档滑点全部失败,最后错误: {str(last_err)[:150]}")
+    audit({"action": "SELL", "mint": mint, "reason": reason, "status": "all_retries_failed", "error": str(last_err)[:200]})
+    return {"dry_run": False, "confirmed": False, "error": last_err, "tx": sig}
 
 
 def make_prefix(addr):
@@ -496,13 +538,6 @@ def main():
     if prior_entries:
         log(f"注意: 这个币之前已经进过{prior_entries}次仓了,这次是反复进入")
 
-    wallet = get_wallet() if is_live_mode() else None
-    entry_ts = time.time()
-    pos = do_buy(wallet, mint, POS_SIZE_USD)
-    if not pos:
-        log("买入没成功,监控结束")
-        return
-
     try:
         created = dt.datetime.fromisoformat(attrs["pool_created_at"].replace("Z", "+00:00"))
         coin_age_min = (dt.datetime.now(dt.timezone.utc) - created).total_seconds() / 60
@@ -513,16 +548,53 @@ def main():
     except (TypeError, ValueError):
         entry_price = None
 
-    if not pos["dry_run"]:
-        # 2026-07-30新增: 用户要求监控窗口能实时显示"正在交易的币"(买入价/现价/
-        # 涨跌幅),标记文件里补上name/entry_price/pos_size_usd,监控脚本不用
-        # 再另外去查这些信息,只管拉现价算涨跌幅就行。
+    marker_fd = None
+    if is_live_mode():
+        # 2026-07-31修复(头两笔实盘实测教训): Coupe那笔买进了流动性只剩$0.74的
+        # 死池子——纸盘时代这种是无害的0%记录,实盘就是$5买进去出不来($4.6打水漂)。
+        # 实盘入场前必须有流动性下限,门槛跟pregrad v5验证过的$10K保持一致。
         try:
-            LIVE_POSITION_MARKER.write_text(json.dumps({
+            entry_liq = float(attrs.get("reserve_in_usd") or 0)
+        except (TypeError, ValueError):
+            entry_liq = 0
+        min_liq = float(os.environ.get("LIVE_MIN_ENTRY_LIQ_USD", "10000"))
+        if entry_liq < min_liq:
+            log(f"实盘入场流动性检查不过: ${entry_liq:,.0f} < ${min_liq:,.0f},放弃这个候选(纸盘数据证明这种池子买进去就出不来)")
+            return
+
+        # 2026-07-31修复: 头两笔实盘同一秒建仓,MAX_CONCURRENT_LIVE=1被并发竞速
+        # 绕过(原来标记是买入确认后才写,两个进程都在写之前就各买了一笔,$10下场
+        # 而不是$5)。改成买入前用O_CREAT|O_EXCL原子抢占标记文件,抢不到就直接
+        # 放弃这个候选——买入失败时释放标记。
+        try:
+            marker_fd = os.open(str(LIVE_POSITION_MARKER), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            log("实盘仓位名额已被其他进程抢占,放弃这个候选")
+            return
+
+    wallet = get_wallet() if is_live_mode() else None
+    entry_ts = time.time()
+    pos = do_buy(wallet, mint, POS_SIZE_USD)
+    if not pos:
+        log("买入没成功,监控结束")
+        if marker_fd is not None:
+            os.close(marker_fd)
+            try:
+                LIVE_POSITION_MARKER.unlink()
+            except FileNotFoundError:
+                pass
+        return
+
+    if not pos["dry_run"] and marker_fd is not None:
+        # 2026-07-30新增: 监控窗口实时显示"正在交易的币"需要的信息写进标记文件。
+        # 标记文件本身在买入前已经原子抢占,这里只是补充内容。
+        try:
+            os.write(marker_fd, json.dumps({
                 "addr": addr, "mint": mint, "name": attrs.get("name"),
                 "opened_at": entry_ts, "entry_price": entry_price,
                 "pos_size_usd": POS_SIZE_USD,
-            }, ensure_ascii=False), encoding="utf-8")
+            }, ensure_ascii=False).encode("utf-8"))
+            os.close(marker_fd)
         except OSError:
             pass
 
