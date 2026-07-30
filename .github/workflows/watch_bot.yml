@@ -53,6 +53,9 @@ jobs:
           LOOP_ROUNDS_MCAP: "230"       # 90秒*230 ≈ 5小时45分
           LOOP_ROUNDS_LIFECYCLE: "34"   # 600秒*34 ≈ 5小时40分
           MAX_RUNTIME_SEC: "20700"      # crash_watch.py单次监控上限,同样是5小时45分
+          # 2026-07-30新增: VPS也部署了同一套代码,两边推的是同一份journal.jsonl,
+          # 打个来源标记才能对比云端和VPS各自的数据质量/效率。
+          DEPLOY_ENV: "github_actions"
         run: |
           LOOP_ROUNDS=$LOOP_ROUNDS_PREGRAD python pregrad_scanner_loop.py &
           LOOP_ROUNDS=$LOOP_ROUNDS_MCAP python mcap_scanner_loop.py &

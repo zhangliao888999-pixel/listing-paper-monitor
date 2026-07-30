@@ -20,6 +20,8 @@ function Log($msg) {
 
 Log "=== 看守启动: $ScriptName ==="
 $env:LOOP_ROUNDS = $LoopRounds
+# 2026-07-30新增: 云端和VPS推的是同一份journal.jsonl,打个来源标记才能对比。
+$env:DEPLOY_ENV = "vps"
 
 # 2026-07-30新增: 用户提出VPS没有GitHub Actions那种共享IP限流顾虑,想试试把
 # 并发调高(加倍)看扫描效率有没有提升,跟云端(默认值)直接对比。只在VPS这边

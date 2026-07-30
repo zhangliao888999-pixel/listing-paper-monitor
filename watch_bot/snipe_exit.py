@@ -377,6 +377,7 @@ def finish_trade(entry_info, exit_reason, exit_price):
         "exit_reason": exit_reason, "exit_price": exit_price, "pnl_pct": pnl_pct,
         "hold_sec": round(hold_sec, 1),
         "prior_entries_on_this_mint": entry_info["prior_entries"],
+        "deploy_env": os.environ.get("DEPLOY_ENV", "local"),
     }
     write_journal(record)
     log(f"台账记录完毕: {exit_reason} pnl={pnl_pct:+.2f}% 持仓{hold_sec:.0f}秒 "
