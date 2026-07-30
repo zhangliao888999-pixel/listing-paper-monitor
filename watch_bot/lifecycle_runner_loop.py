@@ -16,6 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lifecycle_logger import scan_and_log
+from git_lock import git_lock
 
 INTERVAL_SEC = 600   # 10分钟一轮
 # 2026-07-29晚间改: 原1小时(6轮)是为了切成小段方便随时检查,但通宵没人盯着重启,
@@ -37,24 +38,31 @@ def run(cmd, **kw):
 def git_sync():
     """add指定的数据文件 -> commit(没有变化就跳过) -> pull(普通merge,不是
     rebase) -> push,push失败重试几次(跟live_runner.py云端workflow那套retry
-    逻辑一样,本地多个定时任务/脚本并发提交是这个仓库的常态)。"""
-    add_cmd = ["git", "add"] + DATA_GLOBS
-    run(add_cmd)
-    commit = run(["git", "commit", "-m", f"watch_bot data sync {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')}"])
-    if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
-        return  # 这轮没有新数据变化,不用推
-    for attempt in range(3):
-        push = run(["git", "push"])
-        if push.returncode == 0:
-            print(f"  git同步成功(第{attempt+1}次尝试)")
+    逻辑一样,本地多个定时任务/脚本并发提交是这个仓库的常态)。
+
+    2026-07-30新增: VPS并发调到6之后好几个进程同时commit+push互相撞车,单靠
+    重试次数扛不住,加文件锁让这几个脚本的git操作排队,一次只有一个在做。"""
+    with git_lock() as got_lock:
+        if not got_lock:
+            print("  拿不到git锁(30秒超时,可能有很多进程在排队),这次先不推,交给下一轮补推")
             return
-        # 2026-07-30修复: --rebase遇到journal.jsonl/pump_lifecycle.json这类只追加
-        # 型文件冲突时会直接卡住需要人工--abort才能恢复,改用普通merge能自动合并
-        # "两边各自追加了新行"这种冲突,不需要人工介入。VPS并发调高后实测踩到过
-        # 这个坑(rebase卡死导致连续多笔交易记录推不上去)。
-        run(["git", "pull", "--no-edit", "origin", "master"])
-        time.sleep(3)
-    print("  git同步失败,重试3次后放弃,下一轮再试")
+        add_cmd = ["git", "add"] + DATA_GLOBS
+        run(add_cmd)
+        commit = run(["git", "commit", "-m", f"watch_bot data sync {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')}"])
+        if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
+            return  # 这轮没有新数据变化,不用推
+        for attempt in range(3):
+            push = run(["git", "push"])
+            if push.returncode == 0:
+                print(f"  git同步成功(第{attempt+1}次尝试)")
+                return
+            # 2026-07-30修复: --rebase遇到journal.jsonl/pump_lifecycle.json这类只追加
+            # 型文件冲突时会直接卡住需要人工--abort才能恢复,改用普通merge能自动合并
+            # "两边各自追加了新行"这种冲突,不需要人工介入。VPS并发调高后实测踩到过
+            # 这个坑(rebase卡死导致连续多笔交易记录推不上去)。
+            run(["git", "pull", "--no-edit", "origin", "master"])
+            time.sleep(3)
+        print("  git同步失败,重试3次后放弃,下一轮再试")
 
 
 for i in range(ROUNDS):
