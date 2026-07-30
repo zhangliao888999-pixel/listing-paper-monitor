@@ -22,6 +22,12 @@ from pathlib import Path
 
 import requests
 
+# 2026-07-31: 这是24小时常驻的采集器,每天约4320次请求。CoinGecko Demo key
+# 月额度只有1万次,让它用key的话两天半就烧光,而回测那种短时高强度任务才是
+# key真正该用的地方。这里显式禁用key,走GT公开接口——本采集器频率低
+# (每3分钟9个请求),公开接口完全够用,实测零429。
+os.environ.setdefault("CG_NO_KEY", "1")
+
 HERE = Path(__file__).parent
 OUT_F = HERE / "forward_snapshots.jsonl"
 GT = "https://api.geckoterminal.com/api/v2"

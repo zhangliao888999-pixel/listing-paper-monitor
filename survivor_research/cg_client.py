@@ -18,10 +18,18 @@ import requests
 HERE = Path(__file__).parent
 KEY_F = HERE / ".cg_api_key"
 
+# 2026-07-31: Demo版额度是1万次/月(不是10万,已在仪表盘核对),100次/分钟。
+# 这个额度很紧,必须省着用:
+#   - 短时高强度任务(回测拉K线,一轮约900次)-> 用key,值得
+#   - 常驻低频任务(VPS前向采集器,每天4320次)-> 绝不能用key,两天半就烧光,
+#     它走GT公开接口完全够用(频率低,不会触发限流)
+# 用 CG_NO_KEY=1 显式禁用key,常驻脚本必须设这个。
 _key = None
 if KEY_F.exists():
     _key = KEY_F.read_text(encoding="utf-8").strip() or None
 _key = os.environ.get("CG_API_KEY", _key)
+if os.environ.get("CG_NO_KEY") == "1":
+    _key = None
 
 HAS_KEY = bool(_key)
 # 有key走CoinGecko onchain端点(100/min),没key退回GT公开接口(~10-30/min)
