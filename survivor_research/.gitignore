@@ -2,3 +2,4 @@ ohlcv/
 hist_pools.json
 survivors.csv
 results.csv
+forward_snapshots.jsonl
