@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>云端 vs VPS 对比统计</title>
+<style>
+  :root {
+    --bg: #0b0e14; --panel: #131722; --panel2: #1a1f2e; --border: #2a3040;
+    --text: #e6e9ef; --dim: #8b93a7; --green: #26a69a; --red: #ef5350;
+    --accent: #5b8def; --yellow: #d4a72c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px; line-height: 1.5;
+  }
+  header {
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+  header a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  #status { font-size: 12px; color: var(--dim); }
+  #status.live { color: var(--green); }
+  #status.error { color: var(--red); }
+  main { padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px; overflow-x: auto; }
+  .card h2 { font-size: 15px; margin: 0 0 4px; }
+  .card .desc { color: var(--dim); font-size: 12.5px; margin-bottom: 12px; }
+  .summary { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; font-size: 13px; color: var(--dim); }
+  .summary b { color: var(--text); font-size: 16px; }
+  table { border-collapse: collapse; width: 100%; font-size: 12.5px; white-space: nowrap; }
+  th, td { padding: 8px 12px; border-bottom: 1px solid var(--border); text-align: left; font-variant-numeric: tabular-nums; }
+  th { color: var(--dim); font-weight: 500; position: sticky; top: 0; background: var(--panel); }
+  tr:hover { background: var(--panel2); }
+  .pos { color: var(--green); } .neg { color: var(--red); } .zero { color: var(--dim); }
+  .env-cell { font-weight: 600; }
+  .env-cell.vps { color: var(--yellow); }
+  .env-cell.github_actions { color: var(--accent); }
+  .env-cell.local { color: var(--dim); }
+  .env-cell.unknown { color: var(--dim); }
+  .empty { color: var(--dim); padding: 20px; text-align: center; }
+  footer { padding: 16px 20px; color: var(--dim); font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>云端 vs VPS · 运行环境对比统计</h1>
+  <div style="display:flex; gap:14px; align-items:center;">
+    <a href="./journal.html">← 交易台账</a>
+    <a href="./index.html">主看盘页</a>
+    <span id="status">加载中…</span>
+  </div>
+</header>
+<main id="main">
+  <div class="card"><div class="empty">加载中…</div></div>
+</main>
+<footer>
+  数据源: <a href="https://github.com/zhangliao888999-pixel/listing-paper-monitor" target="_blank" style="color:var(--accent)">listing-paper-monitor / watch_bot</a>
+  · 每 30 秒自动刷新 · 全部dry-run模拟交易,不涉及真实资金
+</footer>
+
+<script>
+const REPO = "zhangliao888999-pixel/listing-paper-monitor";
+const BRANCH = "master";
+const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/`;
+
+const ENV_LABEL = {
+  "vps": "VPS(独立服务器)",
+  "github_actions": "GitHub Actions(云端)",
+  "local": "本地电脑",
+};
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+function fmtNum(v, digits) {
+  if (v === null || v === undefined || v === "") return "-";
+  const n = Number(v);
+  if (isNaN(n)) return String(v);
+  return n.toLocaleString(undefined, { maximumFractionDigits: digits ?? 2 });
+}
+
+async function fetchText(path) {
+  const r = await fetch(RAW + path + "?t=" + Date.now(), { cache: "no-store" });
+  if (!r.ok) throw new Error(`${path} HTTP ${r.status}`);
+  return r.text();
+}
+
+function parseJsonl(text) {
+  return text.trim().split("\n").filter(Boolean).map(line => {
+    try { return JSON.parse(line); } catch (e) { return null; }
+  }).filter(Boolean);
+}
+
+function median(arr) {
+  if (!arr.length) return null;
+  const s = arr.slice().sort((a, b) => a - b);
+  const mid = Math.floor(s.length / 2);
+  return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+}
+
+function statsFor(records) {
+  const invested = records.reduce((a, r) => a + (Number(r.pos_size_usd) || 0), 0);
+  const pnls = records.map(r => r.pnl_pct).filter(p => p != null);
+  let profit = 0, loss = 0;
+  records.forEach(r => {
+    if (r.pnl_pct == null || r.pos_size_usd == null) return;
+    const d = Number(r.pos_size_usd) * Number(r.pnl_pct) / 100;
+    if (d > 0) profit += d; else loss += d;
+  });
+  const net = profit + loss;
+  const nWin = pnls.filter(p => p > 0.5).length;
+  const nLoss = pnls.filter(p => p < -0.5).length;
+  return {
+    n: records.length, invested, net,
+    winRate: pnls.length ? (nWin / pnls.length * 100) : 0,
+    nWin, nLoss, nFlat: pnls.length - nWin - nLoss,
+    medianPnl: median(pnls), avgHold: records.length ? records.reduce((a, r) => a + (r.hold_sec || 0), 0) / records.length : 0,
+  };
+}
+
+function renderCompare(records) {
+  if (!records.length) return `<div class="empty">还没有交易记录</div>`;
+
+  const byEnv = {};
+  records.forEach(r => {
+    const env = r.deploy_env || "unknown";
+    (byEnv[env] = byEnv[env] || []).push(r);
+  });
+
+  const rows = Object.entries(byEnv).sort((a, b) => b[1].length - a[1].length).map(([env, rs]) => {
+    const s = statsFor(rs);
+    const label = ENV_LABEL[env] || `未标记来源(历史数据)`;
+    const roi = s.invested ? (s.net / s.invested * 100) : 0;
+    return `<tr>
+      <td class="env-cell ${esc(env)}">${esc(label)}</td>
+      <td>${s.n}</td>
+      <td>$${fmtNum(s.invested, 2)}</td>
+      <td class="${s.net >= 0 ? 'pos' : 'neg'}">${s.net >= 0 ? '+' : '-'}$${fmtNum(Math.abs(s.net), 2)}</td>
+      <td class="${roi >= 0 ? 'pos' : 'neg'}">${roi >= 0 ? '+' : ''}${roi.toFixed(1)}%</td>
+      <td>${s.winRate.toFixed(0)}% <span style="color:var(--dim)">(${s.nWin}胜/${s.nLoss}负/${s.nFlat}平)</span></td>
+      <td class="${s.medianPnl >= 0 ? 'pos' : 'neg'}">${s.medianPnl == null ? '-' : (s.medianPnl >= 0 ? '+' : '') + s.medianPnl.toFixed(2) + '%'}</td>
+      <td>${s.avgHold.toFixed(0)}秒</td>
+    </tr>`;
+  }).join("");
+
+  return `
+    <table>
+      <thead><tr>
+        <th>运行环境</th><th>笔数</th><th>累计投入</th><th>净收入</th><th>资金回报率</th>
+        <th>胜率</th><th>pnl中位数</th><th>平均持仓时长</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+function renderByEnvVersion(records) {
+  const groups = {};
+  records.forEach(r => {
+    const key = `${r.deploy_env || "unknown"} · ${r.found_via || "?"} · v${r.strategy_version ?? "-"}`;
+    (groups[key] = groups[key] || []).push(r);
+  });
+  const rows = Object.entries(groups).sort((a, b) => b[1].length - a[1].length).map(([key, rs]) => {
+    const s = statsFor(rs);
+    const roi = s.invested ? (s.net / s.invested * 100) : 0;
+    return `<tr>
+      <td>${esc(key)}</td>
+      <td>${s.n}</td>
+      <td>$${fmtNum(s.invested, 2)}</td>
+      <td class="${s.net >= 0 ? 'pos' : 'neg'}">${s.net >= 0 ? '+' : '-'}$${fmtNum(Math.abs(s.net), 2)}</td>
+      <td class="${roi >= 0 ? 'pos' : 'neg'}">${roi >= 0 ? '+' : ''}${roi.toFixed(1)}%</td>
+      <td class="${s.medianPnl >= 0 ? 'pos' : 'neg'}">${s.medianPnl == null ? '-' : (s.medianPnl >= 0 ? '+' : '') + s.medianPnl.toFixed(2) + '%'}</td>
+    </tr>`;
+  }).join("");
+  return `
+    <table>
+      <thead><tr>
+        <th>环境 · 发现方式 · 策略版本</th><th>笔数</th><th>投入</th><th>净收入</th><th>资金回报率</th><th>pnl中位数</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+async function load() {
+  const status = document.getElementById("status");
+  const main = document.getElementById("main");
+  try {
+    const journalText = await fetchText("watch_bot/journal.jsonl");
+    const records = parseJsonl(journalText);
+
+    main.innerHTML = `
+      <div class="card">
+        <h2>按运行环境汇总对比</h2>
+        <div class="desc">同一套代码,分别跑在GitHub Actions云端和独立VPS上——这张表按deploy_env字段拆开统计,"未标记来源"是加这个字段之前的历史数据。</div>
+        ${renderCompare(records)}
+      </div>
+      <div class="card">
+        <h2>环境 × 发现方式 × 策略版本 交叉明细</h2>
+        <div class="desc">同一个环境里可能同时跑着不同的策略版本(调参前后),这张表拆得更细,方便定位到底是哪个环境+哪个版本的组合表现好。</div>
+        ${renderByEnvVersion(records)}
+      </div>
+    `;
+    status.textContent = "已更新 " + new Date().toLocaleTimeString("zh-CN");
+    status.className = "live";
+  } catch (e) {
+    status.textContent = "加载失败: " + e.message;
+    status.className = "error";
+  }
+}
+
+load();
+setInterval(load, 30000);
+</script>
+</body>
+</html>

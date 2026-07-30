@@ -28,6 +28,7 @@ post_grad_scalp_exit.py接手去查新池子、用更紧的风控参数单独跑
 写进同一份journal.jsonl(found_via=post_grad_scalp),不阻塞这个脚本自己收尾退出。
 """
 import json
+import os
 import re
 import subprocess
 import sys
@@ -81,6 +82,12 @@ STRATEGY_VERSION = 5   # v2=半途夭折的坏版本(3秒轮询无并发上限,�
                         # $0-10K区间(占了一半以上样本)均值是负的,$10K+才转正,
                         # 把matches_pregrad_ramp_signature的流动性门槛从$3000
                         # 提到$10000(operator_registry.py),这里同步升版本号
+
+# 2026-07-30新增: 云端(GitHub Actions)和VPS现在推送的是同一个仓库同一份
+# journal.jsonl,数据混在一起分不清是哪边跑出来的,没法对比两边的效率/质量。
+# 加一个环境变量标记来源,GitHub Actions workflow里设DEPLOY_ENV=github_actions,
+# VPS的vps_run_forever.ps1里设DEPLOY_ENV=vps,本地跑不设时默认local。
+DEPLOY_ENV = os.environ.get("DEPLOY_ENV", "local")
 
 LOG_F = None
 
@@ -221,6 +228,7 @@ def finish_trade(entry_info, exit_reason, exit_price):
         "prior_entries_on_this_mint": entry_info["prior_entries"],
         "peak_price": entry_info.get("peak_price"),
         "strategy_version": STRATEGY_VERSION,
+        "deploy_env": DEPLOY_ENV,
     }
     write_journal(record)
     pnl_str = f"{pnl_pct:+.2f}%" if pnl_pct is not None else "未知(拿不到退出价)"
