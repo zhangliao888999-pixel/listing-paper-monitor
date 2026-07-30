@@ -60,7 +60,18 @@ while ($true) {
     Write-Host "--- git推送状态 ---"
     Push-Location $RepoRoot
     try {
-        git fetch origin master --quiet 2>$null
+        # 2026-07-31修复: 窗口卡死过一次。这个循环里唯一走网络的就是git fetch,
+        # 它没有超时保护——GFW环境下偶尔一次连接挂住,整个刷新循环就永久冻在
+        # 这一行,窗口看起来"死了"但进程还在(实测CPU 151秒后停止刷新)。
+        # 两层保护: git自带的超时配置 + 用Job包一层硬超时,超时就跳过这轮显示
+        # 上一次的已知值,绝不阻塞整个窗口。
+        $fetchJob = Start-Job -ScriptBlock {
+            param($repo)
+            Set-Location $repo
+            git -c http.lowSpeedLimit=1000 -c http.lowSpeedTime=8 fetch origin master --quiet 2>$null
+        } -ArgumentList $RepoRoot
+        if (Wait-Job $fetchJob -Timeout 15) { Receive-Job $fetchJob | Out-Null } else { Stop-Job $fetchJob }
+        Remove-Job $fetchJob -Force -ErrorAction SilentlyContinue
         $behind = (git rev-list --count "origin/master..HEAD" 2>$null)
         if (-not $behind) { $behind = 0 }
         $backlogColor = if ([int]$behind -ge 10) { "Red" } elseif ([int]$behind -ge 3) { "Yellow" } else { "Green" }
