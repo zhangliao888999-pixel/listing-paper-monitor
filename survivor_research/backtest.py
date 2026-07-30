@@ -43,7 +43,10 @@ CRASH_BAR_PCT = 40       # 单根K线(高->收)跌超40%视为崩盘K线,当根�
 DEAD_SILENT_MIN = 10     # 连续10分钟零成交量 = 币死了,持仓归零
 
 # ---- 扫参空间(策略选择) ----
-GRID = {
+# 2026-07-31: 全量4374个组合实测要9.5小时(单组合要扫421池子x1000根K线,
+# 比预估重得多)。改成两段式: 先跑coarse粗筛(192组合,~27分钟)看方向对不对,
+# 方向对了再针对有希望的区域跑fine精扫。用 BT_GRID=coarse|full 切换。
+GRID_FULL = {
     "min_age_min":   [60, 120, 240],        # 入场前币至少活了多久(分钟)
     "pump_mult":     [2.0, 3.0, 5.0],       # 此前从最低点至少涨过几倍(证明"起来过")
     "pullback_pct":  [20, 35, 50],          # 从近期高点回落至少百分之几
@@ -53,6 +56,20 @@ GRID = {
     "stop_pct":      [10, 15, 20],          # 硬止损
     "max_hold_min":  [15, 45, 120],         # 最长持有
 }
+# 粗筛: 每个关键参数只取两端(能看出方向性),止盈多留一档(直接决定盈亏),
+# max_hold固定45分钟(12组合试跑显示它对结果影响最小)
+GRID_COARSE = {
+    "min_age_min":   [60, 240],
+    "pump_mult":     [2.0, 5.0],
+    "pullback_pct":  [20, 50],
+    "quiet_min":     [3, 8],
+    "quiet_band_pct":[4, 8],
+    "target_pct":    [15, 30, 50],
+    "stop_pct":      [10, 20],
+    "max_hold_min":  [45],
+}
+import os as _os2
+GRID = GRID_COARSE if _os2.environ.get("BT_GRID", "coarse") == "coarse" else GRID_FULL
 
 
 def load_pool(f):
