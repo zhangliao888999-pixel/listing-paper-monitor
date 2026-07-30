@@ -79,6 +79,12 @@ EXIT_LIQ_THRESHOLD = float(os.environ.get("EXIT_LIQ_THRESHOLD", "5000.0"))
 POLL_SEC = float(os.environ.get("POLL_SEC", "8"))
 MAX_MINUTES = float(os.environ.get("MAX_MINUTES", "40"))
 SLIPPAGE_BPS = int(os.environ.get("SLIPPAGE_BPS", "300"))
+# 2026-07-30新增: 这条腿(mcap_scanner触发的进场,由这个脚本负责退出)之前从来
+# 没记过strategy_version,没法像pregrad_ramp那样做干净的调参前后对比——发现
+# mcap_scanner那42笔"均值+32.69%"看着亮眼,实际几乎全靠2笔在$1400-2000流动性
+# 薄池子里的极端值(957%/454%)撑起来,胜率反而比pregrad_ramp还低,真实资金
+# 大概率吃不到这种滑点。从v1开始记,以后调参才有干净的基线可比。
+STRATEGY_VERSION = 1
 
 NOW = int(time.time())
 NOW_STR = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -393,6 +399,7 @@ def finish_trade(entry_info, exit_reason, exit_price):
         "hold_sec": round(hold_sec, 1),
         "prior_entries_on_this_mint": entry_info["prior_entries"],
         "deploy_env": os.environ.get("DEPLOY_ENV", "local"),
+        "strategy_version": STRATEGY_VERSION,
     }
     write_journal(record)
     log(f"台账记录完毕: {exit_reason} pnl={pnl_pct:+.2f}% 持仓{hold_sec:.0f}秒 "
