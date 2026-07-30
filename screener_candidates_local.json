@@ -1,36 +1,6 @@
 {
- "updated_at": 1785447063,
- "updated_at_str": "2026-07-30 21:31 UTC",
- "n_candidates": 1,
- "candidates": [
-  {
-   "addr": "8Jwyx4TgGe6nvHwUh5u5HWhN7c7bDU1zfMmTu7JuQWqa",
-   "name": "TRASHLORD / SOL",
-   "age_min": 42.6,
-   "created": 1785444507.0,
-   "price": 0.0001419027503364986,
-   "liq": 25159.8778,
-   "locked_liq_pct": 100.0,
-   "vol_15m": 133107.656155583,
-   "vol_1h": 300629.239401177,
-   "chg_15m": 52.277,
-   "chg_1h": 350.344,
-   "buys_15m": 637,
-   "sells_15m": 545,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/8Jwyx4TgGe6nvHwUh5u5HWhN7c7bDU1zfMmTu7JuQWqa",
-   "mint": "FxQCUFpYPWLbpdn6DvPW7uRmWvVwTmTu8XgpvJp8pump",
-   "early_bot_flag": null,
-   "staircase_flag": true,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 20.0,
-    "staircase_flag": true,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 17,
-    "exit_ratio": 0.6323755417552985,
-    "wallet_verdict": "35/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
-   }
-  }
- ]
+ "updated_at": 1785447663,
+ "updated_at_str": "2026-07-30 21:41 UTC",
+ "n_candidates": 0,
+ "candidates": []
 }
