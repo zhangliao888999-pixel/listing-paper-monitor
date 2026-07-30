@@ -37,7 +37,11 @@ if ($ScriptName -eq "mcap_scanner_loop.py") {
 
 while ($true) {
     Log "启动 $ScriptName ..."
-    $proc = Start-Process -FilePath "python" -ArgumentList $ScriptName -NoNewWindow -PassThru -Wait `
+    # 2026-07-30新增: python的stdout重定向到文件时默认是整块缓冲,不是行缓冲,
+    # print()内容可能长时间攒在内存里不落盘,导致排查git_push_flusher.py这类
+    # 靠print()记日志的脚本时,日志文件看着一直是0字节,分不清"没在干活"还是
+    # "干了但没写出来"。加-u强制无缓冲,让print()立刻落盘。
+    $proc = Start-Process -FilePath "python" -ArgumentList "-u", $ScriptName -NoNewWindow -PassThru -Wait `
         -RedirectStandardOutput "$here\vps_stdout_$ScriptName.log" `
         -RedirectStandardError "$here\vps_stderr_$ScriptName.log"
     Log "$ScriptName 退出,退出码=$($proc.ExitCode),5秒后重新拉起"
