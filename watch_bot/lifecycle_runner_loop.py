@@ -51,7 +51,10 @@ def git_sync():
         commit = run(["git", "commit", "-m", f"watch_bot data sync {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')}"])
         if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
             return  # 这轮没有新数据变化,不用推
-        for attempt in range(3):
+        # 2026-07-30再修: 本机screener_local和云端GitHub Actions也在并发push
+        # 同一仓库,锁挡不住跨主机的fetch-first冲突,3次重试偶尔追不上,加到
+        # 6次+间隔拉长到5秒。
+        for attempt in range(6):
             push = run(["git", "push"])
             if push.returncode == 0:
                 print(f"  git同步成功(第{attempt+1}次尝试)")
@@ -61,8 +64,8 @@ def git_sync():
             # "两边各自追加了新行"这种冲突,不需要人工介入。VPS并发调高后实测踩到过
             # 这个坑(rebase卡死导致连续多笔交易记录推不上去)。
             run(["git", "pull", "--no-edit", "origin", "master"])
-            time.sleep(3)
-        print("  git同步失败,重试3次后放弃,下一轮再试")
+            time.sleep(5)
+        print("  git同步失败,重试6次后放弃,下一轮再试")
 
 
 for i in range(ROUNDS):
