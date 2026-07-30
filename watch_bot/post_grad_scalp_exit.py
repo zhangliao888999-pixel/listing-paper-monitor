@@ -137,7 +137,9 @@ def git_push_journal():
         if push.returncode == 0:
             log("交易记录已立刻推送到GitHub,页面刷新即可见")
             return
-        run(["git", "pull", "--rebase", "origin", "master"])
+        # 2026-07-30修复: --rebase遇到journal.jsonl只追加型冲突会卡住需要人工
+        # --abort,改用普通merge能自动合并"两边各自追加新行"这种冲突。
+        run(["git", "pull", "--no-edit", "origin", "master"])
         time.sleep(3)
     log("交易记录推送失败(重试3次),会在下一轮同步时补推")
 

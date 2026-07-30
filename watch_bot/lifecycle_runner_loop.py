@@ -35,9 +35,9 @@ def run(cmd, **kw):
 
 
 def git_sync():
-    """add指定的数据文件 -> commit(没有变化就跳过) -> pull --rebase -> push,
-    push失败重试几次(跟live_runner.py云端workflow那套retry逻辑一样,本地
-    多个定时任务/脚本并发提交是这个仓库的常态)。"""
+    """add指定的数据文件 -> commit(没有变化就跳过) -> pull(普通merge,不是
+    rebase) -> push,push失败重试几次(跟live_runner.py云端workflow那套retry
+    逻辑一样,本地多个定时任务/脚本并发提交是这个仓库的常态)。"""
     add_cmd = ["git", "add"] + DATA_GLOBS
     run(add_cmd)
     commit = run(["git", "commit", "-m", f"watch_bot data sync {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')}"])
@@ -48,7 +48,11 @@ def git_sync():
         if push.returncode == 0:
             print(f"  git同步成功(第{attempt+1}次尝试)")
             return
-        run(["git", "pull", "--rebase", "origin", "master"])
+        # 2026-07-30修复: --rebase遇到journal.jsonl/pump_lifecycle.json这类只追加
+        # 型文件冲突时会直接卡住需要人工--abort才能恢复,改用普通merge能自动合并
+        # "两边各自追加了新行"这种冲突,不需要人工介入。VPS并发调高后实测踩到过
+        # 这个坑(rebase卡死导致连续多笔交易记录推不上去)。
+        run(["git", "pull", "--no-edit", "origin", "master"])
         time.sleep(3)
     print("  git同步失败,重试3次后放弃,下一轮再试")
 
