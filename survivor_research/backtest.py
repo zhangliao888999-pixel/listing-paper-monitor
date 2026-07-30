@@ -214,8 +214,13 @@ def main():
     combos = combos[:limit]
     print(f"参数组合: {len(combos)}个,开始扫描...")
 
+    # 2026-07-31: 本机跑6进程满负荷把用户CPU烤到99度,已挪到VPS跑。
+    # 并行度改成可配置,而且默认留余量: VPS 8核只用4个,既不影响同机跑的
+    # 前向采集器,也不会把服务器烧满。宁可慢一点,不能把机器搞挂。
+    workers = int(_os.environ.get("BT_WORKERS", "4"))
+    print(f"并行进程数: {workers}(留余量,不占满CPU)")
     rows = []
-    with ProcessPoolExecutor(max_workers=6) as ex:
+    with ProcessPoolExecutor(max_workers=workers) as ex:
         for k, res in enumerate(ex.map(eval_combo, [(c, usable) for c in combos], chunksize=8)):
             rows.append(res)
             if (k + 1) % 200 == 0:
