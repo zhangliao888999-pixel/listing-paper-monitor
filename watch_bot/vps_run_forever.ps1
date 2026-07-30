@@ -21,6 +21,18 @@ function Log($msg) {
 Log "=== 看守启动: $ScriptName ==="
 $env:LOOP_ROUNDS = $LoopRounds
 
+# 2026-07-30新增: 用户提出VPS没有GitHub Actions那种共享IP限流顾虑,想试试把
+# 并发调高(加倍)看扫描效率有没有提升,跟云端(默认值)直接对比。只在VPS这边
+# 通过环境变量覆盖,不改代码默认值,云端继续用原来保守的3/4。
+if ($ScriptName -eq "pregrad_scanner_loop.py") {
+    $env:PREGRAD_MAX_CONCURRENT = "6"
+    Log "并发测试: PREGRAD_MAX_CONCURRENT=6(云端默认3)"
+}
+if ($ScriptName -eq "mcap_scanner_loop.py") {
+    $env:MCAP_MAX_CONCURRENT_DEPLOYED = "8"
+    Log "并发测试: MCAP_MAX_CONCURRENT_DEPLOYED=8(云端默认4)"
+}
+
 while ($true) {
     Log "启动 $ScriptName ..."
     $proc = Start-Process -FilePath "python" -ArgumentList $ScriptName -NoNewWindow -PassThru -Wait `
