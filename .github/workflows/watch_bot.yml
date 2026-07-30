@@ -73,4 +73,9 @@ jobs:
         run: |
           git add -A -- ':!watch_bot/*_trades_archive.jsonl' ':!**/__pycache__'
           git commit -m "watch_bot cloud shift end $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
-          for i in 1 2 3; do git push && break || { git pull --rebase; sleep 3; }; done
+          # 2026-07-31修复: 这里是Python侧--rebase改merge时漏掉的最后一处。上一个
+          # 6小时run攒了57个提交的交易数据,run中途每次pull都因为runner的git没有
+          # pull.rebase配置而确定性失败(git 2.34+分叉时裸pull直接拒绝),最后靠这里
+          # 兜底时--rebase又撞journal.jsonl冲突死掉,57笔数据随容器销毁全部丢失。
+          # merge策略必须用-c显式钉死,重试次数也从3加到8——这是数据最后的机会。
+          for i in 1 2 3 4 5 6 7 8; do git push && break || { git -c pull.rebase=false pull --no-edit origin master; sleep 3; }; done

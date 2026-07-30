@@ -21,6 +21,15 @@ LOCK_PATH = Path(__file__).parent / "git_push.lock"
 
 _MARKER_RE = re.compile(r"^(<{7} |={7}$|>{7} )")
 
+# 2026-07-31修复: 云端13小时"零成交"的真正根因——git 2.34+在分支分叉时,没有
+# pull.rebase/pull.ff配置的裸`git pull`会直接报错拒绝("Need to specify how to
+# reconcile divergent branches")。VPS/本机的git有全局配置所以从来没踩到,GH
+# Actions的runner是全新checkout+git 2.54,什么配置都没有——之前把--rebase改成
+# 普通merge的修复,在云端恰好变成了"每次pull都确定性失败",重试多少次都没用,
+# 云端整个run攒了57个提交的交易数据最后随容器销毁全部丢失。所有自动化pull
+# 统一用-c显式钉死合并策略,不再依赖跑在哪台机器上的本地配置。
+GIT_PULL_CMD = ["git", "-c", "pull.rebase=false", "pull", "--no-edit", "origin", "master"]
+
 
 class _TimedOut:
     """subprocess.run超时后的占位返回值,伪装成一个失败的CompletedProcess,

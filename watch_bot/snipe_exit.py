@@ -52,7 +52,7 @@ except ImportError:
     print("缺依赖: pip install solders requests")
     sys.exit(1)
 
-from git_lock import git_lock, resolve_stuck_merge, run_git
+from git_lock import git_lock, resolve_stuck_merge, run_git, GIT_PULL_CMD
 
 HERE = Path(__file__).parent
 JOURNAL_F = HERE / "journal.jsonl"  # 2026-07-29新增: 详细交易台账,所有币共用一份,
@@ -159,7 +159,7 @@ def git_push_journal():
                 return
             # 2026-07-30修复: --rebase遇到journal.jsonl只追加型冲突会卡住需要人工
             # --abort,改用普通merge能自动合并"两边各自追加新行"这种冲突。
-            run(["git", "pull", "--no-edit", "origin", "master"])
+            run(GIT_PULL_CMD)
             time.sleep(5)
         log("交易记录推送失败(重试6次),会在下一轮lifecycle循环时补推")
 

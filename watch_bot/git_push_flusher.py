@@ -18,7 +18,7 @@ import datetime as dt
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from git_lock import git_lock, resolve_stuck_merge, run_git
+from git_lock import git_lock, resolve_stuck_merge, run_git, GIT_PULL_CMD
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SWEEP_INTERVAL_SEC = int(os.environ.get("FLUSH_INTERVAL_SEC", "45"))
@@ -56,14 +56,22 @@ def sweep_once():
             return
         if resolve_stuck_merge(REPO_ROOT, log=print):
             print(f"[{ts}] 清理了遗留的未解决合并冲突")
+        last_push = last_pull = None
         for _ in range(6):
-            push = run(["git", "push"])
-            if push.returncode == 0:
+            last_push = run(["git", "push"])
+            if last_push.returncode == 0:
                 print(f"[{ts}] 补推成功")
                 return
-            run(["git", "pull", "--no-edit", "origin", "master"])
+            last_pull = run(GIT_PULL_CMD)
             time.sleep(5)
+        # 2026-07-31新增: 云端那次13小时静默丢数据,就是因为这里只打"失败"两个字
+        # 不打原因,从日志上完全看不出是撞车还是配置问题,排查绕了一大圈。以后
+        # 失败必须带上git自己的报错原文(截断到200字符,防止刷屏)。
         print(f"[{ts}] 补推仍然失败(重试6次),下一轮再试")
+        if last_push is not None:
+            print(f"[{ts}]   push报错: {(last_push.stderr or last_push.stdout or '')[:200]}")
+        if last_pull is not None and last_pull.returncode != 0:
+            print(f"[{ts}]   pull报错: {(last_pull.stderr or last_pull.stdout or '')[:200]}")
 
 
 def main():

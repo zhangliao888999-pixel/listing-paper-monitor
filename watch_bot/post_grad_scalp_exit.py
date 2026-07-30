@@ -29,7 +29,7 @@ from pathlib import Path
 
 import requests
 
-from git_lock import git_lock, resolve_stuck_merge, run_git
+from git_lock import git_lock, resolve_stuck_merge, run_git, GIT_PULL_CMD
 
 HERE = Path(__file__).parent
 JOURNAL_F = HERE / "journal.jsonl"
@@ -152,7 +152,7 @@ def git_push_journal():
                 return
             # 2026-07-30修复: --rebase遇到journal.jsonl只追加型冲突会卡住需要人工
             # --abort,改用普通merge能自动合并"两边各自追加新行"这种冲突。
-            run(["git", "pull", "--no-edit", "origin", "master"])
+            run(GIT_PULL_CMD)
             time.sleep(5)
         log("交易记录推送失败(重试6次),会在下一轮同步时补推")
 

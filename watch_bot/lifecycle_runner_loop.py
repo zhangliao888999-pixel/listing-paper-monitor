@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lifecycle_logger import scan_and_log
-from git_lock import git_lock, resolve_stuck_merge, run_git
+from git_lock import git_lock, resolve_stuck_merge, run_git, GIT_PULL_CMD
 
 # 2026-07-30改: 实盘首跑10分钟没有任何开仓,排查发现这条腿10分钟一轮的节奏
 # 是纸盘时代跟pregrad(30秒)/mcap(90秒)两条高频腿并行时定的——那时候它慢无
@@ -71,7 +71,7 @@ def git_sync():
             # 型文件冲突时会直接卡住需要人工--abort才能恢复,改用普通merge能自动合并
             # "两边各自追加了新行"这种冲突,不需要人工介入。VPS并发调高后实测踩到过
             # 这个坑(rebase卡死导致连续多笔交易记录推不上去)。
-            run(["git", "pull", "--no-edit", "origin", "master"])
+            run(GIT_PULL_CMD)
             time.sleep(5)
         print("  git同步失败,重试6次后放弃,下一轮再试")
 
@@ -87,7 +87,7 @@ def git_refresh():
         if not got_lock:
             return
         resolve_stuck_merge(REPO_ROOT, log=print)
-        pull = run(["git", "pull", "--no-edit", "origin", "master"])
+        pull = run(GIT_PULL_CMD)
         if pull.returncode != 0:
             print(f"  轮前刷新pull失败(不影响本轮扫描,用现有数据继续): {(pull.stderr or '')[:120]}")
 
