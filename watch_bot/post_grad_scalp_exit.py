@@ -29,6 +29,8 @@ from pathlib import Path
 
 import requests
 
+from git_lock import git_lock
+
 HERE = Path(__file__).parent
 JOURNAL_F = HERE / "journal.jsonl"
 
@@ -128,20 +130,26 @@ def git_push_journal():
     repo_root = HERE.parent
     def run(cmd):
         return subprocess.run(cmd, cwd=str(repo_root), capture_output=True, text=True)
-    run(["git", "add", "watch_bot/journal.jsonl"])
-    commit = run(["git", "commit", "-m", f"trade completed: {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}"])
-    if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
-        return
-    for _ in range(3):
-        push = run(["git", "push"])
-        if push.returncode == 0:
-            log("交易记录已立刻推送到GitHub,页面刷新即可见")
+    # 2026-07-30新增: VPS并发调到6之后好几个进程同时commit+push互相撞车,单靠
+    # 重试次数扛不住,加文件锁让这几个脚本的git操作排队,一次只有一个在做。
+    with git_lock() as got_lock:
+        if not got_lock:
+            log("拿不到git锁(30秒超时,可能有很多进程在排队),这次先不推,交给下一轮补推")
             return
-        # 2026-07-30修复: --rebase遇到journal.jsonl只追加型冲突会卡住需要人工
-        # --abort,改用普通merge能自动合并"两边各自追加新行"这种冲突。
-        run(["git", "pull", "--no-edit", "origin", "master"])
-        time.sleep(3)
-    log("交易记录推送失败(重试3次),会在下一轮同步时补推")
+        run(["git", "add", "watch_bot/journal.jsonl"])
+        commit = run(["git", "commit", "-m", f"trade completed: {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}"])
+        if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
+            return
+        for _ in range(3):
+            push = run(["git", "push"])
+            if push.returncode == 0:
+                log("交易记录已立刻推送到GitHub,页面刷新即可见")
+                return
+            # 2026-07-30修复: --rebase遇到journal.jsonl只追加型冲突会卡住需要人工
+            # --abort,改用普通merge能自动合并"两边各自追加新行"这种冲突。
+            run(["git", "pull", "--no-edit", "origin", "master"])
+            time.sleep(3)
+        log("交易记录推送失败(重试3次),会在下一轮同步时补推")
 
 
 def finish_trade(entry_info, exit_reason, exit_price):
