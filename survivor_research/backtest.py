@@ -180,9 +180,16 @@ def eval_combo(args):
         return {**p, "n_trades": 0}
     pnls = [t[0] for t in all_trades]
     wins = [x for x in pnls if x > 0]
-    total_return = 1.0
+    # 2026-07-31修复: 原来按"每笔押全部本金"算复利,只要有一笔死亡(-100%)整个
+    # 复利就归零,所有组合的compound_x都是0,这个指标完全没有区分度也不符合
+    # 实际——访谈里的做法是单笔只押总资产1-3%(原话"百来万拿个最多几万块")。
+    # 改成按POSITION_FRAC分数仓位滚动: 每笔盈亏只作用于这一小部分本金,
+    # 这才是"一笔亏光不会伤筋动骨"的真实数学。
+    POSITION_FRAC = 0.02
+    bankroll = 1.0
     for x in pnls:
-        total_return *= (1 + max(x, -100) / 100)
+        bankroll *= (1 + POSITION_FRAC * max(x, -100) / 100)
+    total_return = bankroll
     n = len(pnls)
     mean = sum(pnls) / n
     pnls_sorted = sorted(pnls)
