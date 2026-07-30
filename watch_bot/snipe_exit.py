@@ -345,48 +345,77 @@ def do_buy(wallet, mint, pos_size_usd):
     audit({"action": "BUY", "mint": mint, "pos_size_usd": pos_size_usd, "tx": sig, "status": "confirmed" if ok else "unconfirmed"})
     if not ok:
         return None
-    return {"qty_raw": int(quote.get("outAmount", 0)), "entry_usd": pos_size_usd, "dry_run": False}
+    # 2026-07-30新增: pos_size_usd是"打算花多少钱",不是"实际到账多少代币对应的
+    # 真实成本"——这两个数字在真实下单时应该相等(花了多少钱就是多少钱),但记
+    # 下来方便跟卖出时的真实到账USD直接算差值,不用再去猜测。
+    return {"qty_raw": int(quote.get("outAmount", 0)), "entry_usd": pos_size_usd, "dry_run": False, "buy_tx": sig}
 
 
 def do_sell(wallet, mint, qty_raw, reason, dry_run):
+    """2026-07-30修复: 之前这个函数什么都不返回,导致finish_trade()记账时只能用
+    GT快照价格算pnl_pct——纸盘和实盘记的是同一套"理想化零冲击价",实盘真实的
+    滑点/优先费完全没体现在台账里。现在返回真实成交结果(卖出实际到账的USD、
+    tx签名、有没有真的确认成功),让调用方能算出entry_usd_actual/exit_usd_actual
+    这种真实经济账,不然今天开始的实盘测试统计出来的还是纸盘那套理想数字,
+    白测了。"""
     if dry_run:
         log(f"[DRY-RUN] 本来会因为[{reason}]全部卖出")
         audit({"action": "SELL", "mint": mint, "reason": reason, "status": "dry_run"})
-        return
+        return {"dry_run": True, "confirmed": True}
     quote = jupiter_quote(mint, SOL_MINT, qty_raw, SLIPPAGE_BPS)
     if not quote:
         log(f"FAIL 卖出[{reason}]: Jupiter拿不到报价")
         audit({"action": "SELL", "mint": mint, "reason": reason, "status": "quote_failed"})
-        return
+        return {"dry_run": False, "confirmed": False, "error": "quote_failed"}
     swap_tx = jupiter_swap_tx(quote, str(wallet.pubkey()))
     if not swap_tx:
         log(f"FAIL 卖出[{reason}]: 构造交易失败")
         audit({"action": "SELL", "mint": mint, "reason": reason, "status": "build_failed"})
-        return
+        return {"dry_run": False, "confirmed": False, "error": "build_failed"}
     sig, err = sign_and_send(wallet, swap_tx)
     if err:
         log(f"FAIL 卖出[{reason}]: 广播失败 {err}")
         audit({"action": "SELL", "mint": mint, "reason": reason, "status": "send_failed", "error": err})
-        return
+        return {"dry_run": False, "confirmed": False, "error": err, "tx": sig}
     ok = confirm_tx(sig)
     out_sol_lamports = int(quote.get("outAmount", 0))
-    log(f"卖出[{reason}]{'成功' if ok else '未确认(自己上链查一下)'} tx={sig} 换回约{out_sol_lamports/1e9:.4f} SOL")
+    sol_price = get_fresh_sol_price_usd()
+    exit_usd_actual = (out_sol_lamports / 1e9 * sol_price) if (ok and sol_price) else None
+    extra = f" (约${exit_usd_actual:.2f})" if exit_usd_actual is not None else ""
+    log(f"卖出[{reason}]{'成功' if ok else '未确认(自己上链查一下)'} tx={sig} 换回约{out_sol_lamports/1e9:.4f} SOL{extra}")
     audit({"action": "SELL", "mint": mint, "reason": reason, "tx": sig, "out_lamports": out_sol_lamports,
-          "status": "confirmed" if ok else "unconfirmed"})
+          "status": "confirmed" if ok else "unconfirmed", "exit_usd_actual": exit_usd_actual})
+    return {"dry_run": False, "confirmed": ok, "tx": sig, "out_lamports": out_sol_lamports,
+            "exit_usd_actual": exit_usd_actual}
 
 
 def make_prefix(addr):
     return re.sub(r"[^A-Za-z0-9]", "", addr)[:8]
 
 
-def finish_trade(entry_info, exit_reason, exit_price):
+def finish_trade(entry_info, exit_reason, exit_price, sell_result=None):
     """2026-07-29新增: 一笔交易结束时,把完整的台账记下来——币的详细情况(名字/mint/
     地址/锁仓/流动性/MCAP)、进场时间点(相对这个币自己创建了多久,不是相对我们脚本
     启动的时间)、仓位大小、持仓时长、盈亏、退出原因、这个mint之前进过几次仓(是否
-    反复进入)。写进journal.jsonl,所有币共用一份,方便以后横向统计对比。"""
+    反复进入)。写进journal.jsonl,所有币共用一份,方便以后横向统计对比。
+
+    2026-07-30再补: pnl_pct是GT快照价格算出来的"理想化零冲击价"盈亏,纸盘和
+    实盘一直共用这一套——今天要开始拿真钱测试,如果还只记这个,统计出来的
+    还是纸盘那套数字,滑点/优先费完全看不出来,白测了。真实成交时(dry_run=
+    False且sell_result里有确认成功的真实到账USD),额外算一版entry_usd_actual/
+    exit_usd_actual/pnl_pct_actual,两套数字并排存着,以后统计"真实滑点有多大"
+    直接拿pnl_pct_actual减pnl_pct就行,不用再去猜。"""
     entry_price = entry_info["entry_price"]
-    pnl_pct = (exit_price / entry_price - 1) * 100 if entry_price else None
+    pnl_pct = (exit_price / entry_price - 1) * 100 if (entry_price and exit_price) else None
     hold_sec = time.time() - entry_info["entry_ts"]
+
+    entry_usd_actual = entry_info.get("entry_usd_actual")
+    exit_usd_actual = sell_result.get("exit_usd_actual") if sell_result else None
+    sell_confirmed = sell_result.get("confirmed") if sell_result else None
+    pnl_pct_actual = None
+    if entry_usd_actual and exit_usd_actual is not None:
+        pnl_pct_actual = (exit_usd_actual / entry_usd_actual - 1) * 100
+
     record = {
         "name": entry_info["name"], "mint": entry_info["mint"], "addr": entry_info["addr"],
         "entry_ts": entry_info["entry_ts"], "entry_ts_str": dt.datetime.fromtimestamp(entry_info["entry_ts"]).strftime("%Y-%m-%d %H:%M:%S"),
@@ -400,9 +429,17 @@ def finish_trade(entry_info, exit_reason, exit_price):
         "prior_entries_on_this_mint": entry_info["prior_entries"],
         "deploy_env": os.environ.get("DEPLOY_ENV", "local"),
         "strategy_version": STRATEGY_VERSION,
+        "buy_tx": entry_info.get("buy_tx"),
+        "sell_tx": sell_result.get("tx") if sell_result else None,
+        "sell_confirmed": sell_confirmed,
+        "entry_usd_actual": entry_usd_actual,
+        "exit_usd_actual": exit_usd_actual,
+        "pnl_pct_actual": pnl_pct_actual,
     }
     write_journal(record)
-    log(f"台账记录完毕: {exit_reason} pnl={pnl_pct:+.2f}% 持仓{hold_sec:.0f}秒 "
+    pnl_str = f"{pnl_pct:+.2f}%" if pnl_pct is not None else "未知"
+    actual_str = f"  真实成交pnl={pnl_pct_actual:+.2f}%" if pnl_pct_actual is not None else ""
+    log(f"台账记录完毕: {exit_reason} pnl={pnl_str}{actual_str} 持仓{hold_sec:.0f}秒 "
        f"(这个币之前进过{entry_info['prior_entries']}次仓)")
     git_push_journal()
 
@@ -466,6 +503,8 @@ def main():
         "entry_liq_usd": attrs.get("reserve_in_usd"), "entry_locked_liq_pct": attrs.get("locked_liquidity_percentage"),
         "entry_fdv_usd": attrs.get("fdv_usd"), "n_insiders": len(insiders), "found_via": lookup_found_via(addr),
         "pos_size_usd": POS_SIZE_USD, "dry_run": pos["dry_run"], "prior_entries": prior_entries,
+        "entry_usd_actual": pos["entry_usd"] if not pos["dry_run"] else None,
+        "buy_tx": pos.get("buy_tx"),
     }
 
     log(f"持仓建立: qty_raw={pos['qty_raw']} entry=${pos['entry_usd']:.2f} entry_price={entry_price}  开始监控退出信号...")
@@ -477,8 +516,8 @@ def main():
         snap = get_pool_snapshot(addr)
         if snap and snap["liq"] is not None and snap["liq"] < EXIT_LIQ_THRESHOLD:
             log(f"*** 流动性安全网触发: 只剩${snap['liq']:,.0f},不等真买家信号了,立刻卖出 ***")
-            do_sell(wallet, mint, pos["qty_raw"], "LIQ_LOW", pos["dry_run"])
-            finish_trade(entry_info, "LIQ_LOW", snap.get("price"))
+            sell_result = do_sell(wallet, mint, pos["qty_raw"], "LIQ_LOW", pos["dry_run"])
+            finish_trade(entry_info, "LIQ_LOW", snap.get("price"), sell_result)
             return
 
         d = gt_get(f"{GT_BASE}/networks/solana/pools/{addr}/trades", {"trade_volume_in_usd_greater_than": 0})
@@ -505,20 +544,24 @@ def main():
             if a["kind"] == "sell" and w in insiders and usd >= MIN_REAL_BUYER_USD:
                 log(f"*** 已知操盘方钱包卖出信号: {w[:10]}...卖出${usd:,.2f},立刻卖出,不等更多确认 ***")
                 exit_snap = get_pool_snapshot(addr)
-                do_sell(wallet, mint, pos["qty_raw"], "INSIDER_SELL_DETECTED", pos["dry_run"])
-                finish_trade(entry_info, "INSIDER_SELL_DETECTED", exit_snap.get("price") if exit_snap else None)
+                sell_result = do_sell(wallet, mint, pos["qty_raw"], "INSIDER_SELL_DETECTED", pos["dry_run"])
+                finish_trade(entry_info, "INSIDER_SELL_DETECTED", exit_snap.get("price") if exit_snap else None, sell_result)
                 return
             if a["kind"] == "buy" and w and w not in insiders and usd >= MIN_REAL_BUYER_USD:
                 log(f"*** 疑似真买家信号: 钱包{w[:10]}...买入${usd:,.2f},立刻卖出,不等更多确认 ***")
                 exit_snap = get_pool_snapshot(addr)
-                do_sell(wallet, mint, pos["qty_raw"], "REAL_BUYER_DETECTED", pos["dry_run"])
-                finish_trade(entry_info, "REAL_BUYER_DETECTED", exit_snap.get("price") if exit_snap else None)
+                sell_result = do_sell(wallet, mint, pos["qty_raw"], "REAL_BUYER_DETECTED", pos["dry_run"])
+                finish_trade(entry_info, "REAL_BUYER_DETECTED", exit_snap.get("price") if exit_snap else None, sell_result)
                 return
         first_pass = False
         time.sleep(POLL_SEC)
 
     log(f"=== {MAX_MINUTES:.0f}分钟窗口结束,没等到真买家信号,仍持有(需要自己决定要不要手动处理) ===")
+    if not pos["dry_run"]:
+        log("*** 这是真实仓位,脚本不会替你卖出——上面这行不是提示,是真的还拿着真钱买的代币,自己去钱包/Jupiter看着办 ***")
     timeout_snap = get_pool_snapshot(addr)
+    # sell_result不传(保持None): 这里没有真实卖出发生,pnl_pct_actual必须留空,
+    # 不能假装这笔交易已经"实现"了,那样会污染真实盈亏的统计。
     finish_trade(entry_info, "TIMEOUT_STILL_HOLDING", timeout_snap.get("price") if timeout_snap else None)
 
 
