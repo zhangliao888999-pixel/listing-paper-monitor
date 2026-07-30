@@ -290,6 +290,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785404559.8156333,
+    "price": 5.01436440572759e-06,
+    "liq": 5083.1407,
+    "insider_sell_pct": 0.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late"
@@ -572,6 +581,15 @@
     "ts": 1785401150.4751604,
     "price": 2.208724919192576e-05,
     "liq": 17657.4945,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 3,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1785404569.4506516,
+    "price": 2.208724919192576e-05,
+    "liq": 17745.3694,
     "insider_sell_pct": 1.0,
     "n_insiders": 3,
     "locked_liq_pct": "100.0",
@@ -1095,6 +1113,15 @@
     "n_insiders": 32,
     "locked_liq_pct": null,
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785404588.6332297,
+    "price": 7.690842273502484e-05,
+    "liq": 66983.2705,
+    "insider_sell_pct": 0.8209101418866039,
+    "n_insiders": 32,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -1204,6 +1231,15 @@
     "n_insiders": 2,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785404598.6484718,
+    "price": 2.4653424620314332e-05,
+    "liq": 17331.3231,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 2,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -1304,6 +1340,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785404608.2594633,
+    "price": 1.4989767296127738e-05,
+    "liq": 12882.4358,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -1400,6 +1445,15 @@
     "ts": 1785401199.1299038,
     "price": 3.1522820586791063e-05,
     "liq": 24560.788,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 2,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1785404617.9963903,
+    "price": 3.1522820586791063e-05,
+    "liq": 24682.6924,
     "insider_sell_pct": 1.0,
     "n_insiders": 2,
     "locked_liq_pct": "100.0",
@@ -1657,6 +1711,15 @@
     "n_insiders": 3,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785404636.9293172,
+    "price": 1.342723269450077e-05,
+    "liq": 10207.8481,
+    "insider_sell_pct": 0.4117799646282715,
+    "n_insiders": 3,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -1739,6 +1802,15 @@
     "ts": 1785401222.0146797,
     "price": 7.638285262831996e-05,
     "liq": 68627.498,
+    "insider_sell_pct": 0.8483727171670938,
+    "n_insiders": 18,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1785404646.5651827,
+    "price": 7.638285262831996e-05,
+    "liq": 68980.8181,
     "insider_sell_pct": 0.8483727171670938,
     "n_insiders": 18,
     "locked_liq_pct": "100.0",
@@ -1847,6 +1919,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785404656.1742973,
+    "price": 2.034955999823938e-05,
+    "liq": 15729.8002,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -1871,6 +1952,15 @@
     "ts": 1785401242.3247252,
     "price": 2.1185553353388706e-05,
     "liq": 15712.3479,
+    "insider_sell_pct": 0.10090565332402364,
+    "n_insiders": 3,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1785404665.7716372,
+    "price": 2.1185553353388706e-05,
+    "liq": 15778.4493,
     "insider_sell_pct": 0.10090565332402364,
     "n_insiders": 3,
     "locked_liq_pct": "100.0",
@@ -1901,5 +1991,14 @@
   "died_at": 1785397935.5583816,
   "peak_price": 1.556033183232277e-05,
   "hours_alive": 0.9115241694450379
+ },
+ "CsdfvEDdw2voQo4SX2fZg5pXSAJocER9dajpvJAc8BLs": {
+  "name": "XVIDEOS / USDC",
+  "mint": "8cgWUYNodbhnBLsovWdR1Fzf2q54KK2YMcDLXpyWmoon",
+  "first_seen": 1785403687.9003754,
+  "status": "alive",
+  "history": [],
+  "found_via": "late",
+  "stack_deployed": false
  }
 }
