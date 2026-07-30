@@ -1710,3 +1710,2528 @@
 本轮新部署: 0个
 
 [18:41:03] === ��91/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  mɔ / USDC  MCAP=$1,009,811,843  锁仓=None%  6RpuyUqJWvD7qS356DfHQh7kqbDmvB7j776piU4xfJtw
+  Chiikawa / SOL  MCAP=$972,103  锁仓=None%  G8Nec4gpaEgabHz3NfTGR7kfiFyLQypjjEL8KsigZniy
+  Claude / SOL  MCAP=$357,984  锁仓=0.000000000256077245873102%  2qnJpg74VYkvZHcX2u5mCKGh4nNuebYP6bPGFAUTYyUv
+  Claude / SOL  MCAP=$319,930  锁仓=None%  CHWDMjBKx4WjtqtTKYxmXsJQcUzFthA8aX9Yz3j7phcY
+  Boil / SOL  MCAP=$212,311  锁仓=None%  3kayPwDqabrCmC9BbhUhkV5paMpZRG7vqQFvRt4jVFz2
+  NUDAENG / SOL  MCAP=$137,701  锁仓=None%  9quhE79eND1dnCdFG1bBYAPDh3uCvvMRhfJ9erGQ1eHQ
+  OX / SOL  MCAP=$100,520  锁仓=None%  6rEjpZwNCv6N1Vt5aPYbYf3RMn9fbTE3cyF95HXnstXZ
+  VORF / SOL  MCAP=$52,826  锁仓=None%  8HQdmeixD8fF8SqhHp5prvLoEbfKEBp5TUqLTmLCwQ8f
+  CZ / SOL  MCAP=$45,973  锁仓=None%  BAiuTz2F6Y1tbjA7dM8MLA7K2oBcP3odJLdtHV37y5en
+  Jewpiter / SOL  MCAP=$37,821  锁仓=0.0%  DiiNP68PUoxn493rbsFHhkn9McAWHvVFVKbdULBVJ8CD
+
+本轮新部署: 0个
+
+[18:44:00] === ��92/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  GRVT / SOL  MCAP=$578,987  锁仓=0.0000000000714267757914812%  3yBLVNRL3NoiijVHN3CQS4t4pcsmHYuJH1r4qziJ62zT
+  CZ / SOL  MCAP=$67,040  锁仓=None%  55F54a5xuZo1AWg2qkSQvZJd6qSqketkfLtrzNm5zdhf
+  EARTHCAT / SOL  MCAP=$45,591  锁仓=None%  3o8PgNSbkZUsZhH2Edyyr9PkmgVHZ4ZXws9Lrkt4EPqY
+  DOLLSON / SOL  MCAP=$34,090  锁仓=None%  5vGgJCms9rKkSmsaEPSc6XbdXwkqrrVLR7j8bTSqw9Ft
+  DOLLSON / SOL  MCAP=$30,757  锁仓=None%  8hp8RigVfp3n8e1cWLAiw6AFjj9VcAKBa3LNaubRrNn8
+  SPAZ / SOL  MCAP=$22,417  锁仓=None%  FnTa3FZxtVz5hu2ajzph5fg5CLSi24jw2Xf8PW4eQVGE
+  NUDAENG / SOL  MCAP=$18,100  锁仓=None%  EyWFNLi2eaxnoWT3iHJS9aCZ73XaGmMYXbQhvFUVJaDw
+  NUDAENG / SOL  MCAP=$14,591  锁仓=None%  HjXoRWFWVzHGoYcJXCEcuuttChjKszm68LQpD7dxJL8m
+  CheapShot / SOL  MCAP=$11,970  锁仓=None%  6c8LocLwF4e5q5tKRhbZNXgRCZmNkgjQCwx2JyFjxAHr
+  NUCWIZ / SOL  MCAP=$11,632  锁仓=None%  CjMaQSLqifQynASv3r3G1L8V3s6efM13cphQN1KYVF31
+
+本轮新部署: 0个
+
+[18:47:03] === ��93/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CZ / SOL  MCAP=$173,865  锁仓=None%  9kj1tZT5y5pZDXttjcpHVHNHHCne4wZUGeuZ8QjPNhXb
+  ARC / SOL  MCAP=$34,804  锁仓=0.0%  J58veFr84YEhJLEF7LrcvjAs5BmQfP3mZ3FN2kgHgqBB
+  THESHERIFS / SOL  MCAP=$28,190  锁仓=100.0%  CLa74twTd5mXunao4mvo3oc247zBK9R1b9wwkYYdr5hN
+  Fgt / USDC  MCAP=$13,705  锁仓=None%  3N5LzkqPJDmso7BTF33f3YLoC4BFeMpkFHnSJPhyr1qB
+  Polyester / SOL  MCAP=$13,646  锁仓=None%  5HBtD1ZEAwBqLPC2h7XEaJ6PraqiuvpQYxfrWoQHydA7
+  Polyester / SOL  MCAP=$13,153  锁仓=None%  6mHMmPnzv4gkhY3sSv68QY2otB19Ujcya9zzPGMuTJ4y
+  PERP / SOL  MCAP=$10,407  锁仓=None%  9e2SHj7MpdxrY3P4RoGVAh6UuQNjDKoKdDRqnfjASFUM
+  hermano / SOL  MCAP=$9,171  锁仓=None%  7DBKSuWo3bd31tMcrTnrMWhLnGgJbmHMnS7WMnrvAhos
+  Jewpiter / SOL  MCAP=$9,130  锁仓=None%  aEvZ58yjgTbkAfk3CucdB9tR8LqREXVHwmwZHzCELtf
+  LIVE / SOL  MCAP=$8,434  锁仓=None%  57S2pUt859AFFet7hKnVjNuPrkf51pQPSwksd23mrdeC
+
+本轮新部署: 0个
+
+[18:50:01] === ��94/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  MarsCoin / SOL  MCAP=$204,622  锁仓=None%  HiuUapwZeVyogBqkdquhce9KUTdDPJ3tdAyNpL5fAdrw
+  MarsCoin / SOL  MCAP=$195,988  锁仓=None%  ACwurHuaPVg4VxfXYDkSBnETdENwHuu5S2pN9sU4YvjR
+  LASTPEPE / SOL  MCAP=$62,966  锁仓=None%  ApMQEJxofCypS5EY618xxFWCPEsKSVwhSm1YmNmuRu5r
+  Jewpiter / SOL  MCAP=$53,282  锁仓=None%  6irB9UzKyPXE6zgvwGAaq7UaAKtYSU7MxzBKQQT4eEtx
+  Jewpiter / SOL  MCAP=$50,446  锁仓=None%  8g8Hq1jJ6jmXgM4Ui9Yizcf4gTuBVyEEFtwbLtXhmkia
+  MARSHOUSE / SOL  MCAP=$36,641  锁仓=None%  7XiSdbXRBFikdX7DQuULsFU1mZnefPWXWVbGNzPaP2UD
+  ROBINTARDI / SOL  MCAP=$8,913  锁仓=None%  HsmGYst314EzqovzfCeQVozHcZn2fHshfUwvT2sESZPb
+  ZUCY / SOL  MCAP=$7,687  锁仓=None%  8gWZp5SqQTAnw7V1udTxtCTu7yGHa4sSpDiKZdX6vAJF
+  BEST / SOL  MCAP=$6,743  锁仓=None%  8boaNyiPZcqKdZ9oNgXTkh397oi4kwmwGmdLzXbXokAC
+  UrAnus / SOL  MCAP=$6,288  锁仓=None%  9bDLSKZhdJPnyvSfppqkMjKRcoGVJ6ixptiTecSyvbKh
+
+本轮新部署: 0个
+
+[18:53:04] === ��95/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时84.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮TDSU / USDC  MCAP=$100,147,511  锁仓=None%  ERzP7VoE5NzPQiK7Anmoov3UE4uXHyPh3x6i1sSVhePe
+  TITS / SOL  MCAP=$1,923,563  锁仓=None%  4rrZ38Dk4NnPgUTrKiAmZcEv6J8GJnuFN4Y3uqGGyXEY
+  MARSHOUSE / SOL  MCAP=$81,452  锁仓=None%  7Kn6TZN3qzg2HiYc8r8eu2j3Td3JtS5hNGR9cLyUvtTH
+  TJR / SOL  MCAP=$70,536  锁仓=None%  GUm6EjwpCkD2a52tJM2BDUWhrY2V37mJWcXqcbw481eB
+  tinyyelly / SOL  MCAP=$41,683  锁仓=None%  7y7engMnRFWsPsVHt3QG5GKquroRhcNP9fiEwi8evU7p
+  Kaimafia / SOL  MCAP=$23,185  锁仓=None%  Dfc6D9HGj13BU4vozj4idnSAAZbt5VAE6gSJM7LrSd8
+  WEN / SOL  MCAP=$12,102  锁仓=None%  96JArapDi5KQwxvMj5oRSpQ8QFtQGi3aMT1Spy97ynTS
+  ひな / SOL  MCAP=$9,538  锁仓=None%  45QDFdhxfKzvxcf7H5z1LxftwFPyuC6t5XrkUfP92Gcd
+  MOONICAN / SOL  MCAP=$7,278  锁仓=None%  445paLnSnPmph7K7EPRatnwkigpu5iy3PfSsXrRPJGbq
+  Jewpiter / SOL  MCAP=$6,750  锁仓=None%  28qtNtp7tykcN2s5x5BAXMX3rXWxmSBYWUFE8dpJ46cX
+
+本轮新部署: 0个
+
+[18:56:00] === ��96/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  YAJUColn / USDC  MCAP=$29,401,770  锁仓=None%  59eAbS7pjxu5sqhDkWudZ6soWqwcst8v7LEy3CmfGkLo
+  OX / SOL  MCAP=$136,609  锁仓=None%  FSnXGyWM9HrFKjC9W3Z4VEpNhyjSqDXN4xKgYhBUuBRm
+  luck / SOL  MCAP=$51,081  锁仓=None%  37uTDuW7byJFKvqgsX8rV7KHXNnk749ZqBmNdKth4PFP
+  XPLK / SOL  MCAP=$45,938  锁仓=None%  9G6xMbtQS3o2L1qioESHg64iwCPJYMv6eoQYuxSDk1Xr
+  LIMECAT / SOL  MCAP=$22,808  锁仓=None%  9aErVhzmJE8FRtkXN2PxCgTjfPHZf9rVbkvz1kohP4To
+  onboard / SOL  MCAP=$11,347  锁仓=None%  Fv6beWCsMnGR5dpPiaRaB59gCNnYXrgbdpBdwoiRDN9n
+  PUMP / SOL  MCAP=$10,503  锁仓=None%  EfERo2mEpHBY25UnXTGZu3EuqZPXrWEBFAvZgY32cbBw
+  hermano / SOL  MCAP=$9,912  锁仓=None%  Bs6XRNDi8wxMaVgxujueNPQJ85ArtTbzY2sSbTwi9PQ2
+  Sisyphean / SOL  MCAP=$9,116  锁仓=None%  DbX1DNjzqXHAQWq6fMoMFeb6SaNPrNDidUSsGBufsHeM
+  hermano / SOL  MCAP=$8,957  锁仓=None%  E9wHUk7fQQPezeFXb38AvVCePMXfsHoSeMgFjFK2oWM
+
+本轮新部署: 0个
+
+[18:59:03] === ��97/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  MARSHOUSE / SOL  MCAP=$260,335  锁仓=None%  4HSeuC8HSXJgA55v7h5ZBLny4DiVMYY9sjESsrDbQhP4
+  TCC / SOL  MCAP=$92,965  锁仓=None%  5MjWEpbm82yHu2dwduHLnSVRDyVRq7FbnJiW1FtiPQyn
+  NUDAENG / SOL  MCAP=$89,027  锁仓=None%  9sR5TUKWEcS4yoZXQSee3T9XUZgH8ew1ZZBU9ZhR6UDY
+  tinyyelly / SOL  MCAP=$51,729  锁仓=None%  FyYpjavQM6rWWeafvsFfbPXrLukSua1df5TvrNQUTwCq
+  B2H / SOL  MCAP=$48,676  锁仓=None%  7tP2xsYNXz4FLuUorTMZ6WnN94JrD1ZbmXwQceEnV757
+  B2H / SOL  MCAP=$38,526  锁仓=None%  6TT7x6idxGQBauBuPzTsSSV9p72ganT1wXDJ42PorAzy
+  GOONWORLD / SOL  MCAP=$20,718  锁仓=None%  6dbbAXJ2g9jAY5Sx29nAcUt9zMaJfsbXVKftmG8YwJY9
+  B2H / SOL  MCAP=$18,845  锁仓=None%  7L6HALxTTs8L4sDdJobp3KAdZpLAzKDJUNQvSSyNEahR
+  Kerming / SOL  MCAP=$13,188  锁仓=100.0%  4rXri4pzoYT1nXJBx7e7tyr4H8mYkJYYpgRizQ5ayLYh
+  WCOIN / SOL  MCAP=$12,848  锁仓=100.0%  DEZaHSXsLoLiSfk8oJgawQ2Zq4mVkGCB1wAE9LnTA2jK
+
+本轮新部署: 0个
+
+[19:02:00] === ��98/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Anthropic / SOL  MCAP=$2,044,499  锁仓=None%  5L7FLFPMZPbPuHSAfmxs3qWeazztnKwB88VHh2RuFQUo
+  B2H / SOL  MCAP=$55,310  锁仓=None%  7tP2xsYNXz4FLuUorTMZ6WnN94JrD1ZbmXwQceEnV757
+  B2H / SOL  MCAP=$48,726  锁仓=None%  6TT7x6idxGQBauBuPzTsSSV9p72ganT1wXDJ42PorAzy
+  NUDAENG / SOL  MCAP=$47,237  锁仓=None%  F6peWVDH5s5suD6YymjivLqNS7D5vsbRdd1VrvL69ceJ
+  NUDAENG / SOL  MCAP=$46,797  锁仓=None%  DzMvVG2eeauW1ZTJmkr1xUaun8Z4Ew8gtsBiifLy4Uqk
+  NUDAENG / SOL  MCAP=$42,513  锁仓=None%  9sR5TUKWEcS4yoZXQSee3T9XUZgH8ew1ZZBU9ZhR6UDY
+  Oxpecker / SOL  MCAP=$41,845  锁仓=None%  5bbwKhtEw8XC9Bwk2B6evFK5nJ77itJomFhcfjHFQGxj
+  GOONWORLD / SOL  MCAP=$21,099  锁仓=None%  6dbbAXJ2g9jAY5Sx29nAcUt9zMaJfsbXVKftmG8YwJY9
+  TURGOL / SOL  MCAP=$12,848  锁仓=None%  64F7jHd5HtbmTYxWz3feDPqXmxCRowNYXQBnvWP5EHSN
+  NUDAENG / SOL  MCAP=$9,171  锁仓=0.0%  7iFt4m3g3yJPhRhv6fYNwJmmNXdatNRPVLe9RprgZfin
+
+本轮新部署: 0个
+
+[19:05:03] === ��99/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  USDC / USDC  MCAP=$100,574,780  锁仓=None%  HGGmQ9oNNecXQy3EqGit3xR9pxPRn8CUyJMxoPZ4LfPo
+  Jacket / SOL  MCAP=$430,257  锁仓=None%  A7hpEkidgD9W1cWS4oMPUjznRzAx8uEFR3oj9LpvCqtL
+  Jacket / SOL  MCAP=$389,890  锁仓=None%  7mdvT9TnRWVQVwjEZvvidH4NysibM8v94pnB17Lu61KU
+  NUDAENG / SOL  MCAP=$54,147  锁仓=None%  FCZyyFAyUVkjFuKCdRYas1p8Gd76ufnMwqt5vdS3PgLu
+  NUDAENG / SOL  MCAP=$51,204  锁仓=None%  s7VJPBk5qqrThJVbyDqgibGwuETehpM7v4gf6zJgHeR
+  NUDAENG / SOL  MCAP=$35,159  锁仓=None%  AWYi9Euk4WTC5V1fagRRmKUjxkfbWGbp1MDPaMnj4MwU
+  LUNA / SOL  MCAP=$33,408  锁仓=None%  HqdSVye8GkxB9xt57i4DJWg1VNhL2VonsAPRS4yc5N8P
+  LUNA / SOL  MCAP=$32,386  锁仓=None%  79KYhd2S8wvr5usxagnMc6wYtzEs2v4iCucqH6xXRpQC
+  BEARS / SOL  MCAP=$28,695  锁仓=None%  4vNzDP9VmbQx7p9N8j73Z91poktsEytjUMNsFRSSsncH
+  FABLEMARS / SOL  MCAP=$27,843  锁仓=100.0%  HKwNxprd6hyWrLNGsq4pctHxxCeb9fShgY4pb5XvGuAf
+
+本轮新部署: 0个
+
+[19:08:01] === ��100/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  MARSHOUSE / SOL  MCAP=$65,814  锁仓=None%  4xHxxyW8MVLgfXKEhoWbStLbZrturxoDo4E5Z4wXrJ5v
+  PIPEDOG / SOL  MCAP=$30,438  锁仓=None%  94pc3z4J2xM83g3mLHNBzFd5jUKudtVtT1WpqLGkNgUN
+  employee / SOL  MCAP=$27,243  锁仓=None%  9wY79MR3my4JHVySPcS2mc2h9ZAtiQsxQ8aS6iVBGDpf
+  LUNA / SOL  MCAP=$24,261  锁仓=None%  Ai7c79685hZtTGK8iTtN7oeFgt7pUWmv2MgRaCL8y1P7
+  LUNA / SOL  MCAP=$20,747  锁仓=None%  AEdFj6aKcNTMcoK2epr44CVSV7t8BfBBz2yhQVr7YoCn
+  BEARS / SOL  MCAP=$14,119  锁仓=None%  7udR1WepdJBWDvxu1qzHCUVhCS1jd6goREganhDfK1G8
+  NUDAENG / SOL  MCAP=$12,306  锁仓=None%  D9dNXKy84AsZEMk7xrxTAVui92yQXyS1TnfPggQPos48
+  LIFE / SOL  MCAP=$12,053  锁仓=None%  HYPLAYqbcDNm6MLgboTFQWegc7ynJPkhrJhkx54KdJyg
+  SOPHIE / SOL  MCAP=$12,022  锁仓=100.0%  aRpPPLiZNazEXxWRo65mpQinMPJCVk2temBSn8UuRDJ
+  tung / SOL  MCAP=$10,532  锁仓=None%  4U7biQQZNkia9Mhqagyybkjou1TdT3abT5s3TqXP6Uzp
+
+本轮新部署: 0个
+
+[19:10:58] === ��101/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时84.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮yhtomiJ / USDC  MCAP=$9,233,308,593  锁仓=None%  9yoyJTnRooYZx2ftqTuAbepuqkVbi6DsA1nCub8jgcxH
+  CASHCAT / SOL  MCAP=$555,030  锁仓=None%  H7mike7cXRfUsNQh5EtrWzwCXFqt33MJn88hxXrvCTAM
+  CASHCAT / SOL  MCAP=$501,687  锁仓=None%  FTWd6ejHNCY3kKF8g4EDkSxKPoysuw1Bs6GvgaZ6quXK
+  HOOD / SOL  MCAP=$369,911  锁仓=None%  AJwmnMzwJeb9QQJgKduzXUNt9AGb6ZzCafW43wKM4tV2
+  employee / SOL  MCAP=$192,319  锁仓=None%  CB8CkTG2iRY21NPWLn7AeJYR3wEFABTE4BEyjtT7Zamg
+  MARSHOUSE / SOL  MCAP=$38,160  锁仓=None%  4xHxxyW8MVLgfXKEhoWbStLbZrturxoDo4E5Z4wXrJ5v
+  NUDAENG / SOL  MCAP=$32,681  锁仓=None%  AMVrMmxcKNfevn4NRbjx37k5BZ7KGTV2vAiRqVT8VcCd
+  $ASUXG / SOL  MCAP=$11,489  锁仓=100.0%  A9jciuxF2m2XbkZJukR38CiTjUFxfzoYh9XJ82JekLuq
+  leg / USDC  MCAP=$10,282  锁仓=None%  Fpo1LwdFfL5UC8V8q4fHJh6dPQw92JTi1DuSC2TqUA55
+  NUDAENG / SOL  MCAP=$9,857  锁仓=0.0%  C3KyGxetmYZW85PBLiyr4PrQJy738BS127vYQjL7nMXP
+
+本轮新部署: 0个
+
+[19:13:55] === ��102/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时58.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有2个查询疑似被限流失败,建议降低并发数重试 ***
+  spooderman / SOL  MCAP=$27,449,150  锁仓=0.00000000153486828384803%  BppWwBcLaUuwAMFSnLAB5upNdmo1CeF8G6ffwwYacdcq
+  USWR / SOL  MCAP=$12,838,785  锁仓=100.0%  G9rJs6KvxfsPEVda1H61wregtkQM8ab77M5dxXHZkP9d *** 已部署监控+模拟交易 ***
+  GDWR / SOL  MCAP=$1,178,014  锁仓=None%  BJGXucaxjNBDLvTRLTGTsMK5iWQiVK3B8DTo9t9YtnvN
+  NUDAENG / SOL  MCAP=$267,187  锁仓=None%  FT1x5yzcUFtqLe3LMCrrCEgar9ffEC8EuknMBxBF6YFT
+  UrAnus / SOL  MCAP=$51,374  锁仓=None%  BWmfW5T1dLceNhoq7BET9H7kBK1y8VzTFjfaRTXrbfTc
+  UrAnus / SOL  MCAP=$46,611  锁仓=None%  4S1QkDK9yB3UnFp2oqZjzpewXz67fLYdM2Ck3LTh6e8m
+  GIWA / SOL  MCAP=$46,011  锁仓=None%  4M1DH6RFsza5ndZ6A9JtMBg3ddXBZ14ghT5i73QHAXu1
+  TURTLE / SOL  MCAP=$42,800  锁仓=100.0%  Eb8Tui8i81m1XX36xw4Xgs16LLiTDpbT7hqp8nCVWMhF
+  LUNA / SOL  MCAP=$36,342  锁仓=None%  F2yR6Lo1pNiMZDgG1U3Bryy5HtvubU4xAR7y3dZgQeCy
+  USWR / SOL  MCAP=$28,599  锁仓=None%  3wCCxwod8LCSEyCiahba7h6e82CJKwTfk7ENp7NU5Wut
+
+本轮新部署: 1个
+
+[19:16:26] === ��103/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时73.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  MarsCoin / DML  MCAP=$174,927  锁仓=None%  MVt5wQzVucR2r3tq7e11SmzaGZG9zbRuhVumRfdfFrR
+  LUNADOGE / SOL  MCAP=$86,844  锁仓=100.0%  BsA4JtGVBzEtHaTMHuu59D6887aGU1DEZhMDTzHs9oyD *** 已部署监控+模拟交易 ***
+  NUDAENG / SOL  MCAP=$43,779  锁仓=None%  2X5qYq8TPWQnaiXF2gE2PNrzky9BPmAtMJ4yt4nM3pvA
+  GAY / SOL  MCAP=$29,753  锁仓=None%  9dQxs8QhVJe6MfgbMCcCHGdzsqFkdVzwrbTdd9ZUZ9au
+  LUNADOGE / SOL  MCAP=$12,563  锁仓=None%  CmH4ayqC2ddRyfJF9y1sPjBHr2wAqW5kjvC4iSHjoPD6
+  ww / SOL  MCAP=$12,084  锁仓=None%  BcoWuEdcquV3iwbneVQhznVr5AtG1kpnLGuTJ7e5zuju
+  NUDAENG / SOL  MCAP=$9,425  锁仓=None%  FjKV7YdRakH4SihBD1VsEsMpVnSZYYngKPoAku7FsHA1
+  NUDAENG / SOL  MCAP=$8,915  锁仓=None%  DotS1fsuAqH1ghrSErWhFu8ijrtjeXKZ8r2n5RMnY6VJ
+  1MARTIAN$ / SOL  MCAP=$4,722  锁仓=None%  9dbgq5uPRMSCE98bYKeQZ41NaTMyByNvLCUqqMVoTy6b
+  LEONARDO / USDC  MCAP=$4,592  锁仓=None%  EyDxuEAZbQvRhLSEVdVQW9AoP3wPofVCaW65YeskvDz7
+
+本轮新部署: 1个
+
+[19:19:12] === ��104/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Ocean / SOL  MCAP=$23,536,268  锁仓=0.00000000141918437125541%  2VQQZwdPdFkD5VGmraCB565BDnHEQfUsayfJYmybPRt7
+  Solanus / SOL  MCAP=$670,041  锁仓=0.0000000319390043676843%  BCthb8ZShUx3BKRGpmKsZxT8RVqdmXanFLzHNiV9nKk1
+  Boil / SOL  MCAP=$215,464  锁仓=None%  ANdUw1o2CM6xmY3LwDqLbD4PcSeChenG8hVj2BnDvLEL
+  oTFY / SOL  MCAP=$133,846  锁仓=None%  6V6B1erLbzsuMq1ZH6X4HehzoKdQ4PQyNgpjvnLjnHGf
+  MarsCoin / SOL  MCAP=$76,980  锁仓=None%  EAmai6FkNbnbAhqkyY3FtT54T7DQ91m4WgiZd9WdQR92
+  ChooChoo / SOL  MCAP=$28,584  锁仓=None%  D4pdvuD2H9hijseMVyB8Gwsw1BmyJMuJVrLhtmow2vvV
+  MarsCoin / SOL  MCAP=$20,912  锁仓=100.0%  uAcxcpkt5F76nmZjNrPbnNFW15LMQTtrNiGf4nQZ1Dx
+  hgfjhfhufh / SOL  MCAP=$18,260  锁仓=None%  5YfbYZBAYvgZmC6bGp46vfke85yECYhxRsXGxMpLHWsK
+  NUDAENG / SOL  MCAP=$9,335  锁仓=None%  Qsi6wctg8rmuAUfQMP3zbMiQWkYFeqWeNdGWaDUVx4A
+  BBD / SOL  MCAP=$9,271  锁仓=None%  dxtS8moPojiJ29bp1mbTGGzYGZkxnQUQjabWzXCa3FB
+
+本轮新部署: 0个
+
+[19:22:15] === ��105/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  MarsCoin / SOL  MCAP=$147,651  锁仓=None%  A2ZcbhF3x3tVhEsXBPjy7noMopxGF9osWPL3i6CHAFde
+  MarsCoin / SOL  MCAP=$106,924  锁仓=0.000000000143428417292257%  5EDxrSyrWii78sKfmSGpYXF87ki124aBaqtMjovkwcEx
+  TURTLE / SOL  MCAP=$99,671  锁仓=None%  J8uuzARWGEKF1pwgNpsD5hoJSTNkPu33yFAqc9UNGMCC
+  LUNA / SOL  MCAP=$82,049  锁仓=None%  49VNx2sXC6F7TPFZZAHqG6jZGpfNUfD6U9BtrJUwKiEG
+  MarsCoin / SOL  MCAP=$69,714  锁仓=None%  JBD6ZTRGumjqu36DAPKMmUgqUthxpnNFn6adXDZAKSVe
+  Spider-Man / SOL  MCAP=$37,832  锁仓=None%  FRUE5ZxjKWw4nrwK2JzvMTHBvPHPWEQdaAeB5dayFubR
+  MarsCoin / SOL  MCAP=$24,023  锁仓=None%  4eYe5iS5YS4GTNPgRe8Ec9HXG6tWxXdEqxJ24kq7TXfS
+  LUNA / SOL  MCAP=$23,589  锁仓=None%  EQd3G1s9DJqRWFYQwZQut24Wo3VnUvZEbs6eZw72CBQ4
+  Stations / USDC  MCAP=$10,294  锁仓=100.0%  AviGbnuBX2XhES3ysTeiWeNQFrc4HHx7ar7jAZ7TGJmH
+  SCW / USDC  MCAP=$8,843  锁仓=None%  EAF1SEGLR9UT4idvwgSZ5zGdHjGZ6ux6QEqbL72Wrbkx
+
+本轮新部署: 0个
+
+[19:25:09] === ��106/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  DGHVH / USDT  MCAP=$997,474  锁仓=None%  DGxCAVg6jmFx6QLWds5gRiCxaX78h43pDJ4UQ83pc4uM
+  BIRB / SOL  MCAP=$18,801  锁仓=None%  5Kc63Ed6CtLo66PJXCpz7PCjLqYhV3WEc7nJ9URA9dSn
+  tung / SOL  MCAP=$12,435  锁仓=None%  F98GhzqDTmXm5sxuvZa9zeZrTVSwWEEhBEMHhzr2FHTc
+  glowdog / SOL  MCAP=$9,846  锁仓=None%  2R7bLSXdoHY6bpx1HxA4qqzH1WtVYhm3D11XDNuZTX4E
+  Stations / SOL  MCAP=$7,208  锁仓=None%  Ad82rZBfU4HisKJwkitwR4US1aeaNFadkevmiycxBW6a
+  DPC / USDC  MCAP=$6,648  锁仓=None%  HtZRxgdZ9jqXv6UaTiniMHfbXPBJKzZqZAFMzSoP4WBf
+  Fauci / SOL  MCAP=$6,534  锁仓=100.0%  8DWcwHmuxX9vMAiYnS2EL7d4oA3R68FkSTFFcAzQQZUt
+  Stations / SOL  MCAP=$6,485  锁仓=None%  5W92s45MrnNHTG5w6m3hjQDXr1PHbP6gnuVmjCKLMZ9g
+  Fauci / SOL  MCAP=$5,170  锁仓=None%  FbiwLJuPYoQUc7YJn5AqDtX2ijMqvbmT8zXwTiZP1wEb
+  TURINF / SOL  MCAP=$4,957  锁仓=None%  24vjGSZJTpowrf2meGhz4CLujGhMmyVW4gDu3rhrGJk1
+
+本轮新部署: 0个
+
+[19:28:13] === ��107/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  USOX / SOL  MCAP=$663,027  锁仓=None%  BXf9LrooqW26EiavTpMx4v2PrXJduUizwZ4RCLowoehY
+  OpenSea / SOL  MCAP=$356,653  锁仓=0.0000000000885940117785924%  CctYjCmG1iPFLDMxnMyfgTyeTHCtFNd3hpPf2PhdygEK
+  Jurassic / SOL  MCAP=$129,009  锁仓=None%  C3TF4VGGLPhnMGaU87g4RFJRivuxtSVRyDm7r5WthuKU
+  LUNA / SOL  MCAP=$75,532  锁仓=None%  424YAuZE5bZnZg5i4eszfQjCyVWMtpWVPoDiMCFJv787
+  WNBA / SOL  MCAP=$22,908  锁仓=None%  5BGVVcSnTKzqb6hDkdztU6tG5d2y364P1uFnCt15T7Js
+  ww / SOL  MCAP=$22,528  锁仓=None%  3xZX3onHMstqf1yCcaaNxPYLjgBe4FDrefnh8cyzd9E9
+  Polyester / SOL  MCAP=$11,229  锁仓=None%  6TNQmeNu6FgX995T1pZq4y1b8bgyttNPNt8T5npbiJEB
+  Polyester / SOL  MCAP=$9,279  锁仓=None%  4dsgxHnCgscJ4cPQK4wShiRrzvgSijDrpJpVD7QYiVkQ
+  Pitt / SOL  MCAP=$8,425  锁仓=None%  8DSDWYgvHftwbwhZgA5Yb9qJu9htxheaxhyppXwxVF25
+  Uki / SOL  MCAP=$6,875  锁仓=100.0%  9tnxU2DkxKfCMXed8jBx5zD232j29nk6mgSqvLaD7D45
+
+本轮新部署: 0个
+
+[19:31:07] === ��108/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  changa / SOL  MCAP=$54,264  锁仓=100.0%  LV3tr8C5cCW2CQ75Si7eo8jfB8KZ3of43vZYcTeLELG *** 已部署监控+模拟交易 ***
+  GWN / SOL  MCAP=$43,807  锁仓=100.0%  D9sg85weEaPoz5BpbQriA17QJuWiigA69gEsM9HcnpUo
+  MACHA / SOL  MCAP=$17,913  锁仓=None%  Hqi66LwYu8svDBEPyJpxP4DkFRwiQYJGaSrf5PXhNynv
+  PYRAMID / SOL  MCAP=$10,091  锁仓=None%  8X7dTgAbdaJpgjU177opWfeVYvrpjkY8f8to3gjpssT2
+  Jewpiter / SOL  MCAP=$8,580  锁仓=None%  EnKKQgc1YPcWXQjs1KGTkNXWTppja9KbtPziCuaeiGAc
+  CHATGTT / SOL  MCAP=$5,286  锁仓=None%  ChHrPCNNjG6FCg7Vm1oTVgPiGh2P4aaJZx3kuZ8pBa1E
+  Shibu / SOL  MCAP=$4,784  锁仓=100.0%  Fjkvifk4SxUqM3jBLg2CqZ6LPyV22KnkXE9XJLbJyqtT
+  GIRAFFE / SOL  MCAP=$4,547  锁仓=100.0%  5JpMGLcc7JifY9wzw8jbpdH3KR2t3mdLqXjGzzCwGKB8
+  LEONARDO / SOL  MCAP=$4,251  锁仓=None%  53QzsRLfVSzotzxSTrtyb4BdpLFjtM5Mie2yqEMkw4Av
+  GIRAFFE / USDC  MCAP=$4,235  锁仓=None%  FnrZdxkoob8z6oS9ucjUkA6D2UyFMtCN4JFj3JpChC3y
+
+本轮新部署: 1个
+
+[19:34:02] === ��109/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮LUNA / USDC  MCAP=$570,710,425  锁仓=None%  5mv5tVukvpARReAFEN929eWK4Qj6gFRzGgckcpVNpjXe
+  GWN / SOL  MCAP=$139,053  锁仓=0.000000000184423142075798%  48X4LjPn9s5k194z9QMcktbQ8NE75xesPDEEvYuBpRmW
+  GWN / SOL  MCAP=$108,233  锁仓=None%  7u7n1PNgC5YksvUf2pcskmzKcf2a1xW61KaGoFES3Gkq
+  MarsCoin / SOL  MCAP=$84,848  锁仓=None%  DPck1uakBVBhg4WTTNRqB7rK9YCK118njm19EkLpsg4L
+  PIPEDOG / SOL  MCAP=$49,544  锁仓=None%  5d4Wso2FNEGEBMDnb96itp214fmM66byqZnnkRK8bufR
+  Czilla / SOL  MCAP=$23,373  锁仓=None%  Co3c1sKEc73ADmHdVciwj1kTxQkRp2vXUXPg6aBL91sT
+  CTO / SOL  MCAP=$11,257  锁仓=0.0%  3YF3ijA8z1m4JNfQwuaQ9c955KyZSNSqQrwT2mGj9GFr
+  MOMO / SOL  MCAP=$8,392  锁仓=None%  i6Hojo97rtzHX2dnAf8x7XR1AAmw7RptWRTMcHw2QD8
+  Kerming / SOL  MCAP=$7,872  锁仓=None%  GBDyfLteQgvNrABixTVswGF75NQ5Rgx4C7hD8Gmj8awM
+  PIPEDOG / SOL  MCAP=$6,608  锁仓=100.0%  4sagMePFojBwQb2GWnbkyVxVWbFzQK8PXomfzjtsYTiN
+
+本轮新部署: 0个
+
+[19:36:59] === ��110/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  spooderman / SOL  MCAP=$142,489  锁仓=None%  9ByjZhhBwRBU5LBfiwACGtyZzs3S4icWJJ8ZmbK77U8W
+  Czilla / SOL  MCAP=$36,020  锁仓=100.0%  Co3c1sKEc73ADmHdVciwj1kTxQkRp2vXUXPg6aBL91sT
+  $TMOON / SOL  MCAP=$33,089  锁仓=100.0%  54JcyxMPJ1MQXEfBPsaK9dxdv36AkNdjyQ3tAWHiCBo3
+  ROGJUG / SOL  MCAP=$17,614  锁仓=None%  9E9aAWTypFVbrstkf6H2oHw67YBfRJXSDERsTd3VUKqm
+  Ohhh / SOL  MCAP=$11,411  锁仓=None%  GQVwnN2sgkxyLA6bJwL5GDbCVrSLzmvzCBT1Qyijeso7
+  MOMO / SOL  MCAP=$10,556  锁仓=None%  i6Hojo97rtzHX2dnAf8x7XR1AAmw7RptWRTMcHw2QD8
+  $YAPPING / SOL  MCAP=$7,150  锁仓=None%  B2rMeqLfgjCXwpgPQVChKAFGUVFdwgy6ZHSWNMYkkiAY
+  MOONICAN / SOL  MCAP=$5,982  锁仓=100.0%  Cs7ot7r4s2piHqSgBGnMDqdhqXGQe7CTAVp5zVjthPrC
+  HUH / SOL  MCAP=$4,461  锁仓=None%  7zyF4oK2CSn51MpFMVnMj1M9DZHf4Sk3hsY6Jq6hiqCQ
+  ww / SOL  MCAP=$4,231  锁仓=100.0%  3RqSNX1W5AyUsEpV19X9GyMsjjbJqsgLYWTJTMq4KgDv
+
+本轮新部署: 0个
+
+[19:40:03] === ��111/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  MarsCoin / SOL  MCAP=$268,669  锁仓=0.000000000357093419262351%  8VQQWyj1ow78CZVjABNvxta8MQGgzmtBbeD7uwftTPKN
+  MarsCoin / SOL  MCAP=$230,066  锁仓=64.1906779090521%  4QNwhZ7t7TkDmYxcDtfDXWjcL2kDv5LA7UkYqCz8dk3S
+  PQ1 / SOL  MCAP=$13,707  锁仓=100.0%  7MP5HSJjX5DsMP5vm8UvDzek2LSqHLD3ep8AeHJNbY84
+  Ohhh / SOL  MCAP=$11,120  锁仓=None%  GQVwnN2sgkxyLA6bJwL5GDbCVrSLzmvzCBT1Qyijeso7
+  MarsCoin / SOL  MCAP=$9,131  锁仓=None%  G4818b13Dbe5ToF7BYfnjG14NGKYhzDd6XcqVqFqacHc
+  $TMOON / SOL  MCAP=$8,807  锁仓=None%  98NwTJFBS1rLWKXFwDGPstXQRZRFLm8QEZWzqDCpAhf6
+  Bibi / SOL  MCAP=$8,748  锁仓=100.0%  yh6ubMscTaHW1nMK3tL79tLHBe3eK4AwifsE2MwhsDL
+  MOMO / SOL  MCAP=$7,880  锁仓=None%  46jVtyiEu7CoE3dm366zXj9DBYXGibyf6B21bhRJJZiv
+  MOMO / SOL  MCAP=$7,784  锁仓=None%  3m6myC7BJ1K4AouHcq9ZSejHG8LCBpdUTjXazW7nR2jN
+  Jewpiter / SOL  MCAP=$7,242  锁仓=None%  GctEGXmup7oD4R2K48HFkF4QY5euxDhCw7avRabNAdvW
+
+本轮新部署: 0个
+
+[19:43:00] === ��112/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CXMT / SOL  MCAP=$274,393  锁仓=None%  7ereq9g8MUZnzgk1jdwVonL86PEFkcXrYje9aRrXfN49
+  MarsCoin / SOL  MCAP=$26,763  锁仓=None%  3gS8Z5DoGzSZHakRPZ9TPrHPNkMT8KK319Crr5Ds8f1Z
+  CHATGTT / SOL  MCAP=$23,886  锁仓=None%  GCqyNaR8jwwdarXrGj1pWC4hNqbpqZNzs2gxtc5HazFY
+  MOMO / SOL  MCAP=$10,174  锁仓=None%  5jvnFegeK1DQvYKu9JQ3q9eQPGfYRWM9ofQ76k4o7PRr
+  GAY / SOL  MCAP=$9,028  锁仓=None%  HErcCpq8sCVS3msVwVCs9tBqN5fQVWeaorv9drXhzPNL
+  TripleP / SOL  MCAP=$8,714  锁仓=None%  ArPVsbTXDH9em34dbic8zEa115FT7wcK1BveYGTykhRz
+  GWN / SOL  MCAP=$8,614  锁仓=None%  DNyMBhdHbKQsoZou1W1WYmoYDtT2wMkPLohySRN6QtUg
+  CXMT / SOL  MCAP=$8,592  锁仓=0.0%  BZnSJuonajdmeJEwefjw7stGQo4NJrcAetowTVZe2GkZ
+  David / SOL  MCAP=$6,325  锁仓=None%  8tDDA2GqUzNbXYYc6U7x9qsBj8QTwCUNDFs4Qk68rgX2
+  tripleL / SOL  MCAP=$5,981  锁仓=None%  8st1q4itK2LY1TtJQpSfK7f4TpDj96wzTDRsBe3zy96Y
+
+本轮新部署: 0个
+
+[19:46:03] === ��113/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CXMT / SOL  MCAP=$341,448  锁仓=None%  DSocEijcH98SbcCUwCS3QnnStE8H4tzpTMDjZwhZ6UMW
+  VND / SOL  MCAP=$123,125  锁仓=None%  HdMckWfueTza3GkaFJiReWXuZWmqrujyUEPdAVvMTk5r
+  MarsCoin / SOL  MCAP=$69,865  锁仓=None%  HP3gVmBdmER1BL1riFezmojtZUHRVvWvDhcLiaS3dXp8
+  Shibu / SOL  MCAP=$43,318  锁仓=None%  79agvuiCsaxCB61JVf3eQ8AyTV27JWcFZKTNsHJ7r5ru
+  GWN / SOL  MCAP=$31,023  锁仓=None%  G8MTxth4hRzndNRBC7SKFhK3Q5eWReDmLNqzZ9fQpoRD
+  MarsCoin / SOL  MCAP=$26,803  锁仓=None%  Ee9nrQfCfZgfmQTyniaDowMRAmFjDJP7qfvUXA44R1mc
+  MarsCoin / SOL  MCAP=$26,788  锁仓=None%  FQDxERGv79W7nWYAVUa565YwcaQ9iMuyn92BrxQBE3Q
+  nudaeng / SOL  MCAP=$19,366  锁仓=None%  8NLL3uqfs2nJgSxpSm7YuAQYNqWUVeV2BAiDp2xJxJoo
+  GWN / SOL  MCAP=$13,566  锁仓=None%  DPoGsLaQUtLh8E3ecDVMGJAVkq6ZxxkBPpADYwLyKnhG
+  LONG / SOL  MCAP=$11,795  锁仓=None%  B15JDULus6KGdZ72uBmkA2KBN5eDXVP3E6VzeQYMFejR
+
+本轮新部署: 0个
+
+[19:49:01] === ��114/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时100.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮yhtomiJ / USDC  MCAP=$9,225,135,762  锁仓=None%  25PudcxWGteZHXKFK3E2vhhwnkb4UBKjmbKRvgTBf7of
+  ‮yhtomiJ / USDC  MCAP=$9,215,480,701  锁仓=None%  Btwss7pG4g8idXg59Uq8xML6cMCXqM1TtqT1Lby1gUx1
+  GRVT / SOL  MCAP=$292,507  锁仓=None%  4gSD3jWpgkDtFtuUmMdzFVAQQxvpBpFkAJeNHU64y9qa
+  Jewpiter / SOL  MCAP=$146,786  锁仓=None%  DTXT9KCSYgPS2ivs4hjA8upEqZRqjTP4NWeLum9wJ1fE
+  MarsCoin / SOL  MCAP=$69,865  锁仓=None%  3pj7MDHcANVe43rG6QG3KaGqHCP5Hi7BbHPR5KP41KbC
+  MarsCoin / SOL  MCAP=$69,828  锁仓=None%  BKLQxqpu5XaBW4gZGwYPyQpae4YtUVrHhNZBX5XDBm5T
+  MarsCoin / SOL  MCAP=$69,821  锁仓=None%  C5NwZ6gXLEC2SS5xWjqxpTbRzF8xrQ4zksjkieyvJqi1
+  MarsCoin / SOL  MCAP=$69,782  锁仓=None%  2p8fCS242b5VbKnM5xA9299d3tjECxwB6HKXUsPDMSc5
+  DOORAP / SOL  MCAP=$43,966  锁仓=None%  BaoQ85ekd4HNfSg8MbADCZAy2LY1rtyQbHWaMGv4Ft14
+  MOMO / SOL  MCAP=$39,122  锁仓=None%  Bqbr4fkfufQN64nFzpThEevxVUxqFF8dbDjwAhksgbKj
+
+本轮新部署: 0个
+
+[19:52:13] === ��115/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时76.3秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Tator / SOL  MCAP=$1,576,548  锁仓=None%  Hnnj56TD8ccVoKhPqmfb1WSYAGEGVayTj7oH91QQQ5N8
+  Ashty / SOL  MCAP=$129,638  锁仓=None%  EgkT3UrxNGbwT15dqgB1i9s2MUuLG5NRtAzQ3XK94SLo
+  Ashty / SOL  MCAP=$80,472  锁仓=None%  4s5TiGPpxae4Xf2cjnSc3KGahTt1cSivCvaXfPiyQJkg
+  XPLK / SOL  MCAP=$49,487  锁仓=None%  Gs2vaQneVoDdeUGuiD2QCDv7jYqaWnBhhiVaB72by2ds
+  DNB / SOL  MCAP=$46,441  锁仓=None%  CKUwZu2uy7Ft2NGfwKdchWQWBM5QKN81FLUywhd5H5Pt
+  Ashty / SOL  MCAP=$42,585  锁仓=None%  3DtFwgd1UMrrbD9M5UqdsHPPGssY1qvwYD8wcZ91S5pA
+  ANSEM / SOL  MCAP=$30,321  锁仓=None%  BG7FnZo95oLtHkmXMEewAiKgWQg569XRm8H4ck3L57WZ
+  ANSEM / SOL  MCAP=$27,204  锁仓=None%  G1s2RQaVj6D4j2F3a46yUXqjoV2CkvAZB1n4kz4NHWtz
+  Ashty / SOL  MCAP=$9,179  锁仓=None%  GonT7Kzgn1fFD1gDowitYd6ZY6hQVQbvRuTwK4Awnate
+  EARTHCAT / SOL  MCAP=$9,125  锁仓=None%  CoytvV2MBXvMrvdpcSKvBs1PW9KnT94VbWYquS8z71KE
+
+本轮新部署: 0个
+
+[19:55:01] === ��116/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.3秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有5个查询疑似被限流失败,建议降低并发数重试 ***
+  USOX / SOL  MCAP=$10,094,801  锁仓=None%  JeDLYJ6nYAvCrrpQKy2297KDyM6ZzPnbw9nKYoJQMhi
+  [invalid] / SOL  MCAP=$24,782  锁仓=None%  5rJFAhKLCLLTQeutdRa1MSjZapMwiPAGCK6n5P7vUWtf
+  Lna / USDC  MCAP=$19,843  锁仓=None%  9m2jbHWzTNvMoyUJdNt2rNg8msx3mdVRgrpuqNVzJ54u
+  Shibu / SOL  MCAP=$12,804  锁仓=None%  FBhwa4WWxgWqWGSC87414xfWEkmSVLHoHeXfjkDin5mX
+  Jewpiter / SOL  MCAP=$9,631  锁仓=None%  HVTqFyU2j4yvZkv32FA5czEpBg8KM99s173uBnGWXyU4
+  GWN / SOL  MCAP=$9,304  锁仓=None%  JDMTTE1HqQR7FxpsTERhvmYKfhDpMrWDgq9g1sGoUY1v
+  CXMT / SOL  MCAP=$8,747  锁仓=None%  7DoWD8nsnsw61jQ4JYboBnk3q4W6UuYsJeHL9QUaU56v
+  GWN / SOL  MCAP=$8,526  锁仓=None%  2VcdntJYBW7BsufVvSKSet3WnEkFp9PuWgjYYoy59hms
+  CXMT / SOL  MCAP=$8,411  锁仓=None%  FgEc1iyPabt4qg1vCyYHE3TU8RQXbWekTUhk6GrrRtAo
+  DTMMGA / SOL  MCAP=$6,848  锁仓=None%  AgTsMBkdUdH6o7QpwEDHZSoK53PzfmwXQBYcFNpPEAk6
+
+本轮新部署: 0个
+
+[19:57:58] === ��117/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮yespuC / USDC  MCAP=$6,373,454,847  锁仓=None%  8uCVKpyjTQVmiv1UVtvuHqoYaSMf5MXY67TjPrMbtKM5
+  ‮CDSU / USDC  MCAP=$99,972,396  锁仓=None%  6XEvdLwheTdcsrSyL2mMfUptMQ4E9jJBkX6iSYErKqHx
+  CXMT / SOL  MCAP=$434,816  锁仓=None%  9BLqSncMwFigPHPeXXGCxAnXNz93sxmSf37BmpEvuL3H
+  CXMT / SOL  MCAP=$418,629  锁仓=None%  8DRAB9RX332ugBD3KGrtP6ZXv1Eazy2omE9QGQheZYWs
+  OX / SOL  MCAP=$92,741  锁仓=None%  AhMV5TAVMgcWVUoV2un9WEBZSYzmyKqYDL7zeJrbef9U
+  TIKTOK / SOL  MCAP=$77,541  锁仓=None%  92cCqqgGWvEQV6GcaoG525vhpiVitJJwH6LnEBPRe87M
+  VOLPIL / SOL  MCAP=$21,153  锁仓=None%  DhnbkqEvZqTQX8ACTSEPwpfBf2jyRoVhQSkFTrs8Lbcn
+  DTMMGA / SOL  MCAP=$15,546  锁仓=None%  5mPCBn2FV6uvpz4uppVTnsgU4Dsjy7km9RbMeN9VMMQk
+  Ash / SOL  MCAP=$13,454  锁仓=None%  Fd6pRqxHGbswjMwg9ogtpWUeCA1MZb116kprthwBFtNk
+  GWN / SOL  MCAP=$11,080  锁仓=None%  3FVAziTPsERbXf3vrximsXKdjSpCesHbqbMqWHS9HJLo
+
+本轮新部署: 0个
+
+[20:01:02] === ��118/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Anthropic / SOL  MCAP=$689,561  锁仓=0.000000000249432972702466%  4pVkw8dkoWNjEjRKyXEjn9KyVEHCarGyqPcTuZncLNEN
+  Ashty / SOL  MCAP=$158,326  锁仓=None%  7kjSPF9jNkpLQ41Z97cbW6EBUeGHCDrMjEnXBM1TorHq
+  Ashty / SOL  MCAP=$157,501  锁仓=None%  CbRnRVomGhGpN7vjk6j2fXVdY8g8snJ5KTH5eyV6BEAw
+  Ashty / USDC  MCAP=$140,956  锁仓=None%  2mLyZqoh5CUTdaCN8NPaDyQk8eT2bYUQSfZmtmu73Fkt
+  RABCAN / SOL  MCAP=$76,269  锁仓=None%  HGKWcYDux8BD8g9FFob5A48znJchbeZYSjr1XNDqNrCA
+  USOX / SOL  MCAP=$37,680  锁仓=None%  2nnJLjs1hmheY9t8JGjWeKgSR726EbxvzJJfuXtMfPNT
+  TEST / SOL  MCAP=$23,428  锁仓=None%  AyN9SynuwT8pka6MxK52vLrjyweApK2xje96j2J5KChT
+  WEN / SOL  MCAP=$11,783  锁仓=None%  Aer8zNjC6XPrtDj41hth5NWWFLT5gdh4nhr6J15Cqhq3
+  CXMT / SOL  MCAP=$8,662  锁仓=None%  DsSgnryJ8JbjV4gHKg6Bkr4hpcUmrUT6QEWFQxN48rpW
+  DTMMGA / SOL  MCAP=$7,963  锁仓=None%  7k6bEWiwbhtRA6GCVMXVMQXxqsCQxJRTz4HS4ftvLXrP
+
+本轮新部署: 0个
+
+[20:04:00] === ��119/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  budi / SOL  MCAP=$707,294  锁仓=None%  DhRq4xyg7v5oQeASSMoa6gRcbjCQybFY6GHS8AAmJ7ip
+  FWOGEN / SOL  MCAP=$255,872  锁仓=None%  8cUc2Rqm8Azz8aKfLUqqaAZ2AUaTSVbp5dyK3Pb24Upt
+  Ashty / SOL  MCAP=$170,935  锁仓=None%  14bTgWPE2apAsuKGVw6vtJzkX7aTP2ymifqJzZs8uCeG
+  Ashty / SOL  MCAP=$92,544  锁仓=None%  AdX2KPAkZHRUp4RrjEXridqBqediXTfMdjk1raxMsFts
+  Ashty / SOL  MCAP=$47,063  锁仓=None%  3byLtQ3n5NkQQGDy9SNZCAP1p5TZedr1zmncGcusNgPE
+  USOX / SOL  MCAP=$37,680  锁仓=None%  2nnJLjs1hmheY9t8JGjWeKgSR726EbxvzJJfuXtMfPNT
+  DEPE / SOL  MCAP=$24,950  锁仓=None%  8PJakHmecvEdi3AtsE1x24L2GubD12HQZmNPxcmEfgCA
+  TEST / SOL  MCAP=$22,449  锁仓=None%  AyN9SynuwT8pka6MxK52vLrjyweApK2xje96j2J5KChT
+  DTMMGA / SOL  MCAP=$20,166  锁仓=None%  6Z3Jvz3ma5smNEfp2DVMTceydYEH9YDZGRZGFQTv4RK5
+  ($EXIT) / SOL  MCAP=$19,559  锁仓=None%  HuMnMKUrwVrAn9iCEuTzz9TPzVVL3QscBVJqJpMeBZdd
+
+本轮新部署: 0个
+
+[20:07:03] === ��120/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时79.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  FWOGEN / SOL  MCAP=$223,308  锁仓=None%  FrhS6gtWvHSDUY2SjqnqeYANPZvZvNockihXnmxEuwYC
+  3 / SOL  MCAP=$155,681  锁仓=None%  1nxaDTAiXtC2JAEp8FXKwT7y7q98R2uw5P7HSpms7jy
+  Ashty / SOL  MCAP=$14,500  锁仓=None%  A9gaCTsEmciNhfMy4S9NKwfK2PRC97e37VRDcQJ3fdif
+  Ashty / SOL  MCAP=$13,827  锁仓=None%  BPd1PQJdgjYWHszKDLNYJeHGRPhqUWSTxnGGDptxscXY
+  Bob / SOL  MCAP=$11,425  锁仓=None%  26mTAsjkqibXr4rhtN8QrYzGnpuEHyDZ9J4fuzQ23g9x
+  OUT / SOL  MCAP=$7,736  锁仓=None%  He4EAQnzhCKzRzwhRyMDqo9gxXSzMu8YRzVG57VgPNuK
+  Camino / SOL  MCAP=$7,413  锁仓=100.0%  UkszyhFdZBc6p8neuoFMmxToZemQiBcwp1J66BCA3GE
+  David / SOL  MCAP=$6,987  锁仓=None%  3xMBuyr5NSQtPyGdEy7Q6eKVGwSJcm7v2zn95Lr83fPd
+  NeegyCoin / USDC  MCAP=$4,025  锁仓=None%  4fm4aKJF69g1qqywgcNgQGX9pyRJfLeKwqdMd46QpD3u
+  fff / USDC  MCAP=$4,003  锁仓=None%  6tZGU6hdnX6X1xKsYBUiY2NRQd2veaoZvqALqs8vfbeb
+
+本轮新部署: 0个
+
+[20:09:55] === ��121/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时65.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有1个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮DERC / USDC  MCAP=$5,912,627,631  锁仓=None%  GMTJUeLhR3YSq7MfgcoACgzbm2REU4H6gNsuwkj7U9Ct
+  MACHA / SOL  MCAP=$594,998,450  锁仓=None%  63rcf54RLN3izgzeWqJXFJhFN4Eqzn2XC5gCjjp3nKVo
+  CATE / USDT  MCAP=$9,977,883  锁仓=None%  6vJHyuFFJJpjmkmBgzTsjfERUzxnjEx35TXavUqdxGVu
+  NEX Ai / SOL  MCAP=$212,296  锁仓=56.9643265395305%  GLneWUDtpRuL6mXYCAX7iestLdKf1M1q5noMmtiv2nxY
+  Ashty / SOL  MCAP=$142,469  锁仓=None%  HtBJfAJdT99XB7GYswfraMdqrU5XXebS8WuxJDAPbihn
+  CC / SOL  MCAP=$137,528  锁仓=None%  4CgfbG5Kirz5s88ZzNo7YcwBV2hiQk43R5nmNUCXJj8g
+  Bibi / SOL  MCAP=$34,611  锁仓=None%  HSJmo7Viq4BQQSseRBUxxFdAnBViHZQaLbv29H9tykiT
+  3 / SOL  MCAP=$29,665  锁仓=0.00000000058315300199198%  Airi6guGEd6HTjJWTJB5q4G7NTrd8siUTzgsdWN1to9D
+  Ashty / SOL  MCAP=$16,010  锁仓=None%  WqJtS3t1jFE8My1CTfPdorK5ZsSfViTLdq9PK2RhXzY
+  IPUL / SOL  MCAP=$15,303  锁仓=None%  A5KghbAezonrEDdCGN5362xFtnv912pdMCUCdWoX5FMv
+
+本轮新部署: 0个
+
+[20:12:32] === ��122/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  MACHA / SOL  MCAP=$594,998,450  锁仓=None%  63rcf54RLN3izgzeWqJXFJhFN4Eqzn2XC5gCjjp3nKVo
+  C0IN / USDC  MCAP=$25,092,088  锁仓=None%  3G9MY81M8jKMiqDF5o6oci67bpt7b5JBt6FubWjE6vJV
+  CATE / USDT  MCAP=$9,977,883  锁仓=0.0%  6vJHyuFFJJpjmkmBgzTsjfERUzxnjEx35TXavUqdxGVu
+  Bibi / SOL  MCAP=$136,166  锁仓=None%  B95iiK9yjyjECfAshGKoWWykoboJScpkTHPKF915qH9J
+  XPLK / SOL  MCAP=$52,260  锁仓=0.0000000005049999997475%  FjQkkaXH4JPwsBCDvt7xg8pSJmvQTQBYULRrK4vNJdP
+  Cap / SOL  MCAP=$13,560  锁仓=None%  7CAeNpdjRLxhAoGjkJrv84ET5DYh5GkeowRK7pYG88xb
+  DTMMGA / SOL  MCAP=$13,054  锁仓=None%  G4rxPwSS2ZZNCEqLF5iHqCkncnsgTZAFk5qgY3RMYe7d
+  Ohhh / SOL  MCAP=$10,664  锁仓=None%  8GdmhzRe8ePXLpTKNfdrrfGDyj7KEjcaPnzcf371NHwk
+  Ashty / SOL  MCAP=$9,814  锁仓=None%  71vtKh9GWbsZhEdhzUAv6RwCrAnacEQzE6hTqimvjFWw
+  Ashty / SOL  MCAP=$8,690  锁仓=None%  CddcdDJUpiNyNZX1kJCjQSVgB3Q7PNqzF4FVuiRbbaFk
+
+本轮新部署: 0个
+
+[20:15:26] === ��123/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时73.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  C0IN / USDC  MCAP=$25,092,088  锁仓=0.0000000714177848994926%  3G9MY81M8jKMiqDF5o6oci67bpt7b5JBt6FubWjE6vJV
+  OGDOGE / QNT  MCAP=$3,181,082  锁仓=None%  FKAw8pUXYaZ5BTokhiqYN1hzKVcxZn6YWmjVXxwtd6M
+  Bibi / SOL  MCAP=$202,032  锁仓=0.0000000056029029910305%  CAu6prUTT4H12rnDEAUy8BdX7vA9YB5uqucWYLKhYNyq
+  Btsgram / SOL  MCAP=$30,287  锁仓=None%  2yCYiESY4HpsRXJUhKp9FaHiJLhk3bF8qferDg3pksip
+  Park / SOL  MCAP=$20,944  锁仓=None%  5aUNCS2RGemwJzaLPvUxyf246tppvsib5EejevUQdnfi
+  BUCKY / SOL  MCAP=$17,600  锁仓=100.0%  Bz1X14Lx25GojCeNd4ffMCwKGFs8q9niYHwhpN6RaP2o
+  Cap / SOL  MCAP=$13,319  锁仓=None%  7CAeNpdjRLxhAoGjkJrv84ET5DYh5GkeowRK7pYG88xb
+  SCRCAN / SOL  MCAP=$12,249  锁仓=None%  mm8QmDReNa6EfMzn1ab8Uuis17PSXLcQ8py2V3ZZRfW
+  RUNNER / SOL  MCAP=$11,531  锁仓=None%  3PRMdVYbMWnVNe1yJmgwGprbqCuvgtvYx53gSKRtVKVQ
+  DTMMGA / SOL  MCAP=$6,242  锁仓=100.0%  6qAapvrGjz7mRPXdm6HdqLhyHH29ohrbz7ALkLpnaiAD
+
+本轮新部署: 0个
+
+[20:18:11] === ��124/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  USKP / USDT  MCAP=$9,920,313  锁仓=None%  5iVsH6GnQRJCBBhgR2gaTh93QdP24HTEuPXStpE5Jxay
+  Bibi / SOL  MCAP=$118,948  锁仓=None%  5kBJFFyWbxvbMvqJkfVW3VWnt4ptQFnSzsB8kJZSFq41
+  Bibi / SOL  MCAP=$99,300  锁仓=None%  HawPPQbUCx7mbAJ2sFp9ZwQ6tjoUCav5GjfAVRxC9RGN
+  Bibi / SOL  MCAP=$45,079  锁仓=None%  2pr1AdSZ3DDM2PiYbC6WWJUEbb3ptSdG2woRDSSpDWus
+  Btsgram / SOL  MCAP=$40,915  锁仓=None%  2yCYiESY4HpsRXJUhKp9FaHiJLhk3bF8qferDg3pksip
+  DTMMGA / SOL  MCAP=$12,595  锁仓=None%  2WsKPL8Xhgn44HDraR6hFvfYmMDLVKuJeTRcn1NRtWqj
+  RUNNER / SOL  MCAP=$12,052  锁仓=None%  3PRMdVYbMWnVNe1yJmgwGprbqCuvgtvYx53gSKRtVKVQ
+  nudaeng / SOL  MCAP=$8,038  锁仓=0.0%  55UEZqjG4tszcwnTJdBAdajKF8nZYA7G1pY2tm3dJqCV
+  Google AI / SOL  MCAP=$7,076  锁仓=0.00000000107666625633276%  5ZTVq8byCjEPawm1aD8zH4gk19pefj3NrfkJXTNKTwLP
+  MICROHARD / SOL  MCAP=$3,365  锁仓=None%  2EpBYXbpJeqBr8DGxMLSdKyREp8ZrFFCgPv6GFZwnZor
+
+本轮新部署: 0个
+
+[20:21:14] === ��125/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时81.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮ythsA / USDC  MCAP=$120,947,434  锁仓=None%  GG64J4LpSiLEn7xnHP7umuy1Tx8FRkQs4gphf9xQdLvu
+  USKP / USDC  MCAP=$10,006,257  锁仓=None%  5r7Mwe4gMQEq4PCo8v9ZjADY9iGRM5cbtwUgDFCwxZRU
+  Bibi / SOL  MCAP=$81,039  锁仓=None%  4vMgpJgg37VaCVQ548ewCcRhjyLfiEp1idyXURgxgVFa
+  TikTok / SOL  MCAP=$74,148  锁仓=None%  Gh9bja3y7kphzPCcYCMcwDZdnx2LkeEvvxb9XRkarrKM
+  VLAD / SOL  MCAP=$42,709  锁仓=None%  BwwjDQ8SfHtdRK32Mf11pbNhR6pcxg3RcQwSAQLgdZVt
+  Bibi / SOL  MCAP=$41,700  锁仓=None%  BzrujvRihrahaGCjSJqEnbtN21rTUis6HBLMVSAkFKtF
+  BUCKY / SOL  MCAP=$27,740  锁仓=None%  9yGjzLQVc5MeTfkjG9635EqgZ7Sv3m4KsiRfVKV8Yhro
+  Ashty / SOL  MCAP=$12,131  锁仓=0.0%  A9WZPd2xf9wriYyh13fdo7QaCHP7cH7akRfc5ee23D6z
+  STPA / SOL  MCAP=$10,346  锁仓=None%  2F4gJy8SnTEdLDUJbu4bdfC4T3cwg49nvH9rQRo7ZPmE
+  Suki / SOL  MCAP=$10,194  锁仓=None%  9fWax5nZNDceyJV5Y2sjyvNPq54oUqptMjbtGNTFBzq1
+
+本轮新部署: 0个
+
+[20:24:07] === ��126/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  RKC / SOL  MCAP=$80,296  锁仓=None%  9JaSDvi4PbghqX4Saw6P8k2a2cT2PZfRMkRK9wTrKN74
+  Bibi / SOL  MCAP=$43,547  锁仓=None%  7XVrQMcKroPuFN2L6Yhee4PiYDMvmLHGgQMBhGbrEVJg
+  Fenbell / SOL  MCAP=$31,530  锁仓=None%  2drFHowEoepeJehKzRTugnybQr6i5PdaHMdiHK9TK8Ln
+  Ashty / SOL  MCAP=$19,841  锁仓=None%  HJb8chuBfRkBwGesne39NPHFULYVRr8wDP5vF222Gvnh
+  USFR / SOL  MCAP=$13,342  锁仓=None%  gcpasCE1gFgxYSCqRdDgax4pDdePo8NPo6Dnai5a7Fu
+  Pponyo / SOL  MCAP=$10,958  锁仓=None%  5K1VtvD6auow4yszsQDurjp39z81kEtRru1jZ9xf2PNv
+  Chud / SOL  MCAP=$9,491  锁仓=None%  5CKmkCkcVcfg2m4b7m4WQv5a6bBXK74YzJjS6nVWK63a
+  Pigeooon / SOL  MCAP=$9,377  锁仓=None%  DuV2VPhvxtNVoevAyaJNbCSnATEdDQFQW6E4ZBBQmwcM
+  Gutjang / SOL  MCAP=$8,832  锁仓=None%  5E9vrXUGqoRu6zuXHYY9t3TGE9ZAqzG5ciARCDZn6gXx
+  WhiteBull / SOL  MCAP=$8,425  锁仓=100.0%  8JKTXdnJvabHZakhg1brtrF7N6wVQYwD1KvmUpTJ4Ve7
+
+本轮新部署: 0个
+
+[20:27:02] === ��127/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Wamer / USDT  MCAP=$13,622,240  锁仓=None%  Ahj6vXtiiYLAQapa312Njh5GV8YjP58wgUZZdJ2j6YHF
+  OUYI / USDT  MCAP=$9,929,822  锁仓=None%  FiRns9ypd46YX3dpp7ZS71Tw7CxtJ3jp667X4P1E5nN8
+  XCAT / SOL  MCAP=$173,285  锁仓=None%  GTDA7dRgTfDbnhnRXBVZmneMXNXAA8z3pQu74y3BWJnN
+  MOONCAT / SOL  MCAP=$114,826  锁仓=None%  26oUYzwKecjtsFLvLibsq4rLcCZYd5o6rmqsv8cxnfMV
+  Ashty / SOL  MCAP=$55,974  锁仓=None%  37P2Eo1AiXXcicyxFDP5g8ZLrVy5qn1NGmh6sbuZHpNf
+  Ashty / SOL  MCAP=$22,585  锁仓=None%  CMqMcK651EpVRrKGxiPhHB6u8WLsVkEtHc6pEfuWET7F
+  Dcksphr / SOL  MCAP=$10,646  锁仓=None%  6rCx3s35GeG43iUPfjtKoti9LcPiJ7DSXkfM5MRH9anQ
+  Ponyo / SOL  MCAP=$9,848  锁仓=None%  WkFQYdeg23bdS9rbsCR8K38D2hhrYHsBcHeqmrF8UJL
+  CXMT / SOL  MCAP=$7,946  锁仓=None%  5rAxm2QipohYXnFy8hu2EVTy8pBGoQHRuQ4GQvABvnow
+  VLAD / SOL  MCAP=$7,376  锁仓=None%  BuC5rceMPw8p7Ae9kGBzpZxZ7pcJJJVB58g4a7W9mEN8
+
+本轮新部署: 0个
+
+[20:29:59] === ��128/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Claude / SOL  MCAP=$326,899  锁仓=None%  5oogNkSKmk16BQHJDPV5FAw8EiMBtmKpUKUA5Z7NAFqx
+  Ashty / SOL  MCAP=$66,858  锁仓=None%  71xPWE8RzCdAmXHrQ7CNTsVR2mGBp3agRHCTuPLi94hF
+  PUP / SOL  MCAP=$11,542  锁仓=None%  GVWqwxgL96rkyGTKDZ94xbJKUyax4xXVUhUSrN6NDTkY
+  ROP / SOL  MCAP=$11,091  锁仓=None%  6tqULRKW2vPLXr7LLuzXupFspgN95TzrnScEa6at44ne
+  images / SOL  MCAP=$9,974  锁仓=None%  9f4aMyqAP9zG4i1YBTdhtXAYyQTndhQZ7w7MAavx7XRY
+  CXMT / SOL  MCAP=$7,360  锁仓=None%  7pKijTMNpsty26cFtw7CQMRLMVuxpqn57QpFmqmsw1Jr
+  GALAXY / SOL  MCAP=$6,159  锁仓=None%  HvXbkCcj3EHbJxZ9dcbVDHzNzxn7SsDzYKAw2ZjsME2k
+  DTMMGA / SOL  MCAP=$5,051  锁仓=None%  BLJRN6cgZpqSnnf5xxoTfWwNpTRdSn9qjtdtdpcEEjg4
+  DTMMGA / SOL  MCAP=$4,777  锁仓=None%  487eSFFHDptDhqLLYWfhLrR4oBzgisJFP7MgGomZaizD
+  themayhembot / SOL  MCAP=$4,386  锁仓=None%  5QERTMBZuZ7EfsJ49WBexWEnBmXTPzeeZMLpriPyifg6
+
+本轮新部署: 0个
+
+[20:33:04] === ��129/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时84.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Ashty / SOL  MCAP=$108,993  锁仓=None%  6cKzQfV7mugAMaVKcwqW1dNULDBxeG2BB7RUyDt5mg9B
+  luck / SOL  MCAP=$51,322  锁仓=None%  6cXSN6x9yFefeDY2L4LyGe2HieYDpSVgVdDsVn684WGu
+  Pponyo / SOL  MCAP=$32,004  锁仓=None%  7KkaYJzE2beogq56YTzpbfZwwiMFmr6vQYAXTzMWFbFR
+  BUDDIES / SOL  MCAP=$27,951  锁仓=None%  3x4uXqc5G3EBYMKPVXrye7eKN7MxNhrbH9Hi7QbeCUfQ
+  DOOROC / SOL  MCAP=$16,034  锁仓=None%  7Fsg5XyGn8DGHtPwCQUi6sra82qBBcv61RrPGxwhp9p3
+  UNHREA / SOL  MCAP=$12,481  锁仓=None%  6h9hEfvhh1xej2aHkV17xhStGmScAA1xARLfBZbuCrnn
+  DTMMGA / SOL  MCAP=$11,035  锁仓=None%  EwKV2utyCw4hTLypkqxDmcNGUJFCQcJQjVV2WBfko4uC
+  VOLGRE / SOL  MCAP=$10,977  锁仓=None%  DUbGpcnaBQaCKzuXyekLvtDKqE6aUrePK2JV5kVyRxbB
+  EARTHCAT / SOL  MCAP=$10,139  锁仓=None%  8rUaagQUXGG7CRe1cXxg5rrbSGhnZRTktU1uc5LG5HUR
+  themayhembot / SOL  MCAP=$9,610  锁仓=None%  8eK5ChSeR8ktS4tvmXEPgXPaeTiGBe8S4SwUKVkcFZZE
+
+本轮新部署: 0个
+
+[20:36:00] === ��130/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  GRVT / SOL  MCAP=$1,365,743  锁仓=None%  2Kjww3n5LwsmtT3RL9sRCSb6h5CCtNm58XFd3qvVfGZt
+  CXMT / SOL  MCAP=$533,579  锁仓=0.000000000076665713862124%  H2muQKNcUDsecKBj4Mo1fmRDnfamUrKbxHzuAxiKcwJe
+  CXMT / SOL  MCAP=$527,096  锁仓=None%  H5g3BhpZzJWyfUNwKtLsiLFQEaKbF8HiiSjeqMEyBVAM
+  FALE / SOL  MCAP=$108,494  锁仓=None%  DasGw6cv3XgiXRrXFUW3xVHkcVxCD91ypQeH2ew7K6x8
+  PONSPET / SOL  MCAP=$80,224  锁仓=None%  4dTaw2zCrdkdZRrWCmYVzBH8btJ57cCNK8uMPZ86UiMt
+  WhiteBull / SOL  MCAP=$48,196  锁仓=None%  6A5FyJfjd5QLFxBySBZ4GXb959iaFzLNq3dgPfB3cDu9
+  Helicopter / SOL  MCAP=$27,899  锁仓=100.0%  HTP48tJjr211JEPUJShaJ88HqGAXJ4x1E6prWgpU5TTN
+  Pigeooon / SOL  MCAP=$11,514  锁仓=None%  CfrfBgCN4xLA26LTgZFxc8oKMJ2qz2UMWLnvBcHojGgW
+  ssc / SOL  MCAP=$10,320  锁仓=None%  hJvAa5kRbL2VoJZ3R1ZwfStE1CJvpZSUtGRgAcpVQCH
+  MANYET / SOL  MCAP=$9,568  锁仓=None%  DDk6NkgvCu6FkuYSHTZQJ8wrYkehvfNiEv9gdKXUwUdy
+
+本轮新部署: 0个
+
+[20:39:03] === ��131/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时84.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  SAOF / SOL  MCAP=$3,593,354  锁仓=None%  HSPxfjXrtJFoi9w4doG27AfEb5oaorSGfnoS6vi53JWt
+  GRVT / SOL  MCAP=$431,153  锁仓=None%  6T8CoDSQYY8HFf2sJ7Xy3fg7XmYSuKQG6rjPcUVP6dQP
+  Pponyo / SOL  MCAP=$62,305  锁仓=None%  R8ufRcC6JyE3LaG2CDLvjdLpRbXoUnWXvSs8XhEVYPK
+  CASHCAT / SOL  MCAP=$32,146  锁仓=None%  5NLSRiBuPsRAhkGj4rM951ViT7f37BrqKYy3QiM4UzWH
+  CASHCAT / SOL  MCAP=$30,168  锁仓=None%  2t84AWCX8YQFYA6fxewo4RgD1ikbjstpP29vhBQKSAiM
+  EARTHCAT / SOL  MCAP=$10,511  锁仓=None%  6A6LLvbA1yQVebFJnR1qF6DQZJ7Vjoz6ZqmJFqRYdX9m
+  DTMMGA / SOL  MCAP=$8,969  锁仓=None%  4ucPNhgiUMPVbiTgm2yPFSrAxhjP4H2QoFkvrmN4Qjuu
+  Ashty / SOL  MCAP=$8,738  锁仓=None%  8ubGtrTkbCm4VTJWa2SuWk5eJqrYcjUHmYGTPiKGeshv
+  DTMMGA / SOL  MCAP=$6,991  锁仓=None%  FKdRehomEv6kuumcM4peKjM8MRkrDVQ3SDJAmgoSWQjS
+  DTMMGA / SOL  MCAP=$6,246  锁仓=None%  6GGUK6NAVMbNYMDr23QP91zSFYzw9n9Tf3kejq3imRiS
+
+本轮新部署: 0个
+
+[20:42:00] === ��132/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  MarsCoin / SOL  MCAP=$454,033,220  锁仓=None%  4Ne5zSR4xsu9SznnFNtz2ZusGwym6DAEdwFdDvPFtFo9
+  OUYI / USDT  MCAP=$9,901,137  锁仓=None%  AeStqcj9tHQguaYhSQdNUXFKcdYEbbC3rTbH26GjYagv
+  Ashty / SOL  MCAP=$186,613  锁仓=None%  GZBdJqDy6R34eZpiQkZnFLAD5R6b3sZeisMZ6wF3N79T
+  Pponyo / SOL  MCAP=$81,400  锁仓=None%  FfPxKokLPK42DePm276eT98aKX9d3dgHSxxsoTHcXcxU
+  Ponyo / SOL  MCAP=$45,456  锁仓=None%  2fpakGG9RtX2FRPyWmLunGi6X6d448JQcqVPCFtwGhpb
+  Pponyo / SOL  MCAP=$27,944  锁仓=None%  HCvmV2yERVWtPN6Nt2wx4xNzax9nWZd1RkTB9wxQedsG
+  Plansem / SOL  MCAP=$9,755  锁仓=None%  GWyUQcRMwRjgmPKGBX29aUxWh6r7eLqtJ8tVEuX2viDm
+  Bibi / SOL  MCAP=$8,517  锁仓=0.0%  6JZPcF7Yu2LXk8Yp62PYydsdVEQizFNqSg9Le8ks8CFE
+  One / SOL  MCAP=$7,949  锁仓=None%  7SU9sCGp8bvbqMpr4bahQbzv1YKkYxAsmPWzGUFD1Xtx
+  ZANSEMSOL / SOL  MCAP=$7,488  锁仓=None%  52uhsMY2XreD5afKaWYF2H1kmsfEjfC7MBaL81xPERb4
+
+本轮新部署: 0个
+
+[20:45:03] === ��133/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时84.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮NCBZ / USDC  MCAP=$1,723,997,419  锁仓=0.0%  HkzRiv7NCCPYu6NoSFcuxZQ8oeTS5Mg7TzJVqyNTSmMu
+  MarsCoin / SOL  MCAP=$186,862,957  锁仓=None%  CsXQAaEB5myrRsCn5FUXyhPyiGkqwh6SQBbfTrztLSwb
+  XMR / USDC  MCAP=$25,092,153  锁仓=None%  6ieDz7wPhkTh6uib2q3wFM711cTe2ozJcnzAfsgvjnoR
+  ‮MESNA / USDC  MCAP=$17,292,945  锁仓=None%  H4jQQDKaMvpt2ioGwMVVJg75FQ5RgDnvh9WFN2tg79jL
+  PONS / USDC  MCAP=$138,094  锁仓=None%  BWDm9JruzYc6W49EMa62MDiW14xA8CtuQeyaVd4FfTfb
+  Ponyo / SOL  MCAP=$41,670  锁仓=None%  2J5ZEhdb58YehcQ1sWhsiVsm89nX6fEBbwXApyqChHCm
+  AEON / SOL  MCAP=$37,057  锁仓=None%  FVptFK9oZPGEKbY4VwcxaWoDAirzCBFB4NmxfNUvtfyY
+  YODA / SOL  MCAP=$34,626  锁仓=None%  AHsBA1GLjmehJmGLk7q2FGA8wrFCT8NBKgk6RVpPc6e5
+  YODA / SOL  MCAP=$33,603  锁仓=None%  H5P68NyTZxT3xnbnpwejueDPLvc4q8mgEnFGt45tfPmo
+  Ponyo / SOL  MCAP=$31,614  锁仓=0.0%  9YzfVXGh1P71qamb5AmCXVXmTPUQgkMQBzYaNCugQSYg
+
+本轮新部署: 0个
+
+[20:47:59] === ��134/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CATE / USDT  MCAP=$999,069  锁仓=None%  5Dew2Fr6AmYLH2rD1LS6SWiHQrMiE3AsJUH3cyVLczxL
+  Ponyo / SOL  MCAP=$98,118  锁仓=None%  5oXHhtvDYsthhfqw2QNmGXgPSA7mzANfrpCryZK6APYv
+  Ponyo / SOL  MCAP=$74,727  锁仓=None%  FpomPC5ZboALPnZEtGuAuQrq5KJTpmm62fXkxpJiKLBr
+  Ponyo / SOL  MCAP=$68,803  锁仓=None%  229q3BmoSQxgxry75J9qq5y8iH6nKFq4VRoPC5T5QqVx
+  NEX Ai / SOL  MCAP=$67,967  锁仓=None%  AEXPwMpvhRk5hgBLXydJpJaf3r7wcMCqeCykUgxMG4qf
+  AEON / SOL  MCAP=$38,893  锁仓=None%  GYtVSJMTDNC57pZyT48iuzZZzoKcvNCFgvyUzVxEURwC
+  Ashty / SOL  MCAP=$22,111  锁仓=None%  ENXgBisERWMxTDXoJKvBTS7ND4oQ9NwViYEAZMene2FX
+  Ashty / SOL  MCAP=$22,104  锁仓=100.0%  E6rUwtYs6cTB65Za7iafhzjmy3BU8PXC8cKanpQJmJby
+  Kumamon / SOL  MCAP=$18,503  锁仓=None%  6T2WYtCGS4yEY1H5ADfkvwShNJ2pWriT9se4DDifS9oR
+  Kumamon / SOL  MCAP=$15,989  锁仓=None%  B7weqHGZehY8QoHrAtAkqKhxcqqiWfmzW7m71z3WHR86
+
+本轮新部署: 0个
+
+[20:51:02] === ��135/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  mɔ / USDC  MCAP=$149,013,633  锁仓=None%  2oMTwao7tQendzLqwZBswXJQAj2FFgMiCyEwTM1xdmQh
+  ESKA / SOL  MCAP=$242,317  锁仓=None%  JAeHxpBBoscivfaXr6BKyS8hLHT2BCqMiu6EpDErTypi
+  Ponyo / SOL  MCAP=$83,814  锁仓=None%  5ZjBt6aF4D9Cw6tPUARPADDatAWP5M2QH1ttHemDe1u9
+  Ponyo / SOL  MCAP=$26,708  锁仓=None%  9LmWZbZ2koo1tPwpUJUAqSZQfPcRFnit6qRD5EmfjJG3
+  RESET / SOL  MCAP=$12,924  锁仓=None%  CuLaSErp7zYWrhGrGKpJdqqZ56AHY5fsx4fwqzpg6imp
+  Madis / SOL  MCAP=$10,713  锁仓=None%  9omwnWZsUe4iPwYau4pRvydZcin5x7qoP9EGmiGVDTCz
+  MANCAN / SOL  MCAP=$10,681  锁仓=None%  24bv8dEdbAHAoigYfC61xrtcmKWHwup2jbhm8dxsHc2w
+  VTR / SOL  MCAP=$7,465  锁仓=None%  G9GqebegezET71ZxDyjvzDpzbonTTfrQzz4Nj6bgVSpY
+  BROKESCAN / SOL  MCAP=$6,375  锁仓=None%  G5yrpr6f1S33rHKXtyc5beokM3LHimi3eGmrSPc3bsue
+  RESET / SOL  MCAP=$5,750  锁仓=None%  H17eCQzGWwKPNdeXZLrHbq3ZstgZVPyiE4xWerq5a9R9
+
+本轮新部署: 0个
+
+[20:53:59] === ��136/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  MarsCoin / SOL  MCAP=$82,427  锁仓=None%  EbbH7CDGxGFY465S37y6CRw78CWTDeJrLae3HRp3p99p
+  SOL / SOL  MCAP=$53,000  锁仓=None%  Gzk9UvioeGrpHtQVWvjxXYdbbNunPi81mnkPVy2Pymqe
+  DIAMOND / SOL  MCAP=$50,462  锁仓=None%  C4fJLZ5VvZVQQiHDUGj6rv38SMP7aYGxiKgJwHum1kte
+  SOL / SOL  MCAP=$46,409  锁仓=None%  AFsn8xzXmko3XuHJAjdmqdZ5JA7H7uQL92wiZL2DuScs
+  employee / SOL  MCAP=$38,923  锁仓=None%  DBz77cpgV4edRCZYUjBeKikgkxPnBW5oY7X5NQRYauxS
+  X / SOL  MCAP=$22,341  锁仓=None%  9M4ortGaSsqKPgfHokydDh7rpqvak6PPz4dnBE6jevZG
+  Ashty / SOL  MCAP=$21,835  锁仓=None%  G2BeobRJEHpsweqp8fMhijBLEyJQQ8KpthVwmf6NtHYf
+  coonmask / SOL  MCAP=$14,654  锁仓=None%  52JN3amM5yM6ErSGUw8FJc8q7LStB3X2qwy7hRfExnoM
+  $TMOON / SOL  MCAP=$12,406  锁仓=None%  93QcmHDvF4vwg6QkFHmQiyjfEvhA8arqPwZyaG99H9aW
+  ROGCOM / SOL  MCAP=$9,721  锁仓=100.0%  34eSYEDX61MnneVivRSaSHCTL3sJGBkCxDuZAqqY5G5K
+
+本轮新部署: 0个
+
+[20:57:02] === ��137/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  USDC / USDC  MCAP=$893,056,267  锁仓=None%  Fnp2vU84mNWVBt7ansux17yYm8GpcWWJPZrTQG5fjbKC
+  MarsCoin / SOL  MCAP=$132,195  锁仓=0.000000000143428417292257%  9LTq6CRGH9zWf5r4C9JVXLhemtNUu7up1kEpQqw16Sm1
+  Pponyo / SOL  MCAP=$65,714  锁仓=None%  HomfmjkV8qKfyHx42E3as1gHPcwkBNQB9CqW1HYKP4D1
+  4PM / SOL  MCAP=$60,234  锁仓=None%  Eh2UDjtVFKrNdzeEr8Vz27ZQzxjE1GzMgkfuNvEtYfgh
+  Ponyo / SOL  MCAP=$57,817  锁仓=None%  38AroF2PptbvNQfY78Z9TDnSSgxfzGAZFQvehym9VSMP
+  Pponyo / SOL  MCAP=$45,078  锁仓=None%  6Z6JL2z48TF6rqPCKXjjdQ5PDk34Qj89MMr9Qxc6ytQ9
+  BPB / SOL  MCAP=$35,797  锁仓=None%  APTUN4zqFA5dFy7vkRXkVxc8jd2rhQvr7nSCFn5PiANE
+  4PM / SOL  MCAP=$21,084  锁仓=None%  yyNW5sUkjbHzs1PHUk1Z9UnSEHrMiHnFsNgenEmRC93
+  SOLCOON / SOL  MCAP=$14,900  锁仓=None%  6h37VAhbjS9RvSxCnckgLBw8ke1HkDNiZ4S379ZVRSaG
+  ultramegamayh / SOL  MCAP=$14,029  锁仓=100.0%  FL8WA6A4UBJbZDRwyCnnUTt5dYxXsSXPeCJc5TfedXut
+
+本轮新部署: 0个
+
+[21:00:00] === ��138/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  P0 / USDC  MCAP=$65,011,615  锁仓=None%  8hxpehZge2yLTrAXe189dc7NMqoxpqJuBXQApTCox2Eq
+  Ponyo / SOL  MCAP=$76,693  锁仓=None%  2Kb39mS4bQfJyqemwzYQg9YjcunwDcG91KyETDLzj7cr
+  employee / SOL  MCAP=$50,328  锁仓=None%  GnuKkMrZqJc4hYxZVKzZuqi1rEsnshzYZpnFtZhxJjNu
+  Ponyo / SOL  MCAP=$34,127  锁仓=None%  7EVveBCMBvXSMAGQx4P8fsG73Jdf5aHDpgXobErEY25J
+  CRASHOUT / SOL  MCAP=$8,734  锁仓=None%  2iY9DUVPHAuzioRMXRB9kQfwLSPWYE7tU6PDBBPSbKge
+  NEX Ai / SOL  MCAP=$7,993  锁仓=None%  HamxrwCPZTJcz1ThmNRuXVVfto7zL397zLWJySY5roME
+  $TMOON / SOL  MCAP=$4,397  锁仓=100.0%  9875oWwrFjpKY5NWfxvzXyDBbvn4sUkwZ9SHnDzgPjbY
+  BRADY⁠ / SOL  MCAP=$4,009  锁仓=None%  AQMKcAD7P5ELXGm8oxCc7QaqzrtMqXiCqden852L9y5S
+  ultramegamayh / SOL  MCAP=$3,992  锁仓=None%  7PJGaTvoNpPfJsSkWHdgSzyU6BjFXE9hhCS1nqPbjcFK
+  Poppy / SOL  MCAP=$3,773  锁仓=100.0%  GunYz1ZVUW3534oFmkqooKePYCVusLmmLJSA4FppeETQ
+
+本轮新部署: 0个
+
+[21:03:03] === ��139/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时79.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  MANIFEST / USDC  MCAP=$7,357,268,969  锁仓=None%  DfSaZMZdia95s3tAAFmLEGNWfBt7NBLpTaiPwwjjcktN
+  MarsCoin / SOL  MCAP=$171,829  锁仓=None%  HkqJEWZPcQWcRCngAFZ6bKWU91W6ibFA3aSPy2z4iUPy
+  Pponyo / SOL  MCAP=$122,124  锁仓=None%  CEzhSxbdWgHJ3fBoauRoB6168bTCLhP3GQbHwUooLGTo
+  Pponyo / SOL  MCAP=$114,312  锁仓=None%  76nsFp2jGsf6tha5VjPWRwsKmqGz8dFo1Pf66uaeHLFK
+  MarsCoin / SOL  MCAP=$98,295  锁仓=None%  2WpHGbbTgtEewZj6gjdo5Rd6yoDUy4W65xueNH624c52
+  Pponyo / SOL  MCAP=$62,932  锁仓=None%  7eLmcQyQuRFBvYU2vtLTcMrg6cSVUK9MhCyHkS7ELaVG
+  employee / SOL  MCAP=$52,012  锁仓=None%  FxyifE6Dhm8sM47XkPvZztaPFHxRXvqTTTg11JwosVRD
+  LIFE / SOL  MCAP=$11,890  锁仓=None%  9eUKiwHwu4MTs7PdxS3Xdbgd4KEsQ2D6Fda5fq8rgonb
+  pump / SOL  MCAP=$11,178  锁仓=100.0%  DtfNkrfqjAwMpWizXpkui6NvDF4mMwMjxGuHpy2T1jPQ
+  pump / SOL  MCAP=$11,145  锁仓=None%  BkTU4JiWQSYuFMgbDhvZS2MwAXx872ARHP9uA49fZ7UP
+
+本轮新部署: 0个
+
+[21:05:55] === ��140/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时65.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有1个查询疑似被限流失败,建议降低并发数重试 ***
+  MANIFEST / USDC  MCAP=$7,357,268,969  锁仓=None%  DfSaZMZdia95s3tAAFmLEGNWfBt7NBLpTaiPwwjjcktN
+  MOONCAT / SOL  MCAP=$256,045  锁仓=None%  An46AZcHQZ8UzShfTEN4xuA9UouHsjNC4DT5EzCD8WzX
+  USOC / SOL  MCAP=$145,023  锁仓=None%  59uUTUwm1uEpzs3mTxwh7pJGCvhzczt69RyCHQ67ZaNa
+  Pponyo / SOL  MCAP=$112,672  锁仓=None%  3PZGuHPNFy6kZcuKiqBWX5LUZLzUAjkEpEaou5LA88HX
+  Ponyo / SOL  MCAP=$56,280  锁仓=None%  HRQFMvzY22vahv5J643qJh2afqAAHziiuq49sDAvsRTN
+  Leonardo / SOL  MCAP=$31,228  锁仓=None%  HCDASi8S1xj7JbhQ2yqTJ85KnEmMo7C5USHpXV635y3T
+  Ashty / SOL  MCAP=$31,153  锁仓=None%  45wnWzxpGg7hF7s46vVvJPJKx3CM8Q4sabwjgJfeWb1z
+  Ashty / SOL  MCAP=$31,129  锁仓=None%  za1FrcJMPVLV2h2SwdELFwXggn3vZpfV1KCE8gQtciB
+  employee / SOL  MCAP=$26,818  锁仓=100.0%  66VKJrJhCgoYWWTLjkWyDriqyaKXWTdN1VoJYxDQXe8J
+  BBB / SOL  MCAP=$22,312  锁仓=None%  ATWEgR9E9uq5P9cyfPAUzhw48TbtGMT772xtAm2WRAja
+
+本轮新部署: 0个
+
+[21:08:32] === ��141/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  Leonardo / SOL  MCAP=$120,032  锁仓=None%  AouFporZtB3bwt8opCL4XJsUgZ7vMJE8hjdHXd4KxCLd
+  Leonardo / SOL  MCAP=$108,611  锁仓=None%  3cAZiebQWgptut3BrS573bnApSXb271ZHATRivckRn3H
+  SAVROC / SOL  MCAP=$98,262  锁仓=None%  qeRdt2srgz5yALd4gq6xP8gn9jNHTRjLUFu44djNMUA
+  employee / SOL  MCAP=$44,366  锁仓=None%  9L9YEuEsdDCve7zRk6jMcHxAsnfSuRQMPgbwV8ob9wAz
+  Ashty / SOL  MCAP=$31,137  锁仓=None%  2AJTvfWhuK8YjEaoxHcjmQ4CUw9Neo3bpPFn6kJBa1r8
+  Leonardo / SOL  MCAP=$10,889  锁仓=None%  EqwDuN1ShFLEazchRmjaEpNu3YfhuLXoqpcPzS5uAZtR
+  pump / SOL  MCAP=$9,586  锁仓=None%  DUuDmz4gUXPyjrh9A5PU4SPFEs35rZ5uyy31ujAyqEU6
+  Kamino / SOL  MCAP=$8,154  锁仓=100.0%  HiC63V9iTG5WvjMR3xRywbkTHTodY1PfaFJjh1akwJgm
+  PHAGOL / SOL  MCAP=$7,288  锁仓=None%  6QkrWPeZdRbxwvZGSsx7LV1tkqDmK8trJ8zebescDxdv
+  Leonardo / SOL  MCAP=$6,321  锁仓=None%  9NNqrNn4c2U2Fps1NSKvX6YnxjHCJAwUWNY8Y8psiVhH
+
+本轮新部署: 0个
+
+[21:11:27] === ��142/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时73.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  淫夢 / SOL  MCAP=$53,360,988  锁仓=None%  AP2PafKqecfQTVH9L5SB68vYRoWnV4fUUxxtb8b5Cjqw
+  ANSEM / SOL  MCAP=$1,579,223  锁仓=None%  21DaYjkEbVKQYHWGrSqmNn3xoeNg6MfofFynZimXqikV
+  Jurassic / SOL  MCAP=$311,725  锁仓=None%  2N9iW8Sr3DHMqmchgHnzHeeAuLVgs6MoHyrKwxget4wJ
+  MarsCoin / SOL  MCAP=$282,694  锁仓=None%  8T6BfmQ3EmZfbxjJhBN7tzPWPTwZwHM1NZ62Fa3J9P6u
+  Prosperity / SOL  MCAP=$74,607  锁仓=None%  7DuUB5drd7NQDGCRy4qgnE4W98W9rhCKqjHKTock677W
+  Ponyo / SOL  MCAP=$34,422  锁仓=None%  8595cHtgpN44ua6nAxKzRs8WzSESotZpgou1czZrWYpN
+  GRVT / SOL  MCAP=$24,893  锁仓=None%  azfvBkegYs3R83obJbKygxGFX7hz1Q2UpCS2ZtkMivo
+  moving / SOL  MCAP=$22,806  锁仓=None%  FCUxTY15sheQwHsqySEcH6MF9RaGvnkTmUH3Xd36YYof
+  GRVT / SOL  MCAP=$21,200  锁仓=None%  BcdidH6KBTq5HUi4QnYvjWx9yx32P7E7pDSkRd1tpCcv
+  SIGA / SOL  MCAP=$11,138  锁仓=None%  AJs4B38ynvMA6dB7ehDqZCnxtj83N1Z1itnooADy5DQk
+
+本轮新部署: 0个
+
+[21:14:12] === ��143/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮DERC / USDC  MCAP=$557,083,836  锁仓=None%  F6rhLb8wixy2Pzi7HmH9Hxyqkru8p5CDxx5bfbvets8r
+  JSKR / SOL  MCAP=$1,197,176  锁仓=None%  5kZqrrEc6VtTBDT1YJDsKWGoEYKKJx62GUvQ2Nd7EBpi
+  RACCFUN / SOL  MCAP=$106,346  锁仓=0.0%  A2T3YT1WcLC1rfG3C8hnXoDrh3gAWRDE1eEVhjbiWsoD
+  GOBLIN / SOL  MCAP=$32,459  锁仓=None%  ES1sQmGWeRG4FEYo6dFGnEokQd5cCNfRpreLic7qdmPY
+  COONJAK / SOL  MCAP=$29,072  锁仓=None%  2Y1jTPpa3CRzA9FXu3p5jKCwVDqZT2aHeSXCJKNULjWc
+  orbital / SOL  MCAP=$12,767  锁仓=None%  F7GaHHgQkaXwhZYc2uTAPaqkdttinRBZYbV8GiZvSQji
+  Leonardo / SOL  MCAP=$9,411  锁仓=None%  4FeTUC9UKY12MAqaSkbaYGTzq58JhWccfxX1dY6HFAbv
+  COONJAK / SOL  MCAP=$8,174  锁仓=None%  vjckYZJsgFcCvk1YkB2DGUxEmqNcN6WP2oVDDVPP5mW
+  NZK / SOL  MCAP=$5,336  锁仓=None%  GEiNmgtSMMFR3RhTpzwGjwg8gLbHr8yPv7BGXY32ZVWm
+  SCC / SOL  MCAP=$4,386  锁仓=None%  6GgiYvDgBJnk5hrohQH67oGVuZCFbzXQyBQNUv89gnNR
+
+本轮新部署: 0个
+
+[21:17:07] === ��144/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  KOSPI / SOL  MCAP=$15,517,477  锁仓=None%  47bFBgtMjpVF1ZuXB7pL58UhtaLCp9VMf5QLPe9Dm6T3
+  John / SOL  MCAP=$91,037  锁仓=None%  E2FvdGeYKe6jch2dVMr9YhCP2kkiTrAsMBadwryen6pF
+  John / SOL  MCAP=$85,833  锁仓=None%  3tbcKFA47AYoZbCjUBhsKwpmGNnphJ5sC5wYp2iAirFv
+  GOBLIN / SOL  MCAP=$76,883  锁仓=None%  Amf66To9LP9WeLWE1tBA8K3KhnFF8hen2VetNmMmd45Z
+  Ponyo / SOL  MCAP=$46,186  锁仓=None%  BNnwrRtPhd3Bubqkz84C62t3CTrnAc8px6wxrVgNNYam
+  John / SOL  MCAP=$36,411  锁仓=None%  2akZreUc1N5o2qicJ9eARoTuR2xC1cyKakNxFgUzTxsU
+  GOBLIN / SOL  MCAP=$32,477  锁仓=100.0%  6i5L3tVuh6KuqsVBsBrBjF1vALUUsSnJZ2xApxgGyCtA
+  pump / SOL  MCAP=$14,277  锁仓=None%  22NgWtFs178huKixyNHydd6cPfrgXc7YKDnCMZ7u7J4s
+  John / SOL  MCAP=$13,848  锁仓=None%  4vvao5N2EMxDnUfhuCgRe5XeVMebEEXAix4LQVS7YF5g
+  HOPE / SOL  MCAP=$11,613  锁仓=0.0%  CaBByFAmfhpejTzUDAp3edTpLtRzNu5MhUmg2rrvexFK
+
+本轮新部署: 0个
+
+[21:20:01] === ��145/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时100.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  HOOD / SOL  MCAP=$311,780  锁仓=None%  EBAbxowoomEyETcEofpo9uaTARYPjgPkrLyYDfUaCysU
+  GOBLIN / SOL  MCAP=$81,794  锁仓=None%  3hGjqC8795p9Ejcbv8MAuXNx3MoR5GUyKDLCVURFF2QU
+  ima fuck / SOL  MCAP=$65,255  锁仓=None%  8YttP3VDJ7p646X2wAANkyEHDZLTRNc5sxq9iSZ41HA4
+  GOBLIN / SOL  MCAP=$47,063  锁仓=None%  Bfx5muUkviJg4mDCyihFMgMGmnYZkTqAnie5WABfeqN2
+  AEON / SOL  MCAP=$38,549  锁仓=None%  EYX3Ft3EVxZr6D4RixskV1CpqJcpjT1LYMMkRXf7WKk4
+  John / SOL  MCAP=$34,357  锁仓=None%  BJrs6uG6YVkghoivB79Kjy55xaDTfuEKUdzW5RhTfNnW
+  SQUIRREL / SOL  MCAP=$33,122  锁仓=100.0%  2MPjrDkecNGJqM5bAvfrd4SNYnKNZZjWbrc5U5WDqfzc
+  Paul / SOL  MCAP=$22,889  锁仓=100.0%  14ayeudMF1AbPgVLVRNhsghbt65eM36rjGytNjb2nHHi
+  orbital / SOL  MCAP=$14,234  锁仓=100.0%  88iYoCWrnJYFhp52ssB9tqXBP1sKbTqnJXS2j2aTz1in
+  John / SOL  MCAP=$12,241  锁仓=None%  5JGF6f8KXG6aJPk1xheSMpisKaawcw8ewsb5yZ772ZQk
+
+本轮新部署: 0个
+
+[21:23:13] === ��146/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  GRST / SOL  MCAP=$74,631,728  锁仓=None%  EMCaYvkSSBh2YKq2taW7emw7vugkq5pTJ89pzhbnJ9Ma
+  Mona Lisa / SOL  MCAP=$80,482  锁仓=None%  3ZB49kLQY9eTiS8RDiT6QLAeUrjPv1R5yUtkGm8LiF9U
+  Ashty / SOL  MCAP=$33,380  锁仓=None%  HcmMdBVejsaFKhnC1z6ygnBGdcesTAcGQD88fMCazsN7
+  John / SOL  MCAP=$30,052  锁仓=None%  FE9KR9kvs2FCV3VJ2AfVdXyMdaJYHKkGb21j5aNuqG8k
+  John / SOL  MCAP=$25,411  锁仓=None%  3yeSyxYEjPes3a7nj6iRrU2z39X6UgFTKjaqVMGd8xZR
+  REX / SOL  MCAP=$8,880  锁仓=None%  DnNhzkN36D694zMgTSPkMSZvmGBNDg6VrhY3orohiVky
+  MOONICAN / SOL  MCAP=$6,971  锁仓=None%  J4md18R5YzE4YjoPHfGmay6xidchZinGjx4RYtH4tyMM
+  don / SOL  MCAP=$5,732  锁仓=100.0%  6Cxuh3tC73i8sEhsyCmMnCRtqdNkLREFi3GaP5AXSopJ
+  BIGBULLA / SOL  MCAP=$4,170  锁仓=None%  3uYuFhwc4ihMNe9b8Px9wqxfmBEuoKCP9TsRfEPnPuuj
+  Emily / SOL  MCAP=$3,789  锁仓=100.0%  29Be5jS6fKfokFBvkqTa9XCxaWAGNZNMX8vP8xPigt1r
+
+本轮新部署: 0个
+
+[21:26:08] === ��147/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ZBCN / SOL  MCAP=$67,583,026  锁仓=100.0%  H4E9QFQHQReJsvMoGv8FUde8bVr5vPTvMUEED12bSpyZ *** 已部署监控+模拟交易 ***
+  USOP / SOL  MCAP=$1,967,032  锁仓=100.0%  A6RkGVe6WigxMHhVVFc7nkk9qeH8m7QwrwL8kPz4cMnt *** 已部署监控+模拟交易 ***
+  TNOS / SOL  MCAP=$405,922  锁仓=None%  8QUm6Nj8C1E2gbwQjg5ScTLhAhSqi5s2UDZsdZHjRPgP
+  TNOS / SOL  MCAP=$374,257  锁仓=None%  4f6kQ3udkoaibnvLxsLvz5BTLikoAaSw2mm4apSc4151
+  RACCFUN / SOL  MCAP=$95,485  锁仓=None%  HRd6Ax4iATopsSwenNvpS3PbLDXVfsyd3bDE3JHjbzii
+  John / SOL  MCAP=$93,212  锁仓=None%  EBx2a86bXCCkdF79XDg8PAHnmkMMHB99ZLStkPk8qMZc
+  Ponyo / SOL  MCAP=$36,908  锁仓=100.0%  asFwPV2TkQW8SbRror6GqqNkW7hXwfiZPmFs2vTBWgy
+  John / SOL  MCAP=$20,053  锁仓=0.0%  8vsmRagG3uBYbHF3yVnwKhjPQr75EwL6DGv9bY1me7UB
+  Paul / SOL  MCAP=$19,352  锁仓=None%  4ytLnDAzt2wZFPJGaD3PkGx36vphigf9vXsZm7TVSyYa
+  bro / SOL  MCAP=$16,871  锁仓=None%  5Nqa1DDoE5i21Yi9XFfta31VKSjxToQqifvu1LKCE1q5
+
+本轮新部署: 2个
+
+[21:29:02] === ��148/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Jacket / SOL  MCAP=$431,728  锁仓=0.00000000025265828337466%  3yYpbjKpNkgaCYVJXzAbd3ixzxmv72mC4L2ma32Y9EpV
+  $NCOIN / SOL  MCAP=$26,225  锁仓=None%  4aDsJAQB4vhBBXhhnKWfoKW6C9z3kC3bbhdK45g6Ud63
+  GRVT / SOL  MCAP=$24,016  锁仓=None%  EGqqtCsrRYLbD4HhhrkfFnfygYxL9KuPHkjtAB2oEV8c
+  CROKI / USDC  MCAP=$8,078  锁仓=None%  RYxfKEiKpNZrweNqzkhbK3BHoxrGPWJqwe6Ah75cray
+  FERJUG / SOL  MCAP=$7,226  锁仓=None%  HH3aKZz4ZzMaJeWT8eNLxyjGvxoumb8uU41upSaYrrfk
+  Lolcoin / SOL  MCAP=$5,808  锁仓=None%  DigB9ivgKUVYZYHFJn7ZKGPLzRuUpd6j8ESk6h7cA1Z8
+  FIIVE / SOL  MCAP=$5,680  锁仓=None%  4TEHfLMS448me4o5B3d4th99i27L327issWvw44bdANn
+  SZN / SOL  MCAP=$5,484  锁仓=None%  ACHNbN34X7VDNk8emZZibuLqAh1PpdJWvzcvgRQNZ7uF
+  wDOG / SOL  MCAP=$4,559  锁仓=None%  3wvWDagoXyJ4dUmwUPVe6Q4vAK2bG5Vn16ih4FjVP1Qr
+  Build / SOL  MCAP=$4,419  锁仓=None%  dTRuYbjPy6HVhDwdBH2B44zkShyYUW7c9ZJxHJvpx8j
+
+本轮新部署: 0个
+
+[21:32:00] === ��149/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时86.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Mona Lisa / SOL  MCAP=$290,135,494  锁仓=None%  UeeAq3JrjcoyuvGSEdZCFH2jsqGzknR1aWn2MhmQP6M
+  MetaMask / SOL  MCAP=$1,608,547  锁仓=None%  FhnJDnv1pTVofLz6NUkYroVw6jHPg1bfPV5Hbkqec7Wd
+  PONS / SOL  MCAP=$269,440  锁仓=None%  Ar2WNFPfRM6q74dx9KTUrYGWBRVC68oNAKbq2iJGs92p
+  DrTrump / SOL  MCAP=$255,161  锁仓=None%  3qxSbuzK68rah8jfaPCmW2D2DpXxDi5h2VUWqvaVgdH5
+  Declan / SOL  MCAP=$63,192  锁仓=None%  9mew44GuLqKyf7MoAUFWZHVhpaxYrJTKzSaakhk57Qsx
+  Declan / SOL  MCAP=$53,562  锁仓=None%  J7JaR31HGHPvRCUGtekzqWL1BtvuQMuo2MajGDx3C7Sc
+  Ponyo / SOL  MCAP=$47,593  锁仓=None%  DLW6Ap6VrheTxy9mNrh3THQR3PrQ8KvUJNTZ6FP7FJgD
+  VLAD / SOL  MCAP=$42,705  锁仓=None%  5uAT6i4FwAZFhfHR4PAZ9nCUG4w1hZ3gT9TrGTtpXmui
+  John / SOL  MCAP=$35,059  锁仓=None%  9BKmVFPnwPwHhMjefX2TD8srPZVHUKcoEhixENfXshCB
+  frogcat / SOL  MCAP=$31,304  锁仓=None%  C3X4F3amAG62Hde5KtkfQ42mPaNzDfer4ztVixEM3hTj
+
+本轮新部署: 0个
+
+[21:34:59] === ��150/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  URM / SOL  MCAP=$745,204,460,090  锁仓=None%  Hnu9zftc8xrFrybp7nDMiigKr8M34fgkVGAzV6p6gD1u
+  PONS / SOL  MCAP=$269,405  锁仓=None%  HWVUgBGxnraeoFYF9auN9QzDdZJTNmvXj1vMNVuX9q2V
+  PONS / SOL  MCAP=$269,248  锁仓=None%  HqZjg6uqbvSAtFaqxkzVM4aABEDnWHVHz9ez6Mjrcwy7
+  INVASION / SOL  MCAP=$98,741  锁仓=None%  E9Trn4W1sBm8zEKGGzvVw2WYwEnhtfgc5DMtPMcy7pKB
+  frogcat / SOL  MCAP=$62,429  锁仓=None%  55dYmGWBU1urQqf8CuL4JxZfdB2nTckShit3apMmRfam
+  INVASION / SOL  MCAP=$47,724  锁仓=None%  A2M41rTNmgGNE5TdUrujB5u6ZFM1NaqcSpSJucA7R63m
+  JEW / SOL  MCAP=$30,686  锁仓=None%  2WZw65mNQivpJcXMZCpSNd8Cp61C7zvUNGt3EUphQz6K
+  INVASION / SOL  MCAP=$30,030  锁仓=100.0%  AM9nRxRwwwn9FhR47RU34QU8wnLHCAkqhkZk3RHGjU1V
+  1 / SOL  MCAP=$20,453  锁仓=None%  5KJwp1sxufSaaqUwiXX7T3h1eBE4JJ56KSstPNDjkXZ8
+  ultra / SOL  MCAP=$19,904  锁仓=None%  3n3YkdcRYJ1XEnoqhZn2fcUEHo4RpaXNNg1kAmHfYQRd
+
+本轮新部署: 0个
+
+[21:38:02] === ��151/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Google AI / SOL  MCAP=$289,727,046  锁仓=None%  7FT7yPXWn1iFGo5xHpqFcnfZe99rBnQJp267bgpaQiDv
+  INVASION / SOL  MCAP=$57,957  锁仓=None%  3adDpz94mCTcjoaZuwzr4B3ZhPr3Rc2rtxprvnsWMGeE
+  INVASION / SOL  MCAP=$50,190  锁仓=None%  8qxHcbyVFYFBpytUpG4LNynGoCwJVB34ZX6jq2vv7o9q
+  frogcat / SOL  MCAP=$26,679  锁仓=None%  F49GfWhVSsmDagFikYW8fnpxbTM3TKaavBwkvuWypdkG
+  GM5 / SOL  MCAP=$22,473  锁仓=None%  Jw7WV8rwRD2HKYUtJBwhLYs2GkqKis6Y4CN3jQnQbdt
+  CTO / SOL  MCAP=$20,555  锁仓=None%  Hf5UXzDLLkPKd7Smaie3Y77dYEptmziRTjz9Ju8pB3uc
+  Kamal / SOL  MCAP=$7,752  锁仓=None%  5mbeHDjxPvm67mKDEdnoufi9V2AuBRi7ZQCKzCkVJvgo
+  Pump.w / SOL  MCAP=$7,088  锁仓=None%  DhHA1gevnkQpj16W4t5DkdqonGVBCgG7K57XCtyb1PXo
+  pksfpkgdfh / SOL  MCAP=$6,924  锁仓=None%  BkwKzLMDsHqVxTDUTonfosFSNtC92CSQkLNd9bcfms4E
+  INVASION / SOL  MCAP=$4,543  锁仓=None%  hsTH81boMoBZNTCRN3WDdM3WKgvt5kPYcsapFgYED7i
+
+本轮新部署: 0个
+
+[21:41:00] === ��152/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  PONS / SOL  MCAP=$493,932  锁仓=None%  86rxP4NLCRi6cQGnk3HVgeFvpp3GAkFZovFyZ9PdRqdf
+  CTO / SOL  MCAP=$32,402  锁仓=None%  FMJjU6v2qikj2rkeGrDXrQKzKfwD8F2FNBzW8EforPbB
+  frogcat / SOL  MCAP=$31,317  锁仓=None%  E5P69srrDBqCS8B4a321P8YnVKYz9rBbUcpvJSTpWzyY
+  GM7 / SOL  MCAP=$22,307  锁仓=None%  A4kiR1hzvNDmhT791v9PHDQTAymAuSGTZqC5m1kxcXWS
+  CTO / SOL  MCAP=$6,570  锁仓=None%  GB9gU93B7U4VpCPYB7xL2fqs5d3Vj3WfY2339Gip9jDx
+  JEW / SOL  MCAP=$6,071  锁仓=None%  957Tat3j471b3N3P4sTCWS3nBqi54cVbTED6tHCQwMak
+  JEW / SOL  MCAP=$4,893  锁仓=None%  EJ3hcoBRkDuAujEzKYmytfBoW7m9BR6kQPt9tP2RxT8r
+  Pump.w / SOL  MCAP=$4,325  锁仓=None%  2E3wb73vT9oqj4dJoSkYucW2umfjCthswbaW9WwLjote
+  BONK / SOL  MCAP=$3,702  锁仓=None%  EUTu6cTCedHSU2efNrfsUKXzDNK4JgDSMunxRLmr3cNc
+  JEW / SOL  MCAP=$3,587  锁仓=None%  5DYNQp6NdM2q1A9L7RWHFPHhP7vHsjjvEU645XdLy2Ur
+
+本轮新部署: 0个
+
+[21:44:04] === ��153/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CTO / SOL  MCAP=$121,261  锁仓=None%  9ZBKkMp4XQowTNVVjp4AYR5Y5MqvqwRAscfbB136gtwE
+  Fauci / SOL  MCAP=$70,342  锁仓=None%  47CGvED8FhKff6GeLraTwnqrVcasvkP2c12n7RpHkVTJ
+  CTO / SOL  MCAP=$64,112  锁仓=None%  65x53RNKArcGMPKVyNm46MYzbJgWTpAUx9uF4nuygqMv
+  CTO / SOL  MCAP=$60,256  锁仓=None%  AeGSVoSts3yS2iBVhQRFj57y9wqSiZJTv5jEtSHuBzSo
+  CTO / SOL  MCAP=$55,488  锁仓=None%  HzXSE4aAi2mJAswLk6rDeGVt6hTQfPhJj2HvwDoJ4h1C
+  CTO / SOL  MCAP=$53,329  锁仓=None%  2TccKX9E4yFMrmiw2wpPbqEHaUTxmgJTJehKf9NQxBje
+  LUNA / SOL  MCAP=$49,887  锁仓=None%  2ZR9a8F4dG8WWcH8ezqVySwt6YtHHU4GpDaj5HMRwJ3H
+  CTO / SOL  MCAP=$43,855  锁仓=None%  9xvMhe3VzVqrgfwLNLYz4cgCR353mzUJsUC9vH5Z4T87
+  CTO / SOL  MCAP=$41,944  锁仓=None%  HFWR7pvM8ACoohR5PeznyYp23g1LXrHW7EWVeG3wZGrT
+  r/pink / SOL  MCAP=$19,459  锁仓=100.0%  GqKeVZTXynV3mimxHi1hMPowv2BsUnJh6TkZEaJck6Tn
+
+本轮新部署: 0个
+
+[21:46:58] === ��154/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  AAPLCat / SOL  MCAP=$397,635  锁仓=None%  F6d4gkTqM3N3xHnZKveVvi3pvGj4YhR8ZB2VX1XnzhWG
+  AAPLCat / SOL  MCAP=$386,064  锁仓=None%  CEwrHHoC7KTqDEyCFuyFfbpr5xGMwbz9t4jmHLiTQgk8
+  frogcat / SOL  MCAP=$139,281  锁仓=None%  Ed7DWGGeV5ZrhtrLhuvJDiC8nAZy2fCfKVgvQWqXXUKv
+  CTO / SOL  MCAP=$109,718  锁仓=None%  FzdmaCn3e8CAf4T9TH5oZ9kZjic79V9cNYXczqGW7X3U
+  Oreo / SOL  MCAP=$53,438  锁仓=None%  Ab9ZX2DH9UCj3mZWe2izEekCBeKCN5TvqDNrymUuHDMF
+  Oreo / SOL  MCAP=$49,587  锁仓=None%  FLeJzCQWgVdAzrpcRa6FiZv24kQZ4rSRfue26RUzB488
+  GOBLIN / SOL  MCAP=$8,956  锁仓=None%  Bp1QTJtTcvw1SU2rqL4RHm48fZjkGUkCDufMXnYCPWY9
+  Sánchez / SOL  MCAP=$8,258  锁仓=None%  CjB7fbdZcgi8g12iWUuMdXLNjZ3XYHvxeexpc2fE7FHk
+  CXMT / SOL  MCAP=$8,229  锁仓=None%  EahrS6NnMC7TATsF1KJD5yjpcU83UdB9yfV9EWSVeNFK
+  Oreo / SOL  MCAP=$7,151  锁仓=None%  DrPAYdi7TghiexepsMp21ruALyuqN5Q3Q3VtW5uh7XuD
+
+本轮新部署: 0个
+
+[21:50:02] === ��155/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  HOOD / SOL  MCAP=$408,563  锁仓=None%  AhxEg7ZxuGirGM9FXATp3Vvm5Dh21h4Br8T5wVMuGYe7
+  HOOD / SOL  MCAP=$275,914  锁仓=None%  F9aVVHC3ieGfep6FhC5H5RU5v2mvTdTvCcnV5P8PAFaB
+  Flap / SOL  MCAP=$207,996  锁仓=None%  9pgWE1a1Z7gNoSTTBvyZe3hXHRBunXsmqjRi3A3KJxXN
+  CXMT / SOL  MCAP=$174,536  锁仓=None%  6kuFQ6BfHycGW4AQzzwAtXgNrSGXkYz4GKxW7Ddwzy1W
+  中本聪 / SOL  MCAP=$64,663  锁仓=None%  GUQ6hGcCapu9e8c3iqjfAaeGHAWsTcMY5zWD6VaQN1zK
+  中本聪 / SOL  MCAP=$58,960  锁仓=None%  D7dsmZgpFyPot7aB6RU1V3xhPJo8YALM6BAHVai8veuB
+  CTO / SOL  MCAP=$49,402  锁仓=None%  9xUfGoY2JyVVn6bPnCpG5YTAXgRVfzz1aqw5jZ9p6gyc
+  r/pink / SOL  MCAP=$28,447  锁仓=None%  3jhJDMhxXEaM5n5JaChSmaAWjNcF6dsK8wBETfKbV1p4
+  GHPT / SOL  MCAP=$13,475  锁仓=None%  ASppyhU8J1jabGuNojGdP2wGFwfq7vwkUp7x3Tcf8ALY
+  CRIAGE / SOL  MCAP=$8,004  锁仓=100.0%  DHjhmSeRKnYqZ2W6SQBTxUgQGC8oTjZyo6DSt1HTTNdv
+
+本轮新部署: 0个
+
+[21:53:00] === ��156/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  RACCOONG / SOL  MCAP=$190,711  锁仓=None%  4jQtkDect8FvD92am9xSZHNYy4QghnQqtrJfj5F8WsAL
+  Binance / SOL  MCAP=$179,465  锁仓=None%  FucxCJPuTaU3LxSnZ7nd7Sa7TsCKWikxJ5nDDPxY6jKM
+  CXMT / SOL  MCAP=$112,634  锁仓=None%  AciPMms9x1Nvotorirtse1S3DqhvExwqVQSF38W8ygeG
+  CXMT / SOL  MCAP=$95,652  锁仓=None%  7DWX61bxgGwJ1RU3xUVAiwRbYvNzqsUYMm23HWb9kPdm
+  elchef / SOL  MCAP=$51,670  锁仓=None%  5FpJX2F51jEc4wjvjWnP8z6gpWZdvJxWHYUrC9r8mdPH
+  Kyuhelm / SOL  MCAP=$37,185  锁仓=None%  3uPCMChsewFtakKboHB16UHhkENrReX3V8MBfDr4CsDJ
+  UNAWARE / SOL  MCAP=$35,327  锁仓=100.0%  8PRPjinWyqUtMsxw7JzHpB2dYEws2GT9VRZZ996skish
+  ASSAM / SOL  MCAP=$16,242  锁仓=None%  Hj7cda7GjqbWyBMBTXSoXkmXbHvuqy77VKYWLubQeHQ9
+  IMT / MF  MCAP=$9,771  锁仓=None%  7fsnHXeiis6XuKVEmodhhQhtiREZqyrni697xnvP5w4k
+  FOXXXX / SOL  MCAP=$8,342  锁仓=None%  CvKjfJeJjXENMakVuzzTjG4sSqenrw57sMGEk7mthijU
+
+本轮新部署: 0个
+
+[21:56:03] === ��157/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  MOONDOGECOIN / SOL  MCAP=$314,249  锁仓=100.0%  5rCqL4src5PYcbd7VoMWvCh4oZyaFDEmyiCD7RaFGmaY *** 已部署监控+模拟交易 ***
+  BIBLE / SOL  MCAP=$213,982  锁仓=None%  FysCazxCRUaSoWB9oRYDVBGJgsJfD8MWiTLMTtf6upiu
+  SPCX4200 / SOL  MCAP=$123,019  锁仓=100.0%  3sTxCFggnGkLv4TTfEzgQHNyrB7ng3F37d89SMva1dkY *** 已部署监控+模拟交易 ***
+  CTO / SOL  MCAP=$78,485  锁仓=None%  yB6HQkSgzKAZVRzWBxFQFMLbHE5MU2xSGXmmTefnd3b
+  CTO / SOL  MCAP=$10,574  锁仓=None%  AYXwXLChtPhLQC7Kyh8hFeyFWvX1XwExGGn5pke5UAjf
+  BEPE / SOL  MCAP=$9,622  锁仓=None%  846dJKqNUaHZ92fSPDdqzovudyvCoq3Fz2XmEV4cGtud
+  John / SOL  MCAP=$9,344  锁仓=None%  BicGJiq2RSAqRkTmYraecFbKAoSrgmPr625MzSaWgcpA
+  TTC / SOL  MCAP=$7,563  锁仓=None%  9Sp3r42jcKcRLJbMaLE4N2pZtGwT7NXns6tzJ95tEXiv
+  JOG / SOL  MCAP=$7,350  锁仓=None%  EZCD5ozUPuaHiMWaghV5bYz23aQq2hM3qUdfsZXfovuU
+  GLITCH / SOL  MCAP=$5,449  锁仓=None%  Hpms8LeHqTZKKvE4i3bPXDpRBUxjbjdHf788SrNAmP5M
+
+本轮新部署: 2个
+
+[21:59:01] === ��158/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Fauci / SOL  MCAP=$287,208  锁仓=None%  3yQUBNTp47TX7ZUHM9YvZ3o8b3ysJ9gcheiavXcDmBhA
+  Fauci / SOL  MCAP=$272,395  锁仓=None%  4SpZZXtiyydJDpww6559Syw39krV452Nbo5CQ6P51pNX
+  UNAWARE / SOL  MCAP=$70,306  锁仓=None%  G79Mo7qMw2ev8VPkiJBCkdBBQLceM8avUHPuo4xWCKUS
+  UNAWARE / SOL  MCAP=$54,221  锁仓=None%  GfTxfuGQ9RbdoohwqzziyHbrxogDJqmECtj4AF9ZDyfp
+  UNAWARE / SOL  MCAP=$29,533  锁仓=None%  DgUqkspHt2fas5MWpJMfu2SLYkBvrAZnXQm44ciicDT3
+  LUNA / SOL  MCAP=$23,465  锁仓=None%  8rFo1ZNShedTSbx1t36C5PSYMkehNJ4KzBTkTy4uAXG4
+  LUNA / SOL  MCAP=$23,175  锁仓=None%  BpVszdutjJJjRNpMkXqvtxmWUZdYMGSerPC8mPxsQj1F
+  CTO / SOL  MCAP=$9,124  锁仓=None%  6UjcbJ86uWczv7XtP5Tzx1ZyrPDKn9DKWQD5bTFiEpZM
+  GTAVI / SOL  MCAP=$9,104  锁仓=None%  JE4nyTAf5Y9LLxWFCTsNMFMzXVDfbhUDhPiYQqnzScyz
+  DOG / SOL  MCAP=$5,563  锁仓=None%  AeJvEtKVuB81FNm1ynYHbNMyLwBXV3i7jArsCLQCqjqj
+
+本轮新部署: 0个
+
+[22:01:59] === ��159/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  PUMP / SOL  MCAP=$3,902,793  锁仓=None%  3FKtMDshScm4xpGG5tKR769Y9WVPkZAQMWVXW1uxVP8Q
+  UNAWARE / SOL  MCAP=$340,975  锁仓=None%  6w55HYxiTcJd9BC6kbazzgkZjX9spynSeken1LSmvYiq
+  CTO / SOL  MCAP=$153,879  锁仓=None%  BVcAYQ3vPH2agLamQG3zDShu48a7u1L76HNcMx8y4VP2
+  UNAWARE / SOL  MCAP=$73,687  锁仓=None%  2Np9VV4vaYJ9Di3cF7RPyaFPJypKr7b7MWxFv8Mu6dbv
+  WARMAXX / SOL  MCAP=$24,432  锁仓=None%  Jk49MqBiMhiYgsLMY7rgqvqFSpkkSd28H8y5UNjWxkM
+  PUMP / SOL  MCAP=$16,599  锁仓=None%  tuBLvQWj4WpoeV6WMRjfUY9d1TMqkrgmrngHz57tpnN
+  WALESWOOSH / SOL  MCAP=$14,062  锁仓=None%  3c8iEdXt6WrunAk7QGSqrRhwg5AfGw7FsifXtzeKUVYb
+  DTMMGA / SOL  MCAP=$12,615  锁仓=None%  8EkToTAVirozv8kAD1WNiEjqfKoSBpNUBY3qkBBSQSoE
+  Bogus / SOL  MCAP=$12,046  锁仓=None%  5F7BTQnZNmHTyGY3Yo76csaMr1xEPRAfaqg9GBmphzA4
+  CTO / SOL  MCAP=$11,670  锁仓=0.000000000918599458329909%  bbewGrJbWu43R8W3pjjftaDgYothfzAJCzvrFw52b3c
+
+本轮新部署: 0个
+
+[22:05:02] === ��160/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Jimothy / USDC  MCAP=$6,982,556,630  锁仓=None%  NphnbFgNgBwXZtheTyi1Zbct7p9Z4hWeKnwSiWbLpja
+  UNAWARE / SOL  MCAP=$70,285  锁仓=None%  9ysNBmiN8RQRN4PEHrv9aSsnjomUqcAhooLowwmCS3Gz
+  LeoSold / SOL  MCAP=$35,776  锁仓=None%  4mfcegMmxQfcvY4RhX6fWh9PtoRUhThvuY5h5YJ2BmXc
+  CATE / SOL  MCAP=$31,956  锁仓=None%  5K2wCNoFUX9A4h7FvuaF8Nks3CujMr1GpXVE5B5MEDk6
+  Garmtrc / SOL  MCAP=$27,331  锁仓=None%  9fnvt4eq9oEfoqu1knHGboBuz7jx6kBQe3EkZHZwV5Gm
+  CATE / SOL  MCAP=$25,630  锁仓=None%  9bBVYJuG3Y4Ugut11btRHCfhPG1M8x5tHZpe2Ri94AGH
+  LeoSold / SOL  MCAP=$21,087  锁仓=None%  9vEbHquZdxZ1FWYaKo63C9rhAfbERBqNkrCumE58PFKc
+  Solanus / USDC  MCAP=$16,022  锁仓=None%  5FwTpwoaRhhtAFY6mNkUzwKc9w9QAfZnruDa7N4hVNNn
+  CTO / SOL  MCAP=$12,062  锁仓=None%  GcrmhLeL7mQe4B94HGzj7atCiajpUFLD8C4BFX4XhBj
+  GATTO / SOL  MCAP=$7,082  锁仓=None%  BMfF1AYGat2KAJgRRrzuBZCb6crZ1cv8YNv8oEYgexuG
+
+本轮新部署: 0个
+
+[22:08:00] === ��161/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Ashty / SOL  MCAP=$272,726  锁仓=0.0000000062637540967539%  5GBr4eQYVh9G7NDNJ9LDUe5krTxDnT6uJughGzRTzqQd
+  Anthropic / SOL  MCAP=$205,840  锁仓=None%  9GMjkAiTFWMiGfVwLyToRUuqDpV7GVRNQmFdbLgzrbjr
+  UNAWARE / SOL  MCAP=$202,344  锁仓=None%  8vEgyDtJWwx4aopYxnLYV4Z94HFj9yrGo5zJ7ypqEQsX
+  UNAWARE / SOL  MCAP=$48,539  锁仓=None%  F9JLtzpijJnNrzwVWeitmEajSzWvGhvbQY4MgSmCqkPM
+  UNAWARE / SOL  MCAP=$46,838  锁仓=None%  EfH5sYU3b7ppGegLkyqLA7sikkY7gyU6dWTWJ66qLetG
+  UNAWARE / SOL  MCAP=$46,056  锁仓=None%  BbcJSrLacEiX9LUaiDPZn3WFFoqcagMmD1t3Qv7ZVuXU
+  $NCOIN / SOL  MCAP=$15,244  锁仓=None%  3uM6EPGgrmDtHewC5i1cHR22kQXSPCvmFbKMSBtVQ6rk
+  CHAGOB / SOL  MCAP=$15,161  锁仓=100.0%  DQWgPsorqnNrfonuFL8pJEQ9px2XQyjZynu22c62CZEP
+  SONIC / SOL  MCAP=$14,739  锁仓=None%  Vd9p5soNiY3WyM4re8YnD4GnWFSTmanzd7pUuz2vGkc
+  UNAWARE / SOL  MCAP=$11,662  锁仓=None%  BkNoFsgbhofJDxmPTHUeidqv2an4txLr7wNSNwUeKZzP
+
+本轮新部署: 0个
+
+[22:11:04] === ��162/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时79.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮LLUBH / USDC  MCAP=$1,393,522,783  锁仓=None%  AUPoPLcspdJwY6PgNJHPgEmAR8DQq3y3dpbkKSGLqXMJ
+  NEX Ai / SOL  MCAP=$8,569,117  锁仓=None%  EL21fCHbGyoJnW53q5fMmezt1Qajn3mBkTtpjUde9xK
+  Anthropic / SOL  MCAP=$514,720  锁仓=0.000000000249432972702466%  EwtKTcJc9KEUMkAwmNUsi4mFbnUDSKZxccG2c4BDurrY
+  Anthropic / SOL  MCAP=$463,956  锁仓=None%  6fRAhVuWWr9cMA6bmjHNGsXKXJpoUHq55jWstT9WPavG
+  UNAWARE / SOL  MCAP=$197,618  锁仓=None%  HDRSydkYSUSnwrhtPCr77hD3ARxgWx4jXXcbAAhKJZJL
+  NOOBX / SOL  MCAP=$74,350  锁仓=None%  8Z6bstp4ijSmEQ1gR9WXJxCLPxdbZQrGrCBBdiHUkMpb
+  SATYRESS / SOL  MCAP=$70,103  锁仓=100.0%  8hMxHsio8qka5stWffnbaHF7g6P1BeL1kEE2akVWRLLa *** 已部署监控+模拟交易 ***
+  UNAWARE / SOL  MCAP=$60,612  锁仓=None%  4B7GWbvFZ4ShBpAFY2h9SmLjtGgJT3ZxsTxq6FuosN21
+  UNAWARE / SOL  MCAP=$49,189  锁仓=None%  CXTNgRunFprFQUwThQnvxc91JUZkWE3UXpequmJqr3zC
+  UNAWARE / SOL  MCAP=$44,453  锁仓=None%  GGxZT1RnFwJmKRGEhHKxuNAMzP8U7722WZKLwah6G9y6
+
+本轮新部署: 1个
+
+[22:13:56] === ��163/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时58.3秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有2个查询疑似被限流失败,建议降低并发数重试 ***
+  TNOS / SOL  MCAP=$38,786,584  锁仓=100.0%  E2HZdicFRcpj5HLKebuyTLH7BGefTrKtSEW22YpP2xeP
+  CASHCAT / SOL  MCAP=$1,671,341  锁仓=None%  ETjdseRrvqzK5XipyBgekJmiCEyM6uqLYD3yZ5Dvgy83
+  CXMT / SOL  MCAP=$139,464  锁仓=0.000000000143428417292257%  8uNAXfDRQKx8wtjkeyufGKAyY2pgh9dE4iiivtC1NjX8
+  Explosion / SOL  MCAP=$70,719  锁仓=None%  CFhk8Fen6EMUZyZLV47vj5ieJfUH5h54rFxrWdcLdRmj
+  Explosion / SOL  MCAP=$62,136  锁仓=None%  2YfbK62zHA5cgZCk7hkhwCjK7sFYL9DB3KCgB8oHB9dS
+  LUNA / SOL  MCAP=$50,164  锁仓=100.0%  9rBASFLku1M8C1s8fof583Ar1ebXQhCXXAJcWK8C8mSi
+  Sánchez / SOL  MCAP=$34,229  锁仓=None%  7kDPVosQ6APj2YTKyVCFj2199igDvavmuVjJ9EHRb9r7
+  UNAWARE / SOL  MCAP=$32,526  锁仓=None%  7bwXMHxm49iRYGcZpj6vjWV3YNn6wDbsdpjRY11tpDML
+  Ponyo / SOL  MCAP=$28,373  锁仓=None%  W623iH1XQQE48XRpduTitVU5PXDnzMMbZNENmv2LZjy
+  threehalv / SOL  MCAP=$28,246  锁仓=0.0%  H2xTdkgUGXMWkFgQWaH4Vm6ZTa3ZTHTJfaFmjREdsQLR
+
+本轮新部署: 0个
+
+[22:16:26] === ��164/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时73.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮SDRAC / USDC  MCAP=$1,622,893,582  锁仓=None%  Aoifeit2MgBSXPvpbDt9FqvE4CDrC5W5Nm12DDdSL9vL
+  VERROW / SOL  MCAP=$221,675  锁仓=None%  HFpH6hhCMFuLcTzqXUNapC65ARff2dU8HChrTRkL35dZ
+  YETI / SOL  MCAP=$127,076  锁仓=100.0%  2bXQWiNitFPtMDaxgrJGVUzehdcp3zAQTp4MKUeC6sSx
+  SNDKB / SOL  MCAP=$63,143  锁仓=None%  6dLfyr6wP3PYSRWToRgwEnm3eCZ4zyW2RZAks9XCCxnU
+  UNAWARE / SOL  MCAP=$41,943  锁仓=None%  G5GJ4u9i183WNYouyYfuRQ189N7QQdRHTg378feDeNTr
+  UNAWARE / SOL  MCAP=$34,091  锁仓=None%  Hp6FetmJZzzcJDik3shMxbytgvapzbbf8bzXqE8P9Xwa
+  YETI / SOL  MCAP=$27,648  锁仓=None%  CJqMiN6dohGWSPt91QE7H4kEViaYRCujMakt2jAwY3s4
+  bernie / SOL  MCAP=$11,103  锁仓=None%  BC88DDfhWapEXgprpw75j8zrsqGkva9DqSRkG5Qpuo9W
+  CXMT / SOL  MCAP=$9,082  锁仓=0.0%  22W2xqVRJ28bDc1z5vtvGG6GyQS4Hi37jQeKHHJUs7qn
+  GTAVI / SOL  MCAP=$8,523  锁仓=100.0%  4ZQ1nTEHWFADpccX4ZT6xZ3mVjmi1opRjSZcJHfCG61v
+
+本轮新部署: 0个
+
+[22:19:11] === ��165/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  USDCㅤ / USDT  MCAP=$209,779,409  锁仓=None%  HBDEYbFj3JntsPK4TeJANm8zJrvnoNBorc1EAGezyfyA
+  UNAWARE / SOL  MCAP=$46,191  锁仓=None%  FL7zaC9C1cJ9TJTm2RET7u2d9uWeGTWWww2M6XhhXLrs
+  Shartbuckle / SOL  MCAP=$8,762  锁仓=None%  GYkGJBhUPK6eqYPMPq7jWRL4tWpYj8f2G9aYnHjNsMCn
+  wCAT / SOL  MCAP=$6,329  锁仓=None%  26UafvvxTPX2y9dUd5jsLKRFtXjWXa1FL4KeYmwEMt5L
+  Back / SOL  MCAP=$4,957  锁仓=None%  7pbZqrJKZVAXGXdeoF4vJAkYefPSKVE3Q8MjvUnRcbgP
+  exe / SOL  MCAP=$4,885  锁仓=None%  6K5bYnetuds1rzch3YH6zZGzkPX3oCFM7HW8z6wTfD1H
+  FK / SOL  MCAP=$4,364  锁仓=100.0%  5rNPG1Uyw3qg5XmAtqyws5h3UDm5ZJWuN4tGgD7DTKpJ
+  RETARDMAXXING / SOL  MCAP=$4,208  锁仓=None%  Cup62LdhLe5nPeiDzb1ojNYFFPVoNJHpHKUw1inrZZwV
+  Shartbuckle / SOL  MCAP=$3,662  锁仓=100.0%  5gQaDpVcULba6HARtoVEaGS3irzbNHeAksk16oVgP4qd
+  Shartbuckle / SOL  MCAP=$3,523  锁仓=None%  EAtFRqWW8rH2X2vzAr4Zuy7SU26E1bDAGZsKTqwiJctx
+
+本轮新部署: 0个
+
+[22:22:15] === ��166/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时83.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  UNAWARE / USDC  MCAP=$326,517,323  锁仓=None%  q65HayVUNEjvtJDtJizNjb9vgSxq9X98UJ3dEN56y7q
+  YETI / SOL  MCAP=$84,016  锁仓=None%  2bDt28d3zgsittWx8P3c7gzMqJ5jY1hbmfZ7aHpitxoN
+  GDOF / SOL  MCAP=$66,577  锁仓=None%  6DW5o2j76iDusSRsSuxB5wA2NT3N93V74rBMEnyeqajf
+  BOURBON / SOL  MCAP=$52,426  锁仓=None%  3eXxzgds7VPDPPYsS4a8nUpPQtxnpdyUndmjULtusB3B
+  BOURBON / SOL  MCAP=$48,208  锁仓=None%  DGgYd5MGZa1jpsA3bqP5tifPssHb4HEP6xLwEMAtUFyQ
+  Sánchez / SOL  MCAP=$41,725  锁仓=None%  AyjwuXqSXh6GimhYgNK8SmD47nBUat3Xx1CXcejdF7Ai
+  narrative / SOL  MCAP=$8,306  锁仓=None%  AAa9it4icGpYrjwqDa5DEsDAyv4oheKkcEFdX6GbsEDe
+  CLARITY / SOL  MCAP=$6,764  锁仓=None%  F5UdMhvQo4xYur95AVPyu29DS3utpoBj5TQSPWqzG4sc
+  UNHWAR / SOL  MCAP=$5,819  锁仓=None%  EoXPdiQhN8177AFFWTM1gE5SjDsg8kn78RG8G4UNk8kg
+  no name / SOL  MCAP=$4,440  锁仓=None%  4dYQ2Gg1Ry1qVhEsCqmKxusx48bKg1n9e7Snnqgspebu
+
+本轮新部署: 0个
+
+[22:25:10] === ��167/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  USOH / SOL  MCAP=$10,322,499  锁仓=None%  9MPGy2MfDG5i11vwgp3n4sNft9XSEmduXKq9vRMSBAP1
+  CATE / USDT  MCAP=$998,621  锁仓=None%  AbuALxV7P4wETacbbkP5w21T5n3ykjvTkvjx9EARQp9S
+  CRYPTO / SOL  MCAP=$312,549  锁仓=64.1906779090521%  3vDq88u9zEkJKC4CcNrDEtqEs6Jq2kGqWVt86efut9VP
+  SAFEVANO / SOL  MCAP=$73,371  锁仓=None%  BUQzEm1Ti54Bit4deW68kZ2v2UkidvqknZVPzXfKqyfS
+  CRYPTO / SOL  MCAP=$40,094  锁仓=None%  67AbSUyH5fvoRkjuHAgaKuUfWZNm2z4sBmSq2RdaKzMu
+  Suncoin / SOL  MCAP=$38,914  锁仓=None%  GRXghStUTyjavoiSMd9mq3prBcZeb1XMwBJpdZTnNMqM
+  LeoSold / SOL  MCAP=$34,281  锁仓=None%  HABpbZ99r29fLkV7htAdDSbuppEnzhXH44nirksrLbTk
+  USOH / SOL  MCAP=$28,147  锁仓=None%  71KsbP4QYyvRUUP7p1o7c9y5fwtX7bYRJ6GsdRk3vzDj
+  YUG / SOL  MCAP=$24,171  锁仓=None%  6Jwh5MFeMciFZExgoymaTUtnk9hafG32p9gWig2ohd55
+  YUG / SOL  MCAP=$13,659  锁仓=None%  3hvjwW9w5Tv4FyA4BUSWfsErU63StvXLh9fXGi8o5Xs8
+
+本轮新部署: 0个
+
+[22:28:14] === ��168/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  Fauci / USDC  MCAP=$275,755,073  锁仓=0.0%  GrHPjNuuXazF5QSTDYZnxCyejkiuVKCmT3ejuN76vX1p
+  ANIME / SOL  MCAP=$263,788  锁仓=None%  86EaHmBkxQjze4KbgTtjshxum8R5iu3ckJYnqGui88Dh
+  BinanceSh / SOL  MCAP=$105,495  锁仓=None%  451py54yE4huEzmPqweyfeFkGnPeSXYphQTjz1GCC44F
+  BinanceSh / SOL  MCAP=$82,646  锁仓=None%  4ejr9PFAvaWp6HB7v4aKsd3u1AvvTbfGA4FqyKW42AV2
+  CRYPTO / SOL  MCAP=$80,510  锁仓=None%  4a5FSxJbSjT6uWNnayx4u1UJRwKAdHo8d9r9uNroWkDb
+  UNAWARE / SOL  MCAP=$34,142  锁仓=100.0%  4KF5oxiGVnmgeFDxHW9zQvGe7VPegzoPCg3qHjakBGYj
+  UNAWARE / SOL  MCAP=$33,053  锁仓=None%  22LmN2M9TxWdfWyJ9YSfsim1PYLxbBCvZ5PUNc9zUgVc
+  CODY / SOL  MCAP=$5,760  锁仓=100.0%  3uqXeuuqWmSxeSDiWtNenpNQJ6oAuZNqg2aeXCohdZYy
+  SHARTBUCKLE / SOL  MCAP=$5,690  锁仓=100.0%  4PrWjWm4ZYBV44CdADb4vYQhKPkjuzNKyWfYkwUnJSDB
+  net / SOL  MCAP=$5,663  锁仓=100.0%  43bdNcAp5nMyE5gszzdHHYmn8XAnUmc7nbRamDc4Tbm6
+
+本轮新部署: 0个
+
+[22:31:08] === ��169/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.3秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Jimothy / SOL  MCAP=$23,213,750  锁仓=None%  EWGZsH9XcCXbARDCGc7fjAMiAihmNJLgcuVJYwNRbaSd
+  POMUKEN / SOL  MCAP=$1,479,037  锁仓=None%  AKXKaNr9rGDMDwqAWqQNi3HMV9vSiza9evG6D6YMLSze
+  CTO / SOL  MCAP=$130,635  锁仓=None%  EfJJKRB866VkpGaEhxKmNrfJD5Uqs1Aeov6DXR5wB7Pm
+  BOURBON / SOL  MCAP=$61,999  锁仓=None%  DEqQ6VtUCVHLs4wBtaUgHcGFdJsCVZv1LnoCrwP5aL9R
+  SOL / SOL  MCAP=$55,533  锁仓=None%  2TMzrwZzSMHfWQc1NWEnLkDdHzP4SLsVsbMxcCHZ6Syd
+  Jimothy / SOL  MCAP=$24,998  锁仓=None%  DwSayVb3g1LbAXjU2DoHL4pDAtV5CVptrSANe1gyJiny
+  GS / SOL  MCAP=$8,356  锁仓=None%  2eCupumiLkFr16UTsmFafAsF8EbXZ8nBgbBsjQULBg2M
+  CUP / SOL  MCAP=$7,742  锁仓=None%  CUV8D5gP2vUKdQa7274w42mWXyGWihJo6DGwLfZGjBKD
+  ROO / SOL  MCAP=$7,188  锁仓=None%  CzXbDcuteShJ7mMCVyErQ4wsXsMiPFfHAHvghESEk5JE
+  moon / SOL  MCAP=$4,681  锁仓=None%  BS3uf4WZ7CCGwcZUP3EJr5uE76bCTDnkVBY3T6XeaPo3
+
+本轮新部署: 0个
+
+[22:34:02] === ��170/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有5个查询疑似被限流失败,建议降低并发数重试 ***
+  USOX / SOL  MCAP=$11,409,725  锁仓=None%  4xEM6aNL9qsvdMKgHg2JEFeyj8AdsEVuiizmNGWHzwML
+  MarsCoin / SOL  MCAP=$174,525  锁仓=None%  8gtMZWzrw5KT3Y8M7msKkYLQYgRSX5oQ5MUbwfKEYTJw
+  BOURBON / SOL  MCAP=$84,232  锁仓=None%  2bJ5sUkHN1udvUXsCYva6kk5ZLsnorLcqwnwW11dXKVc
+  SOL / SOL  MCAP=$53,194  锁仓=None%  5QeGqyiChTCxGfznd82nS3d4yqCuMeSagQRR7vmUsCzy
+  UNAWARE / SOL  MCAP=$50,833  锁仓=None%  7fkrmtQ8xgUFuNyUtpkRderQPBdAfFLuZqoyQ4vpQxvK
+  UNAWARE / SOL  MCAP=$40,441  锁仓=None%  4Es2Ge1pqUYryq8rn6iWPeQyc1JPnk6prBqkmthLqaTx
+  UNAWARE / SOL  MCAP=$36,391  锁仓=None%  FnZVbsKpUqu82Q3DzvcDG5XwZBE2QEZGYeuQWDC3jBnH
+  BCGAME / SOL  MCAP=$33,440  锁仓=None%  FBuRqgY9XMQGG18nZqdXMA5QCo26AfKX2rqrT2ec5sEw
+  Trench / SOL  MCAP=$31,159  锁仓=None%  B6X1FZYhtrc3g5aHTepYhVFcjveQgynuhpUgJD4pXqpB
+  BCGAME / SOL  MCAP=$29,992  锁仓=None%  3ANuTf7565kZgkcpHT7wkufWjTRfKugFf6wdfYFENTQR
+
+本轮新部署: 0个
+
+[22:37:00] === ��171/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时100.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Chiikawa / USDC  MCAP=$1,069,314,385  锁仓=None%  9mfuvJuNJryKTNMmVntfSsbv3Rg7xXbcwya5VwRD9T3t
+  PERPSPAD / USDC  MCAP=$308,226,991  锁仓=None%  EDWLHSoqyKvR4fSyLKfhNBe5xpyZQ4BCqb4zmGG5XBy9
+  YODA / SOL  MCAP=$426,629  锁仓=0.000000000714267200485535%  2vBjNyhftjVrA7eqNX5MiTQonURQoWSfdwnzTWeq7GpG
+  YODA / SOL  MCAP=$313,707  锁仓=None%  7FBnKqQcdVdvnUxNG152iwjz3HRQ6WBJBSJVWTj3zULD
+  SOL / SOL  MCAP=$83,018  锁仓=None%  8xu62PuW5ApbzHVuFPXg5dss7PVPMjUUcKQhbi9XQ2jv
+  UNAWARE / SOL  MCAP=$34,091  锁仓=None%  G28YTo2kyGN1zyuCrQwMr6q3kdK9zMKEdgsbyXef7fWk
+  MEMELIFE / SOL  MCAP=$28,562  锁仓=None%  B9nUQBas9BtYgP9tJjTTZ9nyTFV6Dm1FTKguTbVWuJnU
+  UNAWARE / SOL  MCAP=$21,024  锁仓=100.0%  HKF7aPVKNYrR8PBcMBTApSQ9CiqPBhVhwN9MepCqbsjM
+  MEMELIFE / SOL  MCAP=$16,485  锁仓=100.0%  D8ypmZwbn68xbMkxhY9yf2YSqVAKYCRchNaLgackoCFX
+  Trench / SOL  MCAP=$9,298  锁仓=None%  GYT2YBMfu2ByKUMCndwkQEXWyUMm5N3uhoaWCHUe59rB
+
+本轮新部署: 0个
+
+[22:40:13] === ��172/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时83.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮eerht / USDC  MCAP=$1,498,116,813  锁仓=None%  DTqJA4dTb66h2LMDjR9xjpc6kZn16gsfyjShob5hCNAA
+  Google AI / SOL  MCAP=$117,786,137  锁仓=None%  1GRWEn93eanQSoPuPWYdCKs4P4JJVqm9RNgg2QjFWEW
+  USDCㅤ / SOL  MCAP=$118,770  锁仓=None%  FoTtNGkN7XrHG6J7VU4M68NGomVuUhKXzfKPs4aLFXSu
+  GRVT / SOL  MCAP=$94,892  锁仓=None%  HM7YpmDUQhyPbWDkVx1kaCWCQocKe9nZ28YxEqSzvGds
+  breast / SOL  MCAP=$73,260  锁仓=None%  CKEUBvcv3WUqfijonH9bDTAJRkmNxo39N2kFjZn8Bawk
+  SOL / SOL  MCAP=$47,617  锁仓=None%  Fv94datUQqegDKNanBtPjbzAQM49NFUE4b6JenNgyzT6
+  UNAWARE / SOL  MCAP=$40,843  锁仓=None%  5jopY9BDEhcagtQgk6JSG5zFgen2Tie3neSzy8ca4iWJ
+  Wakax / SOL  MCAP=$33,401  锁仓=None%  A8PACtLUb7p1XuxGV9Ut1Re8pNfTSUU4cKG4bEepxrwr
+  UNAWARE / SOL  MCAP=$32,767  锁仓=None%  9tXxDhxx9KfQ6g9GxkgNLJ4QVe5VdSKKwLYbhnpLQWNg
+  breast / SOL  MCAP=$30,181  锁仓=None%  6K74ArWkB6cwxVyHJWPWsKiJrLY116LiXCYi1EBwdzwx
+
+本轮新部署: 0个
+
+[22:43:08] === ��173/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  WEK / USDT  MCAP=$13,239,937  锁仓=None%  9ks8LWBxJfr4NmAuPKyRUSznShRd4xwwumHAUaNVcXyv
+  MEMELIFE / SOL  MCAP=$985,638  锁仓=None%  39JL1wikVy7cdraRGr7vNPWhAwUmwR1ZnkLgTrUU22vX
+  MEMELIFE / SOL  MCAP=$761,443  锁仓=None%  jMnGyYEFjmxjAkCHE9mcvBreWYZXEueQYkUNo2ZtUyg
+  USOX / SOL  MCAP=$251,366  锁仓=None%  94gox5hhR6gchRdVUE15GByE2QndbT4vbHT2bgPdka9m
+  Jurassic / SOL  MCAP=$109,669  锁仓=None%  GFS6tj8FxRspALqAfMbrfMHqD9emfBVatgDLLFQRXsi5
+  Jurassic / SOL  MCAP=$91,627  锁仓=None%  FXuiyj1aFMuCxbsr4eRGVF5ay629SUxMtGjAah6MaBkC
+  SOL / SOL  MCAP=$55,703  锁仓=None%  F12NL3vQMV4TwsZjuQ4zApEiBSxmgDoDg6Zx1BxR1n6E
+  breast / SOL  MCAP=$50,947  锁仓=None%  9WB9S7RUwTQU7P9rE35zqWX484JmBUrBSTgqvQRCQaju
+  breast / SOL  MCAP=$50,071  锁仓=None%  8GAA21VaGy7cXjkte8cf4pP4giifw3ibiQAgBtDpw6TP
+  MEMELIFE / SOL  MCAP=$30,674  锁仓=None%  8KSgUxt3njnpuvrJ9Ee5JFZ8EWSjp9DrDWAYaCeMtvqu
+
+本轮新部署: 0个
+
+[22:46:02] === ��174/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮MESNA / USDC  MCAP=$1,866,369,082  锁仓=None%  GD4YjYmAdGW1tW4MaQ1WRnz4Y1LHpvEwUB5giq4tmiXt
+  UNAWARE / USDC  MCAP=$391,427,993  锁仓=None%  GdQhgofketqQEAzThzQAHtw5NfKgU5Ney586djtsespK
+  BinanceShares / SOL  MCAP=$232,853,596  锁仓=None%  69YTqfFGdS2ep2xsqevJFrBrFU1ZwWYintHMZieYzR9h
+  Google AI / SOL  MCAP=$228,390,845  锁仓=None%  9bad9TLZGaM9xjpd69jFQFuKAkZBgRQYLnWAUR5Uu3Sg
+  ‮CDSU / USDC  MCAP=$99,816,770  锁仓=None%  E2StFJ1brvTBfuiQu4TgSHFXMp8DLiMWvB63SSnYJwuQ
+  ARAMCO / SOL  MCAP=$90,974  锁仓=None%  2sR9GkFR5hn1J38wk79jcqtB9C2oXCxmC6tW556g3gNU
+  MEMELIFE / SOL  MCAP=$37,056  锁仓=None%  7oS5K1WfndCyZuYnVDCkEmFLt7KsoNZ9sb1GRPes8fZE
+  MEMELIFE / SOL  MCAP=$33,761  锁仓=None%  AHckmcxrMYJESLpycvUXCWCnpDH4m1jt7Duvn87JkHWU
+  DISNEY / USDC  MCAP=$32,094  锁仓=None%  9gmd437Jia4EJ84TVHmzV5XNmGcbhK9omTLgU9Jeh2cX
+  XVIDEOS / USDC  MCAP=$31,935  锁仓=100.0%  ASrxNb6s7VrC5FnSYKSxpvxAzYiwcXKiPoxDZ1QruR3y
+
+本轮新部署: 0个
+
+[22:49:00] === ��175/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ChooChoo / USDC  MCAP=$449,728,003  锁仓=None%  97km7W9viKCL8wB4udu8J1ud1wFmyzL12KwRawbqkCt1
+  YODA / SOL  MCAP=$463,840  锁仓=0.0000000000714267757914812%  CYYAK2mvByqYFWCaYsDYqAL13ojnKatZd71mHWKtupw3
+  YODA / SOL  MCAP=$445,708  锁仓=None%  E2u5SgDKwqPzZL8NfMMHh86MohsBY3nifydEa3CgTkyd
+  LEOSOLD / SOL  MCAP=$120,426  锁仓=None%  BuUA6vXJ5CXCy7E5VgsSHBBUJjKxcQGFckNp2hcit3ec
+  breast / SOL  MCAP=$72,359  锁仓=None%  FfaZbzJperdU2FAoaJvhcgenSo7n8hAYnedCkjbvaq9g
+  ARAMCO / SOL  MCAP=$42,769  锁仓=None%  Ah8JRDyMm6kuCHpBjmQJo97ps2nhQFqud1qTicAHAs22
+  ARAMCO / SOL  MCAP=$38,237  锁仓=None%  2sR9GkFR5hn1J38wk79jcqtB9C2oXCxmC6tW556g3gNU
+  MEMELIFE / SOL  MCAP=$32,617  锁仓=None%  2H8Rc1cvU6hHAnkYZhZED7gXLoLEdEdTUpdMasi7Wdfn
+  MEMELIFE / SOL  MCAP=$13,911  锁仓=None%  Cq6AkEWBAFEdDJTEwvooyfEvhYgDmCmxuxCQPnSZefMi
+  CXMT / SOL  MCAP=$9,387  锁仓=0.0%  6Z8DHRcEqtmHeztstt9R5pmRTksrPr6eRbNmY8MFBR1W
+
+本轮新部署: 0个
+
+[22:52:03] === ��176/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.3秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ChooChoo / USDC  MCAP=$497,953,499  锁仓=None%  c5fg3XmnQMW7mDpBiDA43ZkgvnxRNDk3b4DMCJLT4Mf
+  VLAD / SOL  MCAP=$112,557,678  锁仓=None%  37Dn7QmuMyDEZuYwtZvRp7mx3CRBYPpEWZrsY2VGCm8X
+  Tsubu / SOL  MCAP=$1,606,467  锁仓=None%  A4R15NpkBsEGwwHyPLq6bKLZdWAyQHuGAaGVqmJEsBnp
+  CXMT / SOL  MCAP=$911,342  锁仓=None%  6m5euGKskwDRMKBHXR7K75ttDJx1MHJk6Qac5oXih4Lc
+  YODA / SOL  MCAP=$401,961  锁仓=None%  pRS14Fh3GZicdGNnN74NM2APPx5MiEPaUEj6VbTkqyZ
+  YODA / SOL  MCAP=$388,976  锁仓=None%  H6svJDCwxrVbfad2GX7Fwf4PcssNseMSbhf8iDxh6A9R
+  breast / SOL  MCAP=$56,524  锁仓=None%  GTiAGtJ3bHBHaFTVgin82xc3tNrc3cHxqYJRdjMoEhQ4
+  MEMELIFE / SOL  MCAP=$48,581  锁仓=None%  G5HQDSzFmxsndXd8TUBf7AAnh57LwVAm9Yzb9q3iPuvs
+  UNAWARE / SOL  MCAP=$29,982  锁仓=None%  3wVnkBUzohrnnJ1zU8M7nzoFmQBBjuZRyLfWp1ZDzkNt
+  CTO / SOL  MCAP=$13,608  锁仓=None%  4zyVy9AGgUdoo7o1yCcqoqpLnAXszAe3G2dcr1G5VehW
+
+本轮新部署: 0个
+
+[22:55:01] === ��177/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  DURVOV / SOL  MCAP=$1,443,539  锁仓=None%  CjigC9CgNjRV5yXrQHXzvGjf3Wz8gs9RN8FMZvwVUeuL
+  BinanceSh / SOL  MCAP=$104,920  锁仓=None%  3vbgAYNP46sBhFX8Cc3B13BQRhDBtBVSjsjguMZsZZ2o
+  Corgi / SOL  MCAP=$50,176  锁仓=None%  EfkS1TfX8Z57bukq4iDPkzKo9UTNxg28Rp8qhHwAQehL
+  Corgi / SOL  MCAP=$44,784  锁仓=None%  CLVic5keqAriWamGJKM1fRJY2MbjFotNstfwx5NnGeRK
+  UNAWARE / SOL  MCAP=$41,614  锁仓=None%  AdGqYEQnZW5p8YK6VAduMQPBzkBrcqmuEc86YpFoKMsG
+  SUN / SOL  MCAP=$32,030  锁仓=None%  DyFc4ZWZ5x1prsANfaG3GwM2SqhvvumvuZtwD41D6yq7
+  MEMELIFE / SOL  MCAP=$13,623  锁仓=None%  BmCW6TcnZyApctdXUpRz1KH3b3EPuWoyB2sG8ykCMSgE
+  ikigai / SOL  MCAP=$9,036  锁仓=None%  AN19AuDx9z4NHg3whQQo5dmKV3UQCXciL2XAEvjF9LWq
+  $FRO / USDC  MCAP=$8,025  锁仓=None%  HbAKsvTwu6MMaNkyja9s4HTpYvhbRJPqnp4ZNdvixaKG
+  ETH 11th / SOL  MCAP=$7,963  锁仓=100.0%  HB1WZJ1hscbpa3o5f6gMvoJ3Kw8oRQvCEfe4WzbY44Ea
+
+本轮新部署: 0个
+
+[22:57:59] === ��178/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时92.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮KAJTAC / USDC  MCAP=$281,188,677  锁仓=None%  9Pt5YyREyUPSYV7VfZRNsRdK6WGJEDbXStp3anqPV3WR
+  YETI / SOL  MCAP=$241,954  锁仓=None%  4z6xnBYEmgzBgKrL8sAnpQzHqqJNGEhtZF1sKAZt6v4X
+  BinanceSh / SOL  MCAP=$127,129  锁仓=None%  Dh5y3Ynq7bgFiYg2YvoTvG43rxEK3YSgMNA8MNPTxJnG
+  SH / SOL  MCAP=$44,548  锁仓=None%  CmaJRndEYoFKiUdPx7juefSjVp9kVKVeU6547xWRm4xp
+  SH / SOL  MCAP=$42,460  锁仓=None%  GP9GfcpaUiP8iKRGbQhtZby9gTznG6tVZBTCBX2W7PPF
+  QUOLL / SOL  MCAP=$41,379  锁仓=None%  83zmDktKmZpF4wpFyZr5vAeVuNMJSdBK2uNNKCzUU3tW
+  QUOLL / SOL  MCAP=$38,695  锁仓=None%  EJFuvKmtTkfvU2N9XinR3DewdpqwdRL6NqUBLD2JfKFQ
+  Corgi / SOL  MCAP=$37,492  锁仓=None%  5jaVyKs2gptYX4kR3ibizR5SjA2B91KtE8n2P67sigpt
+  Corgi / SOL  MCAP=$37,292  锁仓=None%  4bp3LAeQvNswFRHsfi4hdT6KHKjnFxzwYiLAfnSvABcm
+  CTO / SOL  MCAP=$28,055  锁仓=None%  72FAV72JXS9PoWXJVjdNG7Z52sqy61Yu394MB6Kaa1jg
+
+本轮新部署: 0个
+
+[23:01:03] === ��179/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮EMOB / USDC  MCAP=$615,030,354  锁仓=None%  GatSzVRzecGG7sLNnv7uusTkv6JsHDAmeLHQESVABU4t
+  Corgi / SOL  MCAP=$54,505  锁仓=100.0%  4qNoDctdwvgUHt4FqZ6QhBoWG1rfnf8SXi9bGCN1B31Y *** 已部署监控+模拟交易 ***
+  QUOLL / SOL  MCAP=$45,738  锁仓=None%  DKAxjzjRA3rfG4MnGMdRDuW42BYECKyWvVJXBYHPDLB5
+  QUOLL / SOL  MCAP=$43,663  锁仓=None%  4YM1zUKGvSKd8MRjrXKGPwLwXxmyFtJrP6Xpj4GALd2p
+  COIX / SOL  MCAP=$27,075  锁仓=None%  7JXRxpsgPgEvmtJm21wfcgMT84XsdBXcnCJ8vrsQLefx
+  FiFi / SOL  MCAP=$11,359  锁仓=None%  4nAitinDLvSs6rMe21YBQVZq81wXHrsadMfRucBpjvtg
+  Corgi / SOL  MCAP=$11,313  锁仓=None%  FAz39xGmX9zbFcX67rK7x7p2NhdrS4a4DTESN3vMShD7
+  FOMC / SOL  MCAP=$9,832  锁仓=None%  4RzkSqSULoUyqRnFcfRxnCsCZBwmm3bfTgngueYeJ1qW
+  Corgi / SOL  MCAP=$7,669  锁仓=None%  CraFn3qvUEjh7EAfjSre8MQULUQBVZqJLiYnf5unvNEc
+  CUARDRAC / SOL  MCAP=$5,595  锁仓=100.0%  Ex85VTvvagrM3yEBGt9BRRJLWNPc88nyLz4RH3DDRvjV
+
+本轮新部署: 1个
+
+[23:04:00] === ��180/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时100.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CTO / USDC  MCAP=$262,277,589  锁仓=None%  GvfzUddsMcGWuEJVecQXeZcXDgvfipNF1jC9brtfjALZ
+  Corgi / SOL  MCAP=$110,204  锁仓=None%  9mAX6NhWFpMiZxSNfo9AjEuaeEBcPkMZjVs6xhD9xYgs
+  SOL / SOL  MCAP=$54,398  锁仓=None%  BMLrBEt2xubt5z9UnGLAv4qNJpb4EGcKb2Kf5yPKX4m6
+  CORGI / SOL  MCAP=$50,470  锁仓=None%  2JtRj6jFAz7Mmj1Suo5NnNpXyAdaaVnYVEBkGi6jjyDX
+  MEMELIFE / SOL  MCAP=$44,278  锁仓=None%  DLzktmfvKUQetEKXVRT4jq5Yd7pe2Av19PKJ5vnFXgm4
+  Corgi / SOL  MCAP=$30,143  锁仓=None%  f1R2Qs8zDdKLtus1ami4yHFwUfTpCD38r2C5SkDyLL7
+  Corgi / SOL  MCAP=$27,072  锁仓=None%  3XmMdph5GfVfd1px2vJ3DwoCs8A3g9mDAPs8kAhQZbJw
+  PHAWIZ / SOL  MCAP=$14,148  锁仓=100.0%  5WtLBmPYNpd8xDNwojqiNZY4vMPQeSWEgUfwVTQHTH1c
+  MOST / USDC  MCAP=$12,808  锁仓=None%  EHSUWwdHHfmeniQjMgZwkBU4iu5bw3LgGuH8Xuf6oSoE
+  Duck / SOL  MCAP=$10,813  锁仓=None%  FNYJ5U7cwjGrJtKCebpym6U8modM4tqZpbebM2TBbbuo
+
+本轮新部署: 0个
+
+[23:07:13] === ��181/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时81.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮semonG / USDC  MCAP=$314,770,668  锁仓=None%  EGWuJ4iZFveUzgzVrGeJpDu7kZd3b6j1ZpvrM7e3boBU
+  GTAVI / SOL  MCAP=$338,092  锁仓=None%  98SYU9ZHDKX3rAHsdUw2M5fKQRtZb4wkujEPxCiz9idh
+  UNAWARE / SOL  MCAP=$34,207  锁仓=None%  6ikBUbkXnLVqHTu7optNfea2BvwxJB6NLGHXXhWUppdE
+  TripleT / SOL  MCAP=$20,786  锁仓=None%  Gbfo9vFNqiqCaPbEWhKUtBnSVp2pmM3K4KT5E4PxV2Br
+  Corgi / SOL  MCAP=$20,567  锁仓=None%  14EVvkiB4tnk9WrXM3gb73aG6iTF4j5LxrwesGLwA5zf
+  FOMC / SOL  MCAP=$7,314  锁仓=None%  HCmj1RvhxPKneyTeuHgM5d2b5x1i5afUjPqg1z5okhpe
+  BLCK / SOL  MCAP=$4,229  锁仓=None%  3xHRbXdnNumq4ZQZC73vehFPfvDFQLhacqWevZSQRhZL
+  WJ / SOL  MCAP=$3,676  锁仓=100.0%  Gx6wFqSWBSpFSVbVWsigjR6FrXTu75MGviCq6nbR6PBD
+  BLCK / SOL  MCAP=$3,553  锁仓=100.0%  6bt7tSUzLRAFTKSy5R2xioypXm4KcPTnzZuPbtjWDzf5
+  BLCK / SOL  MCAP=$3,084  锁仓=None%  BgmNJR3Ku6qLrewre7LFaUzcmrqhju2AXWFY2qQJE2Ff
+
+本轮新部署: 0个
+
+[23:10:07] === ��182/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时76.3秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ALMO / SOL  MCAP=$1,394,548,366,743  锁仓=100.0%  ADcaFBYa8u7LVEzJHYTXm4GsELNY84ENKrfcrjPXNeiS *** 已部署监控+模拟交易 ***
+  CXMT / SOL  MCAP=$2,015,252  锁仓=None%  Fcw6RXx3yTTUe8XaPKBN5DJ82iCm3oVey6bxS3chb88S
+  NEX Ai / SOL  MCAP=$678,005  锁仓=None%  DBLcQ4M8yeqweevPVf5pM9wx25fsQpYkz5Zr88Lg8Nzw
+  CXMT / SOL  MCAP=$447,031  锁仓=None%  APetuRh95UkvaiFLwhfxFek7MFaipVSZW4CMqSM3rqGZ
+  CXMT / SOL  MCAP=$435,778  锁仓=None%  E3jX15ZxD6sZcDGfQ3vDY5XA6mnjJQ8NJs4k96dx5akR
+  UNAWARE / SOL  MCAP=$40,578  锁仓=None%  6fMTdbJyfby5FxBbh74sJfqnAdYmBaZb4iDuHLNJ3ejr
+  Corgi / SOL  MCAP=$37,015  锁仓=None%  DuE7cagfem7WkutgELyoSakdgEsMQR7wXBMe627Z5sQG
+  Corgi / SOL  MCAP=$35,253  锁仓=None%  FeVsKgAPjs8iaDt2xVgF4Er2fWBMLTUnrQjf1nGbAXvv
+  Corgi / SOL  MCAP=$13,614  锁仓=None%  AUyqUSpwdvP9GjDiWpzkTyuPJpJcq4vujjogsbVcdSgP
+  MOMO / SOL  MCAP=$9,949  锁仓=None%  8a7Ft218dhcAdAjh8XuBaFYkY581zuL4YwenzWyAXCAn
+
+本轮新部署: 1个
+
+[23:12:56] === ��183/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时59.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有2个查询疑似被限流失败,建议降低并发数重试 ***
+  ㅤ / USDC  MCAP=$41,586,956,080  锁仓=None%  EFZEFKAkq8GZGVxmWjsX4PgPKU1YB7suR6U99PNjCKva
+  CATMAN / SOL  MCAP=$1,527,542  锁仓=None%  Z7iwTaNgxWtz1f2zeFJ2gY2iHQdW7VTwbyzps4T5QnV
+  Corgi / SOL  MCAP=$70,936  锁仓=None%  2RxbxGAJyMY1oKTkgcRPV3xaEtvaBrFguSyZB5wJwNcm
+  LIQUIDATED / SOL  MCAP=$44,985  锁仓=None%  8RERM9XTa9GR3v6wEURVBmdH2wjUqgy9dQj6kyXvSdqn
+  Corgi / SOL  MCAP=$34,215  锁仓=None%  Eao91zwX3MeMFv3tAboX9bWqwxtYEC7EE7HQw5KmrtdP
+  UCOE / SOL  MCAP=$33,306  锁仓=100.0%  AxdPqPY2icTTPnYy8QXscTYU3eMuBcRQL3i9imNJSjYN
+  UCOE / SOL  MCAP=$28,019  锁仓=None%  DTVe4GMDpK27kwpuwVTRcvB3LhSwF8iuTPSmHzwPbaLs
+  PRAY / SOL  MCAP=$26,928  锁仓=100.0%  dhRTKLAHXLuvMGyJKucZdB5QCRrym2c9qhcfDjXBJyZ
+  breast / SOL  MCAP=$11,308  锁仓=None%  H5PYafprfemAHFd3Pc2KEPeUyPBRZYKaeCzD8aihTo2Z
+  KETCHUP / SOL  MCAP=$10,893  锁仓=100.0%  5KtHoBXnzPrWRRAMA79G6eqN8rc9kaTzdQeu8HLC94Nh
+
+本轮新部署: 0个
+
+[23:15:27] === ��184/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时68.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  mɔ / USDC  MCAP=$1,515,839,666  锁仓=None%  4sSZreZD1SfBASsyAKQg1ZV6i5Hc1zn2R5Em4oB65uru
+  ‮KAJTAC / USDC  MCAP=$339,344,373  锁仓=None%  aYTV3KxrW8g3XSwmGiWF1TwDjX9G3jvJkYuKLBHakAX
+  MarsCoin / SOL  MCAP=$174,316  锁仓=None%  8yHGDYceZbmZUVXq53fh5rWzBW3RtwtebWAQoDSbbnBj
+  Corgi / SOL  MCAP=$52,950  锁仓=None%  8SkghZyhDrAE342F4p2iCn9kXxAq4E5cApgpc8puH5cK
+  Corgi / SOL  MCAP=$40,756  锁仓=None%  FtQNfBfJMUQzWussxEwbTiW62o9UV7MeMgL74Vz5JvVv
+  Corgi / SOL  MCAP=$25,232  锁仓=None%  EbPMTrRCFc9ovN3WXmMe6UkPjeXm63b8z5gawhGdFsVS
+  GR2 / SOL  MCAP=$12,536  锁仓=100.0%  4L1YtHkbKucBYeuToy126XwF6txF3VYGJ26nu6oSHEDs
+  $ALIENC / SOL  MCAP=$10,879  锁仓=None%  En3Wt6utW6BNffWpRoXyGbLoWysybQzLrGtYeCYc9KzL
+  Turtle / SOL  MCAP=$10,256  锁仓=100.0%  E8rxDw4XckAgg34rPTRzcZgevWDau8mUuFhLdm7At8ra
+  APOLLO / SOL  MCAP=$10,159  锁仓=100.0%  7Mg6qXRvvQhS2Qi9qNh1uKGJiR1zUyF73UVx9H28cH8
+
+本轮新部署: 0个
+
+[23:18:07] === ��185/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时83.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮LLORT / USDC  MCAP=$41,847,496,250  锁仓=None%  HxKbbG5WvhABn9euZufBttWok56fPUqvKu2FxPkyNT16
+  ‮BBT / USDC  MCAP=$39,092,353,750  锁仓=None%  9KXYgD511nFejXmmF4kyVHkbZy6Vrky83Dtqc3yb6yfY
+  mɔ / USDC  MCAP=$286,739,564  锁仓=None%  BYKz1ZTCWUAPy79EaK1fqSPX2AJWhJSdNYqmanJ3Pzxv
+  NEX Ai / SOL  MCAP=$138,841,525  锁仓=None%  22U2TmLSBWQThHK1vFeZau7y9ApMR9mynQkcPJSbUxhE
+  CTO / SOL  MCAP=$149,443  锁仓=None%  HKmhtbGJuzxrK4fsmwcq7fW69FKdQAspvLE4vuqNsR3M
+  hik / SOL  MCAP=$35,841  锁仓=None%  DLXfMokrFJQiHhRd1TAJRZV2xkyuFfBiKSEWAD5z6w5F
+  GRVT / SOL  MCAP=$34,700  锁仓=None%  FJ4MnfePRurwybxdnbMBNPQquGRg1eFgF78MwjnodeDZ
+  Pedro / SOL  MCAP=$29,830  锁仓=None%  2yke5Gripq61DbkMFA9PYZV1oz1qjBuyChEXWpxJTMd4
+  Trudy / SOL  MCAP=$23,399  锁仓=None%  6MAgTiE96nj5ekpjtZWSrKJZvMQQbogAGmwTERkyRYWW
+  Pablo / SOL  MCAP=$9,901  锁仓=100.0%  3utvgqhvKTuYQqSTinspVbf5wGXDn1BMwDCmNwMLnXbc
+
+本轮新部署: 0个
+
+[23:21:02] === ��186/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CTO / SOL  MCAP=$53,855  锁仓=None%  D7v2o7qkUKSQj5ymoe1N4JU8CsM4R3MXC7kXdURim9jn
+  FINE / SOL  MCAP=$17,431  锁仓=100.0%  69D6LZNtNNRNAcCut8ZozUpxMzqN7Tgf5mKzB6J97SZ1
+  $TCOINS / SOL  MCAP=$12,160  锁仓=None%  Lk7yEbXLVZQ1S8XfGZbEeDmR4LqrxPTzrG4VzAmCAqg
+  APOLLO / SOL  MCAP=$5,504  锁仓=None%  BkXBVHboSLJ6ebUhWYgFF2ptJZRyHWHvaVspLZWvGK9g
+  PINKR / SOL  MCAP=$4,591  锁仓=None%  2bmWQbGekUATcSPGJNf8ebwyFa1Rmk3HBTc1nqxfcjLW
+  $ETH 11th / SOL  MCAP=$4,533  锁仓=None%  G8hjQwzsyVBQ94VV9VUJMzWQAo2BPuhuJF4HPqxdAebt
+  SHORT / SOL  MCAP=$4,385  锁仓=None%  2S2r4NFbejAzvqivNcfKEMinXniTtzqtdHVg6iLBZWeX
+  sandy / SOL  MCAP=$4,254  锁仓=None%  4xo2h7tNMQb5B8e8SMoF1JBfB9qGBiyrgapjZagsphLj
+  Leopold / SOL  MCAP=$4,180  锁仓=None%  8aFVTfjZ1c8V3hnuEhhxhxeX2AShJmxMD2ArXGC6Edo
+  MCAT / SOL  MCAP=$3,772  锁仓=None%  D7fwrV8NiH6d29XiwTdYCqbgBAaaCibJS6T6Hmto588m
+
+本轮新部署: 0个
+
+[23:24:00] === ��187/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时101.1秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Google AI / SOL  MCAP=$616,924  锁仓=None%  GzwxFTmx5rGyYNv2FUaRiupo5hRkfs5XEiywBDMBbdWT
+  ADA / SOL  MCAP=$121,133  锁仓=None%  37Kr1K2YYEjAnsW188WDqQ7z8Lyi3acEeU8XGoUeBj1Q
+  FIFAGATE / SOL  MCAP=$67,288  锁仓=None%  5d6WjSuqfHEFgXwHXfN42F3bksDtdYrd5bhCEKXAjQS3
+  Animalio / SOL  MCAP=$9,435  锁仓=None%  6YhR5WESkqjcUX5MVbJgbx31y39KqkN3mgzMHdciTkU1
+  $TCOIN / SOL  MCAP=$7,982  锁仓=None%  DrcrcGUyu4vcJnPWQ6vGhBqWxzHpDCrJZ7e1dact7B1L
+  CASHCAT / SOL  MCAP=$7,203  锁仓=None%  5swtiMjJtz7zUjHR6qkdeJ9NCmupXdgR4268379m9ecZ
+  SOPHIE / SOL  MCAP=$6,778  锁仓=100.0%  DDpE3AME8oQkFaFXqGKMkCS9jzXhXQ9J7fViwao8e4LP
+  BBC / SOL  MCAP=$6,273  锁仓=100.0%  3LjmHh2iSM4WmxEcTH8BcDhEHo2mbNZDDCDWhVXocwfP
+  Trumpconomy / SOL  MCAP=$5,187  锁仓=100.0%  6YPi9R7yVr4e7n8M3CvQkmHWh6ZnpRxvWza7bp6iqgQu
+  Pudro / SOL  MCAP=$4,810  锁仓=None%  AQVYoNLuJxiW3vXQAnBZxCqLMx2ttehuqvc1qSsetJB5
+
+本轮新部署: 0个
+
+[23:27:13] === ��188/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  SOL / SOL  MCAP=$81,580  锁仓=None%  HEQt2dsX3ykT8PwuKk1EfNL7QrqFLLpjtxQugF5Zzpe8
+  Pedro / SOL  MCAP=$53,951  锁仓=None%  HwHgxK6XeqbuXjBk5oEkzMJckspRc7XXz2o8vErXt6D5
+  STUCK / SOL  MCAP=$33,225  锁仓=None%  DujN7LGEuhLt1j6rN2bu9it1uMH8PNMHJcmxWojqkC3w
+  PULL / SOL  MCAP=$31,272  锁仓=None%  BL6rVZBSACS9oP5MuLgFjGTYrihykJwkuEs2wSE2Axvn
+  STUCK / SOL  MCAP=$26,267  锁仓=None%  HPRxw7LfdUugYg6D3pPivEv1oguBN68DBa4htoA2jGKT
+  эждл / SOL  MCAP=$12,070  锁仓=None%  ApwykyiFJUNSXYMLtGurAuwwsYLjQX2rRJUd1bGShvEi
+  Turtle / SOL  MCAP=$9,414  锁仓=None%  5GiqBGpiU1utB4UZ75XDWotFpRvbTamstmiV71wTu3Fv
+  EB / SOL  MCAP=$9,116  锁仓=None%  47AhrSvtYHUoKEE5Wv7naedmQKtVvke9RG1nr1YduN6Y
+  CBULL / SOL  MCAP=$8,355  锁仓=100.0%  J9Jdxee8fiqpS7vMGPEMKMbkAEit2jVSvzJxaWcqWhus
+  Corgi / SOL  MCAP=$7,847  锁仓=None%  GfjJ96QEhfr4TUZcTMU8djYq7SNH7WToiiCEhio1oYPM
+
+本轮新部署: 0个
+
+[23:30:08] === ��189/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CTO / USDC  MCAP=$319,452,540  锁仓=0.0%  CXEJNCtLWmM3rywY7wh33iNGMQ78abQ4DT2rqZG7WvjA
+  MINEX / SOL  MCAP=$253,450  锁仓=None%  3F8cbc5XzJ5uRes2JjMBatkhxfVH4PhJAoh4fsMYc3Jg
+  GDOF / SOL  MCAP=$66,880  锁仓=None%  2S1qFt6SexdvaaXBGsHDm91B5E7J7Gpn5Ee7PUY76XCh
+  $ETH 11th / SOL  MCAP=$39,757  锁仓=None%  3JEQ8Y72AzpYqvydmqSmLpPZFDeugaZxS3fUovQJYZrS
+  BUDDIES / SOL  MCAP=$13,653  锁仓=None%  4Jvq5RtYJAhZU8kh79wEJu3VN8iQfPyjU6kEJvYktPbQ
+  Solja / SOL  MCAP=$9,294  锁仓=None%  7j7QYsyyMD5zpAP2AkN7cQSHnc7pEoux6LZzraYQKXN4
+  Turtle / SOL  MCAP=$8,299  锁仓=None%  HJDCsvUy1hve8Kw484zt9q45B5ZQp2GoyZL2UX9hruki
+  Zeus / SOL  MCAP=$6,218  锁仓=100.0%  6AdQSTPeyvKSH8qYeJRa1N6ZbHVtdV4J8jAxX1SNWia1
+  themegacooker / SOL  MCAP=$5,002  锁仓=None%  ABkxeCHTJsFipvxaa51SgQsgqUwQAjPRihGAHjMGsSC5
+  DJTCOIN / SOL  MCAP=$4,721  锁仓=100.0%  2cEuGM2fS2KyBA7tfNXETC4zTZNrarzuoc1fCmnCUxi6
+
+本轮新部署: 0个
+
+[23:33:03] === ��190/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Jimothy / SOL  MCAP=$22,154,581  锁仓=100.0%  7xcRo6YSVj13DXhrzM9eawRqgTr5ki7sPDKb7sfzcp14 *** 已部署监控+模拟交易 ***
+  MOCHI / USDT  MCAP=$13,517,506  锁仓=None%  BqhwEPgan3DQkLUyx4iWskWaecAURNSxqMS25aTj1RBy
+  SOLLIFE / SOL  MCAP=$1,659,484  锁仓=None%  FSi5oxjDso1FnFHf4CiF5xcdFbRH5TLBjs5MBqp8fyHX
+  MINEX / SOL  MCAP=$230,498  锁仓=None%  Bf9juYoTMYCVR7c3J7vBL8sqB7CHYwmZrsiigFG64RFK
+  CTO / SOL  MCAP=$96,955  锁仓=None%  HmCL2ZtVMNGWcmqSuRPz3PFBBkvQ45DRA7WBNHiYveEt
+  Pedro / SOL  MCAP=$62,870  锁仓=None%  2LamhWCWQjEtatW1RfACiUg9SsXKGsEvZ3gCNpxEbi7o
+  DEPE / SOL  MCAP=$44,335  锁仓=None%  HD9QNwE4UNrAFWT5WuGfkuQRmJFgv8F7ajzwpEkzDtjz
+  Bob / SOL  MCAP=$11,775  锁仓=None%  D8MqfvPRgWX3y4GdYyozX6KisRHSnqD8f75BnjNvWNEN
+  APOLLO / SOL  MCAP=$8,874  锁仓=100.0%  H4Br41ysVsoXa7ARwpY3NdyfWpngWAvz7PpxqP2TDjwY
+  APOLLO / SOL  MCAP=$8,677  锁仓=0.0%  4QRWhaEYMXXTcoorCVYyAnsJU3Yf8o1g7ihhBW2rsaUF
+
+本轮新部署: 1个
+
+[23:36:01] === ��191/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  VOTE / USDT  MCAP=$1,000,723  锁仓=None%  NQT5uc3c5rxfwBAGNmduuLc8Kd1N6MPUix53jidkg7S
+  VLAD / SOL  MCAP=$761,821  锁仓=None%  Gjbc6kgDt3XhWtFR7NdRukEHqHhLunT7PFxw4wHeqg5y
+  VLAD / SOL  MCAP=$464,896  锁仓=None%  72b8oBrnK5rPidCxGpcd42DWuAaSQ7GyB9P3CSd8VbLU
+  GOAP / SOL  MCAP=$422,594  锁仓=None%  3tuypgzi2Dgj1x1NnZGkQpoWR2cSz1PvKdfP6x2L3pR8
+  DEPE / SOL  MCAP=$62,365  锁仓=None%  2Zo4LK2iMMY7dfPBfZdWwvz6QsFmBFATGjNyMavvaeb8
+  DEPE / SOL  MCAP=$48,852  锁仓=None%  BK1MPEtzzvaNMbGQJPqj7brLvZe7nabV74pUhb5M3euT
+  SPIKE / SOL  MCAP=$46,573  锁仓=None%  7xnqYZTTDrxCkdR9E7f39M7mJwbSUDcygqqtqJoQb7vF
+  Cowsem / SOL  MCAP=$29,523  锁仓=None%  5zwSnSzx42eN9Hmn2FKx2RFeLEB4iNin4FNWYmp3p3N7
+  Penguin / SOL  MCAP=$12,086  锁仓=None%  G8XcQe2A94ZDVb5AL6Tf4XxBqUZsvGbSN5sGCYe5cyfi
+  MARS / SOL  MCAP=$9,944  锁仓=None%  Fm6mP9JWA9zRe2GdQCWu3NhnRERTUJVjUJd5ihg6wbV7
+
+本轮新部署: 0个
+
+[23:38:58] === ��192/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时92.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  PONS / SOL  MCAP=$951,678  锁仓=None%  CETob4PumB6S6LDsFArH8TsuerVxm3WohCm2R5DTCWip
+  PONS / SOL  MCAP=$284,501  锁仓=None%  68GtgrGyiQJcQcpDmXFkJmXmYtR98CeTJCHEwzVXRQp4
+  DEPE / SOL  MCAP=$44,092  锁仓=None%  Fyvvh5K9yUXazRUtL2q39oFH4c4yWkcNSeXzyDbJnp3L
+  DEPE / SOL  MCAP=$41,944  锁仓=None%  EVzMuz5CZLQ8HFRkqcAanYxfv9w4qQsvAM5fqiDZHeiP
+  Penguin / SOL  MCAP=$26,043  锁仓=None%  iBTki13QbmTDmZ42FSvJ7dWa62WmqCToQS1Kp2JF3Hh
+  SCF / SOL  MCAP=$11,169  锁仓=None%  B4WKoC6PVG6ZXgge4QBYvCWAFW4pzzbT3hwbRQrCBWAi
+  trenchcat / SOL  MCAP=$10,781  锁仓=100.0%  4AGm52X5T8cCtzPz6CtGHHDfkyapvTtbLts2CjwN3vzy
+  CTO / SOL  MCAP=$10,094  锁仓=100.0%  899FbzsE1zHw9LyuHzP4QaGWni3rGpGwBE5Gqnva9GCY
+  DJTTOKEN / SOL  MCAP=$8,511  锁仓=None%  CCGYj3gFK8xKCf64jQJ8frgzSvqbLFwwGi3A2jkz2doM
+  Cowsem / SOL  MCAP=$6,807  锁仓=None%  3knYG7G1wqd59otPv5Ji4UrDu4TKRmTSe4Qn76N8oNRK
+
+本轮新部署: 0个
+
+[23:42:03] === ��193/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时86.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  UP / SOL  MCAP=$13,004  锁仓=100.0%  BJq8jDtBMLSuiS46wNYtgCU5Mb8rCdrzsesfgQxuMBE9
+  $YAPPING / SOL  MCAP=$11,100  锁仓=None%  DruCdrxabVfHEFngW53VX2FvV163b9AjAq4xsoKA2sFa
+  SCAMFAUCI / SOL  MCAP=$10,082  锁仓=None%  8q1U9mCyVPzyQL5fJADA2TPsFoeVDNCthMDnj1xpRujH
+  UNAWARE / SOL  MCAP=$8,979  锁仓=None%  4paxadMa6WhrjgrNjbatrDpR4KuQhp3h1cfk9vS2thna
+  MARS / SOL  MCAP=$8,927  锁仓=None%  X8DQXc3JDWtPgjArBCD4wneLgmfudzzsVPq2RYa5ofJ
+  JEW / SOL  MCAP=$7,917  锁仓=None%  3f87USwwYDNUxLChXgFHdm94WMnYwCoSNjKSYtQAoYNw
+  CXMT / SOL  MCAP=$7,481  锁仓=None%  HFNv85r4spbQc7QTYXzZhbzQrb5CKjseC6uGkPTv6pqn
+  SACKS / SOL  MCAP=$5,591  锁仓=None%  AMr88hJCcsuHH8YSYFfxe4Vv5nJAH17ngpbd2Myzvgme
+  Broccolion / SOL  MCAP=$5,432  锁仓=100.0%  5SiGrem6KAPQqeSMiBWcLZJzXMQiuRHyomXk8uPHvjjr
+  akbar / SOL  MCAP=$4,765  锁仓=100.0%  43R7351QvEFVBYxNcSKXBHTWXvTEfgyRs9fXbxGxHv1q
+
+本轮新部署: 0个
+
+[23:45:01] === ��194/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CTO / USDC  MCAP=$317,006,659  锁仓=None%  BueZwWUqL5BjJo6262YkT7hE6JUXDDuN93ztLFobfW2A
+  BOMO / SOL  MCAP=$13,762,890  锁仓=None%  BV9Srsb5pvrHmma21bUq79DsdhiVJraNd27HqHRYWsyW
+  BLOCK / SOL  MCAP=$293,711  锁仓=None%  B8JEGSjnvGEor3wo4zjUWHD5f4rpvaQPgrcWTFXyssSy
+  puffercat / SOL  MCAP=$43,903  锁仓=None%  GwWm1w6R3FWgMoQffqpzZWDrKbtyQQkpziP1gC8bgfVz
+  orchid / SOL  MCAP=$38,783  锁仓=None%  CxzoFtbkFsUYQrVnTJRMtpdaNDXgZcQaBXb7p9Kcdx5k
+  puffercat / SOL  MCAP=$38,643  锁仓=None%  6qyXDJLrT9kUHZXriQoVYFrUuy8pEBAnjwwci3geqDVX
+  SPOODER / USDC  MCAP=$10,209  锁仓=None%  Er8cUpgxRqeeDJqeRBUoonLzpMZ9mzjdaRUe6zPX97KN
+  GIGAFFIN / SOL  MCAP=$9,845  锁仓=100.0%  DmmwNSokD4avNvXe1ET25qS98a2xbV5ydfg9EJPyGJCZ
+  SH / SOL  MCAP=$7,592  锁仓=None%  7w6BEKFqyDP7RhzMmDtVw3KtABCbwbscQQ933vsqDMKg
+  TAMAYURA / SOL  MCAP=$6,630  锁仓=100.0%  CBZPYJPBYypZKFVRDt68zgXG5k9E8Au596HuX3HW3PsS
+
+本轮新部署: 0个
+
+[23:48:04] === ��195/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时84.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  XMR / USDC  MCAP=$43,278,749  锁仓=None%  8pmjR9coMkHujQbgh4p3Hv8166L41PsixBw1QftKMwYz
+  MTM / USDC  MCAP=$265,822  锁仓=100.0%  2FTEwgyWWRpWctfav51LiJN2jxBcnadH3EJb5co3bXXz *** 已部署监控+模拟交易 ***
+  UNAWARE / SOL  MCAP=$46,265  锁仓=None%  D2N5itnS3U2h9fsBZPMLNu825YXAELsCc8PftEs5ANgS
+  CTO / SOL  MCAP=$37,053  锁仓=None%  GiRd59F6TNZ5NGwCkoHKTSBSn49xx57dz9o5pzMtPY7B
+  luck / SOL  MCAP=$33,368  锁仓=None%  C24dx63jqhx6L1FngDpqApGgRPyBXSfrhNepgKNMz661
+  GIGAFFIN / SOL  MCAP=$6,513  锁仓=None%  9k4SyEgamV6s9KKstn37WP63FEmQ6aNr4RkqNLsgbegy
+  luck / SOL  MCAP=$6,263  锁仓=None%  6r2SRXG4zMJXi1MvukYJRNU7ZVN4pDnbx97WusJ5mJL3
+  $ALIENC / SOL  MCAP=$6,245  锁仓=None%  7fPsbdVcpMfJrAzZsPPr6SZAgfgtpKPsSTgiMuEUf26h
+  nkm / SOL  MCAP=$5,169  锁仓=None%  Ecfbc6TSDWP7JHo57MSTGrGsQv8iukfPt2VeAYbgZGLn
+  CAMBO / SOL  MCAP=$4,778  锁仓=100.0%  4GmrnPUyhV3KddFfZcCHCQrRRsWvHSd4dfjarJBqBEm2
+
+本轮新部署: 1个
+
+[23:51:01] === ��196/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时100.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  RISE / SOL  MCAP=$4,048,365  锁仓=None%  2dxtiUtmYm3ir2igy8YLLAfbAsSUYDmw4iMrYfwZg69J
+  Chiikawa / SOL  MCAP=$202,593  锁仓=None%  9MaDwS6S633F2hcRcQ3pfKnKeb334i6bVhxpkQQWUQov
+  LPPP / Chosen  MCAP=$86,511  锁仓=None%  AdUBDwVHmiRpTUjeLGdqj1n4aWZrvkLG1o7MxmfkEK2v
+  LPPP / Hachiware  MCAP=$86,509  锁仓=None%  Fqo4ACWKd4dNdsSQ359ekoEnj9CJ4xKSFvdSwKEBjNKX
+  SOL / SOL  MCAP=$63,204  锁仓=None%  D7b5z9m62rnVhiFxFxqLXWUytGrgmwyfwJ8bf3ujYMv5
+  CTO / SOL  MCAP=$34,171  锁仓=None%  C85P6hxhUMTtwMo2HdqF16dFFggLzsE2KioU5q8Dj5G5
+  COP / SOL  MCAP=$29,403  锁仓=None%  8pB7SfffgebiEQsr2djNMLWGVe8nhuJPk5gnAV39nh27
+  BTI / SOL  MCAP=$25,217  锁仓=None%  36stWiEWnZAWquQub3yQMseKfBimS44xCKo61kAqsShv
+  Fennekin / SOL  MCAP=$9,611  锁仓=100.0%  4b2z7MZHTYa7FaYEZsHfp6PqxD5m8xYdaxeY3aA4WGMv
+  $TCOINM / SOL  MCAP=$6,170  锁仓=None%  GvMw9qXcgfgPRBbpuCNQv5UXgrgiaQUeZX5uXyFXuJeq
+
+本轮新部署: 0个
+
+[23:54:13] === ��197/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.4秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮0P / USDC  MCAP=$773,628,298  锁仓=None%  E25HAduPD6wR6jfRpD7Jf2ZJ7YQnBAAHD4HyBMyDEyRr
+  USUR / SOL  MCAP=$20,499,710  锁仓=None%  CxmgG42KrZBoJNxAML4gYA4acacpuMwLy6pQgGyq4Tvn
+  Google AI / SOL  MCAP=$314,432  锁仓=None%  DviauDkC595h6V8T4ZMzxBRBW3k1s3U86JGs8V7W3rCu
+  LPPP / SOLANA  MCAP=$86,421  锁仓=None%  CCx9ZvmiRuL9eVRdJufbP2uym8woaRg1xVmxSoVy3GUA
+  CTO / SOL  MCAP=$83,691  锁仓=None%  6iKuCtCVP7AfQheyJRvK4HossRKA5UHivgGf3LaQhg7T
+  STOPNWORD / SOL  MCAP=$54,878  锁仓=0.0%  krvD6JeEhZn8o8qYEkn19jw6ux4XeKL3hkkqMeAb38d
+  COP / SOL  MCAP=$44,690  锁仓=None%  9fcgJoKaAnZbNrAicGvMp5itZ4oJshzpjmzhEAXXLHGr
+  $TCOINS / SOL  MCAP=$9,010  锁仓=100.0%  2Ev5oDvsojmDJCV5DAR5pHer2qorJThyBDA4Fy1StqGL
+  SOLANA / SOL  MCAP=$7,848  锁仓=100.0%  8dRnSHLoZEMSkXuwL4hET9AkWGB7pdm48p1MedTVsw1M
+  VIBE / SOL  MCAP=$6,518  锁仓=None%  Edt7otWFxYLgCTVhfH5jJShuF4AaU46NsqdZg7VZ13WA
+
+本轮新部署: 0个
+
+[23:57:08] === ��198/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时83.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  CTO / USDC  MCAP=$248,507,692  锁仓=None%  CMDercxrsVVUDPMjocEs5ftCG2jf1tKRWyZy3Dg4crnS
+  PONS / SOL  MCAP=$185,445  锁仓=None%  AzqMATDYKFjdMPFtgoQhe5rxMfb1ZXcm4oe1bXDRmups
+  UNAWARE / SOL  MCAP=$44,966  锁仓=None%  Eiutgz7udHBLVddTKU5idciTta3Pq4Mgp69oAaPSGhmY
+  COP / SOL  MCAP=$37,100  锁仓=None%  DkMQbE4YQsUzbpRuT9K7SNNHQeAmywhUKyAnd5Tiv4gk
+  CTO / SOL  MCAP=$34,176  锁仓=None%  Bdrhfqfsc5gs6xLfcFEwTGgFQLpqJQBbrCv8VAeG2edw
+  FWABULL / SOL  MCAP=$28,955  锁仓=None%  2KhDQxupUVsATH4768XrDNRucQV3t8rmP7CgSaeoGCq2
+  MOONER / SOL  MCAP=$18,590  锁仓=None%  6RwNH5p8xM2smmcV2t3wygJ2FR4uDnkqECAyAjjH174C
+  SHIT / SOL  MCAP=$6,946  锁仓=100.0%  AT43Hf73Ha79vtqAXtLfzE1aEKdAb87VTV5kmHETnNmp
+  MOONICAN / SOL  MCAP=$4,326  锁仓=None%  DebemjZ2sMGhdUkEZtyjLwTQ9ytvFYhpNYuENXJXi5QP
+  Apollo / SOL  MCAP=$4,210  锁仓=100.0%  HfXehoR2JLst2Z8RfDva8zHCGhyvrrYxeJ6k2ENHjPpj
+
+本轮新部署: 0个
+
+[00:00:03] === ��199/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有5个查询疑似被限流失败,建议降低并发数重试 ***
+  COP / SOL  MCAP=$128,451  锁仓=None%  898FSSbSmfEXBzg3BF1RGSS5GbUhAvF36dcGmG9iGtEh
+  BANK / SOL  MCAP=$95,885  锁仓=None%  7pocdfZuB6eQ8NRwpvR1qEstaQSi3QZLrkpmvCD4L1Zj
+  puffercat / SOL  MCAP=$29,428  锁仓=None%  BiCeKb3mEmzDNqk1zwjrDq4dJzX1ruUzVSLxXGvttgSC
+  TRUDY / SOL  MCAP=$17,300  锁仓=None%  7XEFckcPdL2AxTa6zU5g2mWcmQRcLMuuKKJX8CmCceAs
+  Eman / USDC  MCAP=$13,765  锁仓=None%  CyvNnYkFAwxqiC1bdVT4SKL57jkqXz49BtkAk5zVtnXc
+  NOBALL⁠ / SOL  MCAP=$12,047  锁仓=None%  EBCvS8KuUqX7m1XGDTMjVdBGrtXTtKJFzhL4ETCWTmfC
+  CTO / SOL  MCAP=$11,535  锁仓=None%  2Z3LShaxsHc36Ew3oHyxS1yYjqVWrzdomJ4yccarLnRF
+  OKAY / SOL  MCAP=$9,994  锁仓=None%  57azXo9SqMLkojqXncxPd5bWpDoFtdGYwtxLzer81KnU
+  Romeo / SOL  MCAP=$9,813  锁仓=None%  8MEyaYA2SQb2Z67szcZJqEMFiFqk2iooZ9Ktg8nYRfZr
+  Birdman / SOL  MCAP=$7,255  锁仓=100.0%  3hGg1HsaKrie7tcs94qS4YsGnpikoMx4JnZjTun8UJi7
+
+本轮新部署: 0个
+
+[00:03:00] === ��200/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.3秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  UrAnus / SOL  MCAP=$272,128,924  锁仓=None%  Bx4R8e8NgBYueyTDm16pH7kCekeB9ZXDrYu7Wd9dkytt
+  HOOD / SOL  MCAP=$319,422  锁仓=None%  W6BvpgSkYNEXFEfPUpAxgDhWwTPqB9bFKCBGBJ3TSZe
+  CTO / SOL  MCAP=$34,186  锁仓=None%  5Emm3r6AshFBMPY3MUbknxzFfk9LcWNkYQ3i38qmRTdt
+  FLACO / SOL  MCAP=$11,567  锁仓=None%  37MSVX7yh64sUoMt7rLU1turhchiE69JSCPK1eJ83hxh
+  BOOBJOB / SOL  MCAP=$8,280  锁仓=None%  6XfiseXYFJ8XfKajvACX6nTmfPpf73wNMy8S5w8XxUEs
+  puffercat / SOL  MCAP=$8,074  锁仓=None%  87jjdDyAHA6qJXR8JArhEprbYRkdRiwddFpu1AYikBRM
+  BLDTHRSTY / USDC  MCAP=$8,026  锁仓=None%  DCaGPzjC5NaQTrYcQChwG3QQf1jqu8kWATpx3yESqfX7
+  MOONICAN / SOL  MCAP=$6,934  锁仓=None%  2gQPQJEK869RPkeFDLBdxk4SDqnNpnSvS5uNP7UoPqLk
+  LANDED / SOL  MCAP=$6,129  锁仓=None%  CsKJeJYwfMr5iGsbdNTppRNkQmy9pXYgKeh91V9gRLud
+  MOLLY / SOL  MCAP=$5,930  锁仓=None%  8QtfYD3wXkBVYq8527WVvzsd42D45ZPFU7B451CYG5ku
+
+本轮新部署: 0个
+
+[00:06:03] === ��201/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时79.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  puffercat / SOL  MCAP=$107,310  锁仓=None%  GqkGkzo2EKWPSTHGWAZkKQaX17qmwa3SmkzMb2riiDfx
+  SH / SOL  MCAP=$59,122  锁仓=None%  38r1F2NWj2LBbSZnfxU1tsBs3nMpPkiNGUJhYF29ATiu
+  ChooChoo / SOL  MCAP=$17,730  锁仓=None%  7swsen3FPqU8QiFtQEdwgGUKRo7rG7gF5npbH3WiixR4
+  Nudify / SOL  MCAP=$13,731  锁仓=None%  BV3qi6uZ4nLeyUnbvTCZrfHh4F28fzutpqmr28vAqon2
+  $TCOINS / SOL  MCAP=$9,042  锁仓=None%  89KHHu2whALShNjAqStiyFfDLPKtzNncAtoH3PoQz78Y
+  JFD / SOL  MCAP=$8,181  锁仓=None%  HiRF9bE2Q25GLBNkq3vDbUB1X48o94SAPVmajjQXUHwK
+  Dance / SOL  MCAP=$7,686  锁仓=None%  GaFRJMExbDro64ZaVSQZfiqUi6CtmUpma3Yp8NowKCWb
+  RAM / SOL  MCAP=$6,611  锁仓=None%  A3QM1nxrd3SJPSfZYN6r4UAC4gzkKU9BZVTcbhPwzrgD
+  MOONER / SOL  MCAP=$6,386  锁仓=None%  7BonMPSMbqUxaL99hpHUpAghZv86BKHz4mNhh2oDNitA
+  MISSME / SOL  MCAP=$4,249  锁仓=100.0%  FEtujcpnWJnQ5Je6qxzLon3D18Vw79ExvmgG66af8XKg
+
+本轮新部署: 0个
+
+[00:08:55] === ��202/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时64.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有1个查询疑似被限流失败,建议降低并发数重试 ***
+  OUYI / USDT  MCAP=$9,903,446  锁仓=None%  J87HrXdadX5oQAVuWAUJ2b7aJJzD3T1195SriFX7efjy
+  Anthropic / SOL  MCAP=$1,499,462  锁仓=None%  H16c6RyKJBw56yLzV7wXAsezMf9uNHhfQmyR66ksTok2
+  Anthropic / SOL  MCAP=$472,291  锁仓=None%  6acjHJcT3dLugMwXVJ7mJbbBCWxajd8YFqqs8HPVjeSi
+  Anthropic / SOL  MCAP=$393,957  锁仓=0.000000000254447202282135%  8395XraHvuuN4KoLSu1dCJm1AqGBuSVPiYGjJgoJVpXD
+  LUNA / USDC  MCAP=$224,363  锁仓=None%  BFPGD5CM8jg5iuVFEVKyc8dnBtnp6r3Yn9pgZkS7DF7m
+  Chiikawa / SOL  MCAP=$203,137  锁仓=None%  FhMsWexCgDAzkVLrbfkjY1qpqzFEBXWvTe99QzzDCwZe
+  MarsCoin / SOL  MCAP=$61,224  锁仓=None%  AQ2zaxQTqAqW7pJtjhAzDzGyjcRUpRukCCH4EPg4opKq
+  puffercat / SOL  MCAP=$57,107  锁仓=None%  CGLZcKnqe9Qte5SZCveBzuUh1hMdRa8e3m2MSnYRHSSe
+  puffercat / SOL  MCAP=$49,440  锁仓=None%  Z8MUVgYKims5mZg2cRVETY5UhtoZmVvs6zMJqpxvYei
+  puffercat / SOL  MCAP=$11,643  锁仓=None%  AHYj142CEndDZPUytNAYGitP8jGA9MvNNjNx1m1PJMMN
+
+本轮新部署: 0个
+
+[00:11:32] === ��203/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  TNOS / SOL  MCAP=$38,700,808  锁仓=None%  5SuAMTgYpGym8DWTbzLw3ciRHrTUecauftHaHENRuAwS
+  CXMT / SOL  MCAP=$320,035  锁仓=None%  2wxzkZk6nYK3SWFPck8zL3yMZSH1AouVKs1PgpHuZaCz
+  ChooChoo / SOL  MCAP=$46,929  锁仓=None%  5mpHxeDbZC3N5PvGD9yAA5TnVAnZqJ2QBmPsR49Z7T19
+  memecoins / SOL  MCAP=$14,037  锁仓=None%  AFjHJdT2uNYYnmYPTSNCGB9fb3mouhia6GgSfyc8imFc
+  Pump.w / SOL  MCAP=$7,932  锁仓=None%  AcRjp4j86KFsjR68kcJWWq8MXvWnTRdviSzdfLPPzcyx
+  PHONE01 / SOL  MCAP=$5,934  锁仓=None%  ERG4SmtCXAkMjREUcjFiFLp4QYS8ygqovyqUZDz6BZqn
+  $TCOINS / SOL  MCAP=$4,336  锁仓=None%  7MWmqQm3WZMhm3thaJ6cpk3Ht5L2hzVSbmYern4vguRh
+  WhiteJim / SOL  MCAP=$4,047  锁仓=None%  4TBrY7zQ27GtjWdRvft453TWGYMeishQWGDo3YbbRvDF
+  farm / SOL  MCAP=$3,768  锁仓=100.0%  C29rpXDSUkdeDSyLvT2mAVg1NCZJRSucr5rJ1J9Pn65v
+  farm / SOL  MCAP=$3,582  锁仓=None%  24xvDn1GGtR7ZJFC3Gg1Ad2oRea2iaNd9B53zPqdZzuu
+
+本轮新部署: 0个
+
+[00:14:26] === ��204/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时73.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  $ETH 11th / SOL  MCAP=$444,476  锁仓=None%  Ep7QZXFTmohFzFdx3kxPseVsxxP4x6ZUZzr3wF8EagMa
+  $ETH 11th / SOL  MCAP=$403,553  锁仓=None%  4ko1S3UryHajeps4zcjYFxx2VHRfze3hNWFVgczyLLpF
+  puffercat / SOL  MCAP=$65,158  锁仓=None%  Dux8f5wikMXp47QngBohcwbEJNvLjGG8xcD7yvBCSVhv
+  Romeo / SOL  MCAP=$40,743  锁仓=None%  5fBJ1oqomggXKcY7wX67UKCKJimLpVYkYmPVd6XVJ1dQ
+  CTO / SOL  MCAP=$34,249  锁仓=None%  9HG9b2FrMJ2i7CNbwx6HBVHrUtaUDm1KkWiidN8bTz2N
+  SHPRIZ / SOL  MCAP=$11,044  锁仓=None%  G2rTRV5e4CfS174bf75EkvdSgFXZYauwnB7DmoCaqbYT
+  iron / SOL  MCAP=$9,156  锁仓=None%  4JrpbMUtxGfxaNiWutrjiPioDwxSrN2BgH7B7SF5RCVe
+  Puffercat / SOL  MCAP=$7,758  锁仓=None%  9UmK8aXTLJfB5X6WDXQ9jrFDZR2jY2iPE9Yph47p1FQH
+  CNUT / SOL  MCAP=$7,750  锁仓=None%  4HTPzkn3MnLfx1eJoscL8UrzAVNUMDPuggAQL6VtbCSe
+  KOKKO / SOL  MCAP=$7,396  锁仓=100.0%  EhrRn9zpp9PKS6mATq1u4jSC6LRMh9PKnCry6Ktw8SXx
+
+本轮新部署: 0个
+
+[00:17:12] === ��205/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时83.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮MESNA / USDC  MCAP=$1,851,958,958  锁仓=None%  798CRCpP5aLcuUTduatfD1WC6Gq2sntEqr7zcPjDV8R2
+  TNOS / SOL  MCAP=$33,484,986  锁仓=None%  5cb95Sn91VctanmjRASvPzwEZwBxiaMNKS5iFvXcuytc
+  MVP / USDT  MCAP=$9,984,966  锁仓=None%  J4jTnnZu7hhhbWGP8jFjVHns8LB75hjrjN6PahgCXDcy
+  CTO / USDC  MCAP=$224,749  锁仓=None%  8tQi1kzPgTJiu1tf4ucMY3dvpm3gpcEqjnvDwkrFDtkt
+  puffercat / SOL  MCAP=$118,479  锁仓=None%  A27d3PYqNa3x8j3iDvrd3iyUDzAEt3z6qnN8FLaTxWED
+  SOLANA / SOL  MCAP=$20,873  锁仓=None%  3r4b6S2DXbRyXiNmWmjTHUe2kUBN1ScQP4Aj3yb9TP9Q
+  WARSH / SOL  MCAP=$10,220  锁仓=100.0%  5TGevdkwopbHSBFF8izUqWgahvKTvqKH1FsQ3EW6jbpR
+  jdkd / SOL  MCAP=$9,393  锁仓=None%  4BGbdxK188XTt4TQUJbEfv3GA3qondo6PsCUxPVjmQLB
+  SAVVAN / SOL  MCAP=$7,649  锁仓=None%  EPHU7WhMNzYMonGaWpuu3CAjkxjVxjUZPPkExkw71mCm
+  insane / SOL  MCAP=$6,486  锁仓=None%  7xfXVFC96f5hcTD88JVFhKxHihVfo8YmeZgcThNdC7nX
+
+本轮新部署: 0个
+
+[00:20:07] === ��206/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Jimothy / SOL  MCAP=$4,850,933  锁仓=None%  51qZs2FvoZrDXiXRwiRc7FHDnZL8tKygY2wgVCuLACby
+  UNAWARE / SOL  MCAP=$35,877  锁仓=None%  2nBcpNHYvtqwFAuqUyZvrvz87pAG3RZegCVV1naoXexL
+  puffercat / SOL  MCAP=$28,424  锁仓=None%  9ayKh4YM4k5H78is2St6dLAzKf17S53hU7oJNLCkeSu6
+  HAKU / SOL  MCAP=$11,948  锁仓=None%  85MTBskcS1JuYvpdFm9Wt8MUA9iGofU22ZJFLpPFtF8H
+  trench / USDC  MCAP=$9,332  锁仓=None%  DbKxzPWo6RcqcPrXG2hy4jDxEQrdRR42yYZMf7Vn3c4Q
+  Millie / SOL  MCAP=$4,135  锁仓=None%  BZozQ9FUhU91jdvqoP4AoFEGpzCrK4quwA4LjPm3UWKf
+  RIKA / SOL  MCAP=$3,409  锁仓=None%  2DmVX9oTz5wcKvvDvKLvBTaGXm5XgQuojmcvJnnc4nWQ
+  TUC / SOL  MCAP=$2,945  锁仓=None%  HoJnScELLocTJyC8A5wm9RKwB7VJpmDB1ydM7zLhzdsa
+  Jerome / SOL  MCAP=$2,778  锁仓=None%  2JxZKvSmPCjvphyWpD3a9xJGyZLC8ZRDTGpkbGNnLXNK
+  UR / SOL  MCAP=$2,624  锁仓=100.0%  GjAXypmWUwssA82J84dU2GJ4U7F3E17bHvSqdbA8ZzRK
+
+本轮新部署: 0个
+
+[00:23:02] === ��207/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  HAKU / SOL  MCAP=$65,986  锁仓=None%  e8uYmAdUYekm7vf31BdeZr5wT6rr8B4tKZzgMHFvpJA
+  JASON / SOL  MCAP=$12,340  锁仓=100.0%  Fxz2EqBAb8aebXAPE3SyTymvBvR4fyr6Q4U7P5VpNMNH
+  1357 / SOL  MCAP=$9,070  锁仓=None%  4GiiFj3RmBfvCV13AVpzB8LwtnL5j6K7FVyB31rzAfs6
+  USUR / SOL  MCAP=$7,690  锁仓=None%  74oVQBvbXo8Ls43b8uQfcSGjWNBWvRD8bnJuZD3ye4Tp
+  catfish / SOL  MCAP=$6,412  锁仓=None%  9Tcyei6pHPeY3VLrvVFkwjStspcuNmV6738RLSGgQ5v3
+  NMS / SOL  MCAP=$4,204  锁仓=None%  Gzj8koNTJ8hwC59quFNPB4DRqJ7JoKP2MFknecioYSat
+  LARP / SOL  MCAP=$3,988  锁仓=None%  5vbKj8uNBUx2jezzMG6NUx4osvMmmQU9RjZxqhTzjGdw
+  BUBBLE / SOL  MCAP=$3,634  锁仓=None%  DMJjhtVrAvQJ1SSwT4guv3tT8CtZo3HiXadxuywSBRpr
+  MANGO / SOL  MCAP=$3,269  锁仓=100.0%  GqAb8v3EYfqYLC3pHNRhSUpDB7bYv7o3bkAWJ2f8NArA
+  MVP / SOL  MCAP=$3,054  锁仓=100.0%  AJxjC8jayhsSJXcWEvxPojQdD3GCoEuzLEiUkbZq6kif
+
+本轮新部署: 0个
+
+[00:26:00] === ��208/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ChooChoo / USDC  MCAP=$726,149,199  锁仓=None%  3Jmxspj4DTFTSRR9fWA8FcbeCiD5sa3iZxyto1KtRfxM
+  HAKU / SOL  MCAP=$122,861  锁仓=None%  5p1v7txVLQDKavhhuhKiejiDSDcrBDQH2Pj9y2Ltp4ad
+  $FAN / SOL  MCAP=$36,479  锁仓=None%  Atafx8Xc7zpAYWuJwucxo1rxmxyeRs8i6FWpHsD2SkxJ
+  SH / SOL  MCAP=$35,252  锁仓=None%  CsFD1SLH7HEQ5wwgY8P5xmHCFdyG7fer4B6A7Lnf5wtL
+  CATJAK / SOL  MCAP=$26,194  锁仓=None%  GPhKVX5zRMnKhw5oJQmd4rPnwRMY6vDw5Hj8y6nTPToC
+  CATJAK / SOL  MCAP=$23,961  锁仓=None%  26DoANNQFsN615186aW7c6PGWKAZJy9eameVk7feBLxt
+  Pls mayhem / SOL  MCAP=$16,332  锁仓=None%  9EKUcGh96WdoqHGnmTj83e2u4QTaDfJ4HHtQdjCdVswr
+  PHONE01 / SOL  MCAP=$9,492  锁仓=None%  ApNckdKryZWyAhf2cayeN1JTiDfoKGYCL6eYf93choZz
+  BUBBLE / SOL  MCAP=$8,101  锁仓=None%  4j4A4k4pJJuuxvHkzuZ1AKiQXdSJH93Te4uZDb9Kp941
+  MOONICAN / SOL  MCAP=$5,661  锁仓=None%  2nEvVNNS22ykb9ZCWsw5MrEFiSrpSa4Nrq4ypQp5noYt
+
+本轮新部署: 0个
+
+[00:29:03] === ��209/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时86.5秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  mɔ / USDC  MCAP=$7,496,869,574  锁仓=None%  2si3fQY98rmzKQqHrwJhzpNxokz1tAQs3amfCYViy9ym
+  Google AI / SOL  MCAP=$5,844,355  锁仓=None%  3XJ6bijrEDVCLnmmTSKYXdEsDswSbXZ966AnR5bKAk5c
+  CTO / SOL  MCAP=$35,904  锁仓=None%  5KuLjEDzSNj7PrWWdGpAF8pS12MKmCnxDQX2PGohsUZQ
+  DJTTOKEN / SOL  MCAP=$9,357  锁仓=None%  ECLLvWn4bmxGaUkCg6feXa67RH6gcQ5M1ti52cNczVNZ
+  rewardbot / SOL  MCAP=$7,788  锁仓=None%  6T16KEe78qvSJGwsbbUWC7pyZKCqkq7BiV289F4eMrH2
+  UR / SOL  MCAP=$7,405  锁仓=None%  Am8afzGyaF8D9xw4rXGKzCAu4R4eLXqDUkzKKrYnzYHq
+  $ALIENC / SOL  MCAP=$5,447  锁仓=None%  aGAyaBLkrBfb6GAQwa7FDw1dbPZD58GsjzHeV5R8BWr
+  GENKIONSOL / SOL  MCAP=$5,373  锁仓=None%  GtcYV6NDtYpTkPcR2VhJd2s1V598sARZ26bL6sPnTozb
+  Glowstick / SOL  MCAP=$5,006  锁仓=None%  A2fyum7HkmtjFBoWsmc5W9pJr3hzGceRzpnrvkxhCfv2
+  JASON / SOL  MCAP=$4,460  锁仓=None%  YVovwxyJ1jk2UyvvNjSS8xoHJdHijLqwiwh14xUh4Dp
+
+本轮新部署: 0个
+
+[00:32:01] === ��210/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮SNIK / USDC  MCAP=$3,386,011,234  锁仓=None%  8ZTmANgteMK8ytvaU6tJNmaxbv3LnPQmZEjaJ8o38tdi
+  USDC / USDC  MCAP=$99,951,236  锁仓=None%  Dz8EbRLfcw5DLFfgJwTVdqgXRhsitfR86QMqTLRVoDiZ
+  MCBULL / SOL  MCAP=$1,647,026  锁仓=None%  DXkaX7g8AWuhZPs3q1d2KdGKHg9rf8HCTy3UCsKJAqwG
+  PONS / SOL  MCAP=$281,024  锁仓=None%  2iWrLf1UxaX53SgK4qp3jXD2u3KhV3eke6TyujHye8UQ
+  PONS / SOL  MCAP=$216,597  锁仓=None%  AmpKdVMXWXnhfsJq9mepoV6ssBzNJwhsC2oYq3JJkdsW
+  SH / SOL  MCAP=$42,540  锁仓=None%  5ibfT38pv9eeDaUE6YjSbUVn1BCbYWmT8HNoRGrgSwb4
+  puffercat / SOL  MCAP=$34,236  锁仓=None%  6Qrqo561X2xZYtJ2FrwRXLt5HKbkbqW9WCHRZJQRZqkZ
+  CTO / SOL  MCAP=$32,788  锁仓=None%  8AhWpR44fESo1tHqxsEKJkAFGGyjLdSas8wnZ8UAqFHU
+  PUP / SOL  MCAP=$12,682  锁仓=None%  8w1MkYcyz7M5KvHo4DP8DpB16MRWtdCdx9RxPopCxYdu
+  YOURNAME / SOL  MCAP=$9,220  锁仓=100.0%  72EecCfE4R8mr2dzBY27cTKPNDbH4Mc1DYQvdANpsf6j
+
+本轮新部署: 0个
+
+[00:34:59] === ��211/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮yespuC / USDC  MCAP=$6,383,781,363  锁仓=None%  5ZdiYLQcyfdJvSkgrnfGnmHSe2ue7VndkwHRKeTwzzhd
+  traindog / Passengers  MCAP=$595,891  锁仓=None%  8FYZz1oPeQgg8i1H4yyvKTV2znqyrpU5Gc2UerZQKz3y
+  Fraudci / SOL  MCAP=$238,161  锁仓=None%  9FotpRDDbTkmGH2gJz9FWp887J7uBhWfkxDnGYKUL2AV
+  CTO / SOL  MCAP=$49,144  锁仓=None%  9TKP2HNukeVSR74mQUQyuxjkqeimW31FKb1pbtRezkbn
+  Chud / SOL  MCAP=$11,539  锁仓=None%  HXjhZGZ4cK2p3LhwpNMKTw6VJaAcVfRKxM8arNdSiGgX
+  DJTTOKEN / SOL  MCAP=$6,708  锁仓=None%  E3t9QVpWXuSW7imyU3yrgAQHXwYEo3RHEVAe6rKS7bJA
+  regshow / USDC  MCAP=$6,659  锁仓=None%  5zX3UX4P8nSqXEEk7KdGvPV8b8hxCFKXeUdWchmyJhdn
+  Daegi / SOL  MCAP=$4,673  锁仓=100.0%  5iR6XtyyjCduPW3SVVSgq8BVEijyWnQYiNXgXR9FBZGQ
+  $TCOIH / SOL  MCAP=$4,459  锁仓=None%  CLFRoXqQFnYAu7583EGCabjEdAw3Lpav3FeJ7jGXn9D4
+  Ca$hgrabber / SOL  MCAP=$4,158  锁仓=None%  75MxfcisVNfGd9oVYCuZeMkLgNJ1Nmp2gLCNTSkGPt11
+
+本轮新部署: 0个
+
+[00:38:03] === ��212/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Flap / SOL  MCAP=$418,487  锁仓=None%  47Rg8qwt8sviuWWcbX6pHcBXs2Ga3R57QdCg3vwEKHs3
+  Flap / SOL  MCAP=$230,858  锁仓=None%  5TT1F61krRUYcsowBZHT7VQQeXgDP8cxSw4fkvgLMEvY
+  HAKU / SOL  MCAP=$59,434  锁仓=None%  GtNNNh6LWLbfdQ1vpMnmR9T5WUvZuMvMi211ve5rmBmL
+  酷酷来 / SOL  MCAP=$31,860  锁仓=None%  8iWauN8FrTsCgAYqnwGGEspYonoK32sniyrLLS7Du5Zn
+  SLOP / SOL  MCAP=$19,623  锁仓=None%  5pC591hWEG9nN6PoZ2j9YZSwEL9zukfPkxSMAgoqFsrQ
+  ZFELY / SOL  MCAP=$15,652  锁仓=None%  4rGWpZuN45rvFVmBsqFiWTibrSTMAJrB5D1mZki5ZmtR
+  RUNNER / SOL  MCAP=$11,100  锁仓=None%  EWdqwPMaMFNiN22nZppjeVsSqrSm7Wq7pAAfRFBnHbR3
+  jimaura / SOL  MCAP=$6,413  锁仓=None%  4c8d6svJGQRHTuepctDc2Qt52gJuFYiWJTEbHKmG4MUp
+  ACTR / SOL  MCAP=$5,653  锁仓=None%  EAbm2hCBK5JYx5xXRBV3655kbVyw9kc2ewogs3xSHmVn
+  TRENCHISM / SOL  MCAP=$4,924  锁仓=None%  HzsTsr6Z3oBLCiuk5tLuC5y1bBuLEJf2DaFJmSJQMbqs
+
+本轮新部署: 0个
+
+[00:41:00] === ��213/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.3秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  mɔ / USDC  MCAP=$1,635,662,703  锁仓=0.0%  9KPk5KNwXvSc5o52xp75MjYH7pVRL1ZHjvkUKVQ5XB3
+  PONS / SOL  MCAP=$177,162  锁仓=None%  HhEjb4Fo3sRsRdmX9ibcZRP2fkg98naVcVBipeB6zTvH
+  SLOP / SOL  MCAP=$21,409  锁仓=None%  6TKHMucUYH5Zy4UEKduRV64j1CBdCX2Bu1zTdWCHVCi
+  UP / SOL  MCAP=$9,418  锁仓=None%  6baZCLNpPpqgmJY6smbnqiPtwnXL9zAqj9ptDYNb7bHx
+  ZFYN / SOL  MCAP=$8,151  锁仓=None%  DYUwsbjQwVdWb7EJG6DAA2vxBXd45RHfNvmjLgvmkVUe
+  SOLANA / SOL  MCAP=$7,047  锁仓=None%  6ns3QVLbSy6t2TvgUmdqnnAKyFRnXrrWWKTsSY8CA6Hy
+  AISLOP / SOL  MCAP=$6,558  锁仓=100.0%  7jYjRBdv5hNh2ziHe7DBFwKvz5XM5x6DNpdn3DNqoNyQ
+  SLOP / SOL  MCAP=$4,473  锁仓=None%  9jnafVGKMuwJzqQcoB8SydzPRuGuUqHC9xZE2B7u7Sqh
+  Dance / SOL  MCAP=$3,851  锁仓=None%  B9zDoBiqnoqZoBwUkDe22juGXv4zasZ4GjdVN2Nxf2F4
+  Trucknald / SOL  MCAP=$2,831  锁仓=100.0%  4Wwg7AbNuojtgzF1Jn15xyHFdtxTW4EeqjKD7HDTZcwF
+
+本轮新部署: 0个
+
+[00:44:04] === ��214/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  PONS / SOL  MCAP=$174,038  锁仓=None%  HsA3FG9Ldq1nr9dJBwoVK5pUxrnTwTSFPiVczGJy3WFr
+  OUYI / SOL  MCAP=$115,203  锁仓=None%  4E1HoEUDa2rfKKXH5nTgqQKBByYaAVYdf8bctnkH9pru
+  SUCO / SOL  MCAP=$101,113  锁仓=None%  CUmS5JEEJQCMkPyLZzpJknrDx7L6kRAGcK1Rpb5MeSxp
+  SLOP / SOL  MCAP=$49,368  锁仓=None%  8uhkYs7ohBG6h1bmvonhmasWciT3KqVMSnpMM3MXwHC2
+  SLOP / SOL  MCAP=$12,122  锁仓=None%  FwaCy4appTdpZF5EmXymrW55CgttxcLZnjSTAbiAMkXc
+  urcoin / SOL  MCAP=$7,206  锁仓=None%  EUxx1EoeGh5Km8YxC19V2K3Q6pKi1YXJVSuhnHeLeXDK
+  MOONICAN / SOL  MCAP=$6,543  锁仓=None%  46ATY7vSrYuKMueyvz9A7z6BWsSmcTdbTFRja2GfSSyr
+  PUMP / USDC  MCAP=$6,276  锁仓=100.0%  2ivx7xRaCzvozgGPHRwiP94ogVCXQrLfFzseG2nxcZZa
+  MOONICAN / SOL  MCAP=$5,315  锁仓=None%  8qg49J8fDL8EUxXqLpR1Ni5xE4KKJx9tUNeVpDgUKPbx
+  FEELESS / USDC  MCAP=$4,836  锁仓=None%  5YaDm4aSssF54bJ9Z3oCZd9iWqK7APrJntYmWw4WPanp
+
+本轮新部署: 0个
+
+[00:47:01] === ��215/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  puffercat / SOL  MCAP=$152,558  锁仓=None%  CNQ57gMSzWUGxRgmg3ZB6Hu5jRyK6QJZXqajaf93PbfX
+  puffercat / SOL  MCAP=$147,591  锁仓=None%  DbUJ7zcKJdP3gA9mUHmVgpCHJGZkhXxna9mpkUgL7aPy
+  SLOP / SOL  MCAP=$102,547  锁仓=None%  Cak3umZb86w843VreHsVUNgatmsiDA7owhv5UDoab9Cj
+  CTO / SOL  MCAP=$43,981  锁仓=None%  ENEWreuJaVKjkPQBPUsaXp7j6fyGLLipEeqhFzKF6p4z
+  Oskar / SOL  MCAP=$39,129  锁仓=None%  9bZaFZREHfsD9jeJ4t8hrxqVApSUd2gEdyi9XtnNhxoJ
+  Oskar / SOL  MCAP=$37,350  锁仓=None%  2jYunyEPSbpr6pak9LtgzDwU74CFRfuvHDADuFm2LSsn
+  酷酷来 / SOL  MCAP=$35,746  锁仓=None%  4daSEfr1xDMaXhiroLtEXwv5YEihyfaUtSWY75DFqDwv
+  Pro / SOL  MCAP=$22,604  锁仓=None%  7ugMZWer7DqJFzwtsTdexEecJ8QvRKggXFv1RLxXwn4f
+  DOG / SOL  MCAP=$18,919  锁仓=100.0%  C6iKAmVMiGbTuVaxbR9S3jbs4xbrntpiK6Qr96Fp5dwM
+  CUETA / USDC  MCAP=$13,418  锁仓=None%  8c4pLZ276xVuXp7o46Uppfvj7tFNTdhXWakFh4WJSZFe
+
+本轮新部署: 0个
+
+[00:49:59] === ��216/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时91.3秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮CEZ / USDC  MCAP=$47,169,223,087  锁仓=None%  4R7MGKF5BroiKJaEYxdYoSCxxbQeywQukWBGRcWDqXik
+  Google AI / SOL  MCAP=$755,957  锁仓=None%  6PQWjngfE5k3zMXyA6vZyM9iD9TGTg3vcj2qQgG3dwgq
+  Inversed / SOL  MCAP=$209,768  锁仓=None%  7jmvsZf6sDhfVrbVwmv4VyrfWjjqo624uN7eJ1H29jyC
+  DongCoin / SOL  MCAP=$141,759  锁仓=None%  9ZKX2US61a3WgAFoLcdMQQXPTwvLH1QTapXpz3dVjFzY
+  TEST1B / SOL  MCAP=$82,619  锁仓=None%  8zg2nnaVRHLxVLJKcfvkBqNAbyQNCucu7rA91btKkA26
+  DOG / SOL  MCAP=$22,965  锁仓=None%  BRPTaP91WPqyahde8A6MCfknvya2pHe8UX2kCo2SkZWZ
+  SLOP / SOL  MCAP=$12,895  锁仓=None%  H1ihKsd2APL2F2KtBSjjpsN15aUJTPfPGnqhAuSTcBix
+  ROGSPE50x / SOL  MCAP=$8,754  锁仓=None%  2XqhZQkHwYEjXaLoGqugEjGMevm75DWqfPyi8NxsjxHE
+  FINANCE / SOL  MCAP=$8,499  锁仓=None%  HUowBUFjH1x6bZ4ca3EFheZpqDvYiX8mmPNsQppFXm9X
+  rewardbot / SOL  MCAP=$8,030  锁仓=None%  82PNkA3sJWc7uXJQbA16myMhFEMg3vDViaZzXobXoB7A
+
+本轮新部署: 0个
+
+[00:53:02] === ��217/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.9秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  NEX Ai / SOL  MCAP=$19,386,234  锁仓=None%  9eaBDU1PQCWKs6sxkwKKQhXh35CQj1Ut5Qpk1WhzQ4ny
+  Khameneinu / SOL  MCAP=$1,601,366  锁仓=None%  68F6buscA36vsuRH6FGnDDut28qt3GQkZnHfasUT2KDF
+  DOG / SOL  MCAP=$307,457  锁仓=None%  A17bEcA3MxHesT3htwqoxm9PQJJLi7PLL7G3jyqWapTu
+  CLOUD / SOL  MCAP=$34,132  锁仓=None%  FMXD5Ps7hSeNScV9xmAXCtanSEVVADpDvAC4nRuwH2NV
+  puffercat / SOL  MCAP=$33,740  锁仓=None%  HbrM2TzmKxWUFpei1qn6H5LxeWXAh9ptPFB9vLdbj4go
+  Oskar / SOL  MCAP=$8,367  锁仓=None%  4fsqVfg33TtmUtfW1ymSfmBbPALS22GYJcqgDo9xVoL4
+  SIRDOGE / SOL  MCAP=$7,909  锁仓=None%  FzoP3mTtyf6A51mH2WQG36fjtZUBCVyAAZKPwMyYW5Zv
+  ANTRO / SOL  MCAP=$7,608  锁仓=None%  BWKrv9vn1kqYdXmuzLvE7qsdh4GPcc2fu89bANDRFxLw
+  Borrowers / SOL  MCAP=$5,871  锁仓=None%  hMnWnMUJh6UhH2MxXwWLhagzRBHYnBQVBnm1ewE8YJp
+  G / SOL  MCAP=$5,361  锁仓=None%  FPhpypM1h46PPYCbzi9AQU5b1ENL77cQVq7GkYDiMWPM
+
+本轮新部署: 0个
+
+[00:56:00] === ��218/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时100.2秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有5个查询疑似被限流失败,建议降低并发数重试 ***
+  ‮TelpirT / USDC  MCAP=$14,404,900,770  锁仓=None%  7nyozJnKx7zLmJbJytxHta4y5uJLu9TFzifxiREu9eaH
+  puffercat / SOL  MCAP=$2,576,388  锁仓=None%  9pL9TmAZUCVzhswoZQtGyrJE8X58JiQYgz4ANEHmqtWB
+  GOAP / SOL  MCAP=$423,230  锁仓=None%  4QFfPjKy1YMrtmYaCLK4d4UXHU7VyPQmXZQDzcQdvcKp
+  DOG / SOL  MCAP=$98,383  锁仓=None%  8a86EHLNfz8HM4fkKhma3i93unDaz2UUvDxBjzDuCPso
+  DOG / SOL  MCAP=$80,187  锁仓=None%  UfiZLxWcmXVMrgTZjQjZHjW91Rumo8DEsz2wyVeVFAy
+  DOG / SOL  MCAP=$67,988  锁仓=None%  AeJFJgvUGiaUGSDjFAgwJMNNEaLZjFnBmxAiPcn9wGa4
+  OSCAROO / SOL  MCAP=$37,384  锁仓=None%  6GLKXBUyqFWPg5dtcU3uFCAEfMTAn85L9LVHfnjNnDrW
+  DOG / SOL  MCAP=$33,677  锁仓=100.0%  D4qDMdVdBe5Ks49MaLfNRGmEoDWKdxXqZgTg5JMfVbTU
+  Chadcat / SOL  MCAP=$15,479  锁仓=100.0%  8FCRNQrGvyfjq7U53mk7g5HSfVhBJPi4mJkYCptwRbYv
+  HAKU / SOL  MCAP=$12,711  锁仓=None%  FKMxcvhVpJBq8wP88ojx78xDZPrcWDHLeRnW4vrsBgY3
+
+本轮新部署: 0个
+
+[00:59:13] === ��219/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有3个查询疑似被限流失败,建议降低并发数重试 ***
+  11 / SOL  MCAP=$312,946  锁仓=None%  2XHpg2ukpYLY4UdAqiLGCvdABNb77vEukyN5PthBDcoU
+  11 / SOL  MCAP=$93,553  锁仓=None%  6jHsjMtVBKCW75YxvR4gxsS1b7MoYWNKbt8DeycpVudZ
+  CHADCAT / SOL  MCAP=$22,998  锁仓=None%  EwJmsnBHHzsLSD48e86dN1UFYCtmzWfiXqmc8CpuZeu2
+  Chiikawa / SOL  MCAP=$21,948  锁仓=None%  67aV8Fa369Ssz48EbAHqV6N2e5qhLoCDinwkAVFs5534
+  Bernhard / SOL  MCAP=$11,865  锁仓=None%  5gktMRPbHGSeTwwCNGpwQa5LAPJfr3jGpMQ7QArtddLs
+  PYRAMID / SOL  MCAP=$9,846  锁仓=None%  F7ZMdok5a7bsAmwu2T7LnbU6gdBPNRUMc7wfcaQ2ney5
+  Golden23 / SOL  MCAP=$9,133  锁仓=None%  EWiHQtN8oWKH35qzCAxrii1pK58X5CQeoBTbXV8Ry9RL
+  VIRTUALMOG / SOL  MCAP=$6,813  锁仓=None%  AvGfwDEL8xku43ZLWVzAgTbKFv6u8jb17Bw8CkAGBrQn
+  CHIP / SOL  MCAP=$4,924  锁仓=None%  HEWq8StmqnGKNgYNMDfrqCJQjrfijRZ5Pxvj1k98dHLv
+  SIRDOGE / USD1  MCAP=$4,843  锁仓=100.0%  B2ui6dh7zMjbUyMbB2keiUuTDX6BKEsqsC5PNbGiiKtp
+
+本轮新部署: 0个
+
+[01:02:08] === ��220/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时82.6秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  STD / SOL  MCAP=$8,158,464,123,628  锁仓=None%  2dkZ8aCn1MmuoZYY9PGdEeedyd4gbNz2rNQmjfK5YA9s
+  Buttcoin / USDC  MCAP=$10,708,602,490  锁仓=None%  CaixYDynzBoWB7axYJYga9fG7iAcLTdzHDr2NtUbYogd
+  mɔ / USDC  MCAP=$5,423,081,255  锁仓=None%  7caEFq6XNNyfFGkdqcNTC6DJ9Ljr1jxkA99WENZtyrgW
+  MarsCoin / SOL  MCAP=$2,036,807  锁仓=None%  HHA2oBafSnSCAbABDRQX4P4DX2pe9rZNcDjzDUGT38Ys
+  LITTLE / SOL  MCAP=$706,338  锁仓=None%  EcRrtMcYTT6EmBY9kfjcu4z7j7pjJPEJYcWQGWHNJjuQ
+  Chadcat / SOL  MCAP=$38,949  锁仓=None%  ERKqqqBhPbxjsU99a63oMRd6SRZ9Cdz8Tqba2dsEkzP8
+  Chadcat / SOL  MCAP=$38,537  锁仓=None%  5CZc51g6WK5jDGgo3xy5kwthT3P25j5gauyRX1mvdZ6A
+  GTAVI / SOL  MCAP=$37,931  锁仓=None%  9pqteiEHy91Jwtf3Wmg336KvcExhfJbmmqY39HSAmTYq
+  puffercat / SOL  MCAP=$34,138  锁仓=None%  8Sic2RtF5Wt78ttoqoodC32hSGxDqJKXAYzJyUjowH8u
+  Chadcat / SOL  MCAP=$17,186  锁仓=None%  EpB7eVyyNR66ywmieks6Qpx6wrRFWYNdG5quaKSe24cK
+
+本轮新部署: 0个
+
+[01:05:02] === ��221/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时85.0秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  Journey / SOL  MCAP=$103,250,036  锁仓=None%  58WAuBv2xMr169r13Kd3N69Qgm2xZfEL4tRjByDQgh6V
+  Chadcat / SOL  MCAP=$62,119  锁仓=None%  3Eb89BZ9quZ6pNXK4uTD9Ve5eFRovtMjyf2N2T2sVq1U
+  Chadcat / SOL  MCAP=$60,172  锁仓=79.253480109675%  36xAJwypinhXRHhkaNHi2joZbTchAFonKYY9iorLXwWj
+  puffercat / SOL  MCAP=$42,525  锁仓=None%  7U9i52LThsZksaayioLNS6CVu3mYr4G3AJBHABmfhW9W
+  Chadcat / SOL  MCAP=$38,977  锁仓=None%  6bzzkxcwfhrUK2hSZbWsW3HyTC2hd4Vv2H5xjogiWyxy
+  Chadcat / SOL  MCAP=$32,816  锁仓=None%  7qhB1zo9jMWeJYbBQLUxps7YMgM9Kfb17vYoXZ7MTL7Z
+  Chadcat / SOL  MCAP=$13,049  锁仓=None%  HcPBzaupDtq4dnKQwAvZTYnymWYADmkcZaZK99nrv1VP
+  WEN / SOL  MCAP=$11,539  锁仓=None%  AB7mfUqvd8Nojf55PQ9oc9p4HAHuPW8FRnh9XvDzT8iD
+  puffercat / SOL  MCAP=$11,192  锁仓=None%  3XAMZRm3geM1Rb1jdCGeu39tgmmYtJ7UcTjuQvu9Yzy6
+  MARS / SOL  MCAP=$9,179  锁仓=None%  HPy5Cd5pHaj86ZsyaS5kj7E5PrntFVmYDWUfNs7pCpL7
+
+本轮新部署: 0个
+
+[01:08:00] === ��222/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时90.7秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  DOG / SOL  MCAP=$57,482  锁仓=None%  CNWsRCTrdPCBnPRjj8nDzfGUhT4wFo6TkwkcdyrzVLXT
+  casinu / SOL  MCAP=$52,204  锁仓=None%  3bP1ACQq4VkFiLwtcaDJwUVdVPREYsHCwUbA8jESC1Yr
+  casinu / SOL  MCAP=$46,347  锁仓=None%  56qMeUJoNNG9uQrNSMSZRZZSELod4QfMFJqfuAVRynRP
+  69420 / SOL  MCAP=$31,142  锁仓=None%  9WKkVzkgcxD2HEctaTnsciabNxsw3HSk89wJgaqnXNTS
+  trenchcats / SOL  MCAP=$30,164  锁仓=None%  EceHci6wAZi21BwnszkVKvTwNkyJH1ABZ5kKyQ1xBJFi
+  Meg / SOL  MCAP=$19,305  锁仓=None%  DLDXWGokqwoY1Cj1NM5zDJzaAMLS9Tfbu9kWz3HzSG3S
+  Burnian / SOL  MCAP=$14,805  锁仓=None%  ERhNTYLje6jhdbw2gAqsUKRnkdzTeZue2AWuaZReqwNw
+  TRENCHLORD / SOL  MCAP=$12,096  锁仓=None%  APREcvsVXsMByHPp2y3NGeWFyrbsJGMPcV2F8RAdJKJX
+  HAKU / SOL  MCAP=$8,622  锁仓=None%  7icu8at1nxkZ8xVCampxLZYJiZvb8TiSSoJVoktH43rt
+  PSM33 / SOL  MCAP=$8,572  锁仓=None%  76xsuz57xvdyWMSZ8BVFLA2cBu7ETqEad31DYgN521Qc
+
+本轮新部署: 0个
+
+[01:11:03] === ��223/99999�� ===
+共拉到60个最新池子
+
+按起点MCAP从高到低,头部10个(已去重),并发数=1查详情:
+并发查询耗时84.8秒(如果限流失败数>0,说明这个并发数偏高,建议调低)
+*** 有4个查询疑似被限流失败,建议降低并发数重试 ***
+  OpenSea / SOL  MCAP=$836,547  锁仓=None%  GMVwSUiLPhuktwGZbbckMWNVCrX4MNQBjDaaVkQTJqgK
+  Flap / SOL  MCAP=$303,860  锁仓=None%  JAkYwaD8NLBrdGcTPCvnfuwHxp6AMhuA78ZUJSoABqTT
+  Inversed / SOL  MCAP=$134,176  锁仓=None%  FRi4rtBwDomvpF8BCYFLxMbb51s7u3E72zij1waU1d2n
+  DOG / SOL  MCAP=$61,735  锁仓=None%  E6GDTXtQT885iZbpQboKHuP7fdPFxAEQMFfvPSCiJn9F
+  CURATOR / SOL  MCAP=$33,920  锁仓=None%  4QBpKuzkAgsX15MPUBQkVJZC6qpj5r4DVC9sDPy4bs5j
+  GTFS / SOL  MCAP=$28,612  锁仓=None%  GVBtuKsaTj9HhwvGE9gWXkdVCoDZXXDcXVA18Se7rDGp
+  HAKU / SOL  MCAP=$24,718  锁仓=None%  BW2WMcHmUpM4o7bpvU4n4ehBT2LBJiQk4C1QXxwrvYt9
+  Cat / SOL  MCAP=$10,796  锁仓=None%  A4BnHKMf89qwGDgHsXZArMyiWsojiPaWEwQmEzY3sE4N
+  TIME / SOL  MCAP=$8,984  锁仓=100.0%  DHwq869fNE6oLu4YfqkttRxhUXVnVcwZc1tN96uo3Yi
+  DOG / SOL  MCAP=$8,669  锁仓=None%  8ta8wvUcb7ZvdjFyTVkKwdmREmJQQLtCzRbsq28UsBGA
+
+本轮新部署: 0个
