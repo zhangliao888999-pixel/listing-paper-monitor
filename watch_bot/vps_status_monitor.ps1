@@ -95,18 +95,20 @@ while ($true) {
     } else {
         Write-Host "  私钥文件: 不存在(实盘只监控不下单)" -ForegroundColor Yellow
     }
-    $lifecyclePath = Join-Path $RepoRoot "watch_bot\pump_lifecycle.json"
-    if (Test-Path $lifecyclePath) {
-        try {
-            $db = Get-Content $lifecyclePath -Raw | ConvertFrom-Json
-            $liveActive = 0
-            foreach ($prop in $db.PSObject.Properties) {
-                if ($prop.Value.live_deployed -and $prop.Value.status -ne "dead") { $liveActive++ }
-            }
-            Write-Host ("  当前占用的真实仓位名额: {0}" -f $liveActive)
-        } catch {
-            Write-Host "  (pump_lifecycle.json解析失败,可能刚好在写入中)" -ForegroundColor Yellow
+    # 2026-07-30修复: 之前用pump_lifecycle.json的live_deployed+status字段判断,
+    # 发现这两个字段跟"仓位到底平没平"没关系(live_deployed一旦True永远不清零,
+    # status是池子自己死没死,不是我们交易平没平),会一直显示"占用中"就算早
+    # 就平仓了。改成看snipe_exit.py自己维护的标记文件(建仓时创建,平仓时删除)。
+    $posMarker = Join-Path $RepoRoot "watch_bot\.live_position_open"
+    if (Test-Path $posMarker) {
+        $markerAgeMin = ((Get-Date) - (Get-Item $posMarker).LastWriteTime).TotalMinutes
+        if ($markerAgeMin -gt 50) {
+            Write-Host ("  当前占用的真实仓位名额: 0 (标记文件存在但已{0:N0}分钟,大概率是上个进程崩溃没清理)" -f $markerAgeMin) -ForegroundColor Yellow
+        } else {
+            Write-Host ("  当前占用的真实仓位名额: 1 (已建仓{0:N0}分钟)" -f $markerAgeMin) -ForegroundColor Cyan
         }
+    } else {
+        Write-Host "  当前占用的真实仓位名额: 0"
     }
     if (Test-Path $journalPath) {
         $liveLines = Get-Content $journalPath | Select-Object -Last 200 | ForEach-Object {

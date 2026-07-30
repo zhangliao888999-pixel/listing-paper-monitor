@@ -124,6 +124,34 @@ def make_prefix(addr):
     return re.sub(r"[^A-Za-z0-9]", "", addr)[:8]
 
 
+# 建仓超过这么久还没看到finish_trade()清掉标记文件,大概率是snipe_exit.py
+# 自己崩了(未捕获异常/进程被杀),不是真的还占着仓位——按MAX_MINUTES默认值
+# (40分钟)加10分钟缓冲自动判定过期,避免一次崩溃就把唯一的实盘名额永久卡死。
+LIVE_MARKER_STALE_SEC = 50 * 60
+
+
+def count_live_open_positions(here):
+    """2026-07-30新增: 之前用pump_lifecycle.json里的live_deployed+status字段判断
+    "真实仓位名额占没占用",发现这两个字段代表的意思根本不对——live_deployed
+    从部署那一刻起永远是True不会清零,status是"这个池子本身死没死"(流动性/
+    回撤),两个都跟"我们这笔实盘交易到底平没平仓"没关系。真买家把我们打出来
+    之后池子往往还活得好好的,导致MAX_CONCURRENT_LIVE=1这个名额从第一笔交易
+    后就被永久占死,后续候选全部被跳过、且没有任何报错提示。
+    改成直接看snipe_exit.py自己维护的标记文件(建仓时创建、finish_trade()时
+    删除)在不在、新不新,这才是"仓位到底开着没开着"的真实信号。"""
+    marker = here / ".live_position_open"
+    if not marker.exists():
+        return 0
+    try:
+        age = time.time() - marker.stat().st_mtime
+    except OSError:
+        return 0
+    if age > LIVE_MARKER_STALE_SEC:
+        print(f"  [实盘]标记文件已经存在{age/60:.0f}分钟,大概率是上一个进程崩溃没清理,自动判定过期忽略")
+        return 0
+    return 1
+
+
 def deploy_full_stack(addr, mint, db):
     """2026-07-29新增: 用户明确要求"纸盘可以完全大胆尝试,筛选出来的币质量都
     很高,全部拿去跑全流程采集数据"——不用我每次手动一个个接,发现新样本就自动
@@ -171,7 +199,7 @@ def deploy_full_stack(addr, mint, db):
 
     live_this_one = False
     if SNIPE_LIVE_MODE:
-        n_live = sum(1 for v in db.values() if v.get("live_deployed") and v.get("status") != "dead")
+        n_live = count_live_open_positions(here)
         if n_live >= MAX_CONCURRENT_LIVE:
             print(f"  [实盘]已有{n_live}个真实仓位达到上限MAX_CONCURRENT_LIVE={MAX_CONCURRENT_LIVE},这个候选先跳过实盘(纸盘/监控照常)")
         elif not os.environ.get("WALLET_PRIVATE_KEY"):

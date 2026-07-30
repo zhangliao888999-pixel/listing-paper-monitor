@@ -60,6 +60,16 @@ JOURNAL_F = HERE / "journal.jsonl"  # 2026-07-29新增: 详细交易台账,所�
                                      # 崩盘特征+仓位),不是简单的买/卖两条散记录
 LOG_F = None       # main()里按池子地址派生前缀后赋值,避免自动部署多个币同时跑
 ORDERS_LOG_F = None  # 时互相覆盖同一份文件
+# 2026-07-30新增: lifecycle_logger.py之前拿pump_lifecycle.json里的live_deployed
+# 字段判断"真实仓位名额占没占用",但那个字段代表的是"这个池子曾经部署过实盘"，
+# 从来不会清零,而且旁边那个status字段是池子本身死没死(流动性/回撤),跟"我们
+# 这笔实盘交易平没平"是两回事——真实买家把我们打出来之后,池子往往还活得好
+# 好的,status永远不会变成dead,导致MAX_CONCURRENT_LIVE=1这个名额从第一笔
+# 交易之后就被永久占死,后面所有候选都会被跳过,而且不会有任何报错提示,
+# 表现就是"只成交了一笔,之后再也没有了"。改用这个独立的标记文件: 建仓成功
+# 后创建,finish_trade()时删除,判断"名额占没占用"直接看文件在不在,不跟池子
+# 自己的生死状态混在一起。
+LIVE_POSITION_MARKER = HERE / ".live_position_open"
 
 SOL_MINT = "So11111111111111111111111111111111111111112"
 JUPITER_QUOTE_URL = "https://lite-api.jup.ag/swap/v1/quote"
@@ -437,6 +447,11 @@ def finish_trade(entry_info, exit_reason, exit_price, sell_result=None):
         "pnl_pct_actual": pnl_pct_actual,
     }
     write_journal(record)
+    if not entry_info["dry_run"]:
+        try:
+            LIVE_POSITION_MARKER.unlink()
+        except FileNotFoundError:
+            pass
     pnl_str = f"{pnl_pct:+.2f}%" if pnl_pct is not None else "未知"
     actual_str = f"  真实成交pnl={pnl_pct_actual:+.2f}%" if pnl_pct_actual is not None else ""
     log(f"台账记录完毕: {exit_reason} pnl={pnl_str}{actual_str} 持仓{hold_sec:.0f}秒 "
@@ -487,6 +502,11 @@ def main():
     if not pos:
         log("买入没成功,监控结束")
         return
+    if not pos["dry_run"]:
+        try:
+            LIVE_POSITION_MARKER.write_text(json.dumps({"addr": addr, "mint": mint, "opened_at": entry_ts}), encoding="utf-8")
+        except OSError:
+            pass
 
     try:
         created = dt.datetime.fromisoformat(attrs["pool_created_at"].replace("Z", "+00:00"))
