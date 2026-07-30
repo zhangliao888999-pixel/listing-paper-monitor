@@ -28,7 +28,11 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 HERE = Path(__file__).parent
-OHLCV_DIR = HERE / "ohlcv"
+# 2026-07-31改: 默认用ohlcv2/(harvest_longlived.py收集的"活过2小时"样本)。
+# 老的ohlcv/是journal里966个抢新币池子,大部分几分钟就死(K线中位数8根),
+# 是新策略要避开的那种,不适合回测。可用环境变量OHLCV_DIR覆盖。
+import os as _os
+OHLCV_DIR = HERE / _os.environ.get("OHLCV_DIR", "ohlcv2")
 RESULTS_F = HERE / "results.csv"
 
 # ---- 执行真实性常量(不进扫参,这些是物理约束不是策略选择) ----
