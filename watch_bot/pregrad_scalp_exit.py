@@ -206,7 +206,10 @@ def git_push_journal():
         if push.returncode == 0:
             log("交易记录已立刻推送到GitHub,页面刷新即可见")
             return
-        run(["git", "pull", "--rebase", "origin", "master"])
+        # 2026-07-30修复: 原来用--rebase,实测VPS并发调高后遇到journal.jsonl这种
+        # 只追加的文件冲突,rebase会直接卡住需要人工--abort,普通merge(不加--rebase)
+        # 对这类"两边都只是各自追加了新行"的冲突能自动合并,不会卡死。
+        run(["git", "pull", "--no-edit", "origin", "master"])
         time.sleep(3)
     log("交易记录推送失败(重试3次),会在下一轮lifecycle循环时补推")
 
