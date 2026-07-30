@@ -1,0 +1,2 @@
+{"action": "BUY", "mint": "Gzwri2X5ThFsnGMAKSkk1pP8fK7gTUJzs124Ysgacrpy", "pos_size_usd": 5.0, "status": "dry_run", "ts": 1785374853}
+{"action": "SELL", "mint": "Gzwri2X5ThFsnGMAKSkk1pP8fK7gTUJzs124Ysgacrpy", "reason": "LIQ_LOW", "status": "dry_run", "ts": 1785375279}
