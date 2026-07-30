@@ -29,7 +29,7 @@ from pathlib import Path
 
 import requests
 
-from git_lock import git_lock, resolve_stuck_merge
+from git_lock import git_lock, resolve_stuck_merge, run_git
 
 HERE = Path(__file__).parent
 JOURNAL_F = HERE / "journal.jsonl"
@@ -129,7 +129,7 @@ def write_journal(record):
 def git_push_journal():
     repo_root = HERE.parent
     def run(cmd):
-        return subprocess.run(cmd, cwd=str(repo_root), capture_output=True, text=True)
+        return run_git(cmd, repo_root)
     # 2026-07-30新增: VPS并发调到6之后好几个进程同时commit+push互相撞车,单靠
     # 重试次数扛不住,加文件锁让这几个脚本的git操作排队,一次只有一个在做。
     with git_lock() as got_lock:

@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lifecycle_logger import scan_and_log
-from git_lock import git_lock, resolve_stuck_merge
+from git_lock import git_lock, resolve_stuck_merge, run_git
 
 INTERVAL_SEC = 600   # 10分钟一轮
 # 2026-07-29晚间改: 原1小时(6轮)是为了切成小段方便随时检查,但通宵没人盯着重启,
@@ -32,7 +32,7 @@ DATA_GLOBS = ["watch_bot/*.jsonl", "watch_bot/*.json", "watch_bot/*.log"]
 
 
 def run(cmd, **kw):
-    return subprocess.run(cmd, cwd=str(REPO_ROOT), capture_output=True, text=True, **kw)
+    return run_git(cmd, REPO_ROOT, **kw)
 
 
 def git_sync():

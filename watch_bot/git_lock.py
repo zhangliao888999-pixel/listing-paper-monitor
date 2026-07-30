@@ -22,6 +22,26 @@ LOCK_PATH = Path(__file__).parent / "git_push.lock"
 _MARKER_RE = re.compile(r"^(<{7} |={7}$|>{7} )")
 
 
+class _TimedOut:
+    """subprocess.run超时后的占位返回值,伪装成一个失败的CompletedProcess,
+    调用方原有的`.returncode == 0`判断不用改就能正确当成这次失败处理。"""
+    returncode = 124
+    stdout = ""
+    stderr = "[git_lock] subprocess timed out"
+
+
+def run_git(cmd, cwd, timeout=60, **kw):
+    """2026-07-30再补: 之前所有git调用都没有超时保护——如果某次git fetch/push
+    因为网络抖动真的卡住不返回(不是重试失败,是subprocess.run本身不返回),
+    锁会被这个进程永久占着,其余脚本全部卡在等锁上,这是比"积压暂时清不掉"
+    严重得多的故障模式(真正的死锁,不是误报)。给所有git子进程调用统一加
+    超时,超时就当这次失败处理,交给外层retry逻辑,不再无限期等待。"""
+    try:
+        return subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True, timeout=timeout, **kw)
+    except subprocess.TimeoutExpired:
+        return _TimedOut()
+
+
 @contextlib.contextmanager
 def git_lock(timeout=30, poll=0.3):
     """拿不到锁最多等timeout秒,还拿不到就放弃(返回False),调用方自己决定
@@ -66,12 +86,11 @@ def resolve_stuck_merge(repo_root, log=print):
     if not merge_head.exists():
         return False
 
-    status = subprocess.run(["git", "status", "--porcelain"], cwd=str(repo_root),
-                             capture_output=True, text=True)
+    status = run_git(["git", "status", "--porcelain"], repo_root)
     conflicted = [line[3:].strip() for line in status.stdout.splitlines() if line.startswith("UU ")]
     if not conflicted:
         # MERGE_HEAD在,但没有UU文件了(可能已经被手动清过),直接尝试收尾
-        subprocess.run(["git", "commit", "--no-edit"], cwd=str(repo_root), capture_output=True, text=True)
+        run_git(["git", "commit", "--no-edit"], repo_root)
         return True
 
     for rel_path in conflicted:
@@ -88,11 +107,9 @@ def resolve_stuck_merge(repo_root, log=print):
             # 整体结构化的json缓存/日志文件: 冲突意味着两边改的是同一段内容,
             # 拼接两边行内容会拼出无法解析的文件,宁可用自己这边(HEAD)最新
             # 版本覆盖、丢一点对方的缓存状态,也不要产出损坏的结构化文件。
-            subprocess.run(["git", "checkout", "--ours", rel_path], cwd=str(repo_root),
-                            capture_output=True, text=True)
-        subprocess.run(["git", "add", rel_path], cwd=str(repo_root), capture_output=True, text=True)
+            run_git(["git", "checkout", "--ours", rel_path], repo_root)
+        run_git(["git", "add", rel_path], repo_root)
 
-    commit = subprocess.run(["git", "commit", "--no-edit"], cwd=str(repo_root),
-                             capture_output=True, text=True)
+    commit = run_git(["git", "commit", "--no-edit"], repo_root)
     log(f"发现上一轮遗留的未解决合并,已自动清理冲突标记并收尾提交: {conflicted}")
     return True

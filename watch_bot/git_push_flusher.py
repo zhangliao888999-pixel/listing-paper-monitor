@@ -18,7 +18,7 @@ import datetime as dt
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from git_lock import git_lock, resolve_stuck_merge
+from git_lock import git_lock, resolve_stuck_merge, run_git
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SWEEP_INTERVAL_SEC = int(os.environ.get("FLUSH_INTERVAL_SEC", "45"))
@@ -29,10 +29,11 @@ MAX_ROUNDS = int(os.environ.get("FLUSH_MAX_ROUNDS", "0"))  # 0 = 不限(VPS默�
 
 
 def run(cmd):
-    return subprocess.run(cmd, cwd=str(REPO_ROOT), capture_output=True, text=True)
+    return run_git(cmd, REPO_ROOT)
 
 
 def sweep_once():
+    ts = dt.datetime.now().strftime("%H:%M:%S")
     run(["git", "fetch", "origin", "master", "--quiet"])
     behind = run(["git", "rev-list", "--count", "origin/master..HEAD"])
     try:
@@ -40,9 +41,13 @@ def sweep_once():
     except ValueError:
         n_behind = 0
     if n_behind == 0:
+        # 2026-07-30再补: 之前n_behind==0时直接静默返回,导致"一切正常"和
+        # "卡在某个subprocess调用里没输出"在日志里长得一模一样(都是空白),
+        # 排查用户反馈"积压没清空"时,曾经因为看不到任何心跳而怀疑扫地机
+        # 是不是本身卡住了。每轮都打一行心跳,让日志本身就能证明"活着"。
+        print(f"[{ts}] 心跳: 无积压,一切正常")
         return
 
-    ts = dt.datetime.now().strftime("%H:%M:%S")
     print(f"[{ts}] 本地领先origin {n_behind}个未推送提交,尝试补推")
 
     with git_lock() as got_lock:
