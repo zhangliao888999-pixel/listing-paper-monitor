@@ -467,6 +467,11 @@ def finish_trade(entry_info, exit_reason, exit_price, sell_result=None):
     pnl_pct_actual = None
     if entry_usd_actual and exit_usd_actual is not None:
         pnl_pct_actual = (exit_usd_actual / entry_usd_actual - 1) * 100
+        # 2026-07-31新增(pregrad腿第一笔实盘算出-203%的教训): 现货全仓最多
+        # 亏光本金,低于-100%说明记账口径有误,留空不写脏数据进台账。
+        if pnl_pct_actual < -100:
+            log(f"*** 真实盈亏算出{pnl_pct_actual:.1f}%,现货不可能低于-100%,判定记账口径有误,留空待查 ***")
+            pnl_pct_actual = None
 
     record = {
         "name": entry_info["name"], "mint": entry_info["mint"], "addr": entry_info["addr"],
