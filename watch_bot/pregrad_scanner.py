@@ -55,6 +55,11 @@ LIVE_POS_SIZE_USD = os.environ.get("LIVE_POS_SIZE_USD", "5")
 # 没问题再放开。0=不限。统计口径: journal.jsonl里dry_run=false且
 # found_via=pregrad_ramp的记录总数(账本是append-only的,这个数只增不减)。
 LIVE_MAX_TRADES = int(os.environ.get("LIVE_MAX_TRADES", "0"))
+# 2026-07-31新增(用户拍板): 实盘只做Meteora DBC系——分台统计里pump.fun均值
+# -2.7%、Meteora系+13.6%,利润几乎全在后者,实盘专注有验证优势的那一半,
+# 其他发射台留在云端纸盘继续攒数据观察。按GT的dex slug关键词过滤
+# (meteora-dbc/meteora-damm-v2都算),设成空字符串则不过滤(全发射台实盘)。
+LIVE_DEX_KEYWORD = os.environ.get("LIVE_DEX_KEYWORD", "meteora")
 JOURNAL_F = HERE / "journal.jsonl"
 from lifecycle_logger import count_live_open_positions, MAX_CONCURRENT_LIVE
 
@@ -103,7 +108,7 @@ def fetch_new_pools():
     return (d or {}).get("data", [])
 
 
-def deploy(addr, mint, name):
+def deploy(addr, mint, name, dex_id=""):
     prefix = make_prefix(addr)
     py = sys.executable
     kwargs = {"cwd": str(HERE), "stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
@@ -117,12 +122,12 @@ def deploy(addr, mint, name):
         # 实盘模式: 只在有空余真实仓位名额+私钥就位时才spawn,而且spawn的就是
         # 真实下单实例。名额被占/没私钥时直接跳过这个候选(不开纸盘实例——VPS
         # 实盘期的journal数据要保持干净,纸盘对照组在云端跑)。
-        # 2026-07-31放开(分台统计后的修正): 之前限定只做pump.fun,但按mint后缀
-        # 分台统计893笔pregrad纸盘发现——pump.fun占49%均值-2.7%,Meteora DBC系
-        # 占49%均值+13.6%,利润几乎全在后者,只做pump.fun等于专挑亏钱的一半。
-        # 实测Jupiter能路由Meteora DBC的曲线池,pregrad_scalp_exit.py已改成按
-        # 发射台分流执行通道(pump/bonk走PumpPortal,其余走Jupiter),这里不再
-        # 按发射台过滤,交给执行层自己选通道。
+        # 2026-07-31用户拍板: 实盘只做Meteora系(分台统计的+13.6%那一半),
+        # 执行通道走Jupiter(实测能路由DBC曲线池)。其余发射台由云端纸盘继续
+        # 覆盖攒数据,不在实盘下单。
+        if LIVE_DEX_KEYWORD and LIVE_DEX_KEYWORD not in str(dex_id):
+            print(f"  [实盘]候选{name}的发射台({dex_id})不在实盘白名单(关键词={LIVE_DEX_KEYWORD}),跳过,留给云端纸盘")
+            return False
         if not os.environ.get("WALLET_PRIVATE_KEY"):
             print("  [实盘]*** SNIPE_LIVE_MODE=1但没设WALLET_PRIVATE_KEY,拒绝假装在跑实盘,跳过 ***")
             return False
@@ -186,7 +191,8 @@ def main():
         # 2026-07-31改: deploy在实盘模式下可能因为名额被占/没私钥而跳过,跳过的
         # 候选不记入seen——名额几分钟后就会腾出来,30秒后的下一轮还能再试这个
         # 候选,不该被240秒的去重窗口白白浪费掉。
-        if deploy(addr, mint, a.get("name")):
+        dex_id = rel.get("dex", {}).get("data", {}).get("id", "")
+        if deploy(addr, mint, a.get("name"), dex_id):
             seen[addr] = now
             n_deployed += 1
 
