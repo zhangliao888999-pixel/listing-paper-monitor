@@ -326,6 +326,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785421863.897151,
+    "price": 5.01436440572759e-06,
+    "liq": 5110.7561,
+    "insider_sell_pct": 0.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late"
@@ -653,6 +662,15 @@
     "ts": 1785418390.8448603,
     "price": 2.208724919192576e-05,
     "liq": 17806.8809,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 3,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1785421873.5271647,
+    "price": 2.208724919192576e-05,
+    "liq": 17835.1485,
     "insider_sell_pct": 1.0,
     "n_insiders": 3,
     "locked_liq_pct": "100.0",
@@ -1221,6 +1239,15 @@
     "n_insiders": 32,
     "locked_liq_pct": null,
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785421892.4725788,
+    "price": 7.690842273502484e-05,
+    "liq": 67322.5185,
+    "insider_sell_pct": 0.8209101418866039,
+    "n_insiders": 32,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -1375,6 +1402,15 @@
     "n_insiders": 2,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785421902.0716188,
+    "price": 2.4653424620314332e-05,
+    "liq": 17418.7759,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 2,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -1507,6 +1543,15 @@
     "ts": 1785418423.0583627,
     "price": 1.4989767296127738e-05,
     "liq": 12919.1614,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1785421911.7034585,
+    "price": 1.4989767296127738e-05,
+    "liq": 12939.0563,
     "insider_sell_pct": 1.0,
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
@@ -1652,6 +1697,15 @@
     "ts": 1785418432.7233582,
     "price": 3.1522820586791063e-05,
     "liq": 24784.4029,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 2,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1785421921.6885762,
+    "price": 3.1522820586791063e-05,
+    "liq": 24806.8933,
     "insider_sell_pct": 1.0,
     "n_insiders": 2,
     "locked_liq_pct": "100.0",
@@ -1963,6 +2017,15 @@
     "n_insiders": 3,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785421940.8509033,
+    "price": 1.342723269450077e-05,
+    "liq": 10262.0967,
+    "insider_sell_pct": 0.4117799646282715,
+    "n_insiders": 3,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -2081,6 +2144,15 @@
     "ts": 1785418461.2941084,
     "price": 7.638285262831996e-05,
     "liq": 69257.2112,
+    "insider_sell_pct": 0.8483727171670938,
+    "n_insiders": 18,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1785421950.4653614,
+    "price": 7.638285262831996e-05,
+    "liq": 69276.4995,
     "insider_sell_pct": 0.8483727171670938,
     "n_insiders": 18,
     "locked_liq_pct": null,
@@ -2234,6 +2306,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1785421960.0903354,
+    "price": 2.034955999823938e-05,
+    "liq": 15797.2011,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -2307,6 +2388,15 @@
     "n_insiders": 3,
     "locked_liq_pct": "100.0",
     "h1_chg": "-0.085"
+   },
+   {
+    "ts": 1785421969.6904483,
+    "price": 2.1240945008598646e-05,
+    "liq": 15867.0906,
+    "insider_sell_pct": 0.10061135490482029,
+    "n_insiders": 3,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -2407,6 +2497,15 @@
     "n_insiders": 39,
     "locked_liq_pct": "100.0",
     "h1_chg": "16.906"
+   },
+   {
+    "ts": 1785421988.657976,
+    "price": 0.0012234119268985165,
+    "liq": 78653.7234,
+    "insider_sell_pct": 0.0206413068382376,
+    "n_insiders": 39,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "2.138"
    }
   ],
   "found_via": "late",
