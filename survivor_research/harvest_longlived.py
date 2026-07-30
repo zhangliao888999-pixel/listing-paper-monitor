@@ -23,6 +23,8 @@ from pathlib import Path
 
 import requests
 
+import cg_client as cg
+
 HERE = Path(__file__).parent
 OUT_DIR = HERE / "ohlcv2"
 OUT_DIR.mkdir(exist_ok=True)
@@ -32,30 +34,17 @@ H = {"Accept": "application/json;version=20230302",
      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
 
-# 2026-07-31改: GT免费版约30请求/分钟,每个IP独立预算。之前本机同时跑两个采集器
-# (collect_ohlcv 4线程 + harvest 5线程)把本机IP的预算撑爆,全程429连候选都没拿到。
-# VPS上单独跑的前向采集器在自己IP上完全正常,证明就是本机并发太多。现在本机只跑
-# 这一个采集器,配一个全局最小请求间隔的节流器,遇到429指数退避,不再盲目并发。
-_last_req = [0.0]
-MIN_GAP_SEC = 2.2   # 全局请求最小间隔 ≈ 27请求/分钟,压在免费版限额下
-
-
-def get(url, params=None, tries=5):
-    for i in range(tries):
-        gap = time.time() - _last_req[0]
-        if gap < MIN_GAP_SEC:
-            time.sleep(MIN_GAP_SEC - gap)
-        _last_req[0] = time.time()
-        try:
-            r = requests.get(url, params=params, headers=H, timeout=25)
-            if r.status_code == 200:
-                return r.json()
-            if r.status_code == 429:
-                time.sleep(5 * (i + 1)); continue
-            return None
-        except requests.RequestException:
-            time.sleep(2 * (i + 1))
-    return None
+# 2026-07-31再改: 改用cg_client(CoinGecko Demo key, 实测80请求/分钟),
+# 之前自建节流器在GT公开接口上仍被限流到几乎不可用。cg_client内部已含
+# 全局节流+429退避,这里直接调即可。
+def get(url_or_path, params=None, tries=4):
+    """兼容旧调用: 传进来的可能是完整GT URL,转成cg_client要的相对路径。"""
+    path = url_or_path
+    for pref in ("https://api.geckoterminal.com/api/v2/", GT + "/"):
+        if path.startswith(pref):
+            path = path[len(pref):]
+            break
+    return cg.get(path, params, tries)
 
 
 def gather_candidates(target):
