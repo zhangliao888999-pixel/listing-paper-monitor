@@ -1,6 +1,36 @@
 {
- "updated_at": 1785453064,
- "updated_at_str": "2026-07-30 23:11 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785453664,
+ "updated_at_str": "2026-07-30 23:21 UTC",
+ "n_candidates": 1,
+ "candidates": [
+  {
+   "addr": "7txEWckPsNbWXo3AUsRsbTPin348E4BVtxrLLtXUM4if",
+   "name": "VORF / SOL",
+   "age_min": 54.3,
+   "created": 1785450406.0,
+   "price": 0.03842748047232238,
+   "liq": 447098.601,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 16399.6179440592,
+   "vol_1h": 84934.1822358979,
+   "chg_15m": 7.709,
+   "chg_1h": 56.902,
+   "buys_15m": 3923,
+   "sells_15m": 72,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/7txEWckPsNbWXo3AUsRsbTPin348E4BVtxrLLtXUM4if",
+   "mint": "DApNdZizkzZ9ZkW5r6T3uYFbyY4SW2LBHwHkQXqxpump",
+   "early_bot_flag": null,
+   "staircase_flag": true,
+   "scalping_flag": true,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": true,
+    "scalping_flag": true,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": -6.980533146789672,
+    "wallet_verdict": "钱包画像未见明显控盘迹象"
+   }
+  }
+ ]
 }
