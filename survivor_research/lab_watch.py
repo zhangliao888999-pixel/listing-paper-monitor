@@ -234,6 +234,15 @@ def discover_mature():
                 buyers = int(tx.get("buyers") or 0)
                 sellers = int(tx.get("sellers") or 0)
                 ratio = buyers / max(sellers, 1)
+                # 必须**还在活动**。trending_pools 给的老币很多已经停了几小时,
+                # 加进来下一轮就被"盘已死(静止696分钟)"腾掉,白白消耗名额和额度。
+                h1 = (a.get("volume_usd") or {}).get("h1")
+                try:
+                    h1 = float(h1 or 0)
+                except (TypeError, ValueError):
+                    h1 = 0.0
+                if h1 < 50:
+                    continue
                 # 要么买卖人数比高(鱼被困),要么参与人数少(单人操盘)
                 if ratio >= 4.0 or buyers <= 40:
                     out.append((addr, a.get("name") or "", age))
@@ -401,6 +410,18 @@ def main():
                         log(f"收网 {p.name or addr[:10]}  抽走${m['drained_usd']:,.0f} "
                             f"危险度{m['danger']:.2f}  [{tag}]")
 
+                # ---- 自动升级 ----
+                # trending_pools 里的老币大多已经停了(加了活跃度过滤只剩2个),
+                # 但我们本来就在盯新生盘 —— 活下来的那些正好是要找的成熟盘,
+                # 不用去别的接口捞。活过1小时且还在动的,升级并免除集中度腾位。
+                if (p.tier != "mature" and m["life_min"] >= MATURE_MIN_AGE
+                        and m["idle_min"] < 20):
+                    p.tier = "mature"
+                    c.execute("UPDATE watchlist SET tier='mature' WHERE pool=?", (addr,))
+                    c.commit()
+                    log(f"升级为成熟盘 {p.name or addr[:10]}  已活{m['life_min']/60:.1f}小时 "
+                        f"狗庄${m['op_cost_usd']:,.0f} 鱼${m['fish_in_usd']:,.0f}")
+
                 # ---- 分诊 ----
                 # 名额有限(RPC限速),必须只留狗庄盘。原本来者不拒,25个位置
                 # 大半被"几十个钱包各买几刀"的普通新币占着,真正的钓鱼盘反而
@@ -410,9 +431,7 @@ def main():
                                      "AND exit_ts IS NULL", (addr,)).fetchone()
                 if not held_now:
                     drop = None
-                    tier_row = c.execute("SELECT tier FROM watchlist WHERE pool=?",
-                                         (addr,)).fetchone()
-                    is_mature = tier_row and tier_row["tier"] == "mature"
+                    is_mature = p.tier == "mature"
                     # 成熟盘不按集中度腾位: 它们本来就有几千个参与者,集中度必然低,
                     # 但狗庄的钱可能就压在里面(USOH 有128个钱包)。
                     if not is_mature and m["n_tx"] >= 25 and m["top_share"] < 0.45:
