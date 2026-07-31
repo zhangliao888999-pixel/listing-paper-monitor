@@ -31,6 +31,7 @@ from pathlib import Path
 
 import cg_client as cg
 import lab_db as db
+import lab_dump as ld
 import lab_forensics as fx
 
 HERE = Path(__file__).parent
@@ -223,6 +224,7 @@ def main():
     db.init()
     c = db.conn()
     c.executescript(EXTRA_DDL)
+    c.executescript(ld.DDL)
     c.commit()
 
     watching = {}
@@ -274,6 +276,19 @@ def main():
                     continue
                 price = price_of(addr)
                 record_snapshot(c, addr, m, price)
+
+                # ---- 收网即记录 ----
+                # 有没有持仓都要记。策略验收要的是全样本: 只统计我们进过场的
+                # 那些,会漏掉"信号从没亮过就砸了"的情形,胜率算出来必然虚高。
+                if m["outcome"] == "caught" or (
+                        m["drained_usd"] > max(m["peak_res_usd"], 1) * 0.3):
+                    if ld.record_dump(c, addr, p.name, m, price, DANGER_EXIT):
+                        lead = c.execute("SELECT lead_sec, escaped FROM dump_events "
+                                         "WHERE pool=?", (addr,)).fetchone()
+                        tag = ("信号提前%.0f秒亮" % lead["lead_sec"]
+                               if lead and lead["escaped"] else "信号没来得及")
+                        log(f"收网 {p.name or addr[:10]}  抽走${m['drained_usd']:,.0f} "
+                            f"危险度{m['danger']:.2f}  [{tag}]")
 
                 # ---- 分诊 ----
                 # 名额有限(RPC限速),必须只留狗庄盘。原本来者不拒,25个位置
