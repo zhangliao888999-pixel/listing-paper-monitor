@@ -11,3 +11,20 @@ ohlcv2.tar.gz
 ohlcv3.tar.gz
 real_coins.json
 results_*.csv
+
+# 狗庄实验室的产物: 数据库/日志/中间结果都不进版本库,只提交源码
+operator_lab.db
+operator_lab.db-wal
+operator_lab.db-shm
+.helius_usage.json
+*.log
+autopsy_*.txt
+autopsy_*.jsonl
+curve_*.txt
+compare4.txt
+usoh_final.txt
+sigs_*.json
+txs_*.jsonl
+track_*.jsonl
+*.tar.gz
+ohlcv*/
