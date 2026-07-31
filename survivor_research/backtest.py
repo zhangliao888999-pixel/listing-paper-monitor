@@ -22,6 +22,7 @@
 """
 import csv
 import itertools
+import time as _time
 import json
 import sys
 from concurrent.futures import ProcessPoolExecutor
@@ -254,22 +255,33 @@ def main():
     # 前向采集器,也不会把服务器烧满。宁可慢一点,不能把机器搞挂。
     workers = int(_os.environ.get("BT_WORKERS", "4"))
     print(f"并行进程数: {workers}(留余量,不占满CPU)")
+    # 2026-07-31改(用户要求进度可见): 原来每200个组合才打印一次、且只在全部
+    # 跑完才写结果——补齐数据后单轮要2-3小时,等于全程黑箱。上两轮的教训都是
+    # "跑到一半才发现方向错了",所以改成: 每完成一个组合就增量写csv+打印,
+    # 随时能看趋势、能随时叫停,不用等跑完。chunksize=1让结果尽快回流。
+    fields = list(GRID.keys()) + ["n_trades", "pools_traded", "mean_pnl", "median_pnl",
+                                   "win_rate", "p10", "dead_rate", "compound_x", "avg_hold_min"]
     rows = []
-    with ProcessPoolExecutor(max_workers=workers) as ex:
-        for k, res in enumerate(ex.map(eval_combo, [(c, usable) for c in combos], chunksize=8)):
-            rows.append(res)
-            if (k + 1) % 200 == 0:
-                print(f"  {k + 1}/{len(combos)}")
+    t_start = _time.time()
+    with RESULTS_F.open("w", encoding="utf-8", newline="") as fout:
+        w = csv.DictWriter(fout, fieldnames=fields)
+        w.writeheader(); fout.flush()
+        with ProcessPoolExecutor(max_workers=workers) as ex:
+            for k, res in enumerate(ex.map(eval_combo, [(c, usable) for c in combos], chunksize=1), 1):
+                if res.get("n_trades", 0) > 0:
+                    rows.append(res)
+                    w.writerow({f: res.get(f, "") for f in fields}); fout.flush()
+                el = (_time.time() - t_start) / 60
+                eta = (len(combos) - k) * el / k if k else 0
+                # 实时显示当前最好的组合,方向对不对一眼就能看出来
+                best = max((r["mean_pnl"] for r in rows), default=float("nan"))
+                npos = sum(1 for r in rows if r["mean_pnl"] > 0)
+                print(f"  [{k}/{len(combos)}] 已用{el:.0f}分 剩~{eta:.0f}分 | "
+                      f"有效{len(rows)} 正收益{npos} 当前最好{best:+.2f}%", flush=True)
 
-    rows = [r for r in rows if r.get("n_trades", 0) > 0]
     if not rows:
         print("没有任何组合产生交易")
         return
-    fields = list(GRID.keys()) + ["n_trades", "pools_traded", "mean_pnl", "median_pnl",
-                                   "win_rate", "p10", "dead_rate", "compound_x", "avg_hold_min"]
-    with RESULTS_F.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        w.writeheader(); w.writerows(rows)
     print(f"写出 {len(rows)} 行 -> {RESULTS_F.name}")
     # 快速预览: 按复利倍数排序的前10
     rows.sort(key=lambda r: -r.get("compound_x", 0))
