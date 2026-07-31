@@ -1,1 +1,1 @@
-{"6C89uc7AvaecLfU4Fk7goe28nK4W4Uh3Do8kLiz7NMbT": {"checked_at": 1785494462, "n_traders": 40, "n_suspicious": 0, "exit_ratio": 1.0, "wallet_verdict": "39/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕", "gt_checked_at": 1785493562, "staircase_flag": false, "scalping_flag": true}, "2gM3BkwXB2j41kFAdPbY8jDnmpfWgE2tYxSjmQpCpiXJ": {"checked_at": 1785494462, "n_traders": 40, "n_suspicious": 0, "exit_ratio": 0.8750256605514725, "wallet_verdict": "创建者钱包标记为transfer_in(资金内部转入，不是市场买入)", "gt_checked_at": 1785494462, "staircase_flag": false, "scalping_flag": false}}
+{}
