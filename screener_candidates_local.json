@@ -1,6 +1,94 @@
 {
- "updated_at": 1785495062,
- "updated_at_str": "2026-07-31 10:51 UTC",
- "n_candidates": 0,
- "candidates": []
+ "updated_at": 1785495962,
+ "updated_at_str": "2026-07-31 11:06 UTC",
+ "n_candidates": 3,
+ "candidates": [
+  {
+   "addr": "3iMeEb32gvYwV9gnrRtny1jvVYk6bbMjcqtbr9YQRB7Q",
+   "name": "KINSCOIN / SOL",
+   "age_min": 16.816666666666666,
+   "created": 1785494953.0,
+   "price": 8.679178612786912e-05,
+   "liq": 20044.3413,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 25837.9275817859,
+   "vol_1h": 45708.4734549342,
+   "chg_15m": 4.286,
+   "chg_1h": 154.066,
+   "buys_15m": 171,
+   "sells_15m": 143,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/3iMeEb32gvYwV9gnrRtny1jvVYk6bbMjcqtbr9YQRB7Q",
+   "mint": "EBdMgW43VLtKKVsR4fCoZvhMdThgCZZ5opU87LBqpump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": true,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": true,
+    "n_traders": 40,
+    "n_suspicious": 4,
+    "exit_ratio": 0.9081324978812312,
+    "wallet_verdict": "36/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
+   }
+  },
+  {
+   "addr": "2gM3BkwXB2j41kFAdPbY8jDnmpfWgE2tYxSjmQpCpiXJ",
+   "name": "GDWR / SOL",
+   "age_min": 84.48333333333333,
+   "created": 1785490893.0,
+   "price": 0.005228750313808321,
+   "liq": 163395.6617,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 2831.5216249421,
+   "vol_1h": 15349.3080524815,
+   "chg_15m": 0.931,
+   "chg_1h": 12.396,
+   "buys_15m": 206,
+   "sells_15m": 18,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/2gM3BkwXB2j41kFAdPbY8jDnmpfWgE2tYxSjmQpCpiXJ",
+   "mint": "ZS29LrqaNactAHDiQ6Wt4t1hEVxcFhg1oRoArJ6pump",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": false,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": false,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": 0.8681594262281915,
+    "wallet_verdict": "创建者钱包标记为transfer_in(资金内部转入，不是市场买入)"
+   }
+  },
+  {
+   "addr": "2iC3g5tErUSiKftcu97PhpYhdHbS5YeJLhTTQqJr3Hmh",
+   "name": "KEYCAT / SOL",
+   "age_min": 19.0,
+   "created": 1785494822.0,
+   "price": 3.8233776046892226e-05,
+   "liq": 13434.7505,
+   "locked_liq_pct": 100.0,
+   "vol_15m": 5357.9800614912,
+   "vol_1h": 23751.9140428387,
+   "chg_15m": -26.752,
+   "chg_1h": -24.555,
+   "buys_15m": 84,
+   "sells_15m": 86,
+   "dex_url": "https://www.geckoterminal.com/solana/pools/2iC3g5tErUSiKftcu97PhpYhdHbS5YeJLhTTQqJr3Hmh",
+   "mint": "2mui5PhYAm8xJbKyyG7Q98igP831Cp7iFHDPmgLwkWj1",
+   "early_bot_flag": null,
+   "staircase_flag": false,
+   "scalping_flag": true,
+   "diligence": {
+    "checked_min_ago": 0.0,
+    "staircase_flag": false,
+    "scalping_flag": true,
+    "n_traders": 40,
+    "n_suspicious": 0,
+    "exit_ratio": 0.8074492876643834,
+    "wallet_verdict": "34/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
+   }
+  }
+ ]
 }
