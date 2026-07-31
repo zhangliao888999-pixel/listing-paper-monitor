@@ -5,3 +5,9 @@ results.csv
 forward_snapshots.jsonl
 .cg_api_key
 quota_usage.jsonl
+ohlcv3/
+ohlcv_clean/
+ohlcv2.tar.gz
+ohlcv3.tar.gz
+real_coins.json
+results_*.csv
