@@ -240,12 +240,18 @@ def parse_tx(sig_rec):
             d = v - prev.get(idx, 0.0)
             if abs(d) > 1e-9:
                 flow[(owner, mint)] += d
-    # 这笔是不是"池子诞生"事件。用来判历史是否完整——比守恒律可靠得多,
-    # 见 analyze() 里的说明。只存一个布尔值,不存指令名,省内存。
+    # 这笔是不是"池子诞生"事件。用来判历史是否完整,以及把建池注资从买卖里
+    # 剔出去。只存一个布尔值,不存指令名,省内存。
+    #
+    # 关键词必须精确。第一版写了 "Instruction: Initialize",它会匹配到
+    # **InitializeAccount3** —— 每个第一次买这个币的人都要创建代币账户,
+    # 于是所有首次买入全被当成"建池注资"跳过,USOH 的狗庄成本从 $45,364
+    # 变成 $0,钱包数从128掉到42。同理不能用宽泛的 "Instruction: Create"
+    # (会匹配 CreateIdempotent 这类ATA指令)。
     logs = meta.get("logMessages") or []
-    init = any(any(k in l for k in ("Instruction: Create", "Instruction: Initialize",
-                                    "Instruction: Migrate", "InitializeVirtualPool",
-                                    "initialize2", "Instruction: CreatePool"))
+    init = any(any(k in l for k in ("MigrateV2", "InitializeVirtualPool",
+                                    "Instruction: CreatePool", "Instruction: Migrate",
+                                    "Instruction: Initialize2", "Instruction: InitializePool"))
                for l in logs)
     return {"sig": sig_rec["sig"], "ts": sig_rec["ts"], "signer": signer,
             "fee": (meta.get("fee") or 0) / 1e9, "sol_bal": sol_bal,
@@ -327,39 +333,63 @@ def analyze(pool, txs, expected=None, role_lookup=None, use_mover=True):
     # 交易者只占很小比例。不能只排除"池子地址本身"——金库的持有人往往是
     # 另一个PDA(DISNEY的金库持有人是 FhVo3mqL8PW5,出现在265/662笔里,
     # 第一版没排除它,结果它被当成"鱼",凭空多出$7,797)。
-    _q_hits = defaultdict(int)
+    # 金库要在**两个命名空间**里各排一遍,这是踩过的坑:
+    # flow 的 key 是"持有人"地址,sol_delta 的 key 是"账户"地址,两者不是
+    # 一回事。第一版只用 flow 建集合,lamport 那条路径里金库的代币账户从来
+    # 没被排除,于是被当成 money_mover —— USOH 的钱包数从128掉到57、
+    # 狗庄成本从 $45,364 变成 $0。
+    _q_hits, _sol_hits = defaultdict(int), defaultdict(int)
     for t in txs:
         for (owner, mint) in t["flow"]:
             if mint == quote:
                 _q_hits[owner] += 1
-    _vaults = {pool} | {a for a, n in _q_hits.items() if n > len(txs) * 0.6}
+        gas0 = max(t["fee"] * 2, 3e-5)
+        for acc, d in t["sol_delta"].items():
+            if abs(d) > gas0:
+                _sol_hits[acc] += 1
+    _n = max(len(txs), 1)
+    _vaults = ({pool}
+               | {a for a, n in _q_hits.items() if n > _n * 0.6}
+               | {a for a, n in _sol_hits.items() if n > _n * 0.6})
 
     def money_mover(t):
         """这笔交易里真正出钱/收钱的账户。
 
-        为什么不能一律用签名人: $GATE 的操盘方用"热钱包签名 + 另一个账户出资"
-        的结构,签名的 Gygj9QQby4j2 每笔只掉 0.000021 SOL 的gas,真正的
-        0.0145 SOL 走 BwWK17cbHxwW —— 按签名人记账后者永远不出现,算出来的
-        "狗庄成本"是 $0。
+        设计原则: **默认相信签名人,只在它明显没出钱时才另找。**
 
-        为什么也不能一律用"资金变动最大的账户": 那会选中池子金库。所以先按
-        出现频率把金库剔掉,再在剩下的里面挑。
+        为什么不能一律"取资金变动最大的账户": 试过,连错四次。那样会在正常
+        池子里选中金库或中转账户 —— USOH 的钱包数从128掉到57、狗庄成本从
+        $45,364 变成 $0。金库在 flow(持有人地址)和 sol_delta(账户地址)
+        两个命名空间里都要排,即便排干净了,这个判据本身还是太激进。
+
+        但签名人口径也确实会被绕过: $GATE 的操盘方用"热钱包签名 + 另一个
+        账户出资",签名钱包每笔只掉 0.000021 SOL 的gas,真正的 0.0145 SOL
+        走 BwWK17cbHxwW,算出来的狗庄成本是 $0。
+
+        所以只处理这一种情况: 签名人的资金变动只有gas量级 -> 说明它是代付
+        gas的角色 -> 在非金库账户里找变动最大的那个。其余一概按签名人算。
         """
-        cands = [(o, v) for (o, m), v in t["flow"].items()
-                 if m == quote and o not in _vaults]
-        if cands:
-            return max(cands, key=lambda x: abs(x[1]))[0]
-        if quote != WSOL:
-            return t["signer"]
-        # 原生SOL的swap不产生代币流水,回退到lamport变化
-        gas = max(t["fee"] * 2, 3e-5)
+        s0 = t["signer"]
+        if not use_mover or not s0:
+            return s0
+        own = t["flow"].get((s0, quote), 0.0)
+        if quote == WSOL and abs(own) < 1e-9:
+            own = t["sol_delta"].get(s0, 0.0) + t["fee"]
+        gas = max(t["fee"] * 3, 1e-4)
+        if abs(own) > gas:
+            return s0                      # 签名人确实出了钱
         best, bv = None, 0.0
+        for (owner, mint), v in t["flow"].items():
+            if mint == quote and owner not in _vaults and abs(v) > abs(bv):
+                best, bv = owner, v
+        if best:
+            return best
         for acc, d in t["sol_delta"].items():
-            if acc in _vaults or abs(d) <= gas:
+            if acc in _vaults or acc == s0 or abs(d) <= gas:
                 continue
             if abs(d) > abs(bv):
                 best, bv = acc, d
-        return best or t["signer"]
+        return best or s0
 
     # ---- 每个"真正动钱的账户"的资金流 ----
     W = defaultdict(lambda: {"n_tx": 0, "n_buy": 0, "n_sell": 0, "in_usd": 0.0,
