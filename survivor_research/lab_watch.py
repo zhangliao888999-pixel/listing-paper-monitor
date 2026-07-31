@@ -51,6 +51,11 @@ MAX_FISH_AT_ENTRY = 20.0  # 进场时外部资金必须还很少
 DANGER_EXIT = 0.30
 STOP_PCT = -35.0        # 止损
 MAX_HOLD_MIN = 240      # 最长持有
+MAX_POOL_SIGS = 2500    # 单个池子的交易上限。超过这个量的池子: (a) 一轮
+                        # 解析不完(限速7笔/秒,3000笔要7分钟,循环才3分钟),
+                        # 永远追不上,CPU持续满载; (b) 本来就不是单人钓鱼盘,
+                        # 狗庄盘是几百笔的冷清盘。直接腾位。
+MAX_NEW_PER_ROUND = 400 # 单轮单池最多解析多少笔新交易,防止突发把循环撑爆
 MAX_WATCH = 40          # 同时观察上限。Helius免费档约10请求/秒是硬顶,
                         # 但增量刷新只拉新增交易,腾掉非狗庄盘后40个撑得住
 EVICT_IDLE_MIN = 90     # 盘死了多久就腾位
@@ -117,25 +122,36 @@ class Pool:
         self.txs = []
         self.seen = set()
         self.dead = False
+        self.too_big = 0
+        self.failed = 0
 
     def refresh(self):
-        """只拉比已知最新那笔更新的签名。"""
-        sigs = fx.get_signatures(self.addr, cap=3000)
+        """增量拉取新交易。返回新解析的笔数,-1 表示池子太大应当腾位。"""
+        sigs = fx.get_signatures(self.addr, cap=MAX_POOL_SIGS + 100)
+        if len(sigs) > MAX_POOL_SIGS:
+            self.too_big = len(sigs)
+            return -1
         new = [s for s in sigs
                if not s["err"] and s.get("ts") and s["sig"] not in self.seen]
         if not new:
             return 0
+        new = new[:MAX_NEW_PER_ROUND]
         with ThreadPoolExecutor(max_workers=10) as ex:
-            for t in ex.map(fx.parse_tx, new):
+            for s, t in zip(new, ex.map(fx.parse_tx, new)):
+                # 无论解析成不成功都记进 seen。原本只在成功时记,导致拉不到的
+                # 交易每一轮都重新请求一遍,RPC和CPU双重浪费,而且永远追不上。
+                self.seen.add(s["sig"])
                 if t:
                     self.txs.append(t)
-                    self.seen.add(t["sig"])
+                else:
+                    self.failed += 1
         self.txs.sort(key=lambda x: x["ts"])
         return len(new)
 
     def snapshot(self):
         # expected用已知签名数,覆盖率不够宁可这轮不出快照
-        m, _ = fx.analyze(self.addr, self.txs, expected=len(self.seen))
+        m, _ = fx.analyze(self.addr, self.txs,
+                          expected=len(self.seen) - self.failed)
         if not m:
             return None
         op = m["op_cost_usd"]
@@ -227,7 +243,13 @@ def main():
 
         for addr, p in list(watching.items()):
             try:
-                p.refresh()
+                if p.refresh() == -1:
+                    watching.pop(addr, None)
+                    c.execute("UPDATE watchlist SET dropped_at=?, reason=? WHERE pool=?",
+                              (int(time.time()), f"池子太大({p.too_big}笔)", addr))
+                    c.commit()
+                    log(f"腾位 {p.name or addr[:10]}: 池子太大({p.too_big}笔),不是钓鱼盘")
+                    continue
                 m = p.snapshot()
                 if not m:
                     continue
