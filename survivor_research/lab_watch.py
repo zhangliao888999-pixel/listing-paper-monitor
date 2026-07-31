@@ -307,29 +307,52 @@ def main():
     while True:
         if time.time() - last_disc > DISCOVER_GAP:
             try:
-                # 成熟盘优先占名额,新生盘只用剩下的
+                # 成熟盘优先占名额,新生盘只用剩下的。
+                # 第一版把新生盘上限写成 MAX_WATCH-MATURE_SLOTS+len(mature),
+                # 发现24个成熟盘时上限变成40,新生盘先把名额撑满,轮到成熟盘时
+                # len(watching)>=MAX_WATCH 恒成立,一个都进不来。
+                # 正确做法: 成熟盘按自己的配额算,名额不够就踢掉一个新生盘让位。
                 mature = discover_mature()
-                n_mature = sum(1 for a in watching
-                               if c.execute("SELECT tier FROM watchlist WHERE pool=?",
-                                            (a,)).fetchone() is not None)
+                cur_tier = {r["pool"]: r["tier"] for r in
+                            c.execute("SELECT pool, tier FROM watchlist "
+                                      "WHERE dropped_at IS NULL")}
+                n_mat = sum(1 for a in watching if cur_tier.get(a) == "mature")
                 for addr, name, age in mature:
-                    if addr in watching or len(watching) >= MAX_WATCH:
+                    if addr in watching or n_mat >= MATURE_SLOTS:
                         continue
+                    if len(watching) >= MAX_WATCH:
+                        victim = next((a for a in watching
+                                       if cur_tier.get(a, "newborn") != "mature"
+                                       and not c.execute(
+                                           "SELECT 1 FROM paper_trades WHERE pool=? "
+                                           "AND exit_ts IS NULL", (a,)).fetchone()), None)
+                        if not victim:
+                            break
+                        watching.pop(victim, None)
+                        c.execute("UPDATE watchlist SET dropped_at=?, reason=? "
+                                  "WHERE pool=?", (int(time.time()),
+                                                   "让位给成熟盘", victim))
                     watching[addr] = Pool(addr, name)
+                    cur_tier[addr] = "mature"
+                    n_mat += 1
                     db.add_pool(addr, name=name,
                                 found_at=time.strftime("%Y-%m-%d %H:%M:%S"))
                     c.execute("INSERT OR REPLACE INTO watchlist (pool,name,added_at,tier) "
                               "VALUES (?,?,?,?)", (addr, name, int(time.time()), "mature"))
                     c.commit()
                     log(f"加入成熟盘 {name or addr[:10]}  已活{age/60:.1f}小时")
+                newborn_cap = MAX_WATCH - MATURE_SLOTS
+                n_new = sum(1 for a in watching if cur_tier.get(a, "newborn") != "mature")
                 for addr, name, age in discover_new():
-                    if addr not in watching and len(watching) < MAX_WATCH - MATURE_SLOTS + len(mature):
-                        watching[addr] = Pool(addr, name)
-                        db.add_pool(addr, name=name,
-                                    found_at=time.strftime("%Y-%m-%d %H:%M:%S"))
-                        c.execute("INSERT OR REPLACE INTO watchlist (pool,name,added_at) "
-                                  "VALUES (?,?,?)", (addr, name, int(time.time())))
-                        c.commit()
+                    if addr in watching or n_new >= newborn_cap or len(watching) >= MAX_WATCH:
+                        continue
+                    n_new += 1
+                    watching[addr] = Pool(addr, name)
+                    db.add_pool(addr, name=name,
+                                found_at=time.strftime("%Y-%m-%d %H:%M:%S"))
+                    c.execute("INSERT OR REPLACE INTO watchlist (pool,name,added_at,tier) "
+                              "VALUES (?,?,?,?)", (addr, name, int(time.time()), "newborn"))
+                    c.commit()
                 log(f"观察名单 {len(watching)} 个")
             except Exception as e:
                 log(f"发现新币失败: {e}")
