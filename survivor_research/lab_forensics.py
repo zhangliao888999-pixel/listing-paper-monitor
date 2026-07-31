@@ -63,6 +63,26 @@ DUMP_WINDOW = 60          # 砸盘检测窗口(秒)
 _lock = threading.Lock()
 _rr = [0]
 
+# 每个线程一个带连接池的 Session。
+# 这是VPS上CPU 100%的真凶: 原来每次RPC都是裸 requests.post(),不复用连接,
+# 每个请求都要完整做一次TLS握手。握手在C层执行且释放GIL,所以10个线程能把
+# 4.5个核吃满 —— 纯Python代码受GIL限制根本做不到这一点,多核满载本身就是
+# "开销在C层"的证据。加上keep-alive后握手只发生一次。
+_tls = threading.local()
+
+
+def _session():
+    s = getattr(_tls, "s", None)
+    if s is None:
+        s = requests.Session()
+        ad = requests.adapters.HTTPAdapter(pool_connections=4, pool_maxsize=8,
+                                           max_retries=0)
+        s.mount("https://", ad)
+        s.headers.update({"Content-Type": "application/json",
+                          "Connection": "keep-alive"})
+        _tls.s = s
+    return s
+
 # Helius免费档: 100万credit/月、约10请求/秒。实测加线程到32吞吐也停在7笔/秒,
 # 说明限速在服务端。这里记账,免得像上次CoinGecko那样撞上额度才发现。
 _USAGE_F = __import__("pathlib").Path(__file__).parent / ".helius_usage.json"
@@ -107,10 +127,14 @@ def _rpc_at(url, method, params, tries=4):
         if url == HELIUS:
             _tick_usage()
         try:
-            r = requests.post(url, json={"jsonrpc": "2.0", "id": 1,
-                                         "method": method, "params": params}, timeout=30)
-            if r.status_code == 200 and "result" in r.json():
-                return r.json()["result"]
+            r = _session().post(url, json={"jsonrpc": "2.0", "id": 1,
+                                           "method": method, "params": params}, timeout=30)
+            if r.status_code == 200:
+                # 只解析一次。原来 `"result" in r.json()` 和 `r.json()["result"]`
+                # 各解一次,大响应(getTransaction 的JSON常有几十KB)白白翻倍。
+                j = r.json()
+                if "result" in j:
+                    return j["result"]
         except (requests.RequestException, ValueError):
             pass
         time.sleep(0.5 * (k + 1))
@@ -131,8 +155,8 @@ def rpc(method, params, tries=5):
             with _lock:
                 url = RPCS[_rr[0] % len(RPCS)]; _rr[0] += 1
         try:
-            r = requests.post(url, json={"jsonrpc": "2.0", "id": 1,
-                                         "method": method, "params": params}, timeout=30)
+            r = _session().post(url, json={"jsonrpc": "2.0", "id": 1,
+                                           "method": method, "params": params}, timeout=30)
             if r.status_code == 200:
                 j = r.json()
                 if "result" in j:
