@@ -240,9 +240,17 @@ def parse_tx(sig_rec):
             d = v - prev.get(idx, 0.0)
             if abs(d) > 1e-9:
                 flow[(owner, mint)] += d
+    # 这笔是不是"池子诞生"事件。用来判历史是否完整——比守恒律可靠得多,
+    # 见 analyze() 里的说明。只存一个布尔值,不存指令名,省内存。
+    logs = meta.get("logMessages") or []
+    init = any(any(k in l for k in ("Instruction: Create", "Instruction: Initialize",
+                                    "Instruction: Migrate", "InitializeVirtualPool",
+                                    "initialize2", "Instruction: CreatePool"))
+               for l in logs)
     return {"sig": sig_rec["sig"], "ts": sig_rec["ts"], "signer": signer,
             "fee": (meta.get("fee") or 0) / 1e9, "sol_bal": sol_bal,
-            "sol_delta": sol_delta, "flow": dict(flow), "held": held}
+            "sol_delta": sol_delta, "flow": dict(flow), "held": held,
+            "init": init}
 
 
 class Union:
@@ -265,10 +273,15 @@ class Union:
 
 
 MIN_COVERAGE = 0.90       # 交易覆盖率低于这个,数据不可信
+MAX_CUSTODIAL_SHARE = 0.35   # 托管平台占资金流量超过这个,归属不可信
 
 
-def analyze(pool, txs, expected=None):
+def analyze(pool, txs, expected=None, role_lookup=None, use_mover=True):
     """核心分析。txs 为按时间正序的 parse_tx 结果。返回 (metrics, wallet_rows)。
+
+    role_lookup: 可选的角色判定函数(见 lab_registry.role_of)。传了就会把
+    协议费/创建者费/托管平台账户从"狗庄 vs 鱼"的统计里剔除,并给出归属
+    可信度。不传则退化成老行为,方便回归对比。
 
     expected: 本应拉到多少笔。公共RPC被打满时 getTransaction 会静默返回空,
     丢掉的交易不会报错,资金账就会少算——曾经出现过310笔只解析成功88笔,
@@ -283,13 +296,23 @@ def analyze(pool, txs, expected=None):
     txs.sort(key=lambda x: x["ts"])
     signers = {t["signer"] for t in txs if t["signer"]}
 
-    # ---- 计价币: 看哪个已知计价币在签名钱包的流水里出现最多 ----
+    # ---- 计价币判定 ----
+    # 原来只数"签名钱包"的计价币流水,踩了个大坑: SOL的swap在同一笔内wrap再
+    # close,签名人的WSOL流水前后都是0,WSOL永远是0票;而只要有**一笔**订单
+    # 路由经过USDC,USDC就以1票胜出 —— 于是整个SOL池子的交易全部隐形,算出
+    # "狗庄成本$0.00"($GATE那个池子就是这么错的)。
+    #
+    # 改成数所有持有人(池子金库也算): SOL池子的金库持有WSOL,每笔swap都会
+    # 动,票数自然高。再加一道门槛: 胜出者必须出现在足够多的交易里,否则
+    # 认定为原生SOL计价——这是Solana上绝大多数池子的情况。
     hits = defaultdict(int)
     for t in txs:
-        for (owner, mint) in t["flow"]:
-            if owner in signers and mint in QUOTES:
-                hits[mint] += 1
+        seen_mints = {mint for (_, mint) in t["flow"] if mint in QUOTES}
+        for mint in seen_mints:
+            hits[mint] += 1
     quote = max(QUOTES, key=lambda m: hits.get(m, 0))
+    if hits.get(quote, 0) < len(txs) * 0.25:
+        quote = WSOL
     qsym, qpx = QUOTES[quote]
     base = None
     bh = defaultdict(int)
@@ -300,18 +323,67 @@ def analyze(pool, txs, expected=None):
     if bh:
         base = max(bh, key=lambda m: bh[m])
 
-    # ---- 每个签名钱包的资金流 ----
+    # 池子金库的识别: 它是每一笔交易的对手方,所以出现频率接近100%;真实
+    # 交易者只占很小比例。不能只排除"池子地址本身"——金库的持有人往往是
+    # 另一个PDA(DISNEY的金库持有人是 FhVo3mqL8PW5,出现在265/662笔里,
+    # 第一版没排除它,结果它被当成"鱼",凭空多出$7,797)。
+    _q_hits = defaultdict(int)
+    for t in txs:
+        for (owner, mint) in t["flow"]:
+            if mint == quote:
+                _q_hits[owner] += 1
+    _vaults = {pool} | {a for a, n in _q_hits.items() if n > len(txs) * 0.6}
+
+    def money_mover(t):
+        """这笔交易里真正出钱/收钱的账户。
+
+        为什么不能一律用签名人: $GATE 的操盘方用"热钱包签名 + 另一个账户出资"
+        的结构,签名的 Gygj9QQby4j2 每笔只掉 0.000021 SOL 的gas,真正的
+        0.0145 SOL 走 BwWK17cbHxwW —— 按签名人记账后者永远不出现,算出来的
+        "狗庄成本"是 $0。
+
+        为什么也不能一律用"资金变动最大的账户": 那会选中池子金库。所以先按
+        出现频率把金库剔掉,再在剩下的里面挑。
+        """
+        cands = [(o, v) for (o, m), v in t["flow"].items()
+                 if m == quote and o not in _vaults]
+        if cands:
+            return max(cands, key=lambda x: abs(x[1]))[0]
+        if quote != WSOL:
+            return t["signer"]
+        # 原生SOL的swap不产生代币流水,回退到lamport变化
+        gas = max(t["fee"] * 2, 3e-5)
+        best, bv = None, 0.0
+        for acc, d in t["sol_delta"].items():
+            if acc in _vaults or abs(d) <= gas:
+                continue
+            if abs(d) > abs(bv):
+                best, bv = acc, d
+        return best or t["signer"]
+
+    # ---- 每个"真正动钱的账户"的资金流 ----
     W = defaultdict(lambda: {"n_tx": 0, "n_buy": 0, "n_sell": 0, "in_usd": 0.0,
                              "out_usd": 0.0, "gas_usd": 0.0, "tok_held": 0.0,
-                             "first_ts": None, "last_ts": None})
+                             "first_ts": None, "last_ts": None,
+                             "tok_in": 0.0, "tok_out": 0.0})
     sol_first, sol_last = {}, {}
+    seed_usd = 0.0
     for t in txs:
-        s = t["signer"]
+        s = money_mover(t) if use_mover else t["signer"]
         if not s:
+            continue
+        if t.get("init"):
+            # 建池/迁移那一笔里的资金是**注入流动性**,不是买卖。DISNEY 的
+            # CFXpPrPLhN8J 在建池那笔里出了 $7,510,按交易记账会变成一条
+            # 凭空多出来的"鱼",而这个币真实的外部买入是 $0。
+            q0 = t["flow"].get((s, quote), 0.0)
+            seed_usd += abs(q0) * qpx
             continue
         w = W[s]
         w["n_tx"] += 1
-        w["gas_usd"] += t["fee"] * SOL_USD
+        # gas 记在签名人头上(它才是付gas的),但资金记在出钱账户头上
+        if t["signer"] == s:
+            w["gas_usd"] += t["fee"] * SOL_USD
         w["first_ts"] = w["first_ts"] or t["ts"]
         w["last_ts"] = t["ts"]
         if s in t["sol_bal"]:
@@ -319,16 +391,27 @@ def analyze(pool, txs, expected=None):
             sol_last[s] = t["sol_bal"][s]
         q = t["flow"].get((s, quote), 0.0)
         if quote == WSOL and abs(q) < 1e-9:
+            # 出钱账户不一定付gas,所以这里不能无条件加回手续费
             # 原生SOL的swap会在同一笔里wrap再close,postTokenBalances的WSOL
             # 前后都是0,流水抓不到。必须回退到lamport增量。
             # 注意用**每笔的增量**累加,不能用余额首末差: 只出现在一笔交易里的
             # 钱包,我记录的首末都是同一个交易后余额,相减恒为0——SOL计价的池子
             # 因此全部算成"狗庄成本$0",这个bug让前8个快照全是废数据。
-            q = t["sol_delta"].get(s, 0.0) + t["fee"]   # 加回手续费,只看交易本身
+            q = t["sol_delta"].get(s, 0.0)
+            if t["signer"] == s:
+                q += t["fee"]
         if q < 0:
             w["in_usd"] += -q * qpx; w["n_buy"] += 1
         elif q > 0:
             w["out_usd"] += q * qpx; w["n_sell"] += 1
+        # 记录标的币的收发数量。卖出的币远多于买进的,差额只能来自钱包间转账
+        # —— 那是识别狗庄同伙的关键线索(见下面的簇识别)。
+        if base:
+            tq = t["flow"].get((s, base), 0.0)
+            if tq > 0:
+                w["tok_in"] += tq
+            elif tq < 0:
+                w["tok_out"] += -tq
         for (owner, mint), v in t["held"].items():
             if mint == base and owner in W:
                 W[owner]["tok_held"] = v
@@ -336,6 +419,32 @@ def analyze(pool, txs, expected=None):
     #   for s in W: sum(t["fee"] for t in txs if t["signer"]==s)
     # 即 O(钱包数 x 交易数),100个钱包配3000笔交易就是30万次,而 analyze()
     # 每3分钟对每个观察对象重算一遍 —— VPS的CPU被这个吃到81%。
+
+    # ---- 角色过滤 ----
+    # 池子里出现的账户不全是交易者。pump.fun的协议费账户(每笔抽0.95%)、
+    # 每个币自己的创建者费账户(0.30%)、以及托管平台的资金池,都会有大额
+    # 资金进出但跟"狗庄 vs 鱼"的博弈无关。
+    # $GATE 那个池子里资金流量最大的两个账户都是托管平台(余额46,751 SOL、
+    # 11个签名人共用、同时操作16个币),把它们算成交易者,算出来的是平台
+    # 代表一堆用户的进出总和,跟任何一个操盘方都没关系。
+    roles, cust_vol, tot_vol = {}, 0.0, 0.0
+    if role_lookup:
+        n_tx_all = len(txs)
+        for a, w in list(W.items()):
+            vol = w["in_usd"] + w["out_usd"]
+            tot_vol += vol
+            try:
+                role, _ = role_lookup(a, pool, w["in_usd"], w["out_usd"],
+                                      w["n_tx"], n_tx_all)
+            except Exception:
+                role = "trader"
+            roles[a] = role
+            if role == "custodial":
+                cust_vol += vol
+            if role != "trader":
+                W.pop(a, None)
+        if not W:
+            return None, []
 
     # ---- 同伙识别: 代币转账(标的币动了但计价币没动)把钱包连起来 ----
     # 这里踩过一个会让整个模型失真的坑: 判断"计价币有没有动"原本只看
@@ -368,11 +477,19 @@ def analyze(pool, txs, expected=None):
     busiest = max(W, key=lambda k: W[k]["n_tx"]) if W else creator
     op_roots = {uf.find(creator), uf.find(busiest)}
     cluster = {s for s in W if uf.find(s) in op_roots}
-    # 从簇内钱包收过币、自己却没花钱买过的,也算同伙(USOH那12个砸盘钱包)
+    # USOH 的12个砸盘钱包是靠**钱包间转账**拿到币的,而转账不经过池子、
+    # 不在池子的签名历史里,并查集看不到这个连接 —— 结果它们被当成"鱼",
+    # 狗庄取出算成 $87 而实际是 $66,474。
+    # 但可以从代币数量反推: 在本池只买进少量币却卖出大量币,差额必然来自
+    # 外部转入。这12个钱包每个买入约$200、卖出约$3,600,比例18倍。
     for s in W:
         if s in cluster:
             continue
-        if W[s]["in_usd"] < 1.0 and W[s]["out_usd"] > 50.0:
+        w = W[s]
+        if w["in_usd"] < 1.0 and w["out_usd"] > 50.0:
+            cluster.add(s); continue
+        if (w["tok_out"] > w["tok_in"] * 2.0 and w["tok_out"] > 0
+                and w["out_usd"] > max(w["in_usd"] * 3.0, 20.0)):
             cluster.add(s)
 
     rows = []
@@ -390,6 +507,7 @@ def analyze(pool, txs, expected=None):
     fish_out = sum(w["out_usd"] for w in fish.values())
 
     def qflow(t, s):
+        """注意: s 必须是 money_mover 认定的账户,口径要和上面的主循环一致。"""
         """这笔交易里,钱包s的计价币净变化(负=买入付钱, 正=卖出收钱)。
 
         SOL计价的池子必须回退到lamport增量,原因见上面的注释。三处地方
@@ -397,13 +515,14 @@ def analyze(pool, txs, expected=None):
         """
         q = t["flow"].get((s, quote), 0.0)
         if quote == WSOL and abs(q) < 1e-9:
+            # 出钱账户不一定付gas,所以这里不能无条件加回手续费
             q = t["sol_delta"].get(s, 0.0) + t["fee"]
         return q
 
     # ---- 储备曲线: 资金守恒,钱包净失去的就是池子净得到的 ----
     cum, curve = 0.0, []
     for t in txs:
-        s = t["signer"]
+        s = money_mover(t) if use_mover else t["signer"]
         if not s:
             continue
         cum += -qflow(t, s) * qpx
@@ -411,17 +530,38 @@ def analyze(pool, txs, expected=None):
     peak_res = max((v for _, v in curve), default=0.0)
     end_res = curve[-1][1] if curve else 0.0
 
-    # ---- 守恒自检 ----
-    # 池子的净流入不可能为负: 谁也不能从池子里取出比投进去更多的钱。出现负值
-    # 只有一个解释——我们没拿到完整历史(节点裁剪、或者池子由联合曲线迁移而来,
-    # 起始流动性在本池签名之前)。这种样本的"狗庄成本"必然偏低,不能用。
-    net_in = sum(w["in_usd"] for w in W.values()) - sum(w["out_usd"] for w in W.values())
-    if net_in < -max(peak_res, 1.0) * 0.05:
-        return None, []
+    # ---- 历史完整性检查 ----
+    # 这里原来放的是"净流入不能为负"的守恒闸门,**那个设计是错的**,而且错得
+    # 很隐蔽: 它把毕业迁移来的池子全部误杀了,而那恰恰是最有价值的样本
+    # (USOH开盘就有672 SOL,其中594是狗庄在联合曲线阶段打进去的)。
+    #
+    # 根本问题: 迁移池子天生带着一笔**不在本池签名历史里**的初始储备,所以
+    # "取出 > 投入"对它来说是正常的。而真正的历史缺失表现完全一样。这个判据
+    # 从原理上就区分不了两者,不是调阈值能救的。
+    #
+    # 改成直接检测: 我们有没有拿到"池子诞生"那一笔。拿到了,历史就是完整的,
+    # 至于初始储备多少,单独记下来当指标用(它本身就是狗庄的铺底金额)。
+    gross_in = sum(w["in_usd"] for w in W.values())
+    gross_out = sum(w["out_usd"] for w in W.values())
+    has_birth = any(t.get("init") for t in txs[:5])
+    # 初始储备 = 开盘就存在、却没人存进来的那部分 = 取出超过投入的部分
+    # 初始储备优先用建池那笔实际注入的金额;没抓到就退回"取出超过投入"的估计
+    init_reserve = seed_usd if seed_usd > 0 else max(gross_out - gross_in, 0.0)
+    # 不因为历史不完整就丢弃数据。USOH 有9,623笔,抓取上限2600时诞生事件必然
+    # 不在窗口里 —— 直接拒绝等于把所有大池子排除掉,那才是更大的偏差。
+    # 改成打质量标签,让下游按需过滤: 要精确算狗庄成本时只用 full 的样本,
+    # 看形态和结局时 truncated 的一样能用。
+    if has_birth:
+        quality = "full"
+    elif init_reserve > max(gross_in, 1.0) * 0.15:
+        quality = "truncated"      # 缺开头,狗庄成本会偏低
+    else:
+        quality = "partial"        # 没见到诞生事件但资金基本配平
 
     # ---- 砸盘检测: 60秒窗口内最大的计价币流出 ----
-    sells = [(t["ts"], qflow(t, t["signer"]) * qpx)
-             for t in txs if t["signer"] and qflow(t, t["signer"]) > 0]
+    _mv = {id(t): (money_mover(t) if use_mover else t["signer"]) for t in txs}
+    sells = [(t["ts"], qflow(t, _mv[id(t)]) * qpx)
+             for t in txs if _mv[id(t)] and qflow(t, _mv[id(t)]) > 0]
     # 找60秒窗口内流出最大的那一段。原来是对每笔卖出再扫一遍后面所有卖出,
     # O(卖出笔数^2); 卖出上千笔的池子光这一步就要上百万次运算。改成双指针
     # 滑动窗口,一趟扫完。
@@ -465,11 +605,11 @@ def analyze(pool, txs, expected=None):
     # 核心问题: 多大的外部买单会触发他收网? 用户实盘$5就被砸,但那是刚出生的
     # 币; DISNEY这种已经沉没$2,244的盘,砸一个$5的买家等于自己认赔离场,不合算。
     # 所以猜测阈值跟沉没成本挂钩,这里把两边都量出来让数据说话。
-    op_buys = [(t["ts"], -qflow(t, t["signer"]) * qpx)
-               for t in txs if t["signer"] in cluster and qflow(t, t["signer"]) < 0]
-    fish_buys = [(t["ts"], -qflow(t, t["signer"]) * qpx)
-                 for t in txs if t["signer"] and t["signer"] not in cluster
-                 and qflow(t, t["signer"]) < 0]
+    op_buys = [(t["ts"], -qflow(t, _mv[id(t)]) * qpx)
+               for t in txs if _mv[id(t)] in cluster and qflow(t, _mv[id(t)]) < 0]
+    fish_buys = [(t["ts"], -qflow(t, _mv[id(t)]) * qpx)
+                 for t in txs if _mv[id(t)] and _mv[id(t)] not in cluster
+                 and qflow(t, _mv[id(t)]) < 0]
     trigger_buy = op_cost_at_dump = fish_in_at_dump = trig_ratio = None
     if dump_t0:
         pre = [v for ts, v in fish_buys if 0 <= dump_t0 - ts <= 300]
@@ -498,6 +638,11 @@ def analyze(pool, txs, expected=None):
         t_fish_to_dump=round(t_fish_to_dump, 2) if t_fish_to_dump is not None else None,
         dump_sec=round(dump_t1 - dump_t0, 1) if dump_t0 else None,
         max_drawdown=None, outcome=outcome,
+        has_birth=int(has_birth),
+        data_quality=quality,
+        init_reserve_usd=round(init_reserve, 2),
+        custodial_share=round(cust_vol / tot_vol, 4) if tot_vol else 0.0,
+        attribution_ok=int(not tot_vol or cust_vol / tot_vol <= MAX_CUSTODIAL_SHARE),
         updated_at=time.strftime("%Y-%m-%d %H:%M:%S"),
     )
     return m, rows
