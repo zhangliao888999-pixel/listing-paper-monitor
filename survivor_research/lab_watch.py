@@ -192,6 +192,23 @@ def discover_new():
     return out
 
 
+HEARTBEAT_F = HERE / ".lab_heartbeat.json"
+
+
+def write_heartbeat(**kw):
+    """每轮写一次心跳。监控窗口靠它判断"进程还活着吗、卡在哪一步"。
+
+    单看进程在不在不够: 进程可能活着但卡在某个池子的RPC上不动了。心跳里带
+    上时间戳和当前处理到哪个池子,一眼能看出是在干活还是僵住了。
+    """
+    kw["ts"] = int(time.time())
+    kw["pid"] = __import__("os").getpid()
+    try:
+        HEARTBEAT_F.write_text(json.dumps(kw, ensure_ascii=False), encoding="utf-8")
+    except OSError:
+        pass
+
+
 def record_snapshot(c, pool, m, price):
     c.execute("INSERT OR REPLACE INTO snapshots (pool,ts,age_min,n_tx,n_wallet,"
               "top_share,reserve_usd,op_cost_usd,fish_in_usd,danger,price) "
@@ -241,7 +258,9 @@ def main():
                 log(f"发现新币失败: {e}")
             last_disc = time.time()
 
-        for addr, p in list(watching.items()):
+        for i, (addr, p) in enumerate(list(watching.items()), 1):
+            write_heartbeat(stage="扫描中", pool=p.name or addr[:10],
+                            i=i, n=len(watching), helius=fx.usage_report())
             try:
                 if p.refresh() == -1:
                     watching.pop(addr, None)
@@ -338,6 +357,8 @@ def main():
         n_open = c.execute("SELECT COUNT(*) n FROM paper_trades WHERE exit_ts IS NULL").fetchone()["n"]
         n_done = c.execute("SELECT COUNT(*) n FROM paper_trades WHERE exit_ts IS NOT NULL").fetchone()["n"]
         log(f"一轮结束  观察{len(watching)}个  持仓{n_open}  已平{n_done}")
+        write_heartbeat(stage="休眠", watching=len(watching), open=n_open,
+                        done=n_done, helius=fx.usage_report(), sleep_sec=SCAN_GAP)
         time.sleep(SCAN_GAP)
 
 
