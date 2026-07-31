@@ -4,5 +4,6 @@
 Set-Location "C:\claude_watchbot\listing-paper-monitor\survivor_research"
 $env:BT_WORKERS = "5"
 $env:BT_GRID = "coarse"
-python -u backtest.py 2>&1 | Out-File -Encoding utf8 backtest_coarse.log
+$env:OHLCV_DIR = "ohlcv3"
+python -u backtest.py 2>&1 | Out-File -Encoding utf8 backtest_v2.log
 Write-Host "backtest finished"
