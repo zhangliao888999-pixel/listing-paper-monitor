@@ -181,9 +181,20 @@ def get_signatures(addr, cap=None):
         p = {"limit": 1000}
         if before:
             p["before"] = before
-        res = _rpc_at(HELIUS, "getSignaturesForAddress", [addr, p]) if HELIUS else None
+        # 分页失败必须重试到底。原来一失败就 break,**静默截断**且不报错 ——
+        # 同一个池子三次拉到 36,014 / 20,913 / 1,992 笔,历史深度每次都不同,
+        # 算出来的狗庄成本自然也每次不同。这种错比拿不到数据更危险。
+        res = None
+        for attempt in range(6):
+            res = _rpc_at(HELIUS, "getSignaturesForAddress", [addr, p]) if HELIUS else None
+            if res is None:
+                res = rpc("getSignaturesForAddress", [addr, p])
+            if res is not None:
+                break
+            time.sleep(2.0 * (attempt + 1))
         if res is None:
-            res = rpc("getSignaturesForAddress", [addr, p])
+            raise RuntimeError(
+                "签名分页失败: %s 已拿到%d笔就断了,历史不完整" % (addr[:12], len(sigs)))
         if not res:
             break
         sigs += [{"sig": s["signature"], "ts": s.get("blockTime"),
