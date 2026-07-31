@@ -287,6 +287,7 @@ def analyze(pool, txs, expected=None):
             continue
         w = W[s]
         w["n_tx"] += 1
+        w["gas_usd"] += t["fee"] * SOL_USD
         w["first_ts"] = w["first_ts"] or t["ts"]
         w["last_ts"] = t["ts"]
         if s in t["sol_bal"]:
@@ -304,13 +305,13 @@ def analyze(pool, txs, expected=None):
             w["in_usd"] += -q * qpx; w["n_buy"] += 1
         elif q > 0:
             w["out_usd"] += q * qpx; w["n_sell"] += 1
-    for s in W:
-        W[s]["gas_usd"] = sum(t["fee"] for t in txs if t["signer"] == s) * SOL_USD
-    if base:
-        for t in txs:
-            for (owner, mint), v in t["held"].items():
-                if mint == base and owner in W:
-                    W[owner]["tok_held"] = v
+        for (owner, mint), v in t["held"].items():
+            if mint == base and owner in W:
+                W[owner]["tok_held"] = v
+    # gas 和持币量在上面的主循环里已经能一次算完。原来这里是
+    #   for s in W: sum(t["fee"] for t in txs if t["signer"]==s)
+    # 即 O(钱包数 x 交易数),100个钱包配3000笔交易就是30万次,而 analyze()
+    # 每3分钟对每个观察对象重算一遍 —— VPS的CPU被这个吃到81%。
 
     # ---- 同伙识别: 代币转账(标的币动了但计价币没动)把钱包连起来 ----
     # 这里踩过一个会让整个模型失真的坑: 判断"计价币有没有动"原本只看
@@ -397,13 +398,21 @@ def analyze(pool, txs, expected=None):
     # ---- 砸盘检测: 60秒窗口内最大的计价币流出 ----
     sells = [(t["ts"], qflow(t, t["signer"]) * qpx)
              for t in txs if t["signer"] and qflow(t, t["signer"]) > 0]
+    # 找60秒窗口内流出最大的那一段。原来是对每笔卖出再扫一遍后面所有卖出,
+    # O(卖出笔数^2); 卖出上千笔的池子光这一步就要上百万次运算。改成双指针
+    # 滑动窗口,一趟扫完。
     dump_usd, dump_t0, dump_t1 = 0.0, None, None
-    for i, (ts, _) in enumerate(sells):
-        tot = sum(v for t2, v in sells[i:] if t2 - ts <= DUMP_WINDOW)
-        if tot > dump_usd:
-            dump_usd = tot
-            dump_t0 = ts
-            dump_t1 = max((t2 for t2, _ in sells[i:] if t2 - ts <= DUMP_WINDOW), default=ts)
+    lo = 0
+    run = 0.0
+    for hi in range(len(sells)):
+        run += sells[hi][1]
+        while sells[hi][0] - sells[lo][0] > DUMP_WINDOW:
+            run -= sells[lo][1]
+            lo += 1
+        if run > dump_usd:
+            dump_usd = run
+            dump_t0 = sells[lo][0]
+            dump_t1 = sells[hi][0]
 
     # ---- 第一条鱼 / 鱼到砸盘的间隔 ----
     fish_ts = [w["first_ts"] for s, w in fish.items() if w["in_usd"] > 1.0]
