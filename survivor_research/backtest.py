@@ -55,18 +55,27 @@ GRID_FULL = {
     "target_pct":    [15, 30, 50],          # 止盈目标
     "stop_pct":      [10, 15, 20],          # 硬止损
     "max_hold_min":  [15, 45, 120],         # 最长持有
+    "max_entry_min": [360, 1440],           # 只在币诞生后这段时间内找入场机会
 }
 # 粗筛: 每个关键参数只取两端(能看出方向性),止盈多留一档(直接决定盈亏),
 # max_hold固定45分钟(12组合试跑显示它对结果影响最小)
 GRID_COARSE = {
+    # 上一轮192组合的边际影响显示: quiet_min(3 vs 8: -5.68% vs -5.64%)和
+    # quiet_band_pct(-5.84% vs -5.52%)几乎没有区分度——访谈里最核心的"横盘
+    # 几分钟"信号在数据上不成立。各固定一档,把算力让给真正有区分度的维度。
+    # stop_pct有明显方向(10%: -4.45% 优于 20%: -6.94%),保留两档确认。
     "min_age_min":   [60, 240],
     "pump_mult":     [2.0, 5.0],
     "pullback_pct":  [20, 50],
-    "quiet_min":     [3, 8],
-    "quiet_band_pct":[4, 8],
+    "quiet_min":     [3],
+    "quiet_band_pct":[8],
     "target_pct":    [15, 30, 50],
     "stop_pct":      [10, 20],
     "max_hold_min":  [45],
+    # 关键新维度: 币诞生后多久之内还值得做。80样本试跑显示越早越好
+    # (前6小时-1.94% vs 全程-3.46%,死亡率0.7% vs 1.8%),所以在早期这段
+    # 加密档位: 1/2/3/6小时,看优势是不是继续往前集中。
+    "max_entry_min": [60, 120, 180, 360, 99999],
 }
 import os as _os2
 GRID = GRID_COARSE if _os2.environ.get("BT_GRID", "coarse") == "coarse" else GRID_FULL
@@ -91,8 +100,17 @@ def simulate(bars, p):
     trades = []
     n = len(bars)
     i = max(p["min_age_min"], 20)  # 币龄不足前不看
+    # 2026-07-31新增(用户问"这批数据是活了多久的币"后发现的问题): 原来在整个
+    # 生命周期上均匀扫描入场点,但访谈里的手法针对的是币"已经涨起来、还在活跃"
+    # 的早期阶段("能玩几个小时那种"),不是活了几十小时之后的僵尸期。补齐K线
+    # 后中位数生命周期是18.5小时,如果还是全程扫,大部分入场点会落在后期低波动
+    # 区间,测的根本不是这个策略。用max_entry_min限制只在币诞生后这段时间内找
+    # 入场机会。
+    # 注意: 只能限制"找入场点"的范围,不能限制n本身——n还用于持仓模拟,
+    # 截断n会让靠近窗口边缘入场的交易被迫提前平仓,污染结果。
+    entry_limit = min(n - 2, int(p["max_entry_min"])) if p.get("max_entry_min") else n - 2
 
-    while i < n - 2:
+    while i < entry_limit:
         # ---- 入场条件评估(截至第i根) ----
         window = bars[max(0, i - 240):i + 1]
         lows = [b[3] for b in window if b[3] > 0]
