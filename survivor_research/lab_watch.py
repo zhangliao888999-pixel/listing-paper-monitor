@@ -51,6 +51,7 @@ MATURE_MIN_AGE = 60     # 成熟档: 至少活过1小时
 MATURE_MAX_AGE = 1440   # 24小时以内,再老就不是"正在进行的局"
 # 成熟盘名额不能太多: 每个首次接触要拉几千笔,10个就是约2小时。
 MATURE_SLOTS = 10
+MATURE_TAIL = 3000      # 成熟盘每次只看最近这么多笔
 # 仓位和门槛按 171 个池子、5,617 条买家记录的实证结果重定:
 #   仓位 <$5   : 卖出过67%  赚钱19%  中位 -46%
 #   仓位 $20-100: 卖出过88%  赚钱31%  中位  -9%
@@ -138,9 +139,10 @@ def log(*a):
 class Pool:
     """一个被观察的池子。交易明细增量累积,不重复拉。"""
 
-    def __init__(self, addr, name=""):
+    def __init__(self, addr, name="", tier="newborn"):
         self.addr = addr
         self.name = name
+        self.tier = tier
         self.txs = []
         self.seen = set()
         self.dead = False
@@ -148,11 +150,21 @@ class Pool:
         self.failed = 0
 
     def refresh(self):
-        """增量拉取新交易。返回新解析的笔数,-1 表示池子太大应当腾位。"""
-        sigs = fx.get_signatures(self.addr, cap=MAX_POOL_SIGS + 100)
-        if len(sigs) > MAX_POOL_SIGS:
+        """增量拉取新交易。返回新解析的笔数,-1 表示池子太大应当腾位。
+
+        成熟盘不设上限、只取最近一段。原来"超过上限就腾位"的理由是"狗庄盘
+        是几百笔的冷清盘",那个前提只对新生小盘成立 —— 成熟盘(HOOD 9000+笔、
+        3091买家/109卖家=28:1)正是我们要的样本,却被这条规则全部挡在门外,
+        腾位理由还写着"不是钓鱼盘",判断本身就是错的。
+        我们要的是"当前狗庄成本和鱼的钱",最近几千笔足够,不必拉全量。
+        """
+        cap = MATURE_TAIL if self.tier == "mature" else MAX_POOL_SIGS + 100
+        sigs = fx.get_signatures(self.addr, cap=cap)
+        if self.tier != "mature" and len(sigs) > MAX_POOL_SIGS:
             self.too_big = len(sigs)
             return -1
+        if len(sigs) > cap:
+            sigs = sigs[-cap:]          # 成熟盘只看最近这一段
         new = [s for s in sigs
                if not s["err"] and s.get("ts") and s["sig"] not in self.seen]
         if not new:
@@ -293,9 +305,10 @@ def main():
         watching[a] = Pool(a)
         log(f"手工加入观察: {a}")
 
-    for r in c.execute("SELECT pool,name FROM watchlist WHERE dropped_at IS NULL "
+    for r in c.execute("SELECT pool,name,tier FROM watchlist WHERE dropped_at IS NULL "
                        "ORDER BY added_at DESC LIMIT ?", (MAX_WATCH,)):
-        watching[r["pool"]] = Pool(r["pool"], r["name"] or "")
+        watching[r["pool"]] = Pool(r["pool"], r["name"] or "",
+                                   tier=r["tier"] or "newborn")
     if watching:
         log(f"从库里恢复 {len(watching)} 个观察对象")
 
@@ -332,7 +345,7 @@ def main():
                         c.execute("UPDATE watchlist SET dropped_at=?, reason=? "
                                   "WHERE pool=?", (int(time.time()),
                                                    "让位给成熟盘", victim))
-                    watching[addr] = Pool(addr, name)
+                    watching[addr] = Pool(addr, name, tier="mature")
                     cur_tier[addr] = "mature"
                     n_mat += 1
                     db.add_pool(addr, name=name,
