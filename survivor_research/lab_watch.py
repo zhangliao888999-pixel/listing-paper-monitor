@@ -37,8 +37,20 @@ import lab_forensics as fx
 HERE = Path(__file__).parent
 
 # ---- 策略参数(先用保守值,等数据跑出来再校准)----
-MIN_AGE_MIN = 2         # 太新的币还看不出形态
-MAX_AGE_MIN = 45        # 太老的错过了最佳观察期
+# ---- 两档采集 ----
+# 实测: GT 的 new_pools 接口只覆盖 0-7 分钟的币(Solana 发币太密集,200个池子
+# 全在15分钟以内)。所以原来设的"2-45分钟"窗口实际只有 2-7 分钟,采到的全是
+# 最小最短命的一批 —— 31次收网的验收报告显示这类币中位寿命2分钟、狗庄成本
+# 中位$91,任何仓位都没有操作性。
+#
+# 真正有钱赚的是 USOH 那一类: 成本几万美元、活几小时。那类币只能从
+# trending_pools / pools 接口拿到。所以分两档,给成熟盘留出大部分名额。
+MIN_AGE_MIN = 2         # 新生档: 太新看不出形态
+MAX_AGE_MIN = 15        # 新生档上限(接口本来也给不了更老的)
+MATURE_MIN_AGE = 60     # 成熟档: 至少活过1小时
+MATURE_MAX_AGE = 1440   # 24小时以内,再老就不是"正在进行的局"
+# 成熟盘名额不能太多: 每个首次接触要拉几千笔,10个就是约2小时。
+MATURE_SLOTS = 10
 # 仓位和门槛按 171 个池子、5,617 条买家记录的实证结果重定:
 #   仓位 <$5   : 卖出过67%  赚钱19%  中位 -46%
 #   仓位 $20-100: 卖出过88%  赚钱31%  中位  -9%
@@ -59,12 +71,13 @@ MAX_FISH_AT_ENTRY = 20.0  # 进场时外部资金必须还很少
 DANGER_EXIT = 0.30
 STOP_PCT = -35.0        # 止损
 MAX_HOLD_MIN = 240      # 最长持有
-MAX_POOL_SIGS = 2500    # 单个池子的交易上限。超过这个量的池子: (a) 一轮
-                        # 解析不完(限速7笔/秒,3000笔要7分钟,循环才3分钟),
-                        # 永远追不上,CPU持续满载; (b) 本来就不是单人钓鱼盘,
-                        # 狗庄盘是几百笔的冷清盘。直接腾位。
+# 单池交易上限。原来设2500是为了防CPU满载,但那个判断的前提"狗庄盘是几百笔
+# 的冷清盘"只对新生小盘成立 —— 成熟盘(USOH 9,624笔)恰恰是交易多的,而那才
+# 是有钱赚的一类。上限提到8000,首次接触慢(限速约7笔/秒,5000笔要12分钟)
+# 但那是一次性成本,之后只拉增量。
+MAX_POOL_SIGS = 8000
 MAX_NEW_PER_ROUND = 400 # 单轮单池最多解析多少笔新交易,防止突发把循环撑爆
-MAX_WATCH = 40          # 同时观察上限。Helius免费档约10请求/秒是硬顶,
+MAX_WATCH = 26          # 同时观察上限。Helius免费档约10请求/秒是硬顶,
                         # 但增量刷新只拉新增交易,腾掉非狗庄盘后40个撑得住
 EVICT_IDLE_MIN = 90     # 盘死了多久就腾位
 SCAN_GAP = 180          # 每轮间隔(秒)
@@ -100,7 +113,8 @@ CREATE TABLE IF NOT EXISTS paper_trades (
 );
 CREATE INDEX IF NOT EXISTS ix_snap_pool ON snapshots(pool);
 CREATE TABLE IF NOT EXISTS watchlist (
-  pool TEXT PRIMARY KEY, name TEXT, added_at INTEGER, dropped_at INTEGER, reason TEXT
+  pool TEXT PRIMARY KEY, name TEXT, added_at INTEGER, dropped_at INTEGER,
+  reason TEXT, tier TEXT DEFAULT 'newborn'
 );
 """
 
@@ -174,6 +188,45 @@ def price_of(pool):
         return float(d["data"]["attributes"]["base_token_price_usd"])
     except (TypeError, KeyError, ValueError):
         return None
+
+
+def _age_min(a):
+    c = a.get("pool_created_at") or ""
+    try:
+        return (time.time() - calendar.timegm(
+            time.strptime(c[:19], "%Y-%m-%dT%H:%M:%S"))) / 60
+    except ValueError:
+        return None
+
+
+def discover_mature():
+    """找已经活过1小时、且有钓鱼形态的盘子。
+
+    判据用GT直接给的24h买卖人数: 买家远多于卖家 = 钱进得去出不来,这是鱼被
+    困住的signature(HOOD 3091买/109卖 = 28:1, YODA 3946/86 = 46:1)。
+    真正双向交易的币这个比例在个位数。
+    """
+    out = []
+    for ep in ("networks/solana/trending_pools", "networks/solana/pools"):
+        for page in (1, 2):
+            d = cg.get(ep, {"page": page})
+            for r in (d or {}).get("data", []):
+                a = r.get("attributes", {})
+                addr = a.get("address")
+                age = _age_min(a)
+                if not addr or age is None:
+                    continue
+                if not (MATURE_MIN_AGE <= age <= MATURE_MAX_AGE):
+                    continue
+                tx = (a.get("transactions") or {}).get("h24") or {}
+                buyers = int(tx.get("buyers") or 0)
+                sellers = int(tx.get("sellers") or 0)
+                ratio = buyers / max(sellers, 1)
+                # 要么买卖人数比高(鱼被困),要么参与人数少(单人操盘)
+                if ratio >= 4.0 or buyers <= 40:
+                    out.append((addr, a.get("name") or "", age))
+            time.sleep(0.3)
+    return out
 
 
 def discover_new():
@@ -254,8 +307,23 @@ def main():
     while True:
         if time.time() - last_disc > DISCOVER_GAP:
             try:
+                # 成熟盘优先占名额,新生盘只用剩下的
+                mature = discover_mature()
+                n_mature = sum(1 for a in watching
+                               if c.execute("SELECT tier FROM watchlist WHERE pool=?",
+                                            (a,)).fetchone() is not None)
+                for addr, name, age in mature:
+                    if addr in watching or len(watching) >= MAX_WATCH:
+                        continue
+                    watching[addr] = Pool(addr, name)
+                    db.add_pool(addr, name=name,
+                                found_at=time.strftime("%Y-%m-%d %H:%M:%S"))
+                    c.execute("INSERT OR REPLACE INTO watchlist (pool,name,added_at,tier) "
+                              "VALUES (?,?,?,?)", (addr, name, int(time.time()), "mature"))
+                    c.commit()
+                    log(f"加入成熟盘 {name or addr[:10]}  已活{age/60:.1f}小时")
                 for addr, name, age in discover_new():
-                    if addr not in watching and len(watching) < MAX_WATCH:
+                    if addr not in watching and len(watching) < MAX_WATCH - MATURE_SLOTS + len(mature):
                         watching[addr] = Pool(addr, name)
                         db.add_pool(addr, name=name,
                                     found_at=time.strftime("%Y-%m-%d %H:%M:%S"))
@@ -306,7 +374,12 @@ def main():
                                      "AND exit_ts IS NULL", (addr,)).fetchone()
                 if not held_now:
                     drop = None
-                    if m["n_tx"] >= 25 and m["top_share"] < 0.45:
+                    tier_row = c.execute("SELECT tier FROM watchlist WHERE pool=?",
+                                         (addr,)).fetchone()
+                    is_mature = tier_row and tier_row["tier"] == "mature"
+                    # 成熟盘不按集中度腾位: 它们本来就有几千个参与者,集中度必然低,
+                    # 但狗庄的钱可能就压在里面(USOH 有128个钱包)。
+                    if not is_mature and m["n_tx"] >= 25 and m["top_share"] < 0.45:
                         drop = f"非狗庄盘(集中度{m['top_share']:.0%})"
                     elif m["idle_min"] > EVICT_IDLE_MIN:
                         drop = f"盘已死(静止{m['idle_min']:.0f}分钟)"
