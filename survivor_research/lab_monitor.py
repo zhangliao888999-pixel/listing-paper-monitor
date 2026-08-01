@@ -206,6 +206,42 @@ def main():
                   f"均值 {sum(pnls)/len(pnls):+.1f}%   "
                   f"最好 {max(pnls):+.1f}%   最差 {min(pnls):+.1f}%")
 
+    # ---- 开盘侦察模块 ----
+    print("")
+    print(col("--- 开盘侦察 (lab_scout) ---", "w"))
+    try:
+        n_fp = c.execute("SELECT COUNT(*) n FROM launch_fp").fetchone()["n"]
+        n_big = c.execute("SELECT COUNT(*) n FROM launch_fp WHERE score>=3").fetchone()["n"]
+        n_w = c.execute("SELECT COUNT(DISTINCT addr) n FROM operator_wallets").fetchone()["n"]
+        n_rep = c.execute("SELECT COUNT(*) n FROM (SELECT addr FROM operator_wallets "
+                          "GROUP BY addr HAVING COUNT(*)>1)").fetchone()["n"]
+        print("  已指纹 %d 个币   其中大网(>=3/4) %d 个" % (n_fp, n_big))
+        print("  作案钱包库 %d 个地址   跨币重复出现 %d 个" % (n_w, n_rep))
+        rows = c.execute("SELECT * FROM launch_fp ORDER BY checked_at DESC LIMIT 8").fetchall()
+        if rows:
+            print(col("  %-18s%6s%12s%8s%8s%10s  %s"
+                      % ("币", "评分", "头2min", "同时", "同秒", "铺底", "判定"), "d"))
+            for r in rows:
+                sc = r["score"] or 0
+                cc = "r" if sc >= 3 else ("y" if sc == 2 else "d")
+                print("  " + fit(r["name"] or r["pool"][:10], 18)
+                      + col(fit("%d/4" % sc, 6, True), cc)
+                      + fit("$" + format(r["cap_2min"] or 0, ",.0f"), 12, True)
+                      + fit(str(r["burst_wallets"] or 0), 8, True)
+                      + fit("%.0f%%" % ((r["samesec_ratio"] or 0) * 100), 8, True)
+                      + fit("$" + format(r["seed_max"] or 0, ",.0f"), 10, True)
+                      + "  " + clean(r["verdict"] or ""))
+        al = c.execute("SELECT * FROM scout_alerts ORDER BY ts DESC LIMIT 6").fetchall()
+        if al:
+            print("")
+            print(col("  最近告警:", "r"))
+            for r in al:
+                print(col("    %-8s %-18s %s  %s"
+                          % (r["kind"], clean(r["name"] or "")[:16],
+                             clean(r["detail"] or "")[:56], ago(r["ts"])), "y"))
+    except Exception as e:
+        print(col("  (侦察模块还没有数据: %s)" % e, "d"))
+
     ev = c.execute("SELECT reason, COUNT(*) n FROM watchlist "
                    "WHERE dropped_at IS NOT NULL GROUP BY reason "
                    "ORDER BY n DESC LIMIT 5").fetchall()
