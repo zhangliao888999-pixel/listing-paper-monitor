@@ -1,36 +1,6 @@
 {
- "updated_at": 1785559863,
- "updated_at_str": "2026-08-01 04:51 UTC",
- "n_candidates": 1,
- "candidates": [
-  {
-   "addr": "382SBR54RSDj8tKq1kZvrrfikwphhGYFqhamSWEh9Lq8",
-   "name": "URCOIN / SOL",
-   "age_min": 207.18333333333334,
-   "created": 1785547432.0,
-   "price": 1.5721736906865644e-05,
-   "liq": 8992.844,
-   "locked_liq_pct": 100.0,
-   "vol_15m": 245.2925605587,
-   "vol_1h": 2140.8056106514,
-   "chg_15m": 11.613,
-   "chg_1h": -13.731,
-   "buys_15m": 5,
-   "sells_15m": 0,
-   "dex_url": "https://www.geckoterminal.com/solana/pools/382SBR54RSDj8tKq1kZvrrfikwphhGYFqhamSWEh9Lq8",
-   "mint": "7YDn5FEaPCy8JgbXsESF9b9SMKGVTaHswPgASGHGaPwg",
-   "early_bot_flag": null,
-   "staircase_flag": false,
-   "scalping_flag": true,
-   "diligence": {
-    "checked_min_ago": 10.0,
-    "staircase_flag": false,
-    "scalping_flag": true,
-    "n_traders": 40,
-    "n_suspicious": 2,
-    "exit_ratio": 0.8722443614457793,
-    "wallet_verdict": "35/40个头部钱包已卖出70%+仓位，主力大概率已基本出货完毕"
-   }
-  }
- ]
+ "updated_at": 1785560462,
+ "updated_at_str": "2026-08-01 05:01 UTC",
+ "n_candidates": 0,
+ "candidates": []
 }
