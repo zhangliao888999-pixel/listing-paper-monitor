@@ -173,9 +173,22 @@ def fingerprint(pool, verbose=True):
         sec_cnt[t["ts"]] += 1
     samesec = sum(n for n in sec_cnt.values() if n > 1) / max(len(txs), 1)
 
-    score = ((1 if cap2 >= MIN_CAP2 else 0) + (1 if burst >= MIN_BURST else 0)
+    # "头2分钟净流入"是硬门槛,不是四条里的普通一条。
+    # 四个实测样本把这一点暴露得很清楚:
+    #   Jimothy  +$6,658 -> 1.5小时后仍活着,流动性$19,446
+    #   MOKI     +$6,271 -> 撑了0.7小时才砸
+    #   CONTRA     -$687 -> 归零(而它的"铺底大单"高达$41,250)
+    #   ASTEROID   -$669 -> 归零
+    # CONTRA/ASTEROID 靠"铺底大单>=$1000"这条拿到3分,但那笔钱进来又立刻
+    # 出去了 —— 单笔金额大不代表钱留在池子里。净流入才算数。
+    gate = cap2 >= MIN_CAP2
+    score = ((1 if gate else 0) + (1 if burst >= MIN_BURST else 0)
              + (1 if samesec >= MIN_SAMESEC else 0) + (1 if seeds else 0))
-    verdict = {4: "大网(四条全中)", 3: "疑似大网", 2: "中等", 1: "弱", 0: "无迹象"}[score]
+    if not gate:
+        verdict = "假铺底(钱没留下)" if seeds else "无本钱"
+        score = min(score, 2)
+    else:
+        verdict = {4: "大网(四条全中)", 3: "疑似大网", 2: "中等"}.get(score, "弱")
 
     res = {"pool": pool, "name": a.get("name"), "mint": mint,
            "created_at": a.get("pool_created_at"), "checked_at": int(time.time()),
