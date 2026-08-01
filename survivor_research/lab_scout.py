@@ -129,11 +129,19 @@ def main():
                         known.add(x)
                 else:
                     log("  %s  %s" % ((res["name"] or addr[:12])[:18], tag))
-                # 惯犯
-                hit = [x for x, _ in bots if x in known]
+                # 惯犯: 必须是**在别的币上**出现过才算。
+                # 第一版直接查 known 集合,而 save() 已经把本币的钱包写进库了,
+                # 等于自己命中自己 —— 连报了7次"惯犯出现",实际跨币复用是0。
+                names = [x for x, _ in bots]
+                hit = []
+                if names:
+                    qs = ",".join("?" * len(names))
+                    hit = [r["addr"] for r in c.execute(
+                        "SELECT DISTINCT addr FROM operator_wallets "
+                        "WHERE addr IN (%s) AND pool != ?" % qs, names + [addr])]
                 if hit:
                     alert(c, addr, res["name"], "惯犯出现",
-                          "已知作案钱包 %d 个: %s" % (len(hit), hit[0][:20]))
+                          "在别的币上出现过的钱包 %d 个: %s" % (len(hit), hit[0][:20]))
         except Exception as e:
             log("本轮出错 %s: %s" % (type(e).__name__, e))
         time.sleep(CYCLE)
