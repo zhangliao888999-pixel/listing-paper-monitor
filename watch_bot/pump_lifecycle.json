@@ -1523,6 +1523,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1786668968.2241304,
+    "price": 5.0111937751530465e-06,
+    "liq": 5045.977,
+    "insider_sell_pct": 0.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late"
@@ -3099,6 +3108,15 @@
    },
    {
     "ts": 1786665469.9600601,
+    "price": 2.208724919e-05,
+    "liq": 17798.6351,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 3,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1786668977.85182,
     "price": 2.208724919e-05,
     "liq": 17798.6351,
     "insider_sell_pct": 1.0,
@@ -4944,6 +4962,15 @@
    },
    {
     "ts": 1786661970.6694822,
+    "price": 7.690842274e-05,
+    "liq": 67184.3319,
+    "insider_sell_pct": 0.9921538883875551,
+    "n_insiders": 29,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1786668987.4358306,
     "price": 7.690842274e-05,
     "liq": 67184.3319,
     "insider_sell_pct": 0.9921538883875551,
@@ -7616,6 +7643,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1786669006.3561318,
+    "price": 1.647057195e-05,
+    "liq": 12813.3986,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -9033,6 +9069,15 @@
    },
    {
     "ts": 1786665508.188273,
+    "price": 3.127395026e-05,
+    "liq": 24441.6678,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 2,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1786669009.939944,
     "price": 3.127395026e-05,
     "liq": 24441.6678,
     "insider_sell_pct": 1.0,
@@ -11695,6 +11740,15 @@
     "n_insiders": 3,
     "locked_liq_pct": null,
     "h1_chg": "0"
+   },
+   {
+    "ts": 1786669028.8265216,
+    "price": 1.342723269e-05,
+    "liq": 10133.3254,
+    "insider_sell_pct": 0.4117799646282715,
+    "n_insiders": 3,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -13062,6 +13116,15 @@
    },
    {
     "ts": 1786665536.825432,
+    "price": 7.638285263e-05,
+    "liq": 67964.1315,
+    "insider_sell_pct": 0.99949946608965,
+    "n_insiders": 15,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1786669038.4500985,
     "price": 7.638285263e-05,
     "liq": 67964.1315,
     "insider_sell_pct": 0.99949946608965,
@@ -14513,6 +14576,15 @@
     "n_insiders": 1,
     "locked_liq_pct": null,
     "h1_chg": "0"
+   },
+   {
+    "ts": 1786669048.0385942,
+    "price": 2.034956e-05,
+    "liq": 15557.9932,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -15849,6 +15921,15 @@
    },
    {
     "ts": 1786665556.1289077,
+    "price": 2.130880732e-05,
+    "liq": 15297.0204,
+    "insider_sell_pct": 0.10045305917484192,
+    "n_insiders": 3,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1786669057.6086905,
     "price": 2.130880732e-05,
     "liq": 15297.0204,
     "insider_sell_pct": 0.10045305917484192,
@@ -18591,6 +18672,15 @@
     "n_insiders": 19,
     "locked_liq_pct": null,
     "h1_chg": "0"
+   },
+   {
+    "ts": 1786669076.5218177,
+    "price": 3.719127989e-05,
+    "liq": 34026.5539,
+    "insider_sell_pct": 0.973886990495576,
+    "n_insiders": 19,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -19807,6 +19897,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1786669086.0994303,
+    "price": 2.028815682e-05,
+    "liq": 15294.1428,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -20999,6 +21098,15 @@
    },
    {
     "ts": 1786665594.2730575,
+    "price": 0.0007122159775,
+    "liq": 538561.7121,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 2,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1786669095.6478024,
     "price": 0.0007122159775,
     "liq": 538561.7121,
     "insider_sell_pct": 1.0,
@@ -23531,6 +23639,15 @@
     "n_insiders": 2,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1786669114.5339913,
+    "price": 7.634903649e-05,
+    "liq": 58591.3074,
+    "insider_sell_pct": 0.9349046009363488,
+    "n_insiders": 2,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -24942,6 +25059,15 @@
    },
    {
     "ts": 1786662114.588682,
+    "price": 7.52211325e-05,
+    "liq": 55423.9298,
+    "insider_sell_pct": 0.9999039299669152,
+    "n_insiders": 22,
+    "locked_liq_pct": null,
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1786669118.1249807,
     "price": 7.52211325e-05,
     "liq": 55423.9298,
     "insider_sell_pct": 0.9999039299669152,
@@ -27146,6 +27272,15 @@
     "n_insiders": 1,
     "locked_liq_pct": "100.0",
     "h1_chg": "0"
+   },
+   {
+    "ts": 1786669137.1308055,
+    "price": 4.578389815e-05,
+    "liq": 34840.2452,
+    "insider_sell_pct": 1.0,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
    }
   ],
   "found_via": "late",
@@ -28239,6 +28374,15 @@
    },
    {
     "ts": 1786665651.9754674,
+    "price": 3.158543657e-05,
+    "liq": 24081.0057,
+    "insider_sell_pct": 0.9155056091557391,
+    "n_insiders": 1,
+    "locked_liq_pct": "100.0",
+    "h1_chg": "0"
+   },
+   {
+    "ts": 1786669146.7607603,
     "price": 3.158543657e-05,
     "liq": 24081.0057,
     "insider_sell_pct": 0.9155056091557391,
